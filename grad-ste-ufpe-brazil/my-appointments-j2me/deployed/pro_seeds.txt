@@ -1,0 +1,2 @@
+br.ufpe.cin.stp.appointment.global.BookReaderMIDlet
+br.ufpe.cin.stp.appointment.view.midp.AppointmentMidlet

@@ -1,0 +1,7 @@
+MIDlet-1: BookReader, , BookReaderMIDlet
+MIDlet-Icon: /logo.png
+MIDlet-Jar-Size: 38914
+MIDlet-Jar-URL: BookReader.jar
+MIDlet-Name: BookReader
+MIDlet-Vendor: Nokia
+MIDlet-Version: 1.0

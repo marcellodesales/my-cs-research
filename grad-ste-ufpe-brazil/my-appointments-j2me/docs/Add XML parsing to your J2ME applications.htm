@@ -1,0 +1,974 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0058)http://www-106.ibm.com/developerworks/library/wi-parsexml/ -->
+<HTML xmlns:fo = "http://www.w3.org/1999/XSL/Format"><HEAD><TITLE>Add XML parsing to your J2ME applications</TITLE><!--XSLT stylesheet used to transform this file:  dw-document-html-2.2.xsl-->
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<META http-equiv=PICS-Label 
+content='(PICS-1.1&#13;&#10;    "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1)&#13;&#10;    "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0)&#13;&#10;    "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))'>
+<META http-equiv=Expires content=0>
+<META content="20030921 ktw" name=lastupdated 
+xmlns:dw="http://www.ibm.com/developerWorks/">
+<META 
+content="More and more enterprise and Java technology projects are making use of XML as a medium to store data in a portable fashion. But due to the increased processing power demanded by XML parsers, J2ME applications have largely been left out of this trend.  Now, however, small-footprint XML parsers for the Java language are emerging that will allow MIDP programmers to take advantage of the power of XML. Soma Ghosh illustrates their potential with a sample application." 
+name=ABSTRACT>
+<META 
+content="More and more enterprise and Java technology projects are making use of XML as a medium to store data in a portable fashion. But due to the increased processing power demanded by XML parsers, J2ME applications have largely been left out of this trend.  Now, however, small-footprint XML parsers for the Java language are emerging that will allow MIDP programmers to take advantage of the power of XML. Soma Ghosh illustrates their potential with a sample application." 
+name=DESCRIPTION>
+<META content="Add XML parsing to your J2ME applications" name=TITLE>
+<META 
+content=https://www-136.ibm.com/developerworks/secure/feedback.jsp?domain=developerworks 
+name=OWNER>
+<META scheme=iso8601 content=2003-9-16 name=DC.Date>
+<META scheme=rfc1766 content=en-us name=DC.Language>
+<META content=zz name=IBM.Country>
+<META content=Public name=SECURITY>
+<META content="Copyright (c) 2003 by IBM Corporation" name=DC.Rights>
+<META content=index,follow name=ROBOTS>
+<SCRIPT language=JavaScript>
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Add XML parsing to your J2ME applications_arquivos/style.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var title = "Add XML parsing to your J2ME applications"; </SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var forumURL = ""; </SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var contentAreaList = "wireless"; </SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Add XML parsing to your J2ME applications_arquivos/forumwindow.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var emailAbstract = "More and more enterprise and Java technology projects are making use of XML as a medium to store data in a portable fashion. But due to the increased processing power demanded by XML parsers, J2ME applications have largely been left out of this trend.  Now, however, small-footprint XML parsers for the Java language are emerging that will allow MIDP programmers to take advantage of the power of XML. Soma Ghosh illustrates their potential with a sample application."; </SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Add XML parsing to your J2ME applications_arquivos/grabtitle.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Add XML parsing to your J2ME applications_arquivos/emailfriend2.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var demoURL = ""; </SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Add XML parsing to your J2ME applications_arquivos/demowindow.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=2 topMargin=2 marginheight="2" marginwidth="2">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=tbgc width=160><A 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&amp;origin=dwheader"><IMG 
+      height=47 alt=IBM 
+      src="Add XML parsing to your J2ME applications_arquivos/ibm-logo.gif" 
+      width=160 border=0></A></TD>
+    <TD class=tbgdw width=90><A 
+      href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#main"><IMG 
+      height=1 alt="Skip to main content" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=70 
+      border=0></A></TD>
+    <TD class=tbgc vAlign=top align=right width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <FORM id=form1 name=form1 
+        action=http://www-106.ibm.com/search/searchResults.jsp method=get><INPUT 
+        type=hidden value=1 name=searchType> <INPUT type=hidden value=dW 
+        name=searchSite> 
+        <TBODY>
+        <TR>
+          <TD colSpan=7><IMG height=4 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=390 border=0></TD></TR>
+        <TR vAlign=center nowrap>
+          <TD class=dwsearch24><B>Search for:</B>&nbsp;</TD>
+          <TD><INPUT class=dwsearch id=searchformq maxLength=100 size=18 
+            name=query height="15"></FONT></TD>
+          <TD class=dwsearch24>&nbsp;<B>within</B>&nbsp;</TD>
+          <TD class=dwsearch><SELECT class=dwsearch id=selectscopeq 
+            name=searchScope> <OPTION value=dW selected>All of dW</OPTION> 
+              <OPTION value=dW>-----------------</OPTION> <OPTION 
+              value=db2>&nbsp;&nbsp;DB2</OPTION> <OPTION 
+              value=eserver>&nbsp;&nbsp;eServer</OPTION> <OPTION 
+              value=lotus>&nbsp;&nbsp;Lotus</OPTION> <OPTION 
+              value=rdd>&nbsp;&nbsp;Rational</OPTION> <OPTION 
+              value=tivoli>&nbsp;&nbsp;Tivoli</OPTION> <OPTION 
+              value=WSDD>&nbsp;&nbsp;WebSphere</OPTION> <OPTION 
+              value=dW>-----------------</OPTION> <OPTION 
+              value=acZ>&nbsp;&nbsp;Autonomic computing</OPTION> <OPTION 
+              value=gridZ>&nbsp;&nbsp;Grid computing</OPTION> <OPTION 
+              value=javaZ>&nbsp;&nbsp;Java technology</OPTION> <OPTION 
+              value=linuxZ>&nbsp;&nbsp;Linux</OPTION> <OPTION 
+              value=opensrcZ>&nbsp;&nbsp;Open source</OPTION> <OPTION 
+              value=webarchZ>&nbsp;&nbsp;Web arch.</OPTION> <OPTION 
+              value=webservZ>&nbsp;&nbsp;Web services</OPTION> <OPTION 
+              value=wirelessZ>&nbsp;&nbsp;Wireless</OPTION> <OPTION 
+              value=xmlZ>&nbsp;&nbsp;XML</OPTION> <OPTION 
+              value=dW>-----------------</OPTION> <OPTION 
+              value=forums>&nbsp;&nbsp;dW forums</OPTION> <OPTION 
+              value=dW>-----------------</OPTION> <OPTION 
+              value=toolbox>&nbsp;&nbsp;dW Subscription</OPTION> <OPTION 
+              value=dW>-----------------</OPTION> <OPTION 
+              value=aW>alphaWorks</OPTION> <OPTION 
+              value=dW>-----------------</OPTION> <OPTION value=all>All of 
+              IBM</OPTION></SELECT></TD>
+          <TD><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=5 border=0></TD>
+          <TD><LABEL for=searchformq><INPUT type=image height=23 
+            alt="Search button" width=64 
+            src="Add XML parsing to your J2ME applications_arquivos/search.gif" 
+            value=Search border=0 name=Search></LABEL></TD>
+          <TD vAlign=top><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=10 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD>&nbsp;</TD>
+          <TD class=dwsmallwh>&nbsp;</TD>
+          <TD>&nbsp;</TD>
+          <TD class=dwsmall><A style="COLOR: #ffffff" 
+            href="http://www-106.ibm.com/developerworks/search/help-dw.html" 
+            target=_blank>Search help</A><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=1 border=0></TD>
+          <TD colSpan=4>&nbsp;</TD></TR>
+        <TR>
+          <TD colSpan=8><IMG height=4 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=390 border=0></TD></TR></TBODY></TABLE></TD></TR></FORM>
+  <TR>
+    <TD class=hbg width=160 height=21>&nbsp;</TD>
+    <TD class=bbg vAlign=top colSpan=2 height=21>&nbsp;&nbsp;&nbsp;<A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/&amp;origin=dwheader">IBM 
+      home</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/products/&amp;origin=dwheader">Products 
+      &amp; services</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/support/">Support 
+      &amp; downloads</A> <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/account/&amp;origin=dwheader">My 
+      account</A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD width=5><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=5 
+      border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%"><IMG height=4 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=2 border=0><BR><A class=dwbctl 
+            href="http://www-106.ibm.com/developerworks/">developerWorks</A> 
+            &gt; <A class=dwbctl 
+            href="http://www-106.ibm.com/developerworks/wireless/">Wireless</A></TD>
+          <TD align=right width=136><A 
+            href="http://www-106.ibm.com/developerworks/"><IMG height=24 
+            alt=developerWorks 
+            src="Add XML parsing to your J2ME applications_arquivos/dwlogo-small.gif" 
+            width=136 border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=5 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><A 
+name=main></A><A name=top></A>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD colSpan=5><IMG height=15 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=5 
+      border=0></TD></TR>
+  <TR vAlign=top>
+    <TD width=2><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=2 
+      border=0></TD>
+    <TD><SPAN class=atitle>Add XML parsing to your J2ME applications</SPAN></TD>
+    <TD width=8><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=8 
+      border=0></TD>
+    <TD align=right width=180><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=180 
+      border=0><BR><NOBR><A 
+      href="ftp://www6.software.ibm.com/software/developer/library/wi-parsexml.pdf"><IMG 
+      height=26 alt="88 KB" 
+      src="Add XML parsing to your J2ME applications_arquivos/icon-pdf.gif" 
+      width=35 border=0></A><A href="javascript:void%20newWindow()"><IMG 
+      height=26 alt="e-mail it!" 
+      src="Add XML parsing to your J2ME applications_arquivos/icon-email.gif" 
+      width=46 border=0></A></NOBR></TD>
+    <TD width=6><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=6 
+      border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=5><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=100 
+      border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=5><IMG height=8 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=100 
+      border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD width=5><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=5 
+      border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width=168 align=right border=0>
+        <TBODY>
+        <TR>
+          <TD width=8><IMG height=21 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=5></TD>
+          <TD width=160>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="Add XML parsing to your J2ME applications_arquivos/bg-gold.gif" 
+                height=5><B>Contents:</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#1">XML 
+                        parsers: An overview</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#2">XML 
+                        parsing in a MIDP environment</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#3">Performance 
+                        issues in deploying XML parsers</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#4">An 
+                        XML-parsing J2ME application</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#5">The 
+                        bottom Line</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR><!--Standard links for every dw-article-->
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#resources">Resources</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#author1">About 
+                        the author</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#rating">Rate 
+                        this article</A></TD></TR>
+                    <TR>
+                      <TD><IMG height=10 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="Add XML parsing to your J2ME applications_arquivos/bg-gold.gif" 
+                height=5><B>Subscriptions:</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=1 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=www-106.ibm.com/developerworks/newsletter/&amp;origin=dw-article">dW 
+                        newsletters</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/toolbox/">dW 
+                        Subscription<BR>(CDs and downloads)</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                        width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=150 bgColor=#000000 colSpan=2 height=2><IMG height=2 
+                  alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD width=150 bgColor=#ffffff colSpan=2 height=2><IMG height=2 
+                  alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><SPAN 
+      class=atitle2>Combine mobile data and mobile code on your mobile 
+      device</SPAN><BR>
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR vAlign=top align=left>
+          <TD>
+            <P>Level: Introductory</P></TD></TR></TBODY></TABLE>
+      <P><A 
+      href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#author1"><NAME>Soma 
+      Ghosh</NAME></A> (<A 
+      href="mailto:sghosh@entigo.com?cc=&amp;subject=Add XML parsing to your J2ME applications">mailto:sghosh@entigo.com?cc=&amp;subject=Add 
+      XML parsing to your J2ME applications</A>)<BR>Application developer, 
+      Entigo<BR>16 September 2003</P>
+      <BLOCKQUOTE>More and more enterprise and Java technology projects are 
+        making use of XML as a medium to store data in a portable fashion. But 
+        due to the increased processing power demanded by XML parsers, J2ME 
+        applications have largely been left out of this trend. Now, however, 
+        small-footprint XML parsers for the Java language are emerging that will 
+        allow MIDP programmers to take advantage of the power of XML. Soma Ghosh 
+        illustrates their potential with a sample application.</BLOCKQUOTE>
+      <P>The fusion of Java and XML technologies creates the powerful 
+      combination of portable code and portable data. But where does the Java 2 
+      Platform, Micro Edition (J2ME) fit in? In this article, I'll show some of 
+      the progress that has been made in cutting XML parsers down to a size 
+      suited to J2ME applications and limited-resource platforms. I'll use the 
+      kXML package to write an application for the MIDP profile that can parse 
+      an XML document. But first, I'll take a look at the world of XML parsers, 
+      and find out some of the reasons why they've been slow to move to the J2ME 
+      platform.</P>
+      <P><A name=1><SPAN class=atitle2>XML parsers: An overview</SPAN></A><BR>An 
+      <I xmlns:dw="http://www.ibm.com/developerWorks/">XML processing model</I> 
+      describes the steps an application should take to process XML; an 
+      application that implements such a model is called an <I 
+      xmlns:dw="http://www.ibm.com/developerWorks/">XML parser.</I> You can 
+      integrate an XML parser into your Java applications with the Java API for 
+      XML Processing (JAXP). JAXP allows applications to parse and transform XML 
+      documents using an API that is independent of any particular XML processor 
+      implementation. Through a plug-in scheme, developers can change XML 
+      processor implementations without altering their applications. </P>
+      <P>The XML parsing process operates in three phases: </P>
+      <OL xmlns:dw="http://www.ibm.com/developerWorks/">
+        <LI><I>XML input processing.</I> In this stage, the application parses 
+        and validates the source document; recognizes and searches for relevant 
+        information based on its location or its tagging in the source document; 
+        extracts the relevant information when it is located; and, optionally, 
+        maps and binds the retrieved information to business objects. 
+        <LI><I>Business logic handling.</I> This is the stage in which the 
+        actual processing of the input information takes place. It might result 
+        in the generation of output information. 
+        <LI><I>XML output processing.</I> In this stage, the application 
+        constructs a model of the document to be generated with the Document 
+        Object Model (DOM). It then either applies XSLT style sheets or directly 
+        serializes to XML. </LI></OL>
+      <P>SAX (the Simple API for XML) and DOM are the most common processing 
+      models. If you use a SAX-based parser to process an XML document, you need 
+      to code methods to handle events thrown by the parser as it encounters the 
+      different tokens of the markup language. Because a SAX parser generates a 
+      transient flow of events, the XML input processing steps described above 
+      (parsing, recognizing, extracting, and mapping) must be performed in a 
+      single cycle: Each caught event is handled immediately and the relevant 
+      information is passed on with the event. SAX-based parsers fall into the 
+      category of <I xmlns:dw="http://www.ibm.com/developerWorks/">push 
+      parsers.</I> A push parser reads through an entire XML document. As it 
+      encounters various parts of the document, it notifies a listener 
+      object.</P>
+      <P>If you use a DOM-based parser, you need to write code to walk through 
+      the tree-like data structure that the parser will create from the source 
+      document. With DOM, the XML input processing is done in at least two 
+      cycles. First, the DOM parser creates a tree-like data structure, called a 
+      <I xmlns:dw="http://www.ibm.com/developerWorks/">DOM tree,</I> that models 
+      the XML source document; then the application walks through the DOM tree, 
+      searching for relevant information to extract and further process. This 
+      last cycle can be repeated as many times as necessary, since the DOM tree 
+      persists in memory. DOM-based parsers fall into the category of <I 
+      xmlns:dw="http://www.ibm.com/developerWorks/">model parsers.</I> A model 
+      parser reads an entire document and creates a representation of the 
+      document in memory. </P>
+      <P>Both push and model parsers require an amount of memory and processing 
+      power that is beyond the capabilities of many J2ME devices. To get around 
+      those device limitations, a third type of parser, called a <I 
+      xmlns:dw="http://www.ibm.com/developerWorks/">pull parser,</I> can be 
+      used. A pull parser reads a small amount of a document at once. The 
+      application drives the parser through the document by repeatedly 
+      requesting the next piece. The kXML parser that I'll use in my sample 
+      application is an example of a pull parser. </P>
+      <P><A name=2><SPAN class=atitle2>XML parsing in a MIDP 
+      environment</SPAN></A><BR>You can use XML parsers in J2ME applications to 
+      interface with an existing XML service. For example, you could get a 
+      customized view of news on your phone from an aggregator site that 
+      summarizes headlines and story descriptions for a news site in XML 
+      format.</P>
+      <P>XML parsers tend to be bulky, with heavy run time memory requirements. 
+      In order to adapt to the MIDP environment, XML parsers must be small to 
+      meet the resource constraints of MIDP-based devices. They should also be 
+      easily portable, with minimum effort required to port them to MIDP.</P>
+      <P>Two frequently used XML parsers for resource-constrained devices are 
+      kXML and NanoXML. kXML is written exclusively for the J2ME platform (CLDC 
+      and MIDP). As of version 1.6.8 for MIDP, NanoXML supports DOM parsing. 
+      (See <A 
+      href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#resources" 
+      xmlns:dw="http://www.ibm.com/developerWorks/">Resources</A> for links to 
+      NanoXML and kXML.) </P>
+      <P><A name=3><SPAN class=atitle2>Performance issues in deploying XML 
+      parsers</SPAN></A><BR>There are several performance issues that you should 
+      keep in mind while deploying XML parsing in a MIDP application: </P>
+      <UL xmlns:dw="http://www.ibm.com/developerWorks/">
+        <LI><I>Increase in size:</I> An XML parser is code-intensive and 
+        increases the overall size of an application. This is a particularly 
+        important consideration for resource-constrained MIDP devices. There are 
+        several optimization techniques you can use to fight code expansion. 
+        First, you should remove resource files that are not in use. You should 
+        also use obfuscators that will remove unused classes, unused methods, 
+        and variables from your JAD file. 
+        <LI><I>Heavy string parsing:</I> XML parsers use intensive string 
+        parsing to perform their jobs; this will add to the overhead in MIDP 
+        applications with low runtime memory. XML documents that J2ME 
+        applications parse need to be small and contain as much useful 
+        information as possible. 
+        <LI><I>Slow response time:</I> As the MIDP application parses a 
+        relatively large amount of XML data, the response time will increase. 
+        The XML files to be parsed should be small, and the parsing should be 
+        done in a thread of execution that is separate from the main 
+        application. </LI></UL>
+      <P>I'll use some of these techniques to keep my sample application 
+      streamlined.</P>
+      <P><A name=4><SPAN class=atitle2>An XML-parsing J2ME 
+      application</SPAN></A><BR>In this section, I'll develop a J2ME 
+      application, ParseXML, that parses RSS (rich site summary)-formatted XML 
+      documents and displays the information encoded in those documents on a 
+      phone screen. RSS is a simple XML format that summarizes headlines and 
+      story descriptions for a news site. You can see an example of an RSS 
+      document in Listing 1.</P><A name=listing1><B>Listing 1. RSS data to be 
+      parsed by the application</B></A><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE rss PUBLIC 
+"-//Netscape Communications//DTD RSS 0.91//EN" 
+"http://my.netscape.com/publish/formats/rss-0.91.dtd"
+&gt;
+&lt;rss version="0.91"&gt; 
+&lt;channel&gt; 
+&lt;title&gt;Meerkat: An Open Wire Service&lt;/title&gt; 
+&lt;link&gt;http://meerkat.oreillynet.com&lt;/link&gt; 
+&lt;description&gt;
+Meerkat is a Web-based syndicated content reader based on RSS ("Rich Site Summary"). 
+RSS is a fantastic, simple-yet-powerful syndication system rapidly gaining momentum.
+&lt;/description&gt;
+&lt;/channel&gt;
+&lt;/rss&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>On execution, ParseXML displays the title and description from the 
+      above RSS data on the phone screen. The UI aspects of the application are 
+      handled by the <CODE>javax.microedition.lcdui</CODE> package. </P>
+      <P>The XML parser used in this application is kXML 1.2. In order to make 
+      kXML classes available to the application, you'll need to download the 
+      <CODE>kxml.zip</CODE> package from the kXML site (see <A 
+      href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#resoruces" 
+      xmlns:dw="http://www.ibm.com/developerWorks/">Resources</A> for a link). 
+      Then, copy the contents of the package to the appropriate folder in your 
+      development system. If you're using Sun's J2ME toolkit (see <A 
+      href="http://www-106.ibm.com/developerworks/library/wi-parsexml/#resources" 
+      xmlns:dw="http://www.ibm.com/developerWorks/">Resources</A>), copy the 
+      contents to TOOLKIT_HOME\apps\ParseXML\lib.</P>
+      <P>The J2ME application initially displays a textbox, a button that 
+      triggers the display of parsed XML data, and an Exit button. When the 
+      Display XML button is pressed, the <CODE>viewXML()</CODE> method is 
+      called. In this method, the application creates an instance of 
+      <CODE>XMLParser</CODE> to walk its way through the document. On every item 
+      it finds, the parser looks for the subcontents <CODE>title</CODE> and 
+      <CODE>description</CODE> in order to find the text that you want to 
+      display. This process goes on recursively. The user can choose to exit the 
+      application during this process by clicking Exit. </P>
+      <P>The RSS data is made available to ParseXML in the form of a 
+      <CODE>String</CODE>. Because the XML parser works on a stream of bytes, 
+      the <CODE>String</CODE> is converted into a byte array, which is used to 
+      construct an instance of <CODE>ByteArrayInputStream</CODE>. The 
+      <CODE>ByteArrayInputStream</CODE> in turn creates an instance of 
+      <CODE>InputStreamReader</CODE>, which creates an instance of an 
+      <CODE>XMLParser</CODE>. This process is illustrated in Listing 2. </P><A 
+      name=listing2><B>Listing 2. Creating an instance of XMLParser to parse a 
+      string containing RSS data</B></A><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+byte[] xmlByteArray = xmlStr.getBytes();
+    ByteArrayInputStream xmlStream = new 
+    ByteArrayInputStream( xmlByteArray );
+    InputStreamReader xmlReader = new 
+    InputStreamReader( xmlStream );
+     XmlParser parser = new XmlParser( xmlReader );
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>In order to capture data from an aggregator site, the application 
+      should open a URL connection and get RSS data on an 
+      <CODE>InputStream</CODE>. The <CODE>InputStream</CODE> is made available 
+      to the <CODE>XMLParser</CODE> through an <CODE>InputStreamReader</CODE>. 
+      This is illustrated in Listing 3.</P><A name=listing3><B>Listing 3. Get 
+      the RSS data from an aggregator site </B></A><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+HttpConnection hc = (HttpConnection)Connector.open(url);
+InputStream is = hc.openInputStream();
+Reader reader = new InputStreamReader(is);
+    XmlParser parser = new XmlParser(reader);
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>When the <CODE>XMLParser</CODE>'s <CODE>read()</CODE> method encounters 
+      an item, it returns a <CODE>ParseEvent</CODE> object. This object contains 
+      valuable information, such as the event type (whether it represents the 
+      start of a tag, the end of a tag, the end of a document, text, or 
+      whitespace), the event name (that is, the tag name), and the event text 
+      (that is, the text enclosed between the start and end tags). As 
+      illustrated in Listing 4, in the example the parser finds the tag names 
+      <CODE>title</CODE> and <CODE>description</CODE>, then reads further to 
+      extract the text for display purposes.</P>
+      <P>The <CODE>ParseEvent</CODE> generates the <CODE>Event</CODE> types 
+      <CODE>Xml.START_TAG</CODE>, <CODE>Xml.END_TAG</CODE>, 
+      <CODE>Xml.END_DOCUMENT</CODE>, <CODE>Xml.WHITESPACE</CODE>, and 
+      <CODE>Xml.TEXT</CODE> when it encounters the start of a tag, end of a tag, 
+      end of a document, whitespace, and text between tags, respectively. </P><A 
+      name=listing4><B>Listing 4. Picking up title and description from RSS data 
+      </B></A><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE> 
+case Xml.START_TAG:
+   // see API doc of StartTag for more access methods
+   
+   // Pick up Title for display
+    if ("title".equals(event.getName()))
+      {
+      pe = parser.read();
+      title = pe.getText();
+    }
+   // Pick up description for display
+    if ("description".equals(event.getName()))
+    {
+        pe = parser.read();
+        desc = pe.getText();
+    }
+
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>Listing 5 contains the complete code listing for the ParseXML 
+      application.</P><A name=listing5><B>Listing 5. ParseXML application 
+      </B></A><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+import javax.microedition.midlet.*;
+import javax.microedition.lcdui.*;
+import javax.microedition.io.*;
+import java.io.*;
+//kxml imports
+import org.kxml.*;
+import org.kxml.parser.*;
+public class ParseXML extends MIDlet implements CommandListener {
+private Command exitCommand; // The exit command
+private Command displayXML; // On execution, it displays title and description 
+                            // on phone screen
+private Display display;     // The display for this MIDlet
+// UI Items for display of title and description on phone screen
+private static TextBox t;
+private static String textBoxString = "";
+// XML String 
+private String xmlStr = "";
+public ParseXML() {
+   display = Display.getDisplay( this );
+   exitCommand = new Command( "Exit", Command.EXIT, 2 );
+   displayXML  = new Command( "XML", Command.SCREEN, 1 );
+  // The XML String in form of RSS
+  StringBuffer xmlString = new StringBuffer();
+  xmlString.append("&lt;?xml version=\"1.0\"?&gt;
+                        &lt;!DOCTYPE rss PUBLIC \"-//Netscape Communications//DTD RSS 0.91//EN\""); 
+  xmlString.append("\"http://my.netscape.com/publish/formats/rss-0.91.dtd\"&gt;");
+  xmlString.append("&lt;rss version=\"0.91\"&gt;"); 
+  xmlString.append("&lt;channel&gt;&lt;title&gt;Meerkat: An Open Wire Service&lt;/title&gt;");
+  xmlString.append("&lt;link&gt;http://meerkat.oreillynet.com&lt;/link&gt;");
+  xmlString.append("&lt;description&gt;Meerkat is a Web-based syndicated content
+                                         reader based on RSS (\"Rich Site Summary\").
+                                         RSS is a fantastic, simple-yet-powerful syndication 
+                                         system rapidly gaining momentum.");
+  xmlString.append("&lt;/description&gt;&lt;language&gt;en-us&lt;/language&gt;");
+  xmlString.append("&lt;/channel&gt;");
+  xmlString.append("&lt;/rss&gt;");
+  xmlStr = xmlString.toString();
+ }
+public void startApp() {
+    // The textbox displays title and description from a RSS String
+    t = new TextBox( "MIDlet XML", "kXML", 256, 0 );
+    t.addCommand( exitCommand );
+    t.addCommand( displayXML );
+    t.setCommandListener( this );
+    display.setCurrent( t );
+ }
+/**
+Pause is a no-op since there are no background activities or
+record stores that need to be closed.
+*/
+public void pauseApp() { }
+/**
+Destroy must cleanup everything not handled by the garbage collector.
+In this case there is nothing to cleanup.
+*/
+public void destroyApp(boolean unconditional) { }
+/*
+Respond to commands, including exit. On the exit command, cleanup
+and notify that the MIDlet has been destroyed.
+*/
+public void commandAction(Command c, Displayable s) {
+  if ( c == exitCommand ) {
+    destroyApp( false );
+    notifyDestroyed();
+  } 
+  else if ( c == displayXML ) {
+    try {
+      viewXML();
+    }
+    catch( Exception e ) {
+        e.printStackTrace();
+    }
+   }
+}
+// This function sets up kxml parser and calls traverse() to parse the whole XML String
+public void viewXML() throws IOException {
+   try {
+    byte[] xmlByteArray = xmlStr.getBytes();
+    ByteArrayInputStream xmlStream = new 
+    ByteArrayInputStream( xmlByteArray );
+    InputStreamReader xmlReader = new 
+    InputStreamReader( xmlStream );
+     XmlParser parser = new XmlParser( xmlReader );
+     try
+     {
+       traverse( parser, "" );
+     }
+     catch (Exception exc)
+     {
+       exc.printStackTrace();
+     }
+    return;
+} 
+catch ( IOException e ) {
+        return ;
+   } finally {
+  return ;
+   }
+ }
+/**
+Traverses the XML file
+*/
+public static void traverse( XmlParser parser, String indent ) throws Exception
+{
+  boolean leave = false;
+  String title = new String();
+  String desc = new String();
+  do {
+  ParseEvent event = parser.read ();
+  ParseEvent pe;
+  switch ( event.getType() ) {
+   // For example, &lt;title&gt; 
+   case Xml.START_TAG:
+   // see API doc of StartTag for more access methods
+   // Pick up Title for display
+    if ("title".equals(event.getName()))
+      {
+      pe = parser.read();
+      title = pe.getText();
+    }
+   // Pick up description for display
+    if ("description".equals(event.getName()))
+    {
+        pe = parser.read();
+        desc = pe.getText();
+    }
+    textBoxString = title + " " + desc;
+    traverse( parser, "" ) ; // recursion call for each &lt;tag&gt;&lt;/tag&gt;
+    break;
+    // For example &lt;/title?
+   case Xml.END_TAG:
+    leave = true;
+    break;
+    // For example &lt;/rss&gt;
+   case Xml.END_DOCUMENT:
+    leave = true;
+    break;
+    // For example, the text between tags
+   case Xml.TEXT:
+    break;
+   case Xml.WHITESPACE:
+    break;
+    default:
+    }
+    } while( !leave );
+    t.setString( textBoxString );
+  }
+}
+
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>Figure 1 shows the ParseXML application in action.</P>
+      <P><A name=N10178><B>Figure 1. ParseXML application at run 
+      time</B></A><BR><IMG height=495 alt="ParseXML application at run time" 
+      src="Add XML parsing to your J2ME applications_arquivos/xml.jpg" width=200 
+      xmlns:dw="http://www.ibm.com/developerWorks/"> </P>
+      <P><A name=5><SPAN class=atitle2>The bottom Line</SPAN></A><BR>In this 
+      article, you saw how you can use J2ME to fuse Java technology and XML -- 
+      in other words, to fuse portable code with portable data. Designing J2ME 
+      applications with embedded parsers can be a challenge because of the 
+      resource constraints inherent in J2ME devices. However, with the gradual 
+      availability of compact parsers suited to the MIDP platform, XML parsing 
+      will soon will be a widely used feature of the Java platform on mobile 
+      devices.</P>
+      <P><A name=resources><SPAN class=atitle2>Resources</SPAN></A> 
+      <UL>
+        <LI>Check out the <A href="http://kxml.enhydra.org/software/downloads/" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">kXML parser</A>, which I 
+        use in the sample application. You can download the kxml.zip package 
+        from this site. <BR><BR>
+        <LI>Find out more about <A 
+        href="http://web.wanadoo.be/cyberelf/nanoxml/" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">NanoXML</A>, another 
+        small-footprint Java language XML parser. <BR><BR>
+        <LI>Stay connected to the wireless world with the developerWorks <A 
+        href="http://www-106.ibm.com/developerworks/wireless" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">Wireless zone</A>. 
+<BR><BR>
+        <LI>The developerWorks <A 
+        href="http://www-106.ibm.com/developerworks/java" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">Java technology zone</A> 
+        keeps you up to date on J2ME, MIDlet, and other events in the Java 
+        arena. <BR><BR>
+        <LI>Find the latest developments on wireless, mobile, and voice 
+        computing on IBM's <A 
+        href="http://www-3.ibm.com/software/pervasive/index.shtml" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">Pervasive Computing</A> 
+        site. <BR><BR>
+        <LI>Build Java apps with IBM's . <BR><BR>
+        <LI>Download Sun's <A href="http://java.sun.com/products/j2mewtoolkit/" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">J2ME Toolkit</A> to run 
+        and test your wireless applications. <BR><BR>
+        <LI>Java.sun.com has <A 
+        href="http://wireless.java.sun.com/midp/articles" 
+        xmlns:dw="http://www.ibm.com/developerWorks/">several MIDP articles</A> 
+        that offer additional insight on the pros and cons of XML Parsing 
+        discussed in this article.<BR><BR></LI></UL>
+      <P></P>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><A name=author1></A><SPAN class=atitle2>About the 
+            author</SPAN><BR>A holder of a master's degree in computer science 
+            and engineering, Soma Ghosh has developed a wide range of Java 
+            applications in the areas of e-commerce and networking over the past 
+            eight years. She believes that wireless commerce represents the near 
+            future of the industry and has recently been drawn to develop 
+            wireless versions of existing desktop components and models. Soma is 
+            an open source Java developer and is currently associated with 
+            Entigo, a pioneer in e-business solutions and B2B sell- and 
+            service-side e-commerce products. Contact her at <A 
+            href="mailto:sghosh@entigo.com" 
+            xmlns:dw="http://www.ibm.com/developerWorks/">sghosh@entigo.com</A>.</TD></TR></TBODY></TABLE><BR 
+      clear=all><IMG height=10 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=100 
+      border=0><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD align=right width="100%"><A 
+            href="ftp://www6.software.ibm.com/software/developer/library/wi-parsexml.pdf"><IMG 
+            height=26 alt="88 KB" 
+            src="Add XML parsing to your J2ME applications_arquivos/icon-pdf.gif" 
+            width=35 border=0></A><A href="javascript:void%20newWindow()"><IMG 
+            height=26 alt="e-mail it!" 
+            src="Add XML parsing to your J2ME applications_arquivos/icon-email.gif" 
+            width=46 border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=5 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#000000 colSpan=2><IMG height=1 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=100 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff colSpan=2><IMG height=8 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=100 border=0></TD></TR></TBODY></TABLE><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD>
+            <FORM 
+            action=http://www.alphaworks.ibm.com/developerworks/ratings.nsf/RateArticle?CreateDocument 
+            method=post><INPUT type=hidden 
+            value="Add XML parsing to your J2ME applications" 
+            name=ArticleTitle><INPUT type=hidden value=Wireless name=Zone><INPUT 
+            type=hidden 
+            value=http://www-106.ibm.com/developerworks/thankyou/feedback-thankyou.html 
+            name=RedirectURL><A name=rating><B>What do you think of this 
+            document?</B></A>
+            <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=5><IMG height=8 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=100 border=0></TD></TR>
+              <TR vAlign=top>
+                <TD width="16%"><INPUT type=radio value=5 name=Rating>Killer! 
+                  (5)</TD>
+                <TD width="20%"><INPUT type=radio value=4 name=Rating>Good 
+                  stuff (4)</TD>
+                <TD width="24%"><INPUT type=radio value=3 name=Rating>So-so; 
+                  not bad (3)</TD>
+                <TD width="22%"><INPUT type=radio value=2 name=Rating>Needs 
+                  work (2)</TD>
+                <TD width="18%"><INPUT type=radio value=1 name=Rating>Lame! 
+                (1)</TD></TR></TBODY></TABLE><BR><B>Comments?</B><BR><TEXTAREA name=Comments rows=5 wrap=virtual cols=60></TEXTAREA><BR><BR><INPUT type=submit value="Submit feedback"></FORM></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff><IMG height=8 alt="" 
+            src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+            width=100 border=0></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%">
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR vAlign=top>
+                <TD width="100%"><IMG height=4 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=2 border=0><BR><A class=dwbctl 
+                  href="http://www-106.ibm.com/developerworks/">developerWorks</A> 
+                  &gt; <A class=dwbctl 
+                  href="http://www-106.ibm.com/developerworks/wireless/">Wireless</A></TD>
+                <TD align=right width=136><A 
+                  href="http://www-106.ibm.com/developerworks/"><IMG height=24 
+                  alt=developerWorks 
+                  src="Add XML parsing to your J2ME applications_arquivos/dwlogo-small.gif" 
+                  width=136 border=0></A></TD>
+                <TD width=5><IMG height=1 alt="" 
+                  src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+                  width=5 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD width=1><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" width=1 
+      border=0></TD></TR></TBODY></TABLE><!-- IBM FOOTER -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD><IMG height=1 alt="" 
+      src="Add XML parsing to your J2ME applications_arquivos/c.gif" 
+  width=1></TD></TR>
+  <TR vAlign=top>
+    <TD class=bbg height=21>&nbsp;&nbsp;<A class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/ibm/?origin=dwheader">About 
+      IBM</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/privacy/?origin=dwheader">Privacy</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/legal/?origin=dwheader">Terms 
+      of use</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-106.ibm.com/developerworks/cgi-bin/click.cgi?url=http://www.ibm.com/contact/?origin=dwheader">Contact</A></TD></TR></TBODY></TABLE><!-- END IBM FOOTER --><!-- SURFAID METRICS ** 05/01/03 DO NOT ALTER ** -------------->
+<SCRIPT language=JavaScript1.2 
+src="Add XML parsing to your J2ME applications_arquivos/stats.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><IMG height=1 alt="" 
+src="C:\desenv\projects\J2ME Classes\docs\Add XML parsing to your J2ME applications_arquivos\c(1).gif" 
+width=1 border=0></NOSCRIPT>
+<SCRIPT language=JavaScript>
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</SCRIPT>
+ </BODY></HTML>

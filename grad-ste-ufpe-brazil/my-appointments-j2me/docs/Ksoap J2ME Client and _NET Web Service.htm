@@ -1,0 +1,520 @@
+<!-- MHonArc v2.4.7 -->
+<!--X-Subject: Ksoap:  J2ME Client and .NET Web Service -->
+<!--X-From-R13: "[nefryvan" <[nefryvan.IvunegbNznvy.pffr.zbanfu.rqh.nh> -->
+<!--X-Date: Tue, 16 Jul 2002 20:19:07 &#45;0700 -->
+<!--X-Message-Id: 002c01c22d40$0d5a6520$1d41c282@mars -->
+<!--X-Content-Type: multipart/alternative -->
+<!--X-Head-End-->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="content-type" CONTENT="text/html;charset=iso-8859-1">
+	<LINK HREF="/EnhydraStyleSheet.css" REL="styleSheet" TYPE="text/css">
+	<!-- TOP OF HEADER INCLUDE -->
+<meta name="keywords" content="j2ee enhydra lutris java application server xml open source JDDI XMLC XML Compiler wireless chtml xhtml wml J2EE">
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<SCRIPT LANGUAGE="Javascript">
+<!--
+var fieldWidth = 9;
+var NS = (navigator.appName == "Netscape");
+var IE = (navigator.appName == "Microsoft Internet Explorer");
+
+var agt = navigator.userAgent.toLowerCase();
+var WIN = ( (agt.indexOf("win")!=-1) || (agt.indexOf("16bit")!=-1) );
+
+if (IE) {
+   document.write('<LINK REL=stylesheet HREF="/EnhydraStyleSheetWinExp.css" TYPE="text/css">');
+   done = true;
+}
+if (NS) {
+   if (WIN) {
+   	fieldWidth = 5;
+      document.write('<LINK REL=stylesheet HREF="/EnhydraStyleSheetWinNet.css" TYPE="text/css">');
+   } else {
+      document.write('<LINK REL=stylesheet HREF="/EnhydraStyleSheetNet.css" TYPE="text/css">');
+	}
+   done = true;
+}
+if (!done) {
+   document.write('<LINK REL=stylesheet HREF="/EnhydraStyleSheet.css" TYPE="text/css">');
+}
+//-->
+</SCRIPT>
+<!-- BOTTOM OF HEADER INCLUDE -->
+
+
+	<TITLE>Ksoap:  J2ME Client and .NET Web Service</TITLE> 
+</HEAD>
+<BODY MARGINHEIGHT="0" MARGINWIDTH="0" TOPMARGIN="0" LEFTMARGIN="0">
+	<TABLE width="750" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+        <TR><TD><IMG src="/media/spacer.gif" alt="" width="155" height="1" border="0"></TD><TD><BR><P><strong>Warning, the Enhydra Ksoap project has been closed. Please check out the <a href="http://ksoap.org/">ksoap.org</a> Web site instead. This Web site is only for archive purpose. Some links may be broken. CVS, mailing lists and search engine are no more available. Sorry for the inconvenience. The current ObjectWeb and Enhydra project list can be found on the <a href="http://forge.objectweb.org/">ObjectWeb Forge</a></strong>. Contact: <a href="mailto:webmaster@objectweb.org">webmaster@objectweb.org</a>.</P><bR></TD></TR>
+</TABLE>
+
+<!-- TOP OF BODYOPEN INCLUDE -->
+<TABLE WIDTH=750 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD COLSPAN=3>
+		<TABLE WIDTH=750 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+		<FORM name="Search" action="" method="GET">
+			<TR>
+				<TD ROWSPAN=2><a href="http://www.enhydra.org/"><IMG SRC="/media/header/smallOtter.gif" WIDTH=84 HEIGHT=61 BORDER=0></a></TD>
+				<TD BGCOLOR=#003399><IMG SRC="/localmedia/header/titleLogo.gif" WIDTH=230 HEIGHT=40><IMG SRC="/media/header/micro/icon.gif" WIDTH=73 HEIGHT=40></TD>
+				<TD BGCOLOR=#003399 ALIGN="right">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write("<INPUT TYPE='text' NAME='q' SIZE='" + fieldWidth + "' MAXLENGTH='30'>&nbsp;");
+//-->
+</SCRIPT>      
+
+				</TD>
+				<TD BGCOLOR=#003399 ALIGN="center"><INPUT TYPE="image" SRC="/media/header/enhydraSearch.gif" BORDER="0"><INPUT TYPE="HIDDEN" NAME="t" VALUE="mapper"></TD>
+				<TD BGCOLOR=#003399><A href="/site.search?t=ksoap"><IMG SRC="/media/header/enhydraAdvSearch.gif" WIDTH=35 HEIGHT=28 BORDER="0"></A></TD>
+				<TD BGCOLOR=#003399 ALIGN="center">
+					<SELECT NAME="menuLinks" SIZE="1" onChange="if(this.options[this.selectedIndex].value !='#') {window.location.href=this.options[this.selectedIndex].value} else {this.selectedIndex=0};">
+						<OPTION VALUE="#">...........................</OPTION>
+						<OPTION VALUE="#">...........................</OPTION>
+						<OPTION VALUE="#">...........................</OPTION>
+						<OPTION VALUE="#">...........................</OPTION>
+						<OPTION VALUE="#">...........................</OPTION>
+						<OPTION VALUE="#">...........................</OPTION>
+					</SELECT>
+				</TD>
+				<TD><IMG SRC="/media/header/secondaryTop_07.gif" WIDTH=8 HEIGHT=40></TD>
+			</TR>
+			<TR>
+				<TD COLSPAN=2 BACKGROUND="/media/header/micro/secondaryTop_09.gif"><IMG SRC="/localmedia/header/titleSubLogo.gif" WIDTH=416 HEIGHT=21></TD>
+				<TD COLSPAN=3 BACKGROUND="/media/header/micro/secondaryTop_09.gif"><IMG SRC="/media/header/spacer.gif" WIDTH=242 HEIGHT=21></TD>
+				<TD><IMG SRC="/media/header/micro/secondaryTop_10.gif" WIDTH=8 HEIGHT=21></TD>
+			</TR>
+			</FORM>
+			</TABLE>
+		</TD>
+		<TD><IMG SRC="/media/header/spacer.gif" WIDTH=1 HEIGHT=61></TD>
+	</TR>
+	<TR>
+		<TD ROWSPAN=2 VALIGN="top">
+			<TABLE WIDTH=144 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+			<TR>
+				<TD BGCOLOR=#000066><IMG SRC="/media/header/spacer.gif" WIDTH=136 HEIGHT=18></TD>
+				<TD BGCOLOR=#000066><IMG SRC="/media/header/secondaryLft_02.gif" WIDTH=8 HEIGHT=18></TD>
+			</TR>
+			<TR>
+				<TD BGCOLOR=#000066 VALIGN="top">
+				<!-- Navigation Index -->
+
+      <!-- Project --> 
+      <p>
+		  <img SRC="/media/blank.gif" width=10 height=12 name="project"><a class="NavHead" href="/index.html">kSOAP Project</a><br>
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="project/aboutProject"><a class="Nav" href="/project/aboutProject/index.html">About kSOAP</a><br>
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="project/mailingLists"><a class="Nav" href="/project/mailingLists/index.html">Mail Lists</a><br>
+
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="project/faq"><a class="Nav" href="/project/faq/index.html">FAQs</a><br>
+</p>
+
+      <!-- Software --> 
+      <p>
+		  <img SRC="/media/blank.gif" width=10 height=12 name="software"><a class="NavHead" href="/software/index.html">Software</a><br>
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="software/downloads"><a class="Nav" href="/software/downloads/index.html">Downloads</a><br>
+
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="software/documentation"><a class="Nav" href="/software/documentation/index.html">Documentation</a><br>
+
+        <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="software/cvs"><a class="Nav" href="/software/cvs/index.html">CVS</a><br>
+       <!-- <img SRC="/media/blank.gif" width=10><img SRC="/media/blank.gif" width=10 height=12 name="software/releaseNotes"><a class="Nav" href="/software/releaseNotes/index.html">Release Notes</a><br> -->
+        <img src="/media/blank.gif" width=10><img src="/media/blank.gif" width=10 height=12 name="software/roadmap"><a class="Nav" href="/software/roadmap/index.html">Roadmap</a><br>
+        <img src="/media/blank.gif" width=10><img src="/media/blank.gif" width=10 height=12 name="software/license"><a class="Nav" HREF="/software/license/index.html">License</a>
+		</p>
+				</TD>
+				<TD BGCOLOR=#000066><IMG SRC="/media/header/spacer.gif" WIDTH=8 HEIGHT=149></TD>
+			</TR>
+			<TR>
+				<TD COLSPAN=2 ALIGN="right" BACKGROUND="/media/header/lftDivide.gif"><IMG SRC="/media/header/lftDivide.gif" WIDTH=144 HEIGHT=28></TD>
+			</TR>
+			<TR>
+				<TD BGCOLOR=#003399 VALIGN="top">
+<!-- BOTTOM OF BODYOPEN INCLUDE -->
+
+	<!-- TOP OF COMMON NAVIGATION INCLUDE -->
+		     
+		<P>
+		<IMG src="/media/blank.gif" width=10 height=12><A class="NavHead2" href="http://www.enhydra.org/aboutEnhydra/index.html">About Enhydra.org</A><BR>
+		<IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12><A class="Nav2" href="http://www.enhydra.org/aboutEnhydra/whoWeAre/index.html">Who We Are</A><BR>
+		<!-- <IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12 name="aboutEnhydra/newsAndEvents"><A class="Nav2" href="/aboutEnhydra/newsAndEvents/index.html">News, Articles &amp; Events</A><BR> -->
+		<IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12><A class="Nav2" href="http://www.enhydra.org/aboutEnhydra/gettingInvolved/index.html">Getting Involved</A><BR>	
+		</P>
+
+		<P>
+		<IMG src="/media/blank.gif" width=10 height=12><A class="NavHead2" href="http://aleutia.objectweb.org/community/index.html">Community</A><BR>
+		<IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12><A class="Nav2" href="http://www.enhydra.org/community/demos/index.html">Demos</A><BR>
+		<IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12><A class="Nav2" href="http://www.enhydra.org/community/resources/index.html">Resources</A><BR>
+		<IMG src="/media/blank.gif" width=10><IMG src="/media/blank.gif" width=10 height=12><A class="Nav2" href="http://www.enhydra.org/community/commercialVendors/index.html">Commercial Vendors</A><BR>
+		</P>
+
+		<IMG src="/media/spacer.gif" WIDTH=144 HEIGHT=1>
+	</TD>
+	<TD BGCOLOR=#003399 VALIGN="bottom"><IMG src="/media/spacer.gif" WIDTH=8 HEIGHT=1></TD>
+
+	</TR>
+	</TABLE>
+
+	<!--/UdmComment-->
+                        
+	</TD>
+	<TD COLSPAN="2"><IMG src="/media/spacer.gif" WIDTH=1 HEIGHT=18></TD>
+	<TD><IMG src="/media/spacer.gif" WIDTH=1 HEIGHT=18></TD>
+</TR>
+<TR>
+	<TD><IMG src="/media/spacer.gif" WIDTH=19 HEIGHT=400></TD>
+    <TD VALIGN="top">
+		
+<!-- BOTTOM OF COMMON NAVIGATION INCLUDE -->
+
+
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00448.html">Date Prev</a>][<a href="msg00450.html">Date Next</a>][<a href="msg00448.html">Thread Prev</a>][<a href="msg00450.html">Thread Next</a>][<a href="maillist.html#00449">Date Index</a>][<a href="threads.html#00449">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>Ksoap:  J2ME Client and .NET Web Service</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;<A HREF="mailto:kSOAP@enhydra.org">kSOAP@enhydra.org</A>&gt;</li>
+<li><em>Subject</em>: Ksoap:  J2ME Client and .NET Web Service</li>
+<li><em>From</em>: &quot;Marselina&quot; &lt;<A HREF="mailto:Marselina.Wiharto@mail.csse.monash.edu.au">Marselina.Wiharto@mail.csse.monash.edu.au</A>&gt;</li>
+<li><em>Date</em>: Wed, 17 Jul 2002 13:14:24 +1000</li>
+<li><em>List-Archive</em>: &lt;<A HREF="http://www.enhydra.org/project/mailingLists/ksoap/maillist.html">http://www.enhydra.org/project/mailingLists/ksoap/maillist.html</A>&gt;</li>
+<li><em>List-Help</em>: &lt;<A HREF="mailto:ksoap-request@enhydra.org?subject=help">mailto:ksoap-request@enhydra.org?subject=help</A>&gt;</li>
+<li><em>List-Id</em>: &lt;ksoap.enhydra.org&gt;</li>
+<li><em>List-Post</em>: &lt;<A HREF="mailto:ksoap@enhydra.org">mailto:ksoap@enhydra.org</A>&gt;</li>
+<li><em>List-Subscribe</em>: &lt;<A HREF="http://www.enhydra.org/mailman/listinfo.cgi/ksoap">http://www.enhydra.org/mailman/listinfo.cgi/ksoap</A>&gt;,&lt;<A HREF="mailto:ksoap-request@enhydra.org?subject=subscribe">mailto:ksoap-request@enhydra.org?subject=subscribe</A>&gt;</li>
+<li><em>List-Unsubscribe</em>: &lt;<A HREF="http://www.enhydra.org/mailman/listinfo.cgi/ksoap">http://www.enhydra.org/mailman/listinfo.cgi/ksoap</A>&gt;,&lt;<A HREF="mailto:ksoap-request@enhydra.org?subject=unsubscribe">mailto:ksoap-request@enhydra.org?subject=unsubscribe</A>&gt;</li>
+<li><em>Reply-To</em>: <A HREF="mailto:ksoap@enhydra.org">ksoap@enhydra.org</A></li>
+<li><em>Sender</em>: <A HREF="mailto:ksoap-admin@enhydra.org">ksoap-admin@enhydra.org</A></li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<TABLE border=0><TR bgcolor=#eeeeee><TD>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<table width="100%"><tr><td bgcolor="#ffffff" style="background-color: #ffffff; ">
+
+
+<DIV><FONT face=Arial size=2>
+<DIV><FONT face=Arial size=2>Hi,</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>I am trying to build a J2ME/MIDP client for a 
+simple .NET Web Services. However, I cannot seem to pass the argument to the web 
+service. The SayHelloTo web method takes a name as an argument and returns 
+"Hello, &lt;name&gt;!" string. If I pass 'Java' as the argument, it should 
+return "Hello, Java!". However, it does not seem to be passing the argument to 
+the service because everytime it returns "Hello, !"</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>If you could kindly help that would be much 
+appreciated.</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>Thanks heaps.</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>Here is the definition for the web mehod and the 
+MIDlet code:</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>SAY HELLO WEB METHOD:</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=3><PRE>POST /HelloService/HelloService.asmx HTTP/1.1
+Host: hons6.csse.monash.edu.au
+Content-Type: text/xml; charset=utf-8
+Content-Length: <FONT class=value color=#00008b><STRONG>length</STRONG></FONT>
+SOAPAction: "http://tempuri.org/SayHelloTo"
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Body&gt;
+    &lt;SayHelloTo xmlns="http://tempuri.org/"&gt;
+      &lt;name&gt;<FONT class=value color=#00008b><STRONG>string</STRONG></FONT>&lt;/name&gt;
+    &lt;/SayHelloTo&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</PRE></FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=3><PRE>HTTP/1.1 200 OK
+Content-Type: text/xml; charset=utf-8
+Content-Length: <FONT class=value color=#00008b><STRONG>length</STRONG></FONT>
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Body&gt;
+    &lt;SayHelloToResponse xmlns="http://tempuri.org/"&gt;
+      &lt;SayHelloToResult&gt;<FONT class=value color=#00008b><STRONG>string</STRONG></FONT>&lt;/SayHelloToResult&gt;
+    &lt;/SayHelloToResponse&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</PRE></FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>MIDLET CLIENT:</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face="Courier New" size=2>/*<BR>&nbsp;* 
+HelloToService.java<BR>&nbsp;*<BR>&nbsp;* Created on June 27, 2002, 9:39 
+PM<BR>&nbsp;*/</FONT></DIV>
+<DIV><FONT face="Courier New"></FONT>&nbsp;</DIV>
+<DIV><FONT face="Courier New" size=2>import 
+javax.microedition.midlet.*;<BR>import javax.microedition.lcdui.*;<BR>import 
+org.ksoap.*;<BR>import org.ksoap.transport.*;</FONT></DIV>
+<DIV><FONT face="Courier New"></FONT>&nbsp;</DIV>
+<DIV><FONT size=2><FONT face="Courier New">/**<BR>&nbsp;* An example MIDlet with 
+simple "Hello" text and an Exit command.<BR>&nbsp;* Refer to the startApp, 
+pauseApp, and destroyApp<BR>&nbsp;* methods so see how each handles the 
+requested transition.<BR>&nbsp;*<BR>&nbsp;* @author&nbsp; marselina<BR>&nbsp;* 
+@version<BR>&nbsp;*/<BR>public class HelloToService extends MIDlet implements 
+CommandListener {<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private Command 
+exitCommand; // The exit command<BR>&nbsp;&nbsp;&nbsp; private Display 
+display;&nbsp;&nbsp;&nbsp; // The display for this MIDlet<BR>&nbsp;&nbsp;&nbsp; 
+private String greeting;<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; public 
+HelloToService() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; display = 
+Display.getDisplay(this);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+exitCommand = new Command("Exit", Command.SCREEN, 2);<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; /**<BR>&nbsp;&nbsp;&nbsp;&nbsp; * 
+Start up the Hello MIDlet by creating the TextBox and 
+associating<BR>&nbsp;&nbsp;&nbsp;&nbsp; * the exit command and 
+listener.<BR>&nbsp;&nbsp;&nbsp;&nbsp; */<BR>&nbsp;&nbsp;&nbsp; public void 
+startApp() {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; greeting = 
+getGreeting();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextBox t = new 
+TextBox("Hello MIDlet", greeting, 256, 
+0);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+t.addCommand(exitCommand);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+t.setCommandListener(this);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+display.setCurrent(t);<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp; /**<BR>&nbsp;&nbsp;&nbsp;&nbsp; * Pause is a no-op since 
+there are no background activities or<BR>&nbsp;&nbsp;&nbsp;&nbsp; * record 
+stores that need to be closed.<BR>&nbsp;&nbsp;&nbsp;&nbsp; 
+*/<BR>&nbsp;&nbsp;&nbsp; public void pauseApp() {<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; /**<BR>&nbsp;&nbsp;&nbsp;&nbsp; * 
+Destroy must cleanup everything not handled by the garbage 
+collector.<BR>&nbsp;&nbsp;&nbsp;&nbsp; * In this case there is nothing to 
+cleanup.<BR>&nbsp;&nbsp;&nbsp;&nbsp; */<BR>&nbsp;&nbsp;&nbsp; public void 
+destroyApp(boolean unconditional) {<BR>&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; /*<BR>&nbsp;&nbsp;&nbsp;&nbsp; * 
+Respond to commands, including exit<BR>&nbsp;&nbsp;&nbsp;&nbsp; * On the exit 
+command, cleanup and notify that the MIDlet has been 
+destroyed.<BR>&nbsp;&nbsp;&nbsp;&nbsp; */<BR>&nbsp;&nbsp;&nbsp; public void 
+commandAction(Command c, Displayable s) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (c == exitCommand) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+destroyApp(false);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+notifyDestroyed();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp; }<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp; private 
+String getGreeting()<BR>&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringBuffer localGreeting = new 
+StringBuffer();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SoapObject soap = 
+new SoapObject("</FONT><A href="http://tempuri.org/"><FONT 
+face="Courier New">http://tempuri.org/</FONT></A><FONT face="Courier New">", 
+"SayHelloTo");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+soap.addProperty("name", "Mars");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+HttpTransport httpt = new 
+HttpTransport();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+httpt.setUrl("</FONT><A 
+href="http://hons6.csse.monash.edu.au/HelloService/HelloService.asmx"><FONT 
+face="Courier New">http://hons6.csse.monash.edu.au/HelloService/HelloService.asmx</FONT></A><FONT 
+face="Courier New">");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+httpt.setSoapAction("</FONT><A href="http://tempuri.org/SayHelloTo"><FONT 
+face="Courier New">http://tempuri.org/SayHelloTo</FONT></A><FONT 
+face="Courier New">");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+try<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+localGreeting.append(httpt.call(soap));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; catch (java.io.IOException 
+e)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.out.println(e);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 
+localGreeting.toString();<BR>&nbsp;&nbsp;&nbsp; }<BR>}<BR></FONT></FONT></DIV>
+<DIV><PRE>&nbsp;</PRE></DIV></FONT></DIV>
+</td></tr></table>
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+</TD></TR></TABLE>
+<UL><LI><B>Follow-Ups</B>:
+<UL>
+<LI><B><a name="00450" href="msg00450.html">Re: Ksoap:  J2ME Client and .NET Web Service</a></B>
+<UL><LI><EM>From:</EM> Michael Yuan &lt;juntao@pancake.as.utexas.edu&gt;</LI></UL></LI>
+</UL></LI></UL>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<!--X-References-End-->
+<!--X-BotPNI-->
+<HR>
+<UL>
+<li>Prev by Date:
+<strong><a href="msg00448.html">Re: Ksoap:  RE: Ksoap digest, Vol 1 #170 - 5 msgs</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00450.html">Re: Ksoap:  J2ME Client and .NET Web Service</a></strong>
+</li>
+
+<li>Prev by thread:
+<strong><a href="msg00448.html">Re: Ksoap:  RE: Ksoap digest, Vol 1 #170 - 5 msgs</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00450.html">Re: Ksoap:  J2ME Client and .NET Web Service</a></strong>
+</li>
+
+<LI><b>Index(es):</b>
+<UL>
+<LI><A HREF="maillist.html#00449">
+<B>Mail Date Index</B></A></LI>
+<LI><A HREF="threads.html#00449">
+<B>Mail Thread Index</B></A></LI>
+</UL>
+</LI>
+</UL>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+	<!-- TOP OF BODYCLOSE INCLUDE -->
+		<br><IMG src="/media/spacer.gif" width="557" height="1" border="0">
+		</TD>
+		<TD><IMG src="/media/spacer.gif" alt="" width="1" height="1" border="0"></TD>
+		</TR>
+</TABLE>
+
+<!--UdmComment-->
+
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<TR>
+                <TD VALIGN="bottom"><IMG src="/media/spacer.gif" alt="" width="750" height="4" border="0"></TD>
+        </TR>
+        <TR>
+                <TD ALIGN="right" VALIGN="bottom"><a href="http://www.objectweb.org/" target="popup"><IMG src="/media/header/enhydraFtr.png" width="556" height="115" border="0"></a></TD>
+        </TR>
+        
+</TABLE>
+<!--
+<TABLE width="750" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+		<TR>
+                <TD colspan="2" VALIGN="bottom"><IMG src="/media/spacer.gif" alt="" width="194" height="4" border="0"></TD>
+        </TR>
+        <TR>
+                <TD colspan="2" ALIGN="right" VALIGN="bottom"><a href="http://www.objectweb.org/" target="popup"><IMG src="/media/header/enhydraFtr.png" width="556" height="115" border="0"></a></TD>
+        </TR>
+        <TR><TD><IMG src="/media/spacer.gif" alt="" width="155" height="1" border="0"></TD><TD><BR><P><strong>Warning! The Aleutia project has been closed. This Web site is only for archive purpose. Some links may be broken. CVS and mailing lists are no more accessible.</strong></P></TD></TR>
+</TABLE>
+-->
+<script language="javascript">
+<!--
+var path = document.location.pathname;
+if (path == '/' || path == '/index.html') path = '/project/index.html';
+if (path.charAt(0) == '/') path = path.substr(1, path.length);
+var bits = path.split('/');
+if (bits.length == 2) var dir = bits[0];
+else var dir = bits[0] + "/" + bits[1];
+if (document.images) {
+	for (var i=0;i<document.images.length;i++) {
+		if (document.images[i].name == dir) {
+			document.images[i].src ="/media/header/navArrow.gif";
+			break;
+		}
+	}
+}
+
+<!--Populate Quick Jump List --->
+menuItems = new Array();
+
+menuItems[0]	= ['#','Projects'];
+menuItems[1]	= ['#','...........................'];
+menuItems[2]	= ['http://www.enhydra.org/','Enhydra.org'];
+menuItems[3]	= ['http://enhydra.enhydra.org/','Enhydra Server'];
+menuItems[4]	= ['#','...........................'];
+menuItems[5]	= ['http://dods.enhydra.org/','DODS'];
+menuItems[6]	= ['http://xmlc.enhydra.org/','XMLC'];
+menuItems[7]	= ['http://director.enhydra.org/','Director'];
+menuItems[8]	= ['http://kelp.enhydra.org/','Kelp'];
+menuItems[9]	= ['http://octopus.enhydra.org/','Octopus'];
+menuItems[10]	= ['http://zeus.enhydra.org/','Zeus'];
+menuItems[11]	= ['http://www.barracudamvc.org/','Barracuda'];
+menuItems[12]	= ['http://xapool.experlog.com/','XAPool'];
+menuItems[13]	= ['http://ejosa.sourceforge.net/','EJOSA'];
+menuItems[14]	= ['#','...........................'];
+menuItems[15]	= ['http://jawe.enhydra.org/','JaWE'];
+menuItems[16]	= ['http://shark.enhydra.org/','Shark'];
+menuItems[17]	= ['#','...........................'];
+menuItems[18]	= ['http://me.enhydra.org/','EnhydraME'];
+menuItems[19]	= ['http://ksoap.enhydra.org/','kSOAP'];
+menuItems[20]	= ['http://kxml.enhydra.org/','kXML'];
+menuItems[21]	= ['http://khttp.enhydra.org/','kHTTP'];
+menuItems[22]	= ['http://locumi.enhydra.org/','Locumi'];
+menuItems[23]	= ['http://mail4me.enhydra.org/','Mail4Me'];
+menuItems[24]	= ['#','...........................'];
+menuItems[25]	= ['http://www.enhydra.org/aboutEnhydra/index.html','About Enhydra'];
+menuItems[26]	= ['http://www.enhydra.org/community/commercialVendors','Commercial Vendors'];
+menuItems[27]	= ['http://support.enhydra.org/','Site Support!'];
+
+var dropMenuSelect = document.forms[0].menuLinks;
+for (var i=0; i < menuItems.length; i++)	{
+	dropMenuSelect.options[i] = new Option(menuItems[i][1], menuItems[i][0]);
+}
+dropMenuSelect.options[0].selected = true;
+
+//-->
+</script>
+
+<!--/UdmComment-->
+<!-- BOTTOM OF BODYCLOSE INCLUDE -->
+
+</BODY>
+</HTML>
+
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

@@ -1,0 +1,446 @@
+<html>
+<head>
+	<title>XML.com: A Web Services Strategy for Mobile Phones</title>
+        
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<script language="javascript" src="/common.js"></script>
+</head>
+<body>
+
+<a href="http://www.xml.com/"><img src="/images/xml-logo130.jpg" alt="XML.com" width="130" height="57" border="0" hspace="0" vspace="0"></a>&nbsp;
+
+<br clear="all" />
+&nbsp;<font face="verdana,arial,helvetica" size="1">Published on <b><a href="http://xml.com/">XML.com</a></b>&nbsp;<a href="/pub/a/ws/2003/08/19/mobile.html">http://www.xml.com/pub/a/ws/2003/08/19/mobile.html</a><br />
+<a href="/pub/a/admin/printhelp.html">See this</a> if you're having trouble printing code examples</font>
+<p>
+&nbsp;</p>
+<font face="verdana,arial,helvetica">
+<font size="3"><b>A Web Services Strategy for Mobile Phones</b></font><br />
+<font size="1"><b>By</b> Nasseam Elkarra</font></font>
+<!-- CS_PAGE_BREAK -->
+<!--  sidebar begins  -->
+<!--  don't move sidebars  -->
+<!--  sidebar ends  -->
+
+<p>In most web services presentations, the speaker has a slide of a mobile
+phone, a PDA, a computer, and other devices communicating with a web
+service via SOAP and HTTP. You quickly envision a utopia of universal
+access but overlook the fact that your old Nokia doesn't do XML web
+services. If you have a J2ME-enabled phone connected to the Internet, it's
+very possible to interact with web services directly. However, the
+majority of mobile phone users do not have these phones, which means an
+alternative mode of access must be provided.</p>
+
+<p>Some developers assume that deploying web services is all about
+publishing a WSDL file. This might be enough for integrators to use your
+web service, but in order to facilitate widespread adoption of your
+service, some type of UI for regular users should be deployed to abstract
+away the technical details. It is possible to dynamically generate HTML
+web pages with input forms from WSDL files (<a
+href="http://www.soapclient.com/soaptest.html"
+target="_blank">SOAPClient</a> is a good example of this). This offers a
+good environment for testing web services and, in some cases, might be all
+you really need to offer your users. Creating an HTML interface to your
+web service insures access from any computer, but what about mobile
+phones?</p>
+
+<h3>Mobile web services</h3>
+
+<p>Wireless carriers currently offer services that allow information to be
+&quot;pushed&quot; to your phone or accessed from your phone such as
+weather, stock quotes, news, traffic, and sports updates. With web
+services, phones now have the potential to actually consume useful
+services. But before developing a mobile client, you might want to think
+twice before taking the SOAP/HTTP route. First of all, turning your phone
+into a SOAP client might have some performance costs related to slow data
+speeds and processing both HTTP commands and XML. Secondly, most phones
+don't come with web services support built in. Finally, you can hide the
+web services complexity and leverage existing technologies to make use of
+their widespread availability. This would require a gateway to sit in
+between the phone and the web service to handle the passing and conversion
+of messages but you no longer have to worry about client-side performance
+issues or even deploying a client.</p>
+
+<p>The gateway would take care of all the SOAP/HTTP request and response
+handling and then returns results back to the mobile phone in a supported
+format. There are really only a few means you can rely on being available:
+text-messaging, voice, and data services. For text-messaging, you can
+deploy a bot that sits between your client and your service. For voice,
+you can allow your clients to call a number and issue voice commands by
+creating a VoiceXML wrapper around your web service. A good example of
+this is <a
+href="http://www.1-800-555-tell.com/menu/travel/travel_drivingdirections.html">Tellme's
+service</a> that gives voice driving directions using <a href=
+"http://www.microsoft.com/mappoint/net/">Microsoft's MapPoint web
+service</a>. For data services, you can have a WAP gateway that takes
+requests from a WML page, calls the service, and then returns the results
+back to a WAP browser in the WML format. Some phones have XHTML browsers
+that you can take advantage of and some even offer development
+environments that allow you to call the web service directly from the
+phone. Even though you cannot guarantee that your users will have phones
+that offer such features now, using data services along with a SOAP
+messaging library might be a common solution for deploying mobile clients
+in the future. Development environments such as <a
+href="http://java.sun.com/j2me/">J2ME</a> and the <a
+href="http://msdn.microsoft.com/vstudio/device/compact.aspx">.NET Compact
+Framework</a> give developers robust platforms for developing advanced
+mobile clients. However, for simple clients that mainly access text-based
+information, deploying a gateway is sufficient.</p>
+
+<h3>Deploy Gateways for Maximum Availability</h3>
+
+<!--  sidebar begins  -->
+<table width="140" border="1" cellspacing="2" cellpadding="10" align="right" style="border: 1px solid #333333; margin: 8px;"><tr>
+<td width="140" valign="top" bgcolor="#ffffff" style="border: none;">
+<p class="headline">Related Reading</p>
+
+<a href="http://www.oreilly.com/catalog/javawsian/index.html?CMP=ILL-4GV796923290"><img src="http://www.oreilly.com/catalog/covers/javawsian.s.gif" alt="Java Web Services in a Nutshell" border="0" /></a>
+<p class="medlist"><span class="title"><a href="http://www.oreilly.com/catalog/javawsian/index.html?CMP=ILL-4GV796923290">Java Web Services in a Nutshell</a></span><strong><br />
+
+By <a href="http://www.oreillynet.com/cs/catalog/view/au/808?x-t=book.view&CMP=IL7015">Kim Topley</a></strong>
+</p>
+<div class="secondary">
+<!--  builds links to list in sidebar  -->
+ <a href="http://www.oreilly.com/catalog/javawsian/toc.html?CMP=ILL-4GV796923290">Table of Contents</a><br /> 
+  <a href="http://www.oreilly.com/catalog/javawsian/inx.html?CMP=ILL-4GV796923290">Index</a><br /> 
+  <a href="http://www.oreilly.com/catalog/javawsian/chapter/index.html?CMP=ILL-4GV796923290">Sample Chapter</a><br /> 
+ 
+
+
+
+<br /><b><a href="http://safari.oreilly.com/0596003994">Read Online--Safari</a></b>
+<span class="tiny">Search this book on Safari:</span>
+<form action="http://safari.oreilly.com/JVXSL.asp" method="post">
+<input type="hidden" name="s" value="1" /><input type="hidden" name="b" value="1" />
+<input type="hidden" name="t" value="1" /><input type="hidden" name="f" value="1" />
+<input type="hidden" name="c" value="1" /><input type="hidden" name="l" value="1" />
+<input type="hidden" name="view" value="section" />
+<input tabindex="1" name="se_text" type="text" value="" size="15" />&nbsp;<input name="go" type="image" title="Execute the search" src="http://www.oreillynet.com/images/safari_btn_go.gif" width="23" height="17" border="0" align="absmiddle"  alt="Go" /><br />
+<select name="se_isbn">
+<option value="0-596-00399-4">Only This Book</option>
+<option value="">All of Safari</option>
+</select><br />
+<input type="checkbox" name="code" value="1" /><span class="tiny">Code Fragments only</span>
+</form>						  
+
+</div>
+</td>
+</tr></table>
+<!--  sidebar ends  -->
+
+<p>When deciding what kind of client to deploy, your final decision should
+be based on making the client available to as many users as possible. This
+makes deploying a gateway the best solution. You no longer have to worry
+about technology support or even client application installation. For
+example, if you deploy a Short Message Service (SMS) gateway, you have
+just turned every mobile phone into a potential client. By using SMS you
+can also take advantage of its &quot;store and forward&quot; features
+which guarantee message delivery. Sending a SMS message from a client is
+pretty straightforward, but messages sent between service providers and
+SMS gateways are quite the opposite. The <a
+href="http://xml.coverpages.org/xml-sms.html">SMS Forum recently
+announced</a> a plan to encode these messages using SOAP and HTTP to
+insure interoperability -- another testament to the adoption of web
+services.</p>
+
+<p>VoiceXML is a language for building voice applications much like you
+hear when calling customer service hotlines. It is an XML-based standard
+developed by the <a href="http://www.w3.org/Voice/">W3C's Voice Browser
+Working Group</a>. Most VoiceXML developer portals give you access to a
+phone number for testing your application; however, VoiceXML is not
+limited to phones and can actually be accessed by any VoiceXML-enabled
+client. This client can be the usual phone, but it could also be an
+existing Web browser with a built in VoiceXML interpreter. A good example
+of this is the <a href="http://www.alphaworks.ibm.com/tech/mmb">multimodal
+browser being developed by IBM and Opera</a> based on the <a
+href="http://www.voicexml.org/spec.html">XHTML+Voice (X+V) proposed
+specification</a>. The term &quot;multimodal&quot; simply refers to
+multiple modes of interaction by extending user interfaces to include
+input from speech, keyboards, pointing devices, touch pads, electronic
+pens, and any other type of input device. The W3C also has a <a
+href="http://www.w3.org/2002/mmi/">Multimodal Interaction Working
+Group</a> that is developing standards to turn the concept of universal
+accessibility into a reality. The basic concept of VoiceXML is to issue
+prompts to a user and then have that user respond using their voice. Once
+the user's voice is captured, the voice application can perform a specific
+task and return the results. Due to the inaccuracies of voice recognition,
+I highly recommend writing applications that accept a predefined set of
+commands in combination with very little dynamic speech input from the
+user.</p>
+
+<p>The Wireless Application Protocol (WAP) is a set of standards to enable
+wireless access to Internet services from resource-constrained mobile
+devices. WAP provides an entire architecture to make a mini-Web possible
+by defining standards such as the Wireless Markup Language (WML) and
+WMLScript. Think of WML and WMLScript as HTML and JavaScript,
+respectively, optimized for the mobile phone world. WAP development is
+fairly easy and you can start serving up WML pages instantly by setting
+the appropriate MIME types on your web server. Wireless carriers provide
+WAP gateways that translate the HTTP to the equivalent WAP
+optimizations. Since you are using a web server to serve up content, you
+can use APIs on the server-side to call web services and return the
+results in WML format.</p>
+
+<h3>Use J2ME for Advanced UIs</h3>
+
+<p><a href="http://java.sun.com/j2me/">J2ME</a> is gaining a lot of
+momentum as new J2ME-enabled phones hit the market. With every major
+manufacturer embedding Java on some of their phones, Java in the mobile
+space is no longer hype. An interesting note on J2ME is that all Mobile
+Information Device Profile (MIDP) implementations must provide support for
+the HTTP protocol. This guarantees the availability of HTTP as a transport
+mechanism for web services. There is currently no standardized web
+services support for J2ME, but <a
+href="http://jcp.org/en/jsr/detail?id=172">JSR 172</a> defines a J2ME Web
+Services Specification that will eventually provide standard access from
+J2ME to web services. In the mean-time, you can use a third party library
+such as <a href="http://ksoap.enhydra.org/">kSOAP</a>. J2ME also has SMS
+support through the <a href="http://java.sun.com/products/wma/">Wireless
+Messaging API</a> (WMA) optional package.</p>
+
+<h3>Text-messaging</h3>
+
+<p>Text-messaging development might sound simple, but it is the most
+confusing route to take. I mentioned SMS earlier, but we also have EMS,
+MMS, and other Instant Messaging protocols on the scene. AOL Instant
+Messenger (AIM), MSN Messenger, and Yahoo Messenger all offer bridges from
+their protocols to SMS. T-Mobile even has AIM embedded into some of its
+phones. An easy way to build a service would be to connect to one of these
+popular IM protocols to avoid dealing with the SMS mess. When you build
+SMS applications directly, you have to worry about possible hardware
+requirements, SMS gateway deployment, and carrier partnership. Don't
+forget, you will require some kind of phone number for users to access
+your application and, since you are connecting to a cellular network, a
+business account.</p>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td><p class="secondary">
+
+
+<!-- CS_PAGE_INDEX -->
+</p></td><td><p class="secondary" align="right">
+<a href="<!--CS_NEXT_REF-->">
+ 
+</a></p></td></tr></table>
+
+
+
+
+
+<!-- CS_PAGE_BREAK -->
+
+<p>
+by Nasseam Elkarra
+
+ 
+
+
+<!-- CS_PAGE_INDEX -->
+</p>
+
+
+
+
+<h3>SMS Workarounds</h3>
+
+<p>Most wireless carriers allow anyone to send SMS messages to their
+customers via email. Although users cannot reply to the sender of the
+email, this is useful for notification messages. You have to be a
+&quot;premier partner&quot; to be able to send and receive, but the
+average programmer can use an SMS Broker to have the same access without
+going broke. SMS Brokers partner with a cellular service provider and then
+lease access to developers. <a
+href="http://www.simplewire.com/">Simplewire</a> offers one such
+development environment for creating and testing your wireless messaging
+application. They have a free evaluation version and they also offer paid
+commercial deployment packages. <a
+href="https://www.buddyscript.com/">ActiveBuddy's BuddyScript SDK</a> is
+very complete solution for developing, testing, and deploying your
+interactive agent. The BuddyScript SDK includes its own scripting
+language, IDE, server for deploying agents, and much more. You can launch
+your interactive agent to mobile users via SMS and WAP without setting up
+a relationship with a wireless carrier. The BuddyScript Server included in
+the SDK can exchange data via <a
+href="https://www.buddyscript.com/docs/ABDocs/BuddyScriptSDK/BuddyScriptDevGuide.html#e3042">SOAP
+over HTTP</a>. The only downside to the BuddyScript approach is that you
+are pretty much tied in to their development platform.</p>
+
+<p>For the tech savvy, you might be able to buy a data cable for your GSM
+phone and, with the appropriate software, process the modem commands. Of
+course this is not suitable for a commercial application, but they do have
+dedicated GSM modems. So, theoretically, you can get a personal account
+with a wireless GSM carrier, take out the SIM card, put it in a dedicated
+GSM modem, and hack your way through to make it work. And, on the subject
+of hacking, I must mention <a href="http://www.kannel.org">Kannel</a>, an
+open source WAP and SMS gateway.</p>
+
+<h3>VoiceXML</h3>
+
+<p>Accessing web services with VoiceXML has never been easier using <a
+href="http://cafe.bevocal.com/docs/vxml/functions.html#280327">BeVocal's
+JavaScript SOAP API</a>. The <a
+href="http://cafe.bevocal.com/index.html">BeVocal Cafe</a> is an excellent
+place to get started; it offers a phone number you can call to access your
+application as well as documentation, samples, and tools.</p>
+
+<p>Earlier I mentioned how Tellme offers access to voice driving
+directions using the MapPoint web service. <a
+href="http://studio.tellme.com">Tellme also offers a robust development
+environment</a> for developing VoiceXML applications. Unlike BeVocal,
+Tellme does not have built-in support for SOAP. You would have to roll
+your own Javascript Library or you could forward the input to an external
+application with SOAP support (e.g. a CGI script or Servlet) and then have
+that application generate VoiceXML back to the client. Have you ever
+picked up the phone only to hear an automated message? The telemarketers
+are getting lazy, but now you too can bug people with <a
+href="http://studio.tellme.com/notifier/howto/notifier.html">Tellme's
+Notifier service</a> which allows your VoiceXML application to initiate
+the call to your clients. The Notifier service can be useful for reminders
+of appointments and other types of asynchronous messages.</p>
+
+<h3>WAP</h3>
+
+<p>Since you cannot view WML on regular browsers, you will need a WAP
+browser emulator for testing your WAP applications. WAP also allows
+applications to initiate sessions through the use of the use WAP Push
+Access Protocol. By creating push-enabled applications, you can implement
+asynchronous messaging. Openwave provides a WAP Push Library as part of
+its <a href="http://developer.openwave.com/omdt/index.html">Openwave
+Mobile Developer Toolkit</a> (OMDT). The OMDT is an excellent place to get
+started with its inclusion of emulators, messaging APIs, and support for
+the latest technologies in the mobile world. Nokia also has an excellent
+<a href="http://www.forum.nokia.com/main/1,6566,1_1,00.html">resource
+page</a> that has tools and documents to help you get started.</p>
+
+<p>If you don't have access to a WAP gateway don't forget about the open
+source Kannel project. The open source crowd will also enjoy Enhydra's
+open source <a href="http://enhydra.enhydra.org">Java/XML application
+server</a>. Although you can serve up WML pages using any Web server,
+Enhydra provides an excellent framework for separating presentation from
+code. Using <a href="http://xmlc.enhydra.org/index.html">Enhydra's
+XMLC</a>, you can convert a specially formatted WML document into objects
+that you can access from your Java code.</p>
+
+<h3>J2ME</h3>
+
+<p>The Wireless Messaging API (WMA) package gives you access to SMS
+functionality but there are third party packages that are more suitable
+for XML messaging. kSOAP, another open source project from Enhydra, is a
+lightweight SOAP implementation suitable for J2ME. If you think SOAP is
+too bloated and want to shave off some overhead, Enhydra also has an
+XML-RPC implementation (<a
+href="http://kxmlrpc.enhydra.org/index.html">kXML-RPC project</a>). For
+the Java RMI and JMS fans out there, there is a <a
+href="http://wwws.sun.com/software/communitysource/j2me/rmiop/index.html">J2ME
+RMI</a> optional package and a <a
+href="http://www.softwired-inc.com/company/wjms.html">commercial wireless
+JMS solution</a> available. To speed up your development efforts, you
+might want to consider using one of several SDKs available. <a
+href="http://java.sun.com/products/j2mewtoolkit/">Sun</a> and <a
+href="http://www.forum.nokia.com/main/1,6566,030,00.html#java">Nokia's
+toolkits</a> can run as standalone tools and also integrate into <a
+href="http://wwws.sun.com/software/sundev/jde/features/me-features.html">SunONE</a>
+and <a
+href="http://www.borland.com/jbuilder/mobileset/index.html">JBuilder</a>.</p>
+
+<h3>.NET Compact Framework</h3>
+
+<p>The .NET Compact Framework provides a robust environment for developing
+mobile applications. In traditional Microsoft point-and-click fashion, you
+can have an application running with minimal effort. If you are a .NET
+developer, you will enjoy its .NET Framework heritage and its integration
+with Visual Studio .NET. The .NET Compact Framework will definitely have
+its biggest impact in the PDA market where Windows enjoys some
+success. The downside is that the .NET Compact Framework has no market
+share whatsoever in the mobile phone space and it will try to break into a
+tight market.</p>
+
+<h3>Conclusion</h3>
+
+<p>With the availability of packet-switched, always-on networks for mobile
+phones becoming more widespread, mobile access to data will become easier
+than ever. web services seem like the natural solution for integration
+problems, but mobile phones do not have the privilege of guaranteeing
+support for the core web services technologies. However, you can still
+effectively deploy a web service for mobile clients by deploying a client
+interface using existing technologies available. Technologies such as SMS,
+WAP, and VoiceXML can be utilized to make this possible. As more mobile
+phones support J2ME, you can even choose to deploy a pure SOAP client
+without the need for a middleman.</p>
+
+<h3>Related Links:</h3>
+
+<ul>
+<li><a href="http://www.oreillynet.com/wireless/">O'Reilly Network: Wireless DevCenter</a></li>
+<li><a href="http://www.wirelessdevnet.com/">Wireless Developer Network</a></li>
+<li><a href="http://wireless.java.sun.com/">Java Wireless Developer Homepage</a></li>
+<li><a href="http://www.w3schools.com/default.asp">W3Schools Tutorials on WAP, WML, WMLScript, and more</a></li>
+<li><a href="http://www.mobilesms.com/developers.asp">MobileSMS Developers Zone</a></li>
+<li><a href="http://www.voicexml.org/">The VoiceXML Forum</a></li>
+</ul>
+
+
+
+<p><font face="verdana,arial,helvetica" size="1"><b>XML.com</b> Copyright &copy; 1998-2004 O'Reilly Media, Inc.</font></p></body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

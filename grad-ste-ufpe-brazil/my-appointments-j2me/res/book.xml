@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+<title>My Book</title>
+<metadata key="author">John Smith</metadata>
+<metadata key="date">13-02-2003</metadata>
+<chapter index="0">
+	<title>chapter 1</title>
+	<content>Content of chapter 1</content>
+</chapter>
+<chapter index="1">
+	<title>chapter 2</title>
+	<content>Content of chapter 2</content>
+</chapter>
+</book>

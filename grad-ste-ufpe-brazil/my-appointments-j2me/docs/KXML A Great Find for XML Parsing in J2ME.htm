@@ -1,0 +1,373 @@
+<!-- <widgetwrapper> --> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html> <head> <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> <title>KXML: A Great Find for XML Parsing in J2ME </title> <link rel="stylesheet" type="text/css" href="/styles/cps.css"> <link rel="stylesheet" type="text/css" href="/styles/pf.css"> <meta name="keywords" content=""> <meta name="Description" content="Enhydra's kXML is a great little XML parser with a small footprint, making it perfect for J2ME apps. It uses a unique method of DOM manipulation and parsing called pull parsing. Find out whether kXML is must-have for your toolbox."> <meta name="Topic" content="1396 Open Source Projects -- Open Source :: Open Source Projects"> 
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<script language="javascript" src="/scripts/globalFuncs.js"></script></head> <body bgcolor=#fafae6> <!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+    
+
+	
+
+<script language="javascript">
+function showSupportItem(itemName)
+{
+	if( articleSpptItems[itemName] )
+	{
+		var theURL = 'http://www.devx.com/xml/Article/11773/1763';
+		theURL += '?supportItem='+articleSpptItems[itemName].number;
+		popUpWindow(theURL, articleSpptItems[itemName].width, articleSpptItems[itemName].height);
+	}
+	else
+		alert("Sorry, "+itemName+" could not be found.");
+}
+function SupportItem(number, width, height)
+{
+	this.number = number;
+	this.width = width;
+	this.height = height;
+	return this;
+}
+articleSpptItems = new Object(); 
+	
+		
+	articleSpptItems.talkback = new SupportItem(1,200,300);
+	
+
+</script>
+
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td>
+				<div><a href="http://www.devx.com"><img border="0" alt="DevX HomePage" src="/assets/devx/4055.gif"></a></div>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="left" class="topPrintHeader"><a href="http://www.DevX.com">http://www.devx.com</a></td>
+			<td align="right" class="topPrintHeader">Printed from <a href="http://www.devx.com/xml/Article/11773">http://www.devx.com/xml/Article/11773</a></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+	</table>
+	
+	<table border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td >
+				
+					<div class="articleTitle">KXML: A Great Find for XML Parsing in J2ME </div>
+				
+					<div class="articleDek"><br>Enhydra's kXML is a great little XML parser with a small footprint, making it perfect for J2ME apps. It uses a unique method of DOM manipulation and parsing called "pull parsing." Find out whether kXML is must-have for your toolbox.&nbsp;<div>
+				
+					
+					
+						
+						
+						<div class="articleAuthor">
+						
+							by
+							Robert Cadena
+						
+						
+						
+						
+						</div>
+					
+								
+			</td>
+		</tr>
+		<tr>
+			<td ><img src="/assets/dropcaps/3578.gif"> was recently working on a project to develop a multiplayer game for J2ME devices. In this application communication from the server to the device was originally coded as simple key-value pairs separated by ampersands (&amp;), much as Flash handles retrieving variables from servers, but as I began handling more complicated and nested data structures I found this method insufficient. It became difficult to write and error prone. 
+<p>
+To solve that problem I immediately decided to recode the transport for the application using XML. XML was a natural choice for me not only because I had used it to transport messages across the network to applets in a previous project, but because XML is easy to debug and write by hand. It also, of course, lets you structure the data in a richer fashion. However, I didn't know that I was about to discover a valuable new gem for my coder's toolbox. 
+<p>
+kXML is a compact library designed for use on J2ME devices, though it may be used in other contexts where a small XML parser is needed, for example, with applets. kXML, a project maintained by the Enhydra organization, supports the following features:
+<ul>
+<li>XML namespace support</li>
+<li>"Relaxed" mode for parsing HTML or other SGML formats</li>
+<li>Small memory footprint (21 kbps)</li>
+<li>Pull-based parsing</li>
+<li>XML writing support</li>
+<li>Optional DOM support</li>
+<li>Optional WAP support </li>
+</ul>
+<br>
+In this article I'll go into detail about a few of these features, specifically pull parsing and DOM manipulation, and I'll tell you how to check the effect of the kXML processing on memory. 
+<p>
+Included with this article are two MIDlet examples with full source that show you how to use kXML (download them from the link in the left column). These are KToolBar 1.04 projects and do not include the kXML library&#151;you'll have to get that from <a href=" http://kxml.enhydra.org/" target="_blank">http://kxml.enhydra.org/</a> and put the zip into the "lib" directory of the project.
+<p>
+<b>Working with XML</b><br>
+There are two common ways of working with XML: manipulating the DOM or catching parsing events. Manipulating the DOM is a simple way of interacting with XML where the entire XML tree is parsed into a node structure that resides in memory and you can traverse the tree programmatically. It is very simple to use, but because the entire tree resides in memory&#151;as well as any objects needed to traverse it&#151;it is memory intensive. 
+<p>
+In the second method, catching parsing events, the parser traverses the XML data and issues callbacks to a previously registered event listener whenever it encounters particular structures in the data. For example, when the parser encounters an opening tag such as &lt;html&gt; then the event listener would receive an event notifying it of the encounter and pass it any necessary information. A parser that implements such a strategy is called a push parser because the parser is "pushing" the event to a listener.  
+<p>
+kXML supports DOM parsing and manipulation but not push parsing. Instead, it uses a slightly different method called "pull" parsing. In contrast to push parsing, pull parsing lets the programmer "pull" the next event from the parser. In push parsing you would have to maintain the state of the current part of the data you were parsing, and based on the events passed to the listener you would have to take care to restore any previous state variables and save new ones when you were changing to a different state. Pull parsing makes it easier to deal with state changes because you can pass parser to different functions, which can maintain their own state variables.
+<p>
+<p>
+											
+					
+											    
+					    
+					
+<br><br>			
+				
+			</td>
+		</tr>
+		
+	</table>
+	
+	<table border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td >
+								
+			</td>
+		</tr>
+		<tr>
+			<td ><b>Pull Parsing</b><br>
+Anyway, enough theory. Suffice it to say that kXML is easy to use. So let's look at a quick example that shows how kXML works as a pull parser. The demo is called kXMLDemo_pull. It will use a pull parser to go through a file that contains address book information. Shown below are some of the more important lines in the source code and a description of what they do.
+<pre><code>
+1.XmlParser parser = null;
+2.
+3.parser = new XmlParser( new InputStreamReader(
+1this.getClass().getResourceAsStream(resfile_name) ));  
+</code></pre>
+
+Line 3 creates an XmlParser passing it the InputStream from a resource read in as a stream. This parser is called repeatedly until an END_DOCUMENT event is issued.
+<pre><code>
+1.while ( (event = parser.read()).getType() != Xml.END_DOCUMENT ) {
+2. ...
+3.if (name != null && name.equals("address")) {
+4. ...
+5.	parseAddressTag( parser );
+</code></pre>
+
+Line 3 determines if the event is the start of an &lt;address&gt; tag, and line 5 passes the parser to the "parseAddressTag," which takes control of the parser.
+<pre><code>
+1.while ((event = parser.peek()).getType() != Xml.END_DOCUMENT) {
+2....
+3.	if (type == Xml.END_TAG && name.equals("address")) {
+4.		return;
+5.	}
+6....	
+7.	ParseEvent next = parser.read();
+8.			
+9.	// if it's not a text event then skip it
+10.	if (next.getType() != Xml.TEXT) {
+11.		continue;
+12.	}
+13....
+14.          System.err.println(name + ": " + text);
+</code></pre>
+
+The code immediately above is inside the "parseAddressTag." It will loop until it finds the END_TAG for &lt;address&gt;. If it encounters any other tag, then its name and the contents inside it are printed out to the console. So if the tag &lt;name&gt;Robert Cadena&lt;/name&gt; is found, you'll see the following console output:
+<pre><code>
+name: Robert Cadena
+</code></pre>
+Once the end of &lt;address&gt; is found (lines 8-10) control is returned to the calling function, which then begins checking for &lt;address&gt; again.
+<p>
+As you can see, using the pull parser is easy, and it's a great benefit to be able to pass the parser to another function and begin looking for elements inside the document. And you aren't restricted to parsing resource files; you can also use HttpConnection and pass this function the http InputStream. This saves you from having to read the InputStream, save the content, and then parse it; kXML handles all that for you.
+<p>
+<p>
+											
+											    
+					    
+					
+											    
+					    
+					
+<br><br>			
+				
+			</td>
+		</tr>
+		
+	</table>
+	
+	<table border="0" cellspacing="0" cellpadding="0" >
+		<tr>
+			<td >
+								
+			</td>
+		</tr>
+		<tr>
+			<td ><b>DOM Processing</b><br>
+Pull parsing is great when you need to maintain a very low memory overhead because only the part of the document that issued that event is present. In other words, if the particular piece of data you're interested in is several hundred bytes in the middle of the document, the previous hundred bytes don't need to reside in memory.
+<p>
+But if you can afford to spare some memory you can use the other version of the kXML parser, which contains support for a DOM. A DOM is the entire document tree kept in memory with each tag separated into Node objects. You can traverse this document "tree" and get data as needed. 
+<p>
+The other MIDlet in the project, kXMLDemo_dom, does the same thing. It reads an address book and prints the contents to the console, but this time it uses the DOM. Shown below are some of the more important lines in that file.
+<pre><code>
+1.Document doc = new Document();
+2....
+3.parser = new XmlParser( isr );
+4.doc.parse( parser );
+</code></pre>
+Line 1 creates a document, which will hold the XML tree. Line 3 creates a kXML parser from an InputStreamReader named isr. Line 4 passes the parser to the document and tells the document to begin parsing. The XML is recursively parsed until END_DOCUMENT is reached. When the call to parse exits the entire document has been loaded into memory and you can now manipulate it.
+<pre><code>
+1.Element root = doc.getRootElement();
+2.int child_count = root.getChildCount();
+3....
+4.for (int i = 0; i < child_count ; i++ ) {
+5....
+6.     Element kid = root.getElement(i);
+7.
+8.     if (!kid.getName().equals("address")) {
+9.          continue;
+10.     }
+</code></pre>
+Because we know that &lt;address&gt; elements are direct children of the root element we can traverse the children of the root element and look for the address tag, looping back if the child is not an address tag.  
+<pre><code>
+1.int address_item_count = kid.getChildCount();
+2.
+3.	for (int j = 0; j < address_item_count ; j++) {
+4....	
+</code></pre>
+If we've gotten this far then the element is an address and we start traversing its children to look for elements and print out their content. Unfortunately you can't just say kid.getElement("name") because if the element does not exist you'll get a RuntimeException. So I would suggest only using such methods when you know that all required fields in the XML document are present.
+<p>
+<b>Minding Your Memory</b><br>
+As a rule of thumb you should use the pull parser when you're not sure of the structure of your application and you need to keep memory down. Use the DOM when you have enough memory and perhaps you need to manipulate the existing document by adding or removing tags.
+<p>
+If you want to see the difference in memory usage between the two methods, open up the project in KtoolBar and enable the Memory Monitor (Edit --&gt; Preferences: Monitoring Tag). When you run the MIDlet you'll see the memory monitor window popup and the amount of memory along with a graphical representation of the same data. Run each of the applications and watch the green line rise. This represents the amount of memory your app is consuming. You'll see that the pull application uses less memory than the DOM application. Although the difference might not be that great between the two MIDlets in this example, a MIDlet that retrieves a larger file will use more memory if parsed into a DOM.
+<p>
+<b>Getting kXML</b><br>
+kXML project's page is located at <a href="http:// kxml.enhydra.org " target="_blank">http://kxml.enhydra.org</a>. You can download the JAR file with or without DOM support so that you only have to provide exactly the classes you need and leave the optional classes out.
+<p>
+				
+					<div class="">Robert Cadena is owner of <a href="http://www.factorysouth.com/" target="_blank">factorysouth</a>, a Web and wireless application development company for the entertainment industry. You can reach him at . Reach him by e-mail <script language="javascript">document.write("<a href='mailto:" + "robert.cadena" +"@" + "stanfordalumni." + "org'>here</a>")</script>.</div>							
+					
+											
+											    
+					    
+					
+					
+<br><br>			
+				
+			</td>
+		</tr>
+		
+	</table>
+	
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT175_W1992v2_C11773v1  07/22/2004 08:26:32 -->
+	
+<table border=0 cellspacing=0 cellpadding=0 width=100% style="padding-top: 10px;">
+<tr><td align="center" class="smallFont">&copy; Copyright Robert Cadena, 2003 </td></tr>
+</table>
+
+
+	
+		
+		<table border=0 cellspacing=0 cellpadding=0 width=100% style="padding-top: 10px;">
+		<tr><td align="center" class="smallFont">DevX is a division of Jupitermedia Corporation <br>
+&copy; Copyright 2004 Jupitermedia Corporation. All Rights Reserved. <a href="http://www.internet.com/corporate/legal.html">Legal Notices</a></td></tr>
+		</table>	
+		
+	
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</body> </html><!-- </widgetwrapper> -->
+<!-- 200.165.138.194 web2 -->
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

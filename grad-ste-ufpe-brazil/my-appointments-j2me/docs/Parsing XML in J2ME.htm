@@ -1,0 +1,1642 @@
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Parsing XML in J2ME</title>
+<meta name="keywords" content="midp, j2me, xml, parse, kXML, rss, rdf" />
+<meta name="description" content="Overview of parsing XML in MIDP" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<meta name="archiveFlag" content="false"/>
+<meta name="date" content="2002-03-01" />
+<link rel="stylesheet" href="/css/default_developer.css" />
+
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<script type='text/JavaScript' src='/js/popUp.js'></script>
+</head>
+<!--stopindex-->
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" rightmargin="0" bgcolor="#ffffff">
+<a name="top"></a>
+<!-- BEGIN GENERIC MASTHEAD -->
+<!-- BEGIN VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr><td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" height="25" class="topnav">
+<form name="formsearch" action="http://developer.sun.com/dispatcher.jsp" method="post">
+<tr>
+<td><a href="#mast"><img src="/im/a.gif" width="10" height="1" border="0" alt="Skip Masthead Links" /></a></td>
+<td><a href="http://developers.sun.com">developers.sun.com</a></td>
+<td width="100%">&nbsp;</td> 
+<td nowrap="nowrap"><span class="rightarrowblue">&raquo;</span>&nbsp;<a href="http://developers.sun.com/dispatcher.jsp?uid=6910020">search tips</a>&nbsp;&nbsp;|&nbsp;&nbsp;<b>Search:</b>&nbsp;</td>
+<td><input name="qt" class="medium" size="7" value="" /></td>
+<td>&nbsp;</td>
+<td class="selectcell"><select class="globalsearch" name="uid">
+<option value="6910018" selected>in Developers' Site</option>
+<option value="6910019">in Sun.com</option>
+</select></td>
+<td>&nbsp;</td>
+<td valign="middle" align="left"><input type="submit" border="0" class="buttonred" value="&nbsp;&raquo;&nbsp;" onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" /></td>
+<td><img src="/im/a.gif" width="10" height="1" alt=" " /></td>
+</tr></form>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td valign="top" class="grey3"><a href="http://java.sun.com"><img src="/im/logo_java_grey.gif" width="180" height="53" border="0" alt=" " /></a></td>
+<td><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td class="sunblue" valign="top" nowrap="nowrap"><div class="pad6"><a href="http://developers.sun.com"><img src="/im/masthead_the_source.gif" width="262" height="25" border="0" alt="The Source for Developers" /></a><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910022"><img src="/im/masthead_sdn_site.gif" width="169" height="15" border="0" alt="A Sun Developer Network Site" /></a></div></td>
+<td class="sunblue"><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></td>
+<td class="sunblue"><div class="pad6"><a href="http://developers.sun.com/dispatcher.jsp?uid=6910023"><img src="/im/masthead_prod_and_tech.gif" width="158" height="15" border="0" alt="Products and Technologies" /></a><br /><a href="http://developers.sun.com/dispatcher.jsp?uid=6910024"><img src="/im/masthead_tech_topics.gif" width="105" height="15" border="0" alt="Technical Topics" /></a></div><img src="/im/a.gif" width="196" height="1" border="0" alt=" " /></td>
+<td class="sunblue" width="100%" valign="top" align="right"><div class="pad10"><a href="http://www.sun.com"><img src="/im/logo_sun.gif" width="72" height="33" border="0" alt="Sun Microsystems" /></a></div></td>
+<td><a name="mast"></a><a href="#skip2content"><img src="/im/a.gif" width="10" height="1" border="0" alt=" " /></a></td></tr>
+</table>
+</td></tr>
+</table>
+<span class="sp5">&nbsp;</span><br />
+<!-- END VNV1 MASTHEAD COMPONENT, thinner variation for content pages -->   
+<!-- END GENERIC MASTHEAD -->
+<!-- BEGIN BREADCRUMB -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td>      
+<div class="breadcrumb">
+</div>
+</td>
+<td align="right" nowrap="nowrap"><div class="breadcrumb">
+<b><a href="http://developers.sun.com/dispatcher.jsp?uid=6910021">Join a Sun Developer Network Community</a></b><br />
+<a href="http://developers.sun.com/user_registration/index.html">Profile and Registration</a> | 
+<a href="http://developers.sun.com/user_registration/whyregister.html">Why Register?</a>
+</div></td></tr>
+<tr><td colspan="2"><img src="/im/a.gif" width="770" height="1" border="0" alt=" " /></td></tr>
+</table>
+<span class="sp5">&nbsp;</span><br />     
+<!-- END BREADCRUMB -->
+<!-- BEGIN PAGETITLE -->
+<div class="pagetitle2">Article</div>
+<div class="pagetitle">Parsing XML in J2ME</div>
+<!-- END PAGETITLE -->
+<!-- BEGIN WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%">
+<tr><td width="100%" valign="top">
+<!-- BEGIN CENTRAL COLUMN COMPONENTS -->
+<!--startindex-->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<a name="skip2content"></a>
+<!--  BEGIN VCD4 BYLINE AND TOOLS  -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="smaller" valign="top"><em></em></td>
+<td width="10">&nbsp;</td>
+<td align="right" valign="bottom"><div class="sitelinks" style="padding:0px;">
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="bottom" align="right">&nbsp;</td>
+<td valign="bottom" class="smaller" nowrap="nowrap"><a href="/jsp_utils/PrintPage.jsp" target="printFriendlyView" onclick="openPopup('','printFriendlyView',710,650,'no',1,1,0,0,0,0); return true;"><img src="/im/ic_print.gif" width="14" height="12" alt="Print-friendly Version" border="0" hspace="4" />Print-friendly Version</a></td>
+</tr></table></div>
+</td></tr>
+</table>
+<!--  END VCD4 BYLINE AND TOOLS  -->
+<div class="contentdivider"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="grey4">
+<tr><td><img src="/im/a.gif" width="1" height="4" border="0" alt=" " /></td></tr></table></div>
+<!-- ================== -->
+<!-- Start Main Content -->
+<!-- ================== -->
+<!-- headline -->
+<br>
+<!-- byline -->
+<p><span class="byline">by Jonathan Knudsen<br>
+March 7, 2002<br>
+Download:
+<a
+href="/techtopics/mobility/midp/articles/parsingxml/bin/ParsingXML.zip">[source
+code]</a>&nbsp;
+<a
+href="/techtopics/mobility/midp/articles/parsingxml/bin/ParsingXML.jad"
+target="_blank">[MIDlet suite JAD]</a>&nbsp;
+<a
+href="/techtopics/mobility/midp/articles/parsingxml/bin/ParsingXML.jar"
+target="_blank">[MIDlet suite JAR]</a>
+</span></p>
+<!--begin note -->
+<table cellpadding="0" cellspacing="0" border="0">
+<tbody>
+<tr>
+<td colspan="5" class="dkgray" height="1"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+</tr>
+<tr>
+<td rowspan="3" class="dkgray" width="1"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+<td colspan="3" class="gray" height="10"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+<td rowspan="3" class="dkgray" width="1"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+</tr>
+<tr>
+<td class="gray" width="10"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+<td class="gray">
+<span class="body"><b>Note</b>: This article contains essentially
+the same information as JavaOne
+session #2716, <i>Parsing XML in J2ME</i>, presented March 28, 2002.
+</span></td>
+<td class="gray" width="10"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+</tr>
+<tr>
+<td colspan="3" class="gray" height="10"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+</tr>
+<tr>
+<td colspan="5" class="dkgray" height="1"><img
+src="/techtopics/mobility/images/spacer.gif" width="1" height="1"
+alt="." border="0"></td>
+</tr>
+</tbody>
+</table>
+<!-- end note -->
+<br>
+<p>
+The convergence of J2ME and XML is currently a handful of open source
+parsers.
+In this
+article you'll learn how to parse XML in a MIDP client application.
+I'll begin
+by talking about system architecture and the motivation for using XML
+as a data
+transport. Then I'll describe the available XML parsers, discuss the
+challenges
+of developing in a small environment, and present some sample code.
+</p>
+<!-- subhead -->
+<p><b>Multi-tier System Architecture</b>
+</p>
+<p>
+To understand why you might want to parse XML on a J2ME device, let's
+first
+examine the architecture of a typical multi-tier application. <i>Multi-tier</i>
+is one of those ubiquitous terms that means something different to just
+about
+everyone. I'll nail it down with a fairly specific architecture, as
+shown in the
+following figure:
+</p>
+<table border="0" cellspacing="0" cellpadding="10" width="500"
+align="center">
+<tbody>
+<tr>
+<td align="center"><img
+src="/techtopics/mobility/images/midp-articles-parsingxml-threetiers.gif"
+border="0" height="264" width="500" alt="Three tier architecture">
+<br>
+<span class="rtbtitle">Typical multi-tier architecture</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+The current world is web-centric, so systems are often designed with
+HTML
+browsers as the clients. The client performs very little of the
+application
+processing and functions as a fancy kind of terminal. The bulk of the
+application runs on server which uses a database for persistent
+storage.
+</p>
+<p>
+As the wireless world began expanding, server vendors found that they
+could
+conveniently support wireless devices by adding support for WAP
+browsers. The
+underlying paradigm of the browser as front end to the application
+remains
+unchanged; the server is just serving WML over WAP in addition to HTML
+over
+HTTP.
+</p>
+<p>
+The diagram also shows a standalone client, which could communicate
+with the
+application on the server in several different ways. The client could
+make HTTP
+connections, use RMI to manipulate remote objects, or implement a
+customized
+protocol. The chief advantage of having a standalone client in place of
+a
+browser is
+the chance to provide a richer user interface. The main disadvantage is
+the
+difficulty of client installation and maintenance.
+</p>
+<p>
+Where do MIDP clients fit in this picture? Keep in mind that with MIDP
+devices,
+everything is small, and this affects their utility as application
+clients.
+</p>
+<ul>
+<li>Network connection setup is slow.</li>
+<li>Data rates are slow.</li>
+<li>The processor is slow.</li>
+<li>Memory is scarce.</li>
+</ul>
+<p>
+Because of these constraints, MIDP client applications should be
+designed to
+be as small as
+possible. At the same time, they can feature a smooth and capable user
+interface
+that goes far beyond the user experience offered by a WAP browser.
+</p>
+<p>
+MIDP client have one other important characteristic as compared to WAP
+applications; the application can run offline and make updates to the
+server
+periodically. This is especially important with wireless networks,
+which are
+slower and less reliable than the desktop network you may be accustomed
+to. WAP
+applications, by contrast, require a network connection as the user
+moves from
+screen to screen.
+</p>
+<p>
+The following figure shows one possible implementation of a multi-tier
+system
+that supports HTML browsers, WAP browsers, standalone clients, and MIDP
+clients.
+</p>
+<table border="0" cellspacing="0" cellpadding="10" width="500"
+align="center">
+<tbody>
+<tr>
+<td align="center"><img
+src="/techtopics/mobility/images/midp-articles-parsingxml-threetiersxml.gif"
+border="0" height="284" width="500"
+alt="Three tier architecture with XML">
+<br>
+<span class="rtbtitle">A multi-tier architecture with XML</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+The figure shows one way of supporting multiple client types. Instead
+of
+creating custom server-side code for each client type, you write
+generic code
+that returns data as XML documents. Then you create transformations
+(using XSLT)
+that change the basic XML documents into whatever is required for the
+client
+device. Once set of transformations produces HTML for desktop browsers,
+while another set might produce the WML to support WAP browsers.
+</p>
+<p>
+But what kind of data do you send to the MIDP client? You send whatever
+you
+want, of course,
+anything from plain text to binary data. If you're using XML on the
+server side, however, you may consider XML itself as a data exchange
+format. It
+makes your life pretty easy on the server side, for one thing. You
+might be
+able to send your basic XML documents unchanged, or you could create
+some simple
+transformations to send a more terse XML format to the MIDP device.
+</p>
+<p>
+Sending XML from client to server offers XML's usual advantages: the
+data is
+self-describing and offers the opportunity to loosely couple the client
+and
+server.
+</p>
+<p>
+Sending XML to the client has another advantage. During the development
+cycle,
+you can use validating XML parsers in emulated clients to ensure that
+the
+documents the server generates are clean. By the time you try running
+the
+application on a real MIDP device, you'll be pretty sure that the data
+it's
+getting is good.
+</p>
+<p>
+The downside of XML is that it's not a very efficient way of expressing
+data.
+On slow wireless networks, every byte counts. If you are considering
+XML as a
+data exchange format, do some testing with real devices first to
+familiarize
+yourself with the delays involved. On today's wireless networks,
+latency is
+usually more of an issue than data transfer rate, so you may notice the
+larger
+message size of XML versus a binary format.
+</p>
+<p>
+For another discussion of the use of XML in enterprise applications,
+see the
+<a href="http://java.sun.com/blueprints/wireless/" target="_blank">Designing
+Wireless Enterprise Applications Using JavaTM
+Technology</a>
+white paper.
+</p>
+<!-- subhead -->
+<p><b>Parser Roundup</b>
+</p>
+<p>
+If there's a slogan for XML parsers in the MIDP world, it might be
+"Don't
+Supersize Me." Parsers are traditionally bulky, featuring lots of code
+and hefty
+runtime memory requirements. In MIDP devices, the memory available for
+code is
+usually small and individual applications may have a maximum code size.
+The
+Motorola iDEN phones, for example, have an upper limit of 50 kB on the
+size of a
+MIDlet suite JAR file. Aside from code size, the amount of memory
+available at
+runtime is also small. What you need is a parser that's designed to be
+small and
+light.
+</p>
+<p>
+Open source parsers are attractive because they give you lots of
+control. You
+can customize a parser if you need additional features, and you can fix
+the
+parser if it has bugs.
+</p>
+<p>
+There are three fundamental parser types. Which type you choose depends
+on how
+you want your application to behave and what types of documents you're
+expecting
+to parse.
+</p>
+<ol>
+<li>
+A <i>model</i> parser reads an entire document and creates a
+representation
+of the document in memory. Model parsers use significantly more memory
+than other types of parsers.
+</li>
+<li>
+A <i>push</i> parser reads through an entire document. As it
+encounters various
+parts of the document, it notifies a listener object. (This is how the
+popular
+SAX API operates.)
+</li>
+<li>
+A <i>pull</i> parser reads a little bit of a document at once. The
+application
+drives the parser through the document by repeatedly requesting the
+next piece.
+</li>
+</ol>
+<p>
+The following table summarizes the current offering of small XML
+parsers that
+are appropriate for MIDP.
+</p>
+<!-- begin table -->
+<table width="100%" border="0" cellspacing="0" cellpadding="0"
+class="gray">
+<tbody>
+<tr>
+<td>
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+<tbody>
+<tr valign="middle">
+<td class="yellowtitle">Name</td>
+<td class="yellowtitle">License</td>
+<td class="yellowtitle">Size</td>
+<td class="yellowtitle">MIDP</td>
+<td class="yellowtitle">Type</td>
+</tr>
+<tr valign="top">
+<td class="white">
+<a href="http://www.alsutton.com/software/xmlparser/"
+target="_blank">ASXMLP 020308
+</a></td>
+<td class="white">
+<a href="http://www.alsutton.com/software/licence.html"
+target="_blank">Modified BSD
+</a></td>
+<td class="white">6 kB</td>
+<td class="white">yes</td>
+<td class="white">push, model</td>
+</tr>
+<tr valign="top">
+<td class="gray">
+<a href="http://kxml.enhydra.org/" target="_blank">kXML 2.0
+alpha
+</a></td>
+<td class="gray">
+<a href="http://kxml.enhydra.org/software/license/"
+target="_blank">EPL
+</a></td>
+<td class="gray">9 kB</td>
+<td class="gray">yes</td>
+<td class="gray">pull</td>
+</tr>
+<tr valign="top">
+<td class="white">
+<a href="http://kxml.enhydra.org/" target="_blank">kXML 1.2
+</a></td>
+<td class="white">
+<a href="http://kxml.enhydra.org/software/license/"
+target="_blank">EPL
+</a></td>
+<td class="white">16 kB</td>
+<td class="white">yes</td>
+<td class="white">pull</td>
+</tr>
+<tr valign="top">
+<td class="white">
+<a href="http://www.wilson.co.uk/xml/minml.htm"
+target="_blank">MinML 1.7
+</a></td>
+<td class="white">
+<a
+href="http://www.opensource.org/licenses/bsd-license.html"
+target="_blank">BSD
+</a></td>
+<td class="white">14 kB</td>
+<td class="white">no</td>
+<td class="white">push</td>
+</tr>
+<tr valign="top">
+<td class="gray">
+<a href="http://nanoxml.sourceforge.net/" target="_blank">NanoXML
+1.6.4
+</a></td>
+<td class="gray">
+<a
+href="http://www.opensource.org/licenses/zlib-license.html"
+target="_blank">zlib/libpng
+</a></td>
+<td class="gray">10 kB</td>
+<td class="gray">patch</td>
+<td class="gray">model</td>
+</tr>
+<tr valign="top">
+<td class="white">
+<a href="http://www.gibaradunn.srac.org/tiny/"
+target="_blank">TinyXML 0.7
+</a></td>
+<td class="white">
+<a href="http://www.gibaradunn.srac.org/tiny/gpl.txt"
+target="_blank">GPL
+</a></td>
+<td class="white">12 kB</td>
+<td class="white">no</td>
+<td class="white">model</td>
+</tr>
+<tr valign="top">
+<td class="white">
+<a
+href="http://www.webreference.com/xml/tools/xparse-j.html"
+target="_blank">Xparse-J 1.1
+</a></td>
+<td class="white">
+<a href="http://www.webreference.com/xml/tools/license.html"
+target="_blank">GPL
+</a></td>
+<td class="white">6 kB</td>
+<td class="white">yes</td>
+<td class="white">model</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- end table -->
+<br>
+<p>
+The <b>Name</b> and <b>License</b> columns contain links to the
+corresponding
+web pages and licenses. The <b>Size</b> column indicates the size of
+the class
+files for the parser as contained in a JAR, which is an approximation
+of how
+much size the parser will add to your MIDlet suite JAR. The <b>MIDP</b>
+column
+indicates whether the parser will compile without modifications in a
+MIDP
+environment. Finally, the <b>Type</b> column indicates the type of the
+parser,
+as discussed above.
+</p>
+<p>
+Two parsers that did not make the list are
+<a href="http://nanoxml.sourceforge.net/" target="_blank">NanoXML 2.2
+Lite</a>
+and
+<a href="http://members.tripod.de/xmltp/" target="_blank">XMLtp 1.7</a>.
+Although both of these parsers are small, they rely heavily on J2SE
+APIs
+and would require significant effort to port to MIDP. The three parsers
+in the
+table that do not compile in a MIDP environment can be modified to do
+so with
+moderate effort.
+</p>
+<p>
+It's fairly simple to incorporate a parser into your MIDlet suite using
+the J2ME
+Wireless Toolkit. If the parser is distributed as source code <i>.java</i>
+files, you can place these files into the <i>src</i> directory of your
+J2MEWTK
+project. If the parser is distributed as a <i>.jar</i> or <i>.zip</i>
+archive of
+<i>.class</i> files, you can place the archive in the <i>lib</i>
+directory of
+the J2MEWTK project. (For an introduction to the J2MEWTK and the
+project
+directory structure, see
+<a href="/techtopics/mobility/midp/articles/wtoolkit/">Wireless
+Development Tutorial Part I
+</a>.)
+</p>
+<p>
+The parsers shown in the table represent the current offerings in the
+MIDP 1.0
+world. Standardization efforts are underway and the landscape is
+shifting
+rapidly. Keep your eye on both
+<a href="http://jcp.org/jsr/detail/118.jsp" target="_blank">JSR 118,
+MIDP Next
+Generation</a> and
+<a href="http://jcp.org/jsr/detail/172.jsp" target="_blank">JSR 172,
+J2ME Web
+Services Specification</a>.
+</p>
+<!-- subhead -->
+<p><b>Performance Considerations</b>
+</p>
+<p>
+In this section I'll describe some optimizations you can use to make
+your MIDlet
+code run well in a constrained environment. The techniques described
+here apply
+to any MIDP development, not just XML parsing. The reason I'm
+describing them
+here is because the use of an XML parser is likely to make your code
+significantly bigger and slower; you will probably want to optimize
+your
+application before delivering it to users.
+</p>
+<p>
+The optimizations presented here fall into three categories:
+</p>
+<ol>
+<li>Runtime performance</li>
+<li>User perception</li>
+<li>Deployment code size</li>
+</ol>
+<p>
+Achieving good runtime performance is related to your XML document
+design. On
+the one hand, it takes a long time to set up a network connection. This
+means
+you should make each document contain as much useful data as possible.
+You might
+even want to aggregate documents on the server side and send one larger
+document
+rather than several smaller ones. On the other hand, the data transfer
+rate is
+slow. If you make your documents too large, the user will be left
+waiting a long
+time for each document to be loaded. In the end, you will need to find
+a balance
+between avoiding connection setup times and minimizing download wait
+times. One
+thing is for sure: XML documents that are sent to a MIDlet should not
+contain
+extra information. You don't want to waste precious wireless bandwidth
+transferring data you will only throw away.
+</p>
+<p>
+Another way you can improve your application is to improve the user
+experience. This is not really an optimization--you're not making
+anything
+run faster or leaner--but it makes the application look a lot better to
+a user. The basic technique is simple: parsing, like network activity,
+should go in its own
+thread. (For several
+strategies for network threading, see
+<a href="/techtopics/mobility/midp/articles/threading/">Networking,
+User Experience, and Threads
+</a>.) You don't want to lock up the user interface while the MIDlet is
+parsing
+an XML document or reading the document from the network. Ideally, you
+can allow
+the user to perform other offline tasks <i>at the same time</i> that
+network
+activity and parsing is occurring. If that is not possible, you should
+at least
+try to show parsed data as soon as it is available. Note that you will
+need a
+push or pull parser to accomplish this; a model parser won't give you
+any data
+until the entire document is parsed.
+</p>
+<p>
+Finally, you may be concerned about the size of your MIDlet suite JAR.
+There are
+two reasons this might be a problem. As I mentioned, there's not much
+space on
+MIDP devices, and carriers or manufacturers may impose limits on your
+code size.
+Second, users may download your application over the wireless network
+itself,
+which is slow. Making the MIDlet JAR small will minimize the pain of
+downloading
+and installing your software.
+</p>
+<p>
+What's in the MIDlet suite JAR, and how can you reduce its size? The
+MIDlet
+suite JAR contains classfiles, images, icons, and whatever other
+resource files you may have included. Assuming you've removed all the
+resources
+you don't need, you are now ready to use something called an <i>obfuscator</i>
+to cut down on the classfiles.
+</p>
+<p>
+Not all obfuscators are equal, but an obfuscator usually includes some
+of the
+following features:
+</p>
+<ol>
+<li>Removes unused classes</li>
+<li>Removes unused methods and variables</li>
+<li>Renames classes, packages, methods, and variables</li>
+<li>Adds illegal stuff to classfiles to confuse decompilers</li>
+</ol>
+<p>
+Features 1, 2, and 3 are fine and will reduce the size of your MIDlet
+suite JAR,
+sometimes dramatically. If you have incorporated an XML parser in your
+MIDlet
+project, there may be parts of the parser that your application never
+uses. An
+obfuscator is good for pruning out the stuff you don't need.
+</p>
+<p>
+Watch our for feature 4. Obfuscators were originally designed to make
+it hard
+for other people to decompile your classfiles. Some obfuscators do
+nasty things
+to the classfiles in order to confound decompilers. This may mess up
+either the
+class preverifier or the MIDP device's classloader, so I suggest
+avoiding this
+feature if possible.
+</p>
+<p>
+Two freely available obfuscators are
+<a href="http://www.alphaworks.ibm.com/tech/JAX/" target="_blank">JAX</a>
+and
+<a href="http://www.retrologic.com/retroguard-main.html" target="_blank">Retroguard</a>.
+Consult the documentation for features and usage.
+</p>
+<!-- subhead -->
+<p><b>An Example: Parsing RSS</b>
+</p>
+<p>
+Enough talk--let's look at some code. The example presented here is a
+MIDlet that parses an RSS file.
+</p>
+<p>
+RSS (Rich Site Summary) is a simple XML format
+that summarizes headlines and story descriptions for a news site. Many
+technology news web sites have RSS files (called <i>feeds</i>)
+available. Other
+web sites aggregate RSS feeds from various places to present you with a
+customized view of the news.
+<a href="http://www.oreillynet.com/meerkat/" target="_blank">Meerkat</a>
+is one
+such aggregator. The interesting thing about Meerkat is that it can
+provide
+different <i>flavors</i>. You can see the news as HTML or in a variety
+of
+different formats, including RSS. Think of Meerkat as a big funnel. You
+pour RSS
+feeds in the top and out the bottom comes a single aggregated RSS feed.
+For more
+information on Meerkat and its features, see
+<a
+href="http://www.oreillynet.com/pub/a/rss/2000/05/09/meerkat_api.html"
+target="_blank">Meerkat: An Open Service API</a>.
+</p>
+<p>
+An example of the output from Meerkat is shown below.
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td>
+<pre><font color="#000000"><strong>&lt;?xml version="1.0"?&gt;</strong></font>
+<font color="#000000"><strong>&lt;!DOCTYPE rss PUBLIC </strong></font>
+<font color="#000000"><strong>  </strong></font><font color="#404040">"-//Netscape Communications//DTD RSS 0.91//EN"</font><font
+ color="#000000"><strong> </strong></font>
+<font color="#000000"><strong>  </strong></font><font color="#404040">"http://my.netscape.com/publish/formats/rss-0.91.dtd"</font>
+<font color="#000000"><strong>&gt;</strong></font>
+
+<font color="#5e5e5e"><strong>&lt;rss version</strong></font>=<font
+ color="#404040">"0.91"</font><font color="#5e5e5e"><strong>&gt;</strong></font> <br> <br>  <font
+ color="#5e5e5e"><strong>&lt;channel&gt;</strong></font> <br> <br>    <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>Meerkat: An Open Wire Service<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font> <br>    <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://meerkat.oreillynet.com<font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font> <br>    <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>
+      Meerkat is a Web-based syndicated content reader 
+      providing a simple interface to RSS stories.  While
+      maintaining the original association of a story with
+      a channel, Meerkat's focus is on chronological
+      order -- the latest stories float to the top,
+      regardless of their source.
+    <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;language&gt;</strong></font>en-us<font
+ color="#5e5e5e"><strong>&lt;/language&gt;</strong></font> <br><br>    <font
+ color="#5e5e5e"><strong>&lt;image&gt;</strong></font> <br>      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>Meerkat Powered!<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font> <br>      <font
+ color="#5e5e5e"><strong>&lt;url&gt;</strong></font>
+      http://meerkat.oreillynet.com/icons/meerkat-powered.jpg
+      <font
+ color="#5e5e5e"><strong>&lt;/url&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://meerkat.oreillynet.com<font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font> <br>      <font
+ color="#5e5e5e"><strong>&lt;width&gt;</strong></font>88<font
+ color="#5e5e5e"><strong>&lt;/width&gt;</strong></font> <br>      <font
+ color="#5e5e5e"><strong>&lt;height&gt;</strong></font>31<font
+ color="#5e5e5e"><strong>&lt;/height&gt;</strong></font> <br>      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>Visit Meerkat in full splendor at<br>          meerkat.oreillynet.com...<font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font> <br>    <font
+ color="#5e5e5e"><strong>&lt;/image&gt;</strong></font> <br><br>    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>MmO2 cuts jobs, to take GBP110m charge<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31561327<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>FTMarketWatch Feb 5 2002 5:05AM ET...<br>          <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>S.E.C. Says Motorola Cant Exclude Audit<br>          Proposal<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31562096<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>New York Times Feb 5 2002 5:17AM ET...<br>          <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>1,900 jobs to go at mmO2<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31562134<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>ZDNet Feb 5 2002 5:18AM ET..<br>          <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>Mobile firm cutting 1,900 jobs<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31558750<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>CNN Europe Feb 5 2002 4:30AM ET...<br>          <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>The axe falls at mmO2<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31558856<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>The Register Feb 5 2002 4:32AM ET...<br>          j<font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>mmO2 plans to axe 1,900 jobs<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31559617<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>Evening Standard Feb 5 2002 4:42AM ET...<br>          <font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;item&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;title&gt;</strong></font>UPDATE 2-Sohu Q4 revenues up 15 pct on wireless<br>          services<font
+ color="#5e5e5e"><strong>&lt;/title&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;link&gt;</strong></font>http://c.moreover.com/click/here.pl?r31557811<br>          <font
+ color="#5e5e5e"><strong>&lt;/link&gt;</strong></font>
+      <font
+ color="#5e5e5e"><strong>&lt;description&gt;</strong></font>CNET Feb 5 2002 4:08AM ET...<font
+ color="#5e5e5e"><strong>&lt;/description&gt;</strong></font>
+    <font
+ color="#5e5e5e"><strong>&lt;/item&gt;</strong></font>
+
+  <font
+ color="#5e5e5e"><strong>&lt;/channel&gt;</strong></font> <br><br><font
+ color="#5e5e5e"><strong>&lt;/rss&gt;</strong></font>
+        </pre>
+</td>
+</tr>
+</tbody>
+</table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+The root element of this document is <b>rss</b>, with a contained <b>channel</b>
+element. The information that interests us
+is in the <b>item</b> elements, which have <b>title</b>, <b>link</b>,
+and <b>description</b> sub-elements. The example MIDlet parses an RSS
+document
+and displays all the titles for the items it finds.
+</p>
+<p>
+For this example, I chose to use the kXML 1.2 parser. Although it's not
+the
+smallest parser available, it has several compelling advantages:
+</p>
+<ol>
+<li>It is designed for MIDP; no porting is necessary.</li>
+<li>It is stable and relatively mature.</li>
+<li>It is a pull parser, which means our application can process and
+display
+information as it is parsed, as it is being downloaded from the server.
+A push parser would also provide this behavior, but
+not a model parser.</li>
+</ol>
+<p>
+The kXML 1.2 parser is simple to use. Just create an instance of
+<code>org.kxml.parser.XmlParser</code> and use the
+<code>skip()</code> and <code>read()</code> methods to move through
+the
+document. One version of the <code>read()</code> method returns a
+<code>ParseEvent</code>, which contains information like the name of
+the element
+or the text content of an element.
+</p>
+<p>
+In this example, parsing is entirely contained in its own class,
+<code>RSSParser</code>, shown below.
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td>
+<pre><font color="#000000"><strong>import</strong></font> java.io.*;<br><font
+ color="#000000"><strong>import</strong></font> javax.microedition.io.*;<br><br><font
+ color="#000000"><strong>import</strong></font> org.kxml.*;<br><font
+ color="#000000"><strong>import</strong></font> org.kxml.parser.*;<br><br><font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>class</strong></font> RSSParser <font
+ color="#000000"><strong>{</strong></font>
+  <font color="#000000"><strong>protected</strong></font> RSSListener mRSSListener;<br>  <br>  <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">setRSSListener</font>(RSSListener listener) <font
+ color="#000000"><strong>{</strong></font>
+    mRSSListener <font
+ color="#000000"><strong>=</strong></font> listener;<br>  <font
+ color="#000000"><strong>}</strong></font>
+  
+  <font color="#009900"><em>// Non-blocking.</em></font>
+  <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">parse</font>(<font color="#000000"><strong>final</strong></font> String url) <font
+ color="#000000"><strong>{</strong></font>
+    Thread t <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Thread</font>() <font color="#000000"><strong>{</strong></font>
+      <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">run</font>() <font color="#000000"><strong>{</strong></font>
+        <font
+ color="#009900"><em>// set up the network connection</em></font>
+        HttpConnection hc <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">null</font>;<br>        <br>        <font
+ color="#000000"><strong>try</strong></font> <font color="#000000"><strong>{</strong></font>
+          hc <font
+ color="#000000"><strong>=</strong></font> (HttpConnection)Connector.<font
+ color="#000099">open</font>(url);<br>          <font color="#000099">parse</font>(hc.<font
+ color="#000099">openInputStream</font>());<br>        <font
+ color="#000000"><strong>}</strong></font>
+        <font
+ color="#000000"><strong>catch</strong></font> (IOException ioe) <font
+ color="#000000"><strong>{</strong></font>
+          mRSSListener.<font
+ color="#000099">exception</font>(ioe);<br>        <font color="#000000"><strong>}</strong></font>
+        <font
+ color="#000000"><strong>finally</strong></font> <font color="#000000"><strong>{</strong></font>
+          <font
+ color="#000000"><strong>try</strong></font> <font color="#000000"><strong>{</strong></font> <font
+ color="#000000"><strong>if</strong></font> (hc <font color="#000000"><strong>!=</strong></font> <font
+ color="#404040">null</font>) hc.<font color="#000099">close</font>(); <font
+ color="#000000"><strong>}</strong></font>
+          <font
+ color="#000000"><strong>catch</strong></font> (IOException ignored) <font
+ color="#000000"><strong>{}</strong></font>
+        <font
+ color="#000000"><strong>}</strong></font>
+      <font color="#000000"><strong>}</strong></font>
+    <font
+ color="#000000"><strong>}</strong></font>;<br>    t.<font
+ color="#000099">start</font>();<br>  <font color="#000000"><strong>}</strong></font>
+  
+  <font
+ color="#009900"><em>// Blocking.</em></font>
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">parse</font>(InputStream in) <font
+ color="#000000"><strong>throws</strong></font> IOException <font
+ color="#000000"><strong>{</strong></font>
+    Reader reader <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">InputStreamReader</font>(in);<br>    XmlParser parser <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">XmlParser</font>(reader);<br>    ParseEvent pe <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">null</font>;<br><br>    parser.<font
+ color="#000099">skip</font>();<br>    parser.<font color="#000099">read</font>(Xml.START_TAG, <font
+ color="#404040">null</font>, <font color="#404040">"rss"</font>);<br>    parser.<font
+ color="#000099">skip</font>();<br>    parser.<font color="#000099">read</font>(Xml.START_TAG, <font
+ color="#404040">null</font>, <font color="#404040">"channel"</font>);<br>    <br>    <font
+ color="#000000"><strong>boolean</strong></font> trucking <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">true</font>;<br>    <font
+ color="#000000"><strong>boolean</strong></font> first <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">true</font>;<br>    <font
+ color="#000000"><strong>while</strong></font> (trucking) <font
+ color="#000000"><strong>{</strong></font>
+      pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>      <font
+ color="#000000"><strong>if</strong></font> (pe.<font color="#000099">getType</font>() <font
+ color="#000000"><strong>==</strong></font> Xml.START_TAG) <font
+ color="#000000"><strong>{</strong></font>
+        String name <font
+ color="#000000"><strong>=</strong></font> pe.<font color="#000099">getName</font>();<br>        <font
+ color="#000000"><strong>if</strong></font> (name.<font color="#000099">equals</font>(<font
+ color="#404040">"item"</font>)) <font color="#000000"><strong>{</strong></font>
+          String title, link, description;
+          title <font
+ color="#000000"><strong>=</strong></font> link <font color="#000000"><strong>=</strong></font> description <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">null</font>;<br>          <font
+ color="#000000"><strong>while</strong></font> ((pe.<font
+ color="#000099">getType</font>() <font color="#000000"><strong>!=</strong></font> Xml.END_TAG) <font
+ color="#000000"><strong>||</strong></font>
+              (pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(name) <font
+ color="#000000"><strong>==</strong></font> <font color="#404040">false</font>)) <font
+ color="#000000"><strong>{</strong></font>
+            pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>            <font
+ color="#000000"><strong>if</strong></font> (pe.<font color="#000099">getType</font>() <font
+ color="#000000"><strong>==</strong></font> Xml.START_TAG <font
+ color="#000000"><strong>&amp;&amp;</strong></font>
+                pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(<font
+ color="#404040">"title"</font>)) <font color="#000000"><strong>{</strong></font>
+              pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>              title <font
+ color="#000000"><strong>=</strong></font> pe.<font color="#000099">getText</font>();<br>            <font
+ color="#000000"><strong>}</strong></font>
+            <font
+ color="#000000"><strong>else</strong></font> <font color="#000000"><strong>if</strong></font> (pe.<font
+ color="#000099">getType</font>() <font color="#000000"><strong>==</strong></font> Xml.START_TAG <font
+ color="#000000"><strong>&amp;&amp;</strong></font>
+                pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(<font
+ color="#404040">"link"</font>)) <font color="#000000"><strong>{</strong></font>
+              pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>              link <font
+ color="#000000"><strong>=</strong></font> pe.<font color="#000099">getText</font>();<br>            <font
+ color="#000000"><strong>}</strong></font>
+            <font
+ color="#000000"><strong>else</strong></font> <font color="#000000"><strong>if</strong></font> (pe.<font
+ color="#000099">getType</font>() <font color="#000000"><strong>==</strong></font> Xml.START_TAG <font
+ color="#000000"><strong>&amp;&amp;</strong></font>
+                pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(<font
+ color="#404040">"description"</font>)) <font color="#000000"><strong>{</strong></font>
+              pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>              description <font
+ color="#000000"><strong>=</strong></font> pe.<font color="#000099">getText</font>();<br>            <font
+ color="#000000"><strong>}</strong></font>
+          <font
+ color="#000000"><strong>}</strong></font>
+          mRSSListener.<font
+ color="#000099">itemParsed</font>(title, link, description);<br>        <font
+ color="#000000"><strong>}</strong></font>
+        <font
+ color="#000000"><strong>else</strong></font> <font color="#000000"><strong>{</strong></font>
+          <font
+ color="#000000"><strong>while</strong></font> ((pe.<font
+ color="#000099">getType</font>() <font color="#000000"><strong>!=</strong></font> Xml.END_TAG) <font
+ color="#000000"><strong>||</strong></font>
+              (pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(name) <font
+ color="#000000"><strong>==</strong></font> <font color="#404040">false</font>))<br>            pe <font
+ color="#000000"><strong>=</strong></font> parser.<font color="#000099">read</font>();<br>        <font
+ color="#000000"><strong>}</strong></font>
+      <font color="#000000"><strong>}</strong></font>
+      <font
+ color="#000000"><strong>if</strong></font> (pe.<font color="#000099">getType</font>() <font
+ color="#000000"><strong>==</strong></font> Xml.END_TAG <font
+ color="#000000"><strong>&amp;&amp;</strong></font>
+            pe.<font
+ color="#000099">getName</font>().<font color="#000099">equals</font>(<font
+ color="#404040">"rss"</font>))<br>        trucking <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">false</font>;<br>    <font
+ color="#000000"><strong>}</strong></font>
+  <font color="#000000"><strong>}</strong></font>
+<font color="#000000"><strong>}</strong></font>
+        </pre>
+</td>
+</tr>
+</tbody>
+</table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+<code>RSSParser</code> has two <code>parse()</code> methods. The first
+accepts a URL string as a parameter and sets up
+a separate thread for network access. It then calls the
+other <code>parse()</code>
+method; this method accepts an <code>InputStream</code> as a parameter
+and
+does the actual work.
+</p>
+<p>
+<code>RSSParser</code> uses kXML 1.2 to work its way through an RSS
+document. As
+you can see, the structure of the code roughly mirrors the structure of
+the
+document, which is a hallmark of a pull parser. After finding the
+opening
+<b>rss</b> and <b>channel</b> tags, <code>RSSParser</code> works its
+way through
+the document. For every <b>item</b> tag it finds, it attempts to parse
+the
+contained <b>title</b>, <b>link</b>, and <b>description</b> tags.
+When it comes
+to the end of an item, it sends the information it has parsed to a
+listener
+object of type <code>RSSListener</code>. Every time an item is
+parsed, the listener's <code>itemParsed()</code> is called. If an
+exception
+occurs, the <code>exception()</code> method of the listener will be
+called. The
+<code>RSSListener</code> interface consists of just those two methods:
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td>
+<pre><font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>interface</strong></font> RSSListener <font
+ color="#000000"><strong>{</strong></font>
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">itemParsed</font>(String title, String link,<br>      String description);<br>  <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">exception</font>(java.io.IOException ioe);<br><font
+ color="#000000"><strong>}</strong></font>
+        </pre>
+</td>
+</tr>
+</tbody>
+</table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<p>
+Since most of the hard work is done in <code>RSSParser</code>, writing
+a MIDlet
+that uses <code>RSSParser</code> is relatively easy. Let's look at a
+MIDlet,
+<code>RSSMIDlet</code>, that connects to a Meerkat feed and displays
+headlines.
+It also allows the user to view the full description for each story.
+The screen
+shots below show <code>RSSMIDlet</code> in action.
+</p>
+<table border="0" cellspacing="0" cellpadding="10" width="250"
+align="center">
+<tbody>
+<tr>
+<td align="center"><img
+src="/techtopics/mobility/images/midp-articles-parsingxml-titles.gif"
+border="0" height="128" width="96" alt="Title list">
+&nbsp;
+<img
+src="/techtopics/mobility/images/midp-articles-parsingxml-detail.gif"
+border="0" height="128" width="96" alt="Item detail"><span
+class="rtbtitle">Screen shots from <code>RSSMIDlet</code></span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>
+<code>RSSMIDlet</code> registers itself as the listener for events from
+<code>RSSParser</code>. Every time a new item is received,
+<code>RSSMIDlet</code> adds it to a <code>List</code> that is
+displayed for the
+user. Controls are also provided for seeing the full description for a
+particular story. <code>RSSMIDlet</code> connects to a URL that is
+specified in
+a system property. The default value for this URL is:
+</p>
+<blockquote>
+<pre>http://www.oreillynet.com/meerkat/?_fl=rss&amp;p=9<br></pre>
+</blockquote>
+<p>
+This URL simply requests Meerkat to return items from profile 9
+(Wireless) and
+to return the flavor RSS.
+</p>
+<p>
+The full source code for <code>RSSMIDlet</code> is shown below. Mostly
+it deals
+with the standard details of creating a user interface. Take particular
+note of
+<code>startApp()</code>, where the parser object is created and
+started, and
+<code>itemParsed()</code>, where items parsed by the
+<code>RSSParser</code> are delivered to the MIDlet.
+</p>
+<blockquote>
+<!-- BEGIN VCD7 CODE SAMPLE COMPONENT  -->
+<table border="0" cellpadding="10" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td>
+<pre><font color="#000000"><strong>import</strong></font> java.util.Vector;<br><br><font
+ color="#000000"><strong>import</strong></font> javax.microedition.lcdui.*;<br><font
+ color="#000000"><strong>import</strong></font> javax.microedition.midlet.*;<br><br><font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>class</strong></font> RSSMIDlet<br>    <font
+ color="#000000"><strong>extends</strong></font> MIDlet<br>    <font
+ color="#000000"><strong>implements</strong></font> CommandListener, RSSListener <font
+ color="#000000"><strong>{</strong></font>
+  <font color="#000000"><strong>private</strong></font> Display mDisplay;<br>  <font
+ color="#000000"><strong>private</strong></font> List mTitleList;<br>  <font
+ color="#000000"><strong>private</strong></font> Command mExitCommand, mDetailsCommand;<br>  <br>  <font
+ color="#000000"><strong>private</strong></font> <font color="#000000"><strong>boolean</strong></font> mInitialized;<br>  <font
+ color="#000000"><strong>private</strong></font> Vector mTitles, mDescriptions;<br>  <br>  <font
+ color="#000000"><strong>public</strong></font> <font color="#000099">RSSMIDlet</font>() <font
+ color="#000000"><strong>{</strong></font>
+    mInitialized <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">false</font>;<br>    mTitles <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Vector</font>();<br>    mDescriptions <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Vector</font>();<br>  <font color="#000000"><strong>}</strong></font>
+    
+  <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">startApp</font>() <font color="#000000"><strong>{</strong></font>
+    <font
+ color="#000000"><strong>if</strong></font> (mDisplay <font
+ color="#000000"><strong>==</strong></font> <font color="#404040">null</font>)<br>      mDisplay <font
+ color="#000000"><strong>=</strong></font> Display.<font color="#000099">getDisplay</font>(<font
+ color="#404040">this</font>);<br>    <br>    <font color="#000000"><strong>if</strong></font> (mInitialized <font
+ color="#000000"><strong>==</strong></font> <font color="#404040">false</font>) <font
+ color="#000000"><strong>{</strong></font>
+      <font color="#009900"><em>// Put up the waiting screen.</em></font>
+      Screen waitScreen <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Form</font>(<font color="#404040">"Connecting..."</font>);<br>      mDisplay.<font
+ color="#000099">setCurrent</font>(waitScreen);<br>      <font
+ color="#009900"><em>// Create the title list.</em></font>
+      mTitleList <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">List</font>(<font color="#404040">"Headlines"</font>, List.IMPLICIT);<br>      mExitCommand <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Command</font>(<font color="#404040">"Exit"</font>, Command.EXIT, <font
+ color="#009191">0</font>);<br>      mDetailsCommand <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Command</font>(<font color="#404040">"Details"</font>, Command.SCREEN, <font
+ color="#009191">0</font>);<br>      mTitleList.<font color="#000099">addCommand</font>(mExitCommand);<br>      mTitleList.<font
+ color="#000099">addCommand</font>(mDetailsCommand);<br>      mTitleList.<font
+ color="#000099">setCommandListener</font>(<font color="#404040">this</font>);<br>      <font
+ color="#009900"><em>// Start parsing.</em></font>
+      String url <font
+ color="#000000"><strong>=</strong></font> <font color="#000099">getAppProperty</font>(<font
+ color="#404040">"RSSMIDlet.URL"</font>);<br>      RSSParser parser <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">RSSParser</font>();<br>      parser.<font
+ color="#000099">setRSSListener</font>(<font color="#404040">this</font>);<br>      parser.<font
+ color="#000099">parse</font>(url);<br>      mInitialized <font
+ color="#000000"><strong>=</strong></font> <font color="#404040">true</font>;<br>    <font
+ color="#000000"><strong>}</strong></font>
+    <font color="#000000"><strong>else</strong></font>
+      mDisplay.<font
+ color="#000099">setCurrent</font>(mTitleList);<br>  <font
+ color="#000000"><strong>}</strong></font>
+  
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">pauseApp</font>() <font
+ color="#000000"><strong>{}</strong></font>
+  
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">destroyApp</font>(<font
+ color="#000000"><strong>boolean</strong></font> unconditional) <font
+ color="#000000"><strong>{}</strong></font>
+  
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">commandAction</font>(Command c, Displayable s) <font
+ color="#000000"><strong>{</strong></font>
+    <font color="#000000"><strong>if</strong></font> (c <font
+ color="#000000"><strong>==</strong></font> mExitCommand)<br>      <font
+ color="#000099">notifyDestroyed</font>();<br>    <font color="#000000"><strong>else</strong></font> <font
+ color="#000000"><strong>if</strong></font> (c <font color="#000000"><strong>==</strong></font> mDetailsCommand <font
+ color="#000000"><strong>||</strong></font>
+          c <font
+ color="#000000"><strong>==</strong></font> List.SELECT_COMMAND) <font
+ color="#000000"><strong>{</strong></font>
+      <font color="#000000"><strong>int</strong></font> selection <font
+ color="#000000"><strong>=</strong></font> mTitleList.<font
+ color="#000099">getSelectedIndex</font>();<br>      <font
+ color="#000000"><strong>if</strong></font> (selection <font
+ color="#000000"><strong>==</strong></font> <font color="#000000"><strong>-</strong></font><font
+ color="#009191">1</font>) <font color="#000000"><strong>return</strong></font>;<br>      String title <font
+ color="#000000"><strong>=</strong></font> (String)mTitles.<font
+ color="#000099">elementAt</font>(selection);<br>      String description <font
+ color="#000000"><strong>=</strong></font>
+          (String)mDescriptions.<font
+ color="#000099">elementAt</font>(selection);<br>      Alert a <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Alert</font>(title, description, <font color="#404040">null</font>, <font
+ color="#404040">null</font>);<br>      a.<font color="#000099">setTimeout</font>(Alert.FOREVER);<br>      mDisplay.<font
+ color="#000099">setCurrent</font>(a, mTitleList);<br>    <font
+ color="#000000"><strong>}</strong></font>
+  <font color="#000000"><strong>}</strong></font>
+  
+  <font
+ color="#000000"><strong>public</strong></font> <font color="#000000"><strong>void</strong></font> <font
+ color="#000099">itemParsed</font>(String title, String link,<br>      String description) <font
+ color="#000000"><strong>{</strong></font>
+    mTitles.<font
+ color="#000099">addElement</font>(title);<br>    mDescriptions.<font
+ color="#000099">addElement</font>(description);<br><br>    mDisplay.<font
+ color="#000099">setCurrent</font>(mTitleList);<br>    mTitleList.<font
+ color="#000099">append</font>(title, <font color="#404040">null</font>);<br>  <font
+ color="#000000"><strong>}</strong></font>
+  
+  <font color="#000000"><strong>public</strong></font> <font
+ color="#000000"><strong>void</strong></font> <font color="#000099">exception</font>(java.io.IOException ioe) <font
+ color="#000000"><strong>{</strong></font>
+    Alert a <font
+ color="#000000"><strong>=</strong></font> <font color="#000000"><strong>new</strong></font> <font
+ color="#000099">Alert</font>(<font color="#404040">"Exception"</font>, ioe.<font
+ color="#000099">toString</font>(),<br>        <font color="#404040">null</font>, <font
+ color="#404040">null</font>);<br>    a.<font color="#000099">setTimeout</font>(Alert.FOREVER);<br>    mDisplay.<font
+ color="#000099">setCurrent</font>(a, mTitleList);<br>  <font
+ color="#000000"><strong>}</strong></font>
+<font color="#000000"><strong>}</strong></font>
+        </pre>
+</td>
+</tr>
+</tbody>
+</table>
+<span class="sp20"> </span><br>
+<!-- END VCD7 CODE SAMPLE COMPONENT  -->
+</blockquote>
+<!-- subhead -->
+<p><b>Summary</b>
+</p>
+<p>
+XML is a viable choice for data transport to J2ME
+devices. XML is a good choice for some applications and not for others.
+If you
+need the decoupling that XML provides, or if you want to connect to an
+existing service using XML, or if the data exchange between server and
+client
+must be highly structured, then XML is an excellent choice, assuming
+you
+can pay the price of including an XML parser in your MIDlet.
+Small parsers are readily available and performance is
+acceptable, assuming you are careful about the design of your
+documents. If
+necessary, you can reduce the size of your MIDlet suite JAR by using an
+obfuscator.
+</p>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td><img src="/im/a.gif" width="1" height="4" border="0" alt=" "></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- END FRAGMENT | HR TAG -->
+<!-- about --><span class="byline"><b>About the Author:</b> Jonathan
+Knudsen
+<a href="mailto:jonathan.knudsen@sun.com">[e-mail]</a>
+<a href="http://jonathanknudsen.com/" target="_blank">[home page]</a>
+is the author of several books,
+including
+<a href="http://www.apress.com/book/bookDisplay.html?bID=138"
+target="_blank"><i>Wireless Java (second edition)</i></a>,
+<a href="http://www.oreilly.com/catalog/lmstorms/" target="_blank"><i>The
+Unofficial Guide to LEGO MINDSTORMS Robots</i></a>,
+<a href="http://www.oreilly.com/catalog/learnjava2/" target="_blank"><i>Learning
+Java (second edition)</i></a>, and
+<a href="http://www.oreilly.com/catalog/java2d/" target="_blank"><i>Java
+2D Graphics</i></a>.
+Jonathan has written
+extensively about Java and Lego robots,
+including articles for JavaWorld, EXE, NZZ Folio,
+and the O'Reilly Network.
+Jonathan
+holds a degree in mechanical engineering from Princeton University.
+</span><br>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td><img src="/im/a.gif" width="1" height="4" border="0" alt=" "></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- END FRAGMENT | HR TAG -->
+<br>
+<!-- BEGIN RATE AND REVIEW -->
+<script type="text/javascript">
+<!-- Hide script from older browsers
+// Popup window function
+function onRateSubmitHandler()
+{
+var w = window.open("","foo","width=400,height=200,status=no,toolbar=no");
+w.setTimeout("window.close();", 30000 );
+return true;
+}
+// End of javascript 
+-->
+</script><br>
+<form name="article_rating" method="post"
+action="http://survey.sun.com/ViewsFlash/servlet/viewsflash"
+onsubmit="return onRateSubmitHandler()" target="foo">
+<table width="100%" cellspacing="0" cellpadding="1" border="0"
+class="white" style="margin-top: 7px;">
+<tbody>
+<tr>
+<td>
+<table width="100%" cellspacing="0" cellpadding="4" border="0">
+<tbody>
+<tr>
+<td class="dkgrey1"><b>Reader Feedback</b></td>
+</tr>
+<tr>
+<td class="ltgrey"><b><a name="VFquality"></a>
+<input type="radio" name="quality" value="Excellent">
+Excellent&nbsp;&nbsp;
+<input type="radio" name="quality" value="Good">
+Good&nbsp;&nbsp;
+<input type="radio" name="quality" value="Fair">
+Fair&nbsp;&nbsp;
+<input type="radio" name="quality" value="Poor">
+Poor&nbsp;&nbsp;
+</b></td>
+</tr>
+<tr>
+<td class="ltgrey">
+<p>If you have other comments or ideas for future
+technical tips, please type them here: </p>
+<a name="VFcomments"></a>
+<b>Comments:</b><br>
+<textarea name="comments" cols="60" rows="3"
+wrap="virtual"></textarea></td>
+</tr>
+<tr>
+<td class="ltgrey"><a name="VFEmail"></a>
+<b>If you would like a reply to your comment, please
+submit your email address:</b><br>
+<input type="text" name="Email" value="" size="35"
+maxlength="60"> Note: We may not respond to all
+submitted comments.</td>
+</tr>
+<tr>
+<td class="ltgrey"><input type="submit" border="0"
+value="&nbsp;Submit &raquo;&nbsp;">
+<a name="VFURL"></a><input type="hidden" name="URL"
+value="developers.sun.com/techtopics/mobility/midp/articles/parsingxml/">
+<a name="VFArticleTitle"></a><input type="hidden"
+name="ArticleTitle" value="Parsing XML in J2ME">
+<a name="VFArticleAuthor"></a><input type="hidden"
+name="ArticleAuthor" value="Jonathan Knudsen">
+<input type="hidden" name="cmd" value="tally"><input
+type="hidden" name="pollid" value="CNP!tGreene">
+<input type="hidden" name="results"
+value="? http://developers.sun.com/ratereviewthankyou.html"><input
+type="hidden" name="charset" value="ISO-8859-1">
+<p> Have a question about Java programming? Use <a
+href="http://java.sun.com/developer/support/">Java Online Support</a>.
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</form>
+<!-- END RATE AND REVIEW -->
+<br>
+<!-- BEGIN FRAGMENT | HR TAG -->
+<div class="contentdivider">
+<table border="0" cellpadding="0" cellspacing="0" width="100%"
+class="grey4">
+<tbody>
+<tr>
+<td><img src="/im/a.gif" width="1" height="4" border="0" alt=" "></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- END FRAGMENT | HR TAG -->
+<br>
+<span class="body"><a href="#top">Back To Top</a></span><br>
+<!-- ================ -->
+<!-- End Main Content --><!-- ================ -->
+</body>
+</html>
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+<!--stopindex-->
+<!-- END CENTRAL COLUMN COMPONENTS -->
+</td><td valign="top">
+<!-- BEGIN RIGHT COLUMN COMPONENTS -->
+<!-- END RIGHT COLUMN COMPONENTS -->
+</td></tr>
+<!-- BEGIN SPACER ROW -->
+<tr><td><img src="/im/a.gif" width="560" height="1" border="0" alt=" " /></td><td><img src="/im/a.gif" width="170" height="1" border="0" alt=" " /></td></tr>
+<!-- END SPACER ROW -->
+</table>
+<!-- END WRAPPER TABLE, 2 COLUMN, MAIN/RIGHT -->
+<!-- BEGIN VNV5 FOOTER  -->
+<table border="0" cellpadding="0" cellspacing="10" width="100%">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="vatop">
+<tr>
+<td colspan="4" valign="top" class="grey3"><img src="/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+<tr>
+<td><img src="/im/a.gif" width="190" height="1" border="0" alt=" " /><br />
+<a href="http://www.sun.com"><img src="/im/logo_sun_small_sdn.gif" width="61" height="29" border="0" alt=" " vspace="5"/></a></td>
+<td width="100%" valign="top"><img src="/im/a.gif" width="350" height="1" border="0" alt=" " /><br />
+<div class="footer">
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910015">Company Info</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">About This Site</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910011">Press</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/contact/index.jsp">Contact Us</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910014">Employment</a><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910012">How to Buy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910009">Licensing</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910013">Terms of Use</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910016">Privacy</a> &nbsp;|&nbsp;
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910017">Trademarks</a>
+<br /><span class="sp10">&nbsp;</span><br />
+<br /><span class="sp10">&nbsp;</span><br />
+Copyright 1994-2004 Sun Microsystems, Inc.
+</div></td>
+<td><img src="/im/a.gif" width="40" height="1" border="0" alt=" " /></td>
+<td valign="top"><div class="footer"><b><a href="http://developers.sun.com/dispatcher.jsp?uid=6910010">A Sun Developer Network Site</a></b></div>
+<div class="footer">
+<img src="/im/a.gif" width="170" height="1" border="0" alt=" " /><br />
+Unless otherwise licensed, code in all technical manuals herein (including articles, FAQs, samples) is provided under this <a href="http://developers.sun.com/dispatcher.jsp?uid=6910008">License</a>.
+<br /><span class="sp5">&nbsp;</span><br />
+<a href="http://developers.sun.com/dispatcher.jsp?uid=6910006"><img src="/im/button_xml.gif" width="36" height="14" align="top" border="0" alt="XML" /></a>&nbsp;<a href="http://developers.sun.com/dispatcher.jsp?uid=6910007">Content Feeds</a>
+</div></td></tr>
+<tr><td colspan="4" valign="top" class="grey3"><img src="/im/a.gif" width="1" height="2" border="0" alt=" " /></td></tr>
+</table>
+</td></tr>
+</table>
+<!-- END VNV5 FOOTER -->
+</body>
+</html>
+
+
+
+
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+

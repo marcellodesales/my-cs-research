@@ -1,0 +1,207 @@
+P.smaller {
+	MARGIN-TOP: 3pt; MARGIN-BOTTOM: 3pt
+}
+INPUT {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: arial
+}
+SELECT {
+	FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: arial
+}
+.tabletext {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: verdana, helvetica
+}
+.footer {
+	FONT-SIZE: 8pt; COLOR: #cccccc; FONT-FAMILY: arial, helvetica
+}
+A.footer {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.footer:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.footer:visited {
+	COLOR: #ffffff
+}
+.leftnav {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; MARGIN-LEFT: 2px; COLOR: #666699; FONT-FAMILY: arial, helvetica; LETTER-SPACING: -0.04em
+}
+A.leftnav {
+	COLOR: #666699; TEXT-DECORATION: none
+}
+A.leftnav:hover {
+	COLOR: #cc0033; TEXT-DECORATION: underline
+}
+A.leftnav:visited {
+	COLOR: #666699
+}
+A.leftnav:hover {
+	COLOR: #cc0033; TEXT-DECORATION: underline
+}
+.leftnavpick {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-LEFT: 13px; COLOR: #cc0033; FONT-FAMILY: arial, helvetica
+}
+A.leftnavpick {
+	FONT-WEIGHT: bold; COLOR: #cc0033; TEXT-DECORATION: none
+}
+A.leftnavpick:visited {
+	COLOR: #cc0033
+}
+A.leftnavpick:hover {
+	COLOR: #cc0033; TEXT-DECORATION: underline
+}
+.TOCStoryLink {
+	FONT-WEIGHT: bold; FONT-SIZE: 9.5pt; COLOR: #666699; FONT-FAMILY: times, sarif; TEXT-DECORATION: underline
+}
+A.TOCStoryLink {
+	FONT-WEIGHT: bold; COLOR: #666699; TEXT-DECORATION: underline
+}
+A.TOCStoryLink:hover {
+	COLOR: #cc0033; TEXT-DECORATION: underline
+}
+A.TOCStoryLink:visited {
+	COLOR: #666699; TEXT-DECORATION: underline
+}
+A.TOCStoryLink:hover {
+	COLOR: #cc0033; TEXT-DECORATION: underline
+}
+.TOCHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 18pt; COLOR: #000000; FONT-FAMILY: times, serif
+}
+A.TOCHead {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.TOCHead:hover {
+	COLOR: #cc0033
+}
+A.TOCHead:visited {
+	COLOR: #000000
+}
+A.TOCHead:hover {
+	COLOR: #cc0033
+}
+.TOCGrayHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; FONT-FAMILY: arial, helvetica
+}
+.qa {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; COLOR: #cc0033; FONT-FAMILY: arial
+}
+.black10ptbld {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: verdana, helvetica
+}
+.black12ptbld {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #000000; FONT-FAMILY: arial, helvetica
+}
+.black14ptbld {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; COLOR: #000000; FONT-FAMILY: arial, helvetica
+}
+.black8pt {
+	FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: verdana
+}
+.codesnippet {
+	FONT-SIZE: 10pt; COLOR: #666666; FONT-FAMILY: courier
+}
+.purp8pt {
+	FONT-SIZE: 8pt; COLOR: #993399; FONT-FAMILY: verdana, helvetica
+}
+A.purp7pt {
+	FONT-SIZE: 7pt; COLOR: #993399; FONT-FAMILY: arial, helvetica; TEXT-DECORATION: underline
+}
+.purp10ptbld {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #993399; FONT-FAMILY: verdana, helvetica
+}
+.FigureCap {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-FAMILY: arial, helvetica
+}
+A.FigureCap {
+	COLOR: #666699; TEXT-DECORATION: none
+}
+.TableCap {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-FAMILY: arial, helvetica
+}
+A.FigureCap:hover {
+	COLOR: #666699; TEXT-DECORATION: underline
+}
+.DropCap {
+	FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #003399
+}
+.SubHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #003399; FONT-FAMILY: arial, helvetica
+}
+.Question {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; FONT-STYLE: italic; FONT-FAMILY: arial, helvetica
+}
+A.SubHead {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A.SubHead:hover {
+	TEXT-DECORATION: underline
+}
+.GraySubHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #666666; FONT-FAMILY: times, serif
+}
+.BlackSubHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: arial, helvetica
+}
+.AboutAuthor {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #666666; FONT-STYLE: italic; FONT-FAMILY: serif, helvetica
+}
+.FeatureHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #003399; FONT-FAMILY: times, serif
+}
+.pullquote {
+	FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #000099; FONT-STYLE: italic; FONT-FAMILY: Arial, helvetica
+}
+.FeatureDek {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; WIDTH: 250pt; COLOR: #000000; FONT-FAMILY: arial, helvetica
+}
+.toolport {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666699; FONT-FAMILY: arial, helvetica
+}
+.breadcrumb {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #666666; FONT-FAMILY: arial, helvetica
+}
+.SpecialTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; COLOR: #000099; FONT-STYLE: italic; FONT-FAMILY: Verdana
+}
+.inputlabel {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #666699; FONT-FAMILY: arial, helvetica
+}
+.WPBoxSmall {
+	FONT-SIZE: 8pt; MARGIN-LEFT: 10pt; COLOR: #666699; FONT-FAMILY: arial, helvetica
+}
+.WPBoxComp {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; MARGIN-LEFT: 20pt; COLOR: #000000; FONT-FAMILY: arial, helvetica
+}
+.WPBoxLink {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #666699; FONT-FAMILY: arial, helvetica
+}
+A.WPBoxLink {
+	COLOR: #666699; TEXT-DECORATION: underline
+}
+A.WPBoxLink:visited {
+	COLOR: #666699; TEXT-DECORATION: underline
+}
+.SideBarSubHead {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #000000; font-face: arial, helvetica
+}
+.SideBarTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #003399; font-face: arial, helvetica
+}
+.nlsubhead {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #0033cc; FONT-FAMILY: arial, helvetica
+}
+.SubscribeText {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: arial
+}
+A.SubscribeText {
+	TEXT-DECORATION: underline
+}
+.black8pt {
+	FONT-SIZE: 10pt; FONT-FAMILY: Arial, Helvetica
+}
+.popuptext {
+	FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica
+}
+UL {
+	FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Helvetica, Arial
+}

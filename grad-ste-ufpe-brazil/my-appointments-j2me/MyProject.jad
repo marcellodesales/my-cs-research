@@ -1,0 +1,9 @@
+MIDlet-3: SumMidlet,,br.ufpe.cin.stp.view.midp.SumMidlet
+MIDlet-2: EchoMidlet,,br.ufpe.cin.stp.view.midp.EchoMidlet
+MIDlet-1: SumForm,,br.ufpe.cin.stp.view.midp.SumForm
+MIDlet-Jar-URL: MyProject.jar
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Version: 1.0.0
+MIDlet-Name: MyProject Midlet Suite
+MIDlet-Vendor: Midlet Suite Vendor
+MicroEdition-Profile: MIDP-1.0

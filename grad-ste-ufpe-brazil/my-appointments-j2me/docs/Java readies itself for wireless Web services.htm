@@ -1,0 +1,880 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0069)http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless_p.html -->
+<HTML><HEAD><TITLE>Java readies itself for wireless Web services</TITLE>
+<META http-equiv=content-type content="text/html; charset=windows-1252">
+<META 
+content=" Wireless, Web Services, XML, J2ME, J2EE, VoiceXML, Security&#13;&#13;" 
+name=keywords>
+<META 
+content="&#13;&#13;&#10;&#13;&#13;&#10;The future world of pervasive computing demands powerful and flexible development platforms. Is Java up to the task? Can Java provide end-to-end solutions for wireless Web services networks? In this article, the debut of JavaWorld's Wireless Java column, Michael Juntao Yuan and Ju Long discuss the definition, importance, and architecture of wireless Web services. They show how Java's advantages extend to wireless Web services applications and present core Java technologies for supporting such applications. Those technologies include advanced XML processing, voice-based user interfaces, security, and high performance VMs. (4,200 words; June 21, 2002)&#13;&#13;&#10;&#13;&#13;&#10;" 
+name=description>
+<META content=NOARCHIVE name=GOOGLEBOT><BASEFONT 
+face="verdana, arial, helvetica" size=2>
+<STYLE type=text/css>CODE {
+	FONT-WEIGHT: normal; FONT-SIZE: 110%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+PRE {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 90%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+            <!--
+            function openBrWindow() {
+                win=window.open("http://www.javaworld.com/channel_content/jw-story-feedback.shtml",'Feedback','width=600,height=330,toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,resizable=yes');
+            }
+            -->
+        </SCRIPT>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY text=#000000 bottomMargin=0 vLink=#990033 aLink=#990033 link=#990033 
+bgColor=#ffffff leftMargin=0 topMargin=0 rightMargin=0 marginwidth="0" 
+marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=186 bgColor=#006699 colSpan=2><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Java readies itself for wireless Web services_arquivos/top_jwlogo.gif" 
+      width=186 border=0></A></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- START TOP 728x90 BANNER jw-articles-top-ad.txt  -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+        here!</FONT><BR></TD></TR></TBODY></TABLE><!-- END TOP 728x90 BANNER --></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=160 bgColor=#006699><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=160 border=0></TD>
+    <TD vAlign=top align=left width=26 bgColor=#ffffff><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/c_whtbottom.gif" 
+      width=8 border=0></TD>
+    <TD width="100%"><IMG height=1 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center noWrap align=middle width=160 
+      bgColor=#006699><NOBR><FONT face="Verdana, Arial, Sans-serif" 
+      color=#ffffff size=1>June 2002</FONT></NOBR><IMG height=1 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=160 border=0></TD>
+    <TD width=8><IMG height=1 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=top width=8 bgColor=#006699><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/c_bltlft.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#006699>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>HOME</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/features/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FEATURED TUTORIALS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/columns/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>COLUMNS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>NEWS &amp; REVIEWS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/javaforums/"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FORUM</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/resources/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>JW RESOURCES</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>ABOUT JW</FONT></A></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top align=right width=8 bgColor=#006699><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/c_bltrt.gif" 
+      width=8 border=0></TD>
+    <TD width=8><IMG height=1 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE><!--        <table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr valign="top">
+                <td bgcolor="#006699" width="160" align="middle" valign="top">
+                    <table width="160" border="0" cellspacing="0" cellpadding="0" bgcolor="#006699" summary=""> --><!-- #include snippets/jw-search-snippet.txt --><!--     <tr>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td><img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>ARCHIVE</strong></font><br>
+                                <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <strong><a href="http://www.javaworld.com/channel_content/jw-topical-index.shtml"><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff">TOPICAL INDEX</font></a></strong></font><br>--><!-- #include snippets/jw-topical-generic.txt --><!--                         <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>FREE JAVAWORLD NEWSLETTERS</strong></font><br>
+                                 <img height=1 alt="" src="images/rule_ltblue.gif" width=144 vspace=2 ><br></td>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                        </tr>
+                        <tr valign="bottom">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_gryblbottom.gif" width=8 ></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr>
+                       <td width="8" bgcolor="#cccccc"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                           <td align="middle" bgcolor="#cccccc">  --><!-- #include snippets/jw-articles-left-ad.txt --><!--      </td>
+                       <td width="8" bgcolor="#cccccc"><img height=8 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr valign="top">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_grybltop.gif" width=8 ></td>
+                        </tr>
+                    </table> --><IMG height=8 
+src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+width=160 border=0></TD> <TD width="8"><IMG height=1 alt="" 
+src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+width=8></TD> <TD width="100%"><!-- ## MAIN CONTENT STARTS HERE ### --><FONT 
+face="verdana, arial, helvetica" size=2>
+<P><STRONG>Wireless Java </STRONG></P>
+<P>
+<H1 align=center>Java readies itself for wireless Web services </H1>
+<H3 align=center>Emerging Java platforms are well positioned for wireless Web 
+services developers </H3>
+<P></P><!--<BLOCKQUOTE><STRONG>Summary</STRONG><BR>-->
+<BLOCKQUOTE><STRONG>Summary</STRONG><BR>The future world of pervasive 
+  computing demands powerful and flexible development platforms. Is Java up to 
+  the task? Can Java provide end-to-end solutions for wireless Web services 
+  networks? In this article, the debut of <EM>JavaWorld'</EM>s <STRONG>Wireless 
+  Java</STRONG> column, Michael Juntao Yuan and Ju Long discuss the definition, 
+  importance, and architecture of wireless Web services. They show how Java's 
+  advantages extend to wireless Web services applications and present core Java 
+  technologies for supporting such applications. Those technologies include 
+  advanced XML processing, voice-based user interfaces, security, and high 
+  performance VMs. (<EM>4,200 words</EM>; <STRONG>June 21, 2002</STRONG>) 
+</BLOCKQUOTE><!--</BLOCKQUOTE>--><STRONG>By Michael Juntao Yuan and Ju Long 
+</STRONG>
+<P><IMG height=2 
+src="Java readies itself for wireless Web services_arquivos/rule_ltblue.gif" 
+width="100%"></P>
+<P><BR></P><!-- #include snippets/jw-articles-336x280.txt -->
+<P>
+<P><IMG height=29 alt=C 
+src="Java readies itself for wireless Web services_arquivos/C.gif" width=27 
+align=left>onvenience is the major motivation behind our adoption of wireless 
+technology. The ability to access information anytime from anywhere drastically 
+increases our productivity as well as our quality of life by allowing us to work 
+from home, car, school, or vacation resorts, and manage time more flexibly. 
+Besides the unprecedented convenience, a wireless Internet also improves the 
+quality of the information services. By taking advantage of wireless devices' 
+pervasive nature, you can dynamically customize information services for each 
+user based on her location, mood, or other real-time data.
+<P>The wireless Internet's dynamic nature requires a new breed of dynamic 
+services, which likely involves many service providers. Even simple mobile 
+commerce tasks require much expertise. For example, a straightforward stock 
+trade application necessitates services such as user authentication and 
+authorization, customer relationship management, stock quotes and tracking, 
+trade executing, and fund transfer. Those services are built upon more basic 
+services, such as Internet connectivity, security, and transactional reliability 
+monitors. The IT industry's history has shown that a single vendor cannot offer 
+the best expertise or services in all fields. The best economic model features 
+small vendors providing modularized service components, each serving its core 
+competency. Those modularized reusable software components are called <EM>Web 
+services</EM>. To minimize bandwidth and CPU usage, wireless users can 
+selectively use only the core services they need. Applications that utilize a 
+wireless front end for pervasive human interfaces and Web services on the back 
+end to leverage the Internet's vast information resources are called 
+<EM>wireless Web services</EM> applications.
+<P>Web services from different vendors must interoperate from machine to machine 
+to provide transparent services to customers. Distributed computing services 
+have long been able to work with each other through remote procedure calls (RPC) 
+and remote object frameworks. However, building such an interoperable network on 
+an Internet scale requires industry-wide standardization of communication 
+protocols. We have XML-based protocols to standardize Web services' dynamic 
+discovery processes (UDDI, or Universal Description, Discovery, and 
+Integration); service interfaces (WSDL, or Web Services Description Language); 
+and asynchronous and synchronous messaging (SOAP, or Simple Object Access 
+Protocol, and XML-RPC). On top of those communication protocols, other protocols 
+provide more enhanced functionalities, such as the XML Encryption and XML 
+Digital Signature protocols for improving security. For instance, you can embed 
+an XML digital signature in a SOAP message to guarantee that message's 
+integrity. 
+<P>Throughout this article, we explain wireless Web services' network 
+architectures, how Java fits into the wireless Web services picture, evolving 
+technologies, and future trends. Since much literature already discusses 
+server-side Java platforms and Java-based Web services, we focus only on Java's 
+role in <EM>wireless</EM> application development. 
+<P><FONT size=+1><STRONG>Wireless Web services architectures 
+</STRONG></FONT><BR>A wireless Web service can feature one of the following 
+architectures: wireless portal network, wireless extended Internet, or wireless 
+ad hoc network. 
+<P><STRONG>Wireless portal network </STRONG><BR>In a wireless portal network, 
+the wireless information devices connect to the Internet backend services 
+through portal entry points. The portal creates a "walled garden" and controls 
+access to Internet contents. Wireless portal networks support widely deployed 
+thin-client wireless technology, such as WAP (Wireless Application Protocol). In 
+general, a WAP-based Web services portal works like this: The wireless device 
+sends an information request embedded in a WML (Wireless Markup Language) form. 
+The portal receives the message, checks the user's privilege, and then 
+translates the request to a SOAP message or an XML-RPC call to an appropriate 
+partner Web service. The Web service replies, and the portal translates the 
+response back to a WML document. The portal sends the WML document back to the 
+wireless device for display. In this way, the portal works as a proxy for 
+wireless users. The portal operator provides user authorization and management 
+services. Many partner vendors can provide real application Web services under 
+the ASP (application service provider) model.
+<P>The advantages of thin client-based portal networks include:
+<P>
+<UL>
+  <LI>The technology is mature, widely deployed, and well supported. If you 
+  require immediate wireless capabilities, you should investigate this option.
+  <P></P>
+  <LI>Thin clients require little computing power and therefore can run on 
+  small, light devices.
+  <P></P>
+  <LI>Only server-side computers can handle many computationally intensive 
+  application functionalities—such as voice recognition engines, as we will 
+  discuss later. </LI></UL>
+<P>However, wireless portal network combined with thin clients might not fit 
+best for dynamic wireless Web services for the following reasons:
+<P>
+<UL>
+  <LI>From the business viewpoint, the portal architecture requires a central 
+  entity to control all user data. Backend service providers must rely on the 
+  portal architecture to access users. The portal provider decides what services 
+  can access its walled garden and demands a profit share from partners. That 
+  could cause serious business concerns if an untrustworthy, insecure, or 
+  abusive monopoly controlled the portal.
+  <P></P>
+  <LI>The portal architecture has a central failure point, which exposes the 
+  whole network to attacks.
+  <P></P>
+  <LI>Thin clients offer limited user interfaces. They are not pervasive.
+  <P></P>
+  <LI>Thin clients do not remember complex application state information; thus, 
+  the user must navigate through multiple pages to complete complex tasks, such 
+  as transactions. Not only is that inconvenient to the user, but it is also 
+  slow and uses precious wireless bandwidth. Moreover, it renders thin clients 
+  vulnerable to network interruptions.
+  <P></P>
+  <LI>Thin clients only support limited and predefined security protocols, such 
+  as HTTPS secure connections. We cannot have application-specific flexible 
+  security policies. In case of a WAP portal, a misconfigured gateway can easily 
+  cause security gaps.</LI></UL>
+<P>New advances in wireless devices technology allow small devices to run more 
+sophisticated client software, or <EM>fat clients</EM>. A network structure 
+designed for fat clients can eliminate many problems of the thin-client portal 
+network solution. 
+<P><STRONG>Wireless extended Internet </STRONG><BR>Wireless extended Internet is 
+the wired Internet's expansion to wireless devices. Today's handheld devices 
+have more computing power than many desktop PCs did 10 years ago. Wireless 
+information devices can have their own IP addresses (through Internet Protocol 
+6) and full network functionalities. Those devices usually run smart, fat 
+clients that interact with multiple backend services simultaneously and 
+store/process application data on the device. 
+<P>Smart devices support sophisticated user interfaces, offline processing, and 
+automatic transactions. They can also implement flexible, application-specific 
+security policies. Like the Internet itself, the wireless extended Internet 
+architecture is decentralized (without a controlling business entity) and 
+eliminates any single point of failure. However, as you will see later, 
+centralized Web services hubs are still required to support advanced security 
+schemes (such as single sign-on authentication) and user interfaces (such as 
+VoiceXML engines). Unlike the portal architecture, the hubs themselves can be 
+decentralized. Different vendors can provide similar hub services that can 
+interoperate with each other. Figure 1 shows a topography diagram for such 
+networks. 
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=512 
+      src="Java readies itself for wireless Web services_arquivos/jw-0621-wireless1.gif" 
+      width=396 vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 1. Wireless Web services architecture. All communications use 
+      XML-over-HTTP protocols. Server-side Web services group into single 
+      sign-on security realms. In reality, hubs other than single sign-on 
+      authenticators exist. </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>The extended wireless Internet architectures blended with decentralized hub 
+Web services will provide the foundation for future wireless Web services 
+applications, an approach we focus on throughout this article. Since most of the 
+supporting technologies are just emerging, many challenges prevail. In later 
+sections, we will discuss those challenges and suggest solutions. 
+<P><STRONG>Wireless ad hoc network </STRONG><BR>The wireless ad hoc networks 
+allow wireless devices to become servers to peers. Wireless peers can provide 
+content, network traffic routing, and many other services. The ad hoc network 
+truly leverages wireless networks' dynamic nature. However, because wireless 
+peer-to-peer technology is still embryonic, its many performance and security 
+issues must be solved before it can be widely used. 
+<P>We do not discuss wireless ad hoc networks in detail in this article. Readers 
+interested in Java-based peer-to-peer frameworks should check out <A 
+href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless_p.html#resources">Jxta</A>, 
+Sun Microsystems' open source peer-to-peer framework. Jxta can run on both 
+server computers and handheld devices. <!-- break -->
+<P><FONT size=+1><STRONG>What is Java 2 Platform, Micro Edition? 
+</STRONG></FONT><BR>In addition to choosing the most appropriate wireless Web 
+services architecture, we must also choose the most powerful and flexible 
+development platform. In this section, we examine the Java development platform 
+for wireless applications—Java 2 Platform, Micro Edition (J2ME).
+<P>Though a lightweight version of Java 2 Platform, Standard Edition (J2SE), 
+J2ME is not exactly a subset of J2SE. J2ME keeps some of the J2SE core library 
+APIs, but substitutes others with lightweight components through the 
+<CODE>javax.microedition</CODE> package. Sun, understanding the large variety of 
+wireless devices and realizing that one size does not fit all, divided the J2ME 
+platform into several layers and groups.
+<P>At the bottom of the J2ME hierarchy are two <EM>configurations</EM> that 
+provide JVMs and core language libraries. Connected Limited Device Configuration 
+(CLDC) is for the smallest wireless devices with 160 KB or more memory and slow 
+16/32-bit processors. CLDC has limited math, string, and I/O (input/output) 
+functionalities and lacks features such as JNI (Java Native Interface), custom 
+class loaders, and reflection. As a result, CLDC virtual machines cannot support 
+most J2SE standard libraries.
+<P>Connected Device Configuration (CDC) is for more capable wireless devices 
+with at least 2 MB of memory and 32-bit processors. CDC supports a fully 
+featured Java 2 VM and therefore can take advantage of most J2SE libraries. 
+<P>Configurations provide the most basic and generic language functionalities. 
+On top of each configuration are multiple <EM>profiles</EM> targeted at specific 
+devices. The profiles provide more advanced APIs such as a graphical user 
+interface (GUI), persistent storage, security, and network connectivity. Mobile 
+Information Device Profile (MIDP) and PDA Profile, two profiles based on CLDC, 
+target cell phones and PDA devices, respectively. Based in CDC, the Foundation 
+Profile provides more utility, network, and security functions for embedded 
+devices, but no GUIs. The Personal Profile sits on top of CDC and the Foundation 
+Profile. It provides J2SE Abstract Windowing Toolkit (AWT)-compatible GUI APIs 
+for high-end PDAs and wireless Internet appliances. Figure 2 illustrates the 
+J2ME platform architecture. 
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=384 
+      src="Java readies itself for wireless Web services_arquivos/jw-0621-wireless2.gif" 
+      width=377 vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 2. J2ME components and architecture </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Though a lighter version of Java, J2ME still retains the language's 
+underlying benefits.
+<P><FONT size=+1><STRONG>The Java advantage </STRONG></FONT><BR>We all know the 
+benefits of the Java platform; let's see how they translate to wireless Web 
+services development. 
+<P><STRONG>Advanced language features and standardization process 
+</STRONG><BR>Java's modular nature allows it to expand and develop solutions for 
+new computational problems. It has evolved from a popular client applet 
+language, to a cross platform GUI builder, to an application server platform. 
+This same modular nature now allows Java to drive wireless and Web services 
+applications. 
+<P>Java also offers a democratic standardization process. To attack specific 
+problems, individual vendors often initially develop Java libraries, which can 
+result in inconsistent APIs for similar functionalities. To keep Java 
+applications interoperable and Java code portable in the future, we must 
+consolidate and standardize APIs. The JCP (Java Community Process) ensures that 
+all interested parties voice their concerns and that no standard API unfairly 
+benefits any one vendor. Standardization proves especially important for 
+wireless Web services, due to the large number of vendors and providers 
+involved. Many organizations have already started developing major JSRs (Java 
+Specification Requests) that will standardize important new tools and APIs for 
+wireless and Web service Java applications. We will mention those ongoing 
+efforts later in this article. 
+<P><STRONG>Cross-platform compatibility </STRONG><BR>Windows-dominated desktop 
+computers might not leverage Java's Write Once, Run Anywhere compatibility, but 
+Java's platform-independence could benefit both wireless frontend applications 
+and Web services backend applications.
+<P>Multiple hardware and OS platforms have and will continue to share the 
+wireless information devices market for the following reasons:
+<P>
+<UL>
+  <LI>Due to their personal and pervasive nature, wireless devices are perceived 
+  as consumer electronics. Consumers do not care what is under a device's hood 
+  as long it does the specific job, thus allowing multiple vendors to co-exist 
+  in the same product category. Each vendor can achieve similar functionalities 
+  using different approaches. For example, different vendors manufacture dozens 
+  of cell phones on different platforms that all provide largely the same 
+  functionalities.
+  <P></P>
+  <LI>Unlike desktop computers, which are designed for generic computing tasks, 
+  wireless devices usually complete specific tasks with minimum sizes and 
+  optimal user interfaces. Thus, the huge variety of mobile applications 
+  requires many different devices and innovative solutions from many different 
+  vendors. No single vendor can provide the best solution for all tasks. For 
+  example, among PDA vendors are a variety of CPU and OS platforms. Palm OS, the 
+  most popular PDA platform, targets small, cheap, easy-to-use devices with 
+  basic features. Windows CE and embedded Linux devices are quickly gaining 
+  market share on high-end devices. </LI></UL>
+<P>The heavy competition in the wireless devices market benefits customers by 
+offering choices. But the fragmented platforms create a nightmare for 
+developers. Repeatedly developing and maintaining different versions of the same 
+application for different devices is prohibitively expensive. Yet, any 
+general-purpose wireless application must run on all types of devices customers 
+might own. Thus, cross-platform compatibility is a core issue to consider when 
+developing wireless applications.
+<P>The server back end features many platforms ranging from Linux, to Unix, to 
+Windows. J2EE's (Java 2 Platform, Enterprise Edition) success has proved the 
+value of cross-platform compatibility on the server side. As the back end 
+evolves into multivendor, multiplatform, and interoperable Web services 
+networks, Java's value will increase. 
+<P>Though a core advantage of Java, cross-platform compatibility comes at a 
+price: a performance price. No absolute compatibility exists among a huge 
+variety of wireless devices. For example, you can't possibly port the full 
+features of an application designed to run on a TV set-top box to a tiny cell 
+phone. Even among similar devices, such as high- and low-end cell phones, 
+portability can cause under-utilization of resources on one device, while 
+straining the resources of another. The J2ME platform balances Java's 
+portability with performance on many wireless platforms. As we discussed, Sun 
+divided J2ME into multiple configurations and profiles to achieve maximum 
+functionality and performance for different device categories, and ensure 
+portability within any one category. 
+<P><STRONG>Security </STRONG><BR>In addition to providing a compatibility layer, 
+the JVM also provides application security through the following ways:
+<P>
+<UL>
+  <LI>The JVM verifies the byte-code application at class load time to ensure 
+  that the application does not do anything dangerous 
+  <P></P>
+  <LI>The JVM monitors the application execution and avoids memory leaks
+  <P></P>
+  <LI>The JVM can incorporate a security manager or sandbox to verify 
+  application digital signatures and grant permissions to access specific APIs 
+  (domains) based on the signer's trust level</LI></UL>
+<P>The three security features above prove important to wireless applications. 
+Wireless devices usually store personal and sensitive data. Users often download 
+mobile code from an insecure Internet. We must ensure that the downloaded 
+application is not a virus and will not try to corrupt or even steal data from 
+the device. To combat such attacks, the J2SE and J2ME/CDC platforms offer fully 
+featured, secure JVMs. J2ME/MIDP uses a simplified byte-code verification scheme 
+to minimize performance hits. Domain-based security managers are available for 
+MIDP 2.0 VMs. 
+<P>In addition to application security, Java provides excellent support for 
+industry-strength authentication, authorization, and cryptography-based 
+communication security protocols. The Java Cryptography Extension (JCE) and Java 
+Authentication and Authorization Service (JAAS) frameworks are both pluggable 
+and flexible. They provide a set of abstract interfaces of common security 
+algorithms and concepts to application developers. Different providers supply 
+the implementations. You can easily add new algorithms into the frameworks. 
+Java's security framework design separates applications from security solution 
+providers. Therefore, it allows you to choose or switch to any provider and 
+algorithm at any stage of software development without learning new APIs or 
+worrying about compatibility issues. We will discuss more about Java application 
+security technologies in the following section. <!-- break -->
+<P><FONT size=+1><STRONG>Core technologies </STRONG></FONT><BR>We now discuss 
+the core Java technologies needed to support wireless Web services. Some are 
+already available in standard Java APIs; some are currently offered by 
+third-party vendors and are being standardized; others are only in the planning 
+and designing stages. 
+<P><STRONG>Interoperable XML standards </STRONG><BR>As we mentioned earlier, Web 
+services are built around standard XML communication protocols. In wireless Web 
+services applications, servers and clients are loosely coupled with XML 
+messages. So both Web services application servers and wireless devices must 
+support standard XML protocols.
+<P>On the server side, the J2SE/J2EE platform offers excellent support for 
+generic and Web services-specific XML processing through the Java API for XML 
+Parsing (JAXP). JAXP features the following:
+<P>
+<UL>
+  <LI>Both pull and push mode SAX (Simple API for XML) parsing 
+  <LI>Standard DOM (Document Object Model) and a more Java-friendly JDOM format 
+  <LI>Java API for XML Binding (JAXB), which supports persistent XML mapping for 
+  Java objects 
+  <LI>Java API for XML Messaging (JAXM) and JAX-RPC, which can support Web 
+  services SOAP and XML-RPC messages 
+  <LI>Java API for XML Registries (JAXR), which supports XML registries such as 
+  UDDI and ebXML</LI></UL>
+<P>On the wireless front, mainly three concerns crop up when using XML on small 
+devices:
+<P>
+<OL>
+  <LI>CLDC VMs have limited string functionalities and cannot run generic XML 
+  parsers written for J2SE or any Web services XML APIs built on top of them
+  <P></P>
+  <LI>Support for XML requires increased processing power
+  <P></P>
+  <LI>XML formats embed data in verbose text tags, which does not conserve 
+  limited wireless bandwidth</LI></OL>
+<P>Third-party groups offer many CLDC-based XML parsers that require little 
+processing power. Most, such as NanoXML and TinyXML, only support the simpler 
+serial SAX-style parsing. However, in-memory objects are required if you want to 
+manipulate complex XML data. Package kXML developed by Enhydra.org offers both 
+SAX- and DOM-style parsers. A W3C (World Wide Web Consortium)-compliant DOM 
+parser proves too heavy for small devices, so kXML uses a lightweight 
+alternative called kDOM. In addition to generic XML parsers, kXML also has 
+packages specialized for SOAP (kSOAP) and XML-RPC (kXML-RPC) message processing. 
+With JSR 172, the J2ME Web Services Specification, the JCP continues its effort 
+to standardize XML support on the J2ME platform. 
+<P>XML's excessive bandwidth usage has long proved problematic in wireless 
+application development. WAP developers use an XML compression protocol called 
+WBXML (WAP binary XML) to compress WML communication data. You can adopt WBXML 
+as a standard format for compressing generic XML documents. You must install 
+matching compressor and expander modules on both wireless and server sides. kXML 
+provides both modules. 
+<P><STRONG>Wireless user interfaces </STRONG><BR>The major advantage of wireless 
+information devices is their pervasiveness; they melt into our everyday lives. 
+This ability requires not only small, wearable devices, but also devices with 
+nonintrusive user interfaces. The success of Palm PDAs has proven the 
+effectiveness of touch-screen and handwriting recognition input methods. 
+Migrating mature desktop GUIs to small devices has also proven successful since 
+today's computer literate public needs little training to use common GUI 
+components such as buttons, selection boxes, and textboxes. Most J2ME 
+technologies support GUIs. The smallest MIDP has its own lightweight GUI 
+components and event-handling models. More complex profiles, such as the PDA 
+profile and Personal Profile, adopt GUI models commonly used in the desktop J2SE 
+world (such as AWT) to ensure the maximum portability level.
+<P>Though convenient, GUI-based devices are still interruptive. For example, on 
+a GUI-based device, users have to use both hands to input long text or make 
+complex selections. By contrast, voice-navigated information services can 
+integrate into workflows much better. We can talk on the phone while performing 
+other sophisticated tasks (such as driving). The leading technology enabling 
+voice-based information navigation is VoiceXML. Similar to HTML, a VoiceXML page 
+can present information, take user input, and jump to another page based on that 
+input. The difference: An HTML page presents and takes <EM>text</EM> 
+information, while a VoiceXML page handles <EM>voice</EM> information. However, 
+VoiceXML pages are written in XML text format since backend applications that 
+generate VoiceXML pages only work with text data. Voice recognition and 
+synthesis technology proves crucial to bridging voice and XML text formats.
+<P>JSR 113, the Java Speech API 2.0, proposes a set of standard Java APIs for 
+voice recognition and synthesis. But voice algorithms still prove too 
+computationally intensive for small handheld devices and require expensive 
+software. Current VoiceXML applications require gateway servers to perform voice 
+recognition and synthesis. Those voice gateway servers could become parts of 
+voice portals, similar to WAP portals. The voice portals act as information call 
+centers for customers: they contact Web services on behalf of users and 
+translate information back and forth among voice, text, VoiceXML, and SOAP 
+messages. However, with the exclusive voice portal model, the mobile application 
+can only access the portal through a voice phone line/channel, and all 
+information must be presented in voice format.
+<P>For many applications, we want to mix voice information with other forms of 
+digital information, such as graphics, text messaging, and streaming video. One 
+way to integrate voice into TCP/IP network-based applications is through Voice 
+over IP (VoIP). VoIP specifies how we should transport voice on a data network. 
+VoIP-enabled VoiceXML gateways can respond to voice streams from the Internet 
+instead of a phone line. A VoIP server can be just a hub service in the vast 
+network of backend Web services. 
+<P>Figure 3 illustrates the architecture of a smart wireless application that 
+uses both voice and common GUIs. 
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=425 
+      src="Java readies itself for wireless Web services_arquivos/jw-0621-wireless3.gif" 
+      width=508 vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 3. Mix voice, text, and graphics in one wireless application 
+      </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P><STRONG>Security </STRONG><BR>As discussed previously, Java supports 
+cryptography and mobile code security. However, securing Web services proves 
+more challenging than securing traditional Internet applications. Web services 
+are designed to improve productivity and interoperability; security comes as an 
+afterthought and is largely vendor-specific. Yet, Web services run outside 
+corporate firewalls and can potentially expose an internal network to the 
+outside world. As a result, security concerns provide major obstacles in 
+deploying Web services. Security is also a chief challenge for wireless 
+applications due to radio signals' vulnerability to interception and the lack of 
+computing power for performing strong cryptography operations on small devices. 
+In this section, we discuss Java technologies on both server and wireless ends 
+that improve wireless Web services security.
+<P>Web services require end-to-end security for XML messages traveling across 
+multiple intermediaries, thereby making traditional point-to-point secure 
+communication channels (such as HTTPS) inadequate. Secure XML protocols such as 
+XML Digital Signature and XML Encryption can bind with Web services 
+communication protocols (such as SOAP) to secure XML contents. JSRs 105 and 
+106—the XML Digital Signature APIs and XML Digital Encryption APIs, 
+respectively—propose Java APIs to support XML Digital Signature and XML 
+Encryption. However, on the wireless front, most standard Java security and 
+cryptography APIs are only available to J2SE and J2ME/CDC applications. Due to 
+small devices' limited computing power, J2ME/MIDP only officially support HTTPS 
+secure connections from the upcoming MIDP specification version 2.0. Only 
+third-party vendors provide support for general cryptography algorithms on the 
+J2ME/MIDP platform. One such lightweight CLDC-compatible cryptography package is 
+the Bouncy Castle Crypto APIs. To learn how to use these APIs, please refer to 
+Michael Yuan's <EM>developerWorks</EM> article, "<A 
+href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless_p.html#resources">Securing 
+Your J2ME/MIDP Apps</A>," (June 2002).
+<P>Another vitally important security feature in Web services is <EM>single 
+sign-on</EM>, required for keeping multiple service vendors transparent to 
+users. Sun's Liberty Alliance Project promotes single sign-on services based on 
+federated identity. The alliance will probably base the implementation on 
+Kerberos technology. You can deploy Kerberos plug-ins for JAAS for tight 
+integration among Web services. You can also embed Kerberos-like security tokens 
+in SOAP message headers as SAML (Security Assertion Markup Language) elements 
+for loosely coupled solutions. JSR 155, the Web Services Security Assertions, 
+proposes Java APIs that support SAML. IBM and Microsoft's WS-Security, another 
+set of XML protocols, competes with SAML. The IBM Web Services Toolkit offers 
+Java solutions for WS-Security.
+<P>When approved, JSR 177, the Security and Trust Services API for J2ME, will 
+provide Java APIs to SIM (Subscriber Identity Module) cards embedded in wireless 
+devices. SIM cards usually store identity and cryptography keys. They provide 
+automatic authentication and authorization on wireless phone networks. Together 
+with SAML or WS-Security, JSR 177 APIs could enable automatic single sign-on 
+services for SIM-enabled wireless devices. 
+<P>For more discussion on J2ME and Web services security, please refer to our 
+article "<A 
+href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless_p.html#resources">Securing 
+Wireless J2ME</A>" (<EM>developerWorks,</EM> June 2002). 
+<P><STRONG>Performance </STRONG><BR>One of the biggest problems with smart 
+wireless applications is performance. As alluded to earlier, Java's development 
+productivity and cross-platform compatibility take priority, and, thus, the JVM 
+cannot benefit from many hardware-specific optimizations. However, advanced 
+security and application data-processing features require high performance on 
+the wireless end. Efforts such as JSR 177 are underway to make special hardware 
+features available to standard Java APIs. Technologies such as Java-optimized 
+CPUs and coprocessors, and just-in-time Java compilers are already available. 
+For many applications, Java programs run as fast as C/C++ applications. Sun's 
+project Monty promises to deliver CLDC and CDC VMs that run 10 times faster than 
+current VMs with small footprints. 
+<P><FONT size=+1><STRONG>Go wireless </STRONG></FONT><BR>In this article, we 
+introduced wireless Web services and the Java technologies that could power 
+them. Current and emerging Java platforms are well positioned to help develop 
+pervasive wireless solutions. Today's buzz phrase, <EM>wireless Web 
+services,</EM> is becoming tomorrow's exciting reality! In subsequent column 
+articles, we will discuss specific techniques to implement wireless Web services 
+applications. <IMG height=12 
+src="Java readies itself for wireless Web services_arquivos/jw-dingbat.gif" 
+width=22>
+<P><BR></P>
+<P><STRONG>About the author</STRONG><BR><A 
+href="http://www.javaworld.com/feedback">Michael Yuan</A> and <A 
+href="http://www.javaworld.com/feedback">Ju Long</A> are PhD candidates at the 
+University of Texas at Austin. They are both research associates in the Center 
+for Research in Electronic Commerce. Their main interests are mobile commerce 
+and wireless-based marketing research. <BR></P>
+<P>
+<UL><A name=resources></A><STRONG>Resources</STRONG> <BR>
+  <LI>Sun's Wireless Developer Website contains FAQs, downloads, tools, and 
+  articles about J2ME: <BR><A 
+  href="http://wireless.java.sun.com/">http://wireless.java.sun.com/</A><BR>
+  <LI>Michael Yuan and Ju Long show how to access a database from J2ME/MIDP 
+  wireless devices in "Build Database-Powered Mobile Applications on the Java 
+  Platform" (<EM>JavaWorld,</EM> January 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-01-2002/jw-0118-midp.html">http://www.javaworld.com/javaworld/jw-01-2002/jw-0118-midp.html</A><BR>
+  <LI>Learn about security challenges and solutions for mobile commerce 
+  applications in "Securing Wireless J2ME," Michael Yuan and Ju Long 
+  (<EM>developerWorks,</EM> June 2002): <BR><A 
+  href="http://www-106.ibm.com/developerworks/wireless/library/wi-secj2me.html">http://www-106.ibm.com/developerworks/wireless/library/wi-secj2me.html</A><BR>
+  <LI>Learn how to digitally sign and verify XML documents on wireless devices 
+  in "Securing Your J2ME/MIDP Apps," Michael Yuan (<EM>developerWorks,</EM> June 
+  2002): <BR><A 
+  href="http://www-106.ibm.com/developerworks/library/j-midpds.html">http://www-106.ibm.com/developerworks/library/j-midpds.html</A><BR>
+  <LI>Frank Sommers discusses big pictures and ideas behind Web services in "A 
+  Birds-Eye View of Web Services" (<EM>JavaWorld,</EM> January 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-01-2002/jw-0125-webservices.html">http://www.javaworld.com/javaworld/jw-01-2002/jw-0125-webservices.html</A><BR>
+  <LI>Todd Sundsted offers insights into the Liberty Alliance Project and 
+  Java-based single sign-on services in "With Liberty and Single Sign-On for 
+  All" (<EM>JavaWorld,</EM> February 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-02-2002/jw-0215-liberty.html">http://www.javaworld.com/javaworld/jw-02-2002/jw-0215-liberty.html</A><BR>
+  <LI>Java Web Services Developer Pack contains the entire Java XML Pack, which 
+  includes the standard APIs for XML parsing in Java, development tools, and 
+  deployment servers. It also contains special packages for XML data binding and 
+  Web services XML-message processing: <BR><A 
+  href="http://java.sun.com/webservices/downloads/webservicespack.html">http://java.sun.com/webservices/downloads/webservicespack.html</A><BR>
+  <LI>IBM's alphaWorks offers various Java XML Web services tools, including: 
+  <UL>
+    <LI>Web Services Tookit, which supports a range of popular Web services XML 
+    protocols: <BR><A 
+    href="http://www.alphaworks.ibm.com/tech/webservicestoolkit">http://www.alphaworks.ibm.com/tech/webservicestoolkit</A> 
+
+    <LI>XML Security Suite, which supports both XML digital signatures and XML 
+    encryption standards: <BR><A 
+    href="http://www.alphaworks.ibm.com/tech/xmlsecuritysuite">http://www.alphaworks.ibm.com/tech/xmlsecuritysuite</A></LI></UL>
+  <LI>The kXML Project includes SAX/kDOM parsers, kSOAP, kXML-RPC, and WBXML 
+  utilities for J2ME/CLDC: <BR><A 
+  href="http://kxml.enhydra.org/">http://kxml.enhydra.org/</A><BR>
+  <LI>NanoXML, a CLDC-compatible, lightweight XML parser: <BR><A 
+  href="http://nanoxml.sourceforge.net/">http://nanoxml.sourceforge.net/</A><BR>
+  <LI>TinyXML, another CLDC-compatible, lightweight XML parser: <BR><A 
+  href="http://www.gibaradunn.srac.org/tiny/">http://www.gibaradunn.srac.org/tiny/</A><BR>
+  <LI>Bouncy Castle Crypto is currently the only lightweight generic 
+  cryptography package for J2ME/CLDC: <BR><A 
+  href="http://www.bouncycastle.org/">http://www.bouncycastle.org/</A><BR>
+  <LI>JSR 105: XML Digital Signature APIs: <BR><A 
+  href="http://www.jcp.org/jsr/detail/105.jsp">http://www.jcp.org/jsr/detail/105.jsp</A><BR>
+  <LI>JSR 106: XML Digital Encryption APIs: <BR><A 
+  href="http://www.jcp.org/jsr/detail/106.jsp">http://www.jcp.org/jsr/detail/106.jsp</A><BR>
+  <LI>JSR 113 proposes the Java Speech API 2.0 for voice recognition and 
+  synthesis: <BR><A 
+  href="http://www.jcp.org/jsr/detail/113.jsp">http://www.jcp.org/jsr/detail/113.jsp</A><BR>
+  <LI>JSR 118 proposes the MIDP 2.0 specification: <BR><A 
+  href="http://www.jcp.org/jsr/detail/118.jsp">http://www.jcp.org/jsr/detail/118.jsp</A><BR>
+  <LI>JSR 155 proposes Web Services Security Assertions, which support Web 
+  services authentication and authorization protocols, such as SAML: <BR><A 
+  href="http://www.jcp.org/jsr/detail/155.jsp">http://www.jcp.org/jsr/detail/155.jsp</A><BR>
+  <LI>JSR 172 is the proposed J2ME Web Services Specification; it standardizes 
+  XML processing APIs for small devices: <BR><A 
+  href="http://www.jcp.org/jsr/detail/172.jsp">http://www.jcp.org/jsr/detail/172.jsp</A><BR>
+  <LI>JSR 177 proposes the SIM card-based Security and Trust Services API for 
+  J2ME: <BR><A 
+  href="http://www.jcp.org/jsr/detail/177.jsp">http://www.jcp.org/jsr/detail/177.jsp</A><BR>
+  <LI>Preview the other Web services JSRs under review by the Java Community 
+  Process in "Is the JCP adequately preparing Java for Web services?" Jennifer 
+  Orr (<EM>JavaWorld,</EM> June 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-jcp.html">http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-jcp.html</A><BR>
+  <LI>Jxta is a Java-based peer-to-peer framework that runs on J2SE, J2EE, and 
+  J2ME platforms: <BR><A 
+href="http://www.jxta.org/">http://www.jxta.org/</A><BR>
+  <LI>For more articles on Web services, browse the following <EM>JavaWorld</EM> 
+  resources: 
+  <UL>
+    <LI>The <STRONG>Java and Web Services</STRONG> section of our Topical Index: 
+    <BR><A 
+    href="http://www.javaworld.com/channel_content/jw-webserv-index.shtml">http://www.javaworld.com/channel_content/jw-webserv-index.shtml</A>
+    <LI>Frank Sommers's <STRONG>Web Services</STRONG> column: <BR><A 
+    href="http://www.javaworld.com/columns/jw-web-services-index.shtml">http://www.javaworld.com/columns/jw-web-services-index.shtml</A></LI></UL>
+  <LI>For articles on devices, J2ME, and wireless development, browse through 
+  the <STRONG>Micro Java</STRONG> section of <EM>JavaWorld'</EM>s Topical Index: 
+  <BR><A 
+  href="http://www.javaworld.com/channel_content/jw-micro-index.shtml">http://www.javaworld.com/channel_content/jw-micro-index.shtml</A><BR>
+  <LI>For more articles on JSRs, browse the <STRONG>Java Community 
+  Process</STRONG> section of <EM>JavaWorld'</EM>s Topical Index: <BR><A 
+  href="http://www.javaworld.com/channel_content/jw-jcp-index.shtml">http://www.javaworld.com/channel_content/jw-jcp-index.shtml</A><BR>
+  <LI>Chat about devices galore in <EM>JavaWorld'</EM>s <STRONG>Device 
+  Programming</STRONG> discussion: <BR><A 
+  href="http://forums.devworld.com/webx?50@@.ee6b808">http://forums.devworld.com/webx?50@@.ee6b808</A><BR>
+  <LI>Sign up for <EM>JavaWorld</EM>'s free weekly <EM>Micro Java</EM> email 
+  newsletter: <BR><A 
+  href="http://www.javaworld.com/jw-subscribe">http://www.javaworld.com/jw-subscribe</A><BR>
+  <LI>You'll find a wealth of IT-related articles from our sister publications 
+  at <A href="http://www.idg.net/jump?id=1100">IDG.net</A> </LI></UL><BR>
+<P></P><!-- REPLACE SIDEBAR --></FONT><!-- ## MAIN CONTENT ENDS HERE ### --></TD><TD 
+width="8"><IMG height=1 
+src="Java readies itself for wireless Web services_arquivos/spacer.gif" width=8 
+border=0></TD> </TR></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width=186 bgColor=#006699><NOBR><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif size=1></FONT></NOBR><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Java readies itself for wireless Web services_arquivos/top_jwlogo.gif" 
+      width=186 border=0></A></TD>
+    <TD vAlign=bottom width=8 bgColor=#cccccc><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/c_blgrylftbottom.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- BOTTOM 468x60 AD STARTS HERE jw-articles-bottom-ad.txt -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+        here!</FONT><BR></TD></TR></TBODY></TABLE><!-- BOTTOM 468x60 AD ENDS HERE --></TD>
+    <TD width=8><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#006699 
+border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center align=middle width="100%"><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff size=1>
+      <P><BR><A href="http://www.javaworld.com/"><FONT 
+      color=#ffffff>HOME</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/features/index.shtml"><FONT 
+      color=#ffffff>FEATURED TUTORIALS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/columns/index.shtml"><FONT 
+      color=#ffffff>COLUMNS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+      color=#ffffff>NEWS &amp; REVIEWS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://forums.devworld.com/webx?13@@.ee6b802"><FONT 
+      color=#ffffff>FORUM</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/resources/index.shtml"><FONT 
+      color=#ffffff>JW RESOURCES</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+      color=#ffffff>ABOUT JW</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/feedback"><FONT 
+      color=#ffffff>FEEDBACK</FONT></A> </P>
+      <P><A 
+      href="http://www.javaworld.com/javaworld/common/jw-copyright.html"><FONT 
+      color=#ffffff>Copyright © 2004</FONT></A> JavaWorld.com, an IDG company 
+      </P></FONT></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=right width="100%"><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/c_blrtbottom.gif" 
+      width=8 border=0></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Java readies itself for wireless Web services_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE><!-- USA JavaWorld.com Pixel --><!-- stories1.devworld.com --><!-- DOCID 877696 --><!-- EX: 951984000 -->
+<SCRIPT language=JavaScript>
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</SCRIPT>
+</BODY></BASEFONT></HTML>

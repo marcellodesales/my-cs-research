@@ -1,0 +1,1201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0069)http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html -->
+<HTML><HEAD><TITLE>Access Web services from wireless devices</TITLE>
+<META http-equiv=content-type content="text/html; charset=windows-1252">
+<META content=" Wireless, Web Services, SOAP, J2ME, MIDP, kSOAP&#13;" 
+name=keywords>
+<META 
+content=" &#13;&#10;The Simple Object Access Protocol (SOAP) has become the most important data exchange protocol for XML Web services. All Web services applications must support SOAP. In this article, Michael Juntao Yuan introduces an essential tool to support Web services on small wireless devices—the kSOAP parser. As he illustrates through examples, kSOAP is a powerful tool for composing and extracting Java data objects to and from SOAP messages. kSOAP is also flexible and lets users add custom functionalities through its own APIs or by directly modifying the source code. (4,100 words; August 23, 2002)&#13;&#10;&#13;&#10;" 
+name=description>
+<META content=NOARCHIVE name=GOOGLEBOT><BASEFONT 
+face="verdana, arial, helvetica" size=2>
+<STYLE type=text/css>CODE {
+	FONT-WEIGHT: normal; FONT-SIZE: 110%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+PRE {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 90%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+            <!--
+            function openBrWindow() {
+                win=window.open("http://www.javaworld.com/channel_content/jw-story-feedback.shtml",'Feedback','width=600,height=330,toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,resizable=yes');
+            }
+            -->
+        </SCRIPT>
+
+<META content="MSHTML 6.00.2800.1400" name=GENERATOR></HEAD>
+<BODY text=#000000 bottomMargin=0 vLink=#990033 aLink=#990033 link=#990033 
+bgColor=#ffffff leftMargin=0 topMargin=0 rightMargin=0 marginwidth="0" 
+marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=186 bgColor=#006699 colSpan=2><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Access Web services from wireless devices_arquivos/top_jwlogo.gif" 
+      width=186 border=0></A></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- START TOP 728x90 BANNER jw-articles-top-ad.txt  -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+        here!</FONT><BR></TD></TR></TBODY></TABLE><!-- END TOP 728x90 BANNER --></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=160 bgColor=#006699><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=160 border=0></TD>
+    <TD vAlign=top align=left width=26 bgColor=#ffffff><IMG height=8 src="" 
+      width=8 border=0></TD>
+    <TD width="100%"><IMG height=1 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center noWrap align=middle width=160 
+      bgColor=#006699><NOBR><FONT face="Verdana, Arial, Sans-serif" 
+      color=#ffffff size=1>August 2002</FONT></NOBR><IMG height=1 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=160 border=0></TD>
+    <TD width=8><IMG height=1 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=top width=8 bgColor=#006699><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/c_bltlft.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#006699>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>HOME</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/features/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FEATURED TUTORIALS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/columns/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>COLUMNS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>NEWS &amp; REVIEWS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/javaforums/"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FORUM</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/resources/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>JW RESOURCES</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>ABOUT JW</FONT></A></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top align=right width=8 bgColor=#006699><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/c_bltrt.gif" 
+      width=8 border=0></TD>
+    <TD width=8><IMG height=1 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE><!--        <table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr valign="top">
+                <td bgcolor="#006699" width="160" align="middle" valign="top">
+                    <table width="160" border="0" cellspacing="0" cellpadding="0" bgcolor="#006699" summary=""> --><!-- #include snippets/jw-search-snippet.txt --><!--     <tr>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td><img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>ARCHIVE</strong></font><br>
+                                <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <strong><a href="http://www.javaworld.com/channel_content/jw-topical-index.shtml"><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff">TOPICAL INDEX</font></a></strong></font><br>--><!-- #include snippets/jw-topical-generic.txt --><!--                         <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>FREE JAVAWORLD NEWSLETTERS</strong></font><br>
+                                 <img height=1 alt="" src="images/rule_ltblue.gif" width=144 vspace=2 ><br></td>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                        </tr>
+                        <tr valign="bottom">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_gryblbottom.gif" width=8 ></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr>
+                       <td width="8" bgcolor="#cccccc"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                           <td align="middle" bgcolor="#cccccc">  --><!-- #include snippets/jw-articles-left-ad.txt --><!--      </td>
+                       <td width="8" bgcolor="#cccccc"><img height=8 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr valign="top">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_grybltop.gif" width=8 ></td>
+                        </tr>
+                    </table> --><IMG height=8 
+src="Access Web services from wireless devices_arquivos/spacer.gif" width=160 
+border=0></TD> <TD width="8"><IMG height=1 alt="" 
+src="Access Web services from wireless devices_arquivos/spacer.gif" 
+width=8></TD> <TD width="100%"><!-- ## MAIN CONTENT STARTS HERE ### --><FONT 
+face="verdana, arial, helvetica" size=2>
+<P><STRONG>Wireless Java </STRONG></P>
+<P>
+<H1 align=center>Access Web services from wireless devices </H1>
+<H3 align=center>Handle SOAP messages on MIDP devices using kSOAP </H3>
+<P></P><!--<BLOCKQUOTE><STRONG>Summary</STRONG><BR>-->
+<BLOCKQUOTE><STRONG>Summary</STRONG><BR>The Simple Object Access Protocol 
+  (SOAP) has become the most important data exchange protocol for XML Web 
+  services. All Web services applications must support SOAP. In this article, 
+  Michael Juntao Yuan introduces an essential tool to support Web services on 
+  small wireless devices—the kSOAP parser. As he illustrates through examples, 
+  kSOAP is a powerful tool for composing and extracting Java data objects to and 
+  from SOAP messages. kSOAP is also flexible and lets users add custom 
+  functionalities through its own APIs or by directly modifying the source code. 
+  (<EM>4,100 words;</EM> <STRONG>August 23, 2002</STRONG>) </BLOCKQUOTE><!--</BLOCKQUOTE>--><STRONG>By Michael Juntao Yuan </STRONG>
+<P><IMG height=2 
+src="Access Web services from wireless devices_arquivos/rule_ltblue.gif" 
+width="100%"></P>
+<P><BR></P><!-- #include snippets/jw-articles-336x280.txt -->
+<P>
+<P><IMG height=28 alt=A 
+src="Access Web services from wireless devices_arquivos/A.gif" width=30 
+align=left>s I discussed in the first <STRONG>Wireless Java</STRONG> column, "<A 
+href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless.html">Java 
+Readies Itself for Wireless Web Services</A>," XML processing capability 
+represents one of the key requirements for wireless Web services applications. 
+However, the standard J2ME/MIDP (Java 2 Platform, Micro Edition/Mobile 
+Information Device Profile) specification lacks standard XML APIs, which aren't 
+included in the upcoming MIDP 2.0 specification either. Thus, we need third 
+party J2ME/CLDC (Connected Limited Device Configuration) libraries that can 
+handle XML, especially those Web services-specific XML protocols. 
+<P>In this article, I discuss how to process Web services messages using the 
+open source kSOAP package on the J2ME/MIDP platform. As do many other enterprise 
+computing architectures, Web services involve both clients and servers. As do 
+many discussions focus on how to use J2EE (Java 2 Platform, Enterprise Edition) 
+to develop and deploy Web services on the server side, I focus on only the J2ME 
+client side in this article. 
+<P><FONT size=+1><STRONG>The SOAP advantage </STRONG></FONT><BR>An important XML 
+protocol for accessing Web services is SOAP (Simple Object Access Protocol). 
+Compared with competing technologies, SOAP has the following advantages: 
+<P>
+<OL>
+  <LI>SOAP defines more than 40 standard data types through XML Schema and 
+  allows users to custom-define complex data types. Such sophisticated data-type 
+  support makes SOAP a powerful and rich language for exchanging information 
+  among today's widely deployed object-oriented systems. 
+  <P></P>
+  <LI>In addition to strong data-type support, SOAP also supports various 
+  messaging schemes. Those schemes include synchronous remote procedure calls 
+  (RPC), asynchronous messaging, multicast messaging (subscription), and complex 
+  message routes with multiple intermediaries. 
+  <P></P>
+  <LI>Since SOAP has gained mainstream support as a Web services messaging 
+  standard, most other Web services protocols must interoperate or bind with 
+  SOAP. For example, WSDL (Web Services Description Language), UDDI (Universal 
+  Description, Discovery, and Integration), and most XML registries support 
+  SOAP; XML Digital Signature, XML Encryption, SAML (Security Assertion Markup 
+  Language), and other secure XML protocols all provide standard binding with 
+  SOAP. Each binding protocol provides syntax of its own special element inside 
+  SOAP messages. SOAP's full support for XML namespaces has made it easy to bind 
+  with other protocols. </LI></OL>
+<P>Because of the above advantages, SOAP is already the most widely used 
+communication protocol for Web services. So, a core requirement for a wireless 
+Web service application is the ability to understand SOAP messages. Now let's 
+look at some simple SOAP examples. Listing 1 illustrates a simple, generic SOAP 
+message: 
+<P><STRONG>Listing 1. Hello World SOAP message</STRONG> 
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope<BR>&nbsp;&nbsp;xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"<BR>&nbsp;&nbsp;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<BR>&nbsp;&nbsp;xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;SOAP-ENV:Body&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;message xsi:type="xsd:string"&gt;Hello 
+World&lt;/message&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>SOAP is most widely used in Web services RPCs. A SOAP response message from a 
+Web services RPC usually contains the return values inside a <CODE>Result</CODE> 
+element under the SOAP <CODE>Body</CODE> element. Listing 2 shows a simple SOAP 
+RPC response message: 
+<P><STRONG>Listing 2. Hello World SOAP RPC response message</STRONG> 
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope<BR>&nbsp;&nbsp;xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"<BR>&nbsp;&nbsp;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<BR>&nbsp;&nbsp;xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;SOAP-ENV:Body&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;message 
+xsi:type="xsd:string"&gt;Hello 
+World&lt;/message&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&lt;/result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>Since we must access SOAP messages programmatically in our programs, we need 
+a SOAP parser. 
+<P><FONT size=+1><STRONG>What is SOAP parsing? </STRONG></FONT><BR>Every generic 
+XML parser with namespace support understands SOAP messages and can extract 
+information from them. In theory, we can always extract text information from a 
+SOAP message using a generic XML parser and then convert those text strings to 
+Java data objects when we need to use them. For example, <CODE>int i = 
+Integer.parseInt("123");</CODE> converts a text string <CODE>"123"</CODE> to an 
+integer value 123. But such manual conversion burdens application programmers. 
+Extracting Java data objects directly from a SOAP message would provide a better 
+approach. Enter the SOAP parser. 
+<P>A SOAP parser is built on a generic XML parser with special type-mapping and 
+text data-marshaling mechanisms. A SOAP parser understands the data-type 
+information in SOAP messages and automatically converts the SOAP message to Java 
+data objects. The parser's real value is that it provides programming 
+transparency between a Java program and a SOAP message. A programmer just feeds 
+Java objects into a SOAP writer, sends the message, waits for the server 
+response, and then reads Java objects directly from the SOAP parser. 
+<P>As I discussed, SOAP features a rich set of functionalities. Many consider 
+SOAP parsing support on resource-restricted wireless platforms such as J2ME/CLDC 
+as expensive. Practical difficulties also exist: 
+<P>
+<OL>
+  <LI>The lightweight J2ME/CLDC platform sacrifices many useful standard Java 
+  functionalities for size and speed. As a result, the J2ME/CLDC platform has 
+  only limited string functionality, a major problem for every wireless Java XML 
+  parser. 
+  <P></P>
+  <LI>SOAP parsing requires the parser to read the whole document into memory. 
+  But most J2ME/CLDC parsers are memory-efficient linear SAX parsers, which 
+  never construct in-memory object models. 
+  <P></P>
+  <LI>The J2ME/CLDC platform lacks support for some basic data types, such as 
+  the <CODE>Float</CODE> type.</LI></OL>
+<P>Fortunately, project kSOAP solves these problems and provides a SOAP solution 
+for small devices. 
+<P><!-- break -->
+<P><FONT size=+1><STRONG>kSOAP to the rescue </STRONG></FONT><BR>Based on its 
+renowned open source generic XML parser kXML, <A 
+href="http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html#resources">Enhydra.org</A> 
+has started an open source project for SOAP parsing on J2ME/MIDP platforms—the 
+kSOAP project. Part of the EnhydraME project, kSOAP was written by a group of 
+developers lead by Stefan Haustein. Enhydra released kSOAP's first alpha version 
+in May 2001. After a year of development, kSOAP, now at version 1.2, supports a 
+core set of SOAP 1.2 functionalities. This article's examples and architecture 
+discussions apply to kSOAP version 0.95 and beyond (see <A 
+href="http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html#resources">Resources</A> 
+for the full source code). The code runs in the MIDP environment; if you are new 
+to MIDP development or need to refresh your skills, refer to Michael Cymerman's 
+series "<A 
+href="http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html#resources">Device 
+Programming with MIDP</A>." 
+<P>This code segment parses the Hello World examples using kSOAP: 
+<P><CODE>
+<P>ByteArrayInputStream bis = new ByteArrayInputStream (mesg.getBytes 
+());<BR>InputStreamReader reader = new InputStreamReader (bis);<BR>XmlParser xp 
+= new XmlParser (reader);<BR>// Use default mapping between Java objects and 
+Soap elements<BR>SoapEnvelope envelope = new SoapEnvelope (new ClassMap 
+(Soap.VER12));<BR>envelope.parse (xp);<BR></CODE>
+<P>The string variable <CODE>mesg</CODE> stores the entire SOAP document. 
+<P>Now, we must retrieve the message from the parsed SOAP <CODE>envelope</CODE>. 
+The following code retrieves the first child under the SOAP <CODE>Body</CODE> 
+element: 
+<P><CODE>
+<P>// For Hello World Listing 1<BR>String result = (String) 
+envelope.getBody();<BR></CODE>
+<P>When applied to Hello World Listing 1, <CODE>result</CODE> contains string 
+value <CODE>Hello World</CODE>. 
+<P>This next code segment retrieves the first grandchild under the SOAP 
+<CODE>Body</CODE> element: 
+<P><CODE>
+<P>// For Hello World Listing 2<BR>String result = (String) 
+envelope.getResult();<BR></CODE>
+<P>The <CODE>SoapEnvelope.getResult()</CODE> method conveniently retrieves 
+values from SOAP RPC response messages like the Hello World in Listing 2. 
+However, as I have said, a SOAP parser's core value lies not in its ability to 
+retrieve text strings from a SOAP document, but in its ability to map SOAP XML 
+elements to Java objects. Let's examine how kSOAP achieves that mapping. 
+<P><STRONG>kSOAP objects structure </STRONG><BR>In a SOAP message, an element's 
+<CODE>xsi:type</CODE> attribute specifies the data type of an XML element's 
+content. For example, <CODE>&lt;myValue 
+xsi:type="xsd:int"&gt;123&lt;/myValue&gt;</CODE> specifies an integer value of 
+123, and <CODE>&lt;myValue xsi:type="xsd:string"&gt;123&lt;/myValue&gt;</CODE> 
+specifies a string value of <CODE>"123"</CODE>. 
+<P>kSOAP automatically maps four SOAP types to Java types according to the 
+following list: 
+<P><STRONG>
+<CENTER>Default type mapping</CENTER></STRONG>
+<TABLE cellSpacing=1 cellPadding=0 align=center bgColor=#000000 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=1 cellPadding=5 border=0>
+        <TBODY>
+        <TR align=middle bgColor=#990033>
+          <TD><FONT color=#ffffff>SOAP type</FONT></TD>
+          <TD><FONT color=#ffffff>Java type</FONT></TD></TR>
+        <TR bgColor=#cccccc>
+          <TD><CODE>xsd:int</CODE> </TD>
+          <TD><CODE>java.lang.Integer</CODE></TD></TR>
+        <TR bgColor=#ffffff>
+          <TD><CODE>xsd:long</CODE> </TD>
+          <TD><CODE>java.lang.Long</CODE></TD></TR>
+        <TR bgColor=#cccccc>
+          <TD><CODE>xsd:string</CODE> </TD>
+          <TD><CODE>java.lang.String</CODE> </TD></TR>
+        <TR bgColor=#ffffff>
+          <TD><CODE>xsd:boolean</CODE></TD>
+          <TD><CODE>java.lang.Boolean</CODE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>When a simple kSOAP parser encounters a SOAP element, the parser reads the 
+XML element into an in-memory Java data object according to the following rules: 
+
+<P>
+<OL>
+  <LI>If the SOAP element is one of the default primitive types in the table 
+  above, it converts to a Java object of a matching type. 
+  <P></P>
+  <LI>If the SOAP element has no children (a primitive element) but is a default 
+  type, it converts to a <CODE>SoapPrimitive</CODE> object. You can retrieve the 
+  element's original SOAP type information from the 
+  <CODE>SoapPrimitive.getNamespace()</CODE> and 
+  <CODE>SoapPrimitive.getName()</CODE> methods. You can access the element's 
+  string value from the <CODE>SoapPrimitive.toString()</CODE> method. 
+  <P></P>
+  <LI>If the SOAP element has children (a complex element), it converts to a 
+  <CODE>KvmSerializable</CODE> object. <CODE>KvmSerializable</CODE> is an 
+  interface; the kSOAP package provides the interface's convenience 
+  implementation: <CODE>SoapObject</CODE>. I mainly discuss 
+  <CODE>SoapObject</CODE> usage in this article. Similar to 
+  <CODE>SoapPrimitive</CODE> objects, you can retrieve the element's original 
+  SOAP type information from the <CODE>SoapObject.getNamespace()</CODE> and 
+  <CODE>SoapObject.getName()</CODE> methods. 
+  <P></P>
+  <LI>A complex element's children convert to <EM>properties</EM> inside the 
+  parent <CODE>SoapObject</CODE> according to the above three rules in this 
+  list. Each property also has an associated <CODE>PropertyInfo</CODE> object 
+  containing information such as the SOAP element name and the property's Java 
+  object type. <CODE>PropertyInfo</CODE> does not yet support element namespace, 
+  but support is planned for future kSOAP releases. </LI></OL>
+<P>Because a <CODE>SoapObject</CODE> can take other <CODE>SoapObject</CODE>s as 
+properties, we can use <CODE>SoapObject</CODE> to present complex hierarchical 
+structures. If you are an XML developer, you are probably familiar with the 
+Document Object Model (DOM); the <CODE>SoapObject</CODE> resembles the parent 
+element, and the property and <CODE>PropertyInfo</CODE> pairs resemble child 
+elements in a DOM construct. 
+<P>In trivial cases, like our Hello World examples where the message contains 
+only one primitive SOAP element, the SOAP parser directly gives the mapped Java 
+object or <CODE>SoapPrimitive</CODE> object through the 
+<CODE>SoapEnvelope.getBody()</CODE> or <CODE>SoapEnvelope.getResult()</CODE> 
+methods. If the SOAP message contains more information, the above two get 
+methods return a root <CODE>SoapObject</CODE>, which contains the entire 
+hierarchy of Java objects mapped from the SOAP elements according to the above 
+rules. 
+<P>The figure below shows an example of such a structure. Each box with a 
+dashed-line border represents a SOAP element in the parsed document. Inside each 
+box, the original SOAP element name is stored in the <CODE>PropertyInfo</CODE> 
+object and the SOAP type attribute name/namespace is stored in the property 
+object. Arrows represent property relationships. You can find the Java data 
+objects' original SOAP type information by searching the mappings in the 
+<CODE>ClassMap</CODE> object, which contains the information in the above table 
+(more on <CODE>ClassMap</CODE> later). As we can see, the root 
+<CODE>SoapObject</CODE> lacks a pairing <CODE>PropertyInfo</CODE> to make a full 
+dashed-line box. Therefore, we lose the root element's name after parsing. 
+However, that is not an issue when we read SOAP documents, since element names 
+normally serve only as indexes for accessing Java data objects, and we do not 
+need an index to access the root element. 
+<P>
+<TABLE cellPadding=5 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><A 
+      href="http://www.devworld.com/microsites/javaworld/legacy/jw-08-2002/images/jw-0823-wireless.gif" 
+      target=new_window><IMG height=400 
+      src="Access Web services from wireless devices_arquivos/jw-0823-wireless-thumb.gif" 
+      width=400 vspace=3></A>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Structure of a parsed SOAP document. Click on thumbnail for full-size 
+      image. </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P>
+<P><STRONG>A note on serialization (SOAP writing) </STRONG><BR>Above, I 
+presented a simple parsing process. To compose a SOAP message, we reverse the 
+process. We first build the <CODE>SoapObject</CODE> hierarchy in memory. All 
+leaf properties must be either <CODE>SoapPrimitive</CODE> or one of the four 
+default type Java objects. Then we use a kSOAP writer object to serialize the 
+memory object to an XML stream. 
+<P>However, as you might already see, the root element presents a serialization 
+problem. When we construct the structure according to the figure, the root 
+<CODE>SoapObject</CODE> contains only the SOAP type name and namespace. No XML 
+element name is available for the root element due to the pairing 
+<CODE>PropertyInfo</CODE>'s absence. We can't write an XML element without an 
+element name. kSOAP 1.2's writer sidesteps this problem by making a notable 
+exception from the parsing rule: when we serialize a <EM>root</EM> 
+<CODE>SoapObject</CODE>, its <CODE>Name</CODE> and <CODE>Namespace</CODE> are 
+used as element name/namespace rather than the SOAP type name/namespace. Let's 
+see a simple example to understand these points: 
+<P>A kSOAP parser will parse a SOAP root element <CODE>&lt;MyRoot 
+xmlns="http://myns" xsi:type="xsd:mytype"&gt;...&lt;/MyRoot&gt;</CODE> into a 
+<CODE>SoapObject</CODE> equivalent of <CODE>new SoapObject( Soap.XSD, 
+"mytype");</CODE>. Since no <CODE>PropertyInfo</CODE> is available for the root 
+element, the element name <CODE>MyRoot</CODE> (and namespace 
+<CODE>http://myns</CODE>) are lost. However, if you serialize the above 
+<CODE>SoapObject</CODE> as a root element back to XML, kSOAP writer will not 
+give the original SOAP string. According to the exception rule, the writer will 
+give <CODE>&lt;xsd:mytype&gt;...&lt;/xsd:mytype&gt;</CODE>, which is clearly 
+<STRONG>not</STRONG> what we wanted. Under the exception rule, the correct root 
+<CODE>SoapObject</CODE> for serialization is <CODE>new SoapObject( 
+"http://myns", "MyRoot");</CODE>. The kSOAP writer will give a SOAP element: 
+<CODE>
+<P>&lt;MyRoot xmlns="http://myns"&gt;...&lt;/MyRoot&gt;<BR></CODE>
+<P>As we can see, kSOAP's trade-off is its inability to specify the root 
+element's SOAP type when serializing. But this is normally not a big issue. 
+Because the exception rule for <CODE>SoapWriter</CODE> proves somewhat 
+confusing, the project's designers plan to make it more intuitive in future 
+kSOAP releases. 
+<P>In the following sections, I use examples to illustrate simple SOAP handling, 
+and discuss problems and drawbacks. Afterward, I introduce kSOAP's more 
+sophisticated features. 
+<P><!-- break -->
+<P><FONT size=+1><STRONG>The stock-trade example </STRONG></FONT><BR>Throughout 
+the rest of this article, I use a fictitious stock-trade wireless Web services 
+application. The wireless client interacts with the Web services server through 
+synchronous SOAP remote procedure calls. The client sends a SOAP request 
+containing the trade order; the server executes the order and returns the status 
+information. In general, a synchronous SOAP RPC session consists of the 
+following steps: 
+<P>
+<OL>
+  <LI>The client composes a SOAP request message with invocation parameters. 
+  <P></P>
+  <LI>The client sends the SOAP request to a Web services server through a 
+  standard messaging protocol such as HTTP. 
+  <P></P>
+  <LI>The server invokes the requested service with the parameters extracted 
+  from the request SOAP message. 
+  <P></P>
+  <LI>The server composes the return values into a response SOAP message and 
+  sends them back. In case of HTTP invocation, the same HTTP connection can be 
+  used. 
+  <P></P>
+  <LI>The client receives the response message and then parses the return values 
+  into Java data objects for further processing.</LI></OL>
+<P>Web services components on the server side handle Steps 3 and 4. (Server-side 
+Web services implementation reaches beyond this article's scope. Refer to <A 
+href="http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html#resources">Resources</A> 
+for more information.) Step 2 (and part of 4) handles the network interaction 
+between the client and the server, which standard MIDP HTTP communication APIs 
+could handle. kSOAP does have a helper class, 
+<CODE>org.ksoap.transport.HttpTransport</CODE>, to automate this HTTP-call 
+transport process. Most real-world applications use the 
+<CODE>HttpTransport</CODE> class directly. However, you must understand exactly 
+how kSOAP works under the hood to use the <CODE>HttpTransport</CODE> class 
+effectively. So, I will demonstrate how kSOAP works on serialized SOAP XML 
+strings first. Then, toward the end of this article, I will give a simple 
+<CODE>HttpTransport</CODE> example. 
+<P>In this article, I focus only on how kSOAP itself works and ignore the 
+server-side and networking issues. In the RPC request example, I demonstrate how 
+to serialize Java objects to a SOAP string. In the RPC response examples, I 
+assume we have already received the response SOAP messages and have stored them 
+in string variables, and demonstrate how to retrieve Java objects from the 
+message strings. 
+<P><STRONG>A simple request </STRONG><BR>We can use the following Java code to 
+construct a memory model for the SOAP stock-trade order-request and serialize it 
+to an XML string: 
+<P><CODE>
+<P>// SoapObject "method" is the calling construct<BR>//<BR>// As we discussed 
+before,<BR>// the "" and "StockOrderParameters" here are<BR>// element 
+name/namespace rather than SOAP type name/namespace<BR>SoapObject method = new 
+SoapObject("",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"StockOrderParameters");<BR>method.addProperty("Symbol", 
+"XYZ");<BR>method.addProperty("From", "Michael 
+Yuan");<BR>method.addProperty("Shares", new Integer 
+(1000));<BR>method.addProperty("Buy", new Boolean 
+(true));<BR>method.addProperty("LimitPrice",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+new SoapPrimitive 
+("http://www.w3.org/2001/XMLSchema",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"float",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"123.4"));<BR><BR>// 
+Assemble "method" into an enveloped SOAP message<BR>// and then export to a 
+String<BR>ByteArrayOutputStream bos = new ByteArrayOutputStream ();<BR>XmlWriter 
+xw = new XmlWriter (new OutputStreamWriter (bos));<BR>// Use default mapping 
+between Java objects and Soap elements<BR>SoapEnvelope envelope = new 
+SoapEnvelope (new ClassMap (Soap.VER12));<BR>envelope.setBody 
+(method);<BR>envelope.write (xw);<BR>xw.flush ();<BR>bos.write 
+('\r');<BR>bos.write ('\n');<BR>byte [] requestData = bos.toByteArray 
+();<BR>String requestSOAPmesg = String (requestData);<BR></CODE>
+<P>The code constructs a <CODE>SoapObject</CODE> with several properties, all of 
+which are primitive data elements, resulting in only one level of 
+<CODE>SoapObject</CODE> hierarchy. The <CODE>SoapObject</CODE>'s 
+<CODE>Name</CODE> determines the root element's name, as we noted in the kSOAP 
+root element-writing rule. Each child element's name is determined by each 
+property's <CODE>Name</CODE>, which the first parameter in the 
+<CODE>SoapObject.addProperty()</CODE> method specifies. As you learned earlier, 
+the default kSOAP parser/writer understands four default types. Those objects 
+automatically convert to SOAP elements. Note that we have to construct a 
+<CODE>SoapPrimitive</CODE> object manually for the <CODE>xsd:float</CODE> SOAP 
+type since the default kSOAP setup doesn't support Java type <CODE>Float</CODE>. 
+As you will see later, we can also use data <CODE>Marshal</CODE> to process 
+unknown types. 
+<P>The resultant SOAP string stored in <CODE>requestSOAPmesg</CODE>: 
+<P><STRONG>Listing 3. Stock-order request message</STRONG> 
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope 
+xmlns:SOAP-ENC="http://www.w3.org/2001/12/soap-encoding" 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope" 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;<BR>&lt;SOAP-ENV:Body 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;SOAP-ENV:encodingStyle="http://www.w3.org/2001/12/soap-encoding"&gt;<BR>&nbsp;&nbsp;&lt;StockOrderParameters 
+id="o0" SOAP-ENC:root="1"&gt;<BR>&nbsp;&nbsp; &lt;Symbol 
+xsi:type="xsd:string"&gt;XYZ&lt;/Symbol&gt;<BR>&nbsp;&nbsp; &lt;From 
+xsi:type="xsd:string"&gt;Michael Yuan&lt;/From&gt;<BR>&nbsp;&nbsp; &lt;Shares 
+xsi:type="xsd:int"&gt;1000&lt;/Shares&gt;<BR>&nbsp;&nbsp; &lt;Buy 
+xsi:type="xsd:boolean"&gt;true&lt;/Buy&gt;<BR>&nbsp;&nbsp; &lt;LimitPrice 
+xsi:type="xsd:float"&gt;123.45&lt;/LimitPrice&gt;<BR>&nbsp;&nbsp;&lt;/StockOrderParameters&gt;<BR>&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>Now, we turn to this article's main focus: the response message parsing. 
+<P><STRONG>A simple response </STRONG><BR>The response we received from the 
+server over the HTTP connection could look like this: 
+<P><STRONG>Listing 4. Simple stock-order response message</STRONG> 
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope<BR>&nbsp;&nbsp;xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"<BR>&nbsp;&nbsp;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<BR>&nbsp;&nbsp;xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;SOAP-ENV:Body&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;OrderStatus&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;CustomerName 
+xsi:type="xsd:string"&gt;Michael 
+Yuan&lt;/CustomerName&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Symbol 
+xsi:type="xsd:string"&gt;XYZ&lt;/Symbol&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Share 
+xsi:type="xsd:int"&gt;1000&lt;/Share&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Buy 
+xsi:type="xsd:boolean"&gt;true&lt;/Buy&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Price 
+xsi:type="xsd:float"&gt;123.45&lt;/Price&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ExecTime 
+xsi:type="xsd:dateTime"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2002-07-18T23:20:50.52Z<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ExecTime&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/OrderStatus&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>We store the SOAP XML response message (Listing 4) in string variable 
+<CODE>soapRespMesg</CODE> and pass it to a kSOAP parser. As I discussed, the 
+parser returns a <CODE>SoapObject</CODE>, which contains the SOAP document's 
+data and structure. We access the properties by passing the XML element name or 
+property index to the <CODE>SoapObject.getProperty()</CODE> method. When we 
+access properties by their XML element names, the 
+<CODE>SoapObject.getProperty()</CODE> first compares the element names stored in 
+<CODE>PropertyInfo</CODE> objects and then returns the matching property object. 
+As we can see below, the properties are already cast into the appropriate Java 
+types according to the mapping. The unknown SOAP types automatically convert to 
+<CODE>SoapPrimitive</CODE> objects: 
+<P><CODE>
+<P>// For Listing 4.<BR>ByteArrayInputStream bis = new ByteArrayInputStream 
+(soapRespMesg.getBytes ());<BR>InputStreamReader reader = new InputStreamReader 
+(bis);<BR>XmlParser xp = new XmlParser (reader);<BR>// Use default mapping 
+between Java objects and Soap elements.<BR>SoapEnvelope envelope = new 
+SoapEnvelope (new ClassMap (Soap.VER12));<BR>envelope.parse (xp);<BR><BR>// Get 
+the parsed structure.<BR>SoapObject orderStatus = (SoapObject) 
+envelope.getResult();<BR>// Retrieve the values as appropriate Java objects. 
+<BR>String customerName = (String) orderStatus.getProperty 
+("CustomerName");<BR>String symbol = (String) orderStatus.getProperty 
+("Symbol");<BR>Integer share = (Integer) orderStatus.getProperty 
+("Share");<BR>Boolean buy = (Boolean) orderStatus.getProperty ("Buy");<BR>// 
+Since MIDP has no "Float" type, there is no corresponding<BR>// Java object type 
+for "xsd:float". So, as any unknown type,<BR>// this element is mapped to a 
+"SoapPrimitive".<BR>SoapPrimitive price = (SoapPrimitive) 
+orderStatus.getProperty ("Price");<BR>SoapPrimitive execTime = (SoapPrimitive) 
+orderStatus.getProperty ("ExecTime");<BR></CODE>
+<P>The above example is simple since it has only one <CODE>SoapObject</CODE> 
+with primitive properties. I discuss a more structured response in the next 
+example. 
+<P><STRONG>A more complex response </STRONG><BR>Presenting response information 
+linearly as we did in the last example proves adequate for simple occasions. But 
+for complex responses, we might desire more structures in the SOAP response 
+message to improve clarity and readability. An example of such a complex 
+response is: 
+<P><STRONG>Listing 5. Stock-order response message with complex 
+structures</STRONG> 
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope<BR>&nbsp;&nbsp;xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"<BR>&nbsp;&nbsp;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<BR>&nbsp;&nbsp;xmlns:xsd="http://www.w3.org/2001/XMLSchema"<BR>&nbsp;&nbsp;xmlns:n="http://www.javaworld.com/ksoap/test"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;SOAP-ENV:Body&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;OrderStatus 
+xsi:type="n:orderStatus"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;CustomerName 
+xsi:type="xsd:string"&gt;Michael 
+Yuan&lt;/CustomerName&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transaction 
+xsi:type="n:transaction"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Symbol 
+xsi:type="xsd:string"&gt;XYZ&lt;/Symbol&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Share 
+xsi:type="xsd:int"&gt;1000&lt;/Share&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Buy 
+xsi:type="xsd:boolean"&gt;true&lt;/Buy&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Price 
+xsi:type="xsd:float"&gt;123.45&lt;/Price&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Transaction&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ExecTime 
+xsi:type="xsd:dateTime"&gt;2002-07-18T23:20:50.52Z&lt;/ExecTime&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/OrderStatus&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>We store the above SOAP message in string variable 
+<CODE>complexSoapRespMesg</CODE> and use the following Java code to read the 
+embedded data: 
+<P><CODE>
+<P>// For Listing 5<BR>ByteArrayInputStream bis = new ByteArrayInputStream 
+(complexSoapRespMesg.getBytes ());<BR>InputStreamReader reader = new 
+InputStreamReader (bis);<BR>XmlParser xp = new XmlParser (reader);<BR>// Use 
+default mapping between Java objects and Soap elements<BR>SoapEnvelope envelope 
+= new SoapEnvelope (new ClassMap (Soap.VER12));<BR>envelope.parse 
+(xp);<BR><BR>// Get the parsed structure<BR>SoapObject orderStatus = 
+(SoapObject) envelope.getResult();<BR><BR>String customerName = (String) 
+orderStatus.getProperty ("CustomerName");<BR>// Second layer of SoapObject 
+<BR>SoapObject transaction = (SoapObject) orderStatus.getProperty 
+("Transaction");<BR>String symbol = (String) transaction.getProperty 
+("Symbol");<BR>Integer share = (Integer) transaction.getProperty 
+("Share");<BR>Boolean buy = (Boolean) transaction.getProperty 
+("Buy");<BR>SoapPrimitive price = (SoapPrimitive) transaction.getProperty 
+("Price");<BR><BR>SoapPrimitive execTime = (SoapPrimitive) 
+orderStatus.getProperty ("ExecTime");<BR></CODE>
+<P>The process is rather straightforward. We just trace down the hierarchy tree 
+using element names and the <CODE>SoapObject.getProperty()</CODE> method. 
+<P>The simple parser in the above two examples gives the SOAP message's 
+structure in a hierarchy of <CODE>SoapObject</CODE>s and automatically converts 
+primitive SOAP elements of default types to Java objects. However, there are 
+only four default types. All other types are simply wrapped in generic 
+<CODE>SoapPrimitive</CODE> objects. <CODE>SoapPrimitive</CODE>'s simple wrapper 
+does not take advantage of SOAP's rich type presentation at all. In the next 
+section, we look at more advanced techniques to improve custom type handling 
+beyond the default four. 
+<P><!-- break -->
+<P><FONT size=+1><STRONG>Understand data marshal </STRONG></FONT><BR>To further 
+automate the SOAP type-mapping process, we must prepare the parser for two 
+tasks: 
+<P>
+<OL>
+  <LI>The parser must know the mapping relationship between custom SOAP types to 
+  custom Java types. We complete custom mapping by adding matching type pairs to 
+  the current parser's <CODE>ClassMap</CODE> object. 
+  <P></P>
+  <LI>Since all SOAP types are presented in plaintext strings, the parser must 
+  know how to convert the string to a desired Java object. The parser converts 
+  the string through a <CODE>Marshal</CODE> object, which is registered with the 
+  parser's corresponding custom SOAP and Java type pair in the 
+  <CODE>ClassMap</CODE> object. </LI></OL>
+<P>In the following example, I illustrate how to marshal the 
+<CODE>ExecTime</CODE> element in the stock-order response message (Listings 4 
+and 5). <CODE>ExecTime</CODE> specifies the time the order executes and has a 
+SOAP type <CODE>xsd:dateTime</CODE>. We try to marshal <CODE>ExecTime</CODE>'s 
+content automatically into a <CODE>java.util.Date</CODE> object. 
+<P>But before we can marshal the <CODE>Date</CODE> object, we must equip the 
+parser with new capabilities described in the above two steps. kSOAP provides a 
+standard way to add custom type-mapping and -marshaling capabilities through the 
+implementation of interface <CODE>Marshal</CODE>. The source code for the 
+<CODE>Marshal</CODE> interface is: 
+<P><CODE>
+<P>public interface Marshal {<BR><BR>&nbsp;&nbsp;public Object readInstance 
+(SoapParser 
+parser,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String 
+namespace, String 
+name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ElementType 
+expected) throws IOException;<BR><BR>&nbsp;&nbsp;public void writeInstance 
+(SoapWriter 
+writer,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Object instance) throws IOException;<BR><BR>&nbsp;&nbsp;public void register 
+(ClassMap cm);<BR>}<BR></CODE>
+<P>The kSOAP download package provides three <CODE>Marshal</CODE> 
+implementations as both convenience tools and programming examples. Luckily, 
+<CODE>Date</CODE> type's marshal is among the three. Below, I will use 
+<CODE>MarshalDate</CODE> as an example to illustrate how to implement the 
+<CODE>Marshal</CODE> interface so you can write your own <CODE>Marshal</CODE> 
+objects beyond the three implementations provided by kSOAP. You can find its 
+source code in class <CODE>org.ksoap.marshal.MarshalDate</CODE>. Method 
+<CODE>Marshal.readInstance()</CODE> actually reads the text string from the SOAP 
+element and then converts it to a Java object. In the case of the 
+<CODE>MarshalDate</CODE>, <CODE>readInstance()</CODE>'s source code is: <CODE>
+<P>public Object readInstance (SoapParser 
+parser,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String 
+namespace, String 
+name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ElementType 
+expected) throws IOException {<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;parser.parser.read 
+(); // Start tag<BR>&nbsp;&nbsp;&nbsp;&nbsp;Object result = 
+IsoDate.stringToDate<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(parser.parser.readText 
+(), IsoDate.DATE_TIME);<BR>&nbsp;&nbsp;&nbsp;&nbsp;parser.parser.read (); // End 
+tag<BR>&nbsp;&nbsp;&nbsp;&nbsp;return result;<BR>}<BR></CODE>
+<P>where the working method <CODE>IsoDate.stringToDate()</CODE> is in package 
+<CODE>org.kobjects.isodate</CODE> and the source code is: 
+<P><CODE>
+<P>public class IsoDate {<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;public static final int 
+DATE = 1;<BR>&nbsp;&nbsp;&nbsp;&nbsp;public static final int TIME = 
+2;<BR>&nbsp;&nbsp;&nbsp;&nbsp;public static final int DATE_TIME = 3;<BR><BR>// 
+Other methods<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;public static Date stringToDate 
+(String text, int type) 
+{<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calendar c = 
+Calendar.getInstance 
+();<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (type != 
+DATE_TIME)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.setTime 
+(new Date (0));<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ((type 
+&amp; DATE) != 0) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.YEAR, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (0, 
+4)));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.MONTH, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (5, 7)) - 1 + 
+Calendar.JANUARY);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.DAY_OF_MONTH, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (8, 
+10)));<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(type == 
+DATE_TIME)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text 
+= text.substring 
+(11);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+((type &amp; TIME) == 
+0)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+c.getTime ();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.HOUR_OF_DAY, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (0, 
+2)));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+-11<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set (Calendar.MINUTE, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (3, 
+5)));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set (Calendar.SECOND, 
+Integer.parseInt<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+(text.substring (6, 
+8)));<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int pos = 
+8;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (pos &lt; text.length() 
+&amp;&amp; text.charAt (pos) == '.') 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int 
+ms = 
+0;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int 
+f = 
+100;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while 
+(true) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char 
+d = text.charAt 
+(++pos);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(d &lt; '0' || d &gt; '9') 
+break;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ms 
++= (d-'0') * 
+f;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f 
+/= 
+10;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.MILLISECOND, 
+ms);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.set 
+(Calendar.MILLISECOND, 
+0);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (pos &lt; 
+text.length ()) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if 
+(text.charAt (pos) == '+' || text.charAt (pos) == 
+'-')<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.setTimeZone 
+(TimeZone.getTimeZone<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+("GMT"+text.substring 
+(pos)));<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 
+if (text.charAt (pos) == 
+'Z')<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.setTimeZone 
+(TimeZone.getTimeZone 
+("GMT"));<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw 
+new RuntimeException ("illegal time 
+format!");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 
+c.getTime ();<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}<BR></CODE>
+<P>Similarly, method <CODE>Marshal.writeInstance()</CODE> describes how to 
+serialize the Java object to a SOAP text string. In kSOAP writers, the method 
+offers a more elegant alternative to using <CODE>SoapPrimitive</CODE> objects to 
+handle unknown types. Interested readers can find the source code for that 
+function from kSOAP source distribution. 
+<P>Method <CODE>Marshal.register()</CODE> adds the matching custom SOAP type and 
+Java type pair, as well as their processing <CODE>Marshal</CODE> object, to a 
+<CODE>ClassMap</CODE> object: 
+<P><CODE>
+<P>public void register (ClassMap cm) 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;cm.addMapping<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(cm.xsd, 
+"dateTime",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MarshalDate.DATE_CLASS, this);<BR>}<BR></CODE>
+<P>Inside method <CODE>ClassMap.addMapping()</CODE>, the custom SOAP type is 
+added as an empty <CODE>SoapPrimitive</CODE> object: 
+<P><CODE>
+<P>/** Defines a direct mapping from a namespace and name to a 
+Java<BR>&nbsp;&nbsp;&nbsp;&nbsp;class (and vice versa), using the given marshal 
+mechanism */<BR><BR>public void addMapping (String namespace, String 
+name,<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class 
+clazz, Marshal marshal) {<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;qNameToClass.put (new 
+SoapPrimitive (namespace, name, 
+null),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;marshal 
+== null ? (Object) clazz : 
+marshal);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;classToQName.put (clazz.getName 
+(),<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new 
+Object [] {namespace, name, null, marshal});<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;if 
+(prefixMap.getPrefix (namespace) == 
+null)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prefixMap = new 
+PrefixMap (prefixMap, "n"+(cnt++), namespace);<BR>}<BR></CODE>
+<P>Once a <CODE>Marshal</CODE> is implemented for a specific types pair, its use 
+proves trivial. We need to ensure only that the desired <CODE>Marshal</CODE> is 
+registered with the current parser. The following code segment illustrates the 
+use of <CODE>MarshalDate</CODE> for Listing 4's SOAP message: 
+<P><CODE>
+<P>// For Listing 4<BR>ByteArrayInputStream bis = new ByteArrayInputStream 
+(mesg.getBytes ());<BR>InputStreamReader reader = new InputStreamReader 
+(bis);<BR>XmlParser xp = new XmlParser (reader);<BR><BR>// Register Marshal for 
+"xsd:dateTime" type<BR>ClassMap cm = new ClassMap (Soap.VER12);<BR>Marshal md = 
+new MarshalDate ();<BR>md.register (cm);<BR>SoapEnvelope envelope = new 
+SoapEnvelope (cm);<BR>envelope.parse (xp);<BR><BR>SoapObject orderStatus = 
+(SoapObject) envelope.getResult();<BR></CODE>
+<P>As the following code segment shows, the parsed <CODE>ExecTime</CODE> 
+property is now directly a <CODE>Date</CODE> type Java object, rather than a 
+<CODE>SoapPrimitive</CODE>, as in previous examples. 
+<P><CODE>
+<P>Date execTime = (Date) orderStatus.getProperty ("ExecTime"); <BR></CODE>
+<P>In addition to the <CODE>MarshalDate</CODE> implementation, kSOAP provides 
+two other <CODE>Marshal</CODE> implementations: <CODE>MarshalBase64</CODE> and 
+<CODE>MarshalHashtable</CODE>. Base64 is a method for encoding a binary stream 
+into an ASCII string so that it can transport through email or XML/SOAP. 
+<CODE>MarshalBase64</CODE> marshals a <CODE>xsd:based64Binary</CODE> element 
+into a Java byte array. kSOAP does not support SOAP attachments, but 
+<CODE>MarshalBase64</CODE> should allow users to send/receive binary data 
+chunks. <CODE>MarshalHashtable</CODE> marshals a SOAP <CODE>Map</CODE> element 
+into a Java hashtable. 
+<P>Now, you can use this marshaling technique to extend the kSOAP parser and 
+marshal any SOAP types to your custom Java data objects. 
+<P><!-- break -->
+<P><FONT size=+1><STRONG>Advanced features </STRONG></FONT><BR>I now discuss two 
+advanced kSOAP features: array handling and <CODE>SoapObject</CODE> templates. 
+<P><STRONG>Arrays </STRONG><BR>As I discussed previously, SOAP's strength lies 
+in its power to represent rich data with complex types. One of the important 
+data types in any programming language is <EM>array.</EM> SOAP supports array. 
+For example, the stock-trade Web service might execute several orders together 
+and return the following SOAP response message: 
+<P><STRONG>Listing 6. Stock-order response message with an array </STRONG>
+<P><CODE>
+<P>&lt;SOAP-ENV:Envelope 
+<BR>&nbsp;&nbsp;xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"<BR>&nbsp;&nbsp;xmlns:SOAP-ENC="http://www.w3.org/2001/12/soap-encoding"<BR>&nbsp;&nbsp;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<BR>&nbsp;&nbsp;xmlns:xsd="http://www.w3.org/2001/XMLSchema"<BR>&nbsp;&nbsp;xmlns:n="http://www.javaworld.com/ksoap/test"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;SOAP-ENV:Body&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;OrderStatus 
+xsi:type="n:orderStatus"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;CustomerName 
+xsi:type="xsd:string"&gt;Michael 
+Yuan&lt;/CustomerName&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transactions 
+xsi:type="SOAP-ENC:Array" 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SOAP-ENC:arrayType="n:transaction[2]"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transaction 
+xsi:type="n:transaction"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Symbol 
+xsi:type="xsd:string"&gt;ABC&lt;/Symbol&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Share 
+xsi:type="xsd:int"&gt;500&lt;/Share&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Buy 
+xsi:type="xsd:boolean"&gt;true&lt;/Buy&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Price 
+xsi:type="xsd:float"&gt;43.21&lt;/Price&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Transaction&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Transaction 
+xsi:type="n:transaction"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Symbol 
+xsi:type="xsd:string"&gt;XYZ&lt;/Symbol&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Share 
+xsi:type="xsd:int"&gt;1000&lt;/Share&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Buy 
+xsi:type="xsd:boolean"&gt;true&lt;/Buy&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Price 
+xsi:type="xsd:float"&gt;123.45&lt;/Price&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Transaction&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Transactions&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ExecTime 
+xsi:type="xsd:dateTime"&gt;2002-07-18T23:20:52.52Z&lt;/ExecTime&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/OrderStatus&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/result&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SOAP-ENV:Body&gt;<BR>&lt;/SOAP-ENV:Envelope&gt;<BR></CODE>
+<P>kSOAP reads a SOAP array into a Java <CODE>java.util.Vector</CODE> object. 
+Method <CODE>Vector.elementAt(i)</CODE> extracts the array's <EM>i</EM>th 
+object. Depending on the <CODE>arrayType</CODE>, this object could be a 
+<CODE>SoapObject</CODE>, a <CODE>SoapPrimitive</CODE>, a default Java type, or a 
+marshaled Java object. In the above code, the array components are 
+<CODE>SoapObject</CODE> objects. The following code segment parses and retrieves 
+the data. The code assumes that the SOAP response message with array (Listing 6) 
+is stored in string variable <CODE>arraySoapRespMesg</CODE>: 
+<P><CODE>
+<P>// For Listing 6<BR>ByteArrayInputStream bis = new ByteArrayInputStream 
+(arraySoapRespMesg.getBytes ());<BR>InputStreamReader reader = new 
+InputStreamReader (bis);<BR>XmlParser xp = new XmlParser (reader);<BR><BR>// 
+Register Marshal for "xsd:dateTime" type<BR>ClassMap cm = new ClassMap 
+(Soap.VER12);<BR>Marshal md = new MarshalDate ();<BR>md.register 
+(cm);<BR>SoapEnvelope envelope = new SoapEnvelope (cm);<BR>envelope.parse 
+(xp);<BR><BR>SoapObject orderStatus = (SoapObject) 
+envelope.getResult();<BR><BR>String customerName = (String) 
+orderStatus.getProperty ("CustomerName");<BR><BR>Vector transactions = (Vector) 
+orderStatus.getProperty ("Transactions");<BR>// First element in the 
+array<BR>SoapObject transaction0 = (SoapObject) 
+transactions.elementAt(0);<BR>String symbol0 = (String) transaction0.getProperty 
+("Symbol");<BR>Integer share0 = (Integer) transaction0.getProperty 
+("Share");<BR>Boolean buy0 = (Boolean) transaction0.getProperty 
+("Buy");<BR>SoapPrimitive price0 = (SoapPrimitive) transaction0.getProperty 
+("Price"); <BR>// Second element in the array<BR>SoapObject transaction1 = 
+(SoapObject) transactions.elementAt(1);<BR>String symbol1 = (String) 
+transaction1.getProperty ("Symbol");<BR>Integer share1 = (Integer) 
+transaction1.getProperty ("Share");<BR>Boolean buy1 = (Boolean) 
+transaction1.getProperty ("Buy");<BR>SoapPrimitive price1 = (SoapPrimitive) 
+transaction1.getProperty ("Price");<BR></CODE>
+<P>However, kSOAP does not support the full SOAP array specification. For 
+example, kSOAP lacks support for multidimensional arrays because of small 
+devices memory considerations. 
+<P><STRONG>SoapObject template </STRONG><BR>In the above examples, we take in 
+only SOAP documents and parse them into <CODE>SoapObject</CODE>s as they are. 
+However, in many cases, we require the response message to follow certain 
+formats and wish the parser to validate it during the parsing. For example, we 
+might require that the <CODE>n:transaction</CODE>-type SOAP elements in Listings 
+5 and 6 contain a <CODE>xsd:string</CODE> value <CODE>Symbol</CODE>, a 
+<CODE>xsd:int</CODE> value <CODE>Share</CODE>, a <CODE>xsd:boolean</CODE> value 
+<CODE>Buy</CODE>, and a <CODE>xsd:float</CODE> value <CODE>Price</CODE>. 
+<P>Our old friend, the <CODE>ClassMap</CODE> class, can validate the message. We 
+must add into the <CODE>ClassMap</CODE> object a <CODE>SoapObject</CODE> 
+template associated with the current parser. The <CODE>SoapObject</CODE> 
+template is an empty <CODE>SoapObject</CODE> with information about the parent 
+SOAP type, children (properties) element names, and their Java types. Again, the 
+children can be templates themselves, which allows us to construct arbitrarily 
+complex templates. 
+<P>You add the <CODE>SoapObject</CODE> template by calling the 
+<CODE>ClassMap.addTemplate()</CODE> method (examine the method's source code for 
+its inner workings). Similar to the data marshal example's 
+<CODE>ClassMap.addMapping()</CODE> method, the SOAP type is added as an empty 
+<CODE>SoapPrimitive</CODE> object. However, <CODE>ClassMap.addTemplate()</CODE> 
+adds a preconstruct <CODE>SoapObject</CODE> instance here rather than a marshal 
+instance. Our example's <CODE>ClassMap</CODE> maneuver is illustrated below: 
+<P><CODE>
+<P>// For Listings 5 or 6<BR>ByteArrayInputStream bis = new ByteArrayInputStream 
+(arraySoapRespMesg.getBytes ());<BR>InputStreamReader reader = new 
+InputStreamReader (bis);<BR>XmlParser xp = new XmlParser 
+(reader);<BR><BR>ClassMap cm = new ClassMap (Soap.VER12);<BR><BR>// Register 
+Marshal for "xsd:dateTime" type<BR>Marshal md = new MarshalDate 
+();<BR>md.register (cm);<BR>SoapObject so = new SoapObject 
+("http://www.javaworld.com/ksoap/test",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"transaction");<BR>so.addProperty 
+("Symbol", new String (""));<BR>so.addProperty ("Share", new Integer 
+(0));<BR>so.addProperty ("Buy", new Boolean (true));<BR>so.addProperty ("Price", 
+new SoapPrimitive ("xsd", "float", ""));<BR>cm.addTemplate 
+(so);<BR><BR>SoapEnvelope envelope = new SoapEnvelope (cm);<BR>envelope.parse 
+(xp);<BR><BR>SoapObject orderStatus = (SoapObject) 
+envelope.getResult();<BR></CODE>
+<P>If the parsing succeeds, we can proceed to extract data from 
+<CODE>orderStatus</CODE> as illustrated in other examples. If the SOAP message's 
+<CODE>n:transaction</CODE> element fails to conform to the corresponding 
+<CODE>SoapObject</CODE> template, the parser throws an exception and stops. 
+<P><FONT size=+1><STRONG>Use HttpTransport </STRONG></FONT><BR>You have learned 
+how kSOAP works on serialized SOAP messages, yet I have not shown you how to use 
+Web services on real networks. We could use the network APIs in MIDP directly to 
+send/receive SOAP messages via HTTP. But that proves unnecessary since kSOAP 
+provides a powerful utility class <CODE>HttpTransport</CODE>. Class 
+<CODE>HttpTransport</CODE> does the network plumbing and provides a way to 
+bypass the serialized messages completely in our Java programs. A 
+<CODE>HttpTransport</CODE> object can be constructed using the RPC end point and 
+<CODE>SoapAction</CODE> URIs (Uniform Resource Identifiers). Method 
+<CODE>HttpTransport.call()</CODE> takes in a <CODE>KvmSerializable</CODE> 
+object, serializes it to SOAP message, sends the message to the end point, and 
+receives the response. Then <CODE>HttpTransport.call()</CODE> parses the 
+response SOAP message, calls the <CODE>SoapEnvelope.getResult()</CODE> method to 
+get the response data in a Java object, and returns the Java object. 
+<P>The kSOAP download page offers simple examples on how to use 
+<CODE>HttpTransport</CODE>. Its usage is trivial once you have a solid 
+understanding on how things work under the hood on the serialized message level. 
+The following code segment illustrates how to access the XMethods stock quote 
+Web service using <CODE>HttpTransport</CODE>: 
+<P><CODE>
+<P><BR>// ... ...<BR>//<BR>// Object to display results<BR>StringItem resultItem 
+= new StringItem ("", "");<BR>// ... ...<BR><BR>String symbol = 
+symbolField.getString ();<BR>resultItem.setLabel (symbol);<BR><BR>// Set up a 
+serializable object for a SOAP message<BR>SoapObject rpc = new SoapObject 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("urn:xmethods-delayed-quotes", 
+"getQuote");<BR>rpc.addProperty ("symbol", symbol);<BR>// Call the Web service 
+and retrieve the result<BR>resultItem.setText (""+new HttpTransport 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;("http://services.xmethods.net/soap",<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+"urn:xmethods-delayed-quotes#getQuote").call (rpc));<BR></CODE>
+<P>Interested readers should read <CODE>HttpTransport</CODE>'s source code to 
+study how it works. The source code comments prove helpful. 
+<P><FONT size=+1><STRONG>Now it's your turn </STRONG></FONT><BR>kSOAP provides a 
+powerful and flexible tool for parsing and composing SOAP messages into/from 
+Java objects. It offers all the features essential to SOAP parsing and data 
+access. I did not cover some issues, such as the handling of 
+<CODE>SoapFault</CODE>, but this article's examples should get you started. 
+<P>Moreover, since the SOAP community is developing kSOAP under the open source 
+model, you can always look at its source code to figure out how things work. Or 
+even better, you can develop the features you need, fix bugs, and provide 
+feedback to the community. 
+<P>SOAP-based Web services are gaining popularity. Information-service giants 
+like Google.com and Amazon.com have recently provided SOAP interfaces to their 
+services. I wrote simple a kSOAP client for the Google API, which is freely 
+available for download from <A 
+href="http://www.javaworld.com/javaworld/jw-08-2002/jw-0823-wireless_p.html#resources">Resources</A>. 
+Now it is your turn to develop some cool applications for your wireless devices! 
+
+<P><EM>I wish to thank kSOAP lead developer Stefan Haustein for reviewing this 
+article and its examples. </EM><IMG height=12 
+src="Access Web services from wireless devices_arquivos/jw-dingbat.gif" 
+width=22>
+<P><BR></P>
+<P><STRONG>About the author</STRONG><BR><A 
+href="http://www.javaworld.com/feedback" target=_blank>Michael Yuan</A> is a PhD 
+candidate at the University of Texas, where he is a research associate at the 
+Center for Research in Electronic Commerce and an open source Java developer. 
+<BR></P>
+<P>
+<UL><A name=resources></A><STRONG>Resources</STRONG> <BR>
+  <LI>Download the source code for the examples in this article: <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-08-2002/wireless/jw-0823-wireless.zip">http://www.javaworld.com/javaworld/jw-08-2002/wireless/jw-0823-wireless.zip</A><BR>
+  <LI>Visit the kSOAP project Website and download the latest version: <BR><A 
+  href="http://ksoap.enhydra.org/">http://ksoap.enhydra.org/</A><BR>
+  <LI>The kSOAP mailing list provides a good place for asking kSOAP-related 
+  questions and contributing to the project: <BR><A 
+  href="http://ksoap.enhydra.org/project/mailingLists/index.html">http://ksoap.enhydra.org/project/mailingLists/index.html</A><BR>
+  <LI>kSOAP is a project under the EnhydraME initiative: <BR><A 
+  href="http://me.enhydra.org/index.html">http://me.enhydra.org/index.html</A><BR>
+  <LI>We should watch out for Java Specification Request (JSR) 172, the proposed 
+  J2ME Web Services Specification: <BR><A 
+  href="http://www.jcp.org/jsr/detail/172.jsp">http://www.jcp.org/jsr/detail/172.jsp</A><BR>
+  <LI>For discussions on the big pictures of wireless Web services, please refer 
+  to Michael Yuan and Ju Long's previous <EM>JavaWorld</EM> article: "Java 
+  Readies Itself for Wireless Web Services" (June 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless.html">http://www.javaworld.com/javaworld/jw-06-2002/jw-0621-wireless.html</A><BR>
+  <LI>If you are new to J2ME and MIDP, check out these books in Michael Yuan's 
+  "Java Books Hit the Wire," (<EM>JavaWorld,</EM> July 2002): <BR><A 
+  href="http://www.javaworld.com/javaworld/jw-07-2002/jw-0719-wireless.html">http://www.javaworld.com/javaworld/jw-07-2002/jw-0719-wireless.html</A><BR>
+  <LI>For a MIDP programming refresher, read Michael Cymerman's "Device 
+  Programming with MIDP" series (JavaWorld): 
+  <UL>
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-01-2001/jw-0105-midp.html">Part 
+    1: The concepts behind MIDP APIs and J2ME to build cross-wireless-platform 
+    apps</A> (January 2001) 
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-03-2001/jw-0309-midp2.html">Part 
+    2: Use these user-interface and data-store components to create MIDP-based 
+    applications</A> (March 2001) 
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-07-2001/jw-0706-midp3.html">Part 
+    3: Use MIDP's communication APIs to interact with external systems</A> (July 
+    2001) </LI></UL>
+  <LI>SOAP is a W3C (World Wide Web Consortium) standard protocol: <BR><A 
+  href="http://www.w3.org/TR/SOAP/">http://www.w3.org/TR/SOAP/</A><BR>
+  <LI><EM>JavaWorld'</EM>s series "Clean Up Your Wire Protocol with SOAP" by 
+  Tarak Modi discusses how to implement SOAP on both the client and server using 
+  common Java tools: 
+  <UL>
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-03-2001/jw-0330-soap.html">Part 
+    1: An introduction to SOAP basics</A> (March 2001) 
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-04-2001/jw-0427-soap.html">Part 
+    2: Use Apache SOAP to create SOAP-based applications</A> (April 2001) 
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-06-2001/jw-0601-soap.html">Part 
+    3: Create SOAP services in Apache SOAP with JavaScript</A> (June 2001) 
+    <LI><A 
+    href="http://www.javaworld.com/javaworld/jw-07-2001/jw-0706-soap.html">Part 
+    4: Dynamic proxies make Apache SOAP client development easy</A> (July 2001) 
+    </LI></UL>
+  <LI>Java API for XML Messaging (JAXM) is the standard Java API for SOAP. It 
+  provides full support for SOAP features and is commonly used on the server 
+  side: <BR><A 
+  href="http://java.sun.com/xml/jaxm/">http://java.sun.com/xml/jaxm/</A><BR>
+  <LI>Java Web Services Developer Pack is Sun's solution to server-side Web 
+  services: <BR><A 
+  href="http://java.sun.com/webservices/downloads/webservicespack.html">http://java.sun.com/webservices/downloads/webservicespack.html</A><BR>
+  <LI>AlphaWorks's Web Services Tookit is IBM's solution to server-side Web 
+  services: <BR><A 
+  href="http://www.alphaworks.ibm.com/tech/webservicestoolkit">http://www.alphaworks.ibm.com/tech/webservicestoolkit</A><BR>
+  <LI>Google Web services API: <BR><A 
+  href="http://www.google.com/apis/">http://www.google.com/apis/</A><BR>
+  <LI>Amazon Web services API: <BR><A 
+  href="http://www.amazon.com/webservices">http://www.amazon.com/webservices</A><BR>
+  <LI>Michael Yuan's implementations of the Google API: <BR><A 
+  href="http://www.enterprisej2me.com/download/GoogleAPI-source.zip">http://www.enterprisej2me.com/download/GoogleAPI-source.zip</A><BR>
+  <LI>For more articles on J2ME and wireless development, browse the 
+  <STRONG>Micro Java</STRONG> section of <EM>JavaWorld'</EM>s Topical Index: 
+  <BR><A 
+  href="http://www.javaworld.com/channel_content/jw-micro-index.shtml">http://www.javaworld.com/channel_content/jw-micro-index.shtml</A><BR>
+  <LI>For more articles on Web services, check out the following 
+  <EM>JavaWorld</EM> resources: 
+  <UL>
+    <LI>The <STRONG>Java and Web Services</STRONG> section of our Topical Index: 
+    <BR><A 
+    href="http://www.javaworld.com/channel_content/jw-webserv-index.shtml">http://www.javaworld.com/channel_content/jw-webserv-index.shtml</A> 
+
+    <LI>Frank Sommers's <STRONG>Web Services</STRONG> column: <BR><A 
+    href="http://www.javaworld.com/columns/jw-web-services-index.shtml">http://www.javaworld.com/columns/jw-web-services-index.shtml</A> 
+    </LI></UL>
+  <LI>For more articles on XML-based Java development, browse the <STRONG>Java 
+  and XML</STRONG> section of <EM>JavaWorld'</EM>s Topical Index: <BR><A 
+  href="http://www.javaworld.com/channel_content/jw-xml-index.shtml">http://www.javaworld.com/channel_content/jw-xml-index.shtml</A><BR>
+  <LI>Chat about devices galore in <EM>JavaWorld'</EM>s <STRONG>Device 
+  Programming</STRONG> discussion: <BR><A 
+  href="http://forums.devworld.com/webx?230@@.ee6b808!skip=249">http://forums.devworld.com/webx?230@@.ee6b808!skip=249</A><BR>
+  <LI>Sign up for <EM>JavaWorld</EM>'s free weekly email <EM>Micro Java</EM> 
+  newsletter: <BR><A 
+  href="http://www.javaworld.com/subscribe">http://www.javaworld.com/subscribe</A><BR>
+  <LI>You'll find a wealth of IT-related articles from our sister publications 
+  at <A href="http://www.idg.net/jump?id=1100">IDG.net</A> </LI></UL><BR>
+<P></P><!-- REPLACE SIDEBAR --></FONT><!-- ## MAIN CONTENT ENDS HERE ### --></TD><TD 
+width="8"><IMG height=1 
+src="Access Web services from wireless devices_arquivos/spacer.gif" width=8 
+border=0></TD> </TR></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width=186 bgColor=#006699><NOBR><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif size=1></FONT></NOBR><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Access Web services from wireless devices_arquivos/top_jwlogo.gif" 
+      width=186 border=0></A></TD>
+    <TD vAlign=bottom width=8 bgColor=#cccccc><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/c_blgrylftbottom.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- BOTTOM 468x60 AD STARTS HERE jw-articles-bottom-ad.txt -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+        here!</FONT><BR></TD></TR></TBODY></TABLE><!-- BOTTOM 468x60 AD ENDS HERE --></TD>
+    <TD width=8><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#006699 
+border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center align=middle width="100%"><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff size=1>
+      <P><BR><A href="http://www.javaworld.com/"><FONT 
+      color=#ffffff>HOME</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/features/index.shtml"><FONT 
+      color=#ffffff>FEATURED TUTORIALS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/columns/index.shtml"><FONT 
+      color=#ffffff>COLUMNS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+      color=#ffffff>NEWS &amp; REVIEWS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://forums.devworld.com/webx?13@@.ee6b802"><FONT 
+      color=#ffffff>FORUM</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/resources/index.shtml"><FONT 
+      color=#ffffff>JW RESOURCES</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+      color=#ffffff>ABOUT JW</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/feedback"><FONT 
+      color=#ffffff>FEEDBACK</FONT></A> </P>
+      <P><A 
+      href="http://www.javaworld.com/javaworld/common/jw-copyright.html"><FONT 
+      color=#ffffff>Copyright © 2004</FONT></A> JavaWorld.com, an IDG company 
+      </P></FONT></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=right width="100%"><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/c_blrtbottom.gif" 
+      width=8 border=0></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Access Web services from wireless devices_arquivos/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE><!-- USA JavaWorld.com Pixel --><!-- stories1.devworld.com --><!-- DOCID 939719 --><!-- EX: 951984000 -->
+<SCRIPT language=JavaScript>
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</SCRIPT>
+</BODY></BASEFONT></HTML>

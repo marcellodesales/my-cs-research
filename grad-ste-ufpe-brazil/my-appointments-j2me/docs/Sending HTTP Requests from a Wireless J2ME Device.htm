@@ -1,0 +1,3759 @@
+<!-- <widgetwrapper> --> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html> <head> <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> <title>Sending HTTP Requests from a Wireless J2ME Device</title> <link rel="stylesheet" type="text/css" href="/styles/cps.css"> <link rel="stylesheet" type="text/css" href="/styles/devxstyles.css"> <meta name="keywords" content=""> <meta name="Description" content="Learn to use the J2ME networking classes found in the javax.microedition.io package to send HTTP requests to a Web server or similar HTTP-enabled network server."> <meta name="Topic" content="962 HTTP -- Products and Technologies :: Protocols/APIs :: Internet Protocols/APIs :: HTTP"> <script language="javascript" src="/scripts/globalFuncs.js"></script></head> <body topmargin="2" marginheight="2"> <!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+	
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_url = 'http://mjxads.internet.com/RealMedia/ads/';
+OAS_sitepage = 'devx/java/962/16646';
+OAS_listpos = '468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5';
+OAS_query = '';
+OAS_target = '_top';
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+var_a=('<A HREF="' + OAS_url + 'click_nx.cgi/' + OAS_sitepage );
+var_b=(var_a + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' );
+var_c=(var_b+ OAS_query + '" TARGET=' + OAS_target + '>');
+document.write(var_c);
+var_aa=('<IMG SRC="' + OAS_url + 'adstream_nx.cgi/' + OAS_sitepage ); 
+var_bb=( var_aa + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?');
+var_cc=( var_bb + OAS_query + '" BORDER=0></A>');
+document.write(var_cc);
+}
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript1.1>
+<!--
+function OAS_RICH( pos )
+{
+	document.write( OAS_sitepage + ": " + pos );
+}
+OAS_version = 11;
+if (navigator.userAgent.indexOf('Mozilla/3') != -1 )
+	OAS_version = 10;
+if (navigator.userAgent.indexOf('Mozilla/4.0 WebTV') != -1)
+	OAS_version = 10;
+if (OAS_version >= 11) 
+{
+	var_aaa = '<SCRIPT LANGUAGE=JavaScript1.1 SRC="' + OAS_url; 
+	var_aaa+= 'adstream_mjx.ads/' + OAS_sitepage + '/1'; 
+	var_aaa+= OAS_rns + '@' + OAS_listpos + '?' + OAS_query ;
+	var_aaa+= '"><\/SCRIPT>';
+	document.write(var_aaa);
+}
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+document.write('');
+function OAS_AD(pos) 
+{
+	if (OAS_version >= 11)
+		OAS_RICH(pos);
+	else
+		OAS_NORMAL(pos);
+}
+//-->
+</SCRIPT> 
+
+
+<!-- OAS ad tag start -->
+
+<div align="center" class="" style="margin-top: 0px; margin-bottom: 0px; width:799px;">
+
+
+<div><img src="/assets/devx/3174.gif" border="0" align="top" vspace="0" hspace="0" width="108" vspace="0" height="9" alt="advertisement"></div>
+
+<table width="100%" align="center" style="margin-top: 0px;">
+<tr><td valign="top">
+
+<table cellspacing="0" cellpadding="5" border="0" background="/assets/devx/3173.gif" align="center">
+<tr><td >
+
+<!-- ---- OAS AD '468x60-1' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('468x60-1');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!468x60-1" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!468x60-1" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+</div>
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT87_W3228v2  04/05/2004 07:28:30 --><!-- (3228) - start 2 col layout: Exp DevX Bottom Logo w/ Search -->
+<div align="" class="" style="margin-top:10px;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%" >
+	<tr>
+		<td width="317" valign="top"> <div><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT86_W3400v1  04/05/2004 07:28:30 --><!-- start imagelink -->
+
+	
+	
+	
+	<div><a href="http://www.devx.com/DevX/Door/6947" ><img src="/assets/devx/7819.gif" border="0" height="70" vspace="0" hspace="0" width="317" alt=""></a></div>
+	
+	
+<!-- end imagelink -->
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> 
+				
+			<div style="margin-top:0"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT86_W3401v1  04/05/2004 07:28:30 --><!-- start imagelink -->
+
+	
+	
+	
+	<div><a href="http://www.devx.com/DevX/Door/6947" ><img src="/assets/devx/7820.gif" border="0" height="11" vspace="0" hspace="0" width="161" alt=""></a></div>
+	
+	
+<!-- end imagelink -->
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> </td>
+		<td width="100%"  valign="top" style="padding-top:4px;"> <div><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+	<table  cellspacing="0" cellpadding="0" width="100%"><tr><td  valign="top" align="right">
+
+	<span class="articleNav">Welcome, Guest!</span>
+	&nbsp;&nbsp;&nbsp;
+	<a href="https://www.devx.com/DevX/Site/6196/0?url=http://www.devx.com/getHelpOn/10MinuteSolution/16646" class="basiclink">Log In</a>
+	|
+	<a href="https://www.devx.com/DevX/Registration/6596/0?url=http://www.devx.com/getHelpOn/10MinuteSolution/16646" class="basiclink">Register for Premier Club</a>
+</tr></td></table>
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> 
+				
+			<div style="margin-top:0"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT169_W1924v3  04/05/2004 07:28:30 -->
+<script language="javascript">
+	function validQuery(  )
+	{
+		var theQuery = document.searchForm.q.value;
+		theQuery = theQuery.replace( /[^a-zA-Z0-9]/g, "" );
+		return theQuery.length > 0;
+	}
+</script>
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 0px;">
+<tr>
+  <td height="30" width="1%"><img src="/assets/devx/7821.gif" height="30" width="105" border="0"></td>
+  <td height="30" width="99%" bgcolor="#000099" style="color: yellow;font-weight: bold;font-size:10px;" nowrap>
+    <form action="http://search.devx.com/search.cfm" method="GET" style="margin-top:0px;margin-bottom:0px;" name="searchForm" onSubmit="return validQuery();">
+      &nbsp;&nbsp;<input style="font-size: 10px;" type="text" name="q" size="40" maxlength="255" value="">
+      <input style="font-size: 10px;margin-top:0px;margin-bottom:0px;" type="checkBox" name="i" value="yes">Include Code&nbsp;&nbsp;
+      <input name="sa" type="image" border="0" src="/assets/devx/3386.gif" align="absmiddle">
+	  <a href="http://www.devx.com/DevX/HTML/11715" class="promotext"><U>Search Tips</U></a>
+  </td>
+    <input type="hidden" name="a" value="1"><input type="hidden" name="f" value="1"><input type="hidden" name="s" value="0"></form>
+</tr>
+</table>
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:0"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT90_W3141v1_S6946v574  04/18/2004 08:00:40 -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFE48E" style="border-bottom:#000099 solid 2px;border-right:#000099 solid 2px;margin-bottom:3px; padding:3px;" >
+	<tr>
+		
+		
+		<td class="helptext" align="center" nowrap>
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevXNews/LegacyLink/17996"  class="helptext">TODAY'S&nbsp;HEADLINES</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/Door/18001"  class="helptext">ARTICLE&nbsp;ARCHIVE</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/7038"  class="helptext">SKILLBUILDING</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/tips/vtBrowser/20528"  class="helptext">TIP&nbsp;BANK</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/8142"  class="helptext">SOURCEBANK</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/ForumsvBulletin/LegacyLink/7032"  class="helptext">FORUMS</a>
+			
+		
+		
+		</td>
+	</tr>
+</table>
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> </td>
+	</tr>
+</table>
+</div>
+<!-- end 2 col layout -->
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT87_W1766v8  03/30/2004 09:14:16 --><!-- (1766) - start 2 col layout: DevX Left Nav & Article Holder -->
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+	<tr>
+		<td width="161" valign="top"> <div><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT167_W1897v8  04/18/2004 07:54:07 -->
+<!-- (me.data_.widget_id) - start Bordered Box: Browse Devx Bordered Box -->
+<table cellspacing="0" cellpadding="0" border="0" width="161" >
+	
+	<tr>
+		<td >
+			<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W3508v1  04/18/2004 07:54:07 --><div><img src="/assets/devx/9113.gif" border="0" align="top" vspace="0" hspace="0" height="20" width="161" alt="Browse DevX"></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT193_W3459v3_S6946v574  04/18/2004 07:54:08 -->
+
+<!-- HIER MENU START -->
+
+	<div align="left" class="" style="width:157px; border-left:2px solid #000099; border-right:2px solid #000099; background-color:#FFE48E;">
+	
+
+	
+		
+		
+
+		
+
+			
+		
+	
+	
+	
+		
+
+		
+			
+		
+		
+	<a onMouseOver="HM_f_PopUp('HM_Menu1',event)" onMouseOut="HM_f_PopDown('HM_Menu1')" href="http://www.devx.com/DevX/Door/16238" ><img src="/assets/devx/8601.gif" height="18" width="157" border="0" align="" name="sdz"></a><a onMouseOver="HM_f_PopUp('HM_Menu2',event)" onMouseOut="HM_f_PopDown('HM_Menu2')" href="http://www.devx.com/DevX/Door/16238#techshowcase" ><img src="/assets/devx/8602.gif" height="17" width="157" border="0" align="" name="vendorshowcases"></a><img src="/assets/devx/8603.gif" height="17" width="157" border="0"><a onMouseOver="HM_f_PopUp('HM_Menu4',event)" onMouseOut="HM_f_PopDown('HM_Menu4')" href="http://www.devx.com/dotnet/Door/7040" ><img src="/assets/devx/8604.gif" height="17" width="157" border="0" align="" name="dotnet2"></a><a onMouseOver="HM_f_PopUp('HM_Menu5',event)" onMouseOut="HM_f_PopDown('HM_Menu5')" href="http://www.devx.com/Java/Door/6972" ><img src="/assets/devx/8605.gif" height="17" width="157" border="0" align="" name="java2"></a><a onMouseOver="HM_f_PopUp('HM_Menu6',event)" onMouseOut="HM_f_PopDown('HM_Menu6')" href="http://www.devx.com/cplus/Door/7042" ><img src="/assets/devx/8606.gif" height="17" width="157" border="0" align="" name="cplus2"></a><a onMouseOver="HM_f_PopUp('HM_Menu7',event)" onMouseOut="HM_f_PopDown('HM_Menu7')" href="http://www.devx.com/webdev/Door/7048" ><img src="/assets/devx/8607.gif" height="17" width="157" border="0" align="" name="webdev2"></a><a onMouseOver="HM_f_PopUp('HM_Menu8',event)" onMouseOut="HM_f_PopDown('HM_Menu8')" href="http://www.devx.com/dbzone/Door/7022" ><img src="/assets/devx/8608.gif" height="17" width="157" border="0" align="" name="dbdev2"></a><a onMouseOver="HM_f_PopUp('HM_Menu9',event)" onMouseOut="HM_f_PopDown('HM_Menu9')" href="http://www.devx.com/security/Door/7045" ><img src="/assets/devx/9261.gif" height="17" width="157" border="0" align="" name="security"></a><a onMouseOver="HM_f_PopUp('HM_Menu10',event)" onMouseOut="HM_f_PopDown('HM_Menu10')" href="http://www.devx.com/opensource/Door/7044" ><img src="/assets/devx/8609.gif" height="17" width="157" border="0" align="" name="opensource2"></a><a onMouseOver="HM_f_PopUp('HM_Menu11',event)" onMouseOut="HM_f_PopDown('HM_Menu11')" href="http://www.devx.com/xml/Door/7050" ><img src="/assets/destination/8610.gif" height="17" width="157" border="0" align="" name="xml2"></a><a onMouseOver="HM_f_PopUp('HM_Menu12',event)" onMouseOut="HM_f_PopDown('HM_Menu12')" href="http://www.devx.com/vb/Door/7047" ><img src="/assets/destination/8611.gif" height="17" width="157" border="0" align="" name="vbclassic"></a><a onMouseOver="HM_f_PopUp('HM_Menu13',event)" onMouseOut="HM_f_PopDown('HM_Menu13')" href="http://www.devx.com/asp/Door/7041" ><img src="/assets/devx/8612.gif" height="17" width="157" border="0" align="" name="asp2"></a><a onMouseOver="HM_f_PopUp('HM_Menu14',event)" onMouseOut="HM_f_PopDown('HM_Menu14')" href="http://www.devx.com/enterprise/Door/7043" ><img src="/assets/devx/8613.gif" height="17" width="157" border="0" align="" name="enterprise2"></a><a onMouseOver="HM_f_PopUp('HM_Menu15',event)" onMouseOut="HM_f_PopDown('HM_Menu15')" href="http://www.devx.com/wireless/Door/7049" ><img src="/assets/devx/8614.gif" height="17" width="157" border="0" align="" name="wireless2"></a><a onMouseOver="HM_f_PopUp('HM_Menu16',event)" onMouseOut="HM_f_PopDown('HM_Menu16')" href="http://www.devx.com/uml/Door/7046" ><img src="/assets/devx/8615.gif" height="17" width="157" border="0" align="" name="uml2"></a><img src="/assets/devx/8616.gif" height="17" width="157" border="0"><a onMouseOver="HM_f_PopUp('HM_Menu18',event)" onMouseOut="HM_f_PopDown('HM_Menu18')" href="http://www.devx.com/DevX/Door/17707" ><img src="/assets/devx/9492.gif" height="17" width="157" border="0" align="" name="topcoder"></a><a onMouseOver="HM_f_PopUp('HM_Menu19',event)" onMouseOut="HM_f_PopDown('HM_Menu19')" href="http://www.devx.com/getHelpOn/Door/15766" ><img src="/assets/devx/8618.gif" height="17" width="157" border="0" align="" name="tenminsolutions"></a><a onMouseOver="HM_f_PopUp('HM_Menu20',event)" onMouseOut="HM_f_PopDown('HM_Menu20')" href="http://www.devx.com/marketplace/LegacyLink/15842" ><img src="/assets/devx/8619.gif" height="17" width="157" border="0" align="" name="whitepapers2"></a><a onMouseOver="HM_f_PopUp('HM_Menu21',event)" onMouseOut="HM_f_PopDown('HM_Menu21')" href="http://www.devx.com/DevX/LegacyLink/7035" ><img src="/assets/devx/8620.gif" height="17" width="157" border="0" align="" name="shopdevx"></a> <a name="a16009hmenu" id="a16009hmenu" href="http://www.devx.com/amd/Door/16009?trk=Leftnav%5FBR%5FAMD" ></a><a name="a6421hmenu" id="a6421hmenu" href="http://www.devx.com/SummitDays/Door/6421?trk=Leftnav%5FBR%5FMS" ></a><a name="a9909hmenu" id="a9909hmenu" href="http://www.devx.com/ibmsubscription/Door/9909?trk=Leftnav%5FBR%5FIBMTB" ></a><a name="a6836hmenu" id="a6836hmenu" href="http://www.devx.com/ibm/Door/6836?trk=Leftnav%5FBR%5FIBM1" ></a><a name="a6409hmenu" id="a6409hmenu" href="http://www.devx.com/Intel/Door/6409?trk=Leftnav%5FBR%5FIntel" ></a><a name="a20424hmenu" id="a20424hmenu" href="http://www.devx.com/mappoint/Door/20424" ></a><a name="a6213hmenu" id="a6213hmenu" href="http://www.devx.com/Nokia/Door/6213?trk=Leftnav%5FBR%5FNokia" ></a><a name="a17859hmenu" id="a17859hmenu" href="http://www.devx.com/dotnet/Door/17859" ></a><a name="a19974hmenu" id="a19974hmenu" href="http://www.devx.com/DevX/Door/19974" ></a><a name="a16316hmenu" id="a16316hmenu" href="http://www.devx.com/DevX/Door/16316" ></a><a name="a20121hmenu" id="a20121hmenu" href="http://www.devx.com/vs/Door/20121?trk=SDZ%5FTS%5FVS%5FSandCh" ></a><a name="a20652hmenu" id="a20652hmenu" href="http://www.devx.com/vs/Door/20652?trk=SDZ%5FTS%5FVS%5FSeapine" ></a><a name="a17242hmenu" id="a17242hmenu" href="http://www.devx.com/DevX/Door/17242" ></a><a name="a17583hmenu" id="a17583hmenu" href="http://www.devx.com/DevX/Door/17583" ></a><a name="a7040hmenu" id="a7040hmenu" href="http://www.devx.com/dotnet/Door/7040" ></a><a name="a10169hmenu" id="a10169hmenu" href="http://www.devx.com/codemag/Door/10169" ></a><a name="a17927hmenu" id="a17927hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17927" ></a><a name="a17928hmenu" id="a17928hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17928" ></a><a name="a6972hmenu" id="a6972hmenu" href="http://www.devx.com/Java/Door/6972" ></a><a name="a17921hmenu" id="a17921hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17921" ></a><a name="a8142hmenu" id="a8142hmenu" href="http://www.devx.com/DevX/LegacyLink/8142" ></a><a name="a7042hmenu" id="a7042hmenu" href="http://www.devx.com/cplus/Door/7042" ></a><a name="a17917hmenu" id="a17917hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17917" ></a><a name="a7048hmenu" id="a7048hmenu" href="http://www.devx.com/webdev/Door/7048" ></a><a name="a7051hmenu" id="a7051hmenu" href="http://www.devx.com/projectcool/Door/7051" ></a><a name="a17926hmenu" id="a17926hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17926" ></a><a name="a7022hmenu" id="a7022hmenu" href="http://www.devx.com/dbzone/Door/7022" ></a><a name="a17925hmenu" id="a17925hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17925" ></a><a name="a7045hmenu" id="a7045hmenu" href="http://www.devx.com/security/Door/7045" ></a><a name="a17919hmenu" id="a17919hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17919" ></a><a name="a7044hmenu" id="a7044hmenu" href="http://www.devx.com/opensource/Door/7044" ></a><a name="a17946hmenu" id="a17946hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17946" ></a><a name="a7050hmenu" id="a7050hmenu" href="http://www.devx.com/xml/Door/7050" ></a><a name="a17924hmenu" id="a17924hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17924" ></a><a name="a7047hmenu" id="a7047hmenu" href="http://www.devx.com/vb/Door/7047" ></a><a name="a18165hmenu" id="a18165hmenu" href="http://www.devx.com/FreeVBCode/LegacyLink/18165" ></a><a name="a17914hmenu" id="a17914hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17914" ></a><a name="a7041hmenu" id="a7041hmenu" href="http://www.devx.com/asp/Door/7041" ></a><a name="a17923hmenu" id="a17923hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17923" ></a><a name="a7043hmenu" id="a7043hmenu" href="http://www.devx.com/enterprise/Door/7043" ></a><a name="a17920hmenu" id="a17920hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17920" ></a><a name="a7049hmenu" id="a7049hmenu" href="http://www.devx.com/wireless/Door/7049" ></a><a name="a17918hmenu" id="a17918hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17918" ></a><a name="a7046hmenu" id="a7046hmenu" href="http://www.devx.com/uml/Door/7046" ></a><a name="a17911hmenu" id="a17911hmenu" href="http://www.devx.com/ForumsvBulletin/LegacyLink/17911" ></a><a name="a17707hmenu" id="a17707hmenu" href="http://www.devx.com/DevX/Door/17707" ></a><a name="a10670hmenu" id="a10670hmenu" href="http://www.devx.com/getHelpOn/Door/10670" ></a><a name="a10677hmenu" id="a10677hmenu" href="http://www.devx.com/getHelpOn/Door/10677" ></a><a name="a10679hmenu" id="a10679hmenu" href="http://www.devx.com/getHelpOn/Door/10679" ></a><a name="a10671hmenu" id="a10671hmenu" href="http://www.devx.com/getHelpOn/Door/10671" ></a><a name="a10672hmenu" id="a10672hmenu" href="http://www.devx.com/getHelpOn/Door/10672" ></a><a name="a10673hmenu" id="a10673hmenu" href="http://www.devx.com/getHelpOn/Door/10673" ></a><a name="a10678hmenu" id="a10678hmenu" href="http://www.devx.com/getHelpOn/Door/10678" ></a><a name="a10676hmenu" id="a10676hmenu" href="http://www.devx.com/getHelpOn/Door/10676" ></a><a name="a15766hmenu" id="a15766hmenu" href="http://www.devx.com/getHelpOn/Door/15766" ></a><a name="a15842hmenu" id="a15842hmenu" href="http://www.devx.com/marketplace/LegacyLink/15842" ></a><a name="a7035hmenu" id="a7035hmenu" href="http://www.devx.com/DevX/LegacyLink/7035" ></a>
+<a href="" id="HMDOMtest"></a>
+
+
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript">
+	if(window.event + "" == "undefined") event = null;
+	function HM_f_PopUp(){return false};
+	function HM_f_PopDown(){return false};
+	popUp = HM_f_PopUp;
+	popDown = HM_f_PopDown;
+	
+	function menuItemClick(linkId,href)
+	{
+		var theLink = document.getElementById(linkId);
+		if(theLink)
+		{
+			if(theLink.click)
+				theLink.click();
+			else
+			{
+				var target = theLink.target;
+				if( target.toLowerCase() == "_blank" )
+				{
+					window.open(theLink.href,"");
+				}
+				else
+				{
+					window.location = theLink.href;
+				}
+			}
+		}
+		else
+		{
+			window.location = href;
+		}
+	}
+
+
+	
+	HM_ScriptDir   = "/scripts/";
+	document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='/scripts/hierMenu/WT193_W3459v3_S6946v574.js' TYPE='text/javascript'><\/SCRIPT>");
+	document.write("<SCRIPT LANGUAGE='JavaScript1.2' SRC='/scripts/hierMenu/WT193_W3459v3.js' TYPE='text/javascript'><\/SCRIPT>");
+	
+</SCRIPT>
+
+
+	
+		</div>
+	
+
+<!-- HIER MENU END -->
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+
+		</td>
+	</tr>
+	
+	<tr>
+		<td><img src="/assets/devx/9114.gif" height="23" width="161" border="0" align="top"></td>
+	</tr>
+	
+</table>
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> 
+				
+			<div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT168_W1899v2_C16646v2  03/30/2004 11:06:41 -->
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT159_W1654v2_C16646v2  03/30/2004 11:06:41 -->
+
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+	<tr>
+		<td valign="top"> 
+			<div><img src="/assets/devx/3406.gif" height="31" width="163" border="0" align="top"></div>
+			<table  cellspacing="0" cellpadding="3" width="140" align="left" border="1" bordercolor="#ff6600" rules="none" frame="rhs">
+				<tr>
+					<td  valign="top" bgcolor="#FFFFFF">
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/Java/LegacyLink/10689"  class="basiclink"title="Sun's J2ME Web site">Sun's J2ME Web site</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/DevX/Link/16642"  target="_blank" class="basiclink"title="Sun's Java Wireless Developer Initiative (JWDI)">Sun's Java Wireless Developer Initiative (JWDI)</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/DevX/Link/16637"  target="_blank" class="basiclink"title="Network Programming with J2ME Wireless Devices. (from Wireless Developer Network)">Network Programming with J2ME Wireless Devices</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/DevX/Link/16643"  target="_blank" class="basiclink"title="JGuru's J2ME FAQ">JGuru's J2ME FAQ</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/DevX/Link/16644"  target="_blank" class="basiclink"title="IBM's Wireless Developer Information Portal">IBM's Wireless Developer Information Portal</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/DevX/Link/16645"  target="_blank" class="basiclink"title="Wireless Developer Network's Java Channel">Wireless Developer Network's Java Channel</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/Java/LegacyLink/7882"  class="basiclink"title="Each month, our technology Pro writes a simple, pragmatic article that will help you solve a common problem in no time. ">Get Help with Java </a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/getHelpOn/Door/10677"  class="basiclink"title="Past Java 10-Minute Solutions
+">Past Java 10-Minute Solutions</a>
+						</div>
+
+					
+					
+					
+					
+						
+						
+							
+						
+						<div class="smallfont" STYLE="margin-bottom:10;">
+						
+						<a href="http://www.devx.com/Java/Door/6972"  class="basiclink"title="Your starting point for Java development, including answers to frequently-asked technical questions about Java, Get Help with Java, feature articles, links to the best Java sites, and news about Java tools and updates.">DevX: Java Zone</a>
+						</div>
+
+					
+					
+					
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT172_W2769v1_C16646v2  03/30/2004 11:06:41 -->
+	
+	
+	
+		
+		
+	
+		
+		
+	
+	
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT171_W1952v1_C16646v2  03/30/2004 11:06:41 -->
+	
+		
+		
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td valign="top">
+		<div><img src="/assets/devx/3407.gif" height="31" width="164" border="0"></div>
+		<table  cellspacing="0" cellpadding="3" width="140" align="left" border="1" bordercolor="#ff6600" rules="none" frame="rhs">
+			<td  valign="top" bgcolor="#FFFFFF">
+				<div class="smallfont">How could you modify this application to be able to display the response sent back from the server if the response was XML (XML-RPC, WML, SOAP, XHTML, etc.) instead of pure text? Let us know!</div>
+				<div style="margin-top:10;text-align:center;"><a href="http://news.devx.com/cgi-bin/dnewsweb.exe?cmd=xover&group=java.general&utag=" target="blank_"><img src="/assets/devx/3289.gif" height="20" width="72" border="0"></a></div>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+
+			
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT166_W3291v2  04/05/2004 07:28:31 -->
+<table  cellspacing="0" cellpadding="0" border="0" width="164">
+	<tr>
+		<td valign="top"> 
+			<div><img src="/assets/devx/7463.gif" height="31" width="164" border="0" align="top"></div>
+			<table  cellspacing="0" cellpadding="3" width="140" align="left" border="1" bordercolor="#ff6600" rules="none" frame="rhs">
+				<tr>
+					<td valign="top" bgcolor="#FAFAE6">
+					<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT102_W3302v1  04/05/2004 07:28:31 -->
+
+
+
+
+
+<a class="smallfont" href="http://www.devx.com/Jupitermedia/Link/17875"  target="_blank">Partners &amp; Affiliates</a>
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp1' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp1');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp1" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp1" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp2' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp2');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp2" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp2" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp3' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp3');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp3" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp3" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp4' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp4');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp4" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp4" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp5' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp5');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp5" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp5" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp6' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp6');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp6" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp6" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp7' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp7');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp7" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp7" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp8' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp8');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp8" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp8" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp9' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp9');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp9" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp9" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" border="0" cellpadding="1" cellspacing="0">
+<tr><td valign="top">
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td class="basiclink">
+
+<!-- ---- OAS AD 'cp10' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('cp10');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp10" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!cp10" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+
+<div><img src="/assets/devx/3174.gif" border="0" align="top" vspace="0" hspace="0" width="108" vspace="0" height="9" alt="advertisement"></div>
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD '120x60-1' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('120x60-1');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!120x60-1" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!120x60-1" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> <div style="margin-top:20"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD '125x125-2' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('125x125-2');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!125x125-2" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!125x125-2" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> </td>
+		<td valign="top"> <div><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W1235v3  04/05/2004 07:28:31 --><table  cellspacing="0" cellpadding="4" border="0" style="padding-top:0px; margin-top:0px;"><tr><td  valign="top"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+	
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W1624v5  03/30/2004 09:15:32 --><table  cellspacing="0" cellpadding="0" border="0"><tr><td  valign="top"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- (3187) - start 3 col layout: Top Gold Curve layout -->
+
+    
+    <!-- table start -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    	<tr>
+            <!-- first table column start -->
+    		<td width="122">
+    
+<div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W3184v1  04/02/2004 09:10:45 --><div><img src="/assets/devx/7317.gif" border="0" align="top" vspace="0" hspace="0" height="8" width="8" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+	        	
+		    
+       		
+            <!-- table: left column end, middle column start -->
+            </td>
+    	    	<td width="100%">
+            
+	    <div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W3185v1  04/02/2004 09:10:45 --><table  cellspacing="0" cellpadding="0" bgcolor="#FFE48E" style="border-top: 1px solid #000099;" width="100%" height="8"><tr><td width="100%" ></td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+				
+			
+       		
+            <!-- table: middle column end, right column start -->
+            </td>
+		    <td width="7">
+            
+        <div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W3186v1  04/02/2004 09:10:45 --><div><img src="/assets/devx/7318.gif" border="0" align="top" vspace="0" hspace="0" height="8" width="8" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+				
+			
+          
+          <!-- table: right column end, table end -->
+          </td>
+	      </tr>
+          </table>
+          
+        
+<!-- end 3 col layout -->
+
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+	<div align="right" class="expgoldbox" style="padding:0px;">
+	
+
+
+	<table border=0>
+		<tr>
+		
+			
+				
+				<td>
+				
+				
+				
+				<font class="smallfont" style="smallfont">Average Rating: 1/5 | <a href="#rateThisContentLink">Rate this item</a> | 1 user  has  rated this item.</font>
+				</td>
+			
+		</tr>
+	</table>
+
+
+	
+		</div>
+	
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT176_W3339v1_C16646v2  03/30/2004 11:06:41 -->
+	
+	
+	
+	
+    
+
+	
+    
+	<table class="expgoldbox" style="padding-top:0px; padding-bottom:0px; padding-right:3px;" >
+	<tr><td class="smallfontRight">
+			<a href="http://www.devx.com/getHelpOn/10MinuteSolution/16646/1954?pf=true" target="PFWindow"><img src="/assets/devx/7694.gif" alt=" Print" border="0"> Print</a>	
+	</td></tr>
+	</table>
+	
+
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+    
+
+	
+
+	
+
+	
+<script language="javascript">
+function showSupportItem(itemName)
+{
+	if( articleSpptItems[itemName] )
+	{
+		var theURL = 'http://www.devx.com/getHelpOn/10MinuteSolution/16646/1763';
+		theURL += '?supportItem='+articleSpptItems[itemName].number;
+		popUpWindow(theURL, articleSpptItems[itemName].width, articleSpptItems[itemName].height);
+	}
+	else
+		alert("Sorry, "+itemName+" could not be found.");
+}
+function SupportItem(number, width, height)
+{
+	this.number = number;
+	this.width = width;
+	this.height = height;
+	return this;
+}
+articleSpptItems = new Object();
+
+articleSpptItems.talkback1 = new SupportItem(1,0,0);
+
+articleSpptItems.listing1 = new SupportItem(2,500,400);
+
+</script>
+
+	<table  cellspacing="0" cellpadding="10" border="1" bordercolor="#000099" width="100%" rules="none" frame="vsides">
+		
+		<tr>
+			<td  class="expgoldbox" style="border-left:1px solid #000099;border-right:1px solid #000099;">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+					
+			 			<td valign=top><div class="articleDek">Sending HTTP Requests from a Wireless J2ME Device (cont'd)</div></td>
+					
+				</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td  class="expwhitebox"  style="border-left:1px solid #000099;border-right:1px solid #000099;">
+			
+			<div><P class=Body><B>How to Send an HTTP POST Request</B> <BR>As you might imagine, sending an HTTP POST request is a very similar process to sending a GET request. We'll modify one of the existing commands, add a handful of new commands, and add one additional object from the Generic Connection Framework and one additional <SPAN style="FONT-FAMILY: 'Courier New'">StringBuffer</SPAN> object to push the content in the POST body to the server. The rest of the commands will remain unchanged. 
+<P>Copy the <SPAN style="FONT-FAMILY: 'Courier New'">sendHttpGet()</SPAN> method we just created, paste it into the same class file, and rename it to <SPAN style="FONT-FAMILY: 'Courier New'">sendHttpPost()</SPAN>. Now we will modify this new method to send an HTTP POST request to the server.</P>Add two new variable declarations to the top of the method. Declare a variable of type <SPAN style="FONT-FAMILY: 'Courier New'">DataOutputStream </SPAN>and declare another variable of type <SPAN style="FONT-FAMILY: 'Courier New'">String</SPAN>. We will use the <SPAN style="FONT-FAMILY: 'Courier New'">DataOutputStream </SPAN>object to push our POST request body (contained in the <SPAN style="FONT-FAMILY: 'Courier New'">String</SPAN>) to the server.
+<pre><code>
+DataOutputStream dos = null; 
+
+String requestBody = null; 
+
+</code></pre> 
+Modify the <SPAN style="FONT-FAMILY: 'Courier New'">Connector.open()</SPAN> command to include another argument, indicating that the connection should allow the client to both read and write data to the server over the connection.
+<pre><code>
+hcon = ( HttpConnection ) Connector.open( url, Connector.READ_WRITE ); 
+
+</code></pre>
+Set the request method used by the <SPAN style="FONT-FAMILY: 'Courier New'">HttpConnection</SPAN> object to POST (the method is GET by default). 
+<pre><code>
+hcon.setRequestMethod( HttpConnection.POST ); 
+
+Obtain a DataOutputStream object for the existing HTTP connection. 
+
+dos = hc.openDataOutputStream();  
+
+</code></pre>
+Declare an array of bytes and initialize that array by retrieving a byte array from the <SPAN style="FONT-FAMILY: 'Courier New'">requestBody</SPAN> string. Then write the contents of the byte array to the buffer of the <SPAN style="FONT-FAMILY: 'Courier New'">DataOutputStream</SPAN>. 
+<pre><code>
+byte[] byteRequest = requestBody.getBytes(); 
+
+for( int i = 0; i < byteRequest.length; i++ ) { 
+
+       dos.writeByte(byteRequest[i]);
+
+}//end for( int i = 0; i < byteRequest.length; i++ )
+
+</code></pre>
+The next line is a bit controversial.
+<pre><code>
+dos.flush(); //Including this line may produce undesiredresults on certain devices
+
+</code></pre>
+If you call <span class="pf">c.flush()</span>, some devices will send the request in HTTP 1.1 "chunked" encoding by adding a "Transfer-encoding: chunked" header to the request and writing the size of each block of data in hexadecimal form as a text line before the data bytes themselves. This is repeated for any number of blocks you send, usually demarcated by calls to <span class="pf">flush()</span>.
+<p>
+If you have a HTTP 1.1-compliant Web server this should be transparent to your server side scripts, but if you do not, you will either want to avoid calling <span class="pf">flush()</span> (though some devices may still chunk for you automatically) or write some HTTP 1.1 chunk handling code in your server scripts. All you will need to do in the latter case is read the first text line of the response, extract the size from it (i.e. "C\r\n" where C means 12 bytes of chunk follow), and then read 12 bytes of response data. Then read another line to see if there is another chunk size, and repeat until stream is closed or your script has all the data it needs. See the HTTP 1.1 specification for more details.
+<p>
+<table align="center" width="95%" border="1" cellpadding="3" style="font-family: Verdana, Arial, Helvetica, Sans-Serif; font-size: x-small; color: red; background: white">
+<tr>
+<td>Editor's Note: Thanks to DevX reader Marc Palmer for technical assistance. </td>
+</tr></table>
+
+<P></P>The rest of the method remains the same, except that the <SPAN style="FONT-FAMILY: 'Courier New'">DataOutputStream</SPAN> object must be closed inside the <SPAN style="FONT-FAMILY: 'Courier New'">finally{}</SPAN> block. 
+<pre><code>
+} finally { 
+
+    if ( hc != null ) hc.close();
+    if ( dis != null ) dis.close();
+    if ( dos != null ) dis.close();
+}//end try/finally 
+
+</code></pre>
+That's all there is to it! Remember that you can obtain the full source code for this HTTP-enabled MIDP application by clicking on the appropriate link at the end of this article (the bottom of the page). 
+<P></P>As Internet-ready and network-enabled wireless devices continue to grow in popularity, the importance of Java and the Java 2 Micro Edition will also continue to grow. Since the HTTP protocol is the only current networking protocol that is supported by all MIDP-compliant devices, it is the best candidate for developing wireless networked applications. 
+<P>In this article we have explored the basic architecture and a few of the core issues associated with wireless network programming, and we've seen how to invoke the two most common HTTP request methods, GET and POST. J2ME is still in its infancy, and wireless devices are very close to a "tipping point" of popularity. The next few months and years should be very interesting.</P></SPAN>
+<ul>
+<li><a href="javascript:showSupportItem('listing1')">Source Code for Sending HTTP Requests from a Wireless J2ME Device </a></li>
+</ul></div>
+			<div class="smallfont">
+			<i>Page 3 of 3</i>
+			</div>			
+			</td>
+		</tr>
+		
+		
+			<tr><td  class="expwhitebox"  style="border-left:1px solid #000099;border-right:1px solid #000099;">
+			
+				<div class="articlebio">
+				
+					
+					<img src="/assets/authorphotos/4137.jpg" border="0" align="left" alt="">
+				
+				<B>DevX Java Pro Kyle Gabhart</B> is a consultant for <A href="http://www.objectsoln.com/" target=_blank>Objective Solutions</A>, a high-end engineering services company focusing on the medical, semiconductor, and telecommunications domains. He is an Associate Member of the <A href="http://www.wwisa.org/" target=_blank>Worldwide Institute of Software Architects (WWISA)</A>, an organization dedicated to promoting and enriching software architecture as a profession. Kyle is a co-author of "Professional Java and XML".
+				</div>			
+			
+			
+		
+		<tr><td align="center"  class="expwhitebox"  style="border-left:1px solid #000099;border-right:1px solid #000099;">
+			
+			
+			<table border="0" cellspacing="0" cellpadding="0" align="center"style="margin-top:10;margin-bottom:10">
+				<tr>
+					<td align="center"><img src="/assets/devx/3174.gif" height="9" width="108" border="0"></td>
+				</tr>
+				<tr>
+					<td><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+
+<div><img src="/assets/HPAssets/2228.gif" border="0" align="top" vspace="0" hspace="0" width="0" vspace="0" height="0" alt="advertisement"></div>
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD '336x280' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('336x280');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!336x280" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!336x280" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+</td>
+				</tr>
+			</table>
+		</td></tr>
+		
+		<tr  class="expwhitebox"  style="border-left:1px solid #000099;border-right:1px solid #000099;">
+			<td>
+									    
+			    
+			
+			
+						
+			<table width="100%">
+				<tr>
+					<td width="50%" align="left">										
+						
+							<a class="" href="/gethelpon/10MinuteSolution/16646/0/page/2"><img src="/assets/devx/3401.gif" height="22" width="28" border="0" align="ABSMIDDLE"> Previous Page: Wireless Network Programming with J2ME</a>
+						
+					</td>
+					<td width="50%" align="right">										
+						&nbsp;
+						
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+		
+		<tr>
+			<td  bgcolor="#FFE48E">
+			    <!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT92_W636v1_C16646v2  03/30/2004 11:06:41 --><table width="100%"><tr><td width="50%"><span class="articleNav">Page 1: </span><a href="/getHelpOn/10MinuteSolution/16646/0/page/1" class="moreNewsletterLink">Introduction</a></td><td width="50%"><span class="articleNav">Page 3: </span><a href="/getHelpOn/10MinuteSolution/16646/0/page/3" class="moreNewsletterLink">How to Send an HTTP POST Request </a></td></tr><tr><td width="50%"><span class="articleNav">Page 2: </span><a href="/getHelpOn/10MinuteSolution/16646/0/page/2" class="moreNewsletterLink">Wireless Network Programming with J2ME</a></td><td width="50%">&nbsp;</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+
+			</td>
+		</tr>
+		
+	</table>
+
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W2933v2  03/30/2004 09:15:34 --><table  cellspacing="0" cellpadding="0" border="0" class="expgoldbox" style="align:center;"><tr><td align="center"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W2934v2  03/30/2004 09:14:17 --><div><img src="/assets/devx/5990.gif" border="0" align="top" vspace="0" hspace="0" height="9" width="350" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+	<div align="center" class="" style="background-color:#ffffff; width:350px; border-left:#FF6600 solid 1px; border-right:#FF6600 solid 1px;">
+	
+
+
+<a name="rateThisContentLink">
+
+
+	
+	<table border="0">
+		<tr>
+			<td align="center">
+				<a href="https://www.devx.com/DevX/Site/6946?url=http%3A%2F%2Fwww%2Edevx%2Ecom%2FgetHelpOn%2F10MinuteSolution%2F16646%23rateThisContentLink"><font class="morelink" style="">Was this article useful? Please log in to rate this item. </font></a>
+			</td>
+		</tr>
+		
+			<tr>
+				<td align="center">
+					<a href="https://www.devx.com/DevX/Site/6946?url=http%3A%2F%2Fwww%2Edevx%2Ecom%2FgetHelpOn%2F10MinuteSolution%2F16646%23rateThisContentLink"><font class="morelink" style="">Don't have a log in? Get one now.</font></a>
+				</td>
+			</tr>
+		
+	</table>
+
+	
+		</div>
+	
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W2935v1  03/30/2004 09:14:17 --><div><img src="/assets/devx/5991.gif" border="0" align="top" vspace="0" hspace="0" height="9" width="350" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- (3171) - start 3 col layout: Bottom Gold Curve layout -->
+
+    
+    <!-- table start -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    	<tr>
+            <!-- first table column start -->
+    		<td width="122">
+    
+<div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W3169v1  04/05/2004 07:28:31 --><div><img src="/assets/devx/7279.gif" border="0" align="top" vspace="0" hspace="0" height="8" width="8" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+	        	
+		    
+       		
+            <!-- table: left column end, middle column start -->
+            </td>
+    	    	<td width="100%">
+            
+	    <div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W3172v1  04/05/2004 07:28:31 --><table  cellspacing="0" cellpadding="0" bgcolor="#FFE48E" style="border-bottom: 1px solid #000099;" width="100%" height="8"><tr><td width="100%" ></td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+				
+			
+       		
+            <!-- table: middle column end, right column start -->
+            </td>
+		    <td width="7">
+            
+        <div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W3170v1  04/05/2004 07:28:31 --><div><img src="/assets/devx/7280.gif" border="0" align="top" vspace="0" hspace="0" height="8" width="8" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+				
+			
+          
+          <!-- table: right column end, table end -->
+          </td>
+	      </tr>
+          </table>
+          
+        
+<!-- end 3 col layout -->
+
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT175_W1991v6_C16646v2  03/30/2004 11:06:41 -->
+	
+<table border=0 cellspacing=0 cellpadding=0 width="100%" style="padding-top: 10px;">
+<tr><td align="center" class="smallFont">DevX is a division of Jupitermedia Corporation <br>
+&copy; Copyright 2004 Jupitermedia Corporation. All Rights Reserved. <a href="http://www.internet.com/corporate/legal.html">Legal Notices</a></td></tr>
+</table>
+
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</div> 
+				
+			</td>
+	</tr>
+</table>
+
+<!-- end 2 col layout -->
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W3276v2  04/05/2004 07:28:31 --><table  cellspacing="0" cellpadding="0" border="0" width="100%" align="center" style="margin-top:20px;"><tr><td align="center"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W2915v1  04/05/2004 07:28:31 --><div><img src="/assets/devxads/5964.gif" border="0" align="top" vspace="0" hspace="0" height="38" width="447" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+        <div align="left" class="" style="background-color: #FFE48E; border-left:2px solid #FF6600; border-right:2px solid #FF6600; width:447;padding-left:10px;padding-right:10px;padding-bottom:10px;">
+    
+      <a href="http://links.industrybrains.com/?Click?267827&2&58&20040418075928&http://ad.doubleclick.net/clk;7774976;9004700;s?http://developers.sun.com/offers/jscpromo.html" style="color: blue; ">Download Sun Java(TM) Studio Creator Early Access</a><br>
+      <span style="font: 11px Arial;">After much anticipation, the first public release of this exciting developer tool is available NOW! Download the Java Studio Creator Early Access release and find out what all the buzz is about!</span><br>
+      
+      <a href="http://links.industrybrains.com/?Click?267512&2&58&20040418075928&http://ad.doubleclick.net/clk;7793335;9021283;n?http://connect.borland.com/tss040504/default_us.asp" style="color: blue; ">Affordable Robust Modeling for .NET environment</a><br>
+      <span style="font: 11px Arial;">Think you can't afford the finest and most interactive modeling solution for the .NET environment? Think again. Experience more robust architecture creation for C# .NET-based applications with Borland Together Edition for Microsoft Visual Studio .NET</span><br>
+      
+      <a href="http://links.industrybrains.com/?Click?208079&2&58&20040418075928&http://www.refreshsoftware.com/gaw?c=IB_DEVXE_content_suck" style="color: blue; ">Web Content Management</a><br>
+      <span style="font: 11px Arial;">Enterprise Features & Scalability. Small Business Price. Free Trial.</span><br>
+      
+      <a href="http://links.industrybrains.com/?Click?265082&2&58&20040418075928&http://www.1888nopiracy.com/?CMP=BAL-industrybrains&creative=text1" style="color: blue; ">Does your company copy software illegally?</a><br>
+      <span style="font: 11px Arial;">Illegal copying is software piracy and it�s against the law. Report Software Piracy Today.</span><br>
+      
+      <a href="http://links.industrybrains.com/?Click?149074&2&58&20040418075928&http://xbridgesystems.com/_vti_bin/shtml.dll/register/RegisterWhitePaper.htm" style="color: blue; ">FREE Mainframe Data Access White Paper from Xbridge</a><br>
+      <span style="font: 11px Arial;">Access mainframe data with Xbridge Host Data Connect. You can quickly and easily retrieve data through applications such as Excel, Word, or Crystal Reports. Download your free white paper today.</span><br>
+      
+
+	
+	<img width="5" height="5" src="/images/invis.gif" alt="0:search: 058IBIndustryTarget=DevX_enterprise
+retrieved: 4/18/2004 07:58AM
+cache source: feed
+next update: {ts '2004-04-18 08:58:00'}
+the time: {ts '2004-04-18 08:07:35'}
+bad cache reason: ">
+    
+    
+        </div>
+    		
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT102_W2965v1  04/05/2004 07:28:31 -->
+
+
+
+
+<div align="left" class="" style="background-color: #FFE48E; border-left:2px solid #FF6600; border-right:2px solid #FF6600; width:447;padding-left:10px;padding-right:10px;padding-bottom:10px;">
+<a class="smallfont" href="http://www.devx.com/DevX/Link/16221"  target="_blank">Get your product or service listed here</a>
+</div>
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W2916v1  04/05/2004 07:28:31 --><div><img src="/assets/devxads/5965.gif" border="0" align="top" vspace="0" hspace="0" height="10" width="447" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W1302v3  04/05/2004 07:28:31 --><div align="left" class="" style="padding-top:20px; align:center; width:444px;"><div><img src="/assets/devx/3251.gif" border="0" align="top" vspace="0" hspace="0" height="9" width="444" alt=""></div> </div>
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W3077v2  04/05/2004 07:28:31 --><table style="border-left: 2px solid #ff6600;border-right: 2px solid #ff6600;padding-right: 2px;width:444px; background-color:#FFFFFF;"><tr><td ><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<div align="" class="" style="background-color:#EEEEEE;">
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD 'fl1' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('fl1');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl1" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl1" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+</div>
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD 'fl2' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('fl2');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl2" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl2" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<div align="" class="" style="background-color:#EEEEEE;">
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD 'fl3' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('fl3');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl3" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl3" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+</div>
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD 'fl4' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('fl4');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl4" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl4" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- OAS ad tag start -->
+
+<div align="" class="" style="background-color:#EEEEEE;">
+
+<table width="100%" >
+<tr><td valign="top">
+
+<!-- ---- OAS AD 'fl5' begin ---- -->
+<SCRIPT LANGUAGE=JavaScript>
+<!--
+OAS_AD('fl5');
+//-->
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://63.236.18.118/RealMedia/ads/click_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl5" >
+<IMG SRC="http://63.236.18.118/RealMedia/ads/adstream_nx.ads/devx/java/962/16646@468x60-1,cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10,120x60-1,125x125-2,336x280,fl1,fl2,fl3,fl4,fl5!fl5" border="0">
+</A> 
+</NOSCRIPT>
+<!-- ---- OAS AD '120x60-1' end ---- -->
+
+
+</td></tr>
+</table>
+
+
+</div>
+
+<!-- OAS ad tag end -->
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT85_W1303v1  04/05/2004 07:28:31 --><div><img src="/assets/devx/3252.gif" border="0" align="top" vspace="0" hspace="0" height="9" width="444" alt=""></div> 
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+
+		
+		
+<!-- (1919) - start 3 col layout: Bottom Menu Container -->
+
+    
+    <!-- table start -->
+    <table cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-top: 20px;" align="center">
+    	<tr>
+            <!-- first table column start -->
+    		<td valign="top" width="0">
+    
+
+       		
+            <!-- table: left column end, middle column start -->
+            </td>
+    	    	<td valign="top" width="100%" align="center">
+            
+	    <div><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT90_W1726v3_S6946v574  04/16/2004 09:24:09 -->
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		
+		
+		<td class="orange" align="center">
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/9634?trk=Foot%5FCL%5FAdinfo"  class="basiclink">Advertising&nbsp;Info</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/premier/Door/17532?trk=Foot%5FCL%5FPC"  class="basiclink">Member&nbsp;Services</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/8487?trk=Foot%5FCL%5FContact"  class="basiclink">Contact&nbsp;Us</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/Article/19999?trk=Foot%5FCL%5FHelp"  class="basiclink">Help</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/8167?trk=Foot%5FCL%5FFeedback"  class="basiclink">Feedback</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/SiteMap/Door/15965"  class="basiclink">Site&nbsp;Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/Jupitermedia/Link/20291"  target="_Blank" class="basiclink">Network&nbsp;Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			
+		
+			
+			
+			
+			
+				
+				<a href="http://www.devx.com/DevX/LegacyLink/8146"  class="basiclink">About</a>
+			
+		
+		
+		</td>
+	</tr>
+</table>
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+				
+			<div style="margin-top:20"><!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT98_W3432v1  04/05/2004 07:28:31 --><table  cellspacing="0" cellpadding="0" border="0" align="center"><tr><td  align="center"><!-- <widgetwrapper> --> 
+<!-- <widgetwrapper> --> 
+
+	
+	
+
+	
+	
+	
+	
+		
+		
+	
+	
+	
+	
+	
+		
+		
+			
+			
+			
+			
+				
+			
+			
+			
+			
+			
+				<!-- cache: WT99_W3433v5  04/07/2004 08:02:31 --><div align="center" class="" style=""><font class="" style=""><FORM action="http://search.internet.com/www.jupiterweb.com" method=post target="_blank"><INPUT type=hidden value=1 name=IC_Summary> <FONT face="verdana, arial, helvetica" 
+                  size=-2><B>Jupiterweb networks</B></FONT> 
+                  <P><A href="http://www.internet.com/" target="_blank"><IMG height=15 
+                  alt=internet.com hspace=0 src="/assets/devx/8400.gif" 
+                  width=97 align=absMiddle border=0></A><IMG height=25 alt="" 
+                  hspace=10 src="/assets/devx/8417.gif" width=1 
+                  align=absMiddle border=0><A 
+                  href="http://www.earthweb.com/" target="_blank"><IMG height=12 
+                  alt=earthweb.com hspace=5 
+                  src="/assets/devx/8401.gif" width=93 
+                  align=absMiddle border=0></A><IMG height=25 alt="" hspace=10 
+                  src="/assets/devx/8417.gif" width=1 
+                  align=absMiddle border=0><A href="http://www.devx.com/"><IMG 
+                  height=30 alt=Devx.com hspace=0 
+                  src="/assets/devx/8402.gif" width=35 align=absMiddle 
+                  border=0></A><IMG height=25 alt="" hspace=10 
+                  src="/assets/devx/8417.gif" width=1 
+                  align=absMiddle border=0><A href="http://www.clickz.com/" target="_blank"><IMG 
+                  height=24 alt=ClickZ hspace=0 
+                  src="/assets/devx/8403.gif" width=55 
+                  align=absMiddle border=0></A>
+                  <P><FONT face="verdana, arial, helvetica" size=-2><B>Search 
+                  Jupiterweb:</B>  
+                  <input type="HIDDEN" name="IC_Summary" value="1">
+                      <input type="HIDDEN" name="IC_StartNumber" value="0">
+                      <input type="HIDDEN" name="IC_BatchSize" value="10">
+                      <input type="HIDDEN" name="IC_RelevanceThreshold" value="50">
+                      <input type="hidden" name="IC_QueryDatabase" value="all">
+                      <input type="text" name="IC_QueryText" size="50">
+						<INPUT type=image height=20 width=41 
+                  src="/assets/devx/8416.gif" align=absMiddle value=Find 
+                  border=0 name=SUBMIT>
+</form></FONT>
+                  <P><font size="-2" face="verdana, arial, helvetica">
+                      Jupitermedia Corporation has four divisions:
+                      <br><a href="http://www.jupiterweb.com/" target="_Blank">JupiterWeb</a>, <a href="http://www.jupiterresearch.com/" target="_Blank">JupiterResearch</a>, <a href="http://www.jupiterevents.com/" target="_Blank">JupiterEvents</a>, and <a href="http://www.jupiterimages.com/" target="_Blank">JupiterImages</a>
+                      <p>
+                      <span class="foot">Copyright <!--YEAR-->2004 Jupitermedia Corporation All Rights Reserved.<br>
+                        <a href="http://www.internet.com/corporate/legal.html" class="foot" target="_Blank">Legal 
+                        Notices</a>, <a href="http://www.internet.com/corporate/reprints.html#Licensing1" class="foot" target="_Blank">Licensing</a>, 
+                        <a href="http://www.internet.com/corporate/reprints.html#Reprints1" class="foot" target="_Blank">Reprints</a>, 
+                        & <a href="http://www.internet.com/corporate/reprints.html#Permissions" class="foot" target="_Blank">Permissions</a>, 
+                        <a href="http://www.internet.com/corporate/privacy/privacypolicy.html" class="foot" target="_Blank">Privacy 
+                        Policy</a>. </font>
+                      <p> <font size="-2" face="verdana, arial, helvetica"><a href="http://www.internet.com/corporate/" class="foot" target="_Blank">Jupitermedia Corporate 
+                        Info</a> | <a href="http://e-newsletters.internet.com/" class="foot" target="_Blank">Newsletters</a> 
+                        | <a href="http://jobs.internet.com/" class="foot" target="_Blank">Tech 
+                        Jobs</a> | <a href="http://e-newsletters.internet.com/mailinglists.html" class="foot" target="_Blank">E-mail 
+                        Offers</a></span></font></P></FORM></font> </div>
+
+
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+ <!-- </widgetwrapper> -->
+
+</td></tr></table>
+			
+		
+	
+<!-- </widgetwrapper> -->
+
+</div> 
+       		
+            <!-- table: middle column end, right column start -->
+            </td>
+		    <td valign="top" width="0">
+            
+        
+          
+          <!-- table: right column end, table end -->
+          </td>
+	      </tr>
+          </table>
+          
+        
+<!-- end 3 col layout -->
+
+
+
+
+		
+	
+<!-- </widgetwrapper> -->
+
+</body> </html><!-- </widgetwrapper> -->
+<!-- 200.151.136.70 web1 -->

@@ -1,0 +1,177 @@
+BODY {
+	BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: url(http://www.devx.com/assets/devx/3077.gif); BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #fafae6
+}
+A {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+.smallfont {
+	FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.promotext {
+	FONT-SIZE: 10px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.helptext {
+	FONT-SIZE: 9px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.navblue {
+	BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 11px; BORDER-BOTTOM-WIDTH: 1px; COLOR: #0600ff; FONT-FAMILY: Arial, Helvetica, Sans-Serif; BORDER-RIGHT-WIDTH: 1px
+}
+.articleDek {
+	MARGIN-TOP: 6px; FONT-WEIGHT: bold; FONT-SIZE: 12px; MARGIN-LEFT: 0px; COLOR: black; MARGIN-RIGHT: 6px; FONT-STYLE: italic; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articleDek14 {
+	MARGIN-TOP: 6px; FONT-WEIGHT: bold; FONT-SIZE: 14px; MARGIN-LEFT: 0px; COLOR: black; MARGIN-RIGHT: 6px; FONT-STYLE: italic; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articlePageTitle {
+	MARGIN-TOP: 6px; FONT-SIZE: 9px; COLOR: black; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.leadfeature {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #000099; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.featurelink {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000099; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articleNav {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articleTitle {
+	MARGIN-TOP: 6px; FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: black; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articleAuthor {
+	FONT-SIZE: 11px; MARGIN-BOTTOM: 16px; COLOR: black; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.articleBio {
+	FONT-SIZE: 12px; MARGIN: 16px 6px; COLOR: black; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.featureHead {
+	FONT-WEIGHT: normal; FONT-SIZE: 18px; MARGIN-LEFT: 6px; COLOR: black; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.featureDek {
+	FONT-SIZE: 11px; COLOR: black; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.newsletterblurb {
+	PADDING-LEFT: 7px; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.HeadlineLinkStyle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.DekStyle {
+	FONT-WEIGHT: normal; FONT-SIZE: xx-small; COLOR: #000000; FONT-FAMILY: Verdana,Helvetica, Arial,Sans-Serif
+}
+.navlink {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #ffcc00; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.itsyBitsy {
+	FONT-SIZE: 1px
+}
+.bottomnav {
+	BACKGROUND: #000000; COLOR: white
+}
+.articlelinks {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #656597; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.morelink {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: none
+}
+.whiteHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.defaulttext {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.doorFeatureAreaLabel {
+	MARGIN-TOP: 6px; FONT-WEIGHT: bold; FONT-SIZE: 18px; MARGIN-LEFT: 6px; COLOR: black; MARGIN-RIGHT: 6px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.bluebold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: underline
+}
+.blackbold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: none
+}
+.basiclink {
+	FONT-SIZE: 11px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.basicULlink {
+	FONT-SIZE: 11px; COLOR: #000099; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: underline
+}
+.orangebold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ff6600; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: none
+}
+.whitebold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.menuspacing120 {
+	BORDER-RIGHT: black 2px solid; PADDING-RIGHT: 1px; BORDER-TOP: black 1px solid; OVERFLOW-Y: auto; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 120px; BORDER-LEFT: black 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: black 2px solid; HEIGHT: 140px; BACKGROUND-COLOR: white
+}
+.menuspacing80 {
+	BORDER-RIGHT: black 2px solid; PADDING-RIGHT: 1px; BORDER-TOP: black 1px solid; OVERFLOW-Y: auto; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; MARGIN-LEFT: 80px; BORDER-LEFT: black 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: black 2px solid; HEIGHT: 200px; BACKGROUND-COLOR: white
+}
+.purplebox {
+	BORDER-RIGHT: #000099 2px solid; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; BORDER-LEFT: #000099 2px solid; WIDTH: 423px; PADDING-TOP: 5px; BACKGROUND-COLOR: #f2f2ff
+}
+.dkgoldbox {
+	BORDER-RIGHT: #00009c 2px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #00009c 2px solid; WIDTH: 444px; PADDING-TOP: 3px; BACKGROUND-COLOR: #ffcc66
+}
+.whitebox {
+	BORDER-RIGHT: #00009c 2px solid; BORDER-LEFT: #00009c 2px solid; WIDTH: 444px; BACKGROUND-COLOR: #ffffff
+}
+.pf {
+	FONT-SIZE: x-small; FONT-STYLE: italic
+}
+.applewhitebox {
+	BORDER-RIGHT: #00009c 2px solid; BORDER-LEFT: #00009c 2px solid; WIDTH: 444px; BACKGROUND-COLOR: #ffffff
+}
+.404background {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: #fef1c5
+}
+.basicitallink {
+	FONT-SIZE: 11px; COLOR: #000099; FONT-STYLE: italic; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.blackleadfeature {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.caption {
+	FONT-SIZE: 11px; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
+.widegoldbox {
+	BORDER-RIGHT: #00009c 2px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #00009c 2px solid; WIDTH: 611px; PADDING-TOP: 10px; BACKGROUND-COLOR: #ffe48e
+}
+.goldbox {
+	BORDER-RIGHT: #00009c 2px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #00009c 2px solid; WIDTH: 444px; PADDING-TOP: 10px; BACKGROUND-COLOR: #ffe48e
+}
+.widewhitebox {
+	BORDER-RIGHT: #00009c 2px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #00009c 2px solid; WIDTH: 611px; PADDING-TOP: 10px; BACKGROUND-COLOR: #ffffff
+}
+.expwhitebox {
+	BORDER-RIGHT: #00009c 1px solid; BORDER-LEFT: #00009c 1px solid; WIDTH: 100%; BACKGROUND-COLOR: #ffffff
+}
+.expgoldbox {
+	BORDER-RIGHT: #00009c 1px solid; PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; BORDER-LEFT: #00009c 1px solid; WIDTH: 100%; PADDING-TOP: 10px; BACKGROUND-COLOR: #ffe48e
+}
+.expdkgoldbox {
+	BORDER-RIGHT: #00009c 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #00009c 1px solid; WIDTH: 100%; PADDING-TOP: 3px; BACKGROUND-COLOR: #ffcc66
+}
+.exppurplebox {
+	BORDER-RIGHT: #00009c 1px solid; PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 3px; BORDER-LEFT: #00009c 1px solid; WIDTH: 100%; PADDING-TOP: 3px; BACKGROUND-COLOR: #f2f2ff
+}
+.invisible {
+	DISPLAY: none
+}
+.tinyMessage {
+	FONT-WEIGHT: normal; FONT-SIZE: 8pt; FONT-FAMILY: Arial, Helvetica, Sans-serif
+}
+.intelbluelink {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #0232ff; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: none
+}
+.intelgreylink {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #808080; FONT-FAMILY: Arial, Helvetica, Sans-Serif; TEXT-DECORATION: none
+}
+.homepageheaders {
+	MARGIN-BOTTOM: 5px; FONT: bold 14px Arial, Helvetica, sans-serif
+}
+.defaultlink {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px; COLOR: #0000ff; FONT-FAMILY: Arial, Helvetica, Sans-Serif
+}
