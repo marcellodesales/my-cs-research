@@ -1,0 +1,16 @@
+! ** JCreator Workspace File (C)2000
+! ********** DO NOT EDIT *********
+
+VERSION := "1.00"
+LABEL := "graw"
+
+! Start Project Structure
+#[BeginProject]SOURCE := "\\graw.jcp" #[EndProject]
+
+! Start Last Document Structure
+#[BeginFile]SOURCE := "\\br\\ufal\\graw\\messenger\\Conexao.java" #[EndFile]
+#[BeginFile]SOURCE := "\\br\\ufal\\graw\\messenger\\SalaArquivo.java" #[EndFile]
+#[BeginFile]SOURCE := "\\br\\ufal\\graw\\messenger\\MessengerServer.java" #[EndFile]
+
+! Start Breakpoint Structure
+

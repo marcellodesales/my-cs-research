@@ -1,0 +1,41 @@
+<noname>
+	<databases>
+		<vendor>
+	    		<name>MySQL</name>
+	    		<version>3.23.38</version>
+			<driver>org.gjt.mm.mysql.Driver</driver>
+	   		<local>jdbc:mysql://192.168.10.3/graw</local>
+	    		<administrator>
+	        		<username>graw</username>
+	            		<password>cmrgrad1</password>
+	    		</administrator>
+	  	</vendor>
+	</databases>
+	<website>
+		<directory>
+			<documentRoot>http://localhost:8080/graw</documentRoot>
+			<servlet>/servlet/</servlet>
+			<images>/sources/images/</images>
+			<upload>/home/graw/uploadFiles/</upload>
+		</directory>
+		<emailserver>
+			<smtp>192.168.10.2</smtp>
+			<port></port>
+			<serviceID>[graW] </serviceID>
+		</emailserver>
+		<chat>
+			<socket>5000</socket>
+			<rmi>5001</rmi>
+			<server>www.graw.tci.ufal.br</server>
+			<html>http://www.graw.tci.ufal.br/</html>
+			<servlet>http://www.graw.tci.ufal.br/servlet/</servlet>
+		</chat>
+		<whiteboard>
+			<socket>5005</socket>
+			<server>www.graw.tci.ufal.br</server>
+		</whiteboard>
+		<messenger>
+			<socket>6000</socket>
+		</messenger>
+	</website>
+</noname>

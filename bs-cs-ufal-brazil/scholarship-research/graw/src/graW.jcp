@@ -1,0 +1,264 @@
+! ** JCreator Project File (C)2000
+! ********** DO NOT EDIT *********
+
+VERSION := "1.10"
+LABEL := "graw"
+JDKPROFILE := "JDK version 1.3.1"
+ACTIVE := "1"
+OUTPUTPATH := "..\\..\\..\\jakarta-tomcat-4.0\\webapps\\graw\\WEB-INF\\classes"
+COMPILER := "<Default>"
+
+! Start RunTime Configuration Structure
+#[BeginRunTime]LABEL := "<Default>" RUNAPPLIC := "<Default>" RUNAPPLET := "" PARAM := "" RUN := "br.ufal.graw.chat.ServidorChat" CHECK := "10" #[EndRunTime]
+! Start Required Libraries Structure
+#[BeginRLibrary]LABEL := "Java utils" #[EndRLibrary]
+#[BeginRLibrary]LABEL := "dfsdfsdf" #[EndRLibrary]
+
+! Start Project Folder Structure
+#[BeginFolder]
+LABEL := "Root"
+FILTER := ""
+
+#[BeginFolder]
+LABEL := "br.ufal.graw.messenger"
+FILTER := ""
+
+#[BeginFile]SOURCE := "\\br\\ufal\\graw\\messenger\\SalaArquivo.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\messenger\\Conexao.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\messenger\\MessengerServer.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.validation.reitoriaufal"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\reitoriaUfal\\DatabaseAcess.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.validation"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\ValidationServlet.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\CampinaGrandeValidator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\DefaultValidator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\UfalComputerScienceValidator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\UfalSearcher.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\UfalUserBean.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\UfalValidator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\ValidatorIF.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\validation\\Validation.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.whiteboard"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\whiteboard\\WhiteBoard.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\whiteboard\\Conexao.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\whiteboard\\WBCliente.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\whiteboard\\WBServidor.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\whiteboard\\Rascunho.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.chat"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\Topo.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\ServidorChat.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\RemNaoModerado.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\Mensagem.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\EnviaMensagem.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\Conexao.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\Chat.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\chat\\Base.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.teste"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\teste\\Teste.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\teste\\Filho.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\teste\\Pai.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\teste\\PaiInterface.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\teste\\UploadText.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.user"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewMessage.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewForumCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DeleteDocumentCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewDocumentCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\InviteGuest.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DeleteLinkCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewLinkCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\EditCommunity.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewDiscipline.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DisapproveMember.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewCourse.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DeleteMonitor.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\InviteUserToGroup.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\SignOutGroup.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\ApproveMember.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewGroup.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DeleteLink.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\ConfirmInvitation.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\UserUpdateInterests.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\ElectMonitor.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\EditDocument.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\DeleteDocument.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewLink.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\UserUpdatePersonalInformation.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\UserChangePassword.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\EditLink.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\user\\CreateNewDocument.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.document"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\document\\Download.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.administrator"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\administrator\\UploadStudents.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\administrator\\Administrator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\administrator\\AdministratorUtility.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\administrator\\Update.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\administrator\\Login.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.community.forum"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\community\\forum\\CreateNewMessage.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.community"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\community\\Disassociate.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\community\\Associate.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\community\\OpenCommunity.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.site"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\site\\SiteResource.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\site\\LostPassword.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web.group"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\group\\OpenGroup.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.web"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\LostPassword.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\SignInNewUser.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\SignInNewAcademicUser.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\Logout.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\SendMail.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\Mail.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\ServletUtility.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\ForumSearch.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\web\\Login.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw.exception"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CategoryAlreadyExistsException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CategoryNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\AcademicCourseException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\AcademicCourseNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CommunityNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CommunityException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\PolicyException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\InstituteAlreadyExistsException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\InstituteException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\InstituteNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\InvitationException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\GroupNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CourseNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\GroupAlreadyExistsException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DepartmentAlreadyExistsException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DepartmentNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DepartmentException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CourseException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\GroupException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\GrawException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DatabaseLayerConnectionException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\UserLoginWrongPasswordException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\MailException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\PersistentInformationException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\MessageNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DisciplineNotTaughtException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\UserException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DisciplineException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\CategoryException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\ResourceNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\ResourceDuplicateCodeException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DisciplineNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\UserNotFoundException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\UserDuplicateLoginException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\UserLoginFormatException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\MessageException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\DisciplineDuplicateCodeException.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\exception\\ResourceException.java" #[EndFile]
+#[EndFolder]
+#[BeginFolder]
+LABEL := "br.ufal.graw"
+FILTER := ""
+
+#[BeginFile]SOURCE := "br\\ufal\\graw\\UserState.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\UserCommunityState.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\CommunitySpecialInvitation.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\DocumentCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\LinkCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Searcher.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Critery.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\CommunitySubcategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\AbstractCommunity.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\AcademicCourse.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\AcademicUser.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Community.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\CommunityCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Policy.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Association.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Visibility.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Institute.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\UserGroupInvitation.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\ResourceManipulator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\AbstractUser.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\ForumCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\AbstractCourse.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\ResourceCategory.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\ExtraCourse.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Category.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Department.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\ExternUser.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Scheduler.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Entrada.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Group.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Course.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Forum.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Utility.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Administrator.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Agenda.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Message.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Link.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Document.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Discipline.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Professor.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Config.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\Student.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\DatabaseLayer.java" #[EndFile]
+#[BeginFile]SOURCE := "br\\ufal\\graw\\User.java" #[EndFile]
+#[EndFolder]
+#[EndFolder]

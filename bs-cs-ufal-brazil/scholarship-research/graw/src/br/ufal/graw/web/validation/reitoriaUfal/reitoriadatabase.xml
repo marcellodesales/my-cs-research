@@ -1,0 +1,28 @@
+<!-- reitoriadatabase.xml, Created by Omnicore CodeGuide -->
+<database name=graw username=usrPibic password=(pbc2i!) url=athenas.ufal.br>
+
+	<vision table=UsuariosUfal>
+		<column name=matricula/>
+		<column name=nome/>
+		<column name=cpf/>
+		<column name=tipoUsuario/>
+		<column name=status/>
+	</vision>
+	
+	<vision table=situacaoAluno>
+		<column name=Codigo/>
+		<column name=StatusAluno/>
+	</vision>
+
+	<vision table=ProfessoresDisciplinasUfal>
+		<column name=matriculaProfessor/>
+		<column name=codigoDisciplina/>
+		<column name=nomeDisciplina />
+	</vision>
+		
+	<vision table=CursosGraduacaoUfal >
+		<column name=codigo/>
+		<column name=nome/>
+	</vision>
+
+</database>
