@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Project>
+    <SourceDirectories>
+        <Directory absolutePath="E:\desenv\noNamePibic\src\"/>
+    </SourceDirectories>
+    <LibrarySourceDirectories/>
+    <LibraryClassDirectories>
+        <Directory
+            absolutePath="C:\desenv\graw\pacote\mm.mysql.jdbc-1.2c\" relativePath="pacote/mm.mysql.jdbc-1.2c"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\mail.jar"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\activation.jar"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\xerces.jar"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\servlet.jar"/>
+        <Directory absolutePath="C:\desenv\graw\lib\cos.jar" relativePath="lib/cos.jar"/>
+        <Directory absolutePath="C:\desenv\graw\lib\jdom.jar" relativePath="lib/jdom.jar"/>
+        <Directory absolutePath="C:\desenv\graw\lib\castor-0.9.4.jar" relativePath="lib/castor-0.9.4.jar"/>
+    </LibraryClassDirectories>
+    <DestinationDirectory
+        absolutePath="C:\desenv\graw\site\WEB-INF\classes\" relativePath="site/WEB-INF/classes"/>
+    <WorkingDirectory absolutePath="E:\desenv\noNamePibic\"/>
+    <Target
+        absolutePath="E:\desenv\noNamePibic\src\br\ufal\graw\Utility.java" java2DebugVmType="classic"/>
+    <CompilerOptions generateDebugInfo="true" jdk14Assertions="false"
+        maximumHeapSize="128" otherOptions=""
+        showCompilerWarnings="true" showDeprecationWarnings="true"/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+</Project>

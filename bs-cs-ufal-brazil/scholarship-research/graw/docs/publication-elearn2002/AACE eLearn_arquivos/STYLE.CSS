@@ -1,0 +1,105 @@
+BODY {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.topnav A:link {
+	FONT-SIZE: 10px; COLOR: #060; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+.topnav A:hover {
+	FONT-SIZE: 10px; COLOR: #00c; FONT-FAMILY: Verdana; TEXT-DECORATION: underline
+}
+.topnav A:active {
+	FONT-SIZE: 10px; COLOR: #090; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+.topnav A:visited {
+	FONT-SIZE: 10px; COLOR: #060; FONT-FAMILY: Verdana; TEXT-DECORATION: none
+}
+.sidenav {
+	FONT-SIZE: 10px; BACKGROUND-COLOR: #d2bd9d
+}
+.sidenav BIG {
+	FONT-SIZE: small
+}
+.sidenav A {
+	COLOR: #000
+}
+.currentnav {
+	FONT-SIZE: 10px; BACKGROUND-COLOR: #01a
+}
+.currentnav BIG {
+	FONT-SIZE: small
+}
+.currentnav A {
+	COLOR: #fff
+}
+SPAN.iduser {
+	FONT-SIZE: 11px
+}
+SPAN.username {
+	COLOR: #006633
+}
+H1 {
+	FONT-SIZE: 20px; COLOR: #039; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H2 {
+	FONT-SIZE: 18px; COLOR: #36c; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H3 {
+	FONT-SIZE: 16px; COLOR: #69f; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H4 {
+	FONT-SIZE: 14px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H5 {
+	FONT-SIZE: 13px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H6 {
+	FONT-SIZE: 12px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+H7 {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.statistics {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ccf
+}
+.important {
+	FONT-SIZE: medium; COLOR: #03c; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+#myspan {
+	FONT-SIZE: 24px; COLOR: red; FONT-FAMILY: Verdana, sans-serif
+}
+.formerror {
+	FONT-WEIGHT: bold; FONT-SIZE: medium; COLOR: #f00; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #333
+}
+DL.menu {
+	MARGIN-LEFT: 2em; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; font-color: #333
+}
+.menu A {
+	COLOR: #063
+}
+.menu DT {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.menu DD {
+	FONT-WEIGHT: normal; FONT-SIZE: 12px
+}
+DL.submenu {
+	MARGIN-LEFT: 2em; FONT-FAMILY: Verdana,Arial,Helvetica,sans-serif; font-color: #666
+}
+.submenu A {
+	COLOR: #063
+}
+.submenu DT {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px
+}
+.submenu DD {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px
+}
+.menuAction {
+	FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.note {
+	FONT-SIZE: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.errorMsg {
+	FONT-WEIGHT: bold; COLOR: #c00
+}

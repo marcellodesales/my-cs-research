@@ -1,0 +1,49 @@
+INDEX.JSP
+
+coloque depois da tag <body>
+
+<script language="JavaScript">
+/*
+ Para todas as variáveis que podem ser modificadas, acesse: http://www.bosrup.com/web/overlib/reference.html
+*/
+var ol_textfont = "Verdana, Courier New, Courier";
+</script>
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script language="JavaScript" src="js/overlib.js"></script>  <-- Não esqueça de modificar o diretório para onde vc copiou os arquivos .js
+
+e depois modifique a tag map lá no final do arquivo, para:
+
+<MAP name=Map>
+  <AREA shape="CIRCLE" coords="573,86,11" href="http://www.graw.tci.ufal.br/" onmouseover="return overlib('Vai para a página Inicial do graW.', CAPTION, 'Home')" onmouseout="return nd()">
+  <AREA shape="CIRCLE" coords="630,85,12" href="http://www.graw.tci.ufal.br/signIn/index.jsp" onmouseover="return overlib('Vai para a página de Cadastro...', CAPTION, 'Cadastro')" onmouseout="return nd()">
+  <AREA shape="CIRCLE" coords="688,86,11" href="http://www.graw.tci.ufal.br/info.jsp" onmouseover="return overlib('Vai para a página de Informações Gerais sobre o graW.', CAPTION, 'Informações/Dúvidas')" onmouseout="return nd()">
+  <AREA shape="CIRCLE" coords="742,85,11" href="http://www.graw.tci.ufal.br/help.html" onmouseover="return overlib('Vai para a página de Ajuda...', CAPTION, 'Informações/Dúvidas')" onmouseout="return nd()">
+</MAP>
+
+
+CONFIG.JSP
+
+coloque depois da tag <body>
+
+<script language="JavaScript">
+/*
+ Para todas as variáveis que podem ser modificadas, acesse: http://www.bosrup.com/web/overlib/reference.html
+*/
+var ol_textfont = "Verdana, Courier New, Courier";
+</script>
+
+<div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
+<script language="JavaScript" src="js/overlib.js"></script>  <-- Não esqueça de modificar o diretório para onde vc copiou os arquivos .js
+
+e depois modifique a tag map lá no final do arquivo, para:
+
+<map name="Map2"> 
+  <area shape="circle" coords="80,23,12" href="information.jsp" onmouseover="return overlib('A seção Minhas Informações é destinada a configurações personalizadas. Você altera suas configurações pessoas e acessa seus compromissos na agenda e etc.', CAPTION, 'Informações')" onmouseout="return nd()">
+  <area shape="circle" coords="149,22,13" href="comunication.jsp" onmouseover="return overlib('Cada comunidade possui várias ferramentas de comunicação, cuja finalidade é estimular integração e a troca de experiências entre os participantes.', CAPTION, 'Comunidade')" onmouseout="return nd()">
+  <area shape="circle" coords="203,21,11" href="pedagogic.jsp" onmouseover="return overlib('Cada curso, grupo e disciplina possui uma sessão Pedagógico cuja finalidade é compartilhar materiais pedagógicos entre os participantes.', CAPTION, 'Pedagógicos')" onmouseout="return nd()">
+  <area shape="circle" coords="260,22,11" href="course.jsp" onmouseover="return overlib('Nesta seção você escolhe e acessa os cursos e disciplinas nas quais você se interessa.', CAPTION, 'Cursos')" onmouseout="return nd()">
+  <area shape="circle" coords="316,21,11" href="group.jsp" onmouseover="return overlib('Aqui você pode criar grupos subordinados as disciplinas para discutir assuntos de interesse comum.', CAPTION, 'Grupo')" onmouseout="return nd()">
+  <area shape="circle" coords="368,21,10" href="index.jsp" onmouseover="return overlib('Obtenha ajuda e saiba mais sobre os conceitos do graW.', CAPTION, 'Ajuda')" onmouseout="return nd()">
+  <area shape="circle" coords="409,20,9" href="../servlet/br.ufal.graw.web.Logout" onmouseover="return overlib('Sair do sistema. Logoff do graW', CAPTION, 'Finalizar Sessão')" onmouseout="return nd()">
+</map>

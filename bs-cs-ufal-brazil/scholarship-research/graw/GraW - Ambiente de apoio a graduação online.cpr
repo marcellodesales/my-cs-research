@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Project>
+    <SourceDirectories>
+        <Directory absolutePath="C:\desenv\graw\src\" relativePath="src"/>
+    </SourceDirectories>
+    <LibrarySourceDirectories/>
+    <LibraryClassDirectories>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\servlet.jar"/>
+        <Directory absolutePath="Z:\WEB-INF\lib\activation.jar"/>
+        <Directory absolutePath="Z:\WEB-INF\lib\cos.jar"/>
+        <Directory absolutePath="Z:\WEB-INF\lib\jdom.jar"/>
+        <Directory absolutePath="Z:\WEB-INF\lib\mail.jar"/>
+        <Directory absolutePath="Z:\WEB-INF\lib\mysql_comp.jar"/>
+    </LibraryClassDirectories>
+    <DestinationDirectory
+        absolutePath="C:\desenv\graw\site\WEB-INF\classes\" relativePath="site/WEB-INF/classes"/>
+    <Target
+        absolutePath="C:\desenv\graw\src\br\ufal\graw\usermodel\UserModel.java"
+        java2DebugVmType="classic" relativePath="src/br/ufal/graw/usermodel/UserModel.java"/>
+    <CompilerOptions generateDebugInfo="true" jdk14Assertions="false"
+        maximumHeapSize="128" otherOptions=""
+        showCompilerWarnings="true" showDeprecationWarnings="true"/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <ResourceFilePattern>*.jpg</ResourceFilePattern>
+    <ResourceFilePattern>*.xml</ResourceFilePattern>
+    <ResourceFilePattern>*.properties</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+</Project>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Project>
+    <SourceDirectories>
+        <Directory
+            absolutePath="C:\desenv\graw\translation\tmxtranslator\" relativePath=""/>
+    </SourceDirectories>
+    <LibrarySourceDirectories/>
+    <LibraryClassDirectories>
+        <Directory absolutePath="Z:\jakarta-tomcat-4.0\common\lib\xerces.jar"/>
+    </LibraryClassDirectories>
+    <Target
+        absolutePath="C:\desenv\graw\translation\tmxtranslator\br\ufal\graw\tmxtranslator\XMLResourceBundle.java"
+        java2DebugVmType="classic" relativePath="br/ufal/graw/tmxtranslator/XMLResourceBundle.java"/>
+    <CompilerOptions generateDebugInfo="true" jdk14Assertions="false"
+        maximumHeapSize="128" otherOptions=""
+        showCompilerWarnings="false" showDeprecationWarnings="false"/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <ResourceFilePattern>*.jpg</ResourceFilePattern>
+    <ResourceFilePattern>*.xml</ResourceFilePattern>
+    <ResourceFilePattern>*.properties</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+</Project>
