@@ -1,0 +1,31 @@
+[Discador] - icone do telefone
+
+1 - Disk para qualquer telefone cujo prefixo seja um dos cadastrados;
+
+2 - Pressione em discar;
+
+3 - Se o AFD aceitar o número discado, a secretária atenderá e aparecerá uma janela do recado. Digite seu recado ali;
+
+4 - Se quiser deixar mais recados, é só discar novamente;
+
+* se quiser ver o Autômato Finito Determinístico que validou o telefone pressione AFD;
+
+5 - Existe as ligações rápidas para guardar seus telefones mais discados. Cadastre-os apertando no pequeno quadrado ao lado das caixas.
+
+[Gerenciador de Secretárias Eletrônicas] - icone da secretária
+
+1 - Selecione o telefone clicando no ícone secretária eletrônica;
+
+2 - Para ler a mensagem, click em play;
+
+3 - Para apagar todas as mensagens click no botão X.
+
+
+
+                               Marcello Alves de Sales Junior
+
+             			Ciência da Computação - UFAL
+
+	                               Dezembro de 1999
+
+        	               marcellojunior@brasilmail.com.br
