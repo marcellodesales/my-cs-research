@@ -1,0 +1,83 @@
+&	-> 	vazio
+
+{...}	->	0 ou mais
+
+[...]	->	opcional
+
+|	->	ou exclusivo
+
+\c	-> 	indica que o caracter c deixa de ser um elemento da metalinguagem e passa a ser um caracter da linguagem
+
+<letra>		->	A..Z|a..z
+
+<digito>	->	0..9
+
+<alfanumerico>	->	<letra>
+			| <digito>
+
+<literal inteiro>	->	<digito>{<digito>}
+
+<literal ponto flutuante>	->	<digito>{<digito>}[.<digito>{<digito>}]
+
+<car>	->	<letra>
+		| <digito>
+		| <caracter especial>
+
+<cadeia caracteres>	->	"{<car>}"
+
+<conclusao>	->	<identificador de variavel> := <expressao>
+			| <identificador de variavel>
+			| nao <identificador de variavel>			
+			
+<lista de conclusoes> -> <conclusao> {, conclusao }
+
+<expressao aritmetica>	->	<termo> <mais termos>
+				| -<expressao aritmetica>
+
+<mais termos>		->	+ <termo> <mais termos>
+				| - <termo> <mais termos>
+				| &
+
+<termo>			->	<fator> <mais fatores>
+
+<mais fatores>		->	* <fator> <mais fatores>
+				| / <fator> <mais fatores>
+				| ^ <fator> <mais fatores>
+				| &			
+
+
+<fator>		->	<identificador de variavel>	
+			| <chamada funcao>		
+			| <literal ponto flutuante>	
+			| <literal inteiro>		
+			| (<expressao aritmetica>)	
+
+
+<operador logico>	->	e
+				| ou
+
+<operador relacional>	-> 	> 
+				| < 
+				| >= 
+				| <=
+				| =
+				| <>
+
+
+<expressao>	->	<expressao aritmetica> <mais expressoes>
+			| nao <expressao> <mais expressoes>
+			| verdadeiro <mais expressoes>
+			| falso <mais expressoes>
+			| <cadeia de caracteres> <mais expressoes>			
+			| <identificador de variavel> <mais expressoes>			
+			| <chamada funcao> <mais expressoes>
+			| (expressao) <mais expressoes>
+
+
+
+<mais expressoes> ->	  <operador relacional> <expressao> <mais expressoes>
+			| <operador logico> <expressao> <mais expressoes> 
+			| &
+
+
+<regra>	->	se <expressao> entao <lista de conclusoes>

@@ -1,0 +1,5 @@
+   SE A e C ENTÃO E=true FC=60.0% 50.0% Como você tem mais de R$10.000 e é universitário, então você poderá investir em seguros. 
+   SE F ENTÃO G=true FC=80.0% 65.0% Como você investe em ações em alta, você investe em ações da IBM. 
+   SE B ENTÃO C=true FC=65.0% 45.0% Como você tem idade inferior a 30 anos, pode-se considerar que você é universitário. 
+   SE C e D ENTÃO F=true FC=85.0% 67.0% Como você possui renda anual maior que U$40.000 e é universitário, então você poderá investir em ações em alta. 
+   SE B e E ENTÃO F=true FC=85.0% 70.0% Como você tem menos de 30 anos e investe em seguros, você poderá investir em ações em alta. 

@@ -1,0 +1,64 @@
+<regra> -> SE <expressao> entao <lista_de_conclusoes>
+
+<expressao>  -> <expressao_simples>
+		| <expressao_simples> <op_relacional> <expressao_simples>
+
+<expressao_simples> ->  <termo> <mais_expressao_simples>
+			| + <termo> <mais_expressao_simples>
+			| - <termo> <mais_expressao_simples>
+
+<mais_expressao_simples> -> <op_ad> <termo> | &
+
+<termo> -> 	<fator> <mais_termos>
+
+<mais_termos> -> <op_mult> <fator> <mais_termos>
+
+<fator> ->	<literal_inteiro>		
+		|<literal_ponto_flutuante>	
+		| <identificador>
+		| true
+		| false
+		| not <fator>
+		| (expressao)
+
+
+<op_ad> -> 	+
+		| -
+		| ou
+
+<op_mult> -> 	*
+		| /
+		| e
+
+
+<op_relacional> -> 	=
+			| <
+			| >
+			| <=
+			| >=
+			| !=
+			
+
+<lista_de_conclusoes> -> <conclusao>{,conclusao}
+
+<conclusao> -> <identificador de variavel> = <expressao>
+
+
+<letra>		->	A..Z|a..z
+
+<digito>	->	0..9
+
+<alfanumerico>	->	<letra>
+			| <digito>
+
+<literal_inteiro>	->	<digito>{<digito>}
+
+<literal_ponto_flutuante>	->	<digito>{<digito>}[.<digito>{<digito>}]
+
+<car>	->	<letra>
+		| <digito>
+		| <caracter especial>
+
+<cadeia caracteres>	->	"{<car>}"					
+
+<identificador>	->	<letra>{<alfanumerico>|_}

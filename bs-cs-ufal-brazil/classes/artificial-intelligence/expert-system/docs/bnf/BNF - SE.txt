@@ -1,0 +1,70 @@
+&	-> 	vazio
+
+{...}	->	0 ou mais
+
+[...]	->	opcional
+
+|	->	ou exclusivo
+
+\c	-> 	indica que o caracter c deixa de ser um elemento da metalinguagem e passa a ser um caracter da linguagem
+
+<letra>		->	A..Z|a..z
+
+<digito>	->	0..9
+
+<alfanumerico>			->	<letra>
+					| <digito>
+
+<car>				->	<letra>
+					| <digito>
+					| <caracter especial>
+
+<cadeia caracteres>		->	"{<car>}"
+
+<lista de conclusoes>		->	<identificador de variavel> := <expressao>
+					| <identificador de variavel>
+					| nao <identificador de variavel>			
+			
+<conclusao> 			-> 	<lista de conclusoes> {, lista de conclusoes }
+
+<mais termos>			->	+ <termo> <mais termos>
+					| - <termo> <mais termos>
+					| &
+
+<termo>				->	<fator> <mais fatores>
+
+<mais fatores>			->	* <fator> <mais fatores>
+					| / <fator> <mais fatores>
+					| ^ <fator> <mais fatores>
+					| &			
+
+<fator>				->	<identificador de variavel>	
+					| <numero>				// literal ponto flutuante / inteiro ???	
+					| (<expressao aritmetica>)	
+
+<expressao aritmetica>		->	<termo> <mais termos>
+					| -<expressao aritmetica>
+
+<operador logico>		->	e
+					| ou
+
+<operador relacional>		-> 	= 
+					| <>
+					| >
+					| < 
+					| >= 
+					| <=
+
+<expressao>			->	nao <expressao> <mais expressoes>
+					| verdadeiro <mais expressoes>
+					| falso <mais expressoes>
+					| <cadeia de caracteres> <mais expressoes>			// se "Cadeia de String" entao C = 2 ????
+					| <identificador de variavel> <mais expressoes>			// colocar em <fator> para impedir o caso acima ???
+					| (expressao) <mais expressoes>
+					| <expressao aritmetica> <mais expressoes>
+
+<mais expressoes> 		->	<operador relacional> <expressao> <mais expressoes>
+					| <operador logico> <expressao> <mais expressoes> 
+					| &
+
+<regra>				->	se <expressao> entao <conclusao>

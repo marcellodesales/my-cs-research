@@ -1,0 +1,6 @@
+D e C  Como você possui renda anual maior que U$40.000 e é universitário, então você poderá investir em ações em alta. 
+
+A e C  Como você tem mais de U$10.000 e é universitário, então você poderá investir em seguros. 
+
+
+B e E Como você tem idade inferior a 30 anos e investe em seguros, você poderá investir em ações em alta.

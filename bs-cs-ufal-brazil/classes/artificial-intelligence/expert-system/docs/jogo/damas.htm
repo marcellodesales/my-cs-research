@@ -1,0 +1,263 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Joao Guimaraes">
+   <META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+   <TITLE>criacao</TITLE>
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF" LINK="#009900" VLINK="#00CC00" ALINK="#FF0000" BACKGROUND="wood.gif">
+<B><FONT COLOR="#009900"><FONT SIZE=+2>&nbsp;O que &eacute; necess&aacute;rio
+para criar um programa para jogar damas?</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; Esta p&aacute;gina foi criada exatamente
+para tentar responder esta pergunta.</FONT>
+<BR><FONT SIZE=+1>&nbsp;</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 1 - Primeiramente, voc&ecirc; deve
+conhecer o b&aacute;sico sobre o jogo de damas, ou seja:</FONT>
+<BLOCKQUOTE>
+<UL>
+<LI>
+<FONT SIZE=+1>Conhecer as regras do jogo</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Ter uma id&eacute;ia b&aacute;sica de alguns fundamentos
+te&oacute;ricos</FONT></LI>
+
+<UL>
+<LI>
+<FONT SIZE=+1>a combina&ccedil;&atilde;o</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>o valor do centro</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>a oposi&ccedil;&atilde;o</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>o bloqueio</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>a for&ccedil;a da dama</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>o bloqueio da dama</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>a pris&atilde;o da dama</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>a For&ccedil;ada</FONT></LI>
+</UL>
+</UL>
+</BLOCKQUOTE>
+<FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Todas as informa&ccedil;&otilde;es
+acima voc&ecirc; encontra no livro "<a HREF="abc.doc">O ABC do Jogo de
+Damas</a>" de <A HREF="mailto:ferrinho@clic-in.com.br">Carlos Alberto Ferrinho</A>.</FONT>
+<BR>&nbsp;
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 2 - Entender os principais termos t&eacute;cnicos
+de um programa para jogar damas..</FONT>
+<UL>
+<LI>
+<FONT SIZE=+1>&nbsp;No contexto de jogos de tabuleiro, <B><FONT COLOR="#009900">nodos</FONT></B>
+(nodes) representam posi&ccedil;&otilde;es do tabuleiro, e <B><FONT COLOR="#009900">ramos</FONT></B>
+(branches) representam movimentos.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>A <B><FONT COLOR="#009900">profundidade</FONT> </B>(depth),
+d, de uma <B><FONT COLOR="#009900">&aacute;rvore de jogo</FONT></B> (game
+tree) &eacute; o n&uacute;mero de movimentos adiante, ex: se a profundidade é
+igual a 7, significa que o computador analisará a posição até 7 movimentos
+adiante (4 de brancas e 3 de pretas, ou, vice-versa). O <B><FONT COLOR="#009900">ply</FONT></B>,
+p, &eacute; a profundidade + 1. O <B><FONT COLOR="#009900">fator de ramifica&ccedil;&atilde;o</FONT></B>
+(branching factor) , b, &eacute; a m&eacute;dia de movimentos dispon&iacute;veis
+a cada nodo. Voc&ecirc; n&atilde;o pode jogar a maioria dos jogos percorrendo
+todos os caminhos poss&iacute;veis para concluir o jogo, porque o n&uacute;mero
+de caminhos, b<SUP>d</SUP>, &eacute; muito grande.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>O procedimento de <B><FONT COLOR="#009900">MINIMAX</FONT></B>
+est&aacute; baseado na an&aacute;lise de avalia&ccedil;&otilde;es num&eacute;ricas
+computadas por um avaliador est&aacute;tico ao fundo de uma &aacute;rvore
+de jogo.&nbsp;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>O procedimento <B><FONT COLOR="#009900">ALFA–BETA</FONT></B>
+poda a &aacute;rvore de jogo, cortando freq&uuml;entemente o efetivo fator
+de ramifica&ccedil;&atilde;o pela metade, permitindo &agrave; procura ir
+ao dobro da dist&acirc;ncia. O procedimento ALFA-BETA encarna a id&eacute;ia
+que voc&ecirc; n&atilde;o deveria desperdi&ccedil;ar tempo para analisar
+op&ccedil;&otilde;es que voc&ecirc; sabe que s&atilde;o ruins.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><B><FONT COLOR="#009900">Profundidade progressiva</FONT></B>
+(progressive deepening) acha primeiro um movimento com um-movimento de
+<B><FONT COLOR="#009900">lookahead</FONT></B> (olhar a frente), ent&atilde;o
+dois-movimentos, ent&atilde;o tr&ecirc;s-movimentos, e assim por diante,
+at&eacute; que o tempo acabe. Profundidade progressiva garante que sempre
+h&aacute; um movimento pronto para jogar e assegura que nenhum tempo &eacute;
+desperdi&ccedil;ado.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Entende-se por <B><FONT COLOR="#009900">heur&iacute;sticas</FONT></B>,
+os m&eacute;todos de solu&ccedil;&otilde;es de problemas em que se usa
+tentativa e erro, isto &eacute;, tenta-se um caminho para a solu&ccedil;&atilde;o,
+se n&atilde;o der certo tenta-se outro, at&eacute; se conseguir chegar
+ao objetivo.</FONT></LI>
+</UL>
+&nbsp;
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 3 - Para facilitar seu trabalho, eu
+selecionei 4 relat&oacute;rios que poder&atilde;o servir de exemplo para
+a cria&ccedil;&atilde;o do seu programa.&nbsp;&nbsp;</FONT>
+<UL>
+<LI>
+<FONT SIZE=+1><A HREF="algoritimo damas classicas.html">Relat&oacute;rio
+de um jogador de damas</A> - relat&oacute;rio completo sobre a cria&ccedil;&atilde;o
+de um programa de jogo de damas.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><A HREF="http://www.fe.up.pt/~eol/IA/DAMASII/">Damas cl&aacute;ssicas</A>
+- Trabalho de Ant&oacute;nio M. C. Pereira , realizado para a Disciplina:
+Metologias da Intelig&ecirc;ncia Artificial, do Mestrado em Intelig&ecirc;ncia
+Artificial e Computa&ccedil;&atilde;o.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><A HREF="http://www.fe.up.pt/~eol/IA/DAMAS/RELATORIO/relatorio.html">Jogo
+das "Damas" cl&aacute;ssicas&nbsp;</A> - Trabalho de <A HREF="mailto:rleite@med.up.pt">Rui
+M. S. R. Leite</A>, para a mesma disciplina, com o c&oacute;digo fonte
+de um programa em java.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1><A HREF="Programa Ufrgs/ufrgs98.htm">Um Jogo de Damas Cliente/Servidor
+com Processamento Distribu&iacute;do de Jogadas</A> - relat&oacute;rio
+completo (com c&oacute;digo fontes) de um programa criado em delphi na
+Universidade Federal do Rio Grande do Sul - UFRGS em 1998, por Sergio Kalil
+e ???????.</FONT></LI>
+</UL>
+<FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Obs:&nbsp; Os
+tr&ecirc;s primeiros trabalhos s&atilde;o de autores portugueses. Saiba
+que as regras utilizadas em Portugal s&atilde;o diferentes das regras adotadas
+no Brasil. <A HREF="diferenca.html">Clique aqui</A> para saber a diferen&ccedil;a.</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; O quarto trabalho, feito no RS,
+utiliza as regras americanas (checkers), também deve ser adaptado a regra
+internacional 8x8, utilizada no Brasil.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Em 1995, na
+Universidade Regional de Blumenau, a Acad&ecirc;mica Luciane Maria de Souza
+escreveu a monografia "<I>Aplica&ccedil;&otilde;es em Teoria dos Jogos:
+Jogo da Velha e Jogo de Damas</I>" com 116 p&aacute;ginas. Esta mongrafia será
+muito útil para quem quiser criar um programa, pois além de ser completa, não
+tem problema de adaptação de regras. Quem quiser adquirir esta monografia deve entrar em contato com:</FONT>
+<BR><FONT SIZE=+1></FONT>&nbsp;
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<BLOCKQUOTE><FONT SIZE=+1><A HREF="mailto:dinha@furb.rct-sc.br">Izildinha
+Ramos Accetta</A></FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; - CRB/14-547 -</FONT>
+<BR><FONT SIZE=+1>FURB - Biblioteca Central</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; Caixa Postal 1505</FONT>
+<BR><FONT SIZE=+1>89052-260 Blumenau - SC</FONT>
+  <p align="left">&nbsp;</p>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+</BLOCKQUOTE>
+<FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 4 - Links interessantes<br>
+*em breve</FONT>
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 5 - Agora, voc&ecirc; j&aacute; pode
+criar seu programa para jogar damas. &Eacute; claro, que apenas com o que
+viu at&eacute; aqui, voc&ecirc; construir&aacute; um programa de n&iacute;vel
+m&eacute;dio. Veja abaixo alguns itens utilizados em programas de n&iacute;vel
+avan&ccedil;ado que poder&atilde;o melhorar o desempenho de seu programa.</FONT>
+<BLOCKQUOTE>
+<UL>
+<LI>
+<FONT SIZE=+1>Inserir no aplicativo n&iacute;veis de dificuldade de jogo;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Biblioteca de aberturas;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Base de dados de finais;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Implementa&ccedil;&atilde;o de mais heur&iacute;sticas, tais
+como, dom&iacute;nio do centro, ocupa&ccedil;&atilde;o da grande diagonal por uma dama, ocupa&ccedil;&atilde;o das casas fortes, quantidade de pe&ccedil;as
+do computador que est&atilde;o em perigo, etc;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Aumentar a profundidade de an&aacute;lise;</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>Tabela de transposi&ccedil;&atilde;o.</FONT></LI>
+</UL>
+</BLOCKQUOTE>
+<FONT SIZE=+1></FONT>
+
+<P><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; 5 - Consultas Bibliogr&aacute;ficas:</FONT>
+<BLOCKQUOTE>
+<UL>
+<LI>
+<FONT SIZE=+1>ARARIB&Oacute;IA, G. <B>Intelig&ecirc;ncia Artificial</B>.
+Rio de Janeiro : LTC - Livros T&eacute;cnicos e Cient&iacute;ficos, 1988</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>COELHO, Helder. <B>Intelig&ecirc;ncia Artificial. O Balan&ccedil;o
+da D&eacute;cada de 80</B>. Lisboa : Editorial Caminhos S. A., 1990.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>HARMON, Paul. <B>Sistemas Especialistas</B>. Rio de Janeiro
+: Campus, 1988.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>JAMES, Mike. <B>Intelig&ecirc;ncia Artificial em Basic</B>.
+Rio de Janeiro : Campus, 1986.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>KELLER, Robert. <B>Tecnologia de Sistemas Especialistas:
+desenvolvimento e aplica&ccedil;&atilde;o</B>. S&atilde;o Paulo : McGraw-Hill,
+1991.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>LEVINE, Robert I. <B>Intelig&ecirc;ncia Artificial e Sistemas
+Especialistas</B>. S&atilde;o Paulo : McGraw-Hill, 1988.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>LUGER, George F. <B>Artificial Intelligence and the design
+of Expert Systems</B>. Calif&oacute;rnia : The Benjamin / Cummings Publishing
+Company, 1989.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>PUCHKIN, V. N. <B>Heur&iacute;stica, a ci&ecirc;ncia do pensamento
+criador</B>. Rio de Janeiro : Zahar Editores, 1969.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>RICH, Elaine. <B>Intelig&ecirc;ncia Artificial.</B> S&atilde;o
+Paulo : Makron Books, 1993</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>SCHILDT, Herbert. <B>Intelig&ecirc;ncia Artificial utilizando
+linguagem C</B>. S&atilde;o Paulo : McGraw-Hill, 1989.</FONT></LI>
+
+<LI>
+<FONT SIZE=+1>WINSTON, Patrick Henry. <B>Intelig&ecirc;ncia Artificial</B>.
+Rio de Janeiro : LTC - Livros T&eacute;cnicos Cient&iacute;ficos, 1988.</FONT></LI>
+</UL>
+</BLOCKQUOTE>
+
+<HR WIDTH="100%"><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; Se voc&ecirc; j&aacute;
+criou algum programa para jogar damas, informe-nos sobre sua obra.</FONT>
+<BR><FONT SIZE=+1>&nbsp;&nbsp;&nbsp; Se voc&ecirc; possui algum material
+sobre o assunto, tal como: algoritmo ou c&oacute;digo fonte de um programa </FONT>
+<FONT SIZE=+1>para jogar damas, alguma apostila sobre o algoritmo minimax,
+corte alpha-beta, heur&iacute;stica, etc., por favor, colabore com esta
+p&aacute;gina trocando informa&ccedil;&otilde;es.</FONT>
+<DIV ALIGN=right><B><FONT SIZE=+1>&nbsp;</FONT></B><a HREF="mailto:guima@aerohobby.com.br"><IMG SRC="mail2.gif" BORDER=0 width="65" height="35"></a></DIV>
+
+</BODY>
+</HTML>

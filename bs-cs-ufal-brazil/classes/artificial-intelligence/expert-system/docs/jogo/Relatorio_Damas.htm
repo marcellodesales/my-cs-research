@@ -1,0 +1,1290 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.05 [en] (Win95; I) [Netscape]">
+   <TITLE>Relatorio do Jogador de Damas</TITLE>
+</HEAD>
+<BODY Bgcolor="white">
+<FONT COLOR="#FF0000"><FONT SIZE=+1><B><U>OBS:
+</U></B>Este algor&iacute;timo foi encontrado a algum tempo em uma homepage
+portuguesa (atualmente desativada). Devemos lembrar que a regra utilizada
+em Portugal, &eacute; diferente da regra adotada no Brasil. Portanto, quem
+utilizar este algor&iacute;timo, deve fazer as adapta&ccedil;&otilde;es
+para a regra oficial brasileira. Lembrar tamb&eacute;m que a nota&ccedil;&atilde;o
+em Portugal &eacute; no sistema num&eacute;rico e no Brasil &eacute; no
+sistema alg&eacute;brico, e por &uacute;ltimo, o tabuleiro portugu&ecirc;s,
+a grande diagonal (carreir&atilde;o) fica na direita do tabuleiro, enquanto
+no Brasil, fica a esquerda.</FONT></FONT>
+<BR>&nbsp;
+
+<P><A NAME="_Toc410198686"></A><B><U><FONT SIZE=+1>&Iacute;ndice</FONT></U></B>
+
+<P><B><FONT SIZE=+1><U>Relat&oacute;rio do Jogador de Damas </U><A HREF="#_Toc410453253">*</A></FONT></B>
+<BR><B><FONT SIZE=+1>1. Introdu&ccedil;&atilde;o <A HREF="#_Toc410453254">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>2. Regras do Jogo das Damas Cl&aacute;ssicas <A HREF="#_Toc410453255">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>3. Implementa&ccedil;&atilde;o das regras <A HREF="#_Toc410453256">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.1 O Tabuleiro </I><A HREF="#_Toc410453257">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3.2 As Regras </I><A HREF="#_Toc410453258">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>4. O algoritmo Mini-Max <A HREF="#_Toc410453259">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1 Implementa&ccedil;&atilde;o do Algoritmo Mini-Max </I><A HREF="#_Toc410453260">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.1 - A inicializa&ccedil;&atilde;o do minimax; </I><A HREF="#_Toc410453261">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.2 - Fim de percurso (horizontal) pelos estados dum dado n&iacute;vel;
+</I><A HREF="#_Toc410453262">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.3 - Primeiro n&iacute;vel, determina&ccedil;&atilde;o do movimento
+a realizar; </I><A HREF="#_Toc410453263">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.4 - &Uacute;ltimo n&iacute;vel, determina&ccedil;&atilde;o de fun&ccedil;&atilde;o
+heur&iacute;stica; </I><A HREF="#_Toc410453264">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.5 - Percurso horizontal, sem hip&oacute;tese de descida (fim de jogo);
+</I><A HREF="#_Toc410453265">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.6 - Percurso horizontal normal; </I><A HREF="#_Toc410453266">*</A></FONT></B>
+<BR><B><FONT SIZE=+1><I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4.1.7 - Determina&ccedil;&atilde;o do melhor valor da fun&ccedil;&atilde;o
+heur&iacute;stica; </I><A HREF="#_Toc410453267">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>5. Os Cortes Alfa-Beta <A HREF="#_Toc410453268">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>6. Interface Gr&aacute;fico <A HREF="#_Toc410453269">*</A></FONT></B>
+
+<P><B><FONT SIZE=+1>7. Dificuldades Encontradas e Desenvolvimentos Futuros
+<A HREF="#_Toc410453270">*</A></FONT></B>
+<BR><B><I><FONT SIZE=+1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+7.1 Dificuldades </FONT></I><FONT SIZE=+1><A HREF="#_Toc410453271">*</A></FONT></B>
+<DIR>&nbsp;</DIR>
+<B><FONT SIZE=-1>&nbsp;</FONT></B>
+<CENTER><A NAME="_Toc410453253"></A><B><FONT FACE="Arial"><FONT SIZE=+1>Relat&oacute;rio
+do Jogador de Damas</FONT></FONT></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410198687"></A><A NAME="_Toc410453254"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>1.
+Introdu&ccedil;&atilde;o</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>"A grande dificuldade do jogo de damas est&aacute; na
+sua aparente facilidade."</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O jogo de damas requer o dom&iacute;nio de tr&ecirc;s
+elementos b&aacute;sicos, a Teoria, o Racioc&iacute;nio e a Ast&uacute;cia.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A Teoria proporciona a l&oacute;gica do jogo, formaliza
+o conhecimento que auxiliar&aacute; o racioc&iacute;nio ao longo do jogo.
+A Teoria corporiza-se na fun&ccedil;&atilde;o Heur&iacute;stica que vai
+orientar o computador na an&aacute;lise do espa&ccedil;o de procura, proporcionando-lhe
+as directrizes que levam a que o &oacute;ptimo - a vit&oacute;ria - seja
+procurada em semi-espa&ccedil;os cada vez mais restritos. A teoria corporiza-se
+tamb&eacute;m na capacidade de extrair conhecimento da experi&ecirc;ncia,
+da an&aacute;lise de casos - quer atrav&eacute;s do racioc&iacute;nio anal&oacute;gico
+e da an&aacute;lise de casos que leve ao formular de novas teorias; quer
+atrav&eacute;s da memoriza&ccedil;&atilde;o de situa&ccedil;&otilde;es
+tipo &agrave;s quais devam ser sujeitos determinados comportamentos que,
+com a certeza de experi&ecirc;ncia feita , conduzir&atilde;o &agrave; obten&ccedil;&atilde;o
+de uma vantagem:</FONT>
+
+<P><FONT SIZE=+1>- a Judia;</FONT>
+
+<P><FONT SIZE=+1>- a Luneta;</FONT>
+
+<P><FONT SIZE=+1>- o Golpe e Contra-Golpe;</FONT>
+
+<P><FONT SIZE=+1>- a Armadilha;</FONT>
+
+<P><FONT SIZE=+1>- o Gambito;</FONT>
+
+<P><FONT SIZE=+1>- a Cavilha;</FONT>
+
+<P><FONT SIZE=+1>- a Pris&atilde;o;</FONT>
+
+<P><FONT SIZE=+1>- o Bloqueio.</FONT>
+
+<P><FONT SIZE=+1>Estes s&atilde;o nomes j&aacute; cl&aacute;ssicos de algumas
+posi&ccedil;&otilde;es t&iacute;picas do jogo das Damas.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O racioc&iacute;nio cria o conjunto de estrat&eacute;gias
+que levam a que o comportamento do jogador v&aacute; de encontro &agrave;
+teoria orientando os sucessivos estados do jogo para situa&ccedil;&otilde;es
+que tornem cada vez mais prov&aacute;vel a vit&oacute;ria. O racioc&iacute;nio
+concretiza-se na utiliza&ccedil;&atilde;o do algoritmo mini-max com os
+cortes alfa-beta.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A Ast&uacute;cia &eacute; o ardil estrat&eacute;gico que
+possibilita o logro do advers&aacute;rio que inadvertidamente &eacute;
+conduzido para semi-espa&ccedil;os do universo de poss&iacute;veis que
+lhe s&atilde;o desfavor&aacute;veis. Tal corresponder&aacute; &agrave;
+capacidade de raciocinar com maior profundidade que o advers&aacute;rio
+- ou melhor de analisar com grande anteced&ecirc;ncia a qualidade dos estados
+prov&aacute;veis e teoricamente poss&iacute;veis. Neste ponto &eacute;
+muito importante a utiliza&ccedil;&atilde;o dos cortes alfa - beta que
+permitem por de lado estados irrelevantes sem que antes sejam analisados,
+possibilitando uma maior velocidade e profundidade de an&aacute;lise.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&Eacute; de salientar o "trade-off" existente entre Teoria
+e Ast&uacute;cia. Dada a limita&ccedil;&atilde;o f&iacute;sica dos recursos
+dispon&iacute;veis o tempo de an&aacute;lise de uma posi&ccedil;&atilde;o
+tem que ser repartido entre uma an&aacute;lise em profundidade e a avalia&ccedil;&atilde;o
+te&oacute;rica da posi&ccedil;&atilde;o. Deste "trade-off" resulta a necessidade
+de optar entre Profundidade ou Qualidade da an&aacute;lise, sabendo-se
+que as defici&ecirc;ncias de um poder&atilde;o ser compensados pelas virtudes
+do outro. O programa &oacute;ptimo ser&aacute; aquele em que a utilidade
+de uma unidade de tempo adicional despendida na avalia&ccedil;&atilde;o
+da fun&ccedil;&atilde;o seja igual &agrave; resultante da aplica&ccedil;&atilde;o
+dessa unidade de tempo na procura em profundidade.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Um &oacute;ptimo jogador de damas ser&aacute; aquele que
+utilize uma Fun&ccedil;&atilde;o Heur&iacute;stica Perfeita, que domine
+a teoria do jogo; que utilize o algoritmo mini-max com os cortes alfa-beta;
+que possua uma grande capacidade de an&aacute;lise do espa&ccedil;o de
+procura.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410198688"></A><A NAME="_Toc410453255"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>2.
+Regras do Jogo das Damas Cl&aacute;ssicas</FONT></FONT></I></B></CENTER>
+<FONT SIZE=+1></FONT>&nbsp;<FONT SIZE=+1></FONT>
+
+<P><FONT COLOR="#FF0000"><FONT SIZE=+1>OBS: todos os textos em vermelho,
+significam as adapta&ccedil;&otilde;es necess&aacute;rias para a regra
+brasileira (internacional 64 casas)</FONT></FONT>
+
+<P><FONT SIZE=+1>1 - O jogo de Damas Cl&aacute;ssicas &eacute; praticado
+num tabuleiro de 64 casas alternativamente brancas e pretas. (<FONT COLOR="#FF0000">no
+Brasil, verdes e brancas (ou cinza)</FONT></FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>2 - O jogo efectua-se nas casas pretas (<FONT COLOR="#FF0000">verdes</FONT>)
+do tabuleiro. A grande diagonal negra - o rio (<FONT COLOR="#FF0000">carreir&atilde;o</FONT>)
+- deve come&ccedil;ar &agrave; direita (<FONT COLOR="#FF0000">esquerda</FONT>)
+de cada jogador.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>3 - O jogo disputa-se entre 2 jogadores, dispondo cada
+um, no in&iacute;cio, de 12 pe&otilde;es da mesma cor.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>4 - Pe&ccedil;a tocada, pe&ccedil;a jogada.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>5 - Movimento do pe&atilde;o sem captura:</FONT>
+
+<P><FONT SIZE=+1>a) o pe&atilde;o desloca-se para a frente pelas diagonais.
+S&oacute; pode avan&ccedil;ar uma casa de cada vez, desde que a casa cont&iacute;nua
+esteja livre.</FONT>
+
+<P><FONT SIZE=+1>b) n&atilde;o tem movimento retr&oacute;grado.</FONT>
+
+<P><FONT SIZE=+1>c) quando o pe&atilde;o atinge a base do advers&aacute;rio
+converte-se em dama e &eacute; coroado com outro pe&atilde;o. A jogada
+do pe&atilde;o termina quando chega &agrave; linha base s&oacute; podendo
+efectuar outro lance depois do advers&aacute;rio ter jogado.</FONT>
+
+<P><FONT SIZE=+1>6 - Movimento da dama sem captura</FONT>
+
+<P><FONT SIZE=+1>a) a dama desloca-se em diagonal, percorrendo o n&uacute;mero
+de casas que quiser, em ambos os sentidos, desde que estejam livres.</FONT>
+
+<P><FONT SIZE=+1>b) a dama n&atilde;o pode saltar por cima de qual quer
+pe&atilde;o da sua cor.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>7 - Captura de pe&ccedil;as</FONT>
+
+<P><FONT SIZE=+1>a) Nenhum jogador se pode recusar a eliminar uma pe&ccedil;a
+que esteja em posi&ccedil;&atilde;o de ser capturada.</FONT> <FONT SIZE=+1>(o
+sopro n&atilde;o existe)</FONT>
+
+<P><FONT SIZE=+1>b) As pe&ccedil;as capturadas s&oacute; podem ser retiradas
+do tabuleiro ap&oacute;s a conclus&atilde;o do movimento de captura.</FONT>
+
+<P><FONT SIZE=+1>c) O lance s&oacute; se considera terminado ap&oacute;s
+ter sido retirada a pe&ccedil;a do advers&aacute;rio.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>8 - Captura de uma pe&ccedil;a por pe&atilde;o</FONT>
+
+<P><FONT SIZE=+1>Todo o pe&atilde;o que ao jogar tenha uma pe&ccedil;a
+do advers&aacute;rio &agrave; sua frente (<FONT COLOR="#FF0000">no Brasil
+tamb&eacute;m &eacute; permitido efetuar uma tomada para tr&aacute;s</FONT>)
+deve captur&aacute;-la, se a casa seguinte estiver livre.</FONT>
+
+<P><FONT SIZE=+1>9 - Captura de uma pe&ccedil;a por dama</FONT>
+
+<P><FONT SIZE=+1>A dama tem que capturar toda e qualquer pe&ccedil;a de
+cor contr&aacute;ria que exista na mesma diagonal, desde que entre a dama
+e essa pe&ccedil;a n&atilde;o haja outra pe&ccedil;a e, ap&oacute;s a pe&ccedil;a
+a capturar, existam uma ou mais casas livres.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>10 - Regras das Capturas M&uacute;ltiplas</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>a) Lei da quantidade: o jogador &eacute; obrigado a comer
+sempre a maior quantidade, sem olhar &agrave; qualidade;</FONT>
+
+<P><FONT SIZE=+1>b) Lei da qualidade: se a quantidade for igual para todas
+as op&ccedil;&otilde;es, &eacute; obrigado a jogar a op&ccedil;&atilde;o
+que capturar a maior qualidade.</FONT> <FONT SIZE=+1>(<FONT COLOR="#FF0000">n&atilde;o
+existe isto na regra brasileira</FONT>)</FONT>
+
+<P><FONT SIZE=+1>c) Se forem iguais quantidade e qualidade o jogador pode
+optar por qualquer jogada.</FONT>
+
+<P><FONT SIZE=+1>d) A obrigatoriedade depende das pe&ccedil;as tomadas
+e n&atilde;o das pe&ccedil;as que tomam. A captura, nas condi&ccedil;&otilde;es
+expostas pode ser feita por pe&atilde;o ou dama, sendo sempre livre o jogador
+de optar por qual quer utilizar.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>11 - A derrota</FONT>
+
+<P><FONT SIZE=+1>O jogo foi perdido pelo jogador que:</FONT>
+
+<P><FONT SIZE=+1>a) perca todas as pe&ccedil;as;</FONT>
+
+<P><FONT SIZE=+1>b) tenha que efectuar um lance e n&atilde;o possa efectuar
+o movimento devido &agrave;s suas pe&ccedil;as se encontrarem prisioneiras.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410198689"></A><A NAME="_Toc410453256"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>3.
+Implementa&ccedil;&atilde;o das regras</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410198690"></A><A NAME="_Toc410453257"></A><B><FONT SIZE=+1>3.1
+O Tabuleiro</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Cada pe&ccedil;a pertencente a um determinado estado &eacute;
+designada por (Pe&ccedil;a, Posi&ccedil;&atilde;o, Jogador):</FONT>
+
+<P><FONT SIZE=+1>- Pe&ccedil;a pode ser um pe&atilde;o ou uma dama ( p
+ou d);</FONT>
+
+<P><FONT SIZE=+1>- Posi&ccedil;&atilde;o &eacute; o n&uacute;mero da casa
+ocupada pela pe&ccedil;a. Por forma a facilitar a representa&ccedil;&atilde;o
+do movimento das pe&ccedil;as adopt&aacute;mos uma numera&ccedil;&atilde;o
+para as casas negras de 1 a 36:</FONT>
+<CENTER><FONT SIZE=+1>&nbsp;</FONT></CENTER>
+
+<CENTER><TABLE BORDER CELLPADDING=2 WIDTH="387" BORDERCOLOR="#000000" >
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>36</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>35</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>34</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>33</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>31</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>30</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>29</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>28</FONT></FONT></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>27</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>26</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>25</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>24</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>22</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>21</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>20</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>19</FONT></FONT></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>18</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>17</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>16</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>15</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>13</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>12</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>11</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>10</FONT></FONT></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>9</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>8</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>7</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>6</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>4</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>3</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>2</FONT></FONT></CENTER>
+</TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31"></TD>
+
+<TD VALIGN=TOP WIDTH="13%" HEIGHT="31" BGCOLOR="#FFFFFF">
+<CENTER><FONT FACE="Arial"><FONT SIZE=+1>1</FONT></FONT></CENTER>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+<CENTER><FONT SIZE=+1>&nbsp;</FONT></CENTER>
+<FONT COLOR="#FF0000"><FONT SIZE=+1>Lembrar que no Brasil o tabuleiro acima
+deve sofrer uma rota&ccedil;&atilde;o de 90 graus (grande diagonal na esquerda)</FONT></FONT>
+
+<P><FONT SIZE=+1>Desta forma quando uma peca branca se movimenta para a
+esquerda significa adicionar 4 pontos &agrave; sua posi&ccedil;&atilde;o
+actual, se se deslocar para a esquerda significa adicionar 5 pontos &agrave;
+sua posi&ccedil;&atilde;o actual. Se o deslocamento for efectuado por uma
+pedra negra subtra&iacute;mos 4 ou 5 valores &agrave; posi&ccedil;&atilde;o
+actual.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>- O Jogador: &eacute; a cor da pe&ccedil;a, branca ou
+preta. Na implementa&ccedil;&atilde;o por n&oacute;s efectuada design&aacute;mos
+por 1 o jogador que conduz as pe&ccedil;as brancas e por -1 o jogador que
+conduz as pe&ccedil;as pretas. Esta nota&ccedil;&atilde;o, extremamente
+inovadora, tira proveito da simetria do jogo das damas, quer em termos
+de fun&ccedil;&atilde;o heur&iacute;stica quer em termos das caracter&iacute;sticas
+do tabuleiro por n&oacute;s implementado. Esta designa&ccedil;&atilde;o
+dos jogadores torna muito mais simples e gen&eacute;rica a cria&ccedil;&atilde;o
+dos predicados que definem as regras de movimenta&ccedil;&atilde;o.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410198691"></A><A NAME="_Toc410453258"></A><B><FONT SIZE=+1>3.2
+As Regras</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O predicado regras (Estado_inicial, Jogador, Lista_estados_possiveis)
+possibilita a obten&ccedil;&atilde;o de novos estados a partir da an&aacute;lise
+das regras do jogo. Se existir possibilidade de eliminar pe&ccedil;as do
+advers&aacute;rio s&atilde;o aplicadas as regras da captura. Caso contr&aacute;rio
+s&atilde;o aplicadas as regras da movimenta&ccedil;&atilde;o.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>2.a) Regras da Movimenta&ccedil;&atilde;o</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Nesta fase apuram-se os movimentos poss&iacute;veis para
+o jogador em quest&atilde;o. Calcula-se a nova posi&ccedil;&atilde;o de
+uma pe&ccedil;a pode ser movimentada com base no predicado move_dir/4 que
+calcula a nova posi&ccedil;&atilde;o como "Pn is P+D*J, ok(PN)". Desta
+forma se tira proveito da nota&ccedil;&atilde;o utilizada podendo o predicado
+ser aplicado tanto &agrave; regula&ccedil;&atilde;o do movimento das brancas
+como do movimento das negras. Sendo Pn a nova posi&ccedil;&atilde;o, esta
+&eacute; igual &agrave; antiga posi&ccedil;&atilde;o -P - mais ou menos
+4 ou 5 - D, direc&ccedil;&otilde;es poss&iacute;veis - consoante sejam
+as brancas ou as pretas a jogar, e o movimento seja &agrave; direita ou
+seja &agrave; esquerda. ok(P) &eacute; um predicado que obriga o jogador
+a efectuar o movimento para dentro do tabuleiro.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>2.b) Regras de Captura</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O predicado captura/2 sucede se existir algum pe&atilde;o
+ou dama em condi&ccedil;&otilde;es de eliminar pelo menos uma pe&ccedil;a
+do advers&aacute;rio:</FONT>
+
+<P><FONT SIZE=+1>- se for pe&atilde;o o predicado comera/5 procura os pe&otilde;es
+que tenham pe&ccedil;as do advers&aacute;rio adjacentes, caso existam verifica
+se a casa seguinte est&aacute; livre, caso seja verdade toma a pe&ccedil;a
+advers&aacute;ria e verifica, de forma recursiva, as casas seguintes.</FONT>
+
+<P><FONT SIZE=+1>- se for dama o predicado comera/5 verifica se existe
+alguma pe&ccedil;a do advers&aacute;rio adjacente &agrave; dama, caso exista
+verifica se a casa imediatamente a seguir est&aacute; livre. Se a casa
+adjacente estiver livre verifica se existe uma pe&ccedil;a do advers&aacute;rio
+casa seguinte e, caso esta hip&oacute;tese seja verdadeira, se a casa posterior
+est&aacute; livre. Este procedimento &eacute; efectuado para todas as casas
+livres ao longo das diagonais.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Se o predicado captura/2 falhar, por n&atilde;o existirem
+pe&ccedil;as em posi&ccedil;&atilde;o de efectuarem uma captura, &eacute;
+chamado o predicado regra_move/3 que obt&eacute;m o conjunto de pe&ccedil;as
+que o indiv&iacute;duo pode mover, dado o estado em an&aacute;lise.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410198693"></A><A NAME="_Toc410453259"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>4.
+O algoritmo Mini-Max</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O jogo das damas &eacute; um jogo de soma zero. Por este
+motivo o valor da fun&ccedil;&atilde;o heur&iacute;stica de um jogador
+&eacute; o sim&eacute;trico da do outro. Assim, ao tentarem maximizar o
+valor da respectiva fun&ccedil;&atilde;o heur&iacute;stica os indiv&iacute;duos
+est&atilde;o a minimizar o valor da fun&ccedil;&atilde;o do advers&aacute;rio.
+Desta maneira, quando um determinado jogador analisa uma posi&ccedil;&atilde;o
+efectua uma an&aacute;lise din&acirc;mica e uma an&aacute;lise est&aacute;tica:</FONT>
+
+<P><FONT SIZE=+1>- an&aacute;lise din&acirc;mica:</FONT>
+
+<P><FONT SIZE=+1>neste tipo de an&aacute;lise o jogador avalia o universo
+dos Espa&ccedil;os Poss&iacute;veis que pode ser gerado a partir do estado
+actual. Esta an&aacute;lise seria suficiente para resolver o problema do
+jogador - alcan&ccedil;ar a vit&oacute;ria ou evitar a derrota - se este
+tivesse capacidade para analisar todas as combina&ccedil;&otilde;es relevantes
+de jogadas at&eacute; atingir um estado terminal - aquele em que o jogo
+&eacute; dado como empatado ou como perdido por um dos jogadores. Desta
+forma seria poss&iacute;vel determinar qual o comportamento ideal para
+obter o resultado pretendido.</FONT>
+
+<P><FONT SIZE=+1>No entanto, restri&ccedil;&otilde;es f&iacute;sicas, quer
+em termos de capacidade de memoriza&ccedil;&atilde;o, quer em termos de
+tempo dispon&iacute;vel, obrigam ao recurso a uma an&aacute;lise est&aacute;tica.</FONT>
+
+<P><FONT SIZE=+1>- an&aacute;lise est&aacute;tica</FONT>
+
+<P><FONT SIZE=+1>esta an&aacute;lise consiste na avalia&ccedil;&atilde;o
+de uma fun&ccedil;&atilde;o heur&iacute;stica - resumo da teoria sobre
+o jogo das Damas - que permite associar um valor a um determinado estado.
+Este valor tende a reflectir o tipo de estados que poder&atilde;o surgir
+ao longo do jogo a partir da posi&ccedil;&atilde;o analisada. Quanto maior
+o valor da fun&ccedil;&atilde;o maior a possibilidade de o indiv&iacute;duo
+sair vencedor. Esta an&aacute;lise socorre-se de crit&eacute;rios est&aacute;ticos:</FONT>
+
+<P><FONT SIZE=+1>- n&uacute;mero de pe&ccedil;as do jogador e do advers&aacute;rio;</FONT>
+
+<P><FONT SIZE=+1>- n&uacute;mero de damas detido por cada jogador;</FONT>
+
+<P><FONT SIZE=+1>- rela&ccedil;&atilde;o te&oacute;rica entre o valor gen&eacute;rico
+de uma dama em termos de pe&otilde;es.</FONT>
+
+<P><FONT SIZE=+1>- an&aacute;lise da forma como as pe&ccedil;as ocupam
+o terreno:</FONT>
+
+<P><FONT SIZE=+1>a) valoriza&ccedil;&atilde;o da ocupa&ccedil;&atilde;o
+das casas do centro, na abertura, por forma a restringir os movimentos
+do advers&aacute;rio;</FONT>
+
+<P><FONT SIZE=+1>b) valoriza&ccedil;&atilde;o do dom&iacute;nio do rio,
+por uma dama, no final do jogo;</FONT>
+
+<P><FONT SIZE=+1>c) atribui&ccedil;&atilde;o de maior valor &agrave;s pe&ccedil;as
+situadas na respectiva base, por forma a que o jogador n&atilde;o descuide
+a respectiva defesa;</FONT>
+
+<P><FONT SIZE=+1>d)incentivo ao ataque atrav&eacute;s da travessia do rio,
+atribuindo maior valor &agrave;s pe&ccedil;as situadas na margem direita
+do rio;</FONT>
+
+<P><FONT SIZE=+1>e) atribui&ccedil;&atilde;o de um valor tanto maior &agrave;s
+pe&ccedil;as quanto mais avan&ccedil;adas estiverem.</FONT>
+
+<P><FONT SIZE=+1>f) atribui&ccedil;&atilde;o de maior valor a determinadas
+forma&ccedil;&otilde;es de pe&ccedil;as, nomeadamente as "setas" conjunto
+de tr&ecirc;s pe&ccedil;as que ocupam uma determinada diagonal, de forma
+compacta.</FONT>
+
+<P><FONT SIZE=+1>Da conjuga&ccedil;&atilde;o da an&aacute;lise est&aacute;tica
+e din&acirc;mica surge o algoritmo mini-max que assume os seguintes pressupostos:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>a) O jogador maximiza o valor da sua fun&ccedil;&atilde;o
+heur&iacute;stica. De entre as jogadas poss&iacute;veis escolhe sempre
+a de maior valor.</FONT>
+
+<P><FONT SIZE=+1>b) O jogador &eacute; conservador. Pressup&otilde;e que
+o advers&aacute;rio maximiza a respectiva fun&ccedil;&atilde;o heur&iacute;stica
+escolhendo sempre a jogada que minimizaria a fun&ccedil;&atilde;o do jogador.</FONT>
+
+<P><FONT SIZE=+1>c) O jogador efectua uma an&aacute;lise din&acirc;mica,
+efectuando a expans&atilde;o dos espa&ccedil;os poss&iacute;veis, procurando
+espa&ccedil;os terminais. Se, chegado a um pr&eacute;-determinado n&iacute;vel
+de profundidade, o jogador n&atilde;o tiver encontrado estados terminais
+vai efectuar uma an&aacute;lise est&aacute;tica desses n&iacute;veis.</FONT>
+
+<P><FONT SIZE=+1>d) O valor atribu&iacute;do aos outros estados expandidos
+do espa&ccedil;o de procura :</FONT>
+
+<P><FONT SIZE=+1>1) se for um n&oacute; maximizador &eacute; igual ao maior
+valor assumido pelos seus descendentes;</FONT>
+
+<P><FONT SIZE=+1>2) se for um n&oacute; minimizador &eacute; igual ao menor
+valor assumido pelos seus descendentes.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410453260"></A><B><FONT SIZE=+1>4.1 Implementa&ccedil;&atilde;o
+do Algoritmo Mini-Max</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A implementa&ccedil;&atilde;o realizada do Mini-Max, basea-se
+no aspecto sim&eacute;trico do algoritmo, no sentido em que &eacute; poss&iacute;vel
+verificar o valor M&aacute;ximo ou M&iacute;nimo da fun&ccedil;&atilde;o
+heur&iacute;stica, simplesmente realizando a compara&ccedil;&atilde;o com
+o operador ">" (Maior, ou com o "&lt;" menor). O tipo de teste, determina-se
+multiplicando ambos os operandos por 1 se for n&iacute;vel maximizador
+ou por -1 se for minimizador (invertendo neste caso o sentido da compara&ccedil;&atilde;o).</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Esta propriedade, permite que n&atilde;o haja necessidade
+de estabelecer predicados discriminat&oacute;rios para cada tipo de n&iacute;vel
+(minimizador ou maximizador). Assim as preocupa&ccedil;&otilde;es fundamentais
+foram as seguintes:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<UL>
+<LI>
+<I><FONT SIZE=+1>Inicializa&ccedil;&atilde;o do algoritmo;</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>Fim de percurso (horizontal) pelos estados dum dado n&iacute;vel;</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>Primeiro n&iacute;vel, determina&ccedil;&atilde;o do movimento
+a realizar;</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>&Uacute;ltimo n&iacute;vel, determina&ccedil;&atilde;o
+de fun&ccedil;&atilde;o heur&iacute;stica;</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>Percurso horizontal, sem hip&oacute;tese de descida (fim
+de jogo);</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>Percurso horizontal normal;</FONT></I></LI>
+
+<LI>
+<I><FONT SIZE=+1>Compara&ccedil;&atilde;o do valor da fun&ccedil;&atilde;o
+heur&iacute;stica.</FONT></I></LI>
+</UL>
+<FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Pareceu-nos interessante apresentar em maior pormenor
+o ess&ecirc;ncial do algoritmo, j&aacute; que este constitui o cerne de
+toda a an&aacute;lise (mesmo para a variante Alfa/Beta)</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410453261"></A><B><FONT SIZE=+1>4.1.1 - A inicializa&ccedil;&atilde;o
+do minimax;</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Faz-se com um predicado auxiliar denominado de <B>start_minimax/4:</B></FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>start_minimax(J,I,Nivel,Est,Mov):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>Ve is Nivel-1,</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(Nivel,Ve,J,J,[I+[]],_,Valor-Est-Mov).</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<FONT SIZE=+1>Onde <B><I>J</I></B> &eacute; o jogador em quest&atilde;o,
+<B><I>I</I></B> o estado inicial, <B><I>N&iacute;vel</I></B> a profundidade
+desejada, <B><I>Est</I></B> o estado final ap&oacute;s a jogada e <B><I>Mov</I></B>
+o movimento a realizar.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O algoritmo minimax foi implementado sobre um predicado
+&uacute;nico, com as variantes mencionadas, denominado de <B>minimax/7</B>
+que devolve a resposta apropriada, e a sua parametriza&ccedil;&atilde;o
+&eacute; a seguinte:</FONT>
+<UL>
+<LI>
+<B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,Ve,J,A,L,VA-EA-MA,
+FV-FE-ME):</FONT></FONT></B></LI>
+</UL>
+
+<UL>
+<UL>
+<LI>
+<B><I><FONT SIZE=+1><FONT FACE="Courier New">N</FONT>, N&iacute;vel a que
+se encontra a analise (0 TERMINA);</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>Ve, N&iacute;vel em que deve ver o caminho de resposta;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>J, Jogador cuja jogada se quer determinar;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>A, Jogador que teria a vez, neste n&iacute;vel;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>L, lista de estados a analisar neste n&iacute;vel;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>VA, Melhor valor ate ao momento para o n&iacute;vel;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>EA, Estado referente a esse melhor valor;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>MA, Movimento a realizar para esse melhor valor;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>FV, Valor final calculado para este n&iacute;vel;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>FE, Estado referente a esse valor;</FONT></I></B></LI>
+
+<LI>
+<B><I><FONT SIZE=+1>ME, Movimento a realizar para esse valor.</FONT></I></B></LI>
+</UL>
+</UL>
+<FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410453262"></A><B><FONT SIZE=+1>4.1.2 - Fim de percurso
+(horizontal) pelos estados dum dado n&iacute;vel;</FONT></B>
+
+<P><B><I><FONT SIZE=+1>&nbsp;</FONT></I></B>
+
+<P><FONT SIZE=+1>Aqui a &uacute;nica preocupa&ccedil;&atilde;o &eacute;
+a de devolver a melhor escolha feita at&eacute; ao momento:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(_,_,_,_,[],V,V).</FONT></FONT></B>
+
+<P><B><I><FONT SIZE=+1>&nbsp;</FONT></I></B>
+
+<P><B><I><FONT SIZE=+1>&nbsp;</FONT></I></B></DIR>
+</DIR>
+<A NAME="_Toc410453263"></A><B><FONT SIZE=+1>4.1.3 - Primeiro n&iacute;vel,
+determina&ccedil;&atilde;o do movimento a realizar;</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Este n&iacute;vel difere dos restantes porque &eacute;
+aqui que se determina qual o movimento que vai ser executado e o estado
+em que ficar&aacute; o tabuleiro de jogo:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,N,J,Z,[E+P|R],VA-EstA-MovA,VF-EstF-MovF):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>!, % Fica-se por aqui</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>opp(Z,A), % Ve quem e o adversario</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>N1 is N-1, % Prepara descida
+(nivel inferior)</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>regras(E,Z,Le), % Abre os
+estados desse nivel</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N1,N,J,A,Le,_,V-_-_),
+% Calcula V</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,N,J,Z,R,V-E-P,VR-EstR-MovR),
+% Pesq. Horiz.</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(J,A,V-E-P,VR-EstR-MovR,VF-EstF-MovF).
+% Seleccao</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc410453264"></A><B><FONT SIZE=+1>4.1.4 - &Uacute;ltimo n&iacute;vel,
+determina&ccedil;&atilde;o de fun&ccedil;&atilde;o heur&iacute;stica;</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Neste n&iacute;vel, n&atilde;o h&aacute; lugar para mais
+descidas pelo que a &uacute;nica preocupa&ccedil;&atilde;o &eacute; a de
+determinar qual o valor da fun&ccedil;&atilde;o heur&iacute;stica de cada
+estado, e escolher a que se deve usar para an&aacute;lise de melhor percurso:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(0,_,J,Z,L,_,V-Est-Mov):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>!, % Nao tenta mais nada</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>usa(J,Z,L,V-Est-Mov). % Determina
+que ramo deve usar</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc410453265"></A><B><FONT SIZE=+1>4.1.5 - Percurso horizontal,
+sem hip&oacute;tese de descida (fim de jogo);</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Esta &eacute; ainda uma variante que &eacute; necess&aacute;rio
+implementar, porque ap&oacute;s se encontrar no percurso um estado final
+(onde algu&eacute;m perde) n&atilde;o h&aacute; lugar para mais descidas
+uma vez que n&atilde;o h&aacute; mais regras implement&aacute;veis.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,Ve,J,Z,[E+P|R],VA-EstA-MovA,VF-EstF-MovF):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>regras(E,Z,[]), % Nao ha mais
+regras aplicaveis</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>!, % Nao tenta alternativas</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>opp(Z,A), % Ve quem e o adversario</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>acaba(J,Z,V), % Calcula o
+valor final</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,Ve,J,Z,R,V-E-P,VR-EstR-MovR),
+% Pesq. Horiz.</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(J,A,V-P,VR-EstR-MovR,VF-EstF-MovF).
+% Seleccao</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc410453266"></A><B><FONT SIZE=+1>4.1.6 - Percurso horizontal
+normal;</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Esta cl&aacute;usula &eacute; a que constitui a ess&ecirc;ncia
+do algor&iacute;tmo e que retrata a generalidade dos casos, sendo por isso
+a mais interessante:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,Ve,J,Z,[E+P|R],VA-EstA-MovA,VF-EstF-MovF):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>opp(Z,A), % Ve quem e o adversario</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>N1 is N-1, % Prepara descida
+(nivel inferior)</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>regras(E,Z,Le), % Abre os
+estados desse nivel</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N1,Ve,J,A,Le,_,V-Est-Mov),
+% Calcula V</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>minimax(N,Ve,J,Z,R,V-Est-Mov,VR-EstR-MovR),
+% Pesq. Horiz</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(J,A,V-Est-Mov,VR-EstR-MovR,VF-EstF-MovF).
+% Selec.</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc410453267"></A><B><FONT SIZE=+1>4.1.7 - Determina&ccedil;&atilde;o
+do melhor valor da fun&ccedil;&atilde;o heur&iacute;stica;</FONT></B>
+
+<P><B><I><FONT SIZE=+1>&nbsp;</FONT></I></B>
+
+<P><FONT SIZE=+1>Este &eacute; a caracter&iacute;stica que permite simplificar
+o algor&iacute;tmo, no sentido de com um teste enquadrar duas fun&ccedil;&otilde;es:</FONT>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>&nbsp;</FONT></FONT></B>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>% Melhor escolha num dado
+nivel, onde J &eacute; o jogador (1 ou -1) e</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>% Z &eacute; o n&iacute;vel
+(maximizador se = J, e minimizador se =-J).</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(_,_,V,V,V):-!.</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(J,Z,X-EX-PX,Y-_-_,X-EX-PX):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>XC is X*J*Z, % Transforma&ccedil;&atilde;o
+para n&iacute;vel maximizador...</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>YC is Y*J*Z, % ... ou minimizador.</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>XC > YC,!. % Compara&ccedil;&atilde;o
+comum.</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(_,_,X-_-_,Y-EY-PY,Y-EY-PY).</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+<FONT SIZE=+1>A aplica&ccedil;&atilde;o deste predicado, torna-se bastante
+vis&iacute;vel no c&aacute;lculo do valor da fun&ccedil;&atilde;o no &uacute;ltimo
+n&iacute;vel:</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=+1>% Determinacao do valor
+a usar no ultimo nivel</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>usa(_,_,[],_).</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>usa(J,Z,[E+P|R],Valor-Estado-Percurso):-</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>usa(J,Z,R,Val-Est-Per), %
+Ve para a direita</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>f(J,E,V), % Valor deste n&oacute;</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>&nbsp;</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>% Determinacao do melhor para
+o caso</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+1>melhor(J,Z,Val-Est-Per,V-E-P,Valor-Estado-Percurso).</FONT></FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT></DIR>
+</DIR>
+
+<CENTER><A NAME="_Toc410198694"></A><A NAME="_Toc410453268"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>5.
+Os Cortes Alfa-Beta</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Dada a elevada dimens&atilde;o do espa&ccedil;o de procura
+e como extens&atilde;o l&oacute;gica dos pressupostos a) e b) do mini-max
+surgem os cortes alfa-beta.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O algoritmo come&ccedil;a com um valor de alfa infinitamente
+negativo e de beta infinitamente positivo. Depois o valor de alfa, de beta,
+e da fun&ccedil;&atilde;o heur&iacute;stica, no ponto de decis&atilde;o,
+s&atilde;o recalculados com base no algoritmo seguinte.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Alfa - &eacute; o valor da fun&ccedil;&atilde;o heur&iacute;stica
+que vai ser utilizado para efectuar o corte dos n&oacute;s minimizadores,
+sendo calculado pelos n&oacute;s maximizadores. &Eacute; o maior valor
+da fun&ccedil;&atilde;o heur&iacute;stica associado &agrave;s op&ccedil;&otilde;es
+do n&oacute; maximizador at&eacute; agora analisadas.</FONT>
+
+<P><FONT SIZE=+1>Beta - valor da fun&ccedil;&atilde;o heur&iacute;stica
+utilizado para efectuar o corte do n&oacute;s maximizadores, sendo calculado
+pelos n&oacute;s minimizadores. &Eacute; o menor valor da fun&ccedil;&atilde;o
+heur&iacute;stica associados &agrave;s op&ccedil;&otilde;es do n&oacute;
+minimizador at&eacute; agora analisadas.</FONT>
+
+<P><FONT SIZE=+1>a) quando a expans&atilde;o da &aacute;rvore de procura
+atinge o n&iacute;vel m&aacute;ximo de profundidade calcula-se o valor
+da fun&ccedil;&atilde;o heur&iacute;stica;</FONT>
+
+<P><FONT SIZE=+1>b) cada n&oacute; herda o valor de alfa e beta do n&oacute;
+antecessor, sendo alfa menor ou igual que beta.</FONT>
+
+<P><FONT SIZE=+1>c) se o n&oacute; &eacute; maximizador recalcula-se o
+valor de alfa, sendo alfa igual ao m&aacute;ximo entre o valor herdado
+e o valor assumido pelo sucessor do n&oacute; em an&aacute;lise.</FONT>
+
+<P><FONT SIZE=+1>Se o n&oacute; &eacute; minimizador recalcula-se o valor
+de beta. Sendo o novo valor de beta igual ao m&iacute;nimo entre o valor
+herdado e o valor assumido pelo sucessor em an&aacute;lise.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>d) se num determinado n&oacute; alfa &eacute; maior que
+beta significa:</FONT>
+
+<P><FONT SIZE=+1>1) n&oacute; maximizador: que esse n&oacute; pode escolher
+um estado que lhe retorna um resultado maior -alfa - do que aquele que
+&eacute; aceit&aacute;vel pelo n&oacute; antecessor, valor de beta, da&iacute;
+n&atilde;o fazer sentido continuar a expandir a &aacute;rvore - Corte Beta;</FONT>
+
+<P><FONT SIZE=+1>2) n&oacute; minimizador: que esse n&oacute; pode escolher
+um estado que lhe retorna um resultado menor -beta - do que aquele que
+&eacute; aceit&aacute;vel pelo n&oacute; antecessor - valor de alfa - da&iacute;
+n&atilde;o fazer sentido continuar a expandir a &aacute;rvore - Corte Alfa.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>e) Se existem mais sucessores volta o passo b.</FONT>
+
+<P><FONT SIZE=+1>f) Se n&atilde;o existirem mais sucessores:</FONT>
+
+<P><FONT SIZE=+1>1) e se existir antecessor passa-lhe o valor de alfa e
+beta;</FONT>
+
+<P><FONT SIZE=+1>2 ) caso contr&aacute;rio retorna o valor de alfa ao antecessor
+se este for maximizador ou o valor de beta se este for minimizador.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>7 a Max</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>7 b =&lt;4 c Min</FONT>
+
+<P><FONT SIZE=+1>7 d >= 9 e 4 f g Max</FONT>
+
+<P><FONT SIZE=+1>h i j k l m n O Min</FONT>
+
+<P><FONT SIZE=+1>6 7 9 4 3</FONT>
+
+<P><FONT SIZE=+1>p q r</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Neste exemplo, retirado apresentado por Yoav Shoham a
+utiliza&ccedil;&atilde;o dos cortes alfa-beta evita a expans&atilde;o de
+metade da &aacute;rvore.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410453269"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>6.
+Interface Gr&aacute;fico</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>O interface gr&aacute;fico foi constru&iacute;do numa
+p&aacute;gina HTML possibilitando a qualquer utilizador remoto jogar com
+o programa via Internet. A interac&ccedil;&atilde;o e a comunica&ccedil;&atilde;o
+entre o jogador e a m&aacute;quina &eacute; assegurada por uma CGI, constru&iacute;da
+em Java.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Quando o jogador selecciona uma pe&ccedil;a que deseje
+movimentar acciona um "link" que comunica &agrave; CGI o nome da pe&ccedil;a,
+o estado actual e a identifica&ccedil;&atilde;o do jogador. A CGI vai tratar
+os dados recebidos e executar o programa Damas.yap com os par&acirc;metros
+que lhe foram passados. O yap responde com o conjunto de jogadas poss&iacute;veis,
+reenviando os dados relativos, &agrave;s casas para as quais se poder&aacute;
+movimentar a pe&ccedil;a seleccionada e o percurso efectuado por esta.
+A CGI vai utilizar a resposta do prolog para assinalar a pe&ccedil;a seleccionada
+com a marca de escolhida e para associar um "link" &agrave;s casas para
+as quais a pe&ccedil;a se possa movimentar - este "link" utiliza o m&eacute;todo
+"GET" para comunicar &agrave; CGI o nome da pe&ccedil;a escolhida. Caso
+tenha que optar entre a captura de algumas pe&ccedil;as e, para o efeito
+tenha percursos alternativos, o jogador ter&aacute; que seleccionar as
+casas de escolha. A CGI comunica ao yap a escolha efectuada respondendo
+o programa Damas.yap com a indica&ccedil;&atilde;o das casas para as quais
+a pe&ccedil;a se poder&aacute; movimentar.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A interpreta&ccedil;&atilde;o do pedido do Browser</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A CGI recebe do Browser a indica&ccedil;&atilde;o da pe&ccedil;a
+a movimentar ou da casa seleccionada atrav&eacute;s da vari&aacute;vel
+de ambiente "QUERY_STRING". E recebe a indica&ccedil;&atilde;o:</FONT>
+
+<P><FONT SIZE=+1>- do tipo de jogo a efectuar : Homem vs Homem, M&aacute;quina
+vs M&aacute;quina;</FONT>
+
+<P><FONT SIZE=+1>- do estado actual do tabuleiro: lista com a posi&ccedil;&atilde;o,
+tipo e cor de cada pe&ccedil;a no tabuleiro;</FONT>
+
+<P><FONT SIZE=+1>- do jogador ao qual cabe jogar;</FONT>
+
+<P><FONT SIZE=+1>- e do percurso j&aacute; efectuado pela pe&ccedil;a actualmente
+em movimento;</FONT>
+
+<P><FONT SIZE=+1>atrav&eacute;s da vari&aacute;vel de ambiente HTTP_COOKIE.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A interpreta&ccedil;&atilde;o do pedido recebido &eacute;
+efectuada atrav&eacute;s de um conjunto de m&eacute;todos que l&ecirc;em
+a "string" recebida e efectuam as tarefas que lhes foram destinadas, nomeadamente:</FONT>
+
+<P><FONT SIZE=+1>a) absorve_estado(), l&ecirc; o estado inicial, anterior
+ao actual pedido;</FONT>
+
+<P><FONT SIZE=+1>b) absorve_links(), l&ecirc; a lista de pe&ccedil;as seleccion&aacute;veis
+ou seleccionadas;</FONT>
+
+<P><FONT SIZE=+1>c) absorve_casas(), l&ecirc; a lista de casas seleccionadas
+ou seleccion&aacute;veis;</FONT>
+
+<P><FONT SIZE=+1>d) absorve_jogador(), l&ecirc; qual &eacute; o jogador
+que est&aacute; a jogar.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A resposta do Yap e da CGI</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Ap&oacute;s a CGI ter executado o programa Damas.yap ao
+qual passa os par&acirc;metros recebidos do Browser, j&aacute; devidamente
+tratados, o predicado cgi/2 ou cgi/4 consoante se esteja ou n&atilde;o
+a comunicar o pedido inicial, aplicam as regras ao estado que lhes foi
+comunicado. A resposta, quanto &agrave;s casas para as quais ser&aacute;
+poss&iacute;vel movimentar a pe&ccedil;a ou &agrave; efectiva&ccedil;&atilde;o
+do respectivo movimento ser&aacute; efectuada via "Standard-Output" do
+processo.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>Ap&oacute;s a recep&ccedil;&atilde;o da resposta do yap
+a CGI vai responder ao browser enviando-lhe o novo valor dos par&acirc;metros
+do "cookie" e rescrevendo o novo estado do tabuleiro atrav&eacute;s do
+m&eacute;todo toString(String forma_da_tabela) da classe DAMAS.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+<CENTER><A NAME="_Toc410453270"></A><B><I><FONT FACE="Arial"><FONT SIZE=+1>7.
+Dificuldades Encontradas</FONT></FONT></I></B></CENTER>
+
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><A NAME="_Toc410453271"></A><B><FONT SIZE=+1>7.1 Dificuldades</FONT></B>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A grande dificuldade do trabalho foi a defini&ccedil;&atilde;o
+do problema em an&aacute;lise de uma forma suficientemente gen&eacute;rica.
+Um elevado grau de generalidade permite a constru&ccedil;&atilde;o de um
+programa com uma forte coer&ecirc;ncia interna, bem estruturado, de f&aacute;cil
+leitura e interpreta&ccedil;&atilde;o, l&oacute;gico, e extremamente eficiente.
+Neste sentido se abdicou da utiliza&ccedil;&atilde;o da l&oacute;gica de
+segunda ordem, de predicados que actuam sobre conjuntos, trabalhando- -se
+sempre com listas; pelo mesmo motivo se procedeu &agrave; constru&ccedil;&atilde;o
+de um Servidor HTTP espec&iacute;fico para o Jogador de Damas. Este servidor
+carrega em mem&oacute;ria, aquando do in&iacute;cio do jogo, os "gifs"e
+as p&aacute;ginas HTML que poder&atilde;o a vir ser servidas, evitando
+a consulta ao disco sempre que seja efectuado um pedido ao servidor.</FONT>
+
+<P><FONT SIZE=+1>&nbsp;</FONT>
+
+<P><FONT SIZE=+1>A segunda grande dificuldade foi a implementa&ccedil;&atilde;o
+do interface para os movimentos da dama. No interface actual, para definir
+a traject&oacute;ria a efectuar pela dama, o jogador tem que "clickar"
+em todas as casas que a dama ir&aacute; percorrer.</FONT>
+
+<P>&nbsp;
+<BR>&nbsp;
+</BODY>
+</HTML>
