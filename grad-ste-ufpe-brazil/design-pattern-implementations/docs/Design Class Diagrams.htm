@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://home.earthlink.net/~huston2/dp/all_uml.html -->
+<HTML><HEAD><TITLE>Design Class Diagrams</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1276" name=GENERATOR></HEAD>
+<BODY>
+<CENTER>
+<H1>Design Class Diagrams &nbsp; <FONT size=-1>from <A 
+href="http://www.javacoder.net/patterns.jsp">javacoder.net</A></FONT> 
+</H1></CENTER>
+<H2>Strategy</H2>"Strategy, State, Bridge (and to some degree Adapter) have 
+similar solution structures. They all share elements of the "handle/body" idiom. 
+They differ in intent - that is, they solve different problems." [Coplien, 
+<I>Advanced C++</I>, p58]
+<P>Most of the GoF patterns exercise the two levels of indirection demonstrated 
+here. 
+<OL>
+  <LI>Promote the "interface" of a method to an abstract base class or 
+  interface, and bury the many possible implementation choices in concrete 
+  derived classes. 
+  <LI>Hide the implementation hierarchy behind a "wrapper" class that can 
+  perform responsibilities like: choosing the best implementation, caching, 
+  state management, remote access. </LI></OL>
+<UL><IMG src="Design Class Diagrams_files/Stategy_801-243.gif"></UL>
+<H2>State</H2>"Strategy is a bind-once pattern, whereas State is more dynamic." 
+[Coplien, <I>C++ Report</I>, Mar96, p88] 
+<UL><IMG src="Design Class Diagrams_files/State_554-244.gif"></UL>
+<H2>Bridge</H2>The structure of State and Bridge are identical (except that 
+Bridge admits hierarchies of envelope classes, whereas State allows only one). 
+The two patterns use the same structure to solve different problems: State 
+allows an object's behavior to change along with its state, while Bridge's 
+intent is to decouple an abstraction from its implementation so that the two can 
+vary independently. [Coplien, <I>C++ Report</I>, May 95, p58] 
+<UL><IMG src="Design Class Diagrams_files/Bridge_856-262.gif"></UL>
+<H2>Composite</H2>Three GoF patterns rely on recursive composition: Composite, 
+Decorator, and Chain of Responsibility. 
+<UL><IMG src="Design Class Diagrams_files/Composite_713-363.gif"></UL>
+<H2>Flyweight</H2>Flyweight is often combined with Composite to implement shared 
+leaf nodes. [GoF, p206]
+<P>Flyweight shows how to make lots of little objects. Facade shows how to make 
+a single object represent an entire subsystem. [GoF, p138]
+<P>This diagram is perhaps a better example of Composite than the Composite 
+diagram. 
+<UL><IMG src="Design Class Diagrams_files/Flyweight_825-280.gif"></UL>
+<H2>Interpreter</H2>Interpreter is really an application of Composite. 
+<UL><IMG src="Design Class Diagrams_files/Interpreter_632-356.gif"></UL>
+<H2>Decorator</H2>Decorator is designed to let you add responsibilities to 
+objects without subclassing. Composite's focus is not on embellishment but on 
+representation. These intents are distinct but complementary. Consequently, 
+Composite and Decorator are often used in concert. [GoF, p220] 
+<UL><IMG src="Design Class Diagrams_files/Decorator_723-422.gif"></UL>
+<H2>Chain of Responsibility</H2>Chain of Responsibility, Command, Mediator, and 
+Observer, address how you can decouple senders and receivers, but with different 
+trade-offs. Chain of Responsibility passes a sender request along a chain of 
+potential receivers. 
+<UL><IMG 
+src="Design Class Diagrams_files/ChainOfResponsibility_551-286.gif"></UL>
+<H2>Facade</H2>Facade defines a new interface, whereas Adapter uses an old 
+interface. Remember that Adapter makes two existing interfaces work together as 
+opposed to defining an entirely new one. [GoF, p219] 
+<UL><IMG src="Design Class Diagrams_files/Facade_701-268.gif"></UL>
+<H2>Adapter</H2>Adapter makes things work after they're designed; Bridge makes 
+them work before they are. [GoF, p219]
+<P>Bridge is designed up-front to let the abstraction and the implementation 
+vary independently. Adapter is retrofitted to make unrelated classes work 
+together. [GoF, 216] 
+<UL><IMG src="Design Class Diagrams_files/Adapter_785-394.gif"></UL>
+<H2>Proxy</H2>Decorator and Proxy have different purposes but similar 
+structures. Both describe how to provide a level of indirection to another 
+object, and the implementations keep a reference to the object to which they 
+forward requests. [GoF, p220]
+<P>Adapter provides a different interface to its subject. Proxy provides the 
+same interface. Decorator provides an enhanced interface. [GoF. p216] 
+<UL><IMG src="Design Class Diagrams_files/Proxy_660-272.gif"></UL>
+<H2>Command</H2>Command and Memento act as magic tokens to be passed around and 
+invoked at a later time. In Command, the token represents a request; in Memento, 
+it represents the internal state of an object at a particular time. Polymorphism 
+is important to Command, but not to Memento because its interface is so narrow 
+that a memento can only be passed as a value. [GoF, p346] 
+<UL><IMG src="Design Class Diagrams_files/Command_854-316.gif"></UL>
+<H2>Memento</H2>Command can use Memento to maintain the state required for an 
+undo operation. [GoF, 242] 
+<UL><IMG src="Design Class Diagrams_files/Memento_753-261.gif"></UL>
+<H2>Iterator</H2>Memento is often used in conjunction with Iterator. An Iterator 
+can use a Memento to capture the state of an iteration. The Iterator stores the 
+Memento internally. [GoF, p271] 
+<UL><IMG src="Design Class Diagrams_files/Iterator_486-242.gif"></UL>
+<H2>Mediator</H2>Mediator is similar to Facade in that it abstracts 
+functionality of existing classes. Mediator abstracts/centralizes arbitrary 
+communications between colleague objects. It routinely "adds value", and it is 
+known/referenced by the colleague objects. In contrast, Facade defines a simpler 
+interface to a subsystem, it doesn't add new functionality, and it is not known 
+by the subsystem classes. [GoF, p193] 
+<UL><IMG src="Design Class Diagrams_files/Mediator_618-272.gif"></UL>
+<H2>Observer</H2>Mediator and Observer are competing patterns. The difference 
+between them is that Observer distributes communication by introducing 
+"observer" and "subject" objects, whereas a Mediator object encapsulates the 
+communication between other objects. We've found it easier to make reusable 
+Observers and Subjects than to make reusable Mediators. [GoF, p346]
+<P>On the other hand, Mediator can leverage Observer for dynamically registering 
+colleagues and communicating with them. [GoF, p282] 
+<UL><IMG src="Design Class Diagrams_files/Observer_833-283.gif"></UL>
+<H2>Template Method</H2>Template Method uses inheritance to vary part of an 
+algorithm. Strategy uses delegation to vary the entire algorithm. [GoF, p330] 
+<UL><IMG src="Design Class Diagrams_files/TemplateMethod_452-300.gif"></UL>
+<H2>Visitor</H2>The Visitor pattern is the classic technique for recovering lost 
+type information without resorting to dynamic casts. [Vlissides, "Type 
+Laundering", <I>C++ Report</I>, Feb 97, p48] 
+<UL><IMG src="Design Class Diagrams_files/Visitor_691-331.gif"></UL>
+<H2>Factory Method</H2>Factory Methods are usually called within Template 
+Methods. [GoF, p116]
+<P>Often, designs start out using Factory Method (less complicated, more 
+customizable, subclasses proliferate) and evolve toward Abstract Factory, 
+Prototype, or Builder (more flexible, more complex) as the designer discovers 
+where more flexibility is needed. [GoF, p136] 
+<UL><IMG src="Design Class Diagrams_files/FactoryMethod_848-296.gif"></UL>
+<H2>Prototype</H2>Factory Method: creation through inheritance. Prototype: 
+creation through delegation. 
+<UL><IMG src="Design Class Diagrams_files/Prototype_649-273.gif"></UL>
+<H2>Abstract Factory</H2>Abstract Factory classes are often implemented with 
+Factory Methods, but they can be implemented using Prototype. [GoF, p95] 
+<UL><IMG src="Design Class Diagrams_files/AbstractFactory_741-283.gif"></UL>
+<H2>Builder</H2>Builder focuses on constructing a complex object step by step. 
+Abstract Factory emphasizes a family of product objects (either simple or 
+complex). Builder returns the product as a final step, but as far as the 
+Abstract Factory is concerned, the product gets returned immediately. [GoF, 
+p105] 
+<UL><IMG src="Design Class Diagrams_files/Builder_671-291.gif"></UL>
+<H2>Singleton</H2>Singleton should be considered only if all three of the 
+following criteria are satisfied: 
+<UL>
+  <LI>Ownership of the single instance cannot be reasonably assigned 
+  <LI>Lazy initialization is desirable 
+  <LI>Global access is not otherwise provided for </LI></UL>
+<UL><IMG 
+src="Design Class Diagrams_files/Singleton_459-182.gif"></UL></BODY></HTML>

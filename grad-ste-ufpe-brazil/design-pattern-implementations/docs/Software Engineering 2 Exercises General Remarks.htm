@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+  <head>
+    <title>Software Engineering 2: Exercises: General Remarks</title>
+    <link rel="stylesheet" href="/~due/styles/default.css" type="text/css">
+
+          <meta name="author" content="Eric Dubuis">
+      <meta name="copyright" content="@copy; 2001 Eric Dubuis, Berner Fachhochschule">
+      <meta name="keywords" lang="en" content="Eric Dubuis">
+      <meta name="keywords" lang="en" content="software engineering">
+      <meta name="keywords" lang="en" content="software design">
+      <meta name="keywords" lang="en" content="design patterns">
+      <meta name="keywords" lang="en" content="frameworks">
+      <meta name="keywords" lang="en" content="software architecture">
+
+
+    <meta name="ident" content="$Header: /var/cvsreps/due/www/courses/c355/exercises/general.shtml,v 1.15 2004/03/24 07:34:27 due Exp $">
+    <meta name="date" content="$Date: 2004/03/24 07:34:27 $">
+    
+<script language="JavaScript">
+<!--
+
+function SymError()
+{
+  return true;
+}
+
+window.onerror = SymError;
+
+var SymRealWinOpen = window.open;
+
+function SymWinOpen(url, name, attributes)
+{
+  return (new Object());
+}
+
+window.open = SymWinOpen;
+
+//-->
+</script>
+
+<script type="text/javascript">
+	var v_date_l   = "$Date: 2004/03/24 07:34:27 $"
+	var v_date     = v_date_l.substring(7, v_date_l.length - 1)
+	function writeLastChange() {
+          document.writeln("Last change: " + v_date + "<br>")
+	}
+    </script>
+  </head>
+
+  <body>
+
+    
+  <table border=0 cellpadding=0 cellspacing=0 width="100%">
+    <tr valign="middle">
+      <th class="head" align="left">
+	    <img src="/~due/courses/c355/images/logo.gif"
+	         width="60" height="60" alt="logo software engineering 2">
+      </th>
+      <th class="head" align="left">
+        <big>
+	  Course 355: Software Engineering 2
+        </big><br>
+	  Berner Fachhochschule<br>
+	  HTI @ Biel
+      </th>
+    </tr>
+  </table>
+
+
+      <hr>
+  <table border=0 cellpadding=0 cellspacing=0 width="100%">
+    <tr>
+      <td align="center"><a class="nbar" href="/~due/courses/c355/index.shtml">[ Home ]</a></td>
+      <td align="center"><a class="nbar" href="/~due/courses/c355/slides/index.shtml">[ Slides ]</a></td>
+      <td class="current" align="center"><a class="nbar" href="/~due/courses/c355/exercises/index.shtml">[ Exercises ]</a></td>
+      <td align="center"><a class="nbar" href="/~due/courses/c355/evaluation/index.shtml">[ Evaluation ]</a></td>
+      <td align="center"><a class="nbar" href="/~due/courses/c355/resources/index.shtml">[ Resources ]</a></td>
+    </tr>
+  </table>
+  <hr>
+
+
+
+    <h1>
+      General Remarks on the Exercises
+    </h1>
+
+    <p>
+      In order to perform the exercises of this
+      course, I add here a few remarks.
+    </p>
+
+    <h2>
+      For the Exercises on Patterns
+    </h2>
+
+    <p>
+      The pattern exercises contribute to your personal
+      list of pattern examples. Here I give you hints
+      about working styles:
+    </p>
+    <ul>
+      <li>
+	<a href="#shell">Working with a Shell and Ant</a>
+      </li>
+      <li>
+	<a href="#eclipse">Working with Eclipse</a>
+      </li>
+    </ul>
+
+    <a name="shell"></a>
+    <h3>Working with a Shell and Ant</h3>
+
+    <p>
+      When working with a shell and with
+      <a href="http://ant.apache.org/">Ant</a>,
+      then I recommend that
+      you put <em>all</em> pattern exercises into the root of
+      one directory. You'll unpack all the provide ZIP files
+      (be it the template version or the ones containing the
+      solutions) in that directory. In particular, procede
+      as follows:
+    </p>
+
+    <ul>
+      <li>
+        Create a root directory for the suite of
+        these pattern exercises.
+      </li>
+      <li>
+        Fore each exercise you'll get a ZIP
+        file which you will unpack in this
+        root directory.
+      </li>
+      <li>
+        The ZIP file contains template
+        files which all have the suffix
+        <tt>*.java.templ</tt>. Copy or rename
+        each of them; the new file name must be
+        the old one without the suffix
+        <tt>.templ</tt>.
+	See also the
+	section on
+	<a href="#renaming">Renaming Files</a>
+	below to learn about a utility for
+	renaming files.
+      </li>
+      <li>
+        There is also a
+        Ant
+        build file. The build file name has the format
+        <tt>build-dp-<em>patternname</em>.xml</tt>.
+        Type
+        <p class="terminal">
+        ant -f <em>buildfilename</em> about
+        </p>
+        to find out the supported targets. Type
+        <p class="terminal">
+        ant -f <em>buildfilename</em> <em>targetname</em>
+        </p>
+        to execute one of the supported targets.
+      </li>
+      <li>
+        You'll find also a properties file <tt>build.properties.distr</tt>
+        after having unpacked any one of the ZIP files for the
+	exercises. Rename that file to
+	<tt>build.properties</tt> (you have to do this only once).
+	Then edit the few properties in the renamed file
+	according to the settings of your machine.
+      </li>
+      <li>
+        Sometimes you'll find also
+        <a href="http://www.junit.org/">JUnit</a>
+        test classes or test class templates you'll have to
+        complete.
+      </li>
+      <li>
+        The solutions are provided in ZIP files will contain
+        Java solution files which all have the suffix
+        <tt>*.java.sol</tt>. You may safely unpack the solutions
+        ZIP archive in the root directory for these
+	exercises. In order to use the provided solution
+	files you must rename them accordingly.
+	See also the
+	section on
+	<a href="#renaming">Renaming Files</a>
+	below to learn about a utility for
+	renaming files.
+      </li>
+    </ul>
+
+
+    <a name="eclipse"></a>
+    <h3>Working with Eclipse</h3>
+
+    <p>
+      You can use
+      <a href="http://www.eclipse.org/">Eclipse</a>
+      for these exercises. Unfortunatelly, however, the provided
+      ZIP files have not been prepared well for Eclipse.
+      Nevertheless you can procede as follows:
+    </p>
+    <ul>
+      <li>
+        For <em>every new</em> pattern exercise,
+	create a root directory.
+      </li>
+      <li>
+        Fore each exercise you'll get a ZIP
+        file which you will unpack in this
+        root directory. If an exercise depends
+	on the solutions of earlier exercises
+	then get the corresponding ZIP files
+	as well. Unpack them, too.
+      </li>
+      <li>
+        The ZIP file contains template
+        files which all have the suffix
+        <tt>*.java.templ</tt>. Copy or rename
+        each of them; the new file name must be
+        the old one without the suffix
+        <tt>.templ</tt>.
+	See also the
+	section on
+	<a href="#renaming">Renaming Files</a>
+	below to learn about a utility for
+	renaming files.
+      </li>
+      <li>
+	Start Eclipse. Make a new project for every individual
+	exercise. Procede as follows:
+	<ol>
+	  <li>
+	    Chosse "File/New -&gt; Project...".
+	    Create a Java projcet.
+	  </li>
+	  <li>
+	    Give a name, say "SE2 <em>pattername</em>".
+	  </li>
+	  <li>
+	    Project contents: Disable "Use default" and browse
+	    to the root of the current exercise. Click "Next".
+	  </li>
+	  <li>
+	    In the "Java Settings" form, choose the "Libraries"
+	    tab. Click on "Add External JARs" and navigate to
+	    the <tt>junit.jar</tt> file. Click "Ok". (If you forget this
+	    then you can
+	    add the JUnit JAR file later via "Project/Properties",
+	    "Java Build Path", "Libraries" tab and by applying
+	    the procedure as described above.)
+	  </li>
+	  <li>
+	    Click "Finish".
+	  </li>
+	</ol>
+      </li>
+      <li>
+	Edit the sources in Eclipse.
+      </li>
+      <li>
+	To execute, you have the choice:
+	<ul>
+	  <li>
+	    Define one or more Eclipse "Run" targets.
+	  </li>
+	  <li>
+	    Use the provided Ant file from within Eclipse.
+	  </li>
+	  <li>
+	    Use the provided Ant file from a shell.
+	  </li>
+	</ul>
+      </li>
+    </ul>
+
+    <p>
+      To use Ant either from within Eclipse or from a shell,
+      you have to:
+    <ul>
+      <li>
+        Rename the file <tt>build.properties.distr</tt>
+        to
+	<tt>build.properties</tt>.
+	Then edit the few properties in the renamed file
+	according to the settings of your machine.
+      </li>
+      <li>
+        Type
+        <p class="terminal">
+        ant -f <em>buildfilename</em> about
+        </p>
+        to find out the supported targets. Type
+        <p class="terminal">
+        ant -f <em>buildfilename</em> <em>targetname</em>
+        </p>
+        to execute one of the supported targets.
+      </li>
+      <li>
+        The solutions are provided in ZIP files will contain
+        Java solution files which all have the suffix
+        <tt>.sol</tt>. You may safely unpack the solutions
+        ZIP archive in the root directory for these
+	exercises. In order to use the provided solution
+	files you must rename them accordingly.
+	See also the
+	section on
+	<a href="#renaming">Renaming Files</a>
+	below to learn about a utility for
+	renaming files.
+      </li>
+    </ul>
+
+    <a name="renaming"></a>
+    <h3>Renaming Files</h3>
+
+    <p>
+      I give here a somewhat dangerous utility for the easy
+      renaming of template and solutions files. It consists
+      of an Ant
+      <a href="build-common.xml">build file</a>
+      which does the job. Copy it into the root of your
+      exercises (or root of every individual exercise
+      if you are using Eclipse). Then use it as
+      follows:
+    </p>
+    <ul>
+      <li>
+	To copy the templates <tt>*.java.templ</tt> to <tt>*.java</tt>, type:
+	<p class="terminal">
+	  ant -f build-common.xml copy-templates
+	</p>
+	This will copy <em>every</em> file <tt>*.java.templ</tt> to <tt>*.java</tt>
+	below the current directory. It will <em>not</em> overwrite
+	any existing <tt>*.java</tt> files, however.
+      </li>
+      <li>
+	To copy the templates <tt>*.java.sol</tt> to <tt>*.java</tt>, type:
+	<p class="terminal">
+	  ant -f build-common.xml copy-solutions
+	</p>
+	This will copy <em>every</em> file <tt>*.java.sol</tt> to <tt>*.java</tt>
+	below the current directory. It will <em>not</em> overwrite
+	any existing <tt>*.java</tt> files, however. Thus, if you have
+	your version of a particular file, it will not be overwritten.
+      </li>
+    </ul>
+    <p class="note">
+      <strong>Note:</strong> These commands above will <em>not</em> overwrite
+      any existing <tt>*.java</tt> file.
+    </p>
+
+    <p>
+      If you want to overwrite <em>every</em> <tt>*.java</tt> file,
+      given any of the <tt>*.java.templ</tt>
+      or <tt>*.java.sol</tt> then you can set the Ant's <tt>-Dforce=true</tt>
+      option.
+    </p>
+    <p class="warning">
+      <strong>Warning:</strong> Using the <tt>-Dforce=true</tt>
+      will overwrite <em>every</em> existing <tt>*.java</tt> file if there
+      is a <tt>*.java.templ</tt>
+      or <tt>*.java.sol</tt> file. Thus, use this option with care!
+    </p>
+
+    
+<hr>
+
+<p class="footer">
+  <script type="text/javascript">
+    writeLastChange()
+  </script>
+  Author: <a href="/~due/e.html">Eric Dubuis</a><br>
+  Status: Maintained
+</p>
+
+
+</body>
+</html>
+
+<script language="JavaScript">
+<!--
+var SymRealOnLoad;
+var SymRealOnUnload;
+
+function SymOnUnload()
+{
+  window.open = SymWinOpen;
+  if(SymRealOnUnload != null)
+     SymRealOnUnload();
+}
+
+function SymOnLoad()
+{
+  if(SymRealOnLoad != null)
+     SymRealOnLoad();
+  window.open = SymRealWinOpen;
+  SymRealOnUnload = window.onunload;
+  window.onunload = SymOnUnload;
+}
+
+SymRealOnLoad = window.onload;
+window.onload = SymOnLoad;
+
+//-->
+</script>
+
