@@ -1,0 +1,49 @@
+<html>
+<head>
+<!--
+This file retrieved from the JS-Examples archives
+http://www.js-x.com
+1000s of free ready to use scripts, tutorials, forums.
+Author: JS-Examples - http://www.js-examples.com/ 
+-->
+
+
+
+</head>
+<body>
+
+<script>
+var SubSystem = new Array();
+    for(var i=0;i<15;i++)
+	  SubSystem[i]=i;
+
+var s,ss,sss;
+function Modify1(_myForm1) {
+var aa;
+var _name= "newWin";
+var _features="fullscreen";
+var _replace=true;
+
+s = _myForm1.selectitem1.value; 
+id = _myForm1.selectitem1.options.selectedIndex;
+sss = _myForm1.selectitem1.options[id].text;
+var _newLoc = "/newpage?Index1="+sss+"&"+id+"";
+alert(_newLoc);
+//document.location=_newLoc;  // uncomment this to goto that page.
+}
+</script>
+<form name=myForm1>
+<SELECT id=selectitem1 name=selectitem1 
+        style="HEIGHT: 66px; LIST-STYLE: square; WIDTH: 155px" dataFld="" 
+        onChange=Modify1(this.form)> 
+<script>
+for(var b=1;b<15;b++) 
+document.write("<OPTION value=\""+SubSystem[b]+"\">"+SubSystem[b]+"</option>"); 
+</script>
+
+</select>
+</form>
+
+<BR><center><a href='http://www.js-x.com'>JS-X.com</a></center> 
+</body>
+</html>

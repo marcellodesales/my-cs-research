@@ -1,0 +1,1317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0102)http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html -->
+<HTML><HEAD><TITLE>Designing Enterprise Applications with the J2EE Platform, Second Edition</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD><!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. --><!-- font size="-1" --><A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eTOC.html">CONTENTS</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html">PREV</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier6.html">NEXT</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eIX.html">INDEX</A> 
+<!-- /font --></TD>
+    <TD align=right><I>Designing Enterprise Applications<BR>with the 
+      J2EE<SUP><FONT size=-2>TM</FONT></SUP> Platform, Second 
+  Edition</I></TD></TR></TBODY></TABLE>
+<HR>
+<BR><BR>
+<H3><A name=1080752><!-- --></A>4.4 Web-Tier Application Framework Design 
+</H3><A name=1085766><!-- --></A>
+<P>Model-View-Controller ("MVC") is the BluePrints recommended architectural 
+design pattern for interactive applications. MVC, described in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html#1081667">Chapter 
+11</A>, organizes an interactive application into three separate modules: one 
+for the application model with its data representation and business logic, the 
+second for views that provide data presentation and user input, and the third 
+for a controller to dispatch requests and control flow. Most Web-tier 
+application frameworks use some variation of the MVC design pattern.</P><A 
+name=1085777><!-- --></A>
+<P>The MVC design pattern provides a host of design benefits. MVC separates 
+design concerns (data persistence and behavior, presentation, and control), 
+decreasing code duplication, centralizing control, and making the application 
+more easily modifiable. MVC also helps developers with different skill sets to 
+focus on their core skills and collaborate through clearly defined interfaces. 
+For example, a J2EE application project may include developers of custom tags, 
+views, application logic, database functionality, and networking. An MVC design 
+can centralize control of such application facilities as security, logging, and 
+screen flow. New data sources are easy to add to an MVC application by creating 
+code that adapts the new data source to the view API. Similarly, new client 
+types are easy to add by adapting the new client type to operate as an MVC view. 
+MVC clearly defines the responsibilities of participating classes, making bugs 
+easier to track down and eliminate. </P><A name=1085749><!-- --></A>
+<P>This section describes how to use MVC to organize a J2EE Web application 
+design using the sample application's Web Application Framework design as an 
+example. Many of the key classes described (the controller, the templating 
+service, the abstract action class, and so on) are usable for any application, 
+not just for an online shopping application.</P><A name=1078009><!-- --></A>
+<P>A J2EE application's Web tier serves HTTP requests. At the highest level, the 
+Web tier does four basic things in a specific order: interprets client requests, 
+dispatches those requests to business logic, selects the next view for display, 
+and generates and delivers the next view. (See <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078018">Figure 
+4.2</A>.)<IMG height=170 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tier8.gif" 
+width=416 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1078018><!-- --></A><B>Figure 4.2 </B>The Web-Tier Service Cycle 
+  </P></BLOCKQUOTE><A name=1078019><!-- --></A>
+<P>The Web-tier controller receives each incoming HTTP request and invokes the 
+requested business logic operation in the application model. Based on the 
+results of the operation and state of the model, the controller then selects the 
+next view to display. Finally, the controller generates the selected view and 
+transmits it to the client for presentation.</P><A name=1078370><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078018">Figure 
+4.2</A> is deceptively simple. An enterprise application's Web tier commonly has 
+the following requirements:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1078361><!-- --></A>An application design must have a strategy 
+    for serving current and future client types. 
+    <LI><A name=1078362><!-- --></A>A Web-tier controller must be maintainable 
+    and extensible. Its tasks include mapping requests to application model 
+    operations, selecting and assembling views, and managing screen flow. Good 
+    structure can minimize code complexity. 
+    <LI><A name=1078363><!-- --></A>Application model API design and technology 
+    selection have important implications for an application's complexity, 
+    scalability, and software quality. 
+    <LI><A name=1078364><!-- --></A>Choosing an appropriate technology for 
+    generating dynamic content improves development and maintenance efficiency. 
+    </LI></UL></BLOCKQUOTE><A name=1078578><!-- --></A>
+<P>The BluePrints best practice is to implement the Web tier of a J2EE 
+enterprise application using an appropriate Web application framework. (See <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1094743">Section 
+4.4.5 on page 114</A>.) The next several sections describe the general design of 
+a J2EE application Web tier. If you choose to use a Web application framework, 
+the following discussion will help you to understand what the framework does and 
+how to use it. If you write your own Web-tier architectural code, the following 
+design discussions will help you make educated decisions about how to use the 
+technology.</P><BR><A name=1078527><!-- --></A>
+<H4>4.4.1 Structuring the Web Tier </H4><A name=1078408><!-- --></A>
+<P>Overall structure is the most important consideration in a Web-tier design. 
+Both the sample application and the various existing Web application frameworks 
+implement some form of "Model 2" architecture, where a servlet manages client 
+communication and business logic execution, and presentation resides mainly in 
+JSP pages.</P><A name=1078409><!-- --></A>
+<P>The literature on Web-tier technology in the J2EE platform frequently uses 
+the terms "Model 1" and "Model 2" without explanation. This terminology stems 
+from early drafts of the JSP specification, which described two basic usage 
+patterns for JSP pages. While the terms have disappeared from the specification 
+document, they remain in common use. Model 1 and Model 2 simply refer to the 
+absence or presence (respectively) of a controller servlet that dispatches 
+requests from the client tier and selects views.</P><A name=1092745><!-- --></A>
+<P>A Model 1 architecture consists of a Web browser directly accessing Web-tier 
+JSP pages. The JSP pages access Web-tier JavaBeans that represent the 
+application model, and the next view to display (JSP page, servlet, HTML page, 
+and so on) is determined either by hyperlinks selected in the source document or 
+by request parameters. A Model 1 application control is decentralized, because 
+the current page being displayed determines the next page to display. In 
+addition, each JSP page or servlet processes its own inputs (parameters from GET 
+or POST). In some Model 1 architectures, choosing the next page to display 
+occurs in scriptlet code, but this usage is considered poor form. (See the 
+design guideline <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier3.html#1097966">Section 
+4.2.6.8 on page 89</A>.)</P><A name=1092750><!-- --></A>
+<P>A Model 2 architecture introduces a controller servlet between the browser 
+and the JSP pages or servlet content being delivered. The controller centralizes 
+the logic for dispatching requests to the next view based on the request URL, 
+input parameters, and application state. The controller also handles view 
+selection, which decouples JSP pages and servlets from one another. Model 2 
+applications are easier to maintain and extend, because views do not refer to 
+each other directly. The Model 2 controller servlet provides a single point of 
+control for security and logging, and often encapsulates incoming data into a 
+form usable by the back-end MVC model. For these reasons, the Model 2 
+architecture is recommended for most interactive applications.</P><A 
+name=1078079><!-- --></A>
+<P>An MVC application framework can greatly simplify implementing a Model 2 
+application. Application frameworks such as Apache Struts and JavaServer FacesTM 
+(see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1094743">Section 
+4.4.5 on page 114</A>) include a configurable front controller servlet, and 
+provide abstract classes that can be extended to handle request dispatches. Some 
+frameworks include macro languages or other tools that simplify application 
+construction.</P><A name=1078080><!-- --></A>
+<P>The Model 1 architecture can provide a more lightweight design for small, 
+static applications. Model 1 architecture is suitable for applications that have 
+very simple page flow, have little need for centralized security control or 
+logging, and change little over time. Model 1 applications can often be 
+refactored to Model 2 when application requirements change.</P><A name=1078081><!-- --></A><B>4.4.1.0.1 When to Switch from Model 1 to Model 2 
+</B><A name=1078082><!-- --></A>
+<P>JSP pages in a Model 1 application that use scripting elements, custom tags, 
+or JavaScript to forward requests should be refactored to Model 2.</P><A 
+name=1078083><!-- --></A>
+<P>A Model 1 architecture is best when the page navigation is simple and fixed, 
+and when a simple directory structure can represent the structure of the pages 
+in the application. Such applications usually embed the page flow information in 
+the links between the pages. The presence of <CODE>forward</CODE> in a JSP page 
+implies that logic embedded in the page is making a decision about the next page 
+to display.</P><A name=1078084><!-- --></A>
+<P>Over time, as the application grows and changes, page flow logic accumulates. 
+The application becomes difficult to maintain because the page flow logic is 
+distributed across multiple pages. The best time to switch from Model 1 to Model 
+2 is before this maintenance problem arises. This is why it's usually best to 
+choose Model 2 from the outset, basing the application on an existing Web 
+controller framework that best meets application requirements. Model 1 remains a 
+viable option for simple, static applications.</P><BR><A 
+name=1078631><!-- --></A>
+<H4>4.4.2 Web-Tier MVC Controller Design </H4><A name=1078648><!-- --></A>
+<P>The Model 2 architecture uses servlets for processing requests and selecting 
+views. The Front Controller architectural design pattern centralizes an 
+application's request processing and view selection in a single component. Each 
+type of Web client sends requests to and receives responses from a single URL, 
+simplifying client development. The Front Controller receives requests from the 
+client and dispatches them to the application model. This single point of 
+dispatch makes the Front Controller a logical place for such global facilities 
+as security and logging. The Front Controller also selects and formats the next 
+client view. The controller is also an application of the Mediator pattern, 
+because it decouples view components from one another.</P><A name=1078650><!-- --></A>
+<P>In the J2EE platform, a Front Controller is typically implemented as a 
+servlet. The sample application's Front Controller servlet handles all HTTP 
+requests. The user views, discussed in the next section, are mostly JSP pages 
+chosen by the Front Controller.</P><A name=1078686><!-- --></A><B>4.4.2.1 
+Web-Tier Controller Design </B><A name=1078687><!-- --></A>
+<P>A Web-tier MVC controller maps incoming requests to operations on the 
+application model, and selects views based on model and session state. Web-tier 
+controllers have a lot of duties, so they require careful design to manage 
+complexity. Because most enterprise applications grow over time, extensibility 
+is an important requirement. This section describes some strategies for the 
+internal structure of a controller in the Web tier, illustrated by example code 
+adapted from the Web Application Framework, part of the BluePrints sample 
+application.</P><A name=1078688><!-- --></A><B>4.4.2.1.1 Identifying the 
+Operation to Perform </B><A name=1078689><!-- --></A>
+<P>When a controller receives an HTTP request, it needs to be able to 
+distinguish what application operation is being requested. How can the client, 
+for example, request that the server create a new user? There are several ways 
+to indicate to the server which operation to perform. The more common methods 
+include:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1078690><!-- --></A>Indicate the operation in a hidden form 
+    field, which a POST operation delivers to the controller; for example: 
+    <BLOCKQUOTE><PRE>&lt;FORM METHOD="POST" ACTION="http://myServer/myApp/myServlet"&gt;
+  &lt;INPUT TYPE="HIDDEN" NAME="OP" VALUE="createUser"/&gt;
+  &lt;!-- other form contents... --&gt;
+&lt;/FORM&gt;
+
+</PRE></BLOCKQUOTE>
+    <LI><A name=1078695><!-- --></A>Indicate the operation in a HTTP GET query 
+    string parameter; for example: 
+    <BLOCKQUOTE><PRE>http://myHost/myApp/servlets/myServlet?op=createUser
+</PRE></BLOCKQUOTE>
+    <LI><A name=1078697><!-- --></A>Use a servlet mapping to map all URLs with a 
+    particular suffix or base URL to a specific servlet. A servlet mapping is a 
+    deployment descriptor definition that compares request paths to a pattern 
+    and dispatches matching requests to the corresponding servlet. For example, 
+    imagine that a Web application's deployment descriptor defines the following 
+    servlet mapping: 
+    <BLOCKQUOTE><PRE>&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;myServlet&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</PRE></BLOCKQUOTE><A name=1091259><!-- --></A>
+    <P>Imagine also that the servlet's context path is 
+    <CODE>http://myServer/myApp/servlets</CODE>. The servlet container would 
+    direct a request with URL <CODE>http://myServer/myApp/createUser.do</CODE> 
+    <CODE>myServlet</CODE> to <CODE>myServlet</CODE>, because the request URL 
+    matches the pattern <CODE>*.do</CODE>. Servlet <CODE>myServlet</CODE> can 
+    extract the requested operation's name from the request URL. Chapter 11 of 
+    the Java Servlet 2.3 specification defines servlet mappings. 
+</P></LI></UL></BLOCKQUOTE><A name=1078703><!-- --></A>
+<P>Of the three options discussed here, the BluePrints recommendation is to use 
+servlet mappings when they are available. Servlet mappings provide the most 
+flexible way to control where to route URLs based on patterns in the URLs. Most 
+Web application frameworks (see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1094743">Section 
+4.4.5 on page 114</A>) use servlet mappings to direct requests to the 
+appropriate front controller for an application.</P><A name=1085921><!-- --></A>
+<P>The sample application uses a servlet mapping to handle request URLs. The 
+servlet container maps all request URLs matching <CODE>*.do</CODE> to the main 
+Web-tier controller servlet, <CODE>MainServlet.java</CODE>. Another servlet 
+mapping routes all URLs matching <CODE>*.screen</CODE> to the templating 
+service, which assembles composite views.</P><A 
+name=1085922><!-- --></A><B>4.4.2.1.2 Invoking Model Methods </B><A 
+name=1084937><!-- --></A>
+<P>Once the controller has determined which operation to perform, it must invoke 
+the corresponding application model method with parameters derived from the 
+request. A naive controller design might use a large <CODE>if-then-else</CODE> 
+statement, as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078720">Code 
+Example 4.6</A>.</P>
+<BLOCKQUOTE><PRE>if (op.equals("createUser")) {
+  model.createUser(request.getAttribute("user"),
+             request.getAttribute("pass"));
+} else if (op.equals("changeUserInfo") {
+  // ... and so on...
+}
+
+</PRE></BLOCKQUOTE><A name=1078720><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.6 </B>A Poorly Designed Controller 
+      </FONT></TD></TR></TBODY></TABLE><A name=1094927><!-- --></A>
+<P>The <CODE>if-then-else</CODE> approach leads to a very large 
+<CODE>service</CODE> method, which is difficult to read and still more difficult 
+to maintain. A better approach is to use the Command pattern. The sample 
+application defines an abstract class <CODE>Action</CODE>, which represents a 
+single application model operation. A controller can look up concrete 
+<CODE>Action</CODE> subclasses by name and delegate requests to them. Sample 
+code for the abstract class <CODE>Action</CODE> and a concrete class 
+<CODE>CreateUserAction</CODE> appears in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078745">Code 
+Example 4.7</A>.</P>
+<BLOCKQUOTE><PRE>// Action.java:
+public abstract class Action {
+  protected Model model;
+  public Action(Model model) { this.model = model; }
+  public abstract String getName();
+  public abstract Object perform(HttpServletRequest req);
+};
+
+// CreateUserAction.java:
+public class CreateUserAction extends Action {
+  public CreateUserAction(Model model) {
+    super(model);
+  }
+  public String getName() { return "createUser"; }
+  public Object perform(HttpServletRequest req) {
+    return model.createUser(req.getAttribute("user"),
+                  req.getAttribute("pass"));
+  }
+}
+
+</PRE></BLOCKQUOTE><A name=1078745><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.7 </B>An Abstract Action Class and a 
+      Concrete Subclass </FONT></TD></TR></TBODY></TABLE><A name=1094958><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078745">Code 
+Example 4.7</A> defines an abstract class <CODE>Action</CODE>, which has a name 
+and a <CODE>perform</CODE> method that executes a model method corresponding to 
+the name. For example, <CODE>Action</CODE>'s concrete subclass 
+<CODE>CreateUserAction</CODE> has the name "createUser". Its 
+<CODE>perform</CODE> method invokes the model method <CODE>createUser</CODE> 
+using parameters extracted from the HTTP request.</P>
+<BLOCKQUOTE><PRE>public class ControllerServlet extends HttpServlet {
+  private HashMap actions;
+  public void init() throws ServletException {
+    actions = new HashMap();
+    CreateUserAction cua = new CreateUserAction(model);
+    actions.put(cua.getName(), cua);
+    //... create and add more actions
+  }
+  public void doPost(HttpServletRequest req,
+             HttpServletResponse resp)
+    throws IOException, ServletException {
+
+    // First identify operation "op" from URL.
+    // method getOperation() is defined elsewhere.
+    String op = getOperation(req.getRequestURL());
+    // Then find and execute corresponding Action
+    Action action = (Action)actions.get(op);
+    Object result = null;
+    try {
+        result = action.perform(req);
+    } catch (NullPointerException npx) {
+        //... handle error condition: no such action
+    }
+    // ... Use result to determine next view (see next section)
+  }
+//... other methods...
+}
+
+</PRE></BLOCKQUOTE><A name=1078777><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.8 </B>Using a Map to Identify and 
+      Execute Actions </FONT></TD></TR></TBODY></TABLE><A name=1095058><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078777">Code 
+Example 4.8</A> shows a controller servlet that maintains a hash map of 
+<CODE>Action</CODE> objects, each indexed by its name. When the servlet loads, 
+the servlet container calls the method <CODE>init</CODE>, which fills the hash 
+map with <CODE>Action</CODE> objects that invoke model operations. The hash map 
+key is the name of the operation. Each time the servlet's <CODE>service</CODE> 
+method receives a request, it identifies the name of the operation to perform, 
+looks up the corresponding <CODE>Action</CODE> in the hash map, and executes it 
+by invoking the <CODE>Action</CODE>'s <CODE>perform</CODE> method. The 
+<CODE>Action</CODE> returns a result object that the servlet uses, along with 
+other data, to decide which view to display next. When this controller receives 
+a request containing the name <CODE>createUser</CODE>, it finds an instance of 
+<CODE>CreateUserAction</CODE> in the hash map. It then invokes the 
+<CODE>Action</CODE>'s <CODE>perform</CODE> method, which uses the model to 
+create a user (as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078745">Code 
+Example 4.7</A>).</P><A name=1078783><!-- --></A>
+<P>The code samples shown in this section are greatly simplified for clarity. 
+The Web Application Framework used by the sample application provides a full, 
+working example of this sort of controller called <CODE>MainServlet</CODE>. The 
+servlet container dispatches requests with a servlet mapping: it forwards all 
+URLs matching <CODE>*.do</CODE> to the <CODE>MainServlet</CODE>. <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078777">Code 
+Example 4.8</A> demonstrates how to provide an extensible framework for 
+dispatching client requests.</P><A name=1095694><!-- --></A>
+<P>The sample application improves the extensibility of the servlet code in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078777">Code 
+Example 4.8</A> even further by externalizing the map of requests to actions. 
+The controller in the sample application initializes the <CODE>actions</CODE> 
+hash map from an external XML file, which contains pairs of operation names and 
+corresponding <CODE>Action</CODE> class names. The controller servlet 
+initializes the action map with the request names and action classes referred to 
+in the XML file. The XML file is deployed as a resource in the Web application 
+archive. Adding a new <CODE>Action</CODE> is as simple as adding a concrete 
+<CODE>Action</CODE> subclass to the application archive and defining a 
+configuration file mapping that associates the request URL with the action 
+class. An example of such a mapping appears in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078852">Code 
+Example 4.9</A>. With no code modification, the sample application controller 
+servlet can dispatch requests using actions that did not even exist when the 
+controller was written.</P><A name=1078788><!-- --></A>
+<P>Dispatching service requests to the application model is only half of the 
+Web-tier controller's job. It is also responsible for determining the next view 
+to display.</P><A name=1078789><!-- --></A><B>4.4.2.1.3 Controlling Dynamic 
+Screen Flow </B><A name=1078790><!-- --></A>
+<P>The succession of views that a Web application user sees is called screen 
+flow. A Web-tier controller controls screen flow by selecting the next view a 
+user sees. In static Web sites, screens (usually Web pages) are statically 
+linked to one another. By contrast, a controller dynamically chooses the "next" 
+screen in response to both user actions and model operation results.</P><A 
+name=1078791><!-- --></A>
+<P>In this section, the term "view" means a Web resource with a URL from which 
+Web content is available. A view might be a JSP page, a servlet, static content, 
+or some combination of the three, assembled into a page. Typically, the "next" 
+view to display depends on one or more of:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1078798><!-- --></A>The current view 
+    <LI><A name=1089704><!-- --></A>The results of any operation on the 
+    application model, returned by modelmethod invocations 
+    <LI><A name=1078799><!-- --></A>Possibly other server-side state, kept in 
+    <CODE>PageContext</CODE>, <CODE>ServletRequest</CODE>, 
+    <CODE>HttpSession</CODE>, and <CODE>ServletContext</CODE>. 
+</LI></UL></BLOCKQUOTE><A name=1078800><!-- --></A>
+<P>For example, the next view to display after a sign on view very likely 
+depends on:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1078802><!-- --></A>The current view 
+    <LI><A name=1089703><!-- --></A>The user id and password contained in the 
+    request 
+    <LI><A name=1078803><!-- --></A>The success or failure of the sign on 
+    operation, and 
+    <LI><A name=1078804><!-- --></A>Possibly other server-side state. Examples 
+    of such state might include a maximum number of allowed users (application 
+    scope), or the URL the user was trying to access (request scope). See <A 
+    href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1083750">Section 
+    4.4.7 on page 116</A> for a description of state and its scope. 
+</LI></UL></BLOCKQUOTE><A name=1078808><!-- --></A>
+<P>The controller uses this data to determine which view to display next. A Web 
+controller "displays a view" by forwarding the request to a JSP page, servlet, 
+or other component that renders the view in a format compatible with the client; 
+for example, returning HTML to a browser.</P><A name=1090589><!-- --></A>
+<P>The controller in the sample application uses two components to select and 
+generate views: a screen flow manager, which selects the next view to display; 
+and a templating service, which actually generates the view content. The 
+controller uses the screen flow manager to select a view, and forwards the 
+request to the templating service, which assembles and delivers a view to the 
+client. Both the screen flow manager and the templating servlet are generic 
+components that are usable in any Web application. The component-based design 
+reduces component coupling, promoting code reuse and simplifying the controller 
+design. 
+<P><IMG height=235 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera3.gif" 
+width=516 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1090591><!-- --></A><B>Figure 4.3 </B>Web-Tier Controller OID 
+</P></BLOCKQUOTE><A name=1078823><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1090591">Figure 
+4.3</A> is an object interaction diagram that shows the Web-tier controller 
+interacting with other Web-tier classes. The diagram shows the following 
+sequence of calls:</P>
+<OL>
+  <LI><A name=1095210><!-- --></A>The controller receives a POST from the 
+  client. 
+  <LI><A name=1100533><!-- --></A>The controller creates an <CODE>Action</CODE> 
+  corresponding to the requested operation (as described in the previous 
+  section). 
+  <LI><A name=1100534><!-- --></A>The controller calls the <CODE>Action</CODE>'s 
+  <CODE>perform</CODE> method. 
+  <LI><A name=1100535><!-- --></A><CODE>perform</CODE> calls a model business 
+  method. 
+  <LI><A name=1095241><!-- --></A>The controller calls the screen flow manager 
+  to select the next view to display. 
+  <LI><A name=1095243><!-- --></A>The screen flow manager determines the next 
+  view and returns its name to the controller. 
+  <LI><A name=1095244><!-- --></A>The controller forwards the request to the 
+  templating service, which assembles and delivers the selected view to the 
+  client. </LI></OL><A name=1095371><!-- --></A>
+<P>Most request URLs map to a specific view URL. For example, the screen flow 
+map can define that the view <CODE>signoff.screen</CODE> always follows request 
+URL <CODE>/signoff.do. </CODE>Sometimes the next screen to display depends on 
+model operation results, server-side state, or user activity. For example, the 
+next view following the request URL<CODE> /signin.do</CODE>, which signs a user 
+into the system, depends on whether the sign in operation succeeded.</P><A 
+name=1089977><!-- --></A>
+<P>In the sample application, an application assembler configures the screen 
+flow manager with an XML-based file called a screen flow map. The screen flow 
+map defines a next view name for each request URL. For dynamic view selection, a 
+screen flow map can also map a request URL to a flow handler, which is a Java 
+class that selects the next view programmatically. Flow handlers are typically 
+written by component providers or application assemblers.</P><A name=1078831><!-- --></A><B>4.4.2.1.4 Example </B><A name=1095415><!-- --></A>
+<P>The Web Application Framework screen flow map <CODE>mappings.xml</CODE> 
+configures the screen flow manager. Sample application <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078852">Code 
+Example 4.9</A> shows a URL action mapping that uses a flow handler to determine 
+the next view in code.</P>
+<BLOCKQUOTE><PRE>&lt;url-mapping url="signoff.do" screen="signoff.screen"&gt;
+&lt;action-class&gt;
+	com.sun.j2ee.blueprints.petstore.controller.web.actions.SignOffHTMLAction
+	&lt;/action-class&gt;
+&lt;/url-mapping&gt;
+
+</PRE></BLOCKQUOTE><A name=1078852><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.9 </B>Excerpt from the Sample 
+      Application Screen Flow Map </FONT></TD></TR></TBODY></TABLE><A name=1090173><!-- --></A>
+<P>In <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078852">Code 
+Example 4.9</A>, the <CODE>url-mapping</CODE> element defines a mapping for 
+request URL <CODE>/signoff.do</CODE>. The <CODE>action</CODE> element declares 
+an action of class <CODE>Signoff-HTMLAction</CODE>, which performs the business 
+logic for this URL (signing off a user). An application assembler or a component 
+provider wrote the action class <CODE>SignoffHTMLAction</CODE> to sign a user 
+off of the application. The <CODE>screen</CODE> attribute tells the screen flow 
+manager to display screen <CODE>signoff.screen</CODE> after the action 
+completes.</P><A name=1090308><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1090318">Figure 
+4.4</A> shows the result of an HTTP POST to the URL<CODE> /signoff.do</CODE>. 
+<P><IMG height=277 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera7.gif" 
+width=516 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1090318><!-- --></A><B>Figure 4.4 </B>OID of POST to Flow Handler 
+  Defined in <A 
+  href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078852">Code 
+  Example 4.9</A> </P></BLOCKQUOTE><A name=1090320><!-- --></A>
+<P>The servlet container deployment descriptor has a servlet mapping from 
+pattern <CODE>*.do</CODE> to the controller, so when a client POSTs a request to 
+<CODE>/verifysignin.do</CODE>, the following actions occur:</P>
+<OL>
+  <LI><A name=1095503><!-- --></A>The servlet container routes the request to 
+  the controller. 
+  <LI><A name=1095506><!-- --></A>The controller creates an instance class 
+  <CODE>SignoffHTMLAction</CODE> and passes the request to it. 
+  <LI><A name=1095518><!-- --></A>The controller calls the 
+  <CODE>SignoffHTMLAction</CODE>'s<CODE> perform</CODE> method. 
+  <LI><A name=1095578><!-- --></A>The <CODE>SignoffHTMLAction</CODE> object 
+  calls the model method that signs the user out of the application. 
+  <LI><A name=1095533><!-- --></A>The controller asks the screen flow manager 
+  for the next view. 
+  <LI><A name=1095536><!-- --></A>The controller forwards the request to the URL 
+  <CODE>signoff.screen.</CODE> 
+  <LI><A name=1095559><!-- --></A>The templating servlet generates and delivers 
+  the requested view (a templated JSP page) to the client, so the user receives 
+  a view indicating that signoff succeeded. </LI></OL><A name=1078873><!-- --></A>
+<P>The last piece of the puzzle not yet explained is how to map a view name in 
+the design just described to an actual Web component (JSP page, servlet, and so 
+on). Views and templating are discussed in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1077982">Section 
+4.4.3 on page 110</A>.</P><A name=1078111><!-- --></A><B>4.4.2.2 Serving 
+Multiple Client Types </B><A name=1078112><!-- --></A>
+<P>Web applications may support only one type of client with a single protocol, 
+or multiple clients with different protocols, security policies, presentation 
+logic, and workflows. Web clients may include several versions of a few 
+different browsers, MIDP clients, so-called "rich" clients with stand-alone 
+APIs, and Web service interfaces. Long-lived applications may need to be able to 
+handle new types of Web clients.</P><A name=1078113><!-- --></A>
+<P>Each type of client needs its own controller, which specializes in the 
+protocols for that client type. A particular type of client may also need 
+different presentation components for form factor or other reasons.</P><A 
+name=1090622><!-- --></A>
+<P>Following are some options for how to service requests from clients that use 
+different application-level protocols. (Web-tier clients use HTTP for 
+transport.) Each of the following alternatives expands upon <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078018">Figure 
+4.2</A> by adding flexibility and increasing complexity.<IMG height=127 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera4.gif" 
+width=444 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1090627><!-- --></A><B>Figure 4.5 </B>Using a Front Controller to 
+  Handle Browser Interaction </P></BLOCKQUOTE><A name=1089019><!-- --></A>
+<P>Applications with a single client type can implement a single front 
+controller. For example, a browser-only application is shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1090627">Figure 
+4.5</A>. Its single Front Controller servlet receives HTTP requests from the 
+browser, translates the contents of these requests into operations on the 
+application model, and serves views of result data as HTML (or XML). Additional 
+controllers can support new client types, as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1089027">Figure 
+4.6</A>.</P><A name=1100544><!-- --></A>
+<P><IMG height=239 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera5.gif" 
+width=443 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1089027><!-- --></A><B>Figure 4.6 </B>Supporting Multiple Client 
+  Types with Multiple Controllers </P></BLOCKQUOTE><A name=1078140><!-- --></A>
+<P>The multiple-controller approach in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1089027">Figure 
+4.6</A> provides extensibility for any future Web client types, including those 
+that do not yet exist. In fact, because servlets aren't limited to HTTP, this 
+architecture can support even non-Web clients. Each controller can implement the 
+workflow, presentation logic, and security constraints unique to its client 
+type. Notice also that the code implementing the application model is shared by 
+all of the controllers. This separation of model and controller ensures 
+identical application behavior across client types and eases maintenance and 
+testing.</P><A name=1078141><!-- --></A>
+<P>Some application functionality, particularly security, can be easier to 
+manage from a single point. Introducing a protocol router, as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078150">Figure 
+4.7</A>, can provide a single point of control for all Web clients, each of 
+which still retain their own controllers.</P><A name=1100633><!-- --></A>
+<P><IMG height=292 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera6.gif" 
+width=512 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1078150><!-- --></A><B>Figure 4.7 </B>Using a Protocol Router for 
+  Centralized Control </P></BLOCKQUOTE><A name=1096670><!-- --></A>
+<P>The protocol router in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078150">Figure 
+4.7</A> is either a servlet or servlet filter that determines the client type 
+and dispatches the request to the appropriate controller. The router typically 
+uses the HTTP header <CODE>User-agent</CODE> to determine what sort of client is 
+requesting service. The protocol router can implement application-wide 
+functionality such as security or logging. The client-specific controllers can 
+implement behavior specific to each client's particular protocol.</P><A 
+name=1078158><!-- --></A>
+<P>The Front Controllers in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078150">Figure 
+4.7</A> may or may not be servlets. If the Front Controllers are servlets, the 
+protocol router dispatches requests to them using 
+<CODE>RequestDispatcher.forward</CODE>. If the protocol router is a servlet, the 
+Front Controllers can be a layer of simple objects to which the router delegates 
+request processing.</P><A name=1094680><!-- --></A>
+<P>Note that the controller alternatives shown in the last few figures can be 
+implemented incrementally. Each of the approaches can be built on the preceding 
+one. The BluePrints recommendation is to adopt and adapt the alternative that 
+most closely matches current application requirements, and add new functionality 
+as necessary.</P><A name=1094681><!-- --></A>
+<P>Templating is an application of the Composite View design pattern, discussed 
+in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html#1081667">Chapter 
+11</A>, which builds a page from a number of independent view 
+components.</P><BR><A name=1077982><!-- --></A>
+<H4>4.4.3 Web-Tier MVC View Design </H4><A name=1077646><!-- --></A>
+<P>MVC views display data produced by the MVC model. View components (also known 
+as "presentation components") in the Web tier are usually JSP pages and 
+servlets, along with such static resources as HTML pages, PDF files, graphics, 
+and so on. JSP pages are best used for generating text-based content, often HTML 
+or XML. Servlets are most appropriate for generating binary content or content 
+with variable structure. (For an in-depth explanation of appropriate technology 
+usage, see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier3.html#1097821">Section 
+4.2.6.1 on page 82</A> and <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier3.html#1097924">Section 
+4.2.6.4 on page 86</A>.)</P><A name=1077650><!-- --></A>
+<P>HTML browsers are very lightweight clients, so the Web tier generates and 
+often styles dynamic content for browsers. Heavyweight clients can implement 
+relatively more view functionality in the Client tier, and less in the Web tier. 
+Such clients include stand-alone rich clients, application clients, and clients 
+that use special content formats such as MacroMedia Flash or Adobe Portable 
+Document Format (PDF).</P><A name=1077651><!-- --></A>
+<P>Web-tier components are not limited to serving HTML-over-HTTP Web browsers. 
+The Web tier may also serve MIDP clients using proprietary protocols, rich 
+clients using XML, or Web service peers requesting services with Electronic 
+Business XML (ebXML) or Simple Object Access Protocol (SOAP) messages. Each of 
+these examples uses a different application-level protocol, while using HTTP for 
+transport. A properly designed Web tier unifies access to application 
+functionality for any client type. The Web tier also provides virtual session 
+management for some client types.</P><A name=1077652><!-- --></A>
+<P>See <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/client-tier/client-tier.html#1089104">Chapter 
+3</A> for more on J2EE client technologies.</P><A 
+name=1078938><!-- --></A><B>4.4.3.1 Templating </B><A name=1078939><!-- --></A>
+<P>One typical application requirement is that application views have a common 
+layout. A template is a presentation component that composes separate subviews 
+into a page with a specific layout. Each subview, such as a banner, a navigation 
+bar, or document body content, is a separate component. Views that share a 
+template have the same layout, because the template controls the layout.</P><A 
+name=1078943><!-- --></A>
+<P>For example, <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078948">Figure 
+4.8</A> shows the layout of a single page created by a template. Across the top 
+of the page is a banner, on the left is a navigation menu, a footer appears at 
+the bottom, and the body content occupies the remaining space. 
+<P><IMG height=351 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition_arquivos/web-tiera2.gif" 
+width=516 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1078948><!-- --></A><B>Figure 4.8 </B>A Template Composes Other 
+  Views into a Consistent Layout </P></BLOCKQUOTE><A name=1078949><!-- --></A>
+<P>Using templates in an application design centralizes control of the overall 
+layout of pages in the application, easing maintenance. Changing the layout in 
+the template file changes the page layout for the entire application. More 
+importantly, the individual subviews (like the "Navigation Menu" in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078948">Figure 
+4.8</A>) are used by reference in the template instead of by copy-and-paste. 
+Therefore, changing a subview means changing a single source file instead of 
+changing all the files in which that subview occurs.</P><A 
+name=1078953><!-- --></A>
+<P>Template implementation is most easily explained by example. In the sample 
+application, a JSP page called a template file specifies the page layout. The 
+template file is a standard JSP page that uses custom tags to include subviews 
+into each area of the page. The template references the individual subviews by 
+name.</P><A name=1078957><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1081484">Code 
+Example 4.10</A> is an example from the sample application that produces the 
+layout shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html##1078948">Figure 
+4.8</A>. This file, called <CODE>template.jsp</CODE>, is a JSP page that 
+produces HTML. The file specifies the page layout as standard HTML tags, and 
+includes the content of other JSP pages using the custom tag 
+<CODE>insert</CODE>, shown underlined in the code example.</P>
+<BLOCKQUOTE><PRE>&lt;%@ taglib uri="/WEB-INF/tlds/taglib.tld" prefix="template" %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;template:insert parameter="title" /&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#FFFFFF"&gt;
+&lt;table width="100%" border="0" cellpadding="5" cellspacing="0"&gt;
+  &lt;tr&gt;
+    &lt;td colspan="2"&gt;
+      &lt;template:insert parameter="banner" /&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width="20%" valign="top"&gt;
+      &lt;template:insert parameter="sidebar" /&gt;
+    &lt;/td&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--- ... and so on ... --&gt;
+
+</PRE></BLOCKQUOTE><A name=1081484><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.10 </B>The Template JSP Page for the 
+      Layout Shown in <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1078948">Figure 
+      4.8</A> </FONT></TD></TR></TBODY></TABLE><A name=1078996><!-- --></A>
+<P>The JSP page includes the page named by the <CODE>insert</CODE> tag's 
+<CODE>parameter</CODE> attribute at the point where the tag occurs. A separate 
+screen definitions file for the application provides values for these parameters 
+for each screen name.</P><A name=1097766><!-- --></A>
+<P>The templating service is a single servlet that processes all screens. A 
+servlet mapping routes all requests with URLs matching <CODE>*.screen</CODE> to 
+a <CODE>TemplateServlet</CODE>, which assembles and serves the requested screen. 
+<A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1081587">Code 
+Example 4.11</A> shows the definition of the screen called 
+<CODE>main.screen</CODE>. The screen definitions file defines 
+<CODE>template.jsp</CODE> as its template file and defines a series of screens. 
+Each screen has a name and a list of values for the parameters in the template 
+file. The templating service replaces each <CODE>insert</CODE> tag in the 
+template file with the contents of the subview named by the tag's 
+<CODE>parameter</CODE> attribute. For example, the templating service replaces 
+all instances of <CODE>&lt;template:insert parameter="banner"/&gt;</CODE> with 
+the contents of <CODE>"/banner.jsp"</CODE>. The result is a fully-rendered 
+screen.</P>
+<BLOCKQUOTE><PRE>&lt;screen-definitions&gt;
+  &lt;template&gt;/template.jsp&lt;/template&gt;
+  &lt;screen&gt;
+	&lt;screen-name&gt;main&lt;/screen-name&gt;
+  	&lt;parameter key="title"&gt;Welcome to the BluePrints Petstore&lt;/parameter&gt;
+
+  	&lt;parameter key="banner" value="/banner.jsp"/&gt;
+  	&lt;parameter key="sidebar" value="/sidebar.jsp"/&gt;
+  	&lt;parameter key="body" value="/main.jsp"/&gt;
+  	&lt;parameter key="mylist" value="/mylist.jsp"/&gt;
+  	&lt;parameter key="advicebanner" value="/advice_banner.jsp"/&gt;
+  	&lt;parameter key="footer" value="/footer.jsp"/&gt;
+   	&lt;/screen&gt;
+  	&lt;!-- ... more screen definitions... --&gt;
+&lt;/screen-definitions&gt;
+
+</PRE></BLOCKQUOTE><A name=1081587><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.11 </B>Screen Definition of Sample 
+      Application's "Main" View </FONT></TD></TR></TBODY></TABLE><A name=1089727><!-- --></A>
+<P>The templating service described here is part of the sample application's Web 
+Application Framework. The templating service is reusable as a component in 
+other applications. Its design is based on the Composite View design pattern, 
+which assembles a view from reusable subviews. For more information on the 
+Composite View design pattern, please see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch.html#1081667">Chapter 
+11</A>.</P><BR><A name=1077653><!-- --></A>
+<H4>4.4.4 Web-Tier MVC Model Design </H4><A name=1097790><!-- --></A>
+<P>An MVC application model both represents business data and implements 
+business logic. Many J2EE applications implement their application models as 
+enterprise beans, which offer scalability, concurrency, load balancing, 
+automatic resource management, and other benefits. Simpler J2EE applications may 
+implement the model as a collection of Web-tier JavaBeans components used 
+directly by JSP pages or servlets. JavaBeans components provide quick access to 
+data, while enterprise beans provide access to shared business logic and 
+data.</P><A name=1079076><!-- --></A>
+<P>Notice that the "application model" in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1090627">Figure 
+4.5</A> on <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1090627">page 
+107</A> is generic: It implies no particular technology or tier. The application 
+model is simply the programmatic interface to the application's business logic. 
+Model API design and model technology selection are both important design 
+considerations.</P><A name=1091928><!-- --></A>
+<P><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/app-arch/app-arch5.html#1091720">Section 
+11.4.1.2 on page 369</A> describes MVC model design considerations and 
+patterns.</P><BR><A name=1094743><!-- --></A>
+<H4>4.4.5 Web Application Frameworks </H4><A name=1094744><!-- --></A>
+<P>As the Model 2 architecture has become more popular, quite a number of 
+Web-tier application frameworks have appeared. Some are vendor-specific 
+frameworks integrated with specific servers and tools; others are freely 
+available, open-source projects. Benefits of Web-tier application frameworks 
+appear on <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html#1093630">page 
+93</A>. Three frameworks of particular interest are:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1081020><!-- --></A>J2EE BluePrints Web Application Framework 
+    ("WAF")--The Web Application Framework forms the infrastructure of the 
+    sample application. This framework offers a Front Controller servlet, an 
+    abstract action class for Web-tier actions, a templating service, several 
+    generic custom tags, and internationalization support. WAF demonstrates both 
+    the mechanisms and effective use of a Web-tier framework layer in an 
+    application design. It is suitable for small, non-critical applications, and 
+    for learning the principles of Web-tier application framework design and 
+    usage. 
+    <LI><A name=1081022><!-- --></A>Apache Struts--Struts is a free, 
+    open-source, Web-tier application framework under development at the Apache 
+    Software Foundation. Struts is highly configurable, and has a large (and 
+    growing) feature list, including a Front Controller, action classes and 
+    mappings, utility classes for XML, automatic population of server-side 
+    JavaBeans, Web forms with validation, and some internationalization support. 
+    It also includes a set of custom tags for accessing server-side state, 
+    creating HTML, performing presentation logic, and templating. Some vendors 
+    have begun to adopt and evangelize Struts. Struts has a great deal of 
+    mindshare, and can be considered an industrial-strength framework suitable 
+    for large applications. But Struts is not yet a "standard" for which J2EE 
+    product providers can interoperably and reliably create tools. 
+    <LI><A name=1081023><!-- --></A>JavaServer Faces--A Java Community Process 
+    effort (JSR-127) is currently defining a standardized Web application 
+    framework called JavaServer Faces. Current standard Web-tier technologies 
+    offer only the means for creating general content for consumption by the 
+    client. There is currently no standard server-side GUI component or 
+    dispatching model. JavaServer Faces will be an architecture and a set of 
+    APIs for dispatching requests to Web-tier model JavaBeans; for maintaining 
+    stateful, server-side representations of reusable HTML GUI components; and 
+    for supporting internationalization, validation, multiple client types, and 
+    accessibility. Standardization of the architecture and API will allow tool 
+    interoperation and the development of portable, reusable Web-tier GUI 
+    component libraries. </LI></UL></BLOCKQUOTE><BR><A name=1083753><!-- --></A>
+<H4>4.4.6 Separating Business Logic from Presentation </H4><A name=1083754><!-- --></A>
+<P>Placing business logic and presentation code in separate software layers is 
+good design practice. The business layer provides only application 
+functionality, with no reference to presentation. The presentation layer 
+presents the data and input prompts to the user (or to another system), 
+delegating application functionality to the business layer.</P><A name=1083755><!-- --></A>
+<P>Separating business logic from presentation has several important 
+benefits:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1083756><!-- --></A>Minimizes impact of change--Business rules 
+    can be changed in their own layer, with little or no modification to the 
+    presentation layer. Application presentation or workflow can change without 
+    affecting code in the business layer. 
+    <LI><A name=1083757><!-- --></A>Increases maintainability--Most business 
+    logic occurs in more than one use case of a particular application. Business 
+    logic copied and pasted between components expresses the same business rule 
+    in two places in the application. Future changes to the rule require two 
+    edits instead of one. Business logic expressed in a separate component and 
+    accessed referentially can be modified in one place in the source code, 
+    producing behavior changes everywhere the component is used. Similar 
+    benefits are achieved by reusing presentation logic with server-side 
+    includes, custom tags, and stylesheets. 
+    <LI><A name=1083758><!-- --></A>Provides client independence and code 
+    reuse--Intermingling data presentation and business logic ties the business 
+    logic to a particular type of client. For example, business logic 
+    implemented in a scriptlet is not usable by a servlet or an application 
+    client; the code must be reimplemented for the other client types. Business 
+    logic that is available referentially as simple method calls on business 
+    objects can be used by multiple client types. 
+    <LI><A name=1083759><!-- --></A>Separates developer roles--Code that deals 
+    with data presentation, request processing, and business rules all at once 
+    is difficult to read, especially for a developer who may specialize in only 
+    one of these areas. Separating business logic and presentation allows 
+    developers to concentrate on their area of expertise. 
+</LI></UL></BLOCKQUOTE><BR><A name=1083750><!-- --></A>
+<H4>4.4.7 Web-Tier State </H4><A name=1079143><!-- --></A>
+<P>Data that a Web-tier component uses to create a response is called state. 
+Examples of such data include the inventory data needed by a JSP page that lists 
+items for sale, the contents of an online shopping cart maintained by a servlet, 
+and the timestamp placed on an incoming request by a servlet filter.</P><A 
+name=1079201><!-- --></A>
+<P>State maintenance decisions have an enormous impact on application 
+performance, availability, and scalability. Such decisions include choosing the 
+tier to manage state, selecting the appropriate scope for each item of state, 
+and effectively tracking conversational state in a distributed 
+environment.</P><A name=1085935><!-- --></A>
+<P>Note that the J2EE platform specification does not require that session state 
+be recoverable after a crash or restart of a component container. Some J2EE 
+implementations provide, as an extension, containers that can recover session 
+state after a restart. Choosing such an implementation can simplify application 
+design, but makes an application less portable, because it relies on a 
+non-standard extension.</P><A name=1079198><!-- --></A><B>4.4.7.1 State Scope 
+</B><A name=1079145><!-- --></A>
+<P>Each item of Web-tier state has scope, which determines the accessibility and 
+lifetime of the item. Web-tier state is accessible to servlets, servlet filters, 
+and JSP pages. Briefly, Web-tier state can be maintained in four scopes:</P><A 
+name=1079146><!-- --></A>
+<P>Application scope is "global memory" for a Web application. Application-scope 
+state is stored in the Web container's <CODE>ServletContext</CODE> object. (See 
+the caveat on using context attributes in distributable servlets on <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1098268">page 
+126</A>.) All servlets in an application share objects in application scope. The 
+servlet developer is responsible for thread safety when accessing objects in 
+application scope. An inventory object in application scope, for example, is 
+accessible to all servlets, servlet filters, and JSP pages in the application. 
+State in application scope exists for the lifetime of the application, unless it 
+is explicitly removed.</P><A name=1079147><!-- --></A>
+<P>Session scope contains data specific to a user session. HTTP is a "stateless" 
+protocol, meaning that it has no way of distinguishing users from one another or 
+for maintaining data on users' behalf. Session attributes are named object 
+references that are associated with a user session. The servlet API allows a 
+developer to create a session attribute and access or update it in subsequent 
+requests. Session-scope state for an <CODE>HttpServlet</CODE> is stored in the 
+Web container's <CODE>HttpSession</CODE> object (available from the 
+<CODE>HttpServletRequest</CODE> argument to the <CODE>service</CODE> method). 
+State in session scope is accessible to all Web components in the application 
+and across multiple servlet invocations. However, it is accessible only within 
+an individual user session. An online shopping cart is an example of data in 
+session scope, because the contents of the cart are specific to a single client 
+session and available across multiple server requests. A session ends when it is 
+explicitly closed, when it times out after a period of inactivity, or when its 
+container is shut down or crashes. Unless removed explicitly, state in session 
+scope lasts until the session ends. </P><A name=1079148><!-- --></A>
+<P>Request scope contains data specific to an individual server request, and is 
+discarded when the <CODE>service</CODE> method returns. A Web component can read 
+or modify data in request scope and then "forward" the request to another 
+component. The component to which the request is forwarded then has access to 
+the state. State in request scope is stored in a <CODE>ServletRequest</CODE> 
+object, so it is accessible to any component receiving the request. Note that 
+the values of query string parameters and form variables are also in request 
+scope. For example, when a servlet places a timestamp in a 
+<CODE>ServletRequest</CODE> and then forwards the request to another servlet, 
+the timestamp is in request scope.</P><A name=1079149><!-- --></A>
+<P>Page scope, applicable only to JSP pages, contains data that are only valid 
+in the context of a single page. Page scope state is stored in a JSP page's 
+<CODE>PageContext</CODE> object. When one JSP page forwards to or includes 
+another, each page defines its own scope. Page scope state is discarded when the 
+program flow of control exits the page.</P><A 
+name=1065674><!-- --></A><B>4.4.7.2 Performance Implications of State Scope 
+</B><A name=1088758><!-- --></A>
+<P>Selecting the appropriate scope for an item of state depends largely on the 
+purpose of that item in the application. It would not make sense, for example, 
+to place a shopping cart class in application scope, because then all shoppers 
+would have to share the same cart. Shopping carts, because they are specific to 
+a user session, are most appropriately kept in session scope. But shopping cart 
+contents maintained in Client-tier cookies would be in request scope, because 
+they would be transmitted to the Web tier with each request. Maintaining session 
+state in cookies is discouraged, even though this approach may be more easily 
+scalable than using session attributes. See <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1079320">"Avoid 
+Using Cookies Directly," starting on page&nbsp;122</A> for more details.</P><A 
+name=1098778><!-- --></A>
+<P>Each state scope has implications for scalability, performance, and 
+reliability. State in page or request scope is less likely to cause trouble, 
+since such data are usually not large or long-lived enough to cause resource 
+problems. State in application scope is usually manageable if it is read-only. 
+Entity enterprise beans are the recommended technology for maintaining writable 
+application-scope state. Entity beans are designed for scalable, concurrent 
+access to shared data and logic. See <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/ejb-tier/ejb-tier5.html#1043067">Section 
+5.4 on page 142</A> for more information. </P><A name=1098779><!-- --></A>
+<P>State in session scope has the greatest impact on Web application scalability 
+and performance. Separate session-scope state accumulates for each connected 
+user, unlike application-scope state, which is shared between all users and 
+servlets. Also, session-scope state exists across requests, unlike request-scope 
+state, which is discarded when a response is served.</P><A 
+name=1062413><!-- --></A><B>4.4.7.2.1 How the Web Container Manages Session 
+State </B><A name=1084993><!-- --></A>
+<P>Application servers typically track user sessions with some combination of 
+cookies and/or URL rewriting to store a session ID on the client. The session ID 
+identifies the session, and the server is responsible for associating each 
+<CODE>HttpServletRequest</CODE> with its corresponding <CODE>HttpSession</CODE> 
+object. The J2EE server handles the details of using cookies and URL rewriting. 
+The section "Maintaining Client State" in The J2EE Tutorial explains in detail 
+how to manage Web-tier session state.</P><A name=1079231><!-- --></A><B>4.4.7.3 
+Web-Tier State Recommendations </B><A name=1079299><!-- --></A>
+<P>When using enterprise beans, it's best to maintain session state with 
+stateful session beans in the EJB tier. For Web-only applications, maintain the 
+state in the Web tier as session attributes (using <CODE>HttpSession</CODE>). 
+The following sections discuss the rationale for these recommendations.</P><A 
+name=1079247><!-- --></A><B>4.4.7.3.1 Maintain Session State with Stateful 
+Session Beans </B><A name=1080870><!-- --></A>
+<P>Maintaining session state in stateful session beans is a BluePrints best 
+practice. Web-tier components can access the session state through the stateful 
+session bean's component interface and store just the reference as a session 
+attribute. You can maximize the runtime performance of this approach by choosing 
+a J2EE server product that permits use of local EJB interfaces from co-located 
+Web components.</P><A name=1080906><!-- --></A>
+<P>Reasons to prefer stateful session beans over other approaches to maintaining 
+session state include:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1080879><!-- --></A>Thread safety--Enterprise beans are 
+    thread-safe. By contrast, sophisticated thread-safe servlets are difficult 
+    to write. 
+    <LI><A name=1080890><!-- --></A>Lifecycle management--The EJB container 
+    manages the lifecycle of enterprise beans components, automatically creating 
+    new instances, and activating and passivating instances as necessary to 
+    optimize performance. 
+    <LI><A name=1080891><!-- --></A>Client type neutrality--Enterprise beans can 
+    be accessed, either directly or through some sort of adapter, from multiple 
+    client types. This contrasts with HTTP session attributes, which are 
+    available only to HTTP clients. </LI></UL></BLOCKQUOTE><A 
+name=1080923><!-- --></A>
+<P>For example, the sample application stores session state in stateful session 
+beans <CODE>ShoppingClientControllerEJB</CODE> and 
+<CODE>EJBClientControllerEJB</CODE>. For more on stateful session beans, see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/ejb-tier/ejb-tier.html#1032061">Chapter 
+5</A>.</P><A name=1079251><!-- --></A><B>4.4.7.3.2 Maintain Web-Tier Session 
+State in Session Attributes </B><A name=1079252><!-- --></A>
+<P>Applications that don't use enterprise beans should maintain session state in 
+session attributes, using <CODE>HttpSession</CODE>'s methods 
+<CODE>getAttribute</CODE> and <CODE>setAttribute</CODE>. These methods allow the 
+Web container to maintain the state in a way that is most effective for that 
+particular application and server. Session attributes free the developer from 
+the details of session state management, and ensure portability and scalability 
+of Web components.</P><A name=1079253><!-- --></A>
+<P>The alternative to using session attributes is to create your own solution. 
+The Web container (via <CODE>HttpSession</CODE>) provides services such as 
+cookie management, session IDs, and so on. Writing custom Web-tier state 
+management code is usually redundant. Don't make work for yourself!</P><A 
+name=1079261><!-- --></A>
+<P>For more guidelines, see <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1083750">Section 
+4.4.7 on page 116</A>, and also the section "Maintaining Client State" in The 
+J2EE<SUP><FONT size=-2> </FONT></SUP>Tutorial.</P><A name=1062431><!-- --></A>
+<P>Advantages of using session attributes include:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1079344><!-- --></A>Easy implementation--Because the application 
+    server handles the implementation of <CODE>HttpSession</CODE>, the developer 
+    is freed from bothering with the details of designing, implementing, and 
+    testing code for managing session state. 
+    <LI><A name=1062432><!-- --></A>Optimization--An application server's 
+    <CODE>HttpSession</CODE> implementation is optimized and tested for that 
+    server, and therefore will probably be more efficient and reliable than a 
+    custom solution. 
+    <LI><A name=1062433><!-- --></A>Potentially richer feature set--An 
+    application server's implementation of session state management may include 
+    such features as failover, cluster support, and so on, that go beyond the 
+    base-level requirements of the J2EE platform specifications. The system 
+    architect can select a server platform with the differentiating features 
+    that best suit application requirements, while maintaining J2EE technology 
+    compatibility and portability. 
+    <LI><A name=1062434><!-- --></A>Portability--The <CODE>HttpSession</CODE> 
+    interface is standardized, so it must pass the J2EE Compatibility Test Suite 
+    (CTS) across all J2EE-branded application servers. For more on the role of 
+    the CTS and J2EE branding, see the compatibility reference listed in <A 
+    href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier7.html#1097131">"References 
+    and Resources" on page&nbsp;127</A>. 
+    <LI><A name=1062435><!-- --></A>Scalability--<CODE>HttpSession</CODE> can 
+    most effectively manage storage of Web-tier session state in caches and/or 
+    server clusters. 
+    <LI><A name=1091602><!-- --></A>Evolvability--Application server vendors are 
+    constantly improving their offerings. Servers will maintain existing 
+    interfaces for backward compatibility, even as they add features that 
+    improve performance and reliability. An <CODE>HttpSession</CODE> 
+    implementation that works properly today will work better tomorrow as 
+    improved server versions become available, with little or no change to the 
+    source code. </LI></UL></BLOCKQUOTE><A name=1091603><!-- --></A>
+<P>But session attributes have these important disadvantages:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1062438><!-- --></A>Limited to Web clients--The Web tier is by 
+    definition limited to servicing Web clients, so <CODE>HttpSession</CODE> 
+    interface is limited to HTTP communications. Other client types will require 
+    reimplementation of session state management. 
+    <LI><A name=1062439><!-- --></A>Session state not guaranteed to survive Web 
+    container crashes--Some application servers maintain persistent session 
+    state or provide failover, so sessions can span container crashes or 
+    restarts. But not all servers support that functionality, because the 
+    specification doesn't require it. As a result, restarting a container can 
+    invalidate all sessions in progress, losing all of their state. If this is a 
+    problem for your application, either consider selecting a server that 
+    provides persistent sessions or session failover (which compromises 
+    portability), or consider storing session state in the EIS tier. 
+</LI></UL></BLOCKQUOTE><A name=1080085><!-- --></A><B>4.4.7.3.3 Share Data among 
+Servlets and JSP Pages with JavaBeans Components </B><A 
+name=1080287><!-- --></A>
+<P>The standard JSP tag <CODE>useBean</CODE> accesses an attribute in 
+application, session, request, or page scope as a JavaBean component. Standard 
+actions <CODE>setProperty</CODE> and <CODE>getProperty</CODE> get and set the 
+attributes' properties using JavaBeans property accessors. Servlets have access 
+to these attributes as well, so data shared between JSP pages and servlets is 
+best maintained in JavaBeans classes. <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1080228">Code 
+Example 4.12</A> shows a servlet setting a session-scope attribute of type 
+<CODE>UserDataBean</CODE>, naming it <CODE>UserData</CODE>.</P>
+<BLOCKQUOTE><PRE>public void service(HttpServletRequest req,
+            HttpServletResponse res) throws... {
+  HttpSession session = req.getSession();
+  UserDataBean userData = new userData;
+  userData.setName("Moliere");
+  session.setAttribute("userData", userData);
+  ...
+
+</PRE></BLOCKQUOTE><A name=1080228><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.12 </B>Setting a Session Attribute's 
+      Value to a JavaBean Instance </FONT></TD></TR></TBODY></TABLE><A name=1080096><!-- --></A>
+<P>When servlets are called, or the same servlet is called again, it can access 
+the <CODE>UserDataBean</CODE> using the method 
+<CODE>HttpSession.getAttribute</CODE>, as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1091354">Code 
+Example 4.13</A>.</P>
+<BLOCKQUOTE><PRE>HttpSession session = req.getSession();
+UserDataBean userData = (UserDataBean)session.getAttribute("userData");
+
+String userName = userData.getUsername();
+
+</PRE></BLOCKQUOTE><A name=1091354><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.13 </B>Accessing a Session Attribute 
+      JavaBean Instance from a Servlet </FONT></TD></TR></TBODY></TABLE><A 
+name=1091355><!-- --></A>
+<P>A JSP page can access the <CODE>UserDataBean</CODE> using the standard tag 
+<CODE>useBean</CODE>, as shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1080346">Code 
+Example 4.14</A>. This creates the named JavaBean instance if it does not 
+already exist. The remainder of <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1080346">Code 
+Example 4.14</A> shows how to get or set the properties of the 
+<CODE>userData</CODE> attribute by using <CODE>getProperty</CODE> and 
+<CODE>setProperty</CODE>.</P>
+<BLOCKQUOTE><PRE>&lt;!-- Declare that the page uses session attribute UserData --&gt;
+
+
+&lt;jsp:useBean id="userData" type="UserDataBean" scope="session"/&gt;
+
+&lt;!-- get the userData property userData--&gt;
+&lt;jsp:getProperty name="userData" property="username"/&gt;
+
+&lt;!-- set all userData properties to values of corresponding
+   request parameter names --&gt;
+&lt;jsp:setProperty name="userData" property="*"/&gt;
+
+&lt;!-- set userData property "username" to value of request
+   parameter "username" --&gt;
+&lt;jsp:setProperty name="userData" property="username"/&gt;
+
+&lt;!-- set userData property "username" to value of request
+   parameter "new_user_name" --&gt;
+&lt;jsp:setProperty name="userData" property="username"
+   param="new_user_name"/&gt;
+
+&lt;!-- set userData property "username" to string "Unknown User" --&gt;
+&lt;jsp:setProperty name="userData" property="username"
+   value="Unknown User"/&gt;
+
+</PRE></BLOCKQUOTE><A name=1080346><!-- --></A>
+<TABLE cellSpacing=0>
+  <TBODY>
+  <TR vAlign=baseline align=left>
+    <TD><FONT size=3><B>Code Example 4.14 </B>Using JavaBean Properties in a 
+      JSP Page </FONT></TD></TR></TBODY></TABLE><A name=1080401><!-- --></A>
+<P>These examples show how to share information between components in session 
+scope. These techniques work similarly for application, page, and request 
+scopes.</P><A name=1079320><!-- --></A><B>4.4.7.3.4 Avoid Using Cookies Directly 
+</B><A name=1098237><!-- --></A>
+<P>Avoid using cookies directly for storing session state in most applications. 
+Implementation details of session state storage are best left to the application 
+server. Using either a stateful session bean or a Web container's 
+<CODE>HttpSession</CODE> implementation can provide reliable access to session 
+state through a portable interface. Using the standard interface saves the 
+development time of implementing and maintaining a custom solution.</P><A 
+name=1079322><!-- --></A>
+<P>Disadvantages to using cookies for session state include:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1079323><!-- --></A>Cookies are controlled by a low-level API, 
+    which is more difficult to use than the other approaches. 
+    <LI><A name=1079324><!-- --></A>All data for a session are kept on the 
+    client. Corruption, expiration, or purging of cookie files can result in 
+    incomplete, inconsistent, or missing information. 
+    <LI><A name=1084052><!-- --></A>Size limitations on cookies differ by 
+    browser type and version, but the least-common-denominator approach limits 
+    the maximum cookie size to 4,096 bytes. This limitation can be eliminated by 
+    storing just references to data (session ids, user ids, and so on) in 
+    cookies, and retrieving the data as necessary from another tier (at the cost 
+    of increased server complexity and resource usage). 
+    <LI><A name=1096389><!-- --></A>Servlets and JSP pages that rely exclusively 
+    on cookies for client-side session state will not operate properly for all 
+    clients. Cookies may not be available for many reasons: The user may have 
+    disabled them, the browser version may not support them, the browser may be 
+    behind a firewall that filters cookies, and so on. 
+    <LI><A name=1096390><!-- --></A>Because Web clients transmit to a server 
+    only those cookies that it created by that server, servers with different 
+    domain names can't share cookie data. For example, JavaPetStore.com may want 
+    to allow users to shop from their own shopping sites, as well as from 
+    JavaPetFood.com. But because JavaPetFood.com can't access JavaPetStore.com's 
+    cookies, there's no easy way to unify the shopping sessions between the two 
+    servers. 
+    <LI><A name=1079328><!-- --></A>Historically, cookie implementations in both 
+    browsers and servers have tended to be buggy, or vary in their conformance 
+    to standards. While you may have control of your servers, many people still 
+    use buggy or nonconformant versions of browsers. 
+    <LI><A name=1079329><!-- --></A>Browser instances share cookies, so users 
+    cannot have multiple simultaneous sessions. 
+    <LI><A name=1079330><!-- --></A>Cookies work only for HTTP clients, because 
+    they are a feature of the HTTP protocol. Notice that while package 
+    <CODE>javax.servlet.http</CODE> supports session management (via class 
+    <CODE>HttpSession</CODE>), package <CODE>javax.servlet </CODE>has no such 
+    support. </LI></UL></BLOCKQUOTE><A name=1092137><!-- --></A>
+<P>Exceptions to this guideline exist. For example, a browser cookie could 
+contain a user's login name and locale to facilitate sign on. Because of the 
+drawbacks described here, cookies should be used to maintain session state only 
+when there is a clear reason to do so.</P><BR><A name=1080063><!-- --></A>
+<H4>4.4.8 Distributable Web Applications </H4><A name=1079518><!-- --></A>
+<P>The J2EE platform provides optional support for distributed Web applications. 
+A distributed Web application runs simultaneously in multiple Web containers. 
+When a Web application is marked <CODE>distributable</CODE> in its deployment 
+descriptor, the container may (but is not required to) create multiple instances 
+of the servlet, in multiple JVM instances, and potentially on multiple machines. 
+Distributing a servlet improves scalability, because it allows Web request load 
+to be spread across multiple servers. It can also improve availability by 
+providing transparent failover between servlet instances.</P><A name=1079594><!-- --></A><B>4.4.8.1 Distributed Servlet Instances </B><A 
+name=1100589><!-- --></A>
+<P>By default, only one servlet instance per servlet definition is allowed for 
+servlets that are neither in an application marked <CODE>distributable</CODE>, 
+nor implement <CODE>SingleThreadModel</CODE>. Servlets in applications marked 
+<CODE>distributable</CODE> have exactly one servlet instance per servlet 
+definition for each Java virtual machine (JVM). The container may create and 
+pool multiple instances of a servlet that implements 
+<CODE>SingleThreadModel</CODE>, but using <CODE>SingleThreadModel</CODE> is 
+discouraged.</P><A name=1079625><!-- --></A>
+<P>At any particular time, session attributes for a given session are local to a 
+particular JVM. The distributed runtime environment therefore acts to ensure 
+that all requests associated with a given session are handled by exactly one JVM 
+at a time. A servlet's session state may migrate to, or be failed-over to, some 
+other JVM between requests.</P><A name=1079534><!-- --></A><B>4.4.8.2 
+Distributed Conversational State </B><A name=1079535><!-- --></A>
+<P>Distributing multiple instances of a servlet across multiple JVM instances 
+raises the issue of how to support conversational state. If each request a user 
+makes can be routed to a different server, how can the system track that user's 
+session state?</P><A name=1079536><!-- --></A>
+<P>J2EE product providers solve this problem in different ways. One approach, 
+called sticky server affinity, associates a particular client with a particular 
+servlet instance for the duration of the session. This solves the session state 
+problem, because each session is "owned" by a particular servlet. But this 
+approach can compromise availability, because when a servlet, JVM instance, or 
+server crashes, all of the associated sessions can be lost. Sticky server 
+affinity can also make load balancing more difficult, because sessions are 
+"stuck" on the servers where they started.</P><A name=1091381><!-- --></A>
+<P>Another approach to solving the distributed conversational state problem is 
+state migration. State migration serializes and moves or copies session state 
+between servlet instances. This solution maintains the availability benefits of 
+servlet distribution and facilitates load balancing, because sessions can be 
+moved from more- to less-loaded servers. But state migration can increase 
+network traffic between clustered servers. Each time a client updates session 
+state, all redundant copies of that state must be updated. If session state is 
+stored in a database (as is often the case), the database can become a 
+performance bottleneck. The containers must also cooperate to resolve 
+simultaneous update collisions, where two clients accessing the same session 
+(one browser window opened from another, for example) update different copies of 
+the same session state.</P><A name=1079538><!-- --></A>
+<P>The J2EE platform specification gives the J2EE product provider the 
+opportunity to add value by solving the issue of distributed conversational 
+state in the implementation while maintaining the consistent J2EE interface. A 
+good solution to this problem can be a selling point for a J2EE vendor. 
+Designers considering a Web-tier-only architecture for high-performance 
+applications should be sure to understand how prospective J2EE product providers 
+address this issue.</P><A name=1098837><!-- --></A>
+<P>Stateful session beans are designed specifically for handling distributed 
+conversational state, but do so in the EJB tier, rather than in the Web tier. 
+See Section <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html#1079247">4.4.7.3.1</A> 
+for more details.</P><A name=1098843><!-- --></A><B>4.4.8.3 Distributable 
+Servlet Restrictions </B><A name=1079392><!-- --></A>
+<P>Servlets used in a distributable application require some additional 
+constraints. Most are necessary conditions for session state migration. These 
+restrictions also apply for code in JSP pages and custom tags.</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1079393><!-- --></A>Session attributes must be either 
+    serializable or supported in distributed sessions by the Web container--The 
+    Web container must accept instances of serializable classes as session 
+    attributes. A container must also accept a few other J2EE object types as 
+    session attributes: enterprise bean home and remote references, transaction 
+    contexts (<CODE>javax.transaction.UserTransaction</CODE>), and the JNDI 
+    context object for <CODE>java:comp/env</CODE> 
+    (<CODE>javax.naming.Context</CODE>). For any other types, the container may 
+    throw an <CODE>IllegalArgumentException</CODE> to indicate that the object 
+    cannot be moved between JVMs. <A name=1091404><!-- --></A>
+    <P>Implementing <CODE>Serializable</CODE> in a session attribute does not 
+    guarantee that the container will use native Java serialization. The 
+    container is also not required to use any defined custom serialization 
+    methods, such as <CODE>readObject</CODE> or <CODE>writeObject</CODE>, that 
+    the class may define. It does ensure that session attribute values are 
+    preserved if the session is migrated. See Section 7.2.2 of the Java Servlet 
+    specification 2.3, and Section J2EE.6.5 of the J2EE platform specification 
+    1.3 for more details. </P>
+    <LI><A name=1079394><!-- --></A>Don't store application state in static or 
+    instance variables--Web containers are not required to maintain static or 
+    instance variable values when a session migrates. Code that depends on state 
+    stored in such variables will likely not operate properly after session 
+    migration. Such state should be stored either as a session attribute, in an 
+    enterprise bean, or in a database. 
+    <LI><A name=1098268><!-- --></A>Don't use context attributes to share state 
+    between servlets--Context attributes are stored in 
+    <CODE>ServletContext</CODE> and are shared by all servlets in a Web 
+    application. But context attributes are specific to the JVM instance in 
+    which they were created. Servlets that communicate by sharing context 
+    attributes may not operate properly if distributed, because context 
+    attributes do not replicate between Web containers in different JVM 
+    instances. To share data between distributed servlets, place the data in a 
+    session object, store it in the EIS tier in a database or distributed cache, 
+    or use an enterprise bean. <A name=1079397><!-- --></A>
+    <P>One exception to this guideline is to use context attributes as a shared 
+    data cache between the servlets in each Web container. Cache hits and misses 
+    affect only an application's performance, not its behavior. </P>
+    <LI><A name=1090921><!-- --></A>Don't depend on servlet context events or 
+    HTTP session events--The Web container is not required to propagate such 
+    events between containers in a distributed environment. 
+</LI></UL></BLOCKQUOTE><BR>
+<HR>
+<!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. --><!-- font size="-1" --><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eTOC.html">CONTENTS</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html">PREV</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier6.html">NEXT</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eIX.html">INDEX</A> 
+<!-- /font -->
+<HR>
+<FONT size=-1><I><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/copyright.html">Copyright</A> 
+© 2002 Sun Microsystems, Inc. All Rights Reserved.</I></FONT> </BODY></HTML>

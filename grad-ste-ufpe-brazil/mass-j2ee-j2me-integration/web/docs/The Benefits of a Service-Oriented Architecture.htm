@@ -1,0 +1,705 @@
+<HTML>
+<head>
+<TITLE>The Benefits of a Service-Oriented Architecture</TITLE>
+<META NAME="description" CONTENT="Discover what benefits you will reap by adding a service layer in the early stages of a project. You will gain a better return on your investment, flexibility with code mobility, enhanced security and other key benefits by implementing service-oriented architecture!">
+<META NAME="keywords" CONTENT=" Java Service Oriented Architecture SOA">
+<META NAME="authors" CONTENT=" Michael Stevens">
+<META NAME="date" CONTENT="20020507">
+<META NAME="channel" CONTENT="ewsoftware">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK href="/css/text.css" type=text/css rel=stylesheet>
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript1.2">
+<!--
+function checkForm() {
+	if (document.whatwhere.where.value == "your email") {
+		alert("Please enter your email");
+		return false;
+	} else {
+		return true;
+	}
+}
+//-->
+</SCRIPT>
+
+</head><body bgcolor="#FFFFFF" onLoad="MM_preloadImages('/img/navarrow_on.gif')" vlink="#666666">
+
+<table border=0 align=center><tr><td>
+<A HREF="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/415941296/house_ribbon/House_Inside_ID_1s/insideid-dc04.gif/63386135386163323431306639613930" target="_top"><IMG SRC="http://www.developer.com/RealMedia/ads/Creatives/House_Inside_ID_1s/insideid-dc04.gif"  ALT="Identification Solutions for a Networked World"  BORDER="0"></A><img src="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/415941296/house_ribbon/House_Inside_ID_1s/insideid-dc04.gif/63386135386163323431306639613930?_RM_EMPTY_" Width="1" Height="1" Border="0"></td></tr></table>
+
+<SCRIPT LANGUAGE="JavaScript1.2"
+        SRC="http://www.developer.com/img/HM_Loader.js"
+        TYPE='text/javascript'>
+</SCRIPT>
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr align="center"> 
+    <td>
+<script type="text/javascript" language="JavaScript">
+<!--
+         google_ad_client = 'internet_728x90';
+         google_ad_width = 728;
+         google_ad_height = 90;
+         google_ad_format = '728x90_sln';
+         google_safe = 'high';
+// -->
+</script>
+<script type="text/javascript" language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+<noscript>
+<img height=1 width=1 border=0 src="http://pagead2.googlesyndication.com/pagead/imp.gif?client=ca-internet_728x90&event=noscript"/>
+</noscript><IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/260360851/468x60-1/Google_26i/internet_728x90.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1>    </td>
+  </tr>
+</table>
+
+<!-- OBJECT:index.navbar(Top) --><!--Top Nav Start--> 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr align="right"> 
+    <td><a href="http://itmanagement.earthweb.com/"><img src="/img/itmgmt_bot.gif" width="99" height="20" border="0"></a><a href="http://networking.earthweb.com/"><img src="/img/netcom_bot.gif" width="194" height="20" border="0"></a><a href="http://webdeveloper.earthweb.com/"><img src="/img/webdev_bot.gif" width="120" height="20" border="0"></a><a href="http://hardware.earthweb.com/"><img src="/img/hardsys_bot.gif" width="132" height="20" border="0"></a><a href="http://softwaredev.earthweb.com/"><img src="/img/softdev_bot.gif" width="140" height="20" border="0"></a><a href="http://news.earthweb.com/"><img src="/img/itnews_bot.gif" width="61" height="20" border="0"></a></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+
+<td rowspan="2" width="295"><a href="/"><img src="/img/logotop.gif" width="295" height="82" alt="developer.com" border="0"></a></td>
+    <td background="/img/bluetop.gif" width="100%" align="left"> 
+
+<script language="javascript">
+function set_target() {
+   if (document.myform.searchsite[0].checked) {
+     document.myform.starget.value="icom";
+     document.myform.IC_QueryDatabase.value = "www.earthweb.com javascriptsearch.com itmanagement.earthweb.com webdeveloper.earthweb.com hardware.earthweb.com networking.earthweb.com softwaredev.earthweb.com htmlgoodies.earthweb.com sysopt.earthweb.com www.networkstorageforum.com www.practicallynetworked.com www.opticallynetworked.com www.jars.com codeguru.earthweb.com cin.earthweb.com www.intranetjournal.com";
+   } else if (document.myform.searchsite[1].checked) {
+     document.myform.starget.value="icom";
+     document.myform.IC_QueryDatabase.value = "softwaredev.earthweb.com";
+   }
+}
+</script>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <form method="post" name="myform" action="http://search.internet.com/www.developer.com" onSubmit="javascript:set_target()">
+          <tr> 
+            <td align="left" width="81"><img src="/img/searchtop.gif" width="81" height="40" alt="Search"></td>
+            <td align="left">
+              <input type="hidden" name="starget" value="">
+              <input type="hidden" name="IC_QueryDatabase" value="">
+ 
+              <select name="searchsite" style="color: #000000; font-family:  verdana, arial, sans-serif ; font-weight: normal; font-size: 9pt; background-color: #ffffff;">
+                <option value="Developer" selected>Developer.com</option>
+                <option value="Earthweb">Earthweb</option>
+              </select>
+              <input type="text" name="IC_QueryText" size="10">
+              <input type="image" border="0" name="submit" value="Go!" src="/img/go_but.gif" width="31" height="18" alt="Go" align="absmiddle">
+            </td>
+            <td align="right"><a href="http://www.earthweb.com"><img src="/img/eweblogo.gif" width="128" height="13" alt="EarthWeb" border="0" hspace="5"></a></td>
+          </tr>
+        </form>
+      </table>
+
+    </td>
+    <td rowspan="2" width="1" background="/img/rulefill.gif"><img src="/img/blank.gif" width="1" height="1"></td>
+  </tr>
+  <tr> 
+    <td align="left" valign="top" background="/img/devsites_bkgd_w.gif"> 
+      <table border="0" cellspacing="0" cellpadding="0" width="90%" background="/img/devsites_bkgd.gif">
+        <tr> 
+          <td height="26" valign="top" width="100%" align="left"> 
+            <table width="90%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td nowrap class="toolbars"><img src="/img/devsites_filler.gif" width="9" height="25"></td>
+                <td nowrap width="100%">
+                  <a href="http://www.codeguru.com" class="btn_item"><span class="navlinks">CodeGuru</span></a>
+                  <font color="#FFFFFF">|</font> <a href="/java" class="btn_item"><span class="navlinks">Gamelan</span></a> 
+                  <font color="#FFFFFF">|</font> <a href="http://www.jars.com" class="btn_item"><span class="navlinks">Jars</span></a> 
+                  <font color="#FFFFFF">|</font> <a href="/ws" class="btn_item"><span class="navlinks">Wireless</span></a> 
+                  <font color="#FFFFFF">|</font> <a href="http://www.codeguru.com/forum/" class="btn_item"><span class="navlinks">Discussions</span></a></td>
+              </tr>
+            </table>
+          </td>
+          <td height="26" align="right" width="73"><img src="/img/righttop.gif" width="73" height="42"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!--Top Nav Stop-->   
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td width="161" valign="top" background="/img/leftnav_bkgd.gif" align="center"> 
+
+  
+<!-- OBJECT:index.navbar(left) --><a href="/"><img src="/img/navigate_dev.gif" width="161" height="15" alt="Navigate developer.com" border="0"></a><br>
+
+      <table width="159" border="0" cellspacing="0" cellpadding="0" bgcolor="#999999" background="">
+        <tr align="right"> 
+          <td><a href="/design" class="btn_item">Architecture & Design</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/db" class="btn_item">Database</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+<!--
+        <tr align="right"> 
+          <td><a href="/dhtml" class="btn_item">DHTML</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+-->
+        </tr>
+        <tr align="right"> 
+          <td><A HREF="/java" class="btn_item" onMouseOver="HM_f_PopUp('HM_Menu1',event);MM_swapImage('javanavoff','','/img/navarrow_on.gif',1)" onMouseOut="HM_f_PopDown('HM_Menu1');MM_swapImgRestore()">Java</a></td>
+          <td width="20" align="center"><img src="/img/navarrow_off.gif" width="12" height="12" name="javanavoff"></td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><A HREF="/lang" class="btn_item" onMouseOver="HM_f_PopUp('HM_Menu2',event);MM_swapImage('langnavoff','','/img/navarrow_on.gif',1)" onMouseOut="HM_f_PopDown('HM_Menu2');MM_swapImgRestore()">Languages 
+            & Tools</a></td>
+          <td width="20" align="center"><img src="/img/navarrow_off.gif" width="12" height="12" name="langnavoff"></td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><A HREF="/net" class="btn_item" onMouseOver="HM_f_PopUp('HM_Menu3',event);MM_swapImage('micronavoff','','/img/navarrow_on.gif',1)" onMouseOut="HM_f_PopDown('HM_Menu3');MM_swapImgRestore()">Microsoft 
+            & .NET</a></td>
+          <td width="20" align="center"><img src="/img/navarrow_off.gif" width="12" height="12" name="micronavoff"></td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/open" class="btn_item">Open Source</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/mgmt" class="btn_item">Project Management</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+<tr align="right"> 
+          <td><a href="/security" class="btn_item">Security</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/tech" class="btn_item">Techniques</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/voice" class="btn_item">Voice</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/services" class="btn_item">Web Services</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><A HREF="/ws" class="btn_item" onMouseOver="HM_f_PopUp('HM_Menu4',event);MM_swapImage('wirelessnavoff','','/img/navarrow_on.gif',1)" onMouseOut="HM_f_PopDown('HM_Menu4');MM_swapImgRestore()">Wireless/Mobile</a></td>
+          <td width="20" align="center"><img src="/img/navarrow_off.gif" width="12" height="12" name="wirelessnavoff"></td>
+        </tr>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2" vspace="2"></td>
+        </tr>
+        <tr align="right"> 
+          <td><a href="/xml" class="btn_item">XML</a></td>
+          <td width="10" align="center">&nbsp;</td>
+        </tr>
+        <tr align="right"> 
+          <td colspan="2"><img src="/img/navdivider.gif" width="159" height="2"></td>
+        </tr>
+      </table>
+      <p>               
+        <p>
+
+<TABLE cellSpacing=0 cellPadding=2 width=125 bgColor=#ffffff border=1>
+<TBODY>
+<TR>
+<TD align="center" bgColor="#FFFFFF"><a href="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/101186217/125x800/BEA_DeveloperQ2_2004_1zd/BEAb3.html/63386135386163323431306639613930">
+<img src="http://www.devx.com/assets/devxads/7281.gif" width="96" height="56" border="0"></A></TD></TR>
+<TR>
+<TD><FONT class=smallfont face="Arial, Helvetica" size=1>
+<a href="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/101186217/125x800/BEA_DeveloperQ2_2004_1zd/BEAb3.html/63386135386163323431306639613930"><b>Free Whitepaer: BEA WebLogic Workshop 8.1 vs. Microsoft Visual Studio.NET 2003.</b></a>
+</FONT>
+</TD>
+</TR>
+</TBODY>
+</TABLE>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/101186217/125x800/BEA_DeveloperQ2_2004_1zd/BEAb3.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1>
+<BR>
+<BR>
+      <p>
+<a href="http://jobs.internet.com"><img src="/img/jobs_but.gif" width="130" height="24" alt="Developer Jobs" border="0"></a> 
+      <p>
+        
+        <!--Start commerce-->
+      <table width="147" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td colspan="3"><img src="/img/commerce_topper.gif" width="147" height="32"></td>
+        </tr>
+        <tr> 
+          <td bgcolor="#000000" width="1"><img src="/img/blank.gif" width="1" height="1"></td>
+          <td bgcolor="#ffffff" width="145">
+            <table width="145" border="0" cellspacing="0" cellpadding="4">
+              <tr>
+                <td class="commerce"><a href="http://www.internet.com/partners/">Be a Commerce Partner</A><BR>
+<a href="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/135554270/cp1/Tradepub.com_37d/TechMagazinesFREE.html/63386135386163323431306639613930" target=new>Tech Magazines - FREE</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/135554270/cp1/Tradepub.com_37d/TechMagazinesFREE.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1><br>
+<a href="http://www.music.us">Music</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/25179789/cp2/Music.us_2d/music.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0><br>
+<a href="http://www.builddirect.com">Flooring</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1224959981/cp3/BuildDirect_2d/Flooring.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0>
+<br>
+<a href="http://www.9gdeal.com/jupiter_media.aspx?pjt=18aee215-c6e4-4606-9ce7-d723e0cf48b3">Wireless Products</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1332082149/cp4/9G_Communications_5a/WirelessProducts.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0><br>
+<a href=http://shopping.yahoo.com/b:Desktops:22483485>Desktops</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1173093960/cp5/Yahoo_CP_4g/Desktops.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0>
+<br>
+<a href="http://www.marketingfind.com">Internet Marketing</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/773072408/cp6/MarketingFind_5a/InternetMarketing.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0>
+
+<br>
+<a href="http://www.Air-Conditioner-Home.com">Air Conditioners</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1688596325/cp7/AirandWaterSystems_2d/AirConditioners.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0><br>
+<a href="http://www.tophosts.com">Search Web Hosting</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1134970240/cp8/Top_Hosts_38e/search.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0><br>
+<a href="http://www.business.com/internet/search.asp">Business Search</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/224843625/cp9/Business_com_27d/BusinessSearch.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0><br>
+<a href="http://www.ReserveTravel.com">Discount Hotel Rooms</a>
+<IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/934631917/cp10/Reserve_Travel_5d/discount.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1 BORDER=0>
+<br>
+</td>
+              </tr>
+            </table>
+          </td>
+          <td bgcolor="#000000" width="1"><img src="/img/blank.gif" width="1" height="1"></td>
+        </tr>
+        <tr bgcolor="#000000"> 
+          <td colspan="3" height="1"><img src="/img/blank.gif" width="1" height="1"></td>
+        </tr>
+      </table>
+      <p>&nbsp;
+        <!--End commerce-->         
+
+
+<p>
+<SCRIPT LANGUAGE="javascript"> 
+function SetFormAction() {
+ newLocation = "http://hardwarecentral.dealtime.com/xKW-" + document.frmGSRequest.keyword.value + "/NS-1/linkin_id-3011678/GS.html";
+ document.location.href = newLocation;
+ return;
+}
+</script>
+
+
+<link rel=stylesheet type="text/css" href="/icom_includes/special/dealtime/style.css">
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="2" BGCOLOR="#000000" width="125">
+ <TR>
+  <TD>
+   <table cellpadding="2" cellspacing="0" border="0" width="125" bgcolor="#FFFFCC">
+	<tr>
+	 <td align="center" width="125"><img src="/icom_includes/special/dealtime/hc_logo.gif" alt="" border="0">
+	 <br><font class="normal" color="#4D4D4D"><b>Compare products, prices, and stores at Hardware Central!</b></font></td>
+	</tr>
+	<tr>
+	 <td align="center" class="norm" width="125"><br>		
+	 <B><A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011654&nFormId=38733-72-1&path=%2FPages%2FCategoryV2">Computers</a></b>
+	 <BR>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Desktops~linkin_id-3011655">Desktops</a>, 
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Notebooks_Mac~linkin_id-3011656">Mac</a> & <A HREF="http://hardwarecentral.dealtime.com/xPP-PC_Notebooks~linkin_id-3011657">PC Notebooks</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Monitors~linkin_id-3011658">Monitors</a>, <A HREF="http://hardwarecentral.dealtime.com/xPP-Scanners~linkin_id-3011659">Scanners</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Web_Cameras~linkin_id-3011660">Webcams</a>, <A HREF="http://hardwarecentral.dealtime.com/xPP-Personal_Organizers~linkin_id-3011661">PDA's</a>,
+	 <br><A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011662&nFormId=38733-72-1&path=%2FPages%2FCategoryV2">more</a>...<BR>
+	 <BR>
+	 <B><A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011663&nFormId=38863-368-1&path=%2FPages%2FCategoryV2C">Software</a></b><BR>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Creativity_Applications~linkin_id-3011664">Creativity Applications</a>,
+	 <br><A HREF="http://hardwarecentral.dealtime.com/xPP-Programming_Tools~linkin_id-3011665">Programming Tools</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Internet_and_Communication_Applications~linkin_id-3011666">Internet</a>
+	 <br>
+	 & <A HREF="http://hardwarecentral.dealtime.com/xPP-Internet_and_Communication_Applications~linkin_id-3011666">Communication Applications</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011667&nFormId=38863-368-1&path=%2FPages%2FCategoryV2C">more</a>...<BR>
+	 <BR>
+	 <B><A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011668&nFormId=38732-3-1&path=%2FPages%2FCategoryV2">Electronics</a></b>
+	 <BR>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Digital_Cameras~linkin_id-3011669">Digital Cameras</a> 
+	 <br> & <A HREF="http://hardwarecentral.dealtime.com/xCP-Digital_Camera_Accessories~FD-87204~linkin_id-3011670">Accessories</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-GPS_devices~linkin_id-3011671">GPS devices</a>
+	 <br> & <A HREF="http://hardwarecentral.dealtime.com/xCP-GPS_Accessories~FD-93207~linkin_id-3011672">Accessories</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-Camcorders~linkin_id-3011673">Camcorders</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/xPP-MP3_-Digital_Audio_Players~linkin_id-3011674">MP3 Players</a> & <A HREF="http://hardwarecentral.dealtime.com/xCP-MP3_Accessories~FD-87208~linkin_id-3011675">Accessories</a>,
+	 <br>
+	 <A HREF="http://hardwarecentral.dealtime.com/BannerIn/1,2844,,00.html?linkin_id=3011676&nFormId=38732-3-1&path=%2FPages%2FCategoryV2">more</a>...
+	 <p>
+	</td>
+   </tr>
+   <tr><form name="frmGSRequest" method="get" onsubmit="javascript:SetFormAction();return false;">
+	<td align="center" valign="top" class="normal" width="125">Get the best price on <A HREF="http://hardwarecentral.dealtime.com/xKW-microsoft_visual_studio_net_professional/FN-Programming_Tools/DL-0/NS-1/linkin_id-3011677/GS.html">Microsoft Visual Studio .NET</a> Professional Edition or search for other development tools
+	<br>
+	<br>
+	<input type="text" name="keyword"  size="9"><br><br>
+	<input value="Search" type="image" src="/icom_includes/special/dealtime/search.gif" BORDER="0"><br><br>
+	</td>
+   </tr>
+   </form>
+   </table>
+  </td>
+ </tr>
+</table>
+       
+
+
+
+   
+
+
+    </td>
+    <td valign="top"> 
+
+
+      <table border="0" cellspacing="0" cellpadding="3" width="100%">
+        <tr> 
+          <td class="text">
+
+            <!-- BOB & feeds start-->
+            <table width="150" border="0" cellspacing="0" cellpadding="2" align="right">
+              <tr> 
+                <td><!--Bob Start -->
+<IFRAME SRC="http://ad.doubleclick.net/adi/N2790.Developer.com/B1377235;sz=336x280;ord=1416982830?" WIDTH=338 HEIGHT=282 MARGINWIDTH=0 MARGINHEIGHT=0 HSPACE=0 VSPACE=0 FRAMEBORDER=0 SCROLLING=no BORDERCOLOR='#000000'>
+<SCRIPT language='JavaScript1.1' SRC="http://ad.doubleclick.net/adj/N2790.Developer.com/B1377235;abr=!ie;sz=336x280;ord=1416982830?">
+</SCRIPT>
+<NOSCRIPT>
+<A HREF="http://ad.doubleclick.net/jump/N2790.Developer.com/B1377235;abr=!ie4;abr=!ie5;sz=336x280;ord=1416982830?">
+<IMG SRC="http://ad.doubleclick.net/ad/N2790.Developer.com/B1377235;abr=!ie4;abr=!ie5;sz=336x280;ord=1416982830?" BORDER=0 WIDTH=336 HEIGHT=280 ALT="Click Here">Click Here</A>
+</NOSCRIPT>
+</IFRAME><IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1416982830/flex/BEA_DeveloperQ2_2004_1z/ROS_336x280.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1>                <!--Bob Stop--></td>
+              </tr>
+<TR><TD>
+<A HREF="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/765728562/imu-right/default/empty.gif/63386135386163323431306639613930" target="_top"><IMG SRC="http://www.developer.com/RealMedia/ads/Creatives/default/empty.gif"  WIDTH=2 HEIGHT=2 ALT="" BORDER=0 BORDER="0"></A><img src="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/765728562/imu-right/default/empty.gif/63386135386163323431306639613930?_RM_EMPTY_" Width="1" Height="1" Border="0"></TD></TR>
+              <tr> 
+                <td>
+                  <!--Devnews Start--> 
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr> 
+                      <td width="1"><img src="/img/devnews_topper_lline.gif" width="1" height="32"></td>
+                      <td background="/img/devnews_bkgd.gif" width="100%"><img src="/img/devnews_topper.gif" width="111" height="32" alt="Developer News"></td>
+                      <td width="74" align="right" background="/img/devnews_bkgd.gif"><img src="/img/devnews_topper_r.gif" width="74" height="32" alt="-"></td>
+                      <td width="1"><img src="/img/devnews_topper_rline.gif" width="1" height="32"></td>
+                    </tr>
+                    <tr> 
+                      <td width="1" bgcolor="#000000"><img src="/img/blank.gif" width="1" height="32"></td>
+                      <td colspan="2"> 
+                        <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                          <tr> 
+                            <td class="devnews">
+
+&#149;<a href="http://www.internetnews.com/dev-news/article.php/3386651">ActiveState's Dynamic Release</a> &nbsp;&nbsp; July 27, 2004<br>
+&#149;<a href="http://www.internetnews.com/dev-news/article.php/3385951">MS SQL Server Steps Up</a> &nbsp;&nbsp; July 26, 2004<br>
+&#149;<a href="http://www.internetnews.com/dev-news/article.php/3385851">eEye Stares Down Security Threats</a> &nbsp;&nbsp; July 26, 2004<br>
+&#149;<a href="http://www.internetnews.com/dev-news/article.php/3386311">GeoTrust To Secure Mobile Java Apps</a> &nbsp;&nbsp; July 26, 2004<br>
+ 
+
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                      <td width="1" background="/img/rulefill.gif"><img src="/img/blank.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr> 
+                      <td height="1" bgcolor="#000000" colspan="4"><img src="/img/blank.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <!--Devnews Stop-->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <!--Tech Newsletter Start--> 
+                  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                    <tr> 
+                      <td width="1"><img src="/img/devnews_topper_lline.gif" width="1" height="32"></td>
+                      <td background="/img/freetech_bkdg.gif" width="100%"><img src="/img/freetech_topper.gif" width="141" height="31" alt="Free Tech Newsletter"></td>
+                      <td width="74" align="right" background="/img/freetech_bkdg.gif"><img src="/img/freetech_topper_r.gif" width="74" height="32" alt="-"></td>
+                      <td width="1"><img src="/img/devnews_topper_rline.gif" width="1" height="32"></td>
+                    </tr>
+                    <tr> 
+                      <td width="1" bgcolor="#000000"><img src="/img/blank.gif" width="1" height="32"></td>
+                      <td colspan="2"> 
+                        <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                          <form name="newsletterform" action="http://e-newsletters.internet.com/cgi-bin/subscribe" method="post">
+                          <tr>                            
+                            <td class="devnews">
+                              <select name="list_name" style="color: #000000; font-family:  verdana, arial, sans-serif ; font-weight: normal; font-size: 9pt; background-color: #ffffff;">
+<option value="earthweb-developer-1-text" selected>Developer.com Update</option>
+<option value="earthweb-code-guru-update-text">Codeguru.com Update</option>
+<option value="earthweb-jars-java-update-text">Jars.com Update</option>
+<option value="earthweb-gamelan-java-text">Gamelan.com Update</option>
+<option value="15seconds-html">15Seconds HTML</option>
+<option value="15seconds-text">15Seconds Text</option>
+<option value="4guysfromrolla-text">4 Guys from Rolla</option>
+<option value="aspwire-text">ASP Wire</option>
+<option value="asp101-text">ASP 101</option>
+<option value="sqlwire-text">Database Journal</option>
+<option value="dba-support-text">DBASupport</option>
+<option value="javaboutique-jnews-text">Java Boutique JNews</option>
+<option value="it-career-source-text">IT Career Source</option>
+<option value="techeventslist-text">Tech Events List</option>
+<option value="vbwire-text">VB Wire</option>
+<option value="webdeveloper-weekly-text">WebDeveloper.com</option>
+<option value="webreference-update-html">WebReference HTML</option>
+<option value="webreference-update-text">WebReference Text</option>
+<option value="virtualdr-text">Virtual Dr. Text</option>
+
+                              </select>
+                            </td>
+                          </tr>
+                          <tr> 
+                            <td>
+<INPUT type="hidden" value="http://e-newsletters.internet.com/earthweb_opt-in.html" name="redirect_ok">
+                                <input type="text" name="email" value="Your E-mail" onfocus="this.value='';">
+                                <input type="image" border="0" name="imageField2" src="/img/signup_but.gif" width="58" height="18" align="absmiddle">
+                            </td>
+			  </tr>
+			  </form>
+                        </table>
+                      </td>
+                      <td width="1" background="/img/rulefill.gif"><img src="/img/blank.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr> 
+                      <td height="1" bgcolor="#000000" colspan="4"><img src="/img/blank.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <!--Tech Newsletter Stop-->
+                </td>
+              </tr>
+            </table>
+            <!-- BOB & feeds stop-->
+<p><p>
+<table border="0" cellspacing="0" cellpadding="1" bgcolor="#000000">
+        <tr>
+          <td>
+            <table border="0" cellspacing="0" cellpadding="1" bgcolor="#CCCCCC">
+              <tr> 
+                <td><font face="Verdana, Arial, Helvetica, sans-serif" size="-2"><A HREF="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1064523981/ciu/BEA_DeveloperQ2_2004_1zg/bea.html/63386135386163323431306639613930">
+             Try the award-winning BEA WebLogic Workshop 8.1 and find out how easy it is to build and integrate enterprise applications. Click here for a FREE developer license!
+
+</A>
+
+</font></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table><IMG SRC="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1064523981/ciu/BEA_DeveloperQ2_2004_1zg/bea.html/63386135386163323431306639613930?_RM_EMPTY_" WIDTH=1 HEIGHT=1>
+<P>
+<font size="+1" face="Arial, Helvetica"><b>The Benefits of a Service-Oriented Architecture</b></font><br>
+By   <a href="/feedback.php/http://www.developer.com/tech/article.php/1041191">Michael Stevens</a><br><p>
+
+
+<font face="Verdana, Arial, Helvetica" size="-1">
+<!--content_start--><p>
+<!--content_start-->A service-oriented architecture has services that developers create in a service layer.  The services that they develop have published interfaces.  These interfaces support a distinct business domain.  Organizations that focus their development effort around the creation of services, will realize many benefits.  The most common scenario for development organizations is to have some experience with component-based development.  The use of application servers such as J2EE or .NET for hosting applications is becoming more common.  If your organization is using component-based development practices and application servers for business logic, then you are already service-oriented.  By following the service-oriented mind set with even more rigor, combined with the component-based approach to software development, your organization will realize many benefits.
+
+<h4>Better Return on Investment</h4>
+<p>The creation of a robust service layer has the benefit of a better return on the investment made in the creation of the software.  Services map to distinct business domains.  For example, a company might create an inventory service that has all of the methods necessary to manage the inventory for the company.  By putting the logic into a separate layer, the layer can exist well beyond the lifetime of any system it is composed into.  For example, if your organization needs to create a credit card authorization service, there are basically two options.  Developers will either develop the functionality as part of the application that needs it, or they will develop it as a separate component.   If credit card authorization is developed as a separate component and used as a service, then it is likely to outlive the original application.</p>
+
+<h4>Code Mobility</h4>
+<p>Since location transparency is a property of a service-oriented architecture, code mobility becomes a reality.  The lookup and dynamic binding to a service means that the client does not care where the service is located.  Therefore, an organization has the flexibility to move services to different machines, or to move a service to an external provider.</p>
+
+<h4>Focused Developer Roles</h4>
+<p>A service-oriented architecture will force an application to have multiple layers.  Each layer has a set of specific roles for developers. For instance, the service layer needs developers that have experience in data formats, business logic, persistence mechanisms, transaction control, etc.  A client developer needs to know technologies such as SWING, JSP or MFC.  Each layer requires a complex set of skills.  To the extent that developers can specialize, they will excel at their craft in a particular layer of the application.  Companies will also benefit by not having to rely on highly experienced generalists for application development.  They may use less experienced developers for focused development efforts.</p>
+
+<h4>More Security</h4>
+<p>The creation of a service layer by definition means that developers have created an additional network interface that can be used by multiple applications.  When systems were built using monolithic or client-server methods, security was normally handled on the front-end.  Companies often did not even implement database security because it is too hard to maintain multiple security lists.  Services on the other hand are used by multiple applications, so they have their own security mechanisms.  An application will therefore have multi-level authentication at both the client level and at the service level.</p>
+
+<h4>Better Testing/Fewer Defects</h4>
+<p>Services have published interfaces &#91;1&#93; that can be tested easily by developers by writing unit tests.  Developers can use tools such as JUnit for creating test suites.  These test suites can be run to validate the service independently from any application that uses the service.  It is also a good practice to run the unit tests during an automated build process.  There is no reason for a QA tester to test an application if the unit tests did not complete successfully.  More and better testing usually means fewer defects and a higher overall level of quality.</p>
+
+<h4>Support for Multiple Client Types</h4>
+<p>As a benefit of a service-oriented architecture, companies may use multiple clients and multiple client types to access a service.  A PDA using J2ME may access a service via HTTP, and a SWING client may access the same service via RMI.  Since the layers are split into client and service layers, different client types are easier to implement.</p>
+
+<h4>Service Assembly</h4>
+<p>The services that developers create will evolve into a catalog of reusable services.  Customers will come to understand this catalog as a set of reusable assets that can be combined in ways not conceived by their originators.  Everyone will benefit from new applications being developed more quickly as a result of this catalog of reusable services. </p>
+
+<h4>Better Maintainability</h4>
+<p>Software archeology &#91;2&#93; is the task of locating and correcting defects in code.  By focusing on the service layer as the location for your business logic, maintainability increases because developers can more easily locate and correct defects.</p>
+
+<h4>More Reuse</h4>
+<p>Code reuse has been the most talked about form of reuse over the last four decades of software development.  Unfortunately, it is hard to achieve due to language and platform incompatibilies.  Component or service reuse is much easier to achieve.  Run-time service reuse is as easy as finding a service in the directory, and binding to it.  The developer does not have to worry about compiler versions, platforms, and other incompatibilities that make code reuse difficult.</p>
+
+<h4>Better Parallelism in Development</h4>
+<p>The benefit of multiple layers means that multiple developers can work on those layers independently.  Developers should create interface contracts at the start of a project and be able to create their parts independently of one another.</p>
+
+<h4>Better Scalability</h4>
+<p>One of the requirements of a service-oriented architecture is location transparency.  To achieve location transparency, applications lookup services in a directory and bind to them dynamically at run-time.  This feature promotes scalability since a load-balancer may forward requests to multiple service instances without the knowledge of the service client.</p>
+
+<h4>Higher Availability</h4>
+<p>Also because of location transparency, multiple servers may have multiple instances of a service running on them.  If a network segment or a machine goes down, a dispatcher can redirect requests to another service without the client's knowledge.</p>
+
+<h4>Conclusion</h4>
+<p>A service layer takes little extra effort in the beginning of a project, but the benefits pay off in the long run.  From higher quality to more reuse to better scalability and availability, the benefits of implementing a service layer far outweigh the cost and extra effort involved.</p>
+
+<h4>References</h4>
+
+<ol>
+<li>  M. Fowler, "Public versus Published Interfaces," IEEE Software, Vol. 19, No. 2, March/April 2002, pp. 18-19.</li>
+<li>  A. Hunt, D. Thomas, "Software Archaeology," IEEE Software, Vol. 19, No. 2, March/April 2002, pp. 20-22.</li>
+
+<P><IMG SRC="/img/articles/2003/03/Mike/image001.png" height="168" width="206" display="same" align="left"></P>
+
+<h4>About the Author</h4>
+
+<i>Michael Stevens is an independent consultant specializing in service-oriented architectures for the enterprise.  He has over fourteen years of experience in information technology architecting and developing software systems, most recently focusing on J2EE solutions. He founded a software company that developed solutions for the mailing industry.  He is a certified Java programmer, a member of the IEEE Computer Society, and of the ACM.  He may be reached at <a href="mailto: mike@mestevens.com">mike@mestevens.com</a>.</i>
+
+<p></p>
+<!--content_stop--></p>
+<!--content_stop--></font>
+<p>
+
+<font face="Verdana, Arial, Helvetica" size="-1">
+</font>
+<p>
+
+<span class="text">Previous article: <a href="/tech/article.php/1014371">Service-Oriented Architecture Introduction, Part 2</a></span><br>
+<span class="text">Next article: <a href="/tech/article.php/1142661">Multi-Grained Services</a></span><br>
+<P>
+
+<table border="0" width="100%" cellpadding="3">
+              <tr> 
+                <td align="left" valign="TOP"> <br>
+<a href="/email.php/1041191"><IMG SRC="/img/emailicon.gif" BORDER="0"></a>
+
+<a href="/tech/print.php/1041191"><IMG SRC="/img/printicon.gif" BORDER="0"></a>                  <br>
+
+<font face="Verdana, Arial, Helvetica" size="1"><a href="/tech/archives.php">Techniques Archives</a></font> 
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td width="1" background="/img/rulefill.gif"><img src="/img/blank.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td height="1" valign="top" align="center" colspan="3"><img src="/img/blank.gif" width="1" height="1"></td>
+  </tr>
+</table> 
+    </td>
+    <td width="1" background="/img/rulefill.gif"><img src="/img/blank.gif" width="1" height="1"></td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td height="1" valign="top" align="center" colspan="3"><img src="/img/blank.gif" width="1" height="1"></td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="5">
+  <tr align="center"> 
+    <td>
+<A HREF="http://www.developer.com/RealMedia/ads/click_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1455485879/468x60-2/DevX_Microsoft_DestinationNET_3c/connectappA_468x60.gif/63386135386163323431306639613930" target="_top"><IMG SRC="http://www.developer.com/RealMedia/ads/Creatives/DevX_Microsoft_DestinationNET_3c/connectappA_468x60.gif"  ALT=""  BORDER="0"></A><img src="http://www.developer.com/RealMedia/ads/adstream_lx.cgi/ew/ewsoftware/www.developer.com/tech/article/1455485879/468x60-2/DevX_Microsoft_DestinationNET_3c/connectappA_468x60.gif/63386135386163323431306639613930?_RM_EMPTY_" Width="1" Height="1" Border="0">    </td>
+  </tr>
+</table>
+
+<!-- OBJECT:index.footer --><FONT SIZE="-1" FACE="arial, helvetica">
+<BR CLEAR="all"><center><table border="0" cellspacing="0" cellpadding="5" bgcolor="#FFFFFF">
+                <tr> 
+                  <form method="POST" action="http://search.internet.com/www.jupiterweb.com">
+                    <td align="center"><font size="-2" face="verdana, arial, helvetica"><b>JupiterWeb networks:</b></font> 
+                      <p> <a href="http://www.internet.com" class="foot"><img src="/icom_includes/footers/icom_foot.gif" alt="internet.com" width="97" height="15" hspace="0" border="0" align="absmiddle"></a><img src="/icom_includes/footers/ruledivide_foot.gif" alt="" width="1" height="25" hspace="10" border="0" align="absmiddle"><a href="http://www.earthweb.com"><img src="/icom_includes/footers/earthweb_foot2.gif" alt="earthweb.com" width="93" height="12" hspace="5" border="0" align="absmiddle"></a><img src="/icom_includes/footers/ruledivide_foot.gif" alt="" width="1" height="25" hspace="10" border="0" align="absmiddle"><a href="http://www.devx.com"><img src="/icom_includes/footers/devx_foot2.gif" alt="Devx.com" width="35" height="30" hspace="0" border="0" align="absmiddle"></a><img src="/icom_includes/footers/ruledivide_foot.gif" alt="" width="1" height="25" hspace="10" border="0" align="absmiddle"><a href="http://www.clickz.com"><img src="/icom_includes/footers/clickz_foot2.gif" alt="ClickZ" width="55" height="24" hspace="0" border="0" align="absmiddle"></a>
+                      <p> 
+                      <font size="-2" face="verdana, arial, helvetica"><b>Search JupiterWeb:</b> 
+                      <input type="HIDDEN" name="IC_Summary" value="1">
+                      <input type="HIDDEN" name="IC_StartNumber" value="0">
+                      <input type="HIDDEN" name="IC_BatchSize" value="10">
+                      <input type="HIDDEN" name="IC_RelevanceThreshold" value="50">
+                      <input type="hidden" name="IC_QueryDatabase" value="all">
+                      <input type="text" name="IC_QueryText" size="50">
+                      <input type="image" border="0" value="Find" name="SUBMIT" src="/icom_includes/footers/but_find.gif" width="41" height="20" align="absmiddle">
+                      </font>
+                      <p>
+                      <font size="-2" face="verdana, arial, helvetica">
+                     <a href="http://www.jupitermedia.com/" class="foot"> Jupitermedia Corporation</a> has four divisions:
+                      <br><a href="http://www.jupiterweb.com/" class="foot">JupiterWeb</a>, <a href="http://www.jupiterresearch.com/" class="foot">JupiterResearch</a>, <a href="http://www.jupiterevents.com/" class="foot">JupiterEvents</a> and <a href="http://www.jupiterimages.com/" class="foot">JupiterImages</a>
+                      <p>
+                      <span class="foot">Copyright <!--YEAR-->2004 Jupitermedia Corporation All Rights Reserved.<br>
+                        <a href="http://www.jupitermedia.com/corporate/legal.html" class="foot">Legal 
+                        Notices</a>, <a href="http://www.jupitermedia.com/corporate/reprints.html#Licensing1" class="foot">Licensing</a>, 
+                        <a href="http://www.jupitermedia.com/corporate/reprints.html#Reprints1" class="foot">Reprints</a>, 
+                        & <a href="http://www.jupitermedia.com/corporate/reprints.html#Permissions" class="foot">Permissions</a>, 
+                        <a href="http://www.jupitermedia.com/corporate/privacy/privacypolicy.html" class="foot">Privacy 
+                        Policy</a>. </font>
+                      <p> <font size="-2" face="verdana, arial, helvetica"><a href="http://www.jupitermedia.com/corporate/" class="foot">Jupitermedia Corporate 
+                        Info</a> | <a href="http://e-newsletters.internet.com/" class="foot">Newsletters</a> 
+                        | <a href="http://jobs.internet.com/" class="foot">Tech 
+                        Jobs</a> | <a href="http://e-newsletters.internet.com/mailinglists.html" class="foot">E-mail 
+                        Offers</a></span></font>
+
+                    </td>
+                  </form>
+                </tr>
+              </table></center>
+</FONT>
+   
+
+
+</body>
+</html>   

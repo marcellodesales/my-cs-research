@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="GENERATOR" content="Quadralay WebWorks Publisher Standard Edition 6.0.2">
+<meta name="TEMPLATEBASE" content="Portable HTML Standard Edition">
+<meta name="LASTUPDATED" content="11/07/01 22:30:11">
+<title>Designing Wireless Enterprise Applications Using Java Technology &gt; 0.4 Messaging</title>
+</head>
+
+<body link="#3366CC" vlink="#9999CC" text="#000000" alink="#0000CC" bgcolor="#FFFFFF">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td colspan="2"><b><a href="/blueprints/index.html">Java BluePrints</a> &gt; <a href="/blueprints/wireless/index.html">Wireless</a> &gt; Guidelines</b></td>
+  </tr>
+  <tr>
+    <td colspan="2"><hr noshade size="1"></td>
+  </tr>
+  <tr>
+    <td><a href="main.html">HOME</a>
+      | <a href="main4.html">PREVIOUS</a>
+      | <a href="main6.html">NEXT</a></td>
+    <td align="right"><a href="/blueprints/search.html">SEARCH</a> | <a href="mailto:j2ee-j2me-blueprint@sun.com">FEEDBACK</a></td>
+  </tr>
+</table>
+<hr noshade size="1">
+<blockquote>
+<h2>
+  <a name="442951"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4	 Messaging</font>
+</h2><hr>
+
+
+<p>
+  <a name="442952"> </a><font >HTTP provides the bridge between the MID Profile and the J2EE platform; because they both support HTTP, they can use this protocol to communicate with each other.</font>
+</p>
+
+
+<p>
+  <a name="442953"> </a><font >One of the J2EE platform's strengths is its ability to serve many types of clients over the Web, including browsers, plug-ins, Java applets, and even non-Java applications. The JSP and Java servlet technologies help in this regard, providing an extensive framework for communication over HTTP using a dynamic request/response-based paradigm. </font>
+</p>
+
+
+<p>
+  <a name="442954"> </a><font >MIDP includes standard support for HTTP 1.1, and APIs for generating GET, POST and HEAD requests, basic header manipulation, and stream-based consumption and generation of messages. Consequently, you can use the JSP and Java servlet technologies to serve MIDP clients. </font>
+</p>
+
+
+<p>
+  <a name="442955"> </a><font >Note that while you program against an HTTP networking API, what goes on behind the scenes may or may not occur over TCP/IP. Depending on the carrier network, messages moving between a MIDP device and a J2EE server may tunnel through a number of different protocols. On the server side, the deployment configuration of the carrier network ensures that such network connections are routed to and received by the J2EE server in the form of HTTP messages.</font>
+</p>
+
+
+<p>
+  <a name="442956"> </a><font >There are no requirements about the format of messages that flow between a MIDP client and a J2EE application. Recall that both JSP pages and Java servlets let you send any type of data in the body of an HTTP response, not only HTML, or markup for that matter. Similarly, a MIDlet can send any type of data in the body of an HTTP request. So, the format could be something simple like a string of comma-separated values, or something more structured in the form of key-value pairs, or more formally, XML data conforming to a set of DTDs or schemas.</font>
+</p>
+
+
+<h3>
+  <a name="442957"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1	 Design and Implementation Guidelines</font>
+</h3>
+
+
+<p>
+  <a name="442958"> </a><font >This section describes the issues you should consider when designing and implementing messaging in a J2ME-J2EE application.</font>
+</p>
+
+
+<h4>
+  <a name="442959"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1.1	 Choosing a Message Format</font>
+</h4>
+
+
+<p>
+  <a name="442960"> </a><font >When choosing a message format, keep in mind that the size requirements the format imposes will have pronounced effects in a wireless production environment. Well-formed and self-descriptive XML messages can be orders of magnitude larger than simple text-based messages, consuming bandwidth and airtime for which the user of the application may be billed.</font>
+</p>
+
+
+<p>
+  <a name="442961"> </a><font >To be sure, wireless applications using XML do enjoy some advantages. For one, the messages are self-describing, making debugging and development easier. Another, perhaps more significant win is that many Web services are XML-based; if a J2EE application publishes such services then developing a MIDP client to use the very same services makes its integration almost seamless. The J2EE and J2ME platforms accommodate this strategy.</font>
+</p>
+
+
+<p>
+  <a name="442962"> </a><font >The J2EE platform provides a rich set of libraries for building XML-based Web services, through the Java APIs for XML Messaging (JAXM), XML-based RPC (JAX-RPC), and XML Registries (JAXR). The lower-level Java API for XML Processing (JAXP) allows developers to manipulate XML documents using the Document Object Model (DOM) and Simple API for XML (SAX), and to transform XML documents using Extensible Stylesheet Language Transformations (XSLT).</font>
+</p>
+
+
+<p>
+  <a name="442963"> </a><font >On the MIDP side of the equation, a few well-supported XML parsers exist. (At the moment, these are not native components of the profile.) These parsers do come at a cost, however, increasing a MIDlet's size by 15 to 30 kilobytes. Also note that since the parsers are designed for constrained environments, they may offer only SAX for processing XML documents, and may not include XML validation or sophisticated error-reporting mechanisms.</font>
+</p>
+
+
+<h4>
+  <a name="442964"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1.2	 Ensuring Confidentiality</font>
+</h4>
+
+
+<p>
+  <a name="442965"> </a><font >When designing an application such as the Java Smart Ticket Demo, which involves the transmission of sensitive user information such as passwords and credit card numbers, it is important to keep private the communication between client and server.</font>
+</p>
+
+
+<p>
+  <a name="443277"> </a><font >If your MIDP device supports the Secure Sockets Layer (SSL) protocol, you can protect your messages using HTTP connections over SSL (HTTPS connections). Furthermore, because of MIDP's Generic Connection Framework, making an HTTPS connection does not require any special or different code. A MIDP client just needs to open a connection to a server on an URL beginning with <font >https:</font>.</font>
+</p>
+
+
+<p>
+  <a name="443286"> </a><font >For your convenience, the MIDP device emulation in the J2ME Wireless Toolkit supports HTTPS. This capability lets you test, in your development environment, your applications that use HTTPS. (For more information, see the <font ><i>J2ME Wireless Toolkit User's Guide</i></font>.)</font>
+</p>
+
+
+<h4>
+  <a name="442970"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1.3	 Utilize Content Type and MIME Type</font>
+</h4>
+
+
+<p>
+  <a name="442971"> </a><font >To aid debugging of messages sent from client to server, you should describe the type of data in the message using the <font >content-type</font> header in the HTTP request. In some deployments, this is absolutely necessary; some gateways through which the HTTP messages tunnel do not accept messages with undefined or non-standard <font >content-type</font> headers.</font>
+</p>
+
+
+<h4>
+  <a name="442972"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1.4	 Aggregate Messages Before Sending</font>
+</h4>
+
+
+<p>
+  <a name="442973"> </a><font >In wireless production deployments, a significant cost of an HTTP connection lies in establishing the connection in the first place. You can avoid this cost by aggregating messages before sending them, minimizing the number of messages the client sends.</font>
+</p>
+
+
+<h4>
+  <a name="442974"> </a><font color="#000000" face="Helvetica, Arial, sans-serif" >0.4.1.5	 Use Progress Indicators During Messaging</font>
+</h4>
+
+
+<p>
+  <a name="442975"> </a><font >It is sometimes impossible to avoid sending large chunks of data either to or from mobile devices. Since these devices often encounter unexpected network delays and unreliable network performance, a visual indication of the progress of a data exchange can improve user experience.</font>
+</p>
+</blockquote>
+
+<br>
+
+<table width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="2"><hr noshade size="1"></td>
+  </tr>
+  <tr>
+    <td><a href="main.html">HOME</a>
+      | <a href="main4.html">PREVIOUS</a>
+      | <a href="main6.html">NEXT</a></td>
+    <td align="right"><a href="/blueprints/search.html">SEARCH</a> | <a href="mailto:j2ee-j2me-blueprint@sun.com">FEEDBACK</a></td>
+  </tr>
+</table>
+
+<hr noshade size="1">Copyright &#169; 2001 Sun Microsystems, Inc. All rights reserved.
+
+</body>
+</html>

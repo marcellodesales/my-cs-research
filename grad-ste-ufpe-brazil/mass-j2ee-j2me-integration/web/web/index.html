@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+function registerValues(){
+
+	var boxLength = document.choiceForm.choiceBox.length;	
+	
+	var number = 0;
+	for (i = 0; i < boxLength; i++) {
+
+		itemValue = document.choiceForm.choiceBox.options[i].value;
+
+		var input = document.createElement('input');
+		input.setAttribute('type', 'hidden');
+		input.setAttribute('ID', 'items'+i);
+		input.setAttribute('name', 'items');
+		input.setAttribute('value', itemValue);
+		document.choiceForm.appendChild(input);
+		number++;
+	}
+	if (number>=2){
+		document.choiceForm.submit();
+	} else alert("There must be 2 or more Question Items"); 
+	
+	//for (i = 0; i < boxLength; i++){
+	//	document.choiceForm.removeChild('items'+i);
+	//}
+}
+
+function moveOver()  {
+
+	var boxLength = document.choiceForm.choiceBox.length;
+
+	var selectedItem = document.choiceForm.newValue.value;
+
+	var i;
+	var isNew = true;
+
+	if (boxLength != 0) {
+
+		for (i = 0; i < boxLength; i++) {
+
+			thisitem = document.choiceForm.choiceBox.options[i].text;
+
+			if (thisitem == selectedItem) {
+				isNew = false;
+				alert("Item '"+selectedItem+"' already inserted!");
+				break;
+			}
+		}
+	} 
+
+	if (isNew) {
+		document.choiceForm.choiceBox.options[boxLength] = new Option(selectedItem, selectedItem, false, false);
+		document.choiceForm.newValue.value = "";
+		document.choiceForm.newValue.focus();
+	}
+	
+}
+
+
+function clearAll(){
+	for (var i = 0; i < document.choiceForm.choiceBox.length; i++) {
+		document.choiceForm.choiceBox.options[0] = null;
+	}
+	for (var i = 0; i < document.choiceForm.choiceBox.length; i++) {
+		document.choiceForm.choiceBox.options[0] = null;
+	}
+}
+
+function showOperation(option){
+	if (document.sessionOperations.sessionID.value == "")
+		alert("You have to provide a Session ID");
+	else {
+		var url = "";
+		if (option == 1) url = "/mass/sessionResults";
+		if (option == 3) url = "/mass/currentSession";
+		
+		document.sessionOperations.action = url;
+		document.sessionOperations.submit();
+	}
+}
+
+function removeMe() {
+
+	var boxLength = document.choiceForm.choiceBox.length;
+	arrSelected = new Array();
+	var count = 0;
+	for (i = 0; i < boxLength; i++) {
+	
+		if (document.choiceForm.choiceBox.options[i].selected) {
+			arrSelected[count] = document.choiceForm.choiceBox.options[i].value;
+		}
+		count++;
+	}
+	var x;
+	for (i = 0; i < boxLength; i++) {
+	
+		for (x = 0; x < arrSelected.length; x++) {
+	
+			if (document.choiceForm.choiceBox.options[i].value == arrSelected[x]) {
+				document.choiceForm.choiceBox.options[i] = null;
+	   		}
+		}
+		boxLength = document.choiceForm.choiceBox.length;
+   }
+
+}
+-->
+</script>
+<style type="text/css">
+<!--
+.style1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+-->
+</style>
+</head>
+
+<title>Mobile Audience Survey System - [ M.A.S.S. ] - By Marcello Sales Jr. - CIn-STP / Motorola / Brazil</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="resources/style/estilo.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-image: url();
+	background-color: #21498c;
+}
+.style2 {
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 10px;
+}
+.style3 {color: #FFFFFF}
+-->
+</style></head>
+
+<body>
+ <table width="693" border="0" bgcolor="#FFFFFF">
+   <tr bgcolor="#21498c">
+     <td colspan="2"><div align="center" class="style3"><FONT face=Tahoma size=2><IMG height=16 
+                        src="resources/images/amigo.gif" width=14 
+                        align=absMiddle border=0></FONT><span class="style2">
+     Send this survey to a friend &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <IMG height=16 
+                        src="resources/images/imprima.gif" width=14 
+                        align=middle border=0> Print this Survey</span></div></td>
+   </tr>
+   <tr>
+     <td width="163" height="313" valign="top"><br>       <TABLE width=146 height=183 border=0 align="center" cellPadding=0 cellSpacing=0>
+       <TBODY>
+           <TR>
+             <TD class=tabelatitle height=94>&nbsp; <img src="resources/images/note.gif" width="16" height="16">New Survey </TD>
+           </TR>
+           <TR>
+             <TD class=tabelamenu height=164 valign="top">
+               <FORM method=get name="choiceForm" action="/mass/createNewSession" target="currentSessionFrame">
+                 <P style="MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px" 
+                  align=left><FONT face=Verdana size=1>&nbsp;Survey Title <BR>
+&nbsp;
+              <INPUT name="surveyTitle" class=caixadeform size=17>
+              <BR>
+&nbsp;Question <BR>
+&nbsp;
+              <INPUT name=questionTitle class=caixadeform id="questionTitle" size=17>
+              <BR>
+&nbsp;Question Item<BR>
+&nbsp;
+              <INPUT class=caixadeform size=17 
+                  name=newValue>
+&nbsp;
+              <input name="button" type="button" class="caixadeform" onclick="moveOver();" value="Add">
+              <BR>
+&nbsp;Items:<BR>
+&nbsp;
+              <select name="choiceBox" size="4" class="caixadeform" style="width:120;">
+              </select>
+              <BR>
+&nbsp;
+              <input name="button" type="button"  class="caixadeform"  onclick="removeMe();" value="Remove">
+              <BR>
+              <BR>
+&nbsp;
+              <INPUT name="button" type="button" class=caixadeform onClick="registerValues();" value="Register">
+&nbsp;
+              <INPUT name="reset" type=reset class=caixadeform value="Reset" onClick="clearAll();">
+                 </FONT> </P>
+             </FORM></TD>
+           </TR>
+        </TBODY>
+     </TABLE>
+     <p align="center"><a href="midlet/Mass.jad"><img src="resources/images/dukecell.gif" alt="Open Midlet Version" width="70" height="70" border="0"></a></p></td>
+
+<td width="520" valign="top">
+
+	<FORM name="sessionOperations" target="currentSessionFrame">
+<table width="98%" border="0" align="center">
+  <tr>
+    <td colspan="2"><div align="center"><a href="/mass/currentSession" target="currentSessionFrame"><img src="resources/images/about_16.gif" width="16" height="16" border="0" align="bottom"> <span class="style2">Current Session</span></a></div></td>
+    <td width="31%"><div align="center"><a href="/mass/existingSessions" target="currentSessionFrame"> <span class="style2"><img src="resources/images/sessions.gif" width="16" height="16" border="0"> Existing Sessions</span></a><span class="style2"> &nbsp;</span></div></td>
+    <td><div align="center"><a href='/mass/closeCurrentSession' class="style2" target="currentSessionFrame"><img src="resources/images/closeSession.gif" width="16" height="16" border="0"> Close Current Session</a></div></td>
+  </tr>
+  <tr>
+    <td width="31%">
+      <div align="right">
+        <input name='sessionID' class=caixadeform size=20> 
+      </div></td>
+    <td colspan="2"><div align="center"><a href='javascript:showOperation(1);' class="style2"><img src="resources/images/note.gif" width="16" height="16" border="0" align="bottom"> Session Results</a></div>      <div align="center"></div></td>
+    <td width="34%"><div align="center"><a href='javascript:showOperation(3);' class="style2"><img src="resources/images/session.gif" width="16" height="16" border="0">View Session</a></div></td>
+  </tr>
+</table>	
+  </form>
+
+	<table width="98%" height="120%" border="0" align="center">
+       <tr>
+         <td height="305" background="resources/images/recentes_quadrado.gif" vAlign=top align="middle" width="100%">
+	<IMG src="resources/images/vazio0.gif"" width=16 height=32 
+                        border=0 align="absbottom"/vazio0.gif>
+<BR>
+               <IFRAME name="currentSessionFrame" src="/mass/currentSession" frameBorder=0 width=471 scrolling=yes height=256></IFRAME>
+          <BR></td>
+       </tr>
+     </table>
+
+
+	<div align="center">
+     <img src="resources/images/motiehblacks.gif" width="176" height="38">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/logocin_s.gif" width="160" height="57">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="resources/images/img_logo_ufpe.gif" width="80" height="80"></div></td>
+   </tr>
+   <tr bgcolor="#21498c">
+     <td colspan="2"><div align="center" class="style1">By: Marcello Sales Jr. - July/August 2004 - CIn-STP Motorola J2ME Project / UFPE / Brazil </div></td>
+   </tr>
+</table>
+</body>
+</html>

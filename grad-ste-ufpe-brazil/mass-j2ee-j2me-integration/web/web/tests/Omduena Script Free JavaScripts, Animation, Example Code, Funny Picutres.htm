@@ -1,0 +1,1227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//EN">
+<HTML>
+<HEAD><META http-equiv="pics-label" content='(pics-1.1 "http://www.icra.org/ratingsv02.html" l gen true for "http://www.omduena.com" r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true for "http://www.omduena.com" r (n 0 s 0 v 0 l 0))'>
+<meta http-equiv="Content-Language" content="en-us">
+<TITLE>Omduena Script: Free JavaScripts, Animation, Example Code, Funny Picutres</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="subject" CONTENT="javascript, Free JavaScripts, Animation, Example Code, Funny Picutres">
+<meta name="title" content="JavaScript Source">
+<META NAME="description" CONTENT="script.omduena.com  offers Free cut and paste javascript for webmasters with hundreds of free examples.">
+<META NAME="keywords" CONTENT="free javascripts, java script codes, javascripts, java scripts, free cut and paste javascripts, free java scripts, css, cascading style sheets, dhtml, dynamic html, stylesheets, code, cut & paste code, source code, mouseover scripts, window scripts, java, scripts, frame breaker, no right click, image rotation, link rotation, random links, popup, popups, windows, mouseover, rollovers, search engines, status bar, rotating images and banners, popup javascripts, timer and clock javascripts, TREE MENU, JAVASCRIPT, DHTML TREE, TREE VIEW, TREEVIEW, APPLET, FOLDER, FOLDER-TREE, Marcelino Martins, EXPAND, COLLAPSE, SITE MAP, SCRIPT, FREE, DOWNLOAD, WINDOWS EXPLORER, frame and window java scripts and more and more">
+<META NAME="revisit-after" CONTENT="1 days">
+<META NAME="robots" CONTENT="all">
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<link rel="stylesheet" title="style" href="../style_eng.css">
+
+
+
+<script language="JavaScript">
+<!--
+function stopError() {
+      return true;
+}
+window.onerror = stopError;
+//-->
+</script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original:  Kathi O'Shea (Kathi.O'Shea@internet.com) -->
+<!-- This script and many more are available free online at -->
+<!-- Free Script Sources!! http://script.omduena.com -->
+<!-- Begin
+function moveOver()  
+
+{
+
+var boxLength = document.choiceForm.choiceBox.length;
+
+var selectedItem = document.choiceForm.available.selectedIndex;
+
+var selectedText = document.choiceForm.available.options[selectedItem].text;
+
+var selectedValue = document.choiceForm.available.options[selectedItem].value;
+
+var i;
+
+var isNew = true;
+
+if (boxLength != 0) {
+
+for (i = 0; i < boxLength; i++) {
+
+thisitem = document.choiceForm.choiceBox.options[i].text;
+
+if (thisitem == selectedText) {
+
+isNew = false;
+
+break;
+
+      }
+
+   }
+
+} 
+
+if (isNew) {
+
+newoption = new Option(selectedText, selectedValue, false, false);
+
+document.choiceForm.choiceBox.options[boxLength] = newoption;
+
+}
+
+document.choiceForm.available.selectedIndex=-1;
+
+}
+
+function removeMe() {
+
+var boxLength = document.choiceForm.choiceBox.length;
+
+arrSelected = new Array();
+
+var count = 0;
+
+for (i = 0; i < boxLength; i++) {
+
+if (document.choiceForm.choiceBox.options[i].selected) {
+
+arrSelected[count] = document.choiceForm.choiceBox.options[i].value;
+
+}
+
+count++;
+
+}
+
+var x;
+
+for (i = 0; i < boxLength; i++) {
+
+for (x = 0; x < arrSelected.length; x++) {
+
+if (document.choiceForm.choiceBox.options[i].value == arrSelected[x]) {
+
+document.choiceForm.choiceBox.options[i] = null;
+
+   }
+
+}
+
+boxLength = document.choiceForm.choiceBox.length;
+
+   }
+
+}
+
+function saveMe() {
+
+var strValues = "";
+
+var boxLength = document.choiceForm.choiceBox.length;
+
+var count = 0;
+
+if (boxLength != 0) {
+
+for (i = 0; i < boxLength; i++) {
+
+if (count == 0) {
+
+strValues = document.choiceForm.choiceBox.options[i].value;
+
+}
+
+else {
+
+strValues = strValues + "," + document.choiceForm.choiceBox.options[i].value;
+
+}
+
+count++;
+
+   }
+
+}
+
+if (strValues.length == 0) {
+
+alert("You have not made any selections");
+
+}
+
+else {
+
+alert("Here are the values you've selected:\r\n" + strValues);
+
+   }
+
+}
+
+//  End -->
+
+</script>
+
+
+</head>
+
+<body onmouseover="window.status='Omduena Free JavaScript Source :::: script.omduena.com'; return true"; oncontextmenu="return false" ondragstart="return false" onselectstart="return false" bgcolor="#EFEFEF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="5">
+
+<table width="826" cellpadding="0" cellspacing="0" border="0" colspan="5">
+     <tr>
+       <td style="border-right: 1px solid #C2E0E0" width="810">
+<script language="JavaScript">
+<!--
+function random_imglink(){
+var myimages=new Array()
+//specify random images below. You can have as many as you wish
+myimages[1]="http://arabsat.omduena.com/images/general/omduena_heading01.gif"
+myimages[2]="http://arabsat.omduena.com/images/general/omduena_heading02.gif"
+myimages[3]="http://arabsat.omduena.com/images/general/omduena_heading03.gif"
+myimages[4]="http://arabsat.omduena.com/images/general/omduena_heading04.gif"
+myimages[5]="http://arabsat.omduena.com/images/general/omduena_heading05.gif"
+myimages[6]="http://arabsat.omduena.com/images/general/omduena_heading01.gif"
+myimages[7]="http://arabsat.omduena.com/images/general/omduena_heading02.gif"
+myimages[8]="http://arabsat.omduena.com/images/general/omduena_heading03.gif"
+myimages[9]="http://arabsat.omduena.com/images/general/omduena_heading04.gif"
+
+//specify corresponding links below
+var imagelinks=new Array()
+imagelinks[1]="http://script.omduena.com"
+imagelinks[2]="http://script.omduena.com"
+imagelinks[3]="http://script.omduena.com"
+imagelinks[4]="http://script.omduena.com"
+imagelinks[5]="http://script.omduena.com"
+imagelinks[6]="http://script.omduena.com"
+imagelinks[7]="http://script.omduena.com"
+imagelinks[8]="http://script.omduena.com"
+imagelinks[9]="http://script.omduena.com"
+
+var ry=Math.floor(Math.random()*myimages.length)
+if (ry==0)
+ry=1
+document.write('<a href='+'"'+imagelinks[ry]+'"'+' target=main><img src="'+myimages[ry]+'" border=0></a>')
+}
+random_imglink()
+//-->
+</script>
+
+    <img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" border="0" width="28" height="9"><a href="http://search.omduena.com/" target=blank><img border="0" src="http://arabsat.omduena.com/images/general/omduena_software14.gif" width="468" height="60" alt="omduena"></a> </td>
+	 </tr>
+         <tr>
+        <td bgcolor="#002828" width="810"><p align="center"><b>
+        <font face="Verdana" size="1" color="#C2E0E0">Java Script Menu</font></b></td>
+      </tr>
+     <tr>
+
+                  <td width="810">
+
+                    <table bgcolor="#EFEFEF" class="content-bold-link" width=825 style="border-right: 1px solid #C2E0E0" cellspacing=0 cellpadding=1>
+
+                      <tr>
+
+                        <td width="1" bgcolor="#C2E0E0" style="border-right: 1px solid #C2E0E0">
+
+                           </td>
+
+                        <td width="154" style="border-right: 1px solid #C2E0E0">
+
+                           <a href="http://script.omduena.com">Home</a><br>
+                            <a href="http://animation.omduena.com">Animation</a><br>
+                            <a href="http://animation.omduena.com/fun.html">Funny Pictures</a><br>
+                            <a href="http://msn.omduena.com/">MSN Page</a><br>
+                        </td>
+                        <td width="134" style="border-right: 1px solid #C2E0E0">
+                            <a href="http://script.omduena.com/bgeffects/">BG Effects</a><br>
+                            <a href="http://script.omduena.com/buttons/">Buttons</a><br>
+                            <a href="http://script.omduena.com/calculator/">Calculators</a><br>
+                            <a href="http://script.omduena.com/calendars/">Calendars</a><br>
+                        </td>
+                        <td width="138" style="border-right: 1px solid #C2E0E0">
+                            <a href="http://script.omduena.com/clocks/">Clocks</a><br>
+                            <a href="http://script.omduena.com/cookie/">Cookies</a><br>
+                            <a href="http://script.omduena.com/equivalents/">Equivalents</a><br>
+                            <a href="http://script.omduena.com/foldertree/">Foldertree</a><br>
+                        </td>
+                        <td width="129" style="border-right: 1px solid #C2E0E0">
+                            <a href="http://script.omduena.com/forms/">Forms</a><br>
+                            <a href="http://script.omduena.com/games/">Games</a><br>
+                            <a href="http://script.omduena.com/generator/">Generators</a><br>
+                            <a href="http://script.omduena.com/messages/">Messages</a><br>
+                        </td>
+                        <td width="160" style="border-right: 1px solid #C2E0E0">
+                            <a href="http://script.omduena.com/miscellaneous/">Miscellaneous</a><br>
+                            <a href="http://script.omduena.com/navigation/">Navigation</font></a><br>
+                            <a href="http://script.omduena.com/pagedetails/">Page-Details</a><br>
+                            <a href="http://script.omduena.com/passwordprotection/">Password Protection</a><br>
+                        </td>
+                         <td width="204">
+                            <a href="http://script.omduena.com/scrolls/">Scrolls</a><br>
+                            <a href="http://script.omduena.com/userdetails/">User-Details</a><br>
+                            <a href="http://script.omduena.com/a-to-z/">A-Z</a><br>
+                            <br>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+         <tr>
+         <script language="JavaScript">
+        var action = null;
+        var x = 0;
+        var y = 0;
+        var t = 0;
+var t2 = 0;
+function ch(){
+clearTimeout(action);
+if( x > 0 ) {
+document.all["c"+x].style.color = t;
+document.all["c"+y].style.color = t2;
+}
+y=11-x;
+
+x++;
+
+if( x > 11 ){
+
+x = 0;
+
+y = 11-x;
+
+action = setTimeout("ch()",5000);}
+
+else{
+
+t = document.all["c"+x].style.color;
+
+t2 = document.all["c"+y].style.color;
+
+document.all["c"+x].style.color = 0xFFFF33;
+
+document.all["c"+y].style.color = 0xFFFF33;
+
+
+
+action = setTimeout("ch()", 40);}
+
+}
+
+action = setTimeout("ch()", 200);
+
+         </script>
+
+
+
+        <td bgcolor="#002828" height="9" width="810"><p align="left">
+
+            <font face="Verdana" size="1" color="#C2E0E0"><SCRIPT LANGUAGE="JavaScript"><!-- Begin
+
+            var months=new Array(13); months[1]="January"; months[2]="February"; months[3]="March"; months[4]="April"; months[5]="May"; months[6]="June"; months[7]="July"; months[8]="August"; months[9]="September"; months[10]="October"; months[11]="November"; months[12]="December"; var time=new Date(); var lmonth=months[time.getMonth() + 1]; var date=time.getDate(); var year=time.getYear(); if (year<100) year="19" + time.getYear(); else year=time.getYear(); document.write(lmonth + " "); document.write(date + ", " + year); // End --> </SCRIPT>
+
+            <b></a>
+
+            
+
+       
+
+            </b>
+
+            <img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" border="0" width="229" height="2"></font><b><font face="Verdana" size="2" color="#C2E0E0"><font id="c1" face="Tahoma, Verdana" color="#00ffff">O</font>
+        <font id="c2" face="Tahoma, Verdana" color="#00ddff">m</font>
+        <font id="c3" face="Tahoma, Verdana" color="#00bbff">d</font>
+        <font id="c4" face="Tahoma, Verdana" color="#0099ff">u</font>
+        <font id="c5" face="Tahoma, Verdana" color="#0066ff">e</font>
+        <font id="c6" face="Tahoma, Verdana" color="#0033ff">n</font>
+        <font id="c7" face="Tahoma, Verdana" color="#0000ff">a</font>
+        <font id="c8" face="Tahoma, Verdana" color="#0033ff">.</font>
+        <font id="c9" face="Tahoma, Verdana" color="#0066ff">c</font>
+        <font id="c10" face="Tahoma, Verdana" color="#0099ff">o</font>
+        <font id="c11" face="Tahoma, Verdana" color="#00bbff">m</font>
+        <font face="Verdana" size="1" color="#C2E0E0">
+
+        </TD>
+         
+          </tr>
+        </table>
+     </TD>
+     </tr>
+     <tr>
+       <td width="3">
+     
+       </td>
+	 </tr>
+</table>
+
+<table width="411" cellpadding="0" cellspacing="0" border="0" height="248">
+<tr>
+	<td width="1" align="center" background="../clock/src="http://arabsat.omduena.com/images/msn/menu_line01.gif" valign="top" height="305">
+	      <td vAlign="top" width="120" height="248">
+            <table width="120" bgcolor="#F2F2EC" cellSpacing="4" cellPadding="0" width="1" align="right" border="0">
+               <tr>
+                    <td align="middle" height=2 width="120">
+                    </td>
+                  </tr>
+               <tr>
+                    <td width="120">
+                    <table cellSpacing="0" width="120" bgColor="#ddb7ba" border="0">
+                      <tr>
+                       <td width="160">
+        <table cellSpacing="0" cellPadding="3" bgColor="#EFEFEF" border="0" width="9">
+          <tr>
+            <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="128">
+            <p align="left">Main Menu</td>
+          </tr>
+          <tr>
+            <td class="content-bold-link" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#EFEFEF" width="128">
+            <script webstyle3 src="http://arabsat.omduena.com/images/script/java_menu.js"></script>          
+            </td>
+          </tr>
+          <tr>
+            <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="128">
+            <p align="left">MSN Background</td>
+          </tr>
+          <tr>
+            <td class="content-bold-link" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#EFEFEF" width="128">
+            • <a href="http://animation.omduena.com/animals_index.html" class="conent-link">Animals</a><br>
+            • <a href="http://animation.omduena.com/cars01.html" class="conent-link">Cars</a><br>
+            • <a href="http://animation.omduena.com/flowers01.html" class="conent-link">Flowers</a><br>
+            • <a href="http://animation.omduena.com/sport01.html" class="conent-link">Sport</a><br>
+            • <a href="http://animation.omduena.com/alaab_naria01.html" class="conent-link">Fire Works</a><br>
+            • <a href="http://animation.omduena.com/derde_image01.html" class="conent-link">Third Image</a><br>
+            • <a href="http://animation.omduena.com/building01.html" class="conent-link">Building</a><br>    
+            • <a href="http://animation.omduena.com/animals_index.html" class="conent-link">Animals</a><br>
+            • <a href="http://animation.omduena.com/cars01.html" class="conent-link">Cars</a><br>
+            • <a href="http://animation.omduena.com/" class="conent-link">More 
+            Background</a></td>
+          </tr>
+          <tr>
+            <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="128">
+            <p align="left">Partners</td>
+          </tr>
+          <tr>
+            <td class="content-bold-link" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#EFEFEF" width="128">
+            •
+          <a href="http://webdesign.omduena.com/contact.html">Add Your Link 
+            Here</a><br>
+            • <a href="http://www.omduena.com/" target=_blank>
+          <font size="2" face="Times New Roman"><b>&#1583;&#1604;&#1610;&#1604; &#1575;&#1604;&#1605;&#1608;&#1575;&#1602;&#1593; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</u></b></font></a></b><br>
+            •
+          <b>
+          <a href="http://animation.omduena.com/" target=_blank class="link">
+            &#1605;&#1608;&#1587;&#1608;&#1593;&#1577; &#1575;&#1604;&#1589;&#1608;&#1585;</a></b><br>
+          </td>
+          </tr>
+          <tr>
+          <td>
+            <p align="center">
+            <a href="javascript:window.external.AddFavorite('http://msn.omduena.com','Omduena MSN Resource Tools')">
+            <img border="0" src="http://arabsat.omduena.com/images/main/favorite.gif" width="20" height="21"></a><img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" border="0" width="51" height="9"><font size="2" face="Arabic Transparent"><span lang="AR-SA"><a class="chlnk" href onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://msn.omduena.com/');" style="CURSOR: hand"><img border="0" src="http://arabsat.omduena.com/images/main/home_page.gif" width="18" height="20"></a></span></font><br>
+            <br>
+          </td>
+          </tr>
+ 
+          </table>
+  
+                        </td>
+                      </tr>
+                    </table>
+                    </td>
+                  </tr>
+
+     </table>
+    </td>
+    <td style="border-right: 1px solid #C2E0E0" width="131" height="305">
+         <table class="content" style="border-collapse: collapse" borderColor="#EFEFEF" cellSpacing="1" width="650" align="center" border="1" height="334">
+            <tr>
+              <td width="650" height="419">
+          <table class="content-bold-link" width="659" border="0" height="324">
+            <tr>
+            <td vAlign="top" noWrap width="178" height="320">
+            <table style="border-right: 1px solid #C2E0E0" cellSpacing="0" cellPadding="3" border="0" width="467">
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="content-main-third" style="border-bottom: 1px solid #C2E0E0" align="middle" width="623" height="4">
+               Selection Box</td>
+            </tr>
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;</td>
+            </tr>
+          
+    <tr>
+      <td align="middle" width="623" height="4"><p align="center">
+         <table class="content" style="border: 1px solid #ddb7ba; BACKGROUND-COLOR: #EFEFEF; font-family:tahoma; font-size:8pt; letter-spacing=1px" align="middle" width="355" height="4">
+           <tr>
+            <td class="content" style="font-family:tahoma; font-size:8pt; letter-spacing=1px" align="middle" height="4" width="345">
+              <form name="choiceForm">
+
+<table class="content" border=0>
+
+<tr>
+
+<td valign="top" width=175>
+
+Available Content:
+
+<br>
+
+<select style="border: 1px solid #ddb7ba; BACKGROUND-COLOR: #EAF1EE; font-family:tahoma; font-size:8pt; color:navy; letter-spacing=1px" name="available" size=10 onchange="moveOver();">
+
+<option value=1>Company News
+
+<option value=2>Industry News
+
+<option value=3>Product Updates
+
+<option value=4>Product Specifications
+
+<option value=5>Order History
+
+<option value=6>Order Status
+
+<option value=7>Contacts
+
+<option value=8>Calendar of Events
+
+<option value=9>Scheduler
+
+<option value=10>Notes
+
+</select>
+
+</td>
+
+<td valign="top">
+
+Your Choices:
+
+<br>
+
+<select style="border: 1px solid #ddb7ba; BACKGROUND-COLOR: #EAF1EE; font-family:tahoma; font-size:8pt; color:navy; letter-spacing=1px" multiple name="choiceBox" style="width:150;" size="10">
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td colspan=2 height=10>
+
+<input type="button" style="border: 1px solid #ddb7ba; BACKGROUND-COLOR: #C2E0E0; font-family:tahoma; font-size:8pt; color:navy; letter-spacing=1px" value="Remove" onclick="removeMe();">
+
+<input type="button" style="border: 1px solid #ddb7ba; BACKGROUND-COLOR: #C2E0E0; font-family:tahoma; font-size:8pt; color:navy; letter-spacing=1px" value="Get Selected Values" onclick="saveMe();">
+
+</td>
+
+</tr>
+
+</table>
+
+</form>
+</td>
+           </tr>
+         </table>
+      </td>
+    </tr>
+         
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;</td>
+            </tr>
+            <tr>
+             
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+                Click the link below to  get the:</td>
+            </tr>
+            <tr>
+              
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+                <a href="selectionbox-source.html">Source Code</td>
+            </tr>
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center"><CENTER><a href="http://coldfusion.affiliateshop.com/AIDLink.cfm?AID=043123&BID=4800" target="_blank" border=0><img src="http://www.best-ip.net/images/Banner_B20.gif" alt="Sponsors" border=0></a></CENTER>&nbsp;</td>
+            </tr>
+            <tr>
+              <td class="content" style="border-bottom: 1px solid #EBEBE2" align="middle" width="623" height="4">
+              <p align="center">&nbsp;<img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" border="0" width="494" height="9"></td>
+
+           </tr>
+            </table>
+           
+           <td width="1" background="http://arabsat.omduena.com/images/search/dots01.gif" height="320"></td>
+              <td vAlign="top" width="355" height="320">
+                <table width="135" bgcolor="#F2F2EC" cellSpacing="4" cellPadding="0" width="1" align="right" border="0">
+                  <tr>
+                    <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="140">
+                        Sponsored Links</td>
+                  </tr>
+                  <tr>
+                    <td width="162">
+                    <table cellSpacing="0" width="80%" bgColor="#ddb7ba" border="0">
+                      <tr>
+                        <td style="color: #000; font-family: arial,sans-serif">
+                        <table cellSpacing="0" cellPadding="3" width="1" border="0">
+                          <tr>
+                            <td class="ch" id="taw1" onmouseover="ss('go to http://search.omduena.com/sponsor.html')" onclick="ga(this,event)" onmouseout="cs()" noWrap bgColor="#ecf8ff" width="140">
+    
+
+<!-------------------------begin advertise space--------------------------->
+
+<script language="JavaScript1.2">
+
+/*
+
+Pausing updown message scroller- 
+
+Last updated: 99/07/05 (Bugs fixed, ability to specify background image for scroller)
+
+© Dynamic Drive (www.dynamicdrive.com)
+
+For full source code, installation instructions,
+
+100's more DHTML scripts, and Terms Of
+
+Use, visit dynamicdrive.com
+
+*/
+
+
+
+//configure the below five variables to change the style of the scroller
+
+var scrollerwidth=145
+
+var scrollerheight=60
+
+var scrollerbgcolor='#ecf8ff'
+
+//set below to '' if you don't wish to use a background image
+
+var scrollerbackground=''
+
+
+
+//configure the below variable to change the contents of the scroller
+
+var messages=new Array()
+
+messages[0]="<TABLE BORDER='0' CELLPADDING='0' CELLSPACING='0' ALIGN='Center'><TR><TD ALIGN='Center' Valign='top'></TD><TD ALIGN='Center' Valign='top' class='content-main-third'>Advertise Space</A></TD></TR><TR><TD ALIGN='Center' Valign='top'></TD><TD ALIGN='Center' Valign='top' class='content'>For Webmaster and website owner</A></TD></TR><TR><TD ALIGN='Center' Valign='top'></TD></TR></TR></TABLE>"
+
+messages[1]="<TABLE BORDER='0' CELLPADDING='0' CELLSPACING='0' ALIGN='Center'><TR><TD ALIGN='Center' Valign='top' class='content'>From this space you can increase your page visitors</A></TD></TR><TR></TR></TABLE>"
+
+messages[2]="<TABLE BORDER='0' CELLPADDING='0' CELLSPACING='0' ALIGN='Center'><TR><TD ALIGN='Center' Valign='top'></TD><TD ALIGN='Center' Valign='top' class='content'>We give you a special offer to insert your website link with full descriptions.</TD></TR></TABLE>"
+
+messages[3]="<TABLE BORDER='0' CELLPADDING='0' CELLSPACING='0' ALIGN='Center'><TR><TD ALIGN='Center' Valign='top' class='content'>For more information<br><A HREF='http://webdesign.omduena.com/contact.html' class='content-link'>E-mail US</A></TD></TR></TABLE>"
+
+
+
+
+
+///////Do not edit pass this line///////////////////////
+
+
+
+if (messages.length>1)
+
+i=2
+
+else
+
+i=0
+
+
+
+function move1(whichlayer){
+
+tlayer=eval(whichlayer)
+
+if (tlayer.top>0&&tlayer.top<=5){
+
+tlayer.top=0
+
+setTimeout("move1(tlayer)",3000)
+
+setTimeout("move2(document.main.document.second)",3000)
+
+return
+
+}
+
+if (tlayer.top>=tlayer.document.height*-1){
+
+tlayer.top-=5
+
+setTimeout("move1(tlayer)",100)
+
+}
+
+else{
+
+tlayer.top=scrollerheight
+
+tlayer.document.write(messages[i])
+
+tlayer.document.close()
+
+if (i==messages.length-1)
+
+i=0
+
+else
+
+i++
+
+}
+
+}
+
+
+
+function move2(whichlayer){
+
+tlayer2=eval(whichlayer)
+
+if (tlayer2.top>0&&tlayer2.top<=5){
+
+tlayer2.top=0
+
+setTimeout("move2(tlayer2)",3000)
+
+setTimeout("move1(document.main.document.first)",3000)
+
+return
+
+}
+
+if (tlayer2.top>=tlayer2.document.height*-1){
+
+tlayer2.top-=5
+
+setTimeout("move2(tlayer2)",100)
+
+}
+
+else{
+
+tlayer2.top=scrollerheight
+
+tlayer2.document.write(messages[i])
+
+tlayer2.document.close()
+
+if (i==messages.length-1)
+
+i=0
+
+else
+
+i++
+
+}
+
+}
+
+
+
+function move3(whichdiv){
+
+tdiv=eval(whichdiv)
+
+if (tdiv.style.pixelTop>0&&tdiv.style.pixelTop<=5){
+
+tdiv.style.pixelTop=0
+
+setTimeout("move3(tdiv)",3000)
+
+setTimeout("move4(second2)",3000)
+
+return
+
+}
+
+if (tdiv.style.pixelTop>=tdiv.offsetHeight*-1){
+
+tdiv.style.pixelTop-=5
+
+setTimeout("move3(tdiv)",100)
+
+}
+
+else{
+
+tdiv.style.pixelTop=scrollerheight
+
+tdiv.innerHTML=messages[i]
+
+if (i==messages.length-1)
+
+i=0
+
+else
+
+i++
+
+}
+
+}
+
+
+
+function move4(whichdiv){
+
+tdiv2=eval(whichdiv)
+
+if (tdiv2.style.pixelTop>0&&tdiv2.style.pixelTop<=5){
+
+tdiv2.style.pixelTop=0
+
+setTimeout("move4(tdiv2)",3000)
+
+setTimeout("move3(first2)",3000)
+
+return
+
+}
+
+if (tdiv2.style.pixelTop>=tdiv2.offsetHeight*-1){
+
+tdiv2.style.pixelTop-=5
+
+setTimeout("move4(second2)",100)
+
+}
+
+else{
+
+tdiv2.style.pixelTop=scrollerheight
+
+tdiv2.innerHTML=messages[i]
+
+if (i==messages.length-1)
+
+i=0
+
+else
+
+i++
+
+}
+
+}
+
+
+
+function startscroll(){
+
+if (document.all){
+
+move3(first2)
+
+second2.style.top=scrollerheight
+
+second2.style.visibility='visible'
+
+}
+
+else if (document.layers){
+
+document.main.visibility='show'
+
+move1(document.main.document.first)
+
+document.main.document.second.top=scrollerheight+5
+
+document.main.document.second.visibility='show'
+
+}
+
+}
+
+
+
+window.onload=startscroll
+
+     </script>
+
+     <ilayer id="main" width=&{scrollerwidth}; height=&{scrollerheight}; bgcolor=&{scrollerbgcolor}; background=../../&amp;%7Bscrollerbackground%7D; visibility=hide left="1"> 
+
+     <layer id="first" left=0 top=1 width=&{scrollerwidth};> 
+
+     <script language="JavaScript1.2">
+
+
+
+if (document.layers)
+
+document.write(messages[0])
+
+     </script>
+
+     </layer>
+
+     <layer id="second" left=0 top=0 width=&{scrollerwidth}; visibility=hide> 
+
+     <script language="JavaScript1.2">
+
+
+
+if (document.layers)
+
+document.write(messages[1])
+
+     </script>
+
+     </layer>
+
+     </ilayer>
+
+     <script language="JavaScript1.2">
+
+
+
+if (document.all){
+
+document.writeln('<span id="main2" style="position:relative;width:'+scrollerwidth+';height:'+scrollerheight+';overflow:hiden;background-color:'+scrollerbgcolor+' ;background-image:url('+scrollerbackground+')">')
+
+document.writeln('<div style="position:absolute;width:'+scrollerwidth+';height:'+scrollerheight+';clip:rect(0 '+scrollerwidth+' '+scrollerheight+' 0);left:0;top:0">')
+
+document.writeln('<div id="first2" style="position:absolute;width:'+scrollerwidth+';left:0;top:1;">')
+
+document.write(messages[0])
+
+document.writeln('</div>')
+
+document.writeln('<div id="second2" style="position:absolute;width:'+scrollerwidth+';left:0;top:0;visibility:hidden">')
+
+document.write(messages[1])
+
+document.writeln('</div>')
+
+document.writeln('</div>')
+
+document.writeln('')
+
+}
+
+  </script>
+
+<!-------------------------end advertise space--------------------------->
+
+  
+
+  </td>
+
+                          </tr>
+
+                        </table>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td align="middle" height=2 width="150">
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td width="162">
+
+                    <table cellSpacing="0" width="80%" bgColor="#ddb7ba" border="0">
+
+                      <tr>
+
+                        <td>
+
+                        <table cellSpacing="0" cellPadding="3" width="1" border="0">
+
+                          <tr>
+
+                            <td class="content-bold-link" noWrap bgColor="#ecf8ff" width="150">
+
+                              <p align="center" class="content-second"><a href="http://animation.omduena.com/">Animation World</a><center class="content">More than 9000 pictures, Backgrounds, wallpaper, Funny pictures 
+
+                              <font size="1" color="#FF0000">and More</font><br><a href="http://animation.omduena.com/">click here to visit</a></td>
+
+                          </tr>
+
+                        </table>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td align="middle" height=2 width="150">
+
+                    </td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td width="150">
+
+                    <table cellSpacing="0" width="80%" bgColor="#ddb7ba" border="0">
+
+                      <tr>
+
+                        <td style="color: #000; font-family: arial,sans-serif">
+
+                        <table cellSpacing="0" cellPadding="3" width="1" border="0">
+
+                          <tr>
+
+                            <td class="content-bold-link" noWrap bgColor="#ecf8ff" width="150">
+
+                               <p align="center">
+
+                               <img alt="omduena" src="http://arabsat.omduena.com/images/search/green_punt.gif" border="0" width="8" height="8">
+
+                               <a href="http://webdesign.omduena.com/contact.html">Add Your Link Here</a><br>
+
+                               &nbsp;</td>
+
+                          </tr>
+
+                        </table>
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                    </td>
+
+                  </tr>
+
+
+
+                  <tr>
+
+                    <td align="middle" height=2 width="150">
+
+                    </td>
+
+                  </tr>
+
+               
+
+                   <tr>
+
+                    <td width="150">
+
+                    <table cellSpacing="0" width="150" bgColor="#ddb7ba" border="0">
+
+                      <tr>
+
+                       <td>
+
+        <table cellSpacing="0" cellPadding="3" bgColor="#EFEFEF" border="0" width="27">
+
+          <tr>
+
+            <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="150">
+
+            <p align="left">Partners</td>
+
+          </tr>
+
+          <tr>
+
+            <td class="content-bold-link" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#EFEFEF" width="150">
+
+            • <a href="http://search.omduena.com/" class="conent-link">Internet Directory</a><br>
+
+            • <a href="http://animation.omduena.com/" class="conent-link">Animation World</a><br>
+
+            • <a href="http://msn.omduena.com/" class="conent-link">MSN Tools</a><br>
+
+          </td>
+
+          </tr>
+
+       
+
+          <tr>
+
+            <td class="content-main-third" align="middle" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#c8dadb" width="150">
+
+            <p align="left">Online Games</td>
+
+          </tr>
+
+          <tr>
+
+            <td class="content-bold-link" style="border-bottom: 1px solid #ddb7ba" noWrap bgColor="#EFEFEF" width="150">
+
+            • <a href="http://games.yahoo.com" target="blank">Yahoo Games</a><br>
+
+            • <a href="http://zone.msn.com" target="blank">MSN Zone</a><br>
+
+            • <a href="http://www.shockwave.com">Shockwave</a><br>
+
+            • <a href="http://www.neopets.com" target="blank">Neopets</a><br>
+
+            • <a href="http://www.pogo.com" target="blank">Pogo.com</a><br>
+
+            • <a href="http://www.omduena.com/games.html/" target="blank">More Games >>></a><br>
+
+&nbsp;</td>
+
+          </tr>
+
+          
+
+          </table>
+
+    
+
+                        </td>
+
+                      </tr>
+
+                    </table>
+
+                    </td>
+
+                  </tr>
+
+
+
+                  
+
+                  
+
+                </table>
+
+              </td>
+
+          </tr>
+
+        </table>
+
+        </td>
+
+      </tr>
+
+      </table>
+
+    </td>
+
+     </tr>
+
+     </table>
+
+
+
+
+
+                
+
+                </tr>
+
+         </table>
+
+         
+
+
+
+        <TABLE class="content-link" border=0 width="827" border=0 cellspacing=0 cellpadding=0 height="10">
+
+          <tr>
+
+            <td bgcolor="#002828" width="827">
+
+                 <p align="center" class="content-main-fifth">
+
+                 <a href="http://www.omduena.com/main/about-us.html" class="content">About Us</a> <font size="1" color="#9DAAAA">| 
+
+                 <a target="_blank" href="http://webdesign.omduena.com/contact.html" class="content">Contact Us</a> <font size="1" color="#9DAAAA">|
+
+                 <a target="_blank" href="http://webdesign.omduena.com/contact.html" class="content">Advertise</a> <font size="1" color="#9DAAAA">|
+
+                 <a href="http://www.omduena.com/main/terms.html" class="content">Privacy</a>&nbsp;
+
+           </td>
+
+          </tr>
+
+          <TR>
+
+            <TD VALIGN=center width="827" height="5" bgcolor="#C2E0E0">
+
+              <center class="content-main-sixth">Since July 07, 2002</a><img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" height="2" width="137"> Copyright© 2003 Omduena, Inc. .<!-- URL: http://webdesign.omduena.com --><!-- BEGIN FASTCOUNTER CODE --><a href="http://member.bcentral.com/cgi-bin/fc/fastcounter-login?3225467" target="_blank"><img  height="2" width="2" border="0" src="http://fastcounter.bcentral.com/fastcounter?3225467+6450941"></a><!-- END FASTCOUNTER CODE --><!-- URL: http://webdesign.omduena.com --> All rights reserved<font size="1">
+
+              <img alt="omduena" src="http://arabsat.omduena.com/images/main/space.gif" height="2" width="140">
+
+             
+
+	        
+
+	        <!-- BEGIN COUNTERLOG.DE USER ONLINE CODE -->
+
+	  <font face="Verdana" COLOR="#336699" size="1"><script src="http://counterlog.de/cgi-bin/en_uos.cgi?id=hatim&action=index&e=js"></script> 
+
+         User Online<font color="#D6AB01"> 
+
+	  <!-- END COUNTERLOG.DE -->
+
+	  <!-- URL: http://webdesign.omduena.com --><!-- BEGIN FASTCOUNTER CODE --><a href="http://member.bcentral.com/cgi-bin/fc/fastcounter-login?3225467" target="_blank"><img  height="2" width="2" border="0" src="http://fastcounter.bcentral.com/fastcounter?3225467+6450941"></a><!-- END FASTCOUNTER CODE --><!-- URL: http://webdesign.omduena.com -->
+
+	  <script language="JavaScript" src="http://m1.nedstatbasic.net/basic.js"></script>
+
+	  <script language="JavaScript"><!--
+
+      // --></script><noscript>
+
+              <a target="_blank" href="http://v1.nedstatbasic.net/stats?ABqh2wEWq+m0gRlfkbvvSDIfXRng"><img alt="omduena" src="http://m1.nedstatbasic.net/n?id=ABqh2wEWq+m0gRlfkbvvSDIfXRng" border="0" nosave width="10" height="10"></a></noscript><!--- End Nedstat Basic code ----><a href="http://v1.nedstatbasic.net/stats?ABqh2wEWq+m0gRlfkbvvSDIfXRng" target="nedstatimage"><img alt="omduena" src="http://m1.nedstatbasic.net/n?id=ABqh2wEWq+m0gRlfkbvvSDIfXRng" border="0" nosave width="2" height="2"></a> </TD>
+
+ </center>
+
+
+
+            </TR>
+
+        </TABLE>
+
+
+
+
+
+   </body>
+
+</html>

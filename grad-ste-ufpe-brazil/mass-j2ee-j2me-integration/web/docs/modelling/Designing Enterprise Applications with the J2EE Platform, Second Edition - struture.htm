@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0102)http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html -->
+<HTML><HEAD><TITLE>Designing Enterprise Applications with the J2EE Platform, Second Edition</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD><!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. --><!-- font size="-1" --><A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eTOC.html">CONTENTS</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier3.html">PREV</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html">NEXT</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eIX.html">INDEX</A> 
+<!-- /font --></TD>
+    <TD align=right><I>Designing Enterprise Applications<BR>with the 
+      J2EE<SUP><FONT size=-2>TM</FONT></SUP> Platform, Second 
+  Edition</I></TD></TR></TBODY></TABLE>
+<HR>
+<BR><BR>
+<H3><A name=1080491><!-- --></A>4.3 Web-Tier Application Structure </H3><A 
+name=1080642><!-- --></A>
+<P>The J2EE platform is a layered set of system services that are consistently 
+available to J2EE applications across implementations. It is the top layer of a 
+"stack" of services that support an application, shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html#1080644">Figure 
+4.1</A>. The J2EE platform runs on top of the J2SE platform, which itself runs 
+on top of the host operating system. In the Web tier, a J2EE Web container 
+provides services related to serving Web requests.<IMG height=260 hspace=0 
+src="Designing Enterprise Applications with the J2EE Platform, Second Edition - struture_arquivos/web-tiera.gif" 
+width=254 align=center border=0> </P>
+<BLOCKQUOTE>
+  <P><A name=1080644><!-- --></A><B>Figure 4.1 </B>Platform and Application 
+  Layers </P></BLOCKQUOTE><A name=1080568><!-- --></A>
+<P>Just as the J2EE platform has layers, J2EE applications can benefit from 
+architectural layering. The highest-level division between layers in an 
+application's Web tier is between functions that are specific to a particular 
+application and those that occur in all Web applications. </P><A name=1080586><!-- --></A>
+<P>All Web-tier applications share a common set of basic requirements that are 
+not provided by the J2EE platform itself. A software layer called an application 
+framework can meet these requirements and can be shared between applications. As 
+shown in <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier4.html#1080644">Figure 
+4.1</A>, application-specific code is written in terms of the application 
+framework layer.</P><A name=1093628><!-- --></A>
+<P>A Web-tier application framework sits on top of the J2EE platform, providing 
+common application functionality such as dispatching requests, invoking model 
+methods, and selecting and assembling views. Framework classes and interfaces 
+are structural; they are like the load-bearing elements of a building, forming 
+the application's underpinnings. Application developers extend, use, or 
+implement framework classes and interfaces to perform application-specific 
+functions. For example, a framework may offer an abstract class that a developer 
+may extend to execute business logic in response to application events. A 
+Web-tier application framework makes Web-tier technologies easier to use, 
+helping application developers to concentrate on business logic.</P><A 
+name=1093630><!-- --></A>
+<P>The BluePrints recommended best practice is to choose an existing, proven 
+Web-tier application framework for a J2EE application rather than designing and 
+building a custom framework layer. A Web-tier application framework can provide 
+the following benefits to your application:</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><A name=1080617><!-- --></A>Decouples presentation and logic into 
+    separate components--Frameworks encourage separating presentation and logic 
+    because the separation is designed into the extension interfaces. 
+    <LI><A name=1080618><!-- --></A>Separates developer roles--Application 
+    frameworks generally provide different interfaces for different developers. 
+    Presentation component developers tend to focus on creating JSP pages using 
+    custom tags, while logic developers tend to write action classes, tag 
+    handlers, and model code. This separation allows both types of developers to 
+    work more independently. 
+    <LI><A name=1080619><!-- --></A>Provides a central point of control--Most 
+    frameworks provide a rich, customizable set of application-wide features, 
+    such as templating, localization, access control, and logging. 
+    <LI><A name=1080620><!-- --></A>Facilitates unit testing and 
+    maintenance--Because framework interfaces are consistent, automated testing 
+    harnesses are easy to build and execute. 
+    <LI><A name=1080621><!-- --></A>Can be purchased instead of built--Time not 
+    spent developing structural code is available for developing business logic. 
+
+    <LI><A name=1080622><!-- --></A>Provides a rich set of features--Adopting a 
+    framework can leverage the expertise of a group of Web-tier MVC design 
+    experts. The framework may include useful features that you do not have the 
+    experience to formulate or the time to develop. 
+    <LI><A name=1080623><!-- --></A>Encourages the development and use of 
+    standardized components--Over time, developers and organizations can 
+    accumulate and share a toolbox of preferred components. Most frameworks 
+    incorporate a set of custom tags for view construction. 
+    <LI><A name=1091538><!-- --></A>Provides stability--Frameworks are usually 
+    created and actively maintained by large organizations or groups, and are 
+    used and tested in a large installed base. Accordingly, framework code tends 
+    to be more stable than custom code. 
+    <LI><A name=1091539><!-- --></A>Has community support--Popular frameworks 
+    attract communities of enthusiastic users who report bugs, provide 
+    consulting and training services, publish tutorials, and produce useful 
+    add-ons. Open frameworks are particularly strong in this regard. 
+    <LI><A name=1080626><!-- --></A>May reduce training costs and 
+    time--Developers already trained and experienced in using a framework get up 
+    to speed more quickly and are more productive. 
+    <LI><A name=1091518><!-- --></A>May simplify internationalization--Most 
+    frameworks support a flexible internationalization strategy. 
+    <LI><A name=1091521><!-- --></A>May support input validation--Many 
+    frameworks have consistent ways to specify input validation. Validation is 
+    commonly available on the client side, on the server side, or both. 
+    <LI><A name=1091524><!-- --></A>May be compatible with tools--Good tools can 
+    improve productivity and reliability. Some frameworks are integrated with 
+    rapid application development tool sets. </LI></UL></BLOCKQUOTE><A name=1080751><!-- --></A>
+<P>All of these benefits come at a cost, of course. You always have less control 
+over a design you have acquired rather than created yourself. Some frameworks 
+must be purchased, although these are usually bundled with a tool set. Other 
+people's code in your application means other people's bugs in your application. 
+Still, most development projects find that a Web-tier framework improves design 
+and implementation quality.</P><BR>
+<HR>
+<!-- Bug in Communicator w/font: NavBar text disappears for Times 14pt pref. --><!-- font size="-1" --><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eTOC.html">CONTENTS</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier3.html">PREV</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/web-tier/web-tier5.html">NEXT</A> 
+| <A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/DEA2eIX.html">INDEX</A> 
+<!-- /font -->
+<HR>
+<FONT size=-1><I><A 
+href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications_2e/copyright.html">Copyright</A> 
+© 2002 Sun Microsystems, Inc. All Rights Reserved.</I></FONT> </BODY></HTML>

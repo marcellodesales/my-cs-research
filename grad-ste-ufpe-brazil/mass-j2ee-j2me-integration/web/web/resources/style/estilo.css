@@ -1,0 +1,135 @@
+.tabelamenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #000000;
+	border-top-style: none;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #99CCFF;
+	border-right-color: #99CCFF;
+	border-bottom-color: #99CCFF;
+	border-left-color: #99CCFF;
+	border-top-width: thin;
+	border-right-width: 1px;
+	border-bottom-width: thin;
+	border-left-width: 1px;
+}
+.tabelatitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	background-image:   url(../images/tile2.jpg);
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #99CCFF;
+	border-right-color: #99CCFF;
+	border-bottom-color: #99CCFF;
+	border-left-color: #99CCFF;
+	font-weight: bold;
+	height: 19px;
+
+
+
+}
+a:link {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #0099FF;
+	text-decoration: none;
+}
+a:active {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.tabelacont {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+	background-color: #F7F7F7;
+	border: 1px solid #99CCFF;
+}
+.p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.barrafim {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #3E4E84;
+	text-decoration: none;
+}
+.subli {
+	text-decoration: underline;
+}
+.textotile {
+	font-family: Verdana;
+	font-size: 13px;
+	font-weight: bold;
+	color: #3E4E84;
+}
+.pontilhado {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+	background-color: #F7F7F7;
+	border: 1px dotted #0099FF;
+}
+.tabneutravu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+}
+.tabelaemo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.exibicao {
+	border: 1px solid #99CCFF;
+}
+.form {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+}
+.mae {
+	border: 1px dotted #99CCFF;
+}
+.namo {
+	border: 1px dotted #FF7171;
+}
+.pdf {
+	border: 1px solid #000000;
+}
+.caixadeform {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #3E4E84;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	font-weight: normal;
+	background-image:  url(../images/form.jpg);
+
+}

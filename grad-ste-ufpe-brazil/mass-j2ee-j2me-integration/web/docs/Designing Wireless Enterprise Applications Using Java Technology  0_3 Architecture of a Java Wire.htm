@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0095)http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main4.html -->
+<HTML><HEAD><TITLE>Designing Wireless Enterprise Applications Using Java Technology > 0.3 Architecture of a Java Wireless Enterprise Application</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=ISO-8859-1">
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR>
+<META content="Portable HTML Standard Edition" name=TEMPLATEBASE>
+<META content="11/07/01 22:30:11" name=LASTUPDATED></HEAD>
+<BODY text=#000000 vLink=#9999cc aLink=#0000cc link=#3366cc bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2><B><A href="http://java.sun.com/blueprints/index.html">Java 
+      BluePrints</A> &gt; <A 
+      href="http://java.sun.com/blueprints/wireless/index.html">Wireless</A> 
+      &gt; Guidelines</B></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <HR noShade SIZE=1>
+    </TD></TR>
+  <TR>
+    <TD><A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main.html">HOME</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main3.html">PREVIOUS</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main5.html">NEXT</A></TD>
+    <TD align=right><A 
+      href="http://java.sun.com/blueprints/search.html">SEARCH</A> | <A 
+      href="mailto:j2ee-j2me-blueprint@sun.com">FEEDBACK</A></TD></TR></TBODY></TABLE>
+<HR noShade SIZE=1>
+
+<BLOCKQUOTE>
+  <H2><A name=442939></A><FONT face="Helvetica, Arial, sans-serif" 
+  color=#000000>0.3 Architecture of a Java Wireless Enterprise 
+  Application</FONT> </H2>
+  <HR>
+
+  <P><A name=442940></A><FONT size=+0>The high-level architecture of a Java 
+  wireless enterprise application is similar to that of a canonical J2EE 
+  application.</FONT> </P>
+  <P><A name=442941></A><FONT size=+0>In the Java Smart Ticket Demo, for 
+  example, the client tier consists of a MIDP application, or MIDlet, which 
+  provides the user interface on the mobile device. The MIDlet, in turn, 
+  communicates with Java servlets in the Web tier to access the business logic 
+  of Enterprise JavaBeans components in the EJB tier; both the servlets and 
+  enterprise beans are located on a J2EE application server. Finally, the 
+  enterprise information systems (EIS) tier supports access to the application 
+  database through the JDBC API.</FONT> </P>
+  <P><A name=442945></A><FONT size=+0><IMG height=530 hspace=0 
+  src="Designing Wireless Enterprise Applications Using Java Technology  0_3 Architecture of a Java Wireless Enterprise Application_arquivos/architecture.gif" 
+  width=410 align=left border=0> </FONT></P>
+  <P><A name=442946></A><FONT size=+0>FIGURE&nbsp;0-1 J2EE-J2ME Application 
+  Architecture</FONT> </P>
+  <P><A name=442947></A><FONT size=+0>In addition to being divided into tiers, 
+  the architecture of the Java Smart Ticket demo follows a Model-View-Controller 
+  (MVC) organization. In a J2EE-J2ME application, the separation of model (data 
+  abstraction) from view (data presentation) is a natural fit since these parts 
+  map almost directly to server and client. The controller logic is distributed 
+  between the server and client.</FONT> </P>
+  <P><A name=442948></A><FONT size=+0>One of the benefits of using MVC is that 
+  it separates core data access functionality from the presentation and control 
+  logic that uses this functionality. Such separation allows multiple views to 
+  share the same enterprise data model, which makes supporting multiple 
+  views--and by extension, clients--easier to implement, test, and 
+  maintain.</FONT> </P>
+  <P><A name=442949></A><FONT size=+0>Enterprise JavaBeans components support 
+  this approach, because they are designed to be reusable. For example, to 
+  incorporate an HTML front-end, you only have to add a set of HTML views, which 
+  you can connect to your enterprise beans through a separate controller. You 
+  can also work in the opposite direction; your J2EE application that already 
+  serves Java applets and HTML browsers can be easily extended to serve mobile 
+  users.</FONT> </P>
+  <P><A name=442950></A><FONT size=+0>In the sections that follow, you will find 
+  design guidelines on issues specific to J2ME-J2EE applications. You can find 
+  an explanation of general J2EE application architecture as well as guidelines 
+  on how to design the lower tiers of a J2EE application at the J2EE BluePrints 
+  Web site (<FONT size=+0>http://java.sun.com/j2ee/blueprints/</FONT>).</FONT> 
+  </P></BLOCKQUOTE><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <HR noShade SIZE=1>
+    </TD></TR>
+  <TR>
+    <TD><A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main.html">HOME</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main3.html">PREVIOUS</A> 
+      | <A 
+      href="http://java.sun.com/blueprints/guidelines/designing_wireless_enterprise_applications/main5.html">NEXT</A></TD>
+    <TD align=right><A 
+      href="http://java.sun.com/blueprints/search.html">SEARCH</A> | <A 
+      href="mailto:j2ee-j2me-blueprint@sun.com">FEEDBACK</A></TD></TR></TBODY></TABLE>
+<HR noShade SIZE=1>
+Copyright © 2001 Sun Microsystems, Inc. All rights reserved. </BODY></HTML>

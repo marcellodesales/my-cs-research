@@ -1,0 +1,194 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Mobile Audience Survey System (MASS) - Documentation</title>
+</head><body>
+
+<h1>Mobile Audience Survey System (MASS) - Object-Oriented Analysis and Design using UML</h1>
+
+Author: Marcello de Sales (marcello.desales@gmail.com). August 2004.
+
+<br><br>
+This section describes all the major layers and architecture of the solution. The consolidated source-code is located <a href="http://marcello.desalesjr.info/research/ufpe/mass/src/">here</a>.
+<h1>Business Analysis</h1>
+
+First, the analysis of the project was done by interviewing the 
+stakeholders from Motorola that requested the application (Prof. Paulo 
+Borba). The following diagram depicts the main business flow of the 
+application.
+
+The basic idea is that the questioner first creates "Sessions" of 
+questions, pools, etc. When the system receives the new session, it 
+allows users to view and submit answers to open sessions. Once the 
+questioner closes the session, both the questioner and the "listeners" 
+can view global results from the pool.
+
+<br><br>
+<img src="architecture_files/EA8.png">
+
+<h1>Functional Requirements - Use Cases</h1>
+
+After analyzing the business flow, the collected information origined the following use cases:
+
+<ul>
+<li>Create New Session: the questioner creates a new session into the system;
+</li><li>Close Current Session: the questioner closes an existing running session from the system;
+</li><li>Answer Current Session: both the questioner and listener can submit answers the current session;
+</li><li>View Session Results: both the questioner and the listener can view the session results;
+</li><li>Save Closed Session Results: both the questioner and the listener can save closed results, only after viewing the session;
+</li><li>View Existing Sessions: the listener can view the list of existing sessions.
+</li></ul>
+
+The following UML Class diagram summarizes the use cases.
+
+<br><br>
+<img src="architecture_files/EA22.png">
+
+<h2>Non-Functional Requirements</h2>
+
+<ul>
+<li>The main server must run using J2EE running on Apache Tomcat Application Container;
+</li><li>The data must be saved in any persistence model such as a MySQL Database or in Memory;
+</li><li>The client can access the data via a Mobile device running J2ME or a web browser;
+</li><li>The serialized POJOs must be transmitted using the HTTP protocol, preferrable marshaled and unmarshalled using XML.
+</li></ul>
+
+<h1>UML Deployment Model</h1>
+
+The analysis of the requirements gave the insights for the basic system architecture. The major components of the system are:
+
+<ul>
+<li>MASS Server: running Apache Tomcat J2EE application server as the 
+middleware supporting the access from clients and the lower layers 
+(model and data);
+</li><li>MASS Client: any web browser or the Mobile device running J2ME;
+</li><li>The server might include a MySQL database server, and for that access Hibernate is used as the Object-Relational Model (ORM).
+</li></ul>
+
+The following UML Deployment diagram summarizes the system architecture.
+
+<br><br>
+<img src="architecture_files/EA177.png">
+
+<h1>Storyboards</h1>
+
+The business analysis describe what the system dynamic is. For this 
+reason, the design of storyboards helps discussing the main 
+functionalities of the system, as well as identifying possible use cases
+ that might not be necessary. The following diagrams summarize the 
+storyboards for both the client and management interfaces of MASS.
+
+<ul>
+<li>MASS Manager: all actions performed by the questioner (the one that creates sessions and manages them).
+</li><li>MASS Client: all actions performed by the listener (the one that submits answers to the sessions);
+</li></ul>
+
+The following UML Storyboard diagram summarizes the MASS Manager storyboard.
+
+<br><br>
+<img src="architecture_files/EA230.png">
+
+<br><br>
+The following UML Storyboard diagram summarizes the MASS Client storyboard.
+
+<br><br>
+<img src="architecture_files/EA193.png">
+
+<h1>MASS Model-View-Controller</h1>
+
+The concepts described during the analysis and the requirements 
+gathering gave good insights regarding the participating entities of the
+ system.
+
+<h2>Model Layer</h2>
+
+<ul>
+<li>A given session can be a questionary or a survey (poll). While the 
+questionary is composed by one or more questions, the survey is composed
+ by only one question;
+</li><li>Each question is composed by at least 2 question items, which are also used by the answer given during a session;
+</li><li> A global session results is responsible for collecting and generating collective information regarding sessions.
+</li></ul>
+
+The following UML Class Diagram depicts the basic Model classes in the server-side.
+<br><br>
+<img src="architecture_files/EA66.png">
+
+<br><br>
+Associated with the Model Layer is the Data Layer, responsible for 
+persisting the data into a given persistence layer. Given the 
+non-functional requirement that describes the use of different 
+persistence infrastructure as a flexibility of the system, the use of a 
+Persistence Broker Factory, which is responsible for switching different
+ Persistence layers for any of the Model classes specified. 
+
+<br><br>
+<img src="architecture_files/EA77.png">
+
+<br><br>
+Two different persistence layers were considered: MySQL and in-memory 
+data. For this reason, different Adapters were developed using Hibernate
+ and in-memory data structures. <br><br>
+
+* Hibernate Persistence Adapter:
+<br><br>
+<img src="architecture_files/EA86.png">
+
+<br><br>
+* In-memory Persistence Adapter:
+<br><br>
+<img src="architecture_files/EA90.png">
+
+<h2>View and Controller Layers</h2>
+
+The focus was on the View Layers in the mobile device using Midlets, the
+ MIDP API. The view directly accesses the server through the different 
+controllers as data handlers for each of the model classes. The access 
+is done to the MASS server using the HTTP requests to the server, which 
+uses Servlets as controllers. The following UML Class diagram depicts 
+the communication between the client and server views through their 
+controllers.
+
+<br><br>
+<img src="architecture_files/EA95.png">
+
+<br><br>
+Zoomming into the client controllers, it is simple to see that all 
+classes are managed by 2 different CommandListeners: MassMidlet and 
+MassManagerMidlet. Each of them implements the use cases for the 
+questioner and the listener. Those controllers executes different 
+functions concurrently using threads. Note that it uses different XML 
+handlers that unmarshalls the data returned by the server using an XML 
+Pull-parser called "KXmlParser". The following UML Class diagram depicts
+ each of them.
+
+<br><br>
+<img src="architecture_files/EA117.png">
+
+<br><br>
+In order to support each of the functionalities, the forms were 
+developed using MIDP 1.0. It is a direct association with the 
+Storyboards reviewed previously.
+
+* MASS Manager forms:
+<br><br>
+<img src="architecture_files/EA167.png">
+
+<br><br>
+* MASS Client forms:
+<br><br>
+<img src="architecture_files/EA157.png">
+
+<h1>MASS Architecture</h1>
+
+The architectural layers can be seen at the following UML Class Diagram,
+ which joins the Client View focusing on the Midlet classes and the 
+Server view with the main classes. While the mobile client contains on 
+single point of data access through the HTTP requests, the server 
+contains different J2EE Servlets that accesses a centralized GO4 Facade.
+ Below the facade are the controllers and the models. It is easy to 
+visualize the architecture having the Model-View-Controler 
+design-pattern in mind.
+
+<br><br> 
+<img src="architecture_files/EA41.png"> 
+</body></html>

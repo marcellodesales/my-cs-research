@@ -1,0 +1,88 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Mobile Audience Survey System (MASS). J2EE and J2ME integration Project</title>
+</head><body>
+<table width="100%" border="0"> 
+  <tbody><tr> 
+    <td valign="top" width="70%">
+
+<h1>Mobile Audience Survey System (MASS)</h1>
+
+This project was first developed during my internship at Motorola Brazil
+ Test Center, where I had to explore the integration of J2EE using 
+Tomcat and J2ME. I chose to use serialized objects in XML produced by 
+the J2EE server and consumed by any J2ME MIDP 1.0 client running on a 
+cellphone device. One of the most interesting problems was that such 
+device offers a very limited environment for the development of XML 
+consumption. That's when I found out the application of XML Pull-Parser 
+very useful.
+ 
+     <br><br> M.A.S.S. enables people to make mobile surveys using a 
+wireless device with MIDP 1.0 enabled. There are 2 midlets on this test 
+build: The M.A.S.S. Client and Manager.<p></p> 
+      <ul>
+	<li><a href="architecture.html">CHECK THE UML OBJECT-ORIENTED ANALYSIS AND DESIGN</a>; 
+        </li><li><em>M.A.S.S. Manager</em> is used to create a new session and close the current existing one; The session can be optionally created using a web browser. <br><a href="../api/index.html">(J2EE Middleware Server Java Docs API)</a>;</li> 
+        <li><em>M.A.S.S. Client</em> is used to answer (vote) on an 
+opened session, as well as viewing the current votes results and saving 
+them on the mobile device. <br><a href="../midp-api/index.html">(J2ME MIDP Java Docs API)</a>.</li> 
+      </ul>      
+ 
+      <p><em>This project is a result of the J2ME Classes from the 
+CIn-Motorola Internship program, that took place on July, 2004. Special 
+Thanks to Prof. Paulo Borba for the original classes and all the 
+motorolans.
+      </em></p><p><em><em>Marcello de Sales Jr.<br> 
+          <a href="http://www.cin.ufpe.br/%7Emasj2">http://www.cin.ufpe.br/~masj2</a> - <a href="mailto:masj2@cin.ufpe.br">masj2@cin.ufpe.br</a>      </em></em></p>
+<em> 
+	 August 07, 2004. Recife, Pernambuco, Brazil / <b>Motorola Brazil Test Center</b>
+    </em></td>
+    <td><img src="blank_files/mass-client.JPG" height="400" width="200"></td> 
+  </tr> 
+<tr><td>
+<br>
+Different use cases were implemented to exercise the data exchange from 
+the J2EE and the J2ME Java applications. The project was documented 
+using Object-Oriented Analysis and Design using UML. <a href="architecture.html">Check the UML Documentation</a>.
+
+<h2>Creating a new Session Form</h2>
+
+When the user accesses the new Session Form, the server sends an XML 
+message signing that there are no new session and he/she is ready to 
+create a new session.
+<br><br>
+<img src="blank_files/new-survey-forms.png">
+
+<h2>Request for Session Creation</h2>
+
+When the user confirms the creation in the client-side, the J2EE 
+middleware receives the serialized XML containing the information from 
+the POJO. Then, it persists the information in the database and confirms
+ the creation of the session by sending an acknowledge message back to 
+the client.
+<br><br>
+<img src="blank_files/accessing-created-session.png">
+
+<h2>Viewing the current session results</h2>
+
+While the votes for the current session are being entered by different users, the client can request the current values.
+<br><br>
+<img src="blank_files/current-session-results.png">
+
+<h2>Viewing all available sessions in the server</h2>
+
+As different sessions are created, the server retains the list of 
+existing sessions. The client may view the list of existing sessions by 
+requesting the list.
+<br><br>
+<img src="blank_files/existing-sessions.png">
+
+<h2>Closing the current session</h2>
+
+The administrator/professor/manager may choose to close the session. 
+This action closes the session and no user may enter their votes for 
+that given session anymore.
+<br><br>
+<img src="blank_files/close-current-session.png">
+</td></tr></tbody></table>
+</body></html>

@@ -1,0 +1,10 @@
+MIDlet-1: Mass Client, /client.png, br.ufpe.cin.stp.mass.view.wireless.MassMidlet
+MIDlet-2: Mass Manager, /manager.png, br.ufpe.cin.stp.mass.view.wireless.MassManagerMidlet
+MIDlet-Jar-Size: 60534
+MIDlet-Jar-URL: Mass.jar
+MIDlet-Name: Mass
+MIDlet-Vendor: Marcello Sales Jr.
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Profile: MIDP-1.0
+mass-url: 172.27.134.233

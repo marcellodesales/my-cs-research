@@ -1,0 +1,13 @@
+KXML XMLPullParser implementation;
+J2EE 
+J2ME
+Hibernate
+XML
+XML Schema
+Servlets;
+Apache Tomcat
+
+Wireless Layer - J2ME MIDlets
+Middleware Layer - J2EE Servlets
+Model / Business Logic Layer
+Data Persistence Layer

@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Web Server--Key Technology as New Kind of App Server</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=x-user-defined">
+<META content="MSHTML 6.00.2800.1458" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<DIV align=center>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 border=0>
+  <TBODY>
+  <TR>
+    <TD><!--webbot bot="Include" U-Include="../Middleware/WebServer/default.htm" TAG="BODY" startspan -->
+      <P align=left><FONT face=Verdana size=4><STRONG><IMG height=31 hspace=30 
+      src="../images/componentsonlinebanner2icon.gif" width=144 align=absBottom> 
+      Feature</STRONG></FONT></P>
+      <DIV align=center>
+      <CENTER>
+      <TABLE cellSpacing=0 cellPadding=8 width=582 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=120 bgColor=#7ae7e1>
+            <DIV align=center>
+            <CENTER>
+            <TABLE cellSpacing=0 cellPadding=0 width=120 border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=top align=middle width=122>
+                  <P align=center><U><STRONG><A href="../"><FONT 
+                  face="Times New Roman" size=3>Cover</FONT></A><FONT 
+                  face="Times New Roman" size=3><BR></STRONG></U><A 
+                  href="../Version98-4/default.htm">Prior Issue</A></FONT></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><STRONG><U>Legal Corner</U></STRONG><A 
+                  href="../version98-3/legal.htm"><BR></A><A 
+                  href="legal2.htm">Software First Technology to get Copyright 
+                  Protection</A></FONT></P>
+                  <P align=center><FONT face="Times New Roman" size=3><A 
+                  href="../version98-3/legal.htm">Shrinkwrapped to 
+                  "Clickwrapped" Software Licenses</A></FONT></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG>Features<BR></STRONG></U><A 
+                  href="WebServer.htm">Web Server--Key Technology as New Kind of 
+                  App Server</A></FONT></P>
+                  <P align=center><A href="../Version98-1/pools.htm"><FONT 
+                  face="Times New Roman" size=3>"Object Pools" Used to Scale 
+                  Business Components</FONT></A></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG><A 
+                  href="http://www.objectwatch.com/past.htm" 
+                  target=_top>ObjectWatch 
+                  Newsletter</A></STRONG></U><EM><BR></EM>by Roger 
+                  Sessions</FONT></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue18.htm" target=_top>In 
+                  the Fishbowl; Scalability in EJB and MTS</A></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue17.htm" target=_top>Pain 
+                  and Misery</A></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue16.htm" 
+                  target=_top>Letter from the PDC 98</A></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue15.htm" 
+                  target=_top><FONT face="Times New Roman" size=3>Unraveling 
+                  CORBA 3.0</FONT></A></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue14.htm" 
+                  target=_top><FONT face="Times New Roman" size=3>Saving San 
+                  Francisco</FONT></A></P>
+                  <P align=center><A 
+                  href="http://www.objectwatch.com/issue13.htm" 
+                  target=_top><FONT face="Times New Roman" size=3>Matters of 
+                  State</FONT></A></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG>Perspectives from the 
+                  Desktop<BR></STRONG></U><A 
+                  href="../Version98-2/baffle.htm">Antitrust Meets the Modern 
+                  Computer</A></FONT></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG>Magazines</STRONG></U><BR></FONT><SMALL><A 
+                  href="http://www.adtmag.com/" target=_top>Application 
+                  Development Trends</A> |<BR><A 
+                  href="http://www.componentmag.com/" target=_top>Component 
+                  Online Strategies</A> |<BR><A 
+                  href="http://www.intelligententerprise.com/" 
+                  target=_top>Intelligent Enterprise</A> |</SMALL><BR><SMALL><A 
+                  href="http://www.sys-con.com/java/index2.html" 
+                  target=_top>Java Developer's Journal</A> |<BR><A 
+                  href="http://msdn.microsoft.com/developer/" 
+                  target=_top>Microsoft Developer Network</A> |<BR><A 
+                  href="http://www.sunworld.com/" target=_top>Sun World 
+                  Online</A></SMALL></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG>Events<BR></STRONG></U><A 
+                  href="http://www.cetus-links.org/oo_events.html" 
+                  target=_top>Cetus Links</A><U><STRONG><BR></STRONG></U><A 
+                  href="http://www.paul-harmon.com/html/events.html" 
+                  target=_top>Paul Harmon</A></FONT></P>
+                  <P align=center><FONT face="Times New Roman" 
+                  size=3><U><STRONG>Resources<BR></STRONG></U><A 
+                  href="http://www.cetus-links.org/" target=_top>Cetus 
+                  Links</A></FONT></P>
+                  <P align=center><A href="http://www.research.att.com/~ymwang/" 
+                  target=_top><FONT face="Times New Roman" size=3>Yi-Min 
+                  Yang</FONT></A></P></TD></TR></TBODY></TABLE></CENTER></DIV></TD>
+          <TD vAlign=top width=375>
+            <P align=left><FONT face="Arial Black" size=5><U>Web Server--Key 
+            Technology as New Kind of App Server<BR></U></FONT>By <A 
+            href="mailto:jhoagan@components-online.com">John Hoagland</A>, 
+            Components Online, (draft).</P>
+            <P align=left>The big technological story is the integration of 
+            client/server by the web. What was once a difficult technology to 
+            implement has become ubiquitous. One form of client/server, the 
+            application server, has "reinvented" itself on the web.</P>
+            <P align=left>The internet's TCP/IP has taken over as the network 
+            protocol of choice, even as LAN's have been subsumed by intranets. 
+            Basically, the NOS, or Network Operating System, has replaced the 
+            OS, since any computer bought today is equipped with internet 
+            technologies.</P>
+            <P align=left>As a result, any contemporary computer can function as 
+            a client or server depending on the software it runs, at least on 
+            the low end of the server market, such as an intranet. In many 
+            instances, the network "link" is the constraining bandwidth/cost 
+            factor rather than the computer itself.</P>
+            <P align=left><BIG><STRONG>Shift to the Server 
+            Side</STRONG></BIG></P>
+            <P align=left>After all the attention to "thin" and other clients, 
+            there is a shift to the server side in the pursuit of the next stage 
+            of the quest for interoperability, the lodestar of computing.</P>
+            <P align=left>The reigning players in server software, with the hope 
+            of parlaying the browser example into the application sphere in 
+            order to replace the PC industry's dominance of the client world, 
+            have focused on the platform-independent appeal of Java and 
+            overlooked the importance of their own server backyard, i.e. the 
+            implications of the web for server software.</P>
+            <P align=left>Important categories of server software is being 
+            re-written to function in a web environment as e-commerce emerges to 
+            drive the market. Again, Java is being positioned as the magic 
+            portion, this time aligned with CORBA and EJB middleware, rather 
+            than the browser, to ward off assaults on the server markets by what 
+            was the PC industry, itself being transformed in the process.</P>
+            <P align=left>The key fear on all fronts is which product will be 
+            "commoditized", i.e. forced to compete on price alone? Will it be 
+            the OS? Will it be the server "box"--made by what the PC world calls 
+            the OEM? Will it be software products in the same way as PC hardware 
+            products?</P>
+            <P align=left>The battle for these server markets has been joined 
+            and the key technology is the WEB SERVER.</P>
+            <P align=left>The web server, strictly speaking the software for 
+            presenting HTTP-based "screens" to the viewer, is becoming the key 
+            technology as the "middle tier" where the business logic is executed 
+            for all kinds of services to web clients via the browser.</P>
+            <P align=left>The web server appears to be the focal point due to 
+            the need for practical interoperability within the enterprise. Since 
+            the desktop/workstation has been integrated on the network by the 
+            browser via the web server, connectivity to database servers are 
+            being linked by the web server as well. Thus all roads, at least the 
+            important ones, lead through the web server.</P>
+            <P align=left>Web server "farms" are the means by which different 
+            server functionality is distributed among related servers in a group 
+            of servers, collectively called a "farm," or even more tightly 
+            integrated in clusters.</P>
+            <P align=left>Clustering is the hardware-based means of achieving 
+            scalability. Scaling "up" has been accomplished through CPUs 
+            clustered via SMP (symmetrical processing), involving the tightest 
+            physical proxmity, while scaling "out" may have more widely 
+            distributed "nodes," each of which could be a SMP cluster.</P>
+            <P align=left>Server software can be distinguished between the 
+            software that is used to administer the server itself and that which 
+            is used to manage the business running on the server. An example of 
+            the former are Online Transaction Processing (OLTP) applications 
+            that do the back end work of a TP monitor as well as a programming 
+            infrastructure, such as an ORB (Object Request Broker) for a 
+            componentized system (see <A 
+            href="../Ecommerce/Transactions/default.htm">Ecommerce 
+            Transactions</A>). An example of the latter would be ERP. App Server 
+            terminology is currently broad enough to include both, adding to the 
+            confusion in this area.</P>
+            <P align=left><BIG><STRONG>Application Servers Gain New 
+            Meaning</STRONG></BIG></P>
+            <P align=left>Once a description of departmental servers that 
+            supplied the desktop with traditional apps over LANs, application 
+            servers have now gained an entirely new meaning in the context of 
+            the web. Now the term describes the services supplied to enable new 
+            "applications" using web technologies, as well as the traditional 
+            apps offered on a "service plan." </P>
+            <P align=left>While this development represents the integration of 
+            traditional client/server with the new web client/server, most of 
+            the action is in supplying these services via web servers.</P>
+            <P align=left>Lost in the brouhaha over NCs v. PCs, and the 
+            assumption that the servers in general would get greater business, 
+            with the <STRONG>web server</STRONG> being merely the generic cousin 
+            of the application and database servers.</P>
+            <P align=left>In short, the technology has moved beyond the OS, and 
+            the middleware-based NOS is upon us and rapidly evolving in the 
+            market.</P>
+            <P align=left><FONT face="Times New Roman" size=4>Next: <A 
+            href="../Middleware/AppServer/default.htm">App Server: Client/Server 
+            Convergence on the Web</A></FONT></P></TD>
+          <TD vAlign=top width=175 bgColor=#ffffc4>
+            <P align=center><STRONG>Resources</STRONG></P>
+            <P><A href="http://www.upside.com/Ebiz/3958f7c90.html" 
+            target=_top><FONT size=2><EM>Competitors stack up in Web application 
+            server market</EM></FONT></A><FONT size=2>, by David Orenstein, 
+            Upside Today, July 10, 2000.</FONT></P>
+            <P><A href="http://www.intelligententerprise.com/000626/feat2.shtml" 
+            target=_top><FONT size=2><EM>The Human Touch</EM></FONT></A><FONT 
+            size=2>, by Justin Kestelyn, Intelligent Enterprise, June 26, 
+            2000.</FONT></P>
+            <P><SMALL><A 
+            href="http://www.techweb.com/se/directlink.cgi?IWK20000619S0053" 
+            target=_top><EM>Application Servers Fuel E-Business</EM></A>, by 
+            Alan Radding, Information Week, June 19, 2000.</SMALL></P>
+            <P><FONT size=2><A 
+            href="http://www.datamation.com/entap/0004crm1RE.html" 
+            target=_top><EM>The new CRM</EM></A>, by Alan Radding, Datamation, 
+            <BR>April 18, 2000.</FONT></P><A 
+            href="http://www.internetworld.com/print/current/technology/20000101-servers.html" 
+            target=_top><SMALL><EM>
+            <P>Application Servers Grow Up</EM></SMALL></A><FONT 
+            face="Times New Roman" size=2>, by David Carr, Internet World, 
+            January 1, 2000.</FONT></P>
+            <P><A 
+            href="http://www.adtmag.com/Pub/jan2000/asps.htm"><SMALL><EM>ASPs: 
+            Service bureau redux or tectonic change?</EM></SMALL></A><FONT 
+            face="Times New Roman" size=2>, by John K. Waters, </FONT><FONT 
+            size=2>Application Development Trends,<FONT face="Times New Roman"> 
+            January 2000.</FONT></FONT></P>
+            <P align=left><FONT size=2><EM><A 
+            href="http://www.infoworld.com/articles/ec/xml/990614ecanalysis.xml" 
+            target=_top>Application Servers Ready for Work</A>, 
+            </EM></FONT><SMALL>by </SMALL><FONT size=2>Maggie Biggs, 
+            </FONT><SMALL>Info World, June 11, 1999.</SMALL></P>
+            <P align=left><FONT size=2><A 
+            href="http://www.enterprisedev.com/upload/free/features/entdev/1999/03mar99/int0399/int0399.asp" 
+            target=_top><EM>Application servers: The mainframe, 
+            reborn?</EM></A></FONT><SMALL>, Interview of Hitachi's Jack Bissell 
+            in Enterprise Development Magazine, March 1999.</SMALL></P>
+            <P align=left><FONT size=2><EM><A 
+            href="http://www.develop.com/hp/ewald/compstrat/silverbullets.htm" 
+            target=_top>Application Servers: The Next Silver Bullet?</A>, 
+            </EM></FONT><SMALL>by </SMALL><FONT size=2>Tim Ewald,</FONT><SMALL> 
+            formerly in <A href="http://www.componentmag.com/" 
+            target=_top>Component Online Strategies</A>, March 1999.</SMALL></P>
+            <P align=left><SMALL><FONT face="Times New Roman"><A 
+            href="http://www.startmag.com/news_9903/99030101.asp" 
+            target=_top><EM>Hot Trend: Interoperable component suites dominate 
+            manufacturing production software</EM></A>, </FONT>Start Magazine, 
+            March 1, 1999.</SMALL></P>
+            <P><SMALL><A 
+            href="http://www.enterprisedev.com/upload/free/features/entdev/1999/03mar99/app0399/app0399.asp" 
+            target=_top><EM>App servers step into the 21st 
+            century</EM></A></SMALL><FONT face="Times New Roman" size=2>, by 
+            Kent Brown, Don Hutcheson, and Mark Phillips, Enterprise 
+            Development, March 1999.</FONT></P>
+            <P><FONT size=2><A 
+            href="http://www.infoworld.com/cgi-bin/displayStory.pl?990220.whmsdna.htm"><EM>Microsoft 
+            plans architecture for manufacturing companies</EM></A>, by Bob 
+            Trott, InfoWorld Electric, February 20, 1999.</FONT></P>
+            <P><FONT size=2><EM><A 
+            href="http://www.intelligententerprise.com/991602/frm_feat1.shtml">Application 
+            Servers: Behind the Mystery</A>, </EM></FONT><SMALL>by </SMALL><FONT 
+            size=2>Nelson King, </FONT><SMALL>Intelligent Enterprise February 
+            16, 1999.</SMALL></P>
+            <P><A href="http://www.erphub.com/scalability_991005.html" 
+            target=_top><FONT size=2><EM>ERP, componentization, and 
+            e-commerce</EM></FONT></A><FONT size=2>, by Alan Radding</FONT><FONT 
+            face="Times New Roman" size=2>, ERP Hub, October 1999.</FONT></P>
+            <P><A 
+            href="http://www.dmreview.com/portal.cfm?NavID=91&amp;EdID=1611&amp;PortalID=196&amp;Topic=65" 
+            target=_top><EM><FONT face="Times New Roman" size=2>Utilizing 
+            Middleware to Build Web Applications</FONT></EM></A><FONT 
+            face="Times New Roman" size=2>, </FONT><SMALL>by Douglas D. Wright, 
+            DM Direct, November 1999.</SMALL></P>
+            <P><FONT size=2><EM><A 
+            href="http://www.adtmag.com/pub/oct98/fe1004.htm">Application 
+            Servers Come Into Focus</A>, </EM></FONT><SMALL>by </SMALL><FONT 
+            size=2>Jason J. Meserve, </FONT><SMALL>Application Development 
+            Trends</SMALL><FONT size=2>, October 1998</FONT><SMALL>.</SMALL></P>
+            <P><A 
+            href="http://www.dmreview.com/portal_ros.cfm?NavID=91&amp;EdID=255&amp;PortalID=203" 
+            target=_top><EM><SMALL>ERP Software Selection: Data Modeling 
+            Critical to Implementaion Success</SMALL></EM></A><FONT 
+            face="Times New Roman" size=2>, by Stuart Pim and Bob Schmidt, DM 
+            Review, December 1998.</FONT></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+      <DIV align=center>
+      <CENTER>
+      <TABLE cellSpacing=0 cellPadding=2 width=580 border=0>
+        <TBODY>
+        <TR>
+          <TD width=576>
+            <P align=center><STRONG><FONT face=Arial size=2><A 
+            href="../">Cover</A></FONT><FONT face=Arial color=#000000 size=2> | 
+            <A href="WebServer.htm">Feature</A> | </FONT><FONT face=Arial 
+            color=#000000 size=2><A href="legal2.htm">Legal Corner</A> | <A 
+            href="../Version98-2/baffle.htm">Perspectives</A></FONT></STRONG></P></TD></TR></TBODY></TABLE></CENTER></DIV>
+      <DIV align=center>
+      <CENTER>
+      <TABLE borderColor=#dfdfdf cellSpacing=0 cellPadding=7 width=580 
+      bgColor=#ffb062 border=1>
+        <TBODY>
+        <TR>
+          <TD width=159><STRONG><FONT size=4>C</FONT><FONT size=3>opyright © 
+            1997-2003</STRONG> <STRONG>Components Online.</STRONG><BR>All rights 
+            reserved</FONT>.<BR><A 
+            href="mailto:contact1@components-online.com">Email us</A>, but no 
+            confidential info please.</TD>
+          <TD width=257>
+            <P align=left><STRONG><BIG>W</BIG>eb site information</STRONG> is 
+            provided, <BIG><STRONG>not</STRONG></BIG> as <STRONG>legal or 
+            consulting advice</STRONG>, but "<STRONG>as is</STRONG>," without 
+            warranties. <STRONG>Use at your own risk</STRONG> after consulting 
+            with professional advisors. See <A 
+            href="../Contents/_private/TermsOfUse.htm">Terms of Use 
+          here</A>.</P></TD>
+          <TD width=122>
+            <P align=center><A href="http://www.b-v-i.com/WebDesign/default.htm" 
+            target=_top><STRONG><EM><FONT 
+            color=#008080><BIG><BIG>by</BIG></BIG><BR><BIG><BIG>Web</BIG></BIG><BR><BIG><BIG>Design</BIG></BIG></FONT></EM></STRONG></A></P></TD></TR></TBODY></TABLE></CENTER></DIV><!--webbot bot="Include" endspan i-checksum="4421" --></TD></TR></TBODY></TABLE></CENTER></DIV></BODY></HTML>

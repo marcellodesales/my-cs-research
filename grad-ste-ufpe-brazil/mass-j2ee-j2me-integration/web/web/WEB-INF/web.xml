@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app 
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+    <!-- General description of your web application -->
+
+    <display-name>Mobile Audience Survey System [M.A.S.S.]</display-name>
+    <description>
+The Mobile Audience Survey System is the especification of a dinamic audience survey that questioners can make questionaries to an environment of listeners placed on a local or distributed places. The questioner is responsible for creating a questinary in order to let the listeners access it to answer the questions. A questionary is composed by one or more single or multiple choice questions, in the case of a test. The questionary is saved on and loaded from a centralized server. It should be possible for the listerners to view the current number of listeners who have already answered the questionary, as well as the current results on a friendly way (graphs). The listeners can optionally save the global results on ther phone and also see their score, if the survey is a test, for instance. If the audience is placed on distributed places, an online international conferece for instance, the questionary should also be provided on the web. The access of the system is made by a user name, which's associated with the place where the survey happens.
+    </description>
+
+
+    <!-- Context initialization parameters that define shared
+         String constants used within your application, which
+         can be customized by the system administrator who is
+         installing your application.  The values actually
+         assigned to these parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletContext().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of context initialization
+         parameters, including zero.
+    -->
+
+    <context-param>
+      <param-name>webmaster</param-name>
+      <param-value>marcellojunior@hotmail.com</param-value>
+      <description>
+        The EMAIL address of the administrator to whom questions
+        and comments about this application should be addressed.
+      </description>
+    </context-param>
+
+
+    <!-- Servlet definitions for the servlets that make up
+         your web application, including initialization
+         parameters.  With Tomcat, you can also send requests
+         to servlets not listed here with a request like this:
+
+           http://localhost:8080/{context-path}/servlet/{classname}
+
+         but this usage is not guaranteed to be portable.  It also
+         makes relative references to images and other resources
+         required by your servlet more complicated, so defining
+         all of your servlets (and defining a mapping to them with
+         a servlet-mapping element) is recommended.
+
+         Servlet initialization parameters can be retrieved in a
+         servlet or JSP page by calling:
+
+             String value =
+               getServletConfig().getInitParameter("name");
+
+         where "name" matches the <param-name> element of
+         one of these initialization parameters.
+
+         You can define any number of servlets, including zero.
+    -->
+    
+	<servlet>
+		<servlet-name>invoker</servlet-name>
+		<servlet-class>org.apache.catalina.servlets.InvokerServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+    
+    <servlet>
+      <servlet-name>CurrentOpenedSessionServlet</servlet-name>
+      <description>
+			Gets the current Session Information
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.CurrentOpenedSessionServlet</servlet-class>
+    </servlet>    
+    
+    <servlet>
+      <servlet-name>AnswerSessionServlet</servlet-name>
+      <description>
+			Answers a given Session
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.AnswerSessionServlet</servlet-class>
+    </servlet>      
+
+    <servlet>
+      <servlet-name>SessionResultsServlet</servlet-name>
+      <description>
+			Gets the SessionResults instance of a given session.
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.SessionResultsServlet</servlet-class>
+    </servlet> 
+    
+    <servlet>
+      <servlet-name>CreateNewSessionServlet</servlet-name>
+      <description>
+			Creates a new Session instance.
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.CreateNewSessionServlet</servlet-class>
+    </servlet>    
+    
+    <servlet>
+      <servlet-name>CloseCurrentSessionServlet</servlet-name>
+      <description>
+			Closes the current session instance.
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.CloseCurrentSessionServlet</servlet-class>
+    </servlet> 
+    
+    <servlet>
+      <servlet-name>ExistingSessionsServlet</servlet-name>
+      <description>
+			Returns the current sessions instances.
+      </description>
+      <servlet-class>br.ufpe.cin.stp.mass.view.web.ExistingSessionsServlet</servlet-class>
+    </servlet>           
+    
+    <!-- Define mappings that are used by the servlet container to
+         translate a particular request URI (context-relative) to a
+         particular servlet.  The examples below correspond to the
+         servlet descriptions above.  Thus, a request URI like:
+
+           http://localhost:8080/{contextpath}/graph
+
+         will be mapped to the "graph" servlet, while a request like:
+
+           http://localhost:8080/{contextpath}/saveCustomer.do
+
+         will be mapped to the "controller" servlet.
+
+         You may define any number of servlet mappings, including zero.
+         It is also legal to define more than one mapping for the same
+         servlet, if you wish to.
+    -->
+	<servlet-mapping>
+		<servlet-name>invoker</servlet-name>
+		<url-pattern>/servlet/*</url-pattern>
+	</servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>CurrentOpenedSessionServlet</servlet-name>
+      <url-pattern>/currentSession</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+      <servlet-name>AnswerSessionServlet</servlet-name>
+      <url-pattern>/answerSession</url-pattern>
+    </servlet-mapping>    
+
+    <servlet-mapping>
+      <servlet-name>SessionResultsServlet</servlet-name>
+      <url-pattern>/sessionResults</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet-mapping>
+      <servlet-name>CreateNewSessionServlet</servlet-name>
+      <url-pattern>/createNewSession</url-pattern>
+    </servlet-mapping>   
+    
+    <servlet-mapping>
+      <servlet-name>CloseCurrentSessionServlet</servlet-name>
+      <url-pattern>/closeCurrentSession</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+      <servlet-name>ExistingSessionsServlet</servlet-name>
+      <url-pattern>/existingSessions</url-pattern>
+    </servlet-mapping>             
+    
+    <!-- Define the default session timeout for your application,
+         in minutes.  From a servlet or JSP page, you can modify
+         the timeout for a particular session dynamically by using
+         HttpSession.getMaxInactiveInterval(). -->
+
+    <session-config>
+      <session-timeout>30</session-timeout>    <!-- 30 minutes -->
+    </session-config>
+
+
+</web-app>

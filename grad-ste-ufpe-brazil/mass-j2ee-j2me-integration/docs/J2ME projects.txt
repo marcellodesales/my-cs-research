@@ -1,0 +1,12 @@
+dictionary - translator;
+mobile-seller;
+e-money;
+
+
+garçon
+mobile-waiter
+
+mobile-Ask
+	- online tests;
+	- questions;
+	- 
