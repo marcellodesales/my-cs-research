@@ -1,0 +1,185 @@
+<HTML>
+<%@ page import="br.ufal.graw.User" %>
+<%@ page import="br.ufal.graw.ExternUser" %>
+<%@ page import="br.ufal.graw.Course" %>
+<%@ page import="br.ufal.graw.Group" %>
+<%@ page import="br.ufal.graw.DatabaseLayer" %>
+<%@ page import="br.ufal.graw.web.ServletUtility" %>
+<%@ page errorPage="/status/errorFatal.jsp" %>
+<% 
+User user = (User)session.getAttribute("user");
+Course course = (Course)session.getAttribute("course");
+Group group = (Group)session.getAttribute("group");
+if (user == null) {
+	session.invalidate();
+	ServletUtility.sendRedirect(response,ServletUtility.ERROR_FATAL_GENERIC_PAGE,"A sessão expirou.");
+}else{
+%>
+
+<HEAD>
+<!-- #BeginEditable "doctitle" -->
+<TITLE>graW - Gradua&ccedil;&atilde;o na Web - TCI/UFAL</TITLE>
+<!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<link rel="stylesheet" href="/sources/style/graw.css" type="text/css">
+<script language="javascript" src="/sources/script/table.js"></script>
+<BODY link=#000000 bgColor=white leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<CENTER>
+<DIV align=center>
+    <TABLE id=tabelaHeader cellSpacing=0 cellPadding=0 width=760 border=0>
+      <TBODY> 
+      <TR> 
+        <TD width=80><img src="/sources/images/graw.gif" width="80" height="79"></TD>
+        <TD width=81> 
+          <center>
+            <b><i><font face="Verdana, Arial, Helvetica, sans-serif">Gradua&ccedil;&atilde;o<BR>
+            na<BR>
+            Web</font></i></b> 
+          </center>
+        </TD>
+        <TD  width="599"> 
+			
+        </TD>
+      </TR>
+      <TR> 
+        <TD id=header vAlign=center align=middle colSpan=4 height=20> 
+          <TABLE cellSpacing=0 cellPadding=1 width="98%" border=0>
+            <TBODY> 
+            <TR> 
+              <TD class="textoHeader" width="67%">graW <FONT class=menuFora> &#149;</FONT> 
+                <!-- #BeginEditable "directory" --> {directory}<!-- #EndEditable --> 
+              </TD>
+              <TD align="right" width="33%"> 
+                <div align="right"><%=user.getFirstName() %> | <A class=Link href="/servlet/br.ufal.graw.web.Logout">sair</A> 
+                </div>
+              </TD>
+            </TR>
+            </TBODY> 
+          </TABLE>
+        </TD>
+      </TR>
+      </TBODY> 
+    </TABLE>
+    <TABLE cellSpacing=0 cellPadding=0 width=748 border=0 height="157">
+      <TBODY> 
+      <TR> 
+        <TD class=menuFora colSpan=3 height=12>&nbsp;</TD>
+      </TR>
+      <TR> 
+        <TD vAlign=top align=middle width=154 height="313"> 
+          <TABLE class=tabelaSimples cellSpacing=0 cellPadding=3 width="92%" 
+      border=0>
+            <TBODY> 
+            <TR> 
+              <TD id=headerSimples>Minhas Informa&ccedil;&otilde;es</TD>
+            </TR>
+			
+	            <TR> 
+	              <TD id=corpoSimples height="0">
+				  		<% 
+					  	if ( ! ( user instanceof ExternUser )){		   %>
+						  	&nbsp;<img src="../sources/images/seta.gif" width="11" height="11">  <a href="../user/config.jsp" class="Link">Pessoais</a><br>
+			                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"><a href="../user/password.jsp" class="Link">  Mudar senha</a><br>
+						<%}%>
+			                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> <a href="../user/agenda.jsp" class="Link">Agenda</a> </TD>
+	            </TR>
+            </TBODY> 
+          </TABLE>  
+		  <br>        
+		  <%
+			if ( (course != null) || ( group != null ) ){		%>
+				<table class=tabelaSimples cellspacing=0 cellpadding=3 width="92%">
+					<tbody> 
+			            <tr> 
+				              
+              <td id=headerSimples>Comunica&ccedil;&atilde;o </td>
+			            </tr>
+	    		        <tr> 
+				              <td id=corpoSimples height="0">&nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+				                <a href="/forum/index.jsp" class="Link" >F&oacute;rum</a><br>
+				                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+				                Chat<br>
+				                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+				                <a href="/email/index.jsp" class="Link" >Email</a></td>
+			           </tr>
+	    		    </tbody> 
+		          </table>
+		          <br>
+		          <table class=Link cellspacing=0 cellpadding=3 width="92%">
+			            <tbody> 
+				            <tr> 
+			    	          
+              <td id=headerSimples>Pedag&oacute;gico</td>
+				            </tr>
+				            <tr> 
+				              
+              <td id=corpoSimples height="0">&nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+                <a href="/document/index.jsp" class="Link">Documentos</a> <br>
+                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+                <a href="/link/index.jsp" class="Link">Links </a></td>
+				           </tr>
+			            </tbody> 
+		          </table>
+				  <br>
+		  <% } 
+		  	if ( ! ( user instanceof ExternUser )){		   %>
+				<TABLE class=tabelaSimples cellSpacing=0 cellPadding=3 width="92%">
+            		<TBODY> 
+			            <TR> 
+            			  <TD id=headerSimples>Meus Cursos</TD>
+			            </TR>
+			            <TR> 
+				        	<TD id=corpoSimples height="0">&nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+			                	<a href="/user/chooseCourse.jsp" class="Link">Acessar</a><br>
+                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+                <a href="/user/editCourse.jsp" class="Link">Editar</a><BR>
+							</TD>
+			            </TR>
+            		</TBODY> 
+		          </TABLE>
+				  <br>
+				<%}%>
+				<TABLE class=tabelaSimples cellSpacing=0 cellPadding=3 width="92%">
+            		<TBODY> 
+			            <TR> 
+            			  
+              <TD id=headerSimples>Meus Grupos</TD>
+			            </TR>
+			            <TR> 
+				        	<TD id=corpoSimples height="0">&nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+			                	<a href="/user/chooseGroup.jsp" class="Link">Acessar</a><br>
+                &nbsp;<img src="../sources/images/seta.gif" width="11" height="11"> 
+                <a href="/user/newGroup.jsp" class="Link">Criar</a><BR>
+							</TD>
+			            </TR>
+            		</TBODY> 
+		          </TABLE>
+				  <br>
+        </TD>
+        <TD vAlign=top height="313"><!-- #BeginEditable "information" -->{information}<!-- #EndEditable --> 
+        </TD>
+      </TR>
+      </TBODY> 
+    </TABLE>
+    <TABLE cellSpacing=0 cellPadding=0 width=760 border=0>
+  <TBODY>
+  <TR>
+        <TD id=header vAlign=center align=middle height=18> 
+			<div align="right">
+	          <%	
+				if (course != null) {		%>
+	    	      <a href=/course/index.jsp><%=course.getName() %></a> 
+            	<%} 
+				if (group != null) {		%>
+    		        <FONT class=menuFora> &#149;</FONT> <a href=/group/index.jsp><%=group.getName() %></a> 
+            	<%} %>
+          </div>
+        </TD>
+      </TR>
+  <TR>
+        <TD align=center height=24>® 2001. Todos os direitos reservados - TCI 
+          - Departamento de Tecnologia da Informa&ccedil;&atilde;o - UFAL<BR>
+        </TD>
+      </TR></TBODY></TABLE></DIV></CENTER></BODY>
+<% } %>	  
+</HTML>

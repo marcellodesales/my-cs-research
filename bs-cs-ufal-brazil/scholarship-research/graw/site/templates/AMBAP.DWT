@@ -1,0 +1,189 @@
+<html>
+<head>
+<!-- #BeginEditable "doctitle" -->
+<title>AMBAP - AMBiente de Aprendizado de Programação</title>
+<!-- #EndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL="stylesheet" HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/formatacao.css">
+<script language="javascript" src="file://///Ambap01/c/prog-ambap/pagina/ambap/new/menu.js"></script>
+</head>
+
+<body bgcolor="#7E9EBE" LINK="#000000" VLINK="#000000" ALINK="#000000">
+<CENTER>
+<TABLE class="Contorno" width="750">
+<TR>
+	<TD>
+		<TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+		<TR>
+			<TD align="center" bgcolor="#003366" colspan="2" height="30"><FONT class="Titulo">AMBAP - AMBiente de Aprendizado de Programação</FONT></TD>		
+		</TR>
+		<TR>
+			<TD width="50%" align="center" bgcolor="#ffffff"><img src="file://///Ambap01/c/prog-ambap/pagina/ambap/new/imagens%5Cufal.gif" width="34" height="60"></TD>
+			<TD width="50%" align="center" bgcolor="#ffffff"><img src="file://///Ambap01/c/prog-ambap/pagina/ambap/new/imagens%5Ctci.gif"></TD>
+		</TR>
+		<TR>
+			<TD width="50%" align="center" bgcolor="#ffffff"><FONT class="SubTitulo">Universidade Federal de Alagoas - UFAL</FONT></TD>
+			<TD width="50%" align="center" bgcolor="#ffffff"><FONT class="SubTitulo">Departamento de Tecnologia da Informação</FONT></TD>
+		</TR>
+		<TR>
+			<TD colspan="2" height="10" bgcolor="#ffffff">		
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="2" bgcolor="#003366">
+				<TABLE border="0" width="100%" cellpadding="3">		
+				<TR>
+					<TD align="left">
+						-
+					</TD>
+					<TD align="right" width="260">
+						<FONT CLASS="Cabecalho">
+							<SCRIPT LANGUAGE="JavaScript">
+				             <!--
+				              dia = new Date();
+				
+				              ano = dia.getYear();
+		
+            				  if (ano < 2000) // correçao para browsers que retornam 100 no ano 2000
+				                {
+				                   ano = 1900 + dia.getYear();
+				                }
+
+				              mes = new Array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro")
+
+				              dia_semana = new Array("Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado");
+	
+				              document.writeln(dia_semana[dia.getDay()] + ", " + dia.getDate() + " de " +  mes[dia.getMonth()] + " de " + ano);
+				              document.writeln("<BR>");
+			    	         //-->
+			        	   </SCRIPT>
+						</FONT>		
+					</TD>
+				</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="2">
+				<TABLE border="0" width="100%" cellspacing="0" cellpadding="0">
+				<TR>
+					<TD width="150" valign="top" bgcolor="#003366">
+						<TABLE width="100%" border="0" cellspacing="3" cellpadding="3" >
+						<TR>
+							<TD bgcolor="#7E9EBE" align="center"><FONT class="MenuTopico">Conhe&ccedil;a o AMBAP</FONT></TD>
+						</TR>
+						<TR>					
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('index.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/index.htm">Apresentação</A></FONT></TD>
+						</TR>
+						<TR>
+							<TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('screenshots.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/screenshots.htm">ScreenShots</A></FONT></TD>
+						</TR>
+						<TR>
+							<TD bgcolor="#7E9EBE" align="center"><FONT class="MenuTopico">Obtendo o AMBAP</FONT></TD>
+						</TR>						
+						<TR>						
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('download.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/ultima.htm">&Uacute;ltima Vers&atilde;o </A></FONT></TD>
+						</TR>
+						<TR>						
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('screenshots.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/anteriores.htm">Vers&otilde;es Anteriores </A></FONT></TD>
+						</TR>
+						<TR>
+							<TD bgcolor="#7E9EBE" align="center"><FONT class="MenuTopico">Fale Conosco</FONT></TD>
+						</TR>
+						<TR>						
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('screenshots.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/relatar.htm">Relatar Bugs</A></FONT></TD>
+						</TR>
+						<TR>						
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('screenshots.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/sugestoes.htm">Sugest&otilde;es</A></FONT></TD>
+						</TR>
+						<TR>						
+	                        <TD bgcolor="#d5eaff" onMouseOver="mOvr(this, '#94DCF3');" onMouseOut="mOut(this, '#d5eaff');" onClick="mClk('screenshots.htm');"><FONT class="MenuItem"><A HREF="file://///Ambap01/c/prog-ambap/pagina/ambap/new/e-mail.htm">E-mail</A></FONT></TD>
+						</TR>																																												
+						</TABLE>
+					</TD>
+					<TD>
+						<TABLE border="0" cellpadding="10" width="100%">
+						<TR>
+							<TD bgcolor="#FFFFFF">
+								<P CLASS="Topico">AMBAP - Ambiente de Aprendizado de Programa&ccedil;&atilde;o</P> 
+								<P CLASS="SubTopico">Descri&ccedil;&atilde;o</P>							
+								<P CLASS="Texto">Na an&aacute;lise dos resultados obtidos nas diversas
+								disciplinas ofertadas para o Curso de Ci&ecirc;ncia da Computa&ccedil;&atilde;o
+								da UFAL, constatou-se um baixo &iacute;ndice de assimila&ccedil;&atilde;o dos
+								estudantes nas disciplinas cujos requisitos exigem o conhecimento de
+								programa&ccedil;&atilde;o. Este fato pode ter duas justificativas: a primeira
+								&eacute; a dificuldade do estudante em formular a solu&ccedil;&atilde;o de um
+								problema proposto, onde para esta formula&ccedil;&atilde;o &eacute; exigida a
+								compreens&atilde;o do problema, e a segunda &eacute; a n&atilde;o
+								utiliza&ccedil;&atilde;o de t&eacute;cnicas adequadas para definir as
+								a&ccedil;&otilde;es que levam a solu&ccedil;&atilde;o do problema da forma mais
+								eficiente poss&iacute;vel.</P> 
+								<P CLASS="Texto">O bom aprendizado da l&oacute;gica de
+								programa&ccedil;&atilde;o &eacute; essencial para a forma&ccedil;&atilde;o do
+								profissional de inform&aacute;tica que busca o desenvolvimento de sistemas de
+								qualidade. Logo, para desenvolver um sistema de qualidade, o grau de
+								dificuldade encontrado pelo estudante &eacute; justificado, n&atilde;o
+								s&oacute; pela preocupa&ccedil;&atilde;o inerente ao problema, no que diz
+								respeito a sua correta especifica&ccedil;&atilde;o, mas pela
+								preocupa&ccedil;&atilde;o com os detalhes de implementa&ccedil;&atilde;o, visto
+								que o elemento solucionador do problema &eacute; o computador. E, uma vez que o
+								computador est&aacute; inserido neste contexto, o estudante necessita ainda
+								entender certas caracter&iacute;sticas associadas ao seu funcionamento e
+								tamb&eacute;m conhecer alguma linguagem de programa&ccedil;&atilde;o (leia-se
+								sua sintaxe e sua sem&acirc;ntica) para que seu programa possa ser
+								implementado.</P> 
+								<P CLASS="Texto">Este projeto visa desenvolver um ambiente para
+								facilitar o aprendizado de l&oacute;gica de programa&ccedil;&atilde;o, no que
+								diz respeito a constru&ccedil;&atilde;o de algoritmos, que permita minimizar o
+								esfor&ccedil;o do estudante em aplicar corretamente os conceitos e
+								t&eacute;cnicas de programa&ccedil;&atilde;o, atrav&eacute;s de um processo de
+								simula&ccedil;&atilde;o. Isto &eacute;, este ambiente ir&aacute; auxiliar o
+								estudante na compreenss&atilde;o de todas as etapas de desenvolvimento de um
+								programa, independente da linguagem de programa&ccedil;&atilde;o utilizada,
+								contando com recursos de indu&ccedil;&atilde;o. Entre estas etapas, podemos
+								incluir a defini&ccedil;&atilde;o da seq&uuml;&ecirc;ncia de
+								a&ccedil;&otilde;es para solucionar problemas e a visualiza&ccedil;&atilde;o de
+								como esta seq&uuml;&ecirc;ncia de a&ccedil;&otilde;es atua quando o elemento
+								solucionador &eacute; o computador. Nosso argumento &eacute; que uma vez que o
+								estudante assimile o racioc&iacute;nio l&oacute;gico que &eacute; exigido de
+								todo bom programador, estar&aacute; automaticamente cumprida uma das etapas
+								mais importantes e sofridas no Curso de Ci&ecirc;ncias da
+								Computa&ccedil;&atilde;o. E com este conhecimento torna-se facilitado o
+								aprendizado de qualquer linguagem de programa&ccedil;&atilde;o hoje existente
+								no mercado, uma vez que a l&oacute;gica de programa&ccedil;&atilde;o j&aacute;
+								est&aacute; assimilada.</P> 
+								<P CLASS="SubTopico">Local de Execu&ccedil;&atilde;o</P> 
+								<P CLASS="Texto"><B>Centro/Unidade:</B> CCEN (Centro de Ci&ecirc;ncias Exatas e Naturais)</P> 
+								<P CLASS="Texto"><B>Departamento/Setor:</B> TCI (Tecnologia da Informa&ccedil;&atilde;o)</P> 
+								<P CLASS="SubTopico">Equipe Executora</P> 
+								<P CLASS="Texto"><B>Orientador(a):</B> </P> 
+								<P CLASS="Texto">Profa. Dra. Eliana Silva de Almeida (UFAL)</P>
+	 							<P CLASS="Texto"><B>Executores:</B></P> 
+								<P CLASS="Texto">
+									Andr&eacute; Atanasio Maranh&atilde;o Almeida (UFAL)<BR>
+									Julian Diego Herrera Braga<BR>
+									Klebson dos Santos Silva (UFAL)<BR>
+									Rodrigo de Barros Paes(UFAL)</P>
+								<P CLASS="Texto"><B>Colaboradores:</B></P> 
+								<P CLASS="Texto">Prof. Dr. Evandro de Barros Costa (UFAL)<BR>Prof. Dr. Sergio Crespo Coelho da Silva Pinto (UNISINOS)</P>
+							</TD>
+						</TR>
+						</TABLE>
+					</TD>
+				</TR>
+				</TABLE>
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="2" align="center" bgcolor="#003366">
+				<FONT class="Cabecalho">Copyleft © 2001 - TCI/UFAL - Se não gostou, então faça! Todos direitos reservados. All rights reserved.</FONT>
+			</TD>
+		</TR>
+		</TABLE>
+	</TD>
+</TR>
+</TABLE>
+</CENTER>
+
+</body>
+</html>

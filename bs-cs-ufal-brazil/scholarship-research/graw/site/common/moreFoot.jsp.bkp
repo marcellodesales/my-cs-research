@@ -1,0 +1,39 @@
+<%
+    // Begin Prev/Next Links
+    // Don't display PREV link if on first page
+	int prevoffset;
+    if (offset != 0) {
+        prevoffset = offset-limit;
+		out.println("<a href='"+request.getRequestURI()+"?stage&offset="+prevoffset+"'>Anterior</a>&nbsp;&nbsp;");
+    }
+	
+    // Calculate total number of pages in result
+    int pages = totalrows/limit;
+
+    // 'pages' now contains total number of pages needed unless there is a remainder from division
+    if (totalrows % limit) {
+        // has remainder so add one page
+        pages++;
+    }
+	
+    // Now loop through the pages to create numbered links
+    // ex. 1 2 3 4 5 NEXT
+    for (int i=1; i <= pages; i++) {
+        // Check if on current page
+        if ((offset/limit) == (i-1)) {
+            // i is equal to current page, so don't display a link
+            out.println("[<font color='red'>&nbsp;"+ i +"&nbsp;</font>]");			
+        } else {
+            // i is NOT the current page, so display a link to page i
+            int newoffset = limit*(i-1);
+            out.println("<a href='"+request.getRequestURI()+"?stage&offset="+newoffset+"'>"+ i +"</a>&nbsp;&nbsp;");
+        }
+    }
+
+    // Check to see if current page is last page
+    if (!(((offset/limit)+1) == pages) && pages != 1) {
+        // Not on the last page yet, so display a NEXT Link
+        newoffset = offset + limit;
+        out.println("<a href='"+request.getRequestURI()+"?stage&offset="+newoffset+">Próximo</a>");
+    }
+%>

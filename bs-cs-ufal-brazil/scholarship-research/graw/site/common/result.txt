@@ -1,0 +1,6 @@
+begin = offset(10) + 1 = (11)
+endd = begin(11) + (limit(10)-1) = (20)
+
+endd = 14;
+
+prevoffset = 10 - 10;

@@ -1,0 +1,28 @@
+// Decompiled by DJ v3.7.7.81 Copyright 2004 Atanas Neshkov  Date: 13/7/2004 13:28:36
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   MarshallDepartment.java
+
+package br.ufal.graw.web.administrator;
+
+import java.util.Collection;
+
+public class MarshallDepartment
+{
+
+    public Collection getUsers()
+    {
+        return users;
+    }
+
+    public void setUsers(Collection uses)
+    {
+        users = users;
+    }
+
+    public MarshallDepartment()
+    {
+    }
+
+    private Collection users;
+}

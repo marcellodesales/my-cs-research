@@ -1,0 +1,14 @@
+.bodybase		{background-color:#406F8F;}
+
+.formenvia		{vertical-align:bottom; text-align:center;margin-left: 3pt}
+.campos			{font-family:tahoma,helvetica; font-size:8pt; color:black;}
+.usuario		{font-family:tahoma,helvetica; font-size:8pt; color:black;}
+
+.msg_preta		{font-family:tahoma,helvetica; font-size:8pt; color:black;}
+.msg_azul		{font-family:tahoma,helvetica; font-size:8pt; color:blue;}
+.msg_vermelha		{font-family:tahoma,helvetica; font-size:8pt; color:red;}
+.msg_laranja		{font-family:tahoma,helvetica; font-size:8pt; color:orange;}
+.msg_verde		{font-family:tahoma,helvetica; font-size:8pt; color:rgb(0,150,0);}
+.msg_cinza		{font-family:tahoma,helvetica; font-size:8pt; color:rgb(128,128,128);}
+
+.texto			{font-family:tahoma,helvetica; font-size:8pt; color:white;}

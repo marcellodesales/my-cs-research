@@ -1,0 +1,199 @@
+<HTML>
+<%@ page import="br.ufal.graw.User" %>
+<%@ page import="br.ufal.graw.Professor" %>
+<%@ page import="br.ufal.graw.ExternUser" %>
+<%@ page import="br.ufal.graw.Course" %>
+<%@ page import="br.ufal.graw.Group" %>
+<%@ page import="br.ufal.graw.DatabaseLayer" %>
+<%@ page import="br.ufal.graw.web.ServletUtility" %>
+<%@ page errorPage="/status/errorFatal.jsp" %>
+<% 
+User user = (User)session.getAttribute("user");
+Course course = (Course)session.getAttribute("course");
+Group group = (Group)session.getAttribute("group");
+if (user == null) {
+	session.invalidate();
+	ServletUtility.sendRedirect(response,ServletUtility.ERROR_FATAL_GENERIC_PAGE,"A sessão expirou.");
+}else{
+	boolean tutor = false;
+	if (user instanceof Professor){
+		tutor = true;
+	}
+%>
+
+<HEAD>
+<!-- #BeginEditable "doctitle" -->
+<TITLE>graW - Gradua&ccedil;&atilde;o na Web - TCI/UFAL</TITLE>
+<!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<link rel="stylesheet" href="/sources/style/graw.css" type="text/css">
+<script language="javascript" src="/sources/script/table.js"></script>
+<BODY link=#000000 bgColor=white leftMargin=0 topMargin=0 marginwidth="0" marginheight="0">
+<CENTER>
+  <DIV align=center><br>
+    <TABLE class="tabelaMaior" cellSpacing=0 cellPadding=0 width=748 border="0" height="0">
+      <TR> 
+        <TD class=menuFora height=84 valign="top"> 
+          <table cellspacing=0 cellpadding=0 width=760 border=0 align="left" height="0">
+            <tbody> 
+            <tr> 
+              <td height="0" width="204" rowspan="2" valign="top"> 
+                <div align="left"><img src="/sources/images/graw.gif" width="191" height="74"> 
+                </div>
+              </td>
+              <td height="-1">Seja Bem Vindo <%=user.getFirstName() %>!</td>
+              <td height="-1" width="284"><img src="/sources/images/icons.gif" width="311" height="30"></td>
+            </tr>
+            <tr> 
+              <td height="28" valign="bottom" colspan="2"> 
+                <div align="right"></div>
+              </td>
+            </tr>
+            <tr> 
+              <td class=menuFora height=0 colspan=4> 
+          <table class="tabelaSimples2" cellspacing=0 cellpadding=0 width=100% border=0>
+            <tbody> 
+            <tr> 
+                    <td id=header valign=center align=middle height=18><div align="right"><!-- #BeginEditable "directory" -->{directory}<!-- #EndEditable --></div></td>
+            </tr>
+            </tbody> 
+		</table>
+          </td>
+            </tr>
+          </table>
+        </TD>
+      </TR>
+      <TBODY> 
+      <TR> 
+        <TD class=menuFora valign="top" height=0> 
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="22%" height="0" valign="top"> 
+                <table class=tabelaSimples cellspacing=1 cellpadding=3 width="100%" 
+      border=0>
+                  <tbody> 
+                  <tr> 
+                    <td id=headerSimples> Minhas Informa&ccedil;&otilde;es</td>
+                  </tr>
+                  <tr> 
+                    <td id=corpoSimples height="0"> 
+                      <% 
+					  	if ( ! ( user instanceof ExternUser )){		   %>
+                      <img src="bola1.gif" width="5" height="4"><a href="../user/config.jsp" class="Link"> 
+                      Pessoais</a><br>
+                      <img src="bola1.gif" width="5" height="4"><a href="../user/password.jsp" class="Link"> 
+                      Mudar senha</a><br>
+                      <%}%>
+                      <img src="bola1.gif" width="5" height="4"><a href="../user/agenda.jsp" class="Link"> 
+                      Agenda</a> </td>
+                  </tr>
+                  </tbody> 
+                </table>
+                <%
+			if ( (course != null) || ( group != null ) ){		%>
+                <table class=tabelaSimples cellspacing=1 cellpadding=3 width="100%">
+                  <tbody> 
+                  <tr> 
+                    <td id=headerSimples>Comunica&ccedil;&atilde;o </td>
+                  </tr>
+                  <tr> 
+                    <td id=corpoSimples height="0"><img src="bola1.gif" width="5" height="4"><a href="/forum/index.jsp" class="Link" > 
+                      F&oacute;rum</a><br>
+					  <%
+					  String salaID = (group==null) ? course.getID() : group.getID() ;
+					  %>
+                      <img src="bola1.gif" width="5" height="4"> <a class="Link" href="#" onclick="window.open('http://192.168.10.16:8080/servlet/br.ufal.graw.chat.Chat?acao=enviaapelido&apelido=<%= user.getLogin() %>&salaID=<%= salaID %>','grawChat','width=640,height=480'); return false;">Chat</a><br>
+                      <img src="bola1.gif" width="5" height="4"> <a href="/email/index.jsp" class="Link" >Email</a></td>
+                  </tr>
+                  </tbody> 
+                </table>
+                <table class=tabelaSimples cellspacing=1 cellpadding=3 width="100%">
+                  <tbody> 
+                  <tr> 
+                    <td id=headerSimples> Pedag&oacute;gico</td>
+                  </tr>
+                  <tr> 
+                    <td id=corpoSimples height="0"><img src="bola1.gif" width="5" height="4"><a href="/document/index.jsp" class="Link"> 
+                      Documentos</a> <br>
+                      <img src="bola1.gif" width="5" height="4"> <a href="/link/index.jsp" class="Link">Links 
+                      </a></td>
+                  </tr>
+                  </tbody> 
+                </table>
+                <% } 
+		  	if ( ! ( user instanceof ExternUser )){		   %>
+                <table class=tabelaSimples cellspacing=1 cellpadding=3 width="100%">
+                  <tbody> 
+                  <tr> 
+                    <td id=headerSimples>Meus Cursos</td>
+                  </tr>
+                  <tr> 
+                    <td id=corpoSimples height="0"><img src="bola1.gif" width="5" height="4"> 
+                      <a href="/user/chooseCourse.jsp" class="Link">Acessar</a><br>
+                      <img src="bola1.gif" width="5" height="4"> <a href="/user/configCourse.jsp" class="Link">Editar</a><br>
+					  <% if (tutor){	%>
+						  <img src="bola1.gif" width="5" height="4"> <a href="/user/newCourse.jsp" class="Link">Criar</a><br>	<%
+						 } %>
+                    </td>
+                  </tr>
+                  </tbody> 
+                </table>
+                <%}%>
+                <table class="tabelaSimples" cellspacing=1 cellpadding=3 width="100%">
+                  <tbody> 
+                  <tr> 
+                    <td id=headerSimples>Meus Grupos</td>
+                  </tr>
+                  <tr> 
+                    <td id=corpoSimples height="0">&nbsp;<a href="/user/chooseGroup.jsp" class="Link"><img src="bola1.gif" width="5" height="4" border="0"> 
+                      Acessar</a><br>
+                      &nbsp;<a href="/user/newGroup.jsp" class="Link"><img src="bola1.gif" width="5" height="4" border="0"> 
+                      Criar</a><br>
+                    </td>
+                  </tr>
+                  </tbody> 
+                </table>
+                <br>
+              </td>
+              <td valign="top" width="78%"><!-- #BeginEditable "information" -->{information}<!-- #EndEditable --> 
+              </td>
+            </tr>
+          </table>
+          
+        </TD>
+      </TR>
+      <TR> 
+        <TD class=menuFora height=0> 
+          <table  class="tabelaSimples2" cellspacing=0 cellpadding=0 width=100% border=0>
+            <tbody> 
+            <tr> 
+              <td id=header valign=center align=middle height=18> 
+                <div align="right"> 
+                  <%	
+				if (course != null) {		%>
+                  <a href=/course/index.jsp><%=course.getName() %></a> 
+                  <%} 
+				if (group != null) {		%>
+                  <font class=menuFora> &#149;</font> <a href=/group/index.jsp><%=group.getName() %></a> 
+                  <%} %>
+                </div>
+              </td>
+            </tr>
+            <tr> 
+              <td height=24>
+                <div align="center">® 2001. Todos os direitos reservados - TCI 
+                  - Departamento de Tecnologia da Informa&ccedil;&atilde;o - UFAL<br>
+                </div>
+              </td>
+            </tr>
+            </tbody> 
+          </table>
+        </TD>
+      </TR>
+      </TBODY> 
+    </TABLE>
+    
+  </DIV>
+</CENTER></BODY>
+<% } %>	  
+</HTML>

@@ -1,0 +1,102 @@
+UNKNOWN {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 11px; BACKGROUND: white; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; FONT-FAMILY: Tahoma, Verdana, Arial, sans-serif
+}
+TD {
+	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Verdana, Arial, sans-serif
+}
+A {
+	FONT-SIZE: 11px; COLOR: black; FONT-FAMILY: Tahoma, Verdana, Arial, sans-serif
+}
+A:hover {
+	COLOR: #ffb60a
+}
+P {
+	FONT: 11px Tahoma,Verdana,Arial,Helvetica
+}
+#tabelaHeader {
+	BORDER-LEFT-COLOR: aqua; BORDER-TOP-COLOR: black; BORDER-BOTTOM: black 1px solid; BORDER-RIGHT-COLOR: aqua
+}
+#tabelaRodape {
+	BORDER-TOP: #ffb60a 1px solid; BORDER-BOTTOM: #ffb60a 1px solid
+}
+#linhaPreta {
+	BACKGROUND: black; FONT: 1px Verdana; HEIGHT: 1px
+}
+#linhaLaranja {
+	BACKGROUND: #ffb60a; FONT: 1px Verdana; HEIGHT: 1px
+}
+#linhaLaranjaClaro {
+	BACKGROUND: #ffe7ae; FONT: 1px Verdana; HEIGHT: 1px
+}
+#header {
+	BORDER-RIGHT: #ffad5b 1px solid; BORDER-TOP: #ffe6cc 1px solid; BACKGROUND: #rrrrrr; BORDER-LEFT: #ffe6cc 1px solid; BORDER-BOTTOM: #ffad5b 1px solid
+}
+.textoHeader {
+	COLOR: black
+}
+#headerSimples {
+	BACKGROUND: #ffb60a; FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+#corpoSimples {
+	BACKGROUND: #ffebc1; FONT: 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+#headerClaro {
+	BACKGROUND: #ffe7ae; FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+#corpoClaro {
+	BACKGROUND: white; FONT: 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+.menuRodape {
+	FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: #ffb60a; TEXT-DECORATION: none
+}
+.menuRodape:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; TEXT-DECORATION: underline
+}
+.menuFora {
+	FONT: 10px Tahoma,Verdana,Arial,Helvetica; COLOR: black; TEXT-DECORATION: none
+}
+.menuFora:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; TEXT-DECORATION: underline
+}
+.linkPequeno {
+	FONT: 9px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+.link {
+	FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black; TEXT-DECORATION: none
+}
+.link:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; TEXT-DECORATION: underline
+}
+#headerCategoria {
+	BACKGROUND: #ffd890; FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+.categoria {
+	FONT: bold 11px Tahoma,Verdana,Arial,Helvetica; COLOR: black; TEXT-DECORATION: none
+}
+.categoria:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; TEXT-DECORATION: underline
+}
+.botao {
+	BORDER-RIGHT: #ffa400 1px solid; BORDER-TOP: #fbe9c9 1px solid; BACKGROUND: #ffc04f; FONT: 11px Tahoma,Verdana,Arial,Helvetica; VERTICAL-ALIGN: middle; BORDER-LEFT: #fbe9c9 1px solid; COLOR: #000000; BORDER-BOTTOM: #ffa400 1px solid; HEIGHT: 17px; TEXT-ALIGN: center
+}
+.botaoCinza {
+	BORDER-RIGHT: gray 1px solid; BORDER-TOP: white 1px solid; BACKGROUND: #ececec; FONT: 11px Tahoma,Verdana,Arial,Helvetica; VERTICAL-ALIGN: middle; BORDER-LEFT: white 1px solid; COLOR: #000000; BORDER-BOTTOM: gray 1px solid; HEIGHT: 17px; TEXT-ALIGN: center
+}
+.tabelaComun {
+	BORDER-RIGHT: #ffe7ae 1px solid; BORDER-TOP: #ffe7ae 1px solid; BORDER-LEFT: #ffe7ae 1px solid; COLOR: black; BORDER-BOTTOM: #ffe7ae 1px solid
+}
+.tabelaSimples {
+	COLOR: black; BORDER-BOTTOM: #ffb60a 1px solid
+}
+INPUT {
+	PADDING-LEFT: 2px; FONT: 12px Tahoma,Verdana,Arial,Helvetica; COLOR: black
+}
+LTEXTAREA {
+	PADDING-LEFT: 2px; FONT: 12px Tahoma,Verdana,Arial,Helvetica; WIDTH: 98%; COLOR: black
+}
+.textoAlt {
+	BACKGROUND: #fff9ea
+}
+.tabAux {
+	BACKGROUND: #fed07a
+}

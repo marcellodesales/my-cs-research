@@ -1,0 +1,49 @@
+// Decompiled by DJ v3.7.7.81 Copyright 2004 Atanas Neshkov  Date: 13/7/2004 13:28:17
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   MarshallUser.java
+
+package br.ufal.graw.web.administrator;
+
+
+public class MarshallUser
+{
+
+    public void setMatriculation(String matriculation)
+    {
+        this.matriculation = matriculation;
+    }
+
+    public void setUserName(String userName)
+    {
+        this.userName = userName;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getMatriculation()
+    {
+        return matriculation;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public MarshallUser()
+    {
+    }
+
+    private String matriculation;
+    private String userName;
+    private String name;
+}
