@@ -1,0 +1,4 @@
+-libraryjars C:\desenv\WTK21\lib\midpapi10.jar;C:\desenv\WTK21\lib\cldcapi10.jar
+-injars C:\desenv\WTK21\apps\Mass\bin\Mass.jar
+-outjar C:\DOCUME~1\Marcello\CONFIG~1\Temp\Mass.jar
+-keep public class * extends javax.microedition.midlet.MIDlet 
