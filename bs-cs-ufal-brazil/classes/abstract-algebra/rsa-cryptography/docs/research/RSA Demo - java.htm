@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/ -->
+<HTML><HEAD><TITLE>RSA Demo</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META content="MSHTML 5.00.2314.1000" name=GENERATOR></HEAD>
+<BODY>
+<H1>RSA Demo Applet</H1>The following Java Applet demonstrates the basics of <A 
+href="http://www.rsa.com/">RSA</A> Public Key cryptography. You may wish to <A 
+href="http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/#overview">read 
+an overview of RSA Public Key Cryptography</A>. 
+<P>To operate the demo: 
+<UL>
+  <LI>Provide values for <I>p</I> and <I>q</I> (where p and q are prime numbers. 
+  Try p = 223 and q = 199) and click on the <TT>Calculate N</TT> button. This 
+  will calculate the value of N (called the modulus). It will also provide 
+  values for E and D (the public and private exponents) such that: 
+  <OL>
+    <LI>E &lt; n 
+    <LI>E is Relatively Prime to (p - 1) * (q - 1)<BR>This means that E and (p - 
+    1) * (q - 1) have no common factors except 1 
+    <LI>E * D - 1 is evenly divisible by (p -1) * (q - 1) </LI></OL>
+  <P>We call (E, N) the Public Key and (D, N) the Private Key. 
+  <P>To start with, you might want to just leave the values of p and q as they 
+  are. The reason is that if p and q are too small, then N will be smaller than 
+  the values we are trying to encrypt or decrypt. When this happens, the system 
+  does not work properly. 
+  <P>Just as a check, it seems N should be greater than 40,000. This will allow 
+  all of the ASCII characters up to 128 to be encoded without problems. 
+  <P></P>
+  <LI>Next type a short message into the <I>M</I> field and click on the 
+  <TT>Encrypt</TT> button. This will encrypt your message by combining two 
+  letters at a time into a <I>block</I>. Each block will be encrypted using the 
+  RSA algorithm:<BR><B>block<SUP>E</SUP> mod N </B>
+  <P>The result will be the encrypted message shown in the Ciphertext field. 
+  <P></P>
+  <LI>Clicking on the Decrypt button will then reverse the process by decrypting 
+  each of the encrypted values using the RSA algorithm:<BR><B>block<SUP>D</SUP> 
+  mod N </B>
+  <P></P></LI></UL>Note: If you change the values for p and q, be sure to encrypt 
+your message again, otherwise, the Decrypt step will not work. 
+<P>Your comments and suggestions are welcome: <A 
+href="mailto:richard_holowczak@baruch.cuny.edu">Richard Holowczak</A> 
+<TT>richard_holowczak@baruch.cuny.edu</TT> 
+<P>
+<HR>
+<APPLET code=rsademo.class height=400 width=840><PARAM NAME="code" VALUE="rsademo.class"><PARAM NAME="height" VALUE="400"><PARAM NAME="width" VALUE="840"><PARAM NAME="codeBase" VALUE="http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/"></APPLET> 
+
+<HR>
+
+<P><A name=overview></A>
+<H3>Overview of RSA Public Key Cryptography</H3>Cryptography can be used to 
+encrypt (scramble) a message for delivery over an insecure channel. We call this 
+encrypted message <I>ciphertext</I>. Since the ciphertext is encrypted, anyone 
+intercepting it would be unable to read it. On the receiving end, the ciphertext 
+is then decrypted to reveal the original message. 
+<P>A digital <I>Key</I> is a set of bits that are used to encrypt and decrypt 
+messages. A form of cryptography called Public key cryptography uses two 
+different keys: 
+<UL>
+  <LI>A Public Key which is used is used to encrypt messages. 
+  <LI>A Private Key is used to decrypt ciphertext and reveal the original 
+  message. </LI></UL>
+<P>Public and Private keys are generated in pairs so that only a specific pair 
+of keys can perform the encryption and decryption functions. Any keys other than 
+the specific pair will not work. A Public key is made known to everyone in the 
+world. The matching private key is kept a secret by its owner. 
+<P>In the following example, Alice would like to send a message to Bill. She 
+uses Bill's Public Key (which everyone knows) to encrypt the message. The 
+ciphertext is then sent to Bill. Once he receives it, he can decrypt the 
+ciphertext using his Private key. Only Bill's Private key can be used to 
+decrypt. <BR>
+<CENTER><IMG alt="[Public Key Cryptography&#13;&#10;Image: publickey.gif]" 
+src="RSA Demo - java_arquivos/publickey.gif"> </CENTER>
+<P><BR>RSA is a particular form of public key cryptography named after its 
+inventors: Ronald Rivest, Adi Shamir, and Leonard Adleman in 1977. In RSA 
+cryptography, a public and private key pair are generated using the following 
+steps: 
+<UL>
+  <LI>Choose two large prime numbers <I>p</I> and <I>q</I><BR>Generally, 
+  <I>p</I> and <I>q</I> are over 100 digits long. 
+  <LI>Compute the value of the <I>modulus</I> n as: <I>n = p * q</I> 
+  <LI>Choose a key <I>E</I> that is relatively prime to <I>(p-1) * (q-1) </I><BR 
+  <LI 1. from aside common in factors no have (q-1)] * [(p-1) and E that means 
+  This>Choose a key <I>D</I> such that <I>E*D = 1 mod (p-1) * (q-1) </I><BR>In 
+  other words, E*D - 1 is evenly divisible by [ (p-1) * (q-1) ] 
+  <P></P>
+  <LI>The Public Key is the combination of (E,n)<BR>This is used to encrypt 
+  messages. 
+  <LI>The Private Key is the combination of (D,n)<BR>This is used to decrypt 
+  ciphertext and reveal the original message. </LI></UL>
+<P>Given a Message <I>M</I>, to encrypt into ciphertext <I>C</I>, we use the 
+following formula:<BR><I>C = M<SUP>E</SUP> mod n</I><BR>Our public key is (E, n) 
+
+<P>Given a Ciphertext <I>C</I>, to decrypt into plaintext message <I>M</I> we 
+use the following formula:<BR><I>M = C<SUP>D</SUP> mod n</I><BR>Our private key 
+is (D, n) 
+<P>In practice, the message M is broken up into blocks (e.g., 64 bits at a time) 
+and processed by the encryption algorithm. 
+<P>The strength in RSA lies in the difficulty of factoring <I>n</I>. That is, 
+guessing <I>p</I> and <I>q</I> given only the value of <I>n</I>. Currently this 
+is a difficult problem in mathematics. A brute force approach, that is trying 
+all potential <I>p</I> and <I>q</I> would take many thousands of years 
+(depending on the size of the original <I>p</I> and <I>q</I>). 
+<P>As the number of digits in <I>p</I> and <I>q</I> grow large, factoring 
+becomes more difficult. So we consider the <I>Key Size</I> as directly related 
+to the strength of the encryption. With <I>n</I> at 512 bits (154 digits), we 
+consider this to be <I>strong encryption</I>. Total key size (E, n) or (D, n) 
+would be 1024 bits. 
+<P>Details of RSA cryptography and other cryptography techniques can be found in 
+the <A href="http://www.rsa.com/">RSA web site</A>: 
+<CODE>http://www.rsa.com</CODE>
+<P>In particular, the 216 page FAQ contains a significant number of definitions 
+of concepts related to security, cryptography and Electronic Commerce. 
+<P>
+<H3>How does this demo work?</H3>
+<P><B>Java to the Rescue</B> 
+<P>I had originally attempted to provide a demo using several other tools such 
+as MS Excel, JavaScript and others. However, I kept running into the problem 
+that as the numbers got very large, these environments could not represent them 
+accurately. I could have written something in C++ (which includes classes for 
+arbitrary sized integers), however, I wanted something that would be easily 
+portable and accessible over the web. Fortunately, I came across a special 
+feature of Java called the bigInteger class described here. 
+<P>This demo was written in the <A href="http://www.javasoft.com/">Java</A> 
+programming language. Specifically, it runs within a web browser as what is 
+called a Java Applet. It was developed using the Java Development Kit version 
+1.1. The JDK 1.1 includes a special class called <TT>bigInteger</TT> that allows 
+arbitrarily sized integers to be stored and operated upon. For example, the E, N 
+and D are all represented as type <TT>bigInteger</TT> in the applet. 
+<P><B>Generating the Public and Private Keys</B> 
+<P>The first part of the demo provides text boxes where the user can supply the 
+values of <I>p</I> and <I>q</I>. Ideally <I>p</I> and <I>q</I> should be large 
+prime numbers, however for the purposes of this demo, relatively small (less 
+than 1000) values can be used. Presently simple checks are done on <I>p</I> and 
+<I>q</I> to see if they are indeed prime. 
+<P>Once <I>p</I> and <I>q</I> have been specified, clicking on the <TT>Calculate 
+N</TT> button will generate the modulus <I>n</I> as <I>p * q</I> and will also 
+calculate <I>(p-1) * (q-1)</I> which is used for other calculations later on. 
+<P>The value of E is then automatically suggested as a number that is relatively 
+prime to <I>(p-1) * (q-1)</I>. This is accomplished by looping a variable from 2 
+to N and checking to see if the greatest common divisor (GCD) of this variable 
+and <I>(p-1) * (q-1)</I> is one. Typically, the variable reaches 5 as its choice 
+for E. Fortunately, the bigInteger class includes a method called 
+<TT>gcd(bigInteger)</TT> that returns the GCD of two bigIntegers. 
+<P>The value of D is then suggested by computing the <I>mod-inverse</I> of E. 
+This gives a value for D such that <I>E*D = 1 mod (p-1) * (q-1)</I> 
+<P>Once again, the bigInteger class comes to the rescue with a method called 
+<TT>modInverse</TT>. This method is used to derive D given the value of E. 
+<P><B>Encrypting a Message</B> 
+<P>At this point, we have now generated the necessary Public Key (E,n) and 
+Private key (D,n). A message can be typed into the message field (labled M) and 
+the Encrypt button can be clicked on. 
+<P>Clicking on the Encrypt button causes the following steps to take place: 
+<OL>
+  <LI>Each letter in the message is represented as its ASCII code number. In 
+  ASCII, 'A' is coded as 65, 'B' is coded as 66 and so on.<BR><A 
+  href="http://cisnet.baruch.cuny.edu/holowczak/classes/9444/rsademo/ascii.html">Click 
+  here to see a list of ASCII codes</A>.<BR>For this example, the message 
+  "Secret!" is coded as: <TT>83 101 99 114 101 116 33 </TT>
+  <LI>Each ASCII code number is then represented in binary notation using 8 
+  bits.<BR>For this example, the binary codes become: <TT>01010011 01100101 
+  01100011 01110010 01100101 01110100 00100001</TT> 
+  <LI>Each pair of characters is then assembled into blocks. This is done by 
+  taking two 8 bit numbers and representing them side by side as one 16 bit 
+  number. In this example, there are 7 original characters that form 4 
+  blocks:<BR><TT>0101001101100101 0110001101110010 0110010101110100 
+  0000000000100001</TT> <BR>Note that the last character is padded with 
+  zeros.<BR>Real applications of RSA use blocks of up to 8 or 16 characters each 
+  (64 or 128 bits in length). 
+  <LI>Each message block is then represented as a decimal number that will be 
+  encrypted. For this example, the code blocks in decimal are:<BR><TT>21349 
+  25458 25972 33 </TT>
+  <LI>Each number is then encrypted using the RSA formula: <B>block<SUP>E</SUP> 
+  mod N</B>. The first block will be encrypted using: 21349<SUP>5</SUP> mod 
+  44377<BR>The encrypted numbers are: <TT>25743 38082 24556 39256 </TT>
+  <LI>Finally, each encrypted block is (internally) represented as a 16 bit 
+  binary number that is split into two 8 bit numbers and then displayed as the 
+  ASCII character equivalents: <TT>J&amp;7'</TT><BR>Note that some ASCII 
+  characters can not be displayed which is why you might see some garbage 
+  characters or simply blank boxes. </LI></OL>
+<P><B>Decrypting a Ciphertext</B> 
+<P>Decrypting a message uses the RSA decryption algorithm block<SUP>D</SUP> mod 
+N</B> to decrypt the encrypted message blocks. Clicking on the Decrypt button 
+causes the following: 
+<OL>
+  <LI>Each encrypted code block in the Ciphertext is run through the decryption 
+  algorithm. For example, the first encrypted block: 25743<SUP>35165</SUP> mod 
+  44377 
+  <LI>Each decrypted block is then represented as a 16 bit binary number. This 
+  16 bit binary number is split into two 8 bit binary numbers that represent the 
+  ASCII characters of the original message M. 
+  <LI>Each 8 bit number is represented as an ASCII character in the final field. 
+  </LI></OL>
+<P><B>Acknowledgments</B> 
+<P>This program was inspired by <A 
+href="http://www.orst.edu/dept/honors/makmur/">this JavaScript</A> example of 
+RSA designed by Cary Sullivan and Rummy Makmur. (sullivca@ucs.orst.edu and 
+makmur@flop.engr.orst.edu). 
+<P>
+<HR>
+
+<P><I>Last Update: Wed Jan 5 19:10:35 EST 2000</I> </P></BODY></HTML>

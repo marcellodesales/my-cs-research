@@ -1,0 +1,1026 @@
+
+<HTML>
+<HEAD>
+
+<TITLE>CyberLaw Presents: The RSA Algorithm & The RSA Patent</TITLE>
+
+
+<META names="description" content="Using the RSA Algorithm for Encryption and Digital Signatures: Can You Encrypt, Decrypt, Sign and Verify without Infringing the RSA Patent?, by Patrick J. Flinn and James M. Jordan III.">
+
+<BODY BGCOLOR="#ffffff"  TEXT="#000000">
+
+</HEAD>
+
+<center><IMG SRC="cylw.GIF" ALT="CyberLaw (tm)"></a></center>
+<hr>
+
+<!-- This document was created from RTF source by rtftohtml version $Revision: 3.6 $ -->
+
+<CENTER><H1>
+Using the RSA Algorithm for Encryption and Digital Signatures:</H1></CENTER>
+<b> <H2><CENTER>Can
+You Encrypt, Decrypt, Sign and Verify without Infringing the RSA Patent?</CENTER></H2></b><p>
+<b></center><center></b>Patrick J. Flinn and James M. Jordan III<a
+name="fnB0" href="#fn0">[*]</a></center><p>
+<CENTER><sup></sup>(c) 1997 Alston &amp; Bird LLP<p>
+July 9, 1997<p></CENTER>
+<p>
+</center>	"Public key cryptography," a method for encrypting messages to be
+transmitted over an insecure channel, and "digital signatures," a method for
+authenticating the author of a message transmitted over an insecure channel,
+are emerging as fundamental tools for conducting business securely over the
+Internet.  These technologies are widely expected to be used to conduct
+billions of dollars in electronic commerce within the next few years.  However,
+the broad deployment of these technologies is substantially burdened by
+licensing demands being made by the owner of  United States Patent No.
+4,405,829, which is known as the "RSA Patent."  It has become commonly accepted
+Internet lore that the RSA Patent covers most of the commonly used techniques
+for public key encryption and digital signatures, and that a patent license
+from the owner of the RSA Patent is necessary to employ these techniques.  As
+this article explores in some detail, however, the RSA Patent is far more
+limited in scope and far more vulnerable to a validity challenge than is
+generally assumed. <p>
+<center><b>The RSA Algorithm and the RSA Patent</b><p>
+<b></center></b>	The RSA Algorithm was named after Ronald Rivest, Adi Shamir
+and Leonard Adelman, who first published the algorithm in April, 1977.<a
+name="fnB1" href="#fn1">[1]</a>  Since that time, the algorithm has been
+employed in the most widely-used Internet electronic communications encryption
+program, Pretty Good Privacy (PGP).<a name="fnB2" href="#fn2">[2]</a>  It is
+also employed in both the Netscape Navigator and Microsoft Explorer web
+browsing programs in their implementations of the Secure Sockets Layer (SSL),
+and by Mastercard and VISA in the Secure Electronic Transactions (SET) protocol
+for credit card transactions.<p>
+	The RSA Algorithm is claimed in the RSA Patent, which was issued to Drs.
+Rivest, Shamir and Adelman, who exclusively licensed the patent nine days later
+to RSA Data Security, Inc., a company which was originally controlled by the
+inventors but is now a wholly-owned subsidiary of a Boston based company called
+Security Dynamics Technology, Inc.  RSA Data has to date filed three lawsuits
+alleging infringement of the RSA Patent.  Two were settled prior to trial, and
+the third is still pending.  Other litigation threats have been made regarding
+alleged infringements of the patent, including threats against non-commercial
+implementations for use by the Internet community.  The patent expires on
+September 20, 2000, but that will be enough time for the patent to have a
+profound impact on the development of electronic commerce.<p>
+	The existence of the patent, and RSA Data's aggressive litigation posture,
+have chilled the interest in both commercial and non-commercial implementations
+of public key encryption and digital signature technologies.  Many have taken
+for granted the bald assertion that the "RSA Algorithm is patented," without
+examining the patent itself, or more particularly, the claims of the patent.<a
+name="fnB3" href="#fn3">[3]</a>  As we set forth in this article, however, a
+careful review of the patent reveals that the patent is not necessarily as
+broad as publicly asserted.  More particularly, the decryption operation,
+standing alone, is not independently claimed at all in the patent.  These
+weaknesses in the patent may be particularly relevant for digital signature
+operations because they may allow a developer to implement the protocol for
+verifying an RSA-generated digital signature without infringing the patent.  In
+addition, if one separates the generation of the key pairs from the encryption
+operation, the claims of the patent do not cover the encryption (or signing)
+function by itself.<p>
+<center><b>Basic Uses of Public Key Encryption and Digital Signatures</b><p>
+</center>	The RSA Algorithm is only one implementation of the more general
+concept of public key cryptography, which permits two parties who have never
+met and who can only communicate on an insecure channel to nonetheless send
+secure and verifiable messages to each other.  The Internet as currently
+structured is an insecure communications channel with an obvious use for such
+technologies.  Indeed, the greatest expected growth for public key techniques
+is in Internet-related communications.<p>
+	With public key techniques, each user has two different keys, one made
+available to the public and the other kept secret.<a name="fnB4"
+href="#fn4">[4]</a>  One of the keys is used to encrypt a message, and the
+other is used to decrypt the message.  If Alice wants to send a secret message
+to Bob, for example, she looks up Bob's public key and uses it to encrypt the
+message.  Because Bob's <i>public</i> key cannot undo the encryption process,
+no one who intercepts the message can read it.  Only Bob, who possesses the
+secret key corresponding to his public key, can read the message.  Alice never
+has to meet Bob out of the hearing of others to exchange keys or passwords;
+this is a substantial improvement over older encryption methods in which an
+exchange of private keys was necessary.<p>
+	This system can also be used as a means for Bob to be sure a message comes
+from Alice.  If Alice wants to sign a message, she can encrypt it with her
+private key.<a name="fnB5" href="#fn5">[5]</a>  When Bob receives an encrypted
+message which purports to be from Alice, he can obtain Alice's public key and
+decrypt the message.  If a readable message emerges, Bob can have confidence
+that the message came from Alice, because Alice's public key would only
+properly unlock a message which was locked with her private key (known only to
+Alice).<a name="fnB6" href="#fn6">[6]</a><p>
+	Of course, digitally signing the message does not make the content of the
+message private, because anyone with Alice's public key can read a message she
+encrypted with her private key.  Alice can send a private, signed message to
+Bob, however, by first encrypting the message with Bob's public key (so only
+Bob can read it with his private key) and then encrypting the message a second
+time with her private key, forming her signature.  Anyone who receives the
+message can use Alice's public key to undo the second encryption, but only Bob
+(or someone with Bob's private key) can undo the first encryption step and
+actually read the message.  All of these complex-sounding manipulations can be
+made quite manageable with well-written software.<p>
+<center><b>The RSA Implementation of Public Key Encryption and Digital
+Signatures</b><p>
+<i>The Arithmetic in the RSA System</i><p>
+</center>	Typical encryption techniques use mathematical operations to
+transform a message (represented as a number or a series of numbers) into a
+<i>ciphertext</i>.  Mathematical operations called <i>one way functions</i> are
+particularly suited to this task.  A one way function is one which is
+comparatively easy to do in one direction but much harder to do in reverse.  As
+a trivial example, it is comparatively easy to square a two digit number; with
+a little concentration, many people can probably multiply 24 by 24 without
+using a pencil and paper.  One the other hand, calculating the square root of
+the number 576 is much harder, even with a pencil and paper.<p>
+	The RSA system uses one way functions of a more complex nature.  Specifically,
+the system uses <i>modular arithmetic</i> to transform a message (or pieces of
+the message, one piece at a time) into unreadable ciphertext.  Modular
+arithmetic is often called "clock" arithmetic, because addition, subtraction,
+and the like, work like telling time.  In a 12-hour system, four hours after
+10:00 is not 14:00 (10 + 4 is not equal to 14); it is 2:00.  This is because we
+subtract out 12 (or any multiples of 12) after doing the addition.  In modular
+arithmetic notation, the operation might look like this:<p>
+<center>2 = (10+4) mod 12<p>
+2 = 14 mod 12<p>
+</center>One can do multiplication in modular arithmetic much the same way
+addition is done in the above example:<p>
+<center>2 = (7*2) mod 12<p>
+2 = 14 mod 12<p>
+</center>	This process is sometimes called <i>modular reduction</i>.  By
+subtracting out the modulus (and all multiples of the modulus) a number is
+"reduced" to a much smaller number.  When the number 14 is "reduced" to the
+number 2 in the above example, one can say that "14 is reduced modulo 12."<p>
+	The RSA system uses multiplication in modular arithmetic.  Instead of
+multiplying one number by a different number (as (7) is multiplied by (2) in
+the above example), The RSA system multiplies one number (called the
+<i>base</i>) by itself a number of times.  The number of times a base is
+multiplied by itself is called the <i>exponent</i>:<p>
+<center>16 = 2*2*2*2<p>
+16 = 2<sup>4</sup><p>
+</center>In this example, the number (2) is the base, and is multiplied by
+itself four times, making the exponent the number (4).<p>
+	In the RSA encryption formula, the message (represented by a number M) is
+multiplied by itself (e) times (called "raising (M) to the power (e)"), and the
+product is then divided by a modulus (n), leaving the remainder as a ciphertext
+(C):<a name="fnB7" href="#fn7">[7]</a><p>
+<center>C = M<sup>e</sup> mod n<p>
+</center>This is a hard operation to undo -- when (n) is very large (200 digits
+or so) -- even the fastest computers using the fastest known methods could not
+feasibly recover the message (M) simply from knowing the ciphertext (C) and the
+key used to create the message ((e) and (n)).<p>
+	In the decryption operation, a different exponent, (d) is used to convert the
+ciphertext back into the plain text:<p>
+<center>C = M<sup>d</sup> mod n<p>
+</center>The modulus (n) is a composite number, constructed by multiplying two
+prime numbers,<a name="fnB8" href="#fn8">[8]</a> (p) and (q), together:<p>
+<center>n = p * q<p>
+</center>The encryption and decryption exponents, (d) and (e), are related to
+each other and the modulus (n) in the following way:<a name="fnB9"
+href="#fn9">[9]</a><p>
+<center>d = e<sup>-1</sup> mod ((p-1) (q-1))<a name="fnB10"
+href="#fn10">[10]</a></center><p>
+</center>	To calculate the decryption key, one must know the numbers (p) and
+(q) (called the factors) used to calculate the modulus (n).  When (n) is a
+sufficiently large number, it is infeasible, using known algorithms and the
+fastest computing techniques, to calculate the prime number factors of (n).<p>
+	The RSA Algorithm may be divided, then, into three steps: <p>
+	(1) <i>key generation</i>: in which the factors of the modulus (n) (the prime
+numbers (p) and (q)) are chosen and multiplied together to form (n), an
+encryption exponent (e) is chosen, and the decryption exponent (d) is
+calculated using (e), (p), and (q).<p>
+	(2) <i>encryption</i>: in which the message (M) is raised to the power (e),
+and then reduced modulo (n).<p>
+	(3) <i>decryption</i>: in which the ciphertext (C) is raised to the power (d),
+and then reduced modulo (n).<p>
+<center><i>Using the RSA Algorithm for Privacy and Digital Signatures</i><p>
+</center>	When the RSA Algorithm is used in a public key system, the modulus
+(n) and one of the exponents (arbitrarily, we can assume (e)) are published.
+The other exponent (d) is kept secret, as are (p) and (q), the factors of (n).
+Each user holds his or her own keys, and knows the public key of the other user
+or users.  Alice, for example, knows her own public key (e<sub>alice</sub> and
+n<sub>alice</sub>), her own private key (d<sub>alice</sub>), and Bob's public
+key (e<sub>bob</sub> and n<sub>bob</sub>).  Bob knows the converse: his public
+key (e<sub>bob</sub> and n<sub>bob</sub>), his private key (d<sub>bob</sub>)
+and Alice's public key (e<sub>alice</sub> and n<sub>alice</sub>).<p>
+	For Alice to send Bob a private message only Bob can read, she performs the
+following operation on the message (M):<p>
+<center>C = M<sup>ebob</sup> mod n<sub>bob</sub><p>
+</center>Bob, who is the only one to possess his private key (d<sub>bob</sub>),
+performs the following to recover the message (M):<p>
+<center>M = C<sup>dbob</sup> mod n<sub>bob</sub><p>
+</center>To sign the message, Alice encrypts with her own private key:<p>
+<center>C = M<sup>dalice</sup> mod n<sub>alice</sub><p>
+</center>Because only Alice possesses d<sub>alice</sub>, only she can create
+this ciphertext C.  Anyone in possession of her public key (e<sub>alice</sub>
+and n<sub>alice</sub>) can verify the signature, however:<p>
+<center>M = C<sup>ealice</sup> mod n<sub>alice</sub><p>
+</center>	It bears note that (p) and (q), the factors of (n), are not needed
+for encryption or decryption; they are only used in the key generation step
+(creating the modulus (n) and the second exponent).  In addition, while it is
+important for key generation purposes that the modulus (n) be the product of
+two prime numbers, the exponentiation and modular arithmetic operation would
+work just as well with prime numbers (which are by definition evenly divisible
+only by themselves and the number 1).<p>
+<center><b>The RSA Patent</b><p>
+</center>	Anyone who "makes, uses, offers to sell or sells" a patented
+invention without the permission of the patent owner can be liable for patent
+infringement.<a name="fnB11" href="#fn11">[11]</a>  The boundaries of the
+patent are defined in the claims portion of the patent.<a name="fnB12"
+href="#fn12">[12]</a>  Accordingly, in order to determine whether a particular
+product, method or process infringes a patent, one must start with the text of
+the claims themselves.<p>
+	There are 40 claims in the RSA Patent, but only ten of them are
+<i>independent</i> claims.<a name="fnB13" href="#fn13">[13]</a>  Independent
+claims are claims which do not incorporate other claims by reference.  To
+infringe a dependent claim, one must first infringe the independent claim (or
+claims) incorporated by reference in the dependent claim.  Conversely, if one
+does not infringe the independent claim(s) incorporated by the dependent claim,
+by definition one does not infringe the dependent claim.  Accordingly, a review
+of the independent claims in the RSA Patent is sufficient for purposes of this
+discussion.  As we will also see, a detailed review of the broadest independent
+claim in the RSA Patent (Claim 23) will lead without much further ado to a
+logical conclusion about the other nine independent claims, and in turn to a
+conclusion about all the claims in the RSA Patent:  that none of these claims
+are infringed by performing a typical digital signature verification.<p>
+	The claim with the least number of elements (and thus the broadest claim in
+the patent) is Claim 23, which provides:<p>
+23. A method for establishing cryptographic communications comprising the step
+of: <p>
+encoding a digital message word signal M to a ciphertext word signal C, where M
+corresponds to a number representative of a message and<p>
+<center>0 <= M <=  n-1<p>
+</center>where n is a composite number of the form<p>
+<center>n=p*q<p>
+</center>where p and q are prime numbers, and<p>
+where C is a number representative of an encoded form of message word M,<p>
+wherein said encoding step comprises the step of:<p>
+transforming said message word signal M to said ciphertext word signal C
+whereby<p>
+<center>C [is congruent to]  M<sup>e</sup> (mod n)<p>
+</center>where e is a number relatively prime to (p-1)*(q-1). <p>
+Accordingly, the elements of this claim require an accused infringer to perform
+the following steps:<a name="fnB14" href="#fn14">[14]</a><p>
+<UL>
+<LI>	Establish cryptographic communications;<p>
+<LI>	Ensure that the message (M) is greater than or equal to zero and less than or
+equal to (n-1);<p>
+<LI>	Define the modulus (n) by selecting prime numbers (p) and (q) and multiplying
+them together; <p>
+<LI>	Define the encryption exponent (e) such that it is relatively prime<a
+name="fnB15" href="#fn15">[15]</a> to (p-1)*(q-1); and<p>
+<LI>	Encode message (M) into ciphertext (C) by raising (M) to the power of (e) and
+<LI>then reducing modulo (n).<p>
+</UL>
+<center><i>Does Claim 23 Cover Signature Verification?</i><p>
+</center>	As noted above, to verify an RSA-generated digital signature, the
+recipient takes the ciphertext transmitted to him and decrypts the ciphertext
+with the sender's public key.  If the message decrypts properly, the signature
+is genuine.  Importantly, two of the three fundamental steps in the RSA system
+are not performed in the signature verification step: <i>key generation</i>,
+where the parameters of the modulus (n) and the exponents (e) and (d) are set;
+and <i>encryption</i>, where the message (M) is raised to the power of (e) and
+then reduced by the modular operation.  Only the third, <i>decryption</i> step
+is performed.  The keys are generated by the sender (signer) and the encryption
+step has already been completed in the signing step.<p>
+	Accordingly,  a person who merely <i>verifies</i> an RSA signature arguably
+does none of the steps contained in Claim 23, and certainly does not do them
+all.  Most significantly, the decryption operation plainly does not constitute
+"encoding a digital message word signal" into "ciphertext."  The verification
+operation transforms "ciphertext" into a "message word signal," not the
+reverse.  The patent makes clear, moreover, what constitutes a "message" and
+what constitutes "ciphertext," and how "decoding" and "encoding" are
+different.<a name="fnB16" href="#fn16">[16]</a>  These terms are not
+interchangeable.<a name="fnB17" href="#fn17">[17]</a><p>
+	The RSA signature verification steps of transforming ciphertext C into a
+message M using the decryption exponent (d) are separately claimed in
+<i>dependent</i> claim 24:<p>
+24. The method according to claim 23 comprising the further step of: <p>
+decoding said ciphertext word signal C to said message word signal M,<p>
+wherein said decoding step comprises the step of:<p>
+transforming said ciphertext word signal C, whereby:<p>
+<CENTER>M [is congruent to] C<sup>d </sup>(mod n)</CENTER><p>
+where d is a multiplicative inverse of e (mod (lcm ((p-1), (q-1)))).<p>
+Because Claim 24 incorporates all of the elements of Claim 23 by reference, one
+cannot infringe Claim 24 simply by performing the decryption steps alone.<p>
+<center><i>Do the Other RSA Patent Independent Claims Cover Signature
+Verification?</i><p>
+</center>	The analysis of Claim 23 above should apply with equal force to the
+other independent claims.  Claims 1, 13, and 18 require key generation,
+encoding, and de-coding.  Claims 3, 8, 25, 29 do not contain the decoding step
+(subsequent dependent claims add that step), but have at least the elements of
+Claim 23, plus others.  Claims 33 and 37 claim a special case of the use of the
+RSA method, and thus are also more limited than Claim 23.  Thus, under this
+analysis none of the independent claims of the RSA Patent (and therefore none
+of the dependent claims) are infringed by performing a typical digital
+signature verification.<p>
+<center><i>Does Claim 23 Cover Generation of a Digital Signature?</i><p>
+</center>	It appears that the process of <i>generating</i> an RSA signature
+also may be done without infringing Claim 23.  To create an RSA digital
+signature, the sender encrypts the message M with her private key, and
+transmits it to the receiver.  The encoding step is clearly claimed in Claim 23
+(and other independent claims), and thus the argument stated above regarding
+verification (decryption) is not available.  However, Claim 23 also requires
+key generation, and that step need not be performed by software creating a
+digital signature if the keys are already supplied.  (All of the other
+independent claims require the generation of the keys meeting the RSA Algorithm
+parameters.)<p>
+	The step of generating the numbers comprising RSA keys (p, q, n, e and d) can
+easily be separated from the encryption step.  The same keys can be used over
+and over again for multiple signatures; indeed, they can be used for as long as
+one has confidence that the keys have not been compromised.  Moreover, many
+RSA-licensed products generate keys which can be separated from the software
+which generated them.  Thus, as a practical matter, it should be possible to
+use keys generated by licensed RSA software in order to create digital
+signatures with other, unlicensed software.<p>
+	The owner of the RSA Patent would have difficulty arguing successfully that
+the encryption operation itself is covered by the patent, separate from the
+generation of the keys.  This is because the concept of using exponents in
+modular arithmetic for encryption was invented and disclosed before the RSA
+system was invented.  In 1975, two years before the RSA method was invented,
+Martin Hellman and Stephen Pohlig at Stanford University invented the
+Pohlig-Hellman encryption system,<a name="fnB18" href="#fn18">[18]</a> which is
+identical to the RSA method, except that the modulus is a prime number, as
+opposed to the product of two primes:<p>
+<TABLE BORDER>
+<TR align="center">
+<TD colspan=1 align="center"><p>
+<b>C</b><b>omparison of RSA and Pohlig-Hellman</b>
+<BR></TD>
+<TD colspan=1 align="center"><BR></TD>
+<TD colspan=1 align="center"><BR></TD></TR><TR align="left">
+<TD colspan=1 align="left"><BR></TD>
+<TD colspan=1 align="left"><i>RSA
+System</i>
+<BR></TD>
+<TD colspan=1 align="left"><i>Pohlig-Hellman</i>
+<BR></TD></TR><TR align="left">
+<TD colspan=1 align="left">Encryption
+Operation
+<BR></TD>
+<TD colspan=1 align="left">C
+= M<sup>e</sup> mod n
+<BR></TD>
+<TD colspan=1 align="left">C
+= M<sup>e </sup>mod p
+<BR></TD></TR><TR align="left">
+<TD colspan=1 align="left">Decryption
+Operation
+<BR></TD>
+<TD colspan=1 align="left">M
+= C<sup>e</sup> mod n
+<BR></TD>
+<TD colspan=1 align="left">M
+= C<sup>e</sup> mod p
+<BR></TD></TR><TR align="left">
+<TD colspan=1 align="left">modulus
+<BR></TD>
+<TD colspan=1 align="left">p
+* q (prime numbers)
+<BR></TD>
+<TD colspan=1 align="left">p
+(prime number)
+<BR></TD></TR><TR align="left">
+<TD colspan=1 align="left">Encryption
+exponent (e)
+<BR></TD>
+<TD colspan=1 align="left">e
+relatively prime to <br>(p-1)*(q-1)
+<BR></TD>
+<TD colspan=1 align="left">e
+relatively prime to (p-1)
+<BR></TD></TR><TR align="left">
+<TD colspan=1 align="left">Decryption
+exponent (d)
+<BR></TD>
+<TD colspan=1 align="left">d
+= e<sup>-1</sup> mod ((p-1)*(q-1))
+<BR></TD>
+<TD colspan=1 align="left">d
+= e<sup>-1</sup> mod (p-1)
+<BR></TD></TR></TABLE>
+The exponentiation and modular reduction steps in RSA and Pohlig-Hellman will
+work exactly the same regardless of whether the modulus is a prime number or
+the product of two primes.  Once the modulus and the exponents are defined, the
+mathematical operations for encryption and decryption are <i>identical</i> in
+both the Pohlig-Hellman and RSA systems.  A software module written to perform
+Pohlig-Hellman encryption or decryption would work just as well using a modulus
+and exponents generated with an RSA system.  Accordingly, even if the inventors
+had attempted to claim the encryption step alone, without regard to key
+generation, the prior Pohlig-Hellman invention would have prevented such a
+claim from being valid.<a name="fnB19" href="#fn19">[19]</a><p>
+<center><b>What About Contributory Infringement?</b><p>
+</center>	The discussion above relates to direct infringement of RSA Patent --
+whether one performs all of the steps one of the claims -- but does not
+consider all of the possible ways in which one can be liable for patent
+infringement.  Patent law also makes liable someone who "actively induces"
+infringement of a patent, or someone who contributes to the infringement by
+another if he "offers to sell or sells within the United States . . . a
+component of a patented machine, manufacture, combination or composition, or a
+material or apparatus for use in practicing a patented process, constituting a
+material part of the invention, knowing the same to be especially made or
+especially adapted for use in an infringement of such patent, and not a staple
+article or commodity of commerce suitable for substantial noninfringing use . .
+. ."<a name="fnB20" href="#fn20">[20]</a>  The owner of the right to enforce
+the RSA Patent could attempt to attack those who sign or verify as contributory
+infringers, and those who develop the software which enables this activity as
+active inducers of infringement.<p>
+	The major flaw in such claims is that for there to be either contributory
+infringement or inducement to infringe, there must be direct infringement.<a
+name="fnB21" href="#fn21">[21]</a>  One who merely verifies an RSA generated
+signature simply has not performed all of the steps claimed in the patent.  The
+missing encryption and key generation steps have been performed by another
+(presumably licensed) user of the technology.  Similarly, assuming a signer
+uses a licensed method for generating the keys, or if the signer does not
+herself generate or cause to be generated the RSA keys, there is no direct
+infringement by using an unlicensed method to perform the signing operation.<a
+name="fnB22" href="#fn22">[22]</a>  As long as the user only performs the
+signing or verification steps, there is no direct infringement.  With no direct
+infringement, supplying the means for signing or verification is not
+contributory infringement.<p>
+	A closer question of contributory infringement would arise if a developer of
+signing software knew of the unlicensed generation of RSA keys and deliberately
+adapted the software to assist in the use of those unlicensed keys in
+performing signature operations.  (This issue is not present for verification;
+by definition, the person who verifies an RSA signature does not generate, or
+have access to, the private keys used for signing.)  The RSA Patent rights
+owner could argue that the signing software was "especially adapted" for use in
+infringing the patent.  Then, the argument would run, a user who both generated
+the keys using unlicensed means <i>and</i> the developer's software for signing
+directly infringed the patent.  This would supply the missing direct
+infringement and expose the developer to contributory infringement liability.<p>
+	The outcome to this argument would turn in large measure on the nature of the
+developer's signing software.  When an article is accused of being "especially
+adapted" for use in an infringing process or method, the article as a whole is
+considered, not just some particular feature or ingredient.<a name="fnB23"
+href="#fn23">[23]</a>  If, taken as a whole, the article has substantial,
+non-infringing uses, the contributory infringement is not present, even if in
+some modes the article can assist in conduct which otherwise infringes the
+patent.<a name="fnB24" href="#fn24">[24]</a>  For example, software adapted to
+encrypt a message using Pohlig-Hellman keys, for example, would work as easily
+with RSA Keys.  Assuming that Pohlig-Hellman operations were considered
+"substantial," the use of the identical encryption and decryption operations
+certainly would be non-infringing.<a name="fnB25" href="#fn25">[25]</a>
+Accordingly, it is quite possible to conceive of software which, while capable
+of performing RSA encryption, would be found as a whole to have substantial
+non-infringing uses.  If software were developed which, taken as a whole, had
+substantial non-infringing uses, then the developer should not be found liable
+for contributory infringement merely because the keys were generated by
+unlicensed means.<p>
+<center><b>A Real World Example -- Secure Sockets Client</b><p>
+</center>	One of the most common uses of public key technology is in the Secure
+Sockets Layer (SSL) protocol, used by Netscape Navigator and other web browsers
+for secure communications over the internet.  Secure sockets allows the user --
+typically an individual working from a personal computer at home (called the
+<i>client</i>) -- to communicate with a web site computer (called the
+<i>server</i>).  The server might be operated by a merchant and the user might
+wish to have the client computer send a credit card number to the server to
+order goods.  The secure sockets protocol uses public key techniques to encrypt
+the credit card number so that the number is not sent in plaintext over the
+internet.  According to the analysis set forth in this article, the
+<i>client</i> should be able to perform all of the RSA encryption and
+verifications steps without infringing the RSA Patent.<p>
+	In simplified form, the secure sockets protocol using the RSA method works as
+follows.<a name="fnB26" href="#fn26">[26]</a>  After a client makes context
+with the web site server, and a secure session is to be established, the server
+transmits a message the client containing (1) the server's public key; and (2)
+a digital signature from a certificate authority certifying that the public key
+the server claims as its own is, in fact, its own.  The client next verifies
+the server's public key using the signature authority's public key which is
+installed with the browser software on the client's computer.<a name="fnB27"
+href="#fn27">[27]</a>  In this way, the client can be assured that the server
+is who it claims to be.  The client is then ready to send confidential
+information (such as a credit card number) to the server.<p>
+	The client will encrypt the credit card number, but will not use RSA or
+another public key technique to actually encrypt the data.  RSA is much slower
+than other conventional encryption methods which use the same key to encrypt
+and decrypt.  While this might not matter if all that is being encrypted is a
+single credit card number, in practice a secure session with a web browser may
+involve the transmission of thousands of bytes of information.<p>
+	To avoid painfully long delays, the client will generate a random number for
+use as a conventional, symmetric key to encrypt the all of the data being sent
+during the secure session.  The client then encrypts this key using the
+server's RSA public key transmitted in the opening message from the server.
+The server receives this encrypted key, and decrypts it using its secret key.
+Both the client and the server are now in possession of a shared, symmetric key
+which both use to encrypt and decrypt all subsequent data being sent during the
+secure session.<p>
+	In this protocol, the client does only two public key steps, and does
+<i>not</i> perform any key generation steps.  First, the client verifies the
+server's public key.  To perform the verification step, it uses the certificate
+authority's public key.  That key, necessarily generated by the certificate
+authority, can be assumed reasonably to be generated by a licensed entity.<a
+name="fnB28" href="#fn28">[28]</a>  The second step -- encrypting the symmetric
+encryption key for the session -- uses the public key supplied by the server.
+That key also can be presumed to have been generated by a licensed method.
+Although both decryption (verification) and encryption (of the session key)
+steps are performed by the client, there is every reason to believe that the
+key generation steps are performed by licensed methods.<p>
+<b>	</b>Accordingly, because the client software does not generate any keys,
+the client does not directly infringe the any of the claims of the RSA patent.
+Although the client does use two public keys (the server's and the certificate
+authority) for encryption and decryption, those keys are almost certainly
+generated licensed means.  Accordingly, the client does not contribute to, or
+induce the infringement of, the RSA Patent.<p>
+<center><b>Some Questions About the Validity of the RSA Patent Claims</b><p>
+<b></center></b>	The analysis in this article thus far has assumed that the
+broad claims of the RSA Patent, and particularly Claim 23, are valid.  While
+patents are presumed valid, and an infringer has the burden of proving
+invalidity by clear and convincing evidence, some vulnerabilities of the RSA
+Patent have been exposed in the litigation RSA Data has been involved in.
+Among other weaknesses, the following appear: (1) some of the RSA claims may
+not cover patentable subject matter, (2) the inventors appear not to have
+disclosed in the specification the "best mode" of implementing the invention,
+as required by the patent laws, and (3) a real question exists regarding
+whether the invention is obvious in light of the Pohlig-Hellman work.  Each of
+these weaknesses will be considered below.<p>
+<center><i>How Can You Patent an Algorithm?</i><p>
+</center>	Those with passing familiarity with patent law may be startled at the
+assertion that a cryptographic algorithm can be claimed in a patent.  The
+United States Supreme Court ruled in 1972 that an algorithm, which it defined
+as a "procedure for solving a given type of mathematical problem," was not a
+"process, machine, manufacture, or composition of matter" within the meaning of
+section 101 of the Patent Act,<a name="fnB29" href="#fn29">[29]</a> and thus was not
+patentable subject matter.<a name="fnB30" href="#fn30">[30]</a>  Six years
+later, the Court reaffirmed this rule, holding that even if the applicant
+wanted to limit the claim to use of the algorithm in a specific application, it
+was still not within the allowable subject matter of section 101.<a name="fnB31"
+href="#fn31">[31]</a>  Cryptographic algorithms would seem to fall squarely
+within this proscription against patenting algorithms.<p>
+	In 1981, however, a breakthrough Supreme Court decision paved the way for
+patent claims containing algorithms.  The case, <i>Diamond v.
+Dehr</i>,<a name="fnB32a"
+href="#fn32a">[32]</a> involved an improved process for making rubber.  The
+improvement centered on an algorithm used to treat the rubber at specified
+temperatures.  The Court held that when an algorithm is part of an otherwise
+patentable process (which manufacturing rubber certainly was), the presence of
+the algorithm among the other elements of the claim did not push the claim
+outside the bounds of section 101.<p>
+	While the Supreme Court was deciding these cases, a trio of appellate court
+decisions refined the rules regarding when and how an algorithm may be
+incorporated into a patent.  The three cases, <i>In re
+Freeman</i>,<a name="fnB33a"
+href="#fn33a">[33]</a> <i>In re Walter</i>,<a name="fnB34a"
+href="#fn34a">[34]</a> and <i>In re
+Abele</i>,<a name="fnB35a"
+href="#fn35a">[35]</a> establish what the Federal Circuit refers to as the
+<i>Freeman-Walter-Abele</i> test for patentability when an algorithm is
+implicated in a patent claim.  The test is stated as follows:<p>
+It is first determined whether a mathematical algorithm is recited directly or
+indirectly in the claim.  If so, it is next determined whether the claimed
+invention as a whole is no more than the algorithm itself; that is, whether the
+claim is directed to a mathematical algorithm that is not applied to or limited
+by physical elements or process steps.  Such claims are nonstatutory.  However,
+when the mathematical algorithm is applied in one or more steps of an otherwise
+statutory process claim, or one or more elements of an otherwise statutory
+apparatus claim, the requirements of section 101 are met.<p>
+<i>Arrhythmia Research Technology, Inc. v. Corazonix Corp.</i><a name="fnB32"
+href="#fn32">[36]</a>  In other words, the fact that an algorithm is one of the
+elements of a claim of a patent does not make the claim invalid.  If the
+algorithm is used as part of a physical process (such as the manufacture of
+rubber, as in <i>Dehr</i>,) or is part of a physical device (such as an
+electrocardiograph device, as in <i>Arrhythmia</i>), the invention is
+patentable subject matter.<p>
+	Many of the existing cryptography patents contain attempts to meet this test
+by reciting the cryptographic algorithm as an element within a physical device.
+In the RSA Patent, this approach is stretched near if not beyond the breaking
+point.  The only elements of the physical device claim which are <i>not</i>
+descriptions of the algorithm are "a communications channel," "an encoding
+means," and a "decoding means."<a name="fnB33" href="#fn33">[37]</a>  The
+broadest method (or process) claim of the RSA Patent describes using the
+algorithm to "encode" a "message word signal."<a name="fnB34"
+href="#fn34">[38]</a>  By using the most generic references to a device
+("encoding means"), and the most generic reference possible to a physical
+process (encoding a "message word signal"), this type of patent comes as close
+as possible to claiming the algorithm by claiming the use of the algorithm in
+essentially all possible machines or with all possible processes.  Indeed, it
+is difficult to imagine how one could use the algorithm without a physical
+device which could be characterized as an "encoding means," or how one could
+apply the algorithm in a way which did not "encode" a "signal."<p>
+	Three recent Federal Circuit cases give insight into how the courts might
+apply the <i>Freeman-Walter-Abele</i> test to a cryptographic algorithm.
+First, in <i>In re Alappat</i>,<a name="fnB39a"
+href="#fn39a">[39]</a> the Federal Circuit used that test
+to find valid a patent which claimed an algorithm for displaying a smooth
+waveform from digital data.  "Although many, or arguably even all, of the means
+elements recited in [the disputed claim] represent circuitry elements that
+perform mathematical calculations, which is essentially true of all digital
+electrical circuits," the Federal Circuit noted, the patent was nonetheless
+proper because "the claimed invention as a whole is directed to a combination
+of interrelated elements which combine to form a machine for converting
+discrete waveform data samples into . . . data to be displayed on a display
+means."<a name="fnB35" href="#fn35">[40]</a>  <i>Alappat</i> can be read to
+stand for the proposition that, if the physical machine which performs the
+algorithm is a computer, and if the output from the algorithm is otherwise
+displayed, it may well be that the "physical device," or "physical process"
+requirements of the <i>Freeman-Walter-Abele</i> test are met.<p>
+	Another Federal Circuit case, <i>In re Warmerdam,</i><a name="fnB36"
+href="#fn36">[41]</a> further confirms that court's generous view of
+algorithm-based patents.  In <i>Warmerdam</i>, the court found patentable an
+invention claiming a "bubble hierarchy" algorithm used by computer-operated
+robots to avoid obstructions.  Because a claim covered a "machine" (the
+computer and memory controlling the robot) it was patentable, even though the
+novelty of the invention consisted solely of the use of the algorithm.<a
+name="fnB37" href="#fn37">[42]</a><p>
+	The Federal Circuit has, however, limited the patentability of algorithm
+claims in at least one recent case.  In <i>In re Schrader</i>,<a name="fnB43a"
+href="#fn43a">[43]</a> the
+court found unpatentable a claim to an invention for processing auction bids.
+The court distinguished <i>Abele</i> and <i>Arrhythmia</i> based on the nature
+of the <i>input</i> to the algorithm.  In <i>Abele</i>, the input was data from
+an X-ray CAT scan; in <i>Arrhythmia</i>, the input was data from a
+electrocardiograph.  Both sources of input data, the Federal Circuit reasoned,
+involved "subject matter representative of or constituting <i>physical activity
+or objects</i>."<a name="fnB38" href="#fn38">[44]</a>  Bid data from auction
+bidders was mere "data gathering," according to the <i>Schrader</i> court, and
+thus was materially different from X-ray or heart-rate data.<a name="fnB39"
+href="#fn39">[45]</a>  The fact that the patent specification discussed
+displaying the resulting data on display screens did not affect patentability,
+nor did a claim element for entering the bid data in a "record."<a name="fnB40"
+href="#fn40">[46]</a><p>
+	One possible way to apply these cases to a cryptographic algorithm patent is
+to ask this question: is the input to a cryptographic system more like the data
+from auctioneers, or is it more like electro-cardiograph, CAT-scan, or rubber
+temperature data?  The latter are representations of a physical object -- a
+part of the body.  Bid data, in contrast, seems much closer to the plaintext
+message input of a cryptographic system.  Both are merely abstract messages
+intended to be communicated from one party to another.  The bid data algorithm
+of <i>Schrader</i> simply transformed the message in a way to extract certain
+information to the auctioneer.  An encryption algorithm simply transforms the
+message to protect privacy or security.<p>
+	If the test is, indeed, whether the input to the algorithm is data descriptive
+of a physical object existing in the real world (such as a heartbeat or the
+temperature of rubber) as opposed to an abstract message composed by a human
+being, the validity of a broad cryptography patent such as the RSA Patent is
+subject to genuine question.<p>
+	It bears emphasis that the patentability of the claims in the RSA Patent will
+vary, claim by claim.  The attorneys who drafted the claims may have
+anticipated this problem; they added dependent claims which recite "register
+means" for accomplishing the steps claimed in the algorithm.<a name="fnB41"
+href="#fn41">[47]</a>  (Other dependent and independent claims simply add
+additional qualifications to the algorithm, and do not add any other physical
+structures to the claims.)  The use of the term "register means" appears to
+have been intended to encompass a generic computer system at its most basic
+level.  Under the current procedures applied by the Patent Office to patents
+claiming algorithms, however, one cannot transmute an unpatentable series of
+algorithm steps into a patentable machine merely by claiming the algorithm
+along with a generic computer performing the steps.<a name="fnB42"
+href="#fn42">[48]</a>  Thus, the addition of the "register means" elements to
+the claims did not materially improve their validity, and may in fact have
+limited the scope of the claims.<a name="fnB43" href="#fn43">[49]</a>  As
+written, all of the RSA Patent claims consist solely of algorithms combined
+with the most minimum, generic hardware means possible.  A genuine question
+remains whether, in that form, they claim patentable subject matter.<p>
+	It is true that patents are presumed valid, and that clear and convincing
+evidence<a name="fnB44" href="#fn44">[50]</a> of invalidity is required to
+attack an issued patent.  This rule exists largely out of deference to the
+expertise of the Patent and Trademark Office.  The question of patentable
+subject matter, however, has been treated as a question of law; the courts
+decide such questions <i>de novo</i> without deference to any administrative
+body.<a name="fnB45" href="#fn45">[51]</a>  Moreover, the RSA Patent was issued
+at a time when the law on algorithm-based claims was unclear.  Indeed, under
+the current examination guidelines, it is doubtful whether any of the RSA
+Patent claims would be allowed.<a name="fnB46" href="#fn46">[52]</a>
+Accordingly, one could not have confidence in every case that the examiner was
+aware of the proper legal standard to be applied.<p>
+<center><i>Does the Patent Disclose the Best Mode?</i><p>
+</center>	Section 112 of the Patent Act requires an inventor to fulfill certain
+requirements in making the details of the invention known in the specification
+of the patent.  One of these obligations requires the inventor to "set forth
+the best mode contemplated by the inventor of carrying out his invention."<a
+name="fnB47" href="#fn47">[53]</a>  The best mode requirement "is intended to
+ensure that a patent applicant plays 'fair and square' with the patent system.
+It is a requirement that the <i>quid pro quo</i> of the patent grant be
+satisfied.  One must not receive the right to exclude others unless at the time
+of filing he has provided an adequate disclosure of the best mode known to him
+of carrying out his invention."<a name="fnB48" href="#fn48">[54]</a>  Whether
+the best mode requirement has been met is as a question of fact.<a name="fnB49"
+href="#fn49">[55]</a><p>
+	It appears that the principal inventor of the RSA Algorithm, Ronald Rivest,
+believed that certain criteria in the selection of the prime numbers ((p) and
+(q)) were important.<a name="fnB50" href="#fn50">[56]</a>  Evidence of his
+subjective belief comes from papers he wrote both before and after he applied
+for his patent.  In August, 1977, before he applied for the patent, he wrote:<p>
+To gain additional protection against sophisticated factoring algorithms, both
+(p-1) and (q-1) should contain large prime factors and gcd(p-1,q-1) should be
+small.<a name="fnB51" href="#fn51">[57]</a><p>
+In January, 1978, Dr. Rivest published a paper in response to a proposed attack
+on his system, in which he gave more details about his preferred method of
+constructing his system.<a name="fnB52" href="#fn52">[58]</a>  In this later
+paper, Dr. Rivest noted that the prior paper "makes definite suggestions as to
+how the prime numbers p and q should be chosen," but that "this note should
+help make those suggestions less mysterious."<a name="fnB53"
+href="#fn53">[59]</a>  This January paper goes on to give more details about
+the selection of prime numbers, and further provides yet more details regarding
+the selection of the exponent (e) which Dr. Rivest preferred for additional
+security.<a name="fnB54" href="#fn54">[60]</a><p>
+	While Dr. Rivest's <i>papers</i> may have discussed his best mode of
+implementing the invention, the patent disclosure does not.  The RSA Patent
+specification does refer to one of these papers -- the one whose discussion Dr.
+Rivest later characterized as "mysterious."  The best mode requirement cannot
+be met merely by references to other papers,  however.  The disclosure must be
+in the specification of the patent itself.<a name="fnB55" href="#fn55">[61]</a>
+Accordingly, there is good reason to believe the RSA Patent is invalid because
+the inventors did not comply with the best mode requirement.<p>
+<center><i>Was the RSA Algorithm Obvious?</i><p>
+</center>	Section 103 of the Patent Act provides that a patent is invalid "if
+the differences between the subject matter sought to be patented and the prior
+art are such that the subject matter as a whole would have been obvious at the
+time the invention was made to a person having ordinary skill in the art . . .
+."  Section 102 of the Patent Act defines what is and what is not prior art for
+the purpose of applying the obviousness test of section 103.<a name="fnB56"
+href="#fn56">[62]</a>  Under section 102(a), prior art includes matters "known or
+used by others in this country, <i>or</i> patented <i>or</i> described in a
+printed publication in this or a foreign country, before the invention thereof
+by the applicant" (emphasis added), and under section 102(g) prior art includes
+prior inventions by another.  The Pohlig-Hellman paper<a name="fnB57"
+href="#fn57">[63]</a> is likely to be held as prior art under sections 102(a) or
+(g), as a printed publication, as public knowledge, or as a prior invention.<p>
+	The file wrapper of the RSA Patent reveals that the inventors of the RSA
+Patent did not disclose the Pohlig-Hellman paper to the Patent Office and that
+the examiner did not consider whether the use of a non-prime number in lieu of
+a prime number (the only difference between Pohlig-Hellman and RSA) was
+obvious.  While the presumption of validity is available even where prior art
+has not been considered during the prosecution of a patent, that presumption is
+not as strong where the art was not submitted to the examiner.  There are a
+number of references in the prior art, moreover, to using the problem of
+factoring composite numbers in cryptography, dating back to the 19th century.<a
+name="fnB58" href="#fn58">[64]</a>  Accordingly, should the RSA Patent ever
+become subject to further litigation, it may not survive a validity challenge
+based on the Pohlig-Hellman work.<p>
+<center><b>Conclusion</b><p>
+</center>	Due largely to luck, bluster, and the naivet&eacute; of potential
+competitors, the owner of United States Patent No. 4,405,829 has enjoyed a
+virtual monopoly on all uses of the RSA Algorithm.  However, a careful scrutiny
+of the RSA Patent claims, and other details of its disclosure and prosecution,
+reveal both significant limits to the scope of the patent and material
+questions regarding its validity.  While this article is not intended by the
+authors as legal advice to the reader nor as an invitation or encouragement to
+infringe the RSA Patent or any other patent,  those interested in implementing
+this technology should take a close look at the patent -- and obtain the advice
+of a competent attorney familiar with the proposed project -- before accepting
+at face value the oft-repeated notion that "RSA is patented."<p>
+
+<a name="fn0" href="#fnB0">[*]</a> 	<i>Mr. Flinn and Mr. Jordan practice with the
+law firm of Alston &amp; Bird, LLP, located in Atlanta Georgia.  Mr. Flinn is a
+member of the California and Georgia Bars, and Mr. Jordan is a member of the
+Georgia Bar and is admitted to practice before the United States Patent &amp;
+Trademark Office.  They have represented clients in litigation against RSA Data
+Security, Inc., regarding, among other things, the validity of the RSA Patent.
+The opinions expressed in this article are personal, however, and do not
+necessarily reflect the opinions of their firm, or any client of their firm.<p>
+	This article consists of statements of personal opinion by the authors, and is
+neither legal advice nor an invitiation to any person to practice any invention
+claimed in any patent.  Because the specific circumstances of any individual or
+entity will determine the extent of exposure to liability for infringing a
+patent, reliance on this or any other article of general applicability should
+not be substituted for legal advice from an attorney familiar with your
+particular circumstances. </i><p>
+	Portions of this article were previously published in the March, 1997 and
+June, 1997 editions of <i>Electronic Banking Law and Commerce Report</i>
+(Glasser LegalWorks).<p>
+<a name="fn1" href="#fnB1">[1]</a>	Ronald L. Rivest, Adi Shamir, Len Adelman,
+"On Digital Signatures and Public Key Cryptosystems," MIT Laboratory for
+Computer Science Technical Memorandum 82 (April 1977).<p>
+<a name="fn2" href="#fnB2">[2]</a>	The latest version of the PGP program for
+personal use is PGP for Personal Privacy, Version 5.0, which is available in
+beta form for download at <A HREF="http://www.pgp.com">http://www.pgp.com</A>, and will be in final form in late
+May 1997.  This new version offers a choice between the RSA algorithm, on the
+one hand, and the DSS/Diffie-Hellman algorithms, on the other.  <p>
+<a name="fn3" href="#fnB3">[3]</a>	For example, Bruce Schneier's otherwise
+excellent book, APPLIED CRYPTOGRAPHY (2d ed.), John Wiley &amp; Sons (1996) at
+474, (hereinafter Schneier) contains this overstatement.<p>
+<a name="fn4" href="#fnB4">[4]</a>	A "key" in these systems is not a physical
+device, but is a number (akin to a password).  The encryption key is used as an
+input to the mathematical formula which transforms a readable message into
+apparently meaningless gibberish.  The decryption key is the number used as an
+input to the formula which transforms the apparent gibberish back into the
+original message.<p>
+<a name="fn5" href="#fnB5">[5]</a>	Alice does not have to encrypt the whole
+message just to sign it.  In fact, because such large numbers are used in
+real-world implementations of this technology, the encryption operation can be
+quite slow.  Instead, Alice can use something called a "hashing algorithm" to
+transform a message of any size in to a string of numbers of a fixed (and
+usually smaller) size.  If the hashing algorithm is designed properly (and
+there are a number in current use), different messages should not produce the
+same hash.  Accordingly, the hash acts as a digital "fingerprint" of the
+message.  Alice can then encrypt the hash, not the message itself, with her
+private key.  To verify the signature, Bob simply re-hashes the message using
+the same hashing algorithm Alice used, and then decrypts Alice's hash with her
+public key.  If the hashes match, the message is authentic and has not been
+altered in transit.<p>
+<a name="fn6" href="#fnB6">[6]</a>	Bob should have some way of being confident
+that the number he thinks is Alice's public key is, in fact, her public key.
+There are a number of alternative proposals and methods for allowing for the
+verification of public keys, and the debate over them is lively, but the
+details the competing systems are beyond the scope of this discussion.<p>
+<a name="fn7" href="#fnB7">[7]</a>	Substituting numbers for variables, a
+modular arithmetic operation looks like this:
+1 = 2<sup>4</sup> mod 5
+The base (2) multiplied by itself four times (the exponent (4) is equal to 16
+(2*2*2*2=16)<p>
+1 = 16 mod 5<p>
+When there are 3 five's in 16 (3 times 5 is 15) and a remainder of 1.<p>
+<a name="fn8" href="#fnB8">[8]</a>	A prime number is one which is divisible
+only by itself and the number 1.  The numbers 17 and 31 are prime, for example,
+but 15 (divisible by 1, 3, 5 and 15) and 21 (divisible by 1, 3, 7 and 21) are
+not.<p>
+<a name="fn9" href="#fnB9">[9]</a>	The number representing the message (M)
+should be less than the modulus (n) if decryption is to succeed.  In addition,
+the multiplicative inverse (d) only exists if (e) is relatively prime to (has
+no prime number factors in common with) the number (p-1)*(q-1).<p>
+<a name="fn10" href="#fnB10">[10]</a>	The patent defines (d) and (e) as
+multiplicative inverses modulo the "least common multiple" (or "lcm") of (p-1)
+and (q-1), a value which divides the value (p-1)*(q-1) used here, resulting in
+additional possible values for d beyond the simplified version given here.
+This detail is not important to the discussion in this article, however.<p>
+<a name="fn11" href="#fnB11">[11]</a>	35 U.S.C. section 271(a).<p>
+<a name="fn12" href="#fnB12">[12]</a>	<i>E.g.</i>, <i>Texas Instruments, Inc.
+v. U.S. Int'l Trade Commission</i>, 805 F.2d 1558, 1562 (Fed. Cir. 1986),<i>
+reaff'd, reh'g denied</i>, 846 F.2d 1369 (1988) <i>.</i><p>
+<a name="fn13" href="#fnB13">[13]</a>	The independent claims are: 1, 3, 8, 13,
+18, 23, 25, 29, 33, and 37.<p>
+<a name="fn14" href="#fnB14">[14]</a>	In patent law, as in horseshoes and hand
+grenades, "almost" counts.  One can be liable for patent infringement even if
+one does not literally infringe all of the elements of a claim.  Under a theory
+called the "doctrine of equivalents," recently upheld by the U.S. Supreme
+Court, infringement can be found as long as the defendant infringes a
+"substantial equivalent" of an element of a claim not literally infringed.
+<i>Warner Jenkinson Co. v. Hilton Davis Chemical Co.,</i> 520 U.S. ___, 117
+S.Ct. 1352 (March 31, 1997).<p>
+<a name="fn15" href="#fnB15">[15]</a>	A number is "relatively prime" to another
+number if the two numbers have no factors in common except for the number 1.
+For example,  the numbers 8 and 21 are not prime numbers (each has a factor
+other than itself and 1) but 8 and 21 are relatively prime to one another
+because the only common factor they have is the number 1 (the factors of 8 are
+1, 2, 4, and 8; the factors of 21 are 1, 3, 7 and 21).<p>
+<a name="fn16" href="#fnB16">[16]</a>	As these terms are used in the RSA Patent
+the  "message" is "encoded" into "ciphertext" and "ciphertext" is sent from the
+first party to the second.  <i>See</i> RSA Patent at Col. 1, Line 56- Col.2,
+Line 10.    The recipient receives "ciphertext" and "decodes" the "ciphertext"
+into the "original message."  <i>Id</i>.  Thus, a person wishing the verify a
+digital signature must have received "ciphertext," and thus must "decode" it,
+because the "message" is not transmitted through the communications "channel."
+<i>Id</i>.<p>
+<a name="fn17" href="#fnB17">[17]</a>	Other components in the algorithm
+probably are interchangeable. For example, the encryption exponent (e) and the
+decryption exponent (d) each meet the definition of the other.  The fact that
+the exponent (d) is the multiplicative inverse of the exponent (e) mod
+(p-1)*(q-1) proves the converse, that (e) is the multiplicative inverse of (d),
+and that (e) and (d) are both relatively prime to (p-1)*(q-1).<p>
+<a name="fn18" href="#fnB18">[18]</a>	<i>See</i> Stephen C. Pohlig and Martin
+E. Hellman, "An Improved Algorithm for Computing Logarithms over GF(p) and its
+Cryptographic Significance," IEEE TRANSACTIONS ON INFORMATION THEORY (Jan.
+1978) (article submitted on June 17, 1976).<p>
+<a name="fn19" href="#fnB19">[19]</a>	The application for a patent on the
+Pohlig-Hellman system was pending during the period the RSA patent was being
+prosecuted, and the Patent Office declared an "interference" in which both
+sides were allowed to compete for a claim which would have covered the generic
+process of encryption and decryption using exponentiation and modular
+arithmetic.  Stanford University and MIT abandoned the interference in the
+early 1980's, however, so neither side was awarded this generic claim.<p>
+<a name="fn20" href="#fnB20">[20]</a>	35 U.S.C. section 271(c).<p>
+<a name="fn21" href="#fnB21">[21]</a>	<i>E.g.</i>, <i>Joy Technologies, Inc. v.
+Flakt, Inc.</i>, 6 F.3d 770, 774 (Fed. Cir. 1993); <i>Met-Coil Systems Corp. v.
+Korners Unlimited, Inc.</i>, 803 F.2d 684, 687 (Fed. Cir. 1986).  Inducing
+infringement also requires an intent element not present in a claim for
+contributory infringement.  <i>Hewlett Packard Co. v. Bausch &amp; Lomb,
+Inc.</i>, 909 F.2d 1464, 1468 (Fed. Cir. 1990). <p>
+<a name="fn22" href="#fnB22">[22]</a>	One cannot contribute to the infringement
+if the "direct" infringer is licensed, expressly or impliedly.  <i>See,
+e.g.</i>, <i>Universal Electronics, Inc. v. Zenith Electronics Corp.</i>,  846
+F. Supp. 641 (N.D. Ill.) (no contributory infringement or inducement to
+infringe by manufacturer of "universal" remote control for television where the
+purchaser of the replacement remote has an implied license to practice the
+invention arising out of purchase of the original television-remote
+combination), <i>aff'd w/o op.</i>, 41 F.3d 1520 (Fed. Cir. 1994).<p>
+<a name="fn23" href="#fnB23">[23]</a>	<i>E.g.</i>, <i>Hodosh v. Block Drug
+Co.</i>, 833 F.2d 1575, 1579 (Fed. Cir. 1987), <i>cert. denied</i>, 485 U.S.
+1007 (1988).<p>
+<a name="fn24" href="#fnB24">[24]</a>	<i>See</i> <i>C.R. Bard, Inc. v. Advanced
+Cardiovascular Sys., Inc.</i>, 911 F.2d 670, 674 (Fed. Cir. 1990); <i>Universal
+Electronics</i>, 846 F. Supp. at 651.<p>
+<a name="fn25" href="#fnB25">[25]</a>	Other non-RSA public key variants, such
+as Diffie-Hellman and El-Gamal, all use exponentiation and modular reduction.
+<i>See</i>, <i>e.g.</i>, Schneier at 476-478; 513-516.  While Pohlig-Hellman is
+the closest system to RSA, it is certainly true that the mathematical steps
+involved in RSA encryption and decryption are the same steps used in many other
+non-infringing cryptographic systems.<p>
+<a name="fn26" href="#fnB26">[26]</a>	The details of the SSL protocol may be
+found at <A HREF="http://home.netscape.com/eng/ssl3/ssl-toc.html"> http://home.netscape.com/eng/ssl3/ssl-toc.html</A>.<p>
+<a name="fn27" href="#fnB27">[27]</a>	Netscape Navigator, for example, installs
+a file names "cert.db" with the other program files.<p>
+<a name="fn28" href="#fnB28">[28]</a>	Indeed, RSA Data itself operates a
+certificate authority business, and RSA certificate keys are supplied with the
+Netscape Navigator Browser.<p>
+<a name="fn29" href="#fnB29">[29]</a>	The basic patent statute, 35 U.S.C. section
+101, provides, "[w]hoever invents or discovers any new and useful process,
+machine, manufacture, or composition of matter, or any new and useful
+improvement thereof, may obtain a patent therefor . . . ."  <p>
+<a name="fn30" href="#fnB30">[30]</a>	<i>Gottschalk v. Benson</i>, 409 U.S. 63,
+65 (1972).<p>
+<a name="fn31" href="#fnB31">[31]</a>	<i>Parker v. Flook</i>, 437 U.S. 584, 586
+(1978).<p>
+<a name="fn32a" href="fnB32a">[32]</a>	450 U.S. 175 (1981).<p>
+<a name="fn33a" href="fnB33a">[33]</a>	573 F.2d 1237 (C.C.P.A. 1978).<p>
+<a name="fn34a" href="fnB34a">[34]</a>	618 F.2d 758 (C.C.P.A. 1980).<p>
+<a name="fn35a" href="fnB35a">[35]</a>	684 F.2d 902 (C.C.P.A. 1982).<p>
+<a name="fn32" href="#fnB32">[36]</a>	958 F.2d 1053, 1058 (Fed. Cir. 1992).<p>
+<a name="fn33" href="#fnB33">[37]</a>	RSA Patent at  Col. 14, Line 38 - Col.
+15, Line 5.<p>
+<a name="fn34" href="#fnB34">[38]</a>	<i>Id.</i> at Col. 25, Lines 47-67.<p>
+<a name="fn39a" href="#fnB39a">[39]</a>	33 F.3d 1526 (Fed. Cir. 1994).<p>
+<a name="fn35" href="#fnB35">[40]</a>	<i>Id.</i> at 1544.<p>
+<a name="fn36" href="#fnB36">[41]</a>	33 F.3d 1354 (Fed. Cir. 1994).<p>
+<a name="fn37" href="#fnB37">[42]</a>	<i>Id.</i> at 1360-1.<p>
+<a name="fn43a" href="fnB43a">[43]</a> 22 F.3d 290 (Fed. Cir. 1994).<p>
+<a name="fn38" href="#fnB38">[44]</a>	<i>Id.</i> at 294 (emphasis in original).
+In <i>Warmerdam </i>(subsequent to <i>Schrader</i>), the input data was
+information about the physical objects the robot might encounter, and thus
+would also satisfy the "physical activity or object" test.<p>
+<a name="fn39" href="#fnB39">[45]</a>	<i>In re Schrader</i>, 22 F.3d at 294.<p>
+<a name="fn40" href="#fnB40">[46]</a>	<i>Id. </i>at 293-94.<p>
+<a name="fn41" href="#fnB41">[47]</a>	See RSA Patent claims 2, 4, 9, 14, 19,
+and 34.<p>
+<a name="fn42" href="#fnB42">[48]</a>	The United States Patent &amp; Trademark
+Office will consider claims reciting generic computer hardware as process
+claims which themselves must be independently patentable.  <i>See</i> United
+States Patent &amp; Trademark Office, <i>Examination Guidelines for
+Computer-Related Inventions</i>, 61 Fed. Reg. 7478 (1996) (hereinafter,
+"Guidelines").  These Guidelines have been called "persuasive authority" by the
+Federal Circuit.  <i>In re Trovato</i>, 60 F.3d 807 (Fed. Cir. 1995).<p>
+<a name="fn43" href="#fnB43">[49]</a>	These claims are stated in so-called
+"means-plus-function" terms, which is permissible under the last paragraph of
+35 U.S.C. section 112.  When claims are written in these terms, however, they are
+limited to covering "the corresponding structure . . . described in the
+specification and equivalents thereof."  We have not analyzed whether the
+specific computational hardware disclosed in the specification of the patent
+differs in any material way from the processors used in modern computers, and
+it may well be that these claims are limited to 1977 era computational
+equipment.  This article assumes, however, that a modern computer CPU would be
+considered at least the "equivalent" to the "register means" claimed in these
+dependent claims.<p>
+<a name="fn44" href="#fnB44">[50]</a>	This may be contrasted with the
+"preponderance-of-evidence" standard typical in other civil litigation.<p>
+<a name="fn45" href="#fnB45">[51]</a>	<i>In re Donaldson Co., </i>16 F.3d 1189,
+1192 (Fed. Cir. 1994).<p>
+<a name="fn46" href="#fnB46">[52]</a>	<i>See generally Guidelines, supra</i>
+note 45.<p>
+<a name="fn47" href="#fnB47">[53]</a>	35 U.S.C. section 112.<p>
+<a name="fn48" href="#fnB48">[54]</a>	<i>Amgen, Inc. v. Chugai Pharmaceutical
+Co.</i>, 927 F.2d 1200, 1209-10 (Fed. Cir.), <i>cert. denied</i>, 502 U.S. 856
+(1991).  <p>
+<a name="fn49" href="#fnB49">[55]</a>	<i>Amgen</i>, 927 F.2d at 1209;  <i>Engel
+Industries, Inc. v. Lockformer Co.</i>, 946 F.2d 1528, 1531 (Fed. Cir. 1991).<p>
+<a name="fn50" href="#fnB50">[56]</a>	Ironically, it turns out that Dr. Rivest
+was wrong in his belief that these (and other) limitations on the selections of
+(p) and (q) made a significant difference in the security of the system.
+Subsequent research showed that, even with careful selection of (p) and (q),
+one could not avoid the sort of weakness in the modulus Dr. Rivest was hoping
+to avoid.  <i>See</i> Alfred J. Menezes, Paul C. van Oorschot, Scott A.
+Vanstone, HANDBOOK OF APPLIED CRYPTOGRAPHY, section 3.2.4, p. 94 (CRC Press 1997).
+Users were told that a "careful" selection of primes allowed a given level of
+security to be achieved with a smaller modulus than would otherwise be
+required.  In fact, this is an unsafe improvement, and the larger modulus is
+needed to achieve that level of security.  Any impact of this fact on the
+validity of the patent is beyond the scope of this article.<p>
+<a name="fn51" href="#fnB51">[57]</a>	Ronald L. Rivest, Adi Shamir, Len
+Adelman, "A Method for Obtaining Digital Signatures and Public Key
+Cryptosystems," MIT LABORATORY FOR COMPUTER SCIENCE TECHNICAL MEMORANDUM 82
+(Revised August 1977) at 10.<p>
+<a name="fn52" href="#fnB52">[58]</a>	Ronald L. Rivest, "Remarks on a Proposed
+Cryptanalytic Attack on the M.I.T. Public-Key Cryptosystem," CRYPTOLOGIA
+(January 1978).<p>
+<a name="fn53" href="#fnB53">[59]</a>	<i>Id</i>. at 2.<p>
+<a name="fn54" href="#fnB54">[60]</a>	<i>Id</i>. at 4-5.<p>
+<a name="fn55" href="#fnB55">[61]</a>	<i>See</i> <i>Dana Corp. V. IPC Limited
+Partnership</i>, 860 F.2d 415, 418-419 (Fed. Cir. 1988), <i>cert. denied</i>,
+490 U.S. 1067 (1989);  <i>Advanced Semiconductor Materials America, Inc. v.
+Applied Materials, Inc.</i> 1994 W.L. 715634 (N.D. Cal. Dec. 16, 1994) (denying
+motion for summary judgment on best mode defense, ruling that the PTO Manual of
+Patent Examining Procedure, which specifically disallows incorporation by
+reference to "non patent publications" to comply with the best mode
+requirement, established the legal rule for incorporation by reference).<p>
+<a name="fn56" href="#fnB56">[62]</a>	<i>Graham v. John Deere Co.</i>, 383 U.S.
+1, 14-15 (1966).  <p>
+<a name="fn57" href="#fnB57">[63]</a>	See note 18 above.<p>
+<a name="fn58" href="#fnB58">[64]</a>	In 1870, a book by William S. Jevons
+described the relationship of one-way functions to cryptography <i>and</i> went
+on to discuss specifically the factorization problem used to create the
+"trap-door" in the RSA system.  In July, 1996, one observer commented on the
+Jevons book in this way:<p>
+	In his book <i>The Principles of Science: A Treatise on Logic and Scientific
+Method, </i>written and published in the 1890's, William S. Jevons observed
+that there are many situations where the 'direct' operation is relatively easy,
+but the 'inverse' operation is significantly more difficult,  One example
+mentioned briefly is that enciphering (encryption) is easy while deciphering
+(decryption) is not.  In the same section of <i>Chapter 7: Introduction</i>
+titled 'Induction an Inverse Operation', much more attention is devoted to the
+principle that multiplication of integers is easy, but finding the (prime)
+factors of the product is much harder.  <i>Thus, Jevons anticipated a key
+feature of the RSA Algorithm for public key cryptography, though he certainly
+did not invent the concept of public key cryptography.</i><p>
+Solomon W. Golomb, <i>On Factoring Jevons' Number</i>, CRYPTOLOGIA 243 (July
+1996) (emphasis added).  
+
+<hr>
+
+<P>This article is presented by CyberLaw (tm), an educational service on computer law for computer users.  For more information on CyberLaw, contact Jonathan Rosenoer at <A HREF="mailto:cyberlaw@cyberlaw.com">cyberlaw@cyberlaw.com</A>.  Questions and comments may be posted at the CyberLaw Internet site (<A HREF="cylw_home.html">http://www.cyberlaw.com/</A>).  CyberLaw is a trademark of Jonathan Rosenoer.  Copyright &copy; 1997 Jonathan Rosenoer; All Rights Reserved.
+
+<P><I><A HREF="#I"><IMG border=0 SRC="rtrntp.GIF" ALT="[return to top]"></A><a href="cylw_home.html"><IMG border=0 SRC="rtrnhm.GIF" ALT="Return to CyberLaw Home Page"></a><P>
+
+</html>
+</BODY>
+

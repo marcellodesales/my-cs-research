@@ -1,0 +1,2 @@
+This is a text file to test the
+mars cipher component's file encryption :-). 

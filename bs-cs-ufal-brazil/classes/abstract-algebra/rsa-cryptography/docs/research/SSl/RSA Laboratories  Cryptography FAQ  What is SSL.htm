@@ -1,0 +1,381 @@
+<html>
+<head>
+
+<title>RSA Laboratories | Cryptography FAQ | What is SSL?</title>
+
+<!-- begin header -->
+
+<script Language="Javascript">
+<!-- Hide
+
+        var browserName = navigator.appName;
+        var browserVer = parseFloat(navigator.appVersion);
+        var browserMac = navigator.appVersion.indexOf("Macintosh");
+        var browserWin = navigator.appVersion.indexOf("Win");
+        var loaded = false;
+
+        if (browserName == "Netscape" && browserVer >= 3) version = "n3";
+        else if (browserName == "Microsoft Internet Explorer" && browserVer >= 4) version = "ie4";
+        else if (browserName == "Microsoft Internet Explorer" && browserVer >= 3.01     && browserMac != -1) version = "ie3m";
+        else version = "n2";
+
+  if (version == "n3" || version == "ie4" || version == "ie3m") {
+
+    //round red arrow on gray left hand side
+	bttn0_On = new Image(90,35);
+	bttn0_On.src = "/images/buttons/arrow1_on.gif";
+	bttn0_Off = new Image(90,35);
+	bttn0_Off.src = "/images/buttons/arrow1_off.gif";
+	
+	bttn0_RO = new Image(90,35);
+	bttn0_RO.src = "/images/buttons/bar_enterprise.gif";
+	
+	bttn1_RO = new Image(90,35);
+	bttn1_RO.src = "/images/buttons/bar_developers.gif";
+	
+	bttn7_RO = new Image(90,35);
+	bttn7_RO.src = "/images/buttons/bar_solutions.gif";
+	
+	bttn2_RO = new Image(90,35);
+	bttn2_RO.src = "/images/buttons/bar_channel.gif";
+	
+	bttn3_RO = new Image(90,35);
+	bttn3_RO.src = "/images/buttons/bar_partners.gif";
+	
+	bttn4_RO = new Image(90,35);
+	bttn4_RO.src = "/images/buttons/bar_investors.gif";
+	
+	//red arrow on gray left hand side
+	bttn5_On = new Image(90,35);
+	bttn5_On.src = "/images/buttons/arrow2_on.gif";
+	bttn5_Off = new Image(90,35);
+	bttn5_Off.src = "/images/buttons/arrow2_off.gif";
+	
+	bttn5_RO = new Image(90,35);
+	bttn5_RO.src = "/images/buttons/bar_salesweb.gif";
+	
+	bttn6_RO = new Image(90,35);
+	bttn6_RO.src = "/images/buttons/bar_securcare.gif";
+	
+	//Japan and Australia do not have rollover text
+	
+	bttnX_RO = new Image(90,35);
+	bttnX_RO.src = "/images/buttons/ro_bar.gif";
+	
+	//red arrow on black top bar
+	bttna_On = new Image(90,35);
+	bttna_On.src = "/images/buttons/arrow3_on.gif";
+	bttna_Off = new Image(90,35);
+	bttna_Off.src = "/images/buttons/arrow3_off.gif";
+	bttna_RO = new Image(90,35);
+	bttna_RO.src = "/images/buttons/bar_howtobuy.gif";
+	
+	bttnb_RO = new Image(90,35);
+	bttnb_RO.src = "/images/buttons/bar_download.gif";
+	
+	bttnc_RO = new Image(90,35);
+	bttnc_RO.src = "/images/buttons/bar_support.gif";
+	
+	bttnd_RO = new Image(90,35);
+	bttnd_RO.src = "/images/buttons/bar_contactus.gif";
+	
+	//black arrow on red top bar
+	bttne_On = new Image(90,35);
+	bttne_On.src = "/images/buttons/arrow4_on.gif";
+	bttne_Off = new Image(90,35);
+	bttne_Off.src = "/images/buttons/arrow4_off.gif";
+	
+	bttne_RO = new Image(90,35);
+	bttne_RO.src = "/images/buttons/bar_products.gif";
+	
+	bttnf_RO = new Image(90,35);
+	bttnf_RO.src = "/images/buttons/bar_conference.gif";
+	
+	bttng_RO = new Image(90,35);
+	bttng_RO.src = "/images/buttons/bar_news.gif";
+	
+	bttnh_RO = new Image(90,35);
+	bttnh_RO.src = "/images/buttons/bar_events.gif";
+	
+	//black arrow on red top bar
+	bttni_On = new Image(90,35);
+	bttni_On.src = "/images/buttons/arrow5_on.gif";
+	bttni_Off = new Image(90,35);
+	bttni_Off.src = "/images/buttons/arrow5_off.gif";
+	
+	bttni_RO = new Image(90,35);
+	bttni_RO.src = "/images/buttons/bar_services.gif";
+	
+	bttnj_RO = new Image(90,35);
+	bttnj_RO.src = "/images/buttons/bar_rsalabs.gif";
+	
+	bttnk_RO = new Image(90,35);
+	bttnk_RO.src = "/images/buttons/bar_company.gif";
+	
+	bttnl_RO = new Image(90,35);
+	bttnl_RO.src = "/images/buttons/bar_sitemap.gif";
+
+//sub section buttons
+	  subb0_On = new Image(90,35);
+	  subb0_On.src = "/images/buttons/b1_bu_dn.gif";
+	  subb0_Off = new Image(90,35);
+	  subb0_Off.src = "/images/buttons/b1_bu_up.gif";
+
+	  subb1_On = new Image(90,35);
+	  subb1_On.src = "/images/buttons/b1_st_dn.gif";
+	  subb1_Off = new Image(90,35);
+	  subb1_Off.src = "/images/buttons/b1_st_up.gif";
+
+	  subb2_On = new Image(90,35);
+	  subb2_On.src = "/images/buttons/b1_tn_dn.gif";
+	  subb2_Off = new Image(90,35);
+	  subb2_Off.src = "/images/buttons/b1_tn_up.gif";
+
+	  subb3_On = new Image(90,35);
+	  subb3_On.src = "/images/buttons/b1_ca_dn.gif";
+	  subb3_Off = new Image(90,35);
+	  subb3_Off.src = "/images/buttons/b1_ca_up.gif";
+
+	  subb4_On = new Image(90,35);
+	  subb4_On.src = "/images/buttons/b1_pc_dn.gif";
+	  subb4_Off = new Image(90,35);
+	  subb4_Off.src = "/images/buttons/b1_pc_up.gif";
+
+	  subb5_On = new Image(90,35);
+ 	  subb5_On.src = "/images/buttons/b1_sa_dn.gif";
+ 	  subb5_Off = new Image(90,35);
+ 	  subb5_Off.src = "/images/buttons/b1_sa_up.gif";
+
+	  subb6_On = new Image(90,35);
+ 	  subb6_On.src = "/images/buttons/b1_cf_dn.gif";
+ 	  subb6_Off = new Image(90,35);
+ 	  subb6_Off.src = "/images/buttons/b1_cf_up.gif";
+
+	  subb7_On = new Image(90,35);
+ 	  subb7_On.src = "/images/buttons/b1_cb_dn.gif";
+ 	  subb7_Off = new Image(90,35);
+ 	  subb7_Off.src = "/images/buttons/b1_cb_up.gif";
+}
+
+
+function hiLite(bttnName,imgObjName,RODescName) 
+{ 
+        if (version == "n3" || version == "ie4" || version == "ie3m") { 
+                document.images[bttnName].src = eval(imgObjName + ".src");
+                document.images["RODesc"].src = eval(RODescName + ".src");
+
+        } 
+} 
+// -->
+
+</script>
+</head>
+
+<body text="#000000" bgcolor="#FFFFFF" link="#ff4040" vlink="#666666" alink="#000000" marginwidth="10" marginheight="10">
+
+<FORM METHOD=post ACTION=/programs/texis.exe/search/search>
+  <table border="0" width="608" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="613" colspan="2"><table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="95" rowspan="2" valign="bottom">
+		  <a href="/"><img
+          src="/images/logo_top.gif" alt="RSA Security" width="95" height="93" border="0"></a></td>
+          <td width="505" bgcolor="#000000"><table border="0" cellspacing="0" cellpadding="0"
+          width="505"><font face="arial, helvetica" size="1">
+            <tr>
+              <td valign="top"><img src="/images/buttons/div_blacktop.gif" 
+			  width="423" height="8" alt="" border="0"><br><a
+              href="/support/"
+              onMouseOver="hiLite('cbttn','bttna_On','bttnc_RO');return true"
+              onMouseOut="hiLite('cbttn','bttna_Off','bttnX_RO')"><img name="cbttn" border="0"
+			  src="/images/buttons/arrow3_off.gif" width="8" height="18" border="0"><img src="/images/buttons/txt_support_off.gif" width="67" height="18" border="0" alt="Support"></a><a
+			  href="/downloads/"
+              onMouseOver="hiLite('bbttn','bttna_On','bttnb_RO');return true"
+              onMouseOut="hiLite('bbttn','bttna_Off','bttnX_RO')"><img name="bbttn" border="0"
+			  src="/images/buttons/arrow3_off.gif" width="8" height="18" border="0"><img src="/images/buttons/txt_downloads_off.gif" width="84" height="18" border="0" alt="Downloads"></a><a
+			  href="/contact/howtobuy.html"
+              onMouseOver="hiLite('abttn','bttna_On','bttna_RO');return true"
+              onMouseOut="hiLite('abttn','bttna_Off','bttnX_RO')"><img name="abttn" 
+			  src="/images/buttons/arrow3_off.gif" width="8" height="18" border="0"><img src="/images/buttons/txt_howtobuy_off.gif" width="85" height="18" border="0" alt="How to Buy"></a><a
+              href="/contact/"
+              onMouseOver="hiLite('dbttn','bttna_On','bttnd_RO');return true"
+              onMouseOut="hiLite('dbttn','bttna_Off','bttnX_RO')"><img name="dbttn" border="0"
+			  src="/images/buttons/arrow3_off.gif" width="8" height="18" border="0"><img src="/images/buttons/txt_contactus_off.gif" width="111" height="18" border="0" alt="Contact Us"></a><img 
+			  name="sbttn" src="/images/buttons/txt_search_off.gif" width="44" height="18" alt=""></a></td>
+              <td width="78" valign="top"><input type="text" SIZE="7" name=arg value=""></td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#FF0000" height="71" valign="bottom">
+		  <a href="/products/"
+          onMouseOver="hiLite('ebttn','bttne_On','bttne_RO');return true"
+          onMouseOut="hiLite('ebttn','bttne_Off','bttnX_RO')"><img name="ebttn" border="0"
+			  src="/images/buttons/arrow4_off.gif" width="8" height="19" border="0"><img src="/images/buttons/txt_products_off.gif" width="67" height="19" border="0" alt="Products"></a><a
+          href="/news/"
+          onMouseOver="hiLite('gbttn','bttne_On','bttng_RO');return true"
+          onMouseOut="hiLite('gbttn','bttne_Off','bttnX_RO')"><img name="gbttn" border="0"
+			  src="/images/buttons/arrow4_off.gif" width="8" height="19" border="0"><img src="/images/buttons/txt_news_off.gif" width="84" height="19" border="0" alt="News"></a><a
+		  href="/events/"
+          onMouseOver="hiLite('hbttn','bttne_On','bttnh_RO');return true"
+          onMouseOut="hiLite('hbttn','bttne_Off','bttnX_RO')"><img name="hbttn" border="0"
+			  src="/images/buttons/arrow4_off.gif" width="8" height="19" border="0"><img src="/images/buttons/txt_events_off.gif" width="85" height="19" border="0" alt="Events"></a><a
+		  href="/conference/"
+          onMouseOver="hiLite('fbttn','bttne_On','bttnf_RO');return true"
+          onMouseOut="hiLite('fbttn','bttne_Off','bttnX_RO')"><img name="fbttn" border="0"
+			  src="/images/buttons/arrow4_off.gif" width="8" height="19" border="0"><img src="/images/buttons/txt_conference_off.gif" width="111" height="19" border="0" alt="RSA Conference"></a><img
+          src="/images/rline_01.gif" width="126" height="19" alt=""><br>
+          <a href="/service/"
+          onMouseOver="hiLite('ibttn','bttni_On','bttni_RO');return true"
+          onMouseOut="hiLite('ibttn','bttni_Off','bttnX_RO')"><img name="ibttn" border="0"
+			  src="/images/buttons/arrow5_off.gif" width="8" height="20" border="0"><img src="/images/buttons/txt_services_off.gif" width="67" height="20" border="0" alt="Services"></a><a
+          href="/company/" 
+          onMouseOver="hiLite('kbttn','bttni_On','bttnk_RO');return true"
+          onMouseOut="hiLite('kbttn','bttni_Off','bttnX_RO')"><img name="kbttn" border="0"
+			  src="/images/buttons/arrow5_off.gif" width="8" height="20" border="0"><img src="/images/buttons/txt_company_off.gif" width="84" height="20" border="0" alt="Company"></a><a
+		  href="/careers/" 
+          onMouseOver="hiLite('lbttn','bttni_On','bttnl_RO');return true"
+          onMouseOut="hiLite('lbttn','bttni_Off','bttnX_RO')"><img name="lbttn" border="0"
+			  src="/images/buttons/arrow5_off.gif" width="8" height="20" border="0"><img src="/images/buttons/txt_careers_off.gif" width="85" height="20" border="0" alt="Careers"></a><a
+		  href="/rsalabs/"
+          onMouseOver="hiLite('jbttn','bttni_On','bttnj_RO');return true"
+          onMouseOut="hiLite('jbttn','bttni_On','bttnX_RO')"><img name="jbttn" border="0"
+			  src="/images/buttons/arrow5_on.gif" width="8" height="20" border="0"><img src="/images/buttons/txt_rsalabs_on.gif" width="111" height="20" border="0" alt="RSA Labs"></a><img
+          src="/images/rline_02.gif" width="126" height="20" alt=""><br>
+          <img name="RODesc" src="/images/buttons/ro_bar.gif" width="505" height="32"
+          alt=""></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="103" valign="top" rowspan="2"><a href="/rsalabs/faq/"
+      
+      onMouseOver="hiLite('subb6','subb6_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb6','subb6_On','bttnX_RO')"><img name="subb6" border="0"
+      src="/images/buttons/b1_cf_dn.gif" alt="Crypto FAQ" width="103" height="41"></a><a
+      href="/rsalabs/cryptobytes/" 
+      onMouseOver="hiLite('subb7','subb7_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb7','subb7_Off','bttnX_RO')"><img name="subb7" border="0" src="/images/buttons/b1_cb_up.gif" alt="Crypto Bytes" width="103" height="35"></a><a
+      href="/rsalabs/bulletins/" 
+      onMouseOver="hiLite('subb0','subb0_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb0','subb0_Off','bttnX_RO')"><img name="subb0" border="0" src="/images/buttons/b1_bu_up.gif" alt="Bulletins" width="103" height="24"></a><a
+      href="/rsalabs/standards/" 
+      onMouseOver="hiLite('subb1','subb1_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb1','subb1_Off','bttnX_RO')"><img name="subb1" border="0" src="/images/buttons/b1_st_up.gif" alt="Standards" width="103" height="24"></a><a
+      href="/rsalabs/technotes/" 
+      onMouseOver="hiLite('subb2','subb2_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb2','subb2_Off','bttnX_RO')"><img name="subb2" border="0" src="/images/buttons/b1_tn_up.gif" alt="Tech Notes" width="103" height="24"></a><a
+      href="/rsalabs/challenges/" 
+      onMouseOver="hiLite('subb3','subb3_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb3','subb3_Off','bttnX_RO')"><img name="subb3" border="0" src="/images/buttons/b1_ca_up.gif" alt="Challenges" width="103" height="24"></a><a
+      href="/rsalabs/pkcs/" 
+      onMouseOver="hiLite('subb4','subb4_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb4','subb4_Off','bttnX_RO')"><img name="subb4" border="0" src="/images/buttons/b1_pc_up.gif" alt="PKCS" width="103" height="24"></a><a
+      href="/rsalabs/staff/" 
+      onMouseOver="hiLite('subb5','subb5_On','bttnX_RO');return true"
+      onMouseOut="hiLite('subb5','subb5_Off','bttnX_RO')"><img name="subb5" border="0" src="/images/buttons/b1_sa_up.gif" alt="Staff and Associates" width="103" height="37"></a>
+
+ &nbsp;<P>
+ 
+	  	  
+      </td>
+      <td width="100%" align="left" valign="top">
+</form>	  
+<!-- end header -->
+
+<table border=0 cellspacing=5 cellpadding=5 width=486>
+  <tr valign="top" align="left">
+    <td> 
+      <p><img src="images/faq41_hdr_sml1.gif" width="437" height="14" alt="RSA Labs' FAQ 4.1"><br>
+        <a href="5-1.html"><font face="Arial, Helvetica, sans-serif" size="1">Up 
+        one level</font></a></p>
+      <p><b><font face="Arial, Helvetica, sans-serif" size="4"><A NAME="5-1-2.html">5.1.2</A>&nbsp;&nbsp;<font color="red">What 
+        is SSL? </font></font></b> </p>
+      <p></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+The SSL (Secure Sockets Layer) Handshake Protocol [<a href="references.html#Hic95" >Hic95</a>] was
+developed by Netscape Communications Corporation to provide security
+and privacy over the Internet. The protocol supports server and client
+authentication. The SSL protocol is application independent, allowing
+protocols like HTTP (HyperText Transfer Protocol), FTP (File Transfer
+Protocol), and Telnet to be layered on top of it transparently. Still,
+SSL is optimized for HTTP; for FTP, IPSec (see Question&nbsp;<A href="5-1-4.html">5.1.4</A>)
+might be preferable. The SSL protocol is able to negotiate encryption
+keys as well as authenticate the server before data is exchanged by
+the higher-level application. The SSL protocol maintains the security
+and integrity of the transmission channel by using encryption,
+authentication and message authentication codes. 
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ The SSL Handshake Protocol consists of two phases: server
+authentication and an optional client authentication. In the first
+phase, the server, in response to a client's request, sends its
+certificate and its cipher preferences.  The client then generates a
+master key, which it encrypts with the server's public key, and
+transmits the encrypted master key to the server. The server recovers
+the master key and authenticates itself to the client by returning a
+message authenticated with the master key. Subsequent data is
+encrypted and authenticated with keys derived from this master key. In
+the optional second phase, the server sends a challenge to the
+client. The client authenticates itself to the server by returning the
+client's digital signature on the challenge, as well as its public-key
+certificate.
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ A variety of cryptographic algorithms are supported by SSL. During the
+``handshaking'' process, the RSA public-key cryptosystem (see
+Section&nbsp;<A href="3-1.html">3.1</A>) is used. After the exchange of keys, a number
+of ciphers are used. These include RC2 (see Question&nbsp;<A href="3-6-2.html">3.6.2</A>), RC4
+(see Question&nbsp;<A href="3-6-3.html">3.6.3</A>), IDEA (see 
+Question&nbsp;<A href="3-6-7.html">3.6.7</A>),  DES (see Section&nbsp;<A href="3-2.html">3.2</A>),
+and triple-DES (see Question&nbsp;<A href="3-2-6.html">3.2.6</A>). The MD5 message-digest
+algorithm (see Question&nbsp;<A href="3-6-6.html">3.6.6</A>) is also used. The public-key
+certificates follow the X.509 syntax (see Question&nbsp;<A href="5-3-3.html">5.3.3</A>). 
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ For more information on SSL 3.0, see 
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ 
+<center><A HREF="http://home.netscape.com/eng/ssl3/index.html">http://home.netscape.com/eng/ssl3/index.html</A>.</center><br>
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+  TLS (Transport Layer Security) is a protocol that is
+based on and very similar to SSL 3.0; for more information about TLS
+1.0, see 
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ 
+<center><A HREF="ftp://ftp.isi.edu/in-notes/rfc2246.txt">ftp://ftp.isi.edu/in-notes/rfc2246.txt</A>.</center><br>
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ We should also mention WTLS (Wireless TLS), which specifies the
+security layer protocol in WAP (Wireless Application Protocol); WAP is
+the de facto standard for the delivery and presentation of information
+to wireless devices such as mobile phones and pagers. WTLS is very
+similar to TLS but optimized for low-bandwidth bearer networks. For
+more information on WAP and WTLS, see  
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+ 
+<center><A HREF="http://www.wapforum.org/what/technical.htm">http://www.wapforum.org/what/technical.htm</A>.</center><br>
+
+</font></p><p><font face="Arial, Helvetica, sans-serif" size="2">
+<BR>
+
+	  </font></td></tr></table>
+
+<!--begin footer footer.txt-->
+
+	<tr align="center">
+          <td width="100%" colspan="4"><div align="left"><p><img src="/images/ln_ht_01.gif" width=487 height=1 border=0><br>
+          <font face="Arial,Helvetica" size="1">Website feedback: <a href="mailto:webmaster@rsasecurity.com">webmaster@rsasecurity.com</a><br>
+          <A HREF="http://www.rsasecurity.com/rsalabs/">Labs Home</A> | <A HREF="http://www.rsasecurity.com/rsalabs/staff/">Contact RSA Labs</A>
+          | <A HREF="http://www.rsasecurity.com/search/">Search</A> | <A HREF="http://www.rsasecurity.com/sitemap/">Site Map</A>
+          | <A HREF="http://www.rsasecurity.com/legal/">Legal Disclaimer</A></font></div></td>
+        </tr>  
+	</table>
+</body>
+</html>

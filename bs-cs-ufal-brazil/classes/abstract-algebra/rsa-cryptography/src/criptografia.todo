@@ -1,0 +1,3 @@
+{TODO 2 -cDesign : Usar o arquivo com gif animado de binarios}{TODO 2 -cDesign : Procurar icones para colocar no menu}{TODO 5 -cPerformance : Update the RSA class with the algorithm of D}{TODO 5 -cDesign : Create the receive form}{DONE 3 -cDesign :
+When the send form is showed, it remains with the first informations. 
+Always we show this form, we have to clear its values}

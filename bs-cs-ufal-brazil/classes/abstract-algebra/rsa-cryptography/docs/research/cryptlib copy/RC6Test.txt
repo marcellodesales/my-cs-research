@@ -1,0 +1,2 @@
+This is a text file to test the
+RC6 cipher component's file encryption :-). 
