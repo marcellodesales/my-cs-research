@@ -1,0 +1,1007 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0075)http://www.engin.umd.umich.edu/CIS/cis350/lectures/lect10_files/outline.htm -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=PowerPoint.Slide name=ProgId>
+<META content="MSHTML 6.00.2600.0" name=GENERATOR><LINK id=Main-File 
+href="../lect10.htm" rel=Main-File><LINK href="preview.wmf" rel=Preview>
+<META content=NoIndex name=Robots>
+<SCRIPT src="outline_arquivos/script.js"></SCRIPT>
+
+<SCRIPT><!--
+
+if( !(IsWin("PPTOtl")||IsWin("PPTNav")||IsWin("PPTOtlNav")) )
+{
+	obj = document.all.item("Main-File")
+	parent.location.href=obj.href
+}
+
+var gOtlHiliteClr="#FFFFFF",gOtlNormalClr="#000000",gOtlActiveClr="#FFFF00",gSelected="",gTxtState=false,gChildEntryTable=new Array()
+
+function Load()
+{
+	if( IsWin("PPTOtl" ) ){ LoadOtl(); parent.gOtlLoaded=true; return }
+	if( IsWin("PPTNav" ) ){ LoadNav("NavObj",UpdNav); parent.gNavLoaded=true; return }
+	if( IsWin("PPTOtlNav" ) ){ LoadNav("OtlNavObj",UpdOtlNav); parent.gOtlNavLoaded=true; return }
+}
+function Upd(){ if( IsWin("PPTNav") ) LoadNav("NavObj",UpdNav) }
+function LoadNav( oId,UpdFunc )
+{
+	document.ondragstart=CancelDrag
+	document.onselectstart=CancelDrag
+	document.body.style.margin=2
+	UpdFunc()
+	obj=document.all.item(oId)
+	obj.style.display="block"
+	obj.style.visibility="visible"
+	document.bgColor="threedface"
+}
+function LoadOtl()
+{
+	document.ondragstart=CancelDrag
+	document.onselectstart=CancelDrag
+	OtlObj.style.display="block"
+	OtlObj.style.visibility="visible"
+	if( gOtlActiveClr == "" ) gOtlActiveClr=document.linkColor
+	if( gOtlHiliteClr == "" ) gOtlHiliteClr=document.fgColor
+	if( gOtlNormalClr == "" )
+		gOtlNormalClr=document.bgColor
+	else
+		document.bgColor=gOtlNormalClr  
+
+	InitArray()
+
+	if( ObjExists( parent.gCurSld ) ) {
+		ChangeState( parent.gCurSld,gOtlNormalClr,gOtlHiliteClr )
+		gSelected=parent.gCurSld
+	}
+	else gSelected = -1
+
+	UpdOtl()
+}
+function UpdOtl(){ UpdIdx(parent.gCurSld) }
+function UpdIdx( idx )
+{
+	if( gSelected != idx ) {
+		if( gSelected > 0 )
+			ChangeState( gSelected,gOtlHiliteClr,gOtlNormalClr )
+
+		if( ObjExists( idx ) ) {
+			gSelected = idx
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+		}
+		else gSelected = -1
+	}
+
+	if( gTxtState != parent.gOtlTxtExp ) {
+		state = "block"
+		if( !parent.gOtlTxtExp )
+			state="none"
+
+		for(ii=0; ii<gChildEntryTable.length; ii++) {
+			obj=gChildEntryTable[ii];
+			if( obj.id == null ) continue;
+
+			if( obj.id.indexOf("PPTC") >= 0 )
+				obj.style.display=state;
+		} 
+		gTxtState=parent.gOtlTxtExp
+		if( ObjExists( gSelected ) )
+			ChangeState( gSelected,gOtlNormalClr,gOtlHiliteClr )
+	}
+}
+function InitArray()
+{
+	count=0
+	for(ii=0; ii<document.all.tags("DIV").length; ii++) {
+		obj=document.all.tags("DIV").item(ii)
+		if( obj.id == null ) continue
+
+		if( obj.id.indexOf("PPTC") >= 0 ) {   
+			gChildEntryTable[count++]=obj
+			obj.children.tags("TABLE").item(0).style.borderColor=gOtlNormalClr
+		}
+	}
+}
+function ChangeState( idx,fgColor,bgColor )
+{
+	obj=document.all.item("PPTL"+idx)
+	obj.style.color=fgColor
+
+	obj=document.all.item("PPTP"+idx)
+	obj.style.backgroundColor=bgColor
+
+	obj=document.all.item("PPTB"+idx)
+	if( obj )
+		obj.style.borderLeftColor=obj.style.borderBottomColor=bgColor
+}
+function ChgClr( o,clr ){ if( o.id != "PPTL"+gSelected ) o.style.color=clr }
+function Over( obj ){ ChgClr(obj,gOtlActiveClr) }
+function Out( obj ){ ChgClr(obj,gOtlHiliteClr) }
+function ObjExists( ii ) { obj=document.all("PPTP"+ii ); return( obj ) }
+function GoToSld( href ){ UpdIdx(parent.GetSldNum(href)); parent.GoToSld( href ) }
+function CancelDrag(){ window.event.cancelBubble=true;window.event.returnValue=false}
+
+function UpdNav()
+{
+	txt = "<center>";
+	if( parent.GetHrefObj( parent.gCurSld ).mOrigVis == 1 )
+		txt += "Slide " + parent.GetCurSldNum() + " of " + parent.GetNumSlds()
+	else
+		txt += "Hidden Slide"
+	txt += "</center>";
+	nav_text.innerHTML = txt;
+
+	if( !parent.HasPrevSld() )
+		gBtnArr["nb_prev"].Enabled(0)
+	else
+		gBtnArr["nb_prev"].Enabled(1)
+
+	if( !parent.HasNextSld() )
+		gBtnArr["nb_next"].Enabled(0)
+	else
+		gBtnArr["nb_next"].Enabled(1)
+	gBtnArr["nb_nts"].SetEnabled()
+	gBtnArr["nb_nts"].SetFlag( parent.gHasNts )
+
+	gBtnArr["nb_sldshw"].Enabled(1)
+	gBtnArr["nb_voice"].Enabled(1)
+}
+
+function UpdOtlNav()
+{
+	gBtnArr["nb_otl"].SetEnabled();
+
+	if( parent.gOtlOpen )
+		gBtnArr["nb_otlTxt"].Enabled( true );
+	else
+		document.all.item("nb_otlTxtBorder").style.visibility = "hidden";
+}
+
+
+
+//-->
+</SCRIPT>
+
+<STYLE>.PTxt {
+	MARGIN-TOP: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; WIDTH: 100%; POSITION: relative
+}
+.CTxt {
+	PADDING-LEFT: 10px; WIDTH: 100%; POSITION: relative
+}
+.CBorder {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; PADDING-BOTTOM: 5px; BORDER-LEFT: black 1px solid; WIDTH: 100%; BORDER-BOTTOM: black 1px solid; POSITION: relative
+}
+A {
+	COLOR: white; TEXT-DECORATION: none
+}
+.button {
+	BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; BORDER-LEFT: buttonface 1px solid; WIDTH: 32px; BORDER-BOTTOM: buttonface 1px solid; POSITION: absolute; HEIGHT: 20px
+}
+</STYLE>
+</HEAD>
+<BODY onload=Load()>
+<DIV onmouseup=BtnOnUp() onkeypress=_KPH() onmousedown=BtnOnDown() id=NavObj 
+onmouseover=BtnOnOver() style="DISPLAY: none; VISIBILITY: hidden" 
+onmouseout=BtnOnOut() onload="Load()">
+<TABLE style="VISIBILITY: hidden; WIDTH: 70px; POSITION: absolute" cellSpacing=0 
+cellPadding=0 align=left>
+  <TBODY>
+  <TR>
+    <TD noWrap>
+      <DIV id=nb_ntsElem 
+      style="PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; COLOR: buttontext; PADDING-TOP: 3px; FONT-FAMILY: Arial; POSITION: relative" 
+      align=center><IMG id=notes_flag style="DISPLAY: none" src="" 
+      border=0><SPAN style="mso-spacerun: yes">&nbsp; </SPAN>Notes</DIV>
+      <DIV id=nb_nts title="Show/Hide Notes" 
+      style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"></DIV></TD></TR></TBODY></TABLE>
+<TABLE style="POSITION: relative" cellSpacing=0 cellPadding=0 align=right>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV id=nb_sldshwBorder 
+      style="LEFT: -20px; WIDTH: 20px; POSITION: absolute; HEIGHT: 20px">
+      <DIV style="CLIP: rect(0px 18px 18px 0px); POSITION: absolute"><IMG 
+      id=nb_sldshw title="Full Screen Slide Show" 
+      style="LEFT: -254px; POSITION: relative" 
+      src="outline_arquivos/buttons.gif"></DIV></DIV></TD>
+    <TD>
+      <DIV id=nb_voiceBorder 
+      style="DISPLAY: none; LEFT: -40px; WIDTH: 20px; POSITION: absolute; HEIGHT: 20px">
+      <DIV style="CLIP: rect(0px 18px 18px 0px); POSITION: absolute"><IMG 
+      id=nb_voice title="Pause/Play Narration" 
+      style="LEFT: -290px; POSITION: relative" 
+      src="outline_arquivos/buttons.gif"></DIV></DIV></TD></TR></TBODY></TABLE>
+<TABLE style="POSITION: relative" cellSpacing=0 cellPadding=0 align=center>
+  <TBODY>
+  <TR>
+    <TD noWrap>
+      <DIV class=button id=nb_prevBorder style="LEFT: -30px">
+      <DIV style="CLIP: rect(0px 30px 18px 0px); POSITION: absolute"><IMG 
+      id=nb_prev title="Previous Slide" style="LEFT: 0px; POSITION: relative" 
+      src="outline_arquivos/buttons.gif"></DIV></DIV><SPAN id=nav_text 
+      style="FONT-SIZE: 9pt; WIDTH: 100px; COLOR: buttontext; FONT-FAMILY: Arial; POSITION: relative; TOP: 3px"></SPAN>
+      <DIV class=button id=nb_nextBorder>
+      <DIV style="CLIP: rect(0px 30px 18px 0px); POSITION: absolute"><IMG 
+      id=nb_next title="Next Slide" style="LEFT: -90px; POSITION: relative" 
+      src="outline_arquivos/buttons.gif"></DIV></DIV></TD></TR></TBODY></TABLE></DIV>
+<DIV onmouseup=BtnOnUp() onkeypress=_KPH() onmousedown=BtnOnDown() id=OtlNavObj 
+onmouseover=BtnOnOver() style="DISPLAY: none; VISIBILITY: hidden" 
+onmouseout=BtnOnOut() onload="Load()">
+<TABLE style="WIDTH: 70px; POSITION: relative" cellSpacing=0 cellPadding=0 
+align=left>
+  <TBODY>
+  <TR>
+    <TD noWrap>
+      <DIV id=nb_otlElem 
+      style="PADDING-RIGHT: 3px; PADDING-LEFT: 3px; FONT-SIZE: 9pt; PADDING-BOTTOM: 3px; COLOR: buttontext; PADDING-TOP: 3px; FONT-FAMILY: Arial; POSITION: relative" 
+      align=center>Outline</DIV>
+      <DIV id=nb_otl title="Show/Hide Outline" 
+      style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"></DIV></TD></TR></TBODY></TABLE>
+<TABLE style="POSITION: relative" cellSpacing=0 cellPadding=0 align=center>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV id=nb_otlTxtBorder 
+      style="BORDER-RIGHT: buttonface 1px solid; BORDER-TOP: buttonface 1px solid; LEFT: -18px; BORDER-LEFT: buttonface 1px solid; WIDTH: 24px; BORDER-BOTTOM: buttonface 1px solid; POSITION: absolute; HEIGHT: 20px">
+      <DIV style="CLIP: rect(0px 22px 18px 0px); POSITION: absolute"><IMG 
+      id=nb_otlTxt title="Expand/Collapse Outline" 
+      style="LEFT: -157px; POSITION: relative" 
+      src="outline_arquivos/buttons.gif"></DIV></DIV></TD></TR></TBODY></TABLE></DIV>
+<DIV id=OtlObj style="DISPLAY: none; VISIBILITY: hidden">
+<TABLE style="FONT-SIZE: 9pt; FONT-FAMILY: Arial" width="100%">
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP1><FONT size=2><A id=PPTL1 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0001.htm');">CIS 
+      Lecture 10 Winter 2001</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC1 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB1 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>B Trees</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP2><FONT size=2><A id=PPTL2 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0006.htm');">How to 
+      pick a Data Structure</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC2 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB2 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=3><FONT size=2>The structure must do the 
+        JOB!@!</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>Must have the appropriate operations 
+            !</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>Example Can’t search a Heap, or Stack or 
+            Queue</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>Example Can’t merge a 2 
+Heaps</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=3><FONT size=2><SPAN 
+            style="mso-spacerun: yes">&nbsp;</SPAN>What do you want to conserve 
+            (Time, Space?)</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>To conserve Space choose a structure that 
+            is efficient</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>To conserve Time</FONT></TD></TR>
+        <TR>
+          <TD colSpan=3></TD>
+          <TD><FONT size=2>Look at the operations needed and choose the 
+            critical ones</FONT></TD></TR>
+        <TR>
+          <TD colSpan=3></TD>
+          <TD><FONT size=2>Find a data Structure that is FAST for those 
+            operations</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=3><FONT size=2>Note there is USUALLY a tradeoff between 
+            time and space</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>However it you use lots of space badly it 
+            can take a LONG time to access it 
+      all</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP3><FONT size=2><A id=PPTL3 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0002.htm');">Indexed 
+      Sequential Access Method</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC3 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB3 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Avl and Red-Black trees guarantee good 
+            performance when the data is small enough to reside in memory all at 
+            once.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>For larger dictionaries or files, that 
+            must reside on the disk we get improved performance using search 
+            tree trees of higher degree (more than 2 children)</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>First we will look at indeed sequential 
+            access method (ISAM).</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Provides good sequential and random 
+        access</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Disk is divided up into blacks</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>A block is the smallest unit that can be written 
+            to</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Typically it is 1 track long and can be input or 
+            output with a single seek and latency delay.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>The dictionary elements are packed into blocks in 
+            ascending order and the blocks are used in an order that minimizes 
+            the delay in going from one block to 
+      another.</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP4><FONT size=2><A id=PPTL4 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0003.htm');">A 
+      Disk</A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP5><FONT size=2><A id=PPTL5 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0004.htm');">More 
+      ISAM</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC5 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB5 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>For sequential access the blocks are input in order 
+            and the elements in each block are retrieved in ascending 
+            order.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>If the block contains m elements, the number of 
+            disk accesses per element retrieved is 1/m.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>To support random access a an index is 
+            maintained</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>This index contains the largest key in each block 
+            to search</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>To search for the element with key k, the index is 
+            for the single block that contains k</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>The entire block is retrieved and searched 
+            internally for the desired element</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>This can be extended to files that are larger than 
+            1 disk</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Now elements are assigned to disks and then to 
+            blocks</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Each disk contains an index with the largest key in 
+            the block</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>First a disk index is searched to find the correct 
+            disk and …</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>When deletes are done the method encounters 
+            problems leaving gaps which causes fragmentation</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP6><FONT size=2><A id=PPTL6 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0005.htm');">m-way 
+      Search Trees</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC6 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB6 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Definition. An m-way search tree may or 
+            may not be empty.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Each node has up to m children and between 1 and 
+            m-1 elements</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Every node with p elements has exactly p+1 
+            children</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Consider any node with p elements. Let 
+            k<SUB>1</SUB>, …, k<SUB>p</SUB> be the keys of these elements.<SPAN 
+            style="mso-spacerun: yes">&nbsp; </SPAN>The elements are ordered so 
+            that k<SUB>1</SUB>&lt;k<SUB>2</SUB>&lt;…&lt;k<SUB>p</SUB>. Let 
+            c<SUB>0</SUB>,c<SUB>1</SUB>, …, c<SUB>p</SUB> be the p+1 children of 
+            the node. The elements in the subtree with root c<SUB>p</SUB> have 
+            keys smaller than k<SUB>1</SUB>, while those in the subtree with 
+            root c<SUB>p </SUB><SPAN style="mso-spacerun: yes">&nbsp;</SPAN>have 
+            keys larger than k<SUB>p</SUB>, and those in the subtree with root 
+            c<SUB>i</SUB> have keys larger than k<SUB>i</SUB> but smaller than 
+            k<SUB>i+1</SUB>, 1 &lt; i &lt; p.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP7><FONT size=2><A id=PPTL7 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0009.htm');">m-way 
+      Tree Picture</A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP8><FONT size=2><A id=PPTL8 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0010.htm');">Searching 
+      an m-way tree</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC8 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB8 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>To search for a node with key 31</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Start at root move left to right until you less 
+            than right node</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Continue until found or you fall off the 
+          tree</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP9><FONT size=2><A id=PPTL9 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0011.htm');">Inserting 
+      into an m-way tree<SUB>1</SUB></A></FONT></DIV>
+      <DIV class=CTxt id=PPTC9 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB9 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>We search for the place to put the element just 
+            like before search.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>If the parent before we fall of the node has room 
+            we just add it.</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP10><FONT size=2><A id=PPTL10 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0012.htm');">Inserting 
+      into an m-way tree<SUB>2</SUB></A></FONT></DIV>
+      <DIV class=CTxt id=PPTC10 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB10 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>If there is no room to add the node (like adding 65 
+            below where m = 6)</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>We create a new pointer in the appropriate place 
+            and add it.</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP11><FONT size=2><A id=PPTL11 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0013.htm');">Deleting 
+      from an m-way tree</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC11 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB11 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>To delete an element we first search for the 
+            element</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>If there is no child on either side we just delete 
+            it.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Consider deleting 
+      20</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP12><FONT size=2><A id=PPTL12 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0014.htm');">Deleting 
+      from an m-way tree<SUB>2</SUB></A></FONT></DIV>
+      <DIV class=CTxt id=PPTC12 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB12 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>To delete an element that has children we promote 
+            the largest element from the child node.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Consider deleting 
+    5</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP13><FONT size=2><A id=PPTL13 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0015.htm');">Height of 
+      an m-Way Tree</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC13 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB13 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2><SPAN 
+            style="mso-spacerun: yes">&nbsp;</SPAN>An m-way tree of height h 
+            has</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>at least h elements</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>At most m<SUP>h</SUP>-1 nodes</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Hence if the tree has n nodes, its height 
+            ranges from n to log<SUB>m</SUB>(n+1)</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>A 200 way search tree of height 5 for 
+            example can hold 21*10<SUP>10</SUP> –1 elements but might hold as 
+            few as 5.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Or a 200 way tree with 
+            32*10<SUP>10</SUP>-1 elements has a height between 5 and 
+            32*10<SUP>10</SUP>-1.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>To get better performance we must have 
+            the tree more balanced.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP14><FONT size=2><A id=PPTL14 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0016.htm');">B-Trees 
+      of Order m</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC14 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB14 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2><SPAN 
+            style="mso-spacerun: yes">&nbsp;</SPAN>Definition A B-tree of order 
+            m is an m-way search tree. If the B-tree is not empty, the 
+            corresponding extended tree satisfies the following 
+            properties.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>the root has at least 2 children</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>All internal nodes other than the root have at 
+            least </FONT><FONT face=Symbol size=2>é</FONT><FONT 
+            face="Times New Roman" size=2>m/2</FONT><FONT face=Symbol 
+            size=2>ù</FONT><FONT face="Times New Roman" size=2> 
+          children</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>All external nodes are at the same 
+        level.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>The previous example is NOT a 
+            B-tree</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>The following IS a B-tree of order 
+            7</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP15><FONT size=2><A id=PPTL15 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0017.htm');">B-Trees 
+      of Order 2 and 3</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC15 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB15 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>In a B-tree of order 2, no internal nodes has more 
+            than 2 children. Since an internal node must have at least 2 
+            children, all internal nodes of a B-tree of order 2 have exactly 2 
+            children.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>The number of nodes in order 2 B-tree is 
+            2<SUP>h</SUP>-1</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>A B-tree of order 3 has either 2 or 3 
+            children.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>It is also known as a 2-3 
+      tree.</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP16><FONT size=2><A id=PPTL16 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0018.htm');">Height of 
+      a B-Tree</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC16 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB16 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>If T is a B-tree of order m and height h, 
+            and where d = </FONT><FONT face=Symbol size=2>é</FONT><FONT 
+            face="Times New Roman" size=2>m/2</FONT><FONT face=Symbol 
+            size=2>ù</FONT><FONT face="Times New Roman" size=2><SPAN 
+            style="mso-spacerun: yes">&nbsp; </SPAN>and let n be the number of 
+            elements in T.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>2d<SUP>h-1 </SUP><SPAN 
+            style="mso-spacerun: yes">&nbsp;</SPAN>- 1 &lt; n &lt; m<SUP>h</SUP> 
+            –1</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>log<SUB>m</SUB>(n+1) &lt; h &lt; 
+            log<SUB>d</SUB>((n+1)/2) + 1</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>So if the B-tree is of order 200 and height 3 and 
+            has at least 19,999 elements, and one of the same order and height 5 
+            has at least 2*10<SUP>8</SUP> –1 elements.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Order is determined in practice from the block 
+            size.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>There is no advantage to using a node size smaller 
+            than the disk block size.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>In practice (Operating Systems) m is 
+            typically 256-1024</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>All our examples will have small m. (3 or 
+            7)</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP17><FONT size=2><A id=PPTL17 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0019.htm');">Inserting 
+      into a B –tree (with room)</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC17 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB17 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>First we search and if not the key is not found 
+            then we can insert. (we do not allow duplicate keys)</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>If the node we wish to insert to has room (&lt; m) 
+            we just insert it.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Below we insert 3 in the order 7 tree</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>We use 3 disk access to read 10, 2, and write 
+            3</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>The middle element is promoted and the nodes on 
+            either side are split</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP18><FONT size=2><A id=PPTL18 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0020.htm');">Inserting 
+      into a B –tree (node is full)</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC18 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB18 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>If we the node we need to insert goes 
+            into a full node the node is split.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Let P be the full node. Insert the new 
+            element e together with a null pointer into P to get an over full 
+            node with m elements and m+1 children.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Denote the over full node as m, 
+            c<SUB>0</SUB>(e<SUB>1</SUB>,c<SUB>1</SUB>), …, 
+            (e<SUB>m</SUB>,c<SUB>m</SUB>)</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>where e<SUB>i</SUB>s are the elements and the 
+            c<SUB>i</SUB>s are the children pointers.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>The node is split at the element e<SUB>d</SUB> d = 
+            </FONT><FONT face=Symbol size=2>é</FONT><FONT face="Times New Roman" 
+            size=2>m/2</FONT><FONT face=Symbol 
+      size=2>ù</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP19><FONT size=2><A id=PPTL19 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0007.htm');">Deletion 
+      From a B-Tree</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC19 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB19 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=3><FONT size=2>Deletion is divided in 2 
+        cases</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>Deleting a leaf (terminal 
+        node)</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD colSpan=2><FONT size=2>Deleting an internal node</FONT></TD></TR>
+        <TR>
+          <TD colSpan=3></TD>
+          <TD><FONT size=2>We transform this case to the previous one by 
+            promoting either the largest element in the left subtree or the 
+            smallest element in its right subtree. This replacing element will 
+            always be a leaf.</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP20><FONT size=2><A id=PPTL20 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0008.htm');">Deletion 
+      From a 2-3-Tree<SUB>2</SUB></A></FONT></DIV>
+      <DIV class=CTxt id=PPTC20 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB20 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD><FONT size=2>Delete 80</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP21><FONT size=2><A id=PPTL21 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0021.htm');">Deletion 
+      From a 7-Tree<SUB>3</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP22><FONT size=2><A id=PPTL22 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0022.htm');">Deletion 
+      From a 7-Tree<SUB>4</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP23><FONT size=2><A id=PPTL23 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0023.htm');">Deletion 
+      From a 7-Tree<SUB>5</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP24><FONT size=2><A id=PPTL24 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0024.htm');">Deletion 
+      From a 7-Tree<SUB>6</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP25><FONT size=2><A id=PPTL25 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0025.htm');">Deletion 
+      From a 2-3 Tree<SUB>7</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP26><FONT size=2><A id=PPTL26 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0026.htm');">Deletion 
+      From a 2-3 Tree<SUB>8</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP27><FONT size=2><A id=PPTL27 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0027.htm');">Deletion 
+      From a 2-3 Tree<SUB>9</SUB></A></FONT></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP28><FONT size=2><A id=PPTL28 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0028.htm');">Merge 
+      Discussion</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC28 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB28 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>The worst case for a deletion from a 
+            B-tree of height h is when the merge takes place all the way up the 
+            tree and we get an element from a nearest sibling.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>The worst case disk access count is 
+            3h</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>h reads to find the leaf</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>h-1 reads to get nearest siblings at levels 
+            (2-h)</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>h-2 writes of merged nodes</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>3 writes for the modified root, and 2 level 2 
+            nodes</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP29><FONT size=2><A id=PPTL29 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0029.htm');">B+ 
+      Trees</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC29 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB29 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>The previous discussion mentioned that B-Trees are 
+            universally used to implement large-scale disk-based file 
+            systems.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>We lied. What is implemented is a variant of the 
+            B-tree called B+ tree.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>When greater efficiency is required, a slightly 
+            more complicated variant known as the B* tree is used.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>The most significant difference between a B+ and B 
+            trees is that B+ trees store records only at the leaf nodes. The 
+            internal nodes only store key values to help guide 
+        search.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>The big advantage of B+ trees is that the keys are 
+            small enough so that the top levels of the tree can remain in main 
+            memory and do not require any disk accesses.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP30><FONT size=2><A id=PPTL30 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0030.htm');">B+ Trees 
+      Searching/ Insertion</A></FONT></DIV>
+      <DIV class=CTxt id=PPTC30 style="DISPLAY: none">
+      <TABLE class=CBorder id=PPTB30 style="COLOR: white">
+        <TBODY>
+        <TR>
+          <TD noWrap width=5></TD>
+          <TD noWrap width=20></TD>
+          <TD width="100%"></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Searching in a B+ tree is nearly 
+            identical to searching a B tree except that every search must go to 
+            the leaf.<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>The internal 
+            nodes are just keys.</FONT></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD colSpan=2><FONT size=2>Inserting a record into a B+ tree is 
+            similar to B-tree insertion.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>First the appropriate leaf is found.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>If it is not full the record is added</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>If full it is split and the copy of the least 
+            valued key in the right node is promoted.</FONT></TD></TR>
+        <TR>
+          <TD colSpan=2></TD>
+          <TD><FONT size=2>Note the promotion may cause the parent to be 
+            split</FONT></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD>
+      <DIV class=PTxt id=PPTP31><FONT size=2><A id=PPTL31 onmouseover=Over(this) 
+      onmouseout=Out(this) href="javascript:GoToSld('slide0031.htm');">B+ 
+      Insertion Example</A></FONT></DIV></TD></TR></TBODY></TABLE></DIV></BODY></HTML>

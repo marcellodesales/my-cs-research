@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0077)http://www.engin.umd.umich.edu/CIS/cis350/lectures/lect10_files/slide0016.htm -->
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:v = 
+"urn:schemas-microsoft-com:vml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:p = 
+"urn:schemas-microsoft-com:office:powerpoint"><HEAD><TITLE>CIS Lecture 10 Winter 2001</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=PowerPoint.Slide name=ProgId>
+<META content="MSHTML 6.00.2600.0" name=GENERATOR><LINK id=Main-File 
+href="../lect10.htm" rel=Main-File><LINK href="preview.wmf" rel=Preview><!--[if !mso]>
+<STYLE>v\:* {
+	BEHAVIOR: url(#default#VML)
+}
+o\:* {
+	BEHAVIOR: url(#default#VML)
+}
+p\:* {
+	BEHAVIOR: url(#default#VML)
+}
+.shape {
+	BEHAVIOR: url(#default#VML)
+}
+v\:textbox {
+	DISPLAY: none
+}
+</STYLE>
+<![endif]-->
+<META content="21-Feb-01: B-Trees of Order m" name=Description><LINK 
+href="slide0016_arquivos/master14_stylesheet.css" rel=Stylesheet><![if !ppt]>
+<STYLE media=print>.sld {
+	FONT-SIZE: 76%! important; LEFT: 0px! important; WIDTH: 6in! important; HEIGHT: 4.5in! important
+}
+</STYLE>
+
+<SCRIPT src="slide0016_arquivos/script.js"></SCRIPT>
+
+<SCRIPT><!--
+gId="slide0016.htm"
+if( !IsNts() ) Redirect( "PPTSld", gId );
+//-->
+</SCRIPT>
+<!--[if vml]>
+<SCRIPT>g_vml = 1;
+</SCRIPT>
+<![endif]-->
+<SCRIPT event=onload for=window><!--
+if( !IsSldOrNts() ) return;
+if( MakeNotesVis() ) return;
+LoadSld( gId );
+InitBuildEffects();
+MakeSldVis(0);
+//-->
+</SCRIPT>
+<![endif]><o:shapelayout v:ext="edit"> <o:idmap v:ext="edit" 
+data="110"></o:idmap></o:shapelayout></HEAD>
+<BODY lang=EN-US onkeypress=_KPH() onresize=_RSW() 
+style="MARGIN: 0px; BACKGROUND-COLOR: black" onclick=DocumentOnClick()>
+<DIV class=sld id=SlideObj 
+style="FONT-SIZE: 16px; LEFT: 0px; VISIBILITY: hidden; WIDTH: 755px; CLIP: rect(0% 101% 101% 0%); POSITION: absolute; TOP: 0px; HEIGHT: 566px; BACKGROUND-COLOR: white"><p:slide 
+masterhref = "master14.xml" coordsize = "720,540" colors = 
+"#FFFFFF,#000000,#5490A8,#003366,#0099CC,#3366CC,#99CCFF,#E1E1B7"><p:shaperange 
+href = "master14.xml#_x0000_s97281"></p:shaperange><![if !ppt]><p:shaperange 
+href = "master14.xml#_x0000_s97282"></p:shaperange><p:shaperange href = 
+"master14.xml#_x0000_s97307"></p:shaperange><p:shaperange href = 
+"master14.xml#_x0000_s97308"></p:shaperange><![endif]><p:shaperange href = 
+"master14.xml#_x0000_m97305"></p:shaperange><v:shape id=_x0000_s112642 
+style="LEFT: 90pt; WIDTH: 613.625pt; POSITION: absolute; TOP: 0px; HEIGHT: 54pt" 
+type = "#_x0000_m97305" coordsize = "21600,21600" o:userdrawn = "f"><v:fill 
+o:detectmouseclick="f"></v:fill><v:stroke o:forcedash="f"></v:stroke><o:lock 
+v:ext="edit" text="f"></o:lock><p:placeholder 
+type="title"></p:placeholder></v:shape>
+<DIV class=T 
+style="LEFT: 13.5%; WIDTH: 83.31%; POSITION: absolute; TOP: 1.59%; HEIGHT: 7.59%" 
+v:shape="_x0000_s112642"><SPAN style="FONT-SIZE: 82%">B-Trees of Order 
+m</SPAN></DIV><![if !ppt]>
+<DIV style="VISIBILITY: hidden"><![endif]><p:shaperange href = 
+"master14.xml#_x0000_m97306"></p:shaperange><v:shape id=_x0000_s112643 
+style="LEFT: 78pt; WIDTH: 618pt; POSITION: absolute; TOP: 48pt; HEIGHT: 294pt" 
+type = "#_x0000_m97306" coordsize = "21600,21600" o:userdrawn = "f"><v:fill 
+o:detectmouseclick="f"></v:fill><v:stroke o:forcedash="f"></v:stroke><o:lock 
+v:ext="edit" text="f"></o:lock><p:placeholder type="body" 
+position="1"></p:placeholder><p:animation type="text" flag="1024" 
+effect="dissolve" level="2" delay="0" number="1"></p:animation></v:shape><![if !ppt]></DIV><![endif]><![if !ppt]>
+<DIV 
+style="LEFT: 10.86%; WIDTH: 100.52%; POSITION: absolute; TOP: 8.83%; HEIGHT: 54.77%"><![endif]>
+<DIV v:shape="_x0000_s112643">
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 0.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 98.94%; POSITION: absolute; TOP: 1.93%; HEIGHT: 28.7%; mso-build: 29; mso-build-order: 1">
+<DIV class=B><SPAN 
+style="LEFT: 3.86%; WIDTH: 96.27%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="FONT-SIZE: 80%; LEFT: -4.01%; COLOR: #0099cc; FONT-FAMILY: Wingdings; POSITION: absolute; TOP: 0.22em; mso-color-index: 4; mso-special-format: bullet">n</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="mso-spacerun: yes">&nbsp;</SPAN>Definition A </SPAN><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"><B>B-tree of order 
+m</B></SPAN><SPAN style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"> is an 
+m-way search tree. If </SPAN></SPAN><SPAN 
+style="LEFT: 3.86%; WIDTH: 90.41%; POSITION: absolute; TOP: 33.7%"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">the B-tree is not empty, 
+the corresponding extended tree </SPAN></SPAN><SPAN 
+style="LEFT: 3.86%; WIDTH: 80.55%; POSITION: absolute; TOP: 67.41%"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">satisfies the following 
+properties. </SPAN></SPAN></DIV></DIV>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 5.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 78.52%; POSITION: absolute; TOP: 32.58%; HEIGHT: 7.74%; mso-build: 29; mso-build-order: 1">
+<DIV class=B1 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"><SPAN 
+style="LEFT: 4.02%; WIDTH: 95.97%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="LEFT: -4.19%; POSITION: absolute; mso-special-format: bullet">–</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'">the root has at least 2 
+children </SPAN></SPAN></DIV></DIV>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 5.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 89.45%; POSITION: absolute; TOP: 41.61%; HEIGHT: 8.7%; mso-build: 29; mso-build-order: 1">
+<DIV class=B1 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"><SPAN 
+style="LEFT: 3.53%; WIDTH: 96.61%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="LEFT: -3.65%; POSITION: absolute; mso-special-format: bullet">–</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'">All internal nodes other 
+than the root have at least </SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'; mso-char-type: symbol">é</SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'">m/2</SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'; mso-char-type: symbol">ù</SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'"> children 
+</SPAN></SPAN></DIV></DIV>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 5.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 78.52%; POSITION: absolute; TOP: 51.93%; HEIGHT: 7.74%; mso-build: 29; mso-build-order: 1">
+<DIV class=B1 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"><SPAN 
+style="LEFT: 4.02%; WIDTH: 95.97%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="LEFT: -4.19%; POSITION: absolute; mso-special-format: bullet">–</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 71%; FONT-FAMILY: 'Times New Roman'">All external nodes are at 
+the same level. </SPAN></SPAN></DIV></DIV>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 0.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 83.53%; POSITION: absolute; TOP: 62.25%; HEIGHT: 9.35%; mso-build: 29; mso-build-order: 1">
+<DIV class=B 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"><SPAN 
+style="LEFT: 4.57%; WIDTH: 95.42%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="FONT-SIZE: 80%; LEFT: -4.79%; COLOR: #0099cc; FONT-FAMILY: Wingdings; POSITION: absolute; TOP: 0.22em; mso-color-index: 4; mso-special-format: bullet">n</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">The previous example is 
+NOT a B-tree </SPAN></SPAN></DIV></DIV>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 0.92%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 83.53%; POSITION: absolute; TOP: 73.87%; HEIGHT: 9.35%; mso-build: 29; mso-build-order: 1">
+<DIV class=B 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%"><SPAN 
+style="LEFT: 4.57%; WIDTH: 95.42%; POSITION: absolute; TOP: 0%"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'"><SPAN 
+style="FONT-SIZE: 80%; LEFT: -4.79%; COLOR: #0099cc; FONT-FAMILY: Wingdings; POSITION: absolute; TOP: 0.22em; mso-color-index: 4; mso-special-format: bullet">n</SPAN></SPAN><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">The following IS a B-tree 
+of order 7</SPAN></SPAN></DIV></DIV></DIV><![if !ppt]></DIV><![endif]><![if !ppt]>
+<DIV style="VISIBILITY: hidden"><![endif]><v:group id=_x0000_s112644 
+style="LEFT: 153.625pt; WIDTH: 505pt; POSITION: absolute; TOP: 342pt; HEIGHT: 141.375pt" 
+coordsize = "4040,1131" coordorigin = "847,2661"><v:group id=_x0000_s112645 
+style="LEFT: 2723px; WIDTH: 554px; POSITION: absolute; TOP: 2661px; HEIGHT: 237px" 
+coordsize = "554,237" coordorigin = "2208,528"><v:shapetype id=_x0000_t202 
+coordsize = "21600,21600" o:spt = "202" path = 
+" m0,0 l0,21600,21600,21600,21600,0 xe"><v:stroke joinstyle = 
+"miter"></v:stroke><v:path gradientshapeok = "t" o:connecttype = 
+"rect"></v:path></v:shapetype><v:shape id=_x0000_s112646 
+style="LEFT: 2208px; WIDTH: 288px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112647 
+style="LEFT: 2496px; WIDTH: 266px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group><v:group 
+id=_x0000_s112648 
+style="LEFT: 3731px; WIDTH: 1108px; POSITION: absolute; TOP: 3285px; HEIGHT: 237px" 
+coordsize = "1108,237" coordorigin = "1920,1152"><v:shape id=_x0000_s112649 
+style="LEFT: 1920px; WIDTH: 288px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112650 
+style="LEFT: 2208px; WIDTH: 266px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112651 
+style="LEFT: 2474px; WIDTH: 288px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112652 
+style="LEFT: 2762px; WIDTH: 266px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group><v:group 
+id=_x0000_s112653 
+style="LEFT: 1833px; WIDTH: 1662px; POSITION: absolute; TOP: 3285px; HEIGHT: 237px" 
+coordsize = "1662,237" coordorigin = "1318,1152"><v:group id=_x0000_s112654 
+style="LEFT: 1872px; WIDTH: 1108px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px" 
+coordsize = "1108,237" coordorigin = "1920,1152"><v:shape id=_x0000_s112655 
+style="LEFT: 1920px; WIDTH: 288px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112656 
+style="LEFT: 2208px; WIDTH: 266px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112657 
+style="LEFT: 2474px; WIDTH: 288px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112658 
+style="LEFT: 2762px; WIDTH: 266px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group><v:group 
+id=_x0000_s112659 
+style="LEFT: 1318px; WIDTH: 554px; POSITION: absolute; TOP: 1152px; HEIGHT: 237px" 
+coordsize = "554,237" coordorigin = "2208,528"><v:shape id=_x0000_s112660 
+style="LEFT: 2208px; WIDTH: 288px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112661 
+style="LEFT: 2496px; WIDTH: 266px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group></v:group><v:group 
+id=_x0000_s112662 
+style="LEFT: 897px; WIDTH: 583px; POSITION: absolute; TOP: 3288px; HEIGHT: 237px" 
+coordsize = "583,237" coordorigin = "693,1728"><v:group id=_x0000_s112663 
+style="LEFT: 693px; WIDTH: 413px; POSITION: absolute; TOP: 1728px; HEIGHT: 237px" 
+coordsize = "542,237" coordorigin = "2208,528"><v:shape id=_x0000_s112664 
+style="LEFT: 2208px; WIDTH: 288px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape><v:shape 
+id=_x0000_s112665 
+style="LEFT: 2496px; WIDTH: 254px; POSITION: absolute; TOP: 528px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: top-baseline" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group><v:shape 
+id=_x0000_s112666 
+style="LEFT: 1106px; WIDTH: 170px; POSITION: absolute; TOP: 1728px; HEIGHT: 237px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0" 
+type = "#_x0000_t202" coordsize = "21600,21600" filled = "f" fillcolor = 
+"#09c [4]" strokecolor = "black [1]"><v:fill color2 = 
+"white [0]"></v:fill><v:shadow color = "#5490a8 [2]"></v:shadow><v:textbox 
+style="mso-fit-shape-to-text: t"></v:textbox></v:shape></v:group><v:rect 
+id=_x0000_s112667 
+style="LEFT: 2315px; WIDTH: 144px; POSITION: absolute; TOP: 3632px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112668 
+style="LEFT: 4743px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112669 
+style="LEFT: 3635px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112670 
+style="LEFT: 3947px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112671 
+style="LEFT: 4213px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112672 
+style="LEFT: 4501px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112673 
+style="LEFT: 1761px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112674 
+style="LEFT: 2049px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112675 
+style="LEFT: 2579px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112676 
+style="LEFT: 2819px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112677 
+style="LEFT: 3157px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112678 
+style="LEFT: 3419px; WIDTH: 144px; POSITION: absolute; TOP: 3621px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:line id=_x0000_s112679 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; flip: x" 
+from = "1235,2898" to = "2723,3285" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112680 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "1827,3522" to = "1827,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112681 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "2121,3522" to = "2121,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112682 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "2673,3522" to = "2673,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112683 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "2941,3522" to = "2941,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112684 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "3229,3522" to = "3229,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112685 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "3495,3522" to = "3495,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112686 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "3731,3522" to = "3731,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112687 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "4019,3522" to = "4019,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112688 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "4285,3522" to = "4285,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112689 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "4557,3522" to = "4557,3621" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112690 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "3277,2898" to = "4285,3285" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112691 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; flip: x" 
+from = "2675,2898" to = "3011,3285" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:group id=_x0000_s112692 
+style="LEFT: 847px; WIDTH: 720px; POSITION: absolute; TOP: 3525px; HEIGHT: 267px" 
+coordsize = "720,267" coordorigin = "515,4098"><v:rect id=_x0000_s112693 
+style="LEFT: 515px; WIDTH: 144px; POSITION: absolute; TOP: 4221px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112694 
+style="LEFT: 703px; WIDTH: 144px; POSITION: absolute; TOP: 4221px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112695 
+style="LEFT: 897px; WIDTH: 144px; POSITION: absolute; TOP: 4221px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:rect id=_x0000_s112696 
+style="LEFT: 1091px; WIDTH: 144px; POSITION: absolute; TOP: 4221px; HEIGHT: 144px; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none; v-text-anchor: middle" 
+coordsize = "21600,21600" fillcolor = "#09c [4]" strokecolor = 
+"black [1]"><v:fill color2 = "white [0]"></v:fill><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:rect><v:line id=_x0000_s112697 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "556,4098" to = "556,4197" strokecolor = "black [1]"><v:stroke joinstyle 
+= "miter"></v:stroke><v:shadow color = "#5490a8 [2]"></v:shadow></v:line><v:line 
+id=_x0000_s112698 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "775,4098" to = "775,4197" strokecolor = "black [1]"><v:stroke joinstyle 
+= "miter"></v:stroke><v:shadow color = "#5490a8 [2]"></v:shadow></v:line><v:line 
+id=_x0000_s112699 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "969,4098" to = "969,4197" strokecolor = "black [1]"><v:stroke joinstyle 
+= "miter"></v:stroke><v:shadow color = "#5490a8 [2]"></v:shadow></v:line><v:line 
+id=_x0000_s112700 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "1139,4098" to = "1139,4197" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line></v:group><v:line id=_x0000_s112701 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "2387,3533" to = "2387,3632" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><v:line id=_x0000_s112702 
+style="POSITION: absolute; mso-wrap-distance-left: 0; mso-wrap-distance-right: 0; mso-wrap-style: none" 
+from = "4839,3533" to = "4839,3632" strokecolor = "black [1]"><v:stroke 
+joinstyle = "miter"></v:stroke><v:shadow color = 
+"#5490a8 [2]"></v:shadow></v:line><p:animation type="object" flag="17408" 
+effect="dissolve" delay="0" 
+number="2"></p:animation></v:group><![if !ppt]></DIV><![endif]><![if !ppt]>
+<DIV onfilterchange=javascript:TickHandler() 
+style="FILTER: revealtrans( duration=1,transition=12); LEFT: 21.32%; VISIBILITY: hidden; OVERFLOW: hidden; WIDTH: 70.46%; POSITION: absolute; TOP: 63.25%; HEIGHT: 26.67%; mso-build: 29; mso-build-order: 2"><![endif]><IMG 
+style="LEFT: 0%; WIDTH: 100%; POSITION: absolute; TOP: 0%; HEIGHT: 100%" 
+src="slide0016_arquivos/slide0016_image030.gif" border=0 
+v:shapes="_x0000_s112644,_x0000_s112646,_x0000_s112647,_x0000_s112649,_x0000_s112650,_x0000_s112651,_x0000_s112652,_x0000_s112655,_x0000_s112656,_x0000_s112657,_x0000_s112658,_x0000_s112660,_x0000_s112661,_x0000_s112664,_x0000_s112665,_x0000_s112666,_x0000_s112667,_x0000_s112668,_x0000_s112669,_x0000_s112670,_x0000_s112671,_x0000_s112672,_x0000_s112673,_x0000_s112674,_x0000_s112675,_x0000_s112676,_x0000_s112677,_x0000_s112678,_x0000_s112679,_x0000_s112680,_x0000_s112681,_x0000_s112682,_x0000_s112683,_x0000_s112684,_x0000_s112685,_x0000_s112686,_x0000_s112687,_x0000_s112688,_x0000_s112689,_x0000_s112690,_x0000_s112691,_x0000_s112693,_x0000_s112694,_x0000_s112695,_x0000_s112696,_x0000_s112697,_x0000_s112698,_x0000_s112699,_x0000_s112700,_x0000_s112701,_x0000_s112702"> 
+
+<DIV class=O 
+style="LEFT: 47.74%; WIDTH: 4.51%; POSITION: absolute; TOP: 3.97%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112646"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">10</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 54.88%; WIDTH: 4.51%; POSITION: absolute; TOP: 3.97%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112647"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">80</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 72.55%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112649"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">82</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 79.69%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112650"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">84</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 86.27%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112651"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">86</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 93.23%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112652"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">88</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 39.47%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112655"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">40</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 46.61%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112656"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">50</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 53.19%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112657"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">60</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 60.15%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112658"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">70</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 25.75%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112660"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">20</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 32.89%; WIDTH: 4.51%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112661"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">30</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 2.81%; WIDTH: 2.63%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112664"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">2</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 8.08%; WIDTH: 2.25%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112665"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">3</SPAN></DIV>
+<DIV class=O 
+style="LEFT: 12.96%; WIDTH: 2.25%; POSITION: absolute; TOP: 58.27%; HEIGHT: 14.56%" 
+v:shape="_x0000_s112666"><SPAN 
+style="FONT-SIZE: 75%; FONT-FAMILY: 'Times New Roman'">6</SPAN></DIV><![if !ppt]></DIV><![endif]></p:slide></DIV></BODY></HTML>
