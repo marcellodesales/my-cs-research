@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellPadding="0" cellSpacing="0">
+<TBODY>
+  <tr>
+    <td bgColor="#ffffff"><font class="ExtraTitle" color="#0033cc" face="Verdana, Helvetica"
+    size="2"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgColor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Request Object<br>
+    </strong></font><font color="#000000" face="Verdana,Helvetica" size="1">Last modified:
+    March 1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</TBODY>
+</table>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getParameter">getParameter</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getParameter property return the value of a
+  request parameter.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <code>.getParameter(&quot;Name&quot;)</code></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Values</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(myUpload.getRequest().<strong>getParameter(</strong>&quot;myParameter&quot;<strong>)</strong>
+      + &quot;&lt;br&gt;&quot;);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getParameterName">getParameterNames</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getParameterNames property specifies the
+  names for this collection.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <code>.getParameterNames</code></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Values</small></strong><br>
+  <small>Returns an Enumeration value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      // Retreive parameters<br>
+      java.util.Enumeration e = myUpload.getRequest().<strong>getParameterNames()</strong>;<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getParameterValue">getParameterValue</a>s</font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getParameterValues property specifies the
+  values for the tag. If there are several tag with the same name, or a tag accept multiple
+  values, then the property returns a string array of these values.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <code>.getParameterValues(String key)</code></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Values</small></strong><br>
+  <small>Returns a String array value.</small><br>
+  <strong><br>
+  <small>Parameter</small></strong><br>
+  <small>The key in the enumeration object.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Examples</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      // Browse parameters<br>
+      while (e.hasMoreElements()) {<br>
+      &nbsp; String key = (String)e.nextElement();<br>
+      &nbsp; String[] values = myUpload.getRequest().<strong>getParameterValues(</strong>key<strong>)</strong>;<br>
+      <br>
+      &nbsp; // Browse values of the current parameter<br>
+      &nbsp; for(int i = 0; i &lt; values.length; i++) {<br>
+      &nbsp;&nbsp;&nbsp; out.print(key + &quot; = &quot;);<br>
+      &nbsp;&nbsp;&nbsp; out.print(values[i] + &quot;&lt;br&gt;&quot;);<br>
+      &nbsp; }<br>
+      }<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font color="#000000" face="Verdana,Arial" size="1">&nbsp;</p>
+
+<p>© 2000 Advantys. All rights reserved.</font> </p>
+</body>
+</html>

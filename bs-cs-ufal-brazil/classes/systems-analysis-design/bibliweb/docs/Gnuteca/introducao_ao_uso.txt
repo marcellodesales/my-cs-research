@@ -1,0 +1,48 @@
+Manual de Introducao ao uso do GNUTeca
+======================================
+
+1 Na Base de Dados Bis
+----------------------
+  - Inserir os usarios na Tabela cmn_users com base nos dados ja existentes;
+  - Inserir os acessos na Tabela cmn_access com base nos dados ja existentes;
+  - Cadastrar os mesmos usuarios de cmn_users no Banco de Dados;
+    => create user <username> with password '<password>';
+
+  PS: AINDA Nao existe interface para gerenciar usuarios e acessos;
+
+
+2 Na Base de Dados SAGU
+-----------------------
+  - Criar na tabela cmn_pessoas, registros para os leitores;
+
+  PS: Se voce utiliza o sagu podera aproveitar integralmente os dados;
+
+  PS2: Estamos desenvolvemos uma interface para cadastra-los no proprio
+GNUTeca;
+
+
+3 Acessar o GNUTeca via browser
+-------------------------------
+        - Abra o browser e digite: www.gnuteca.domain.br
+	- Logue-se com um dos usuarios cadastrados na Etapa 1
+	- Acesse o modulo Administracao para gerenciar grupos, direitos, em
+	  geral configuracoes do GNUTeca.
+
+4 Acessar o GNUTeca modulo balcao de emprestimo
+-----------------------------------------------
+        Pronto! Para iniciar o GnuTeca (modulo Balcao de Emprestimos):
+
+        # php /usr/local/bis/html/modules/gnuteca/gtk/Main.php
+
+        # www.gnuteca.domain.br
+
+
+PS: O GNUTeca, apesar de utilizar uma base de dados com o nome SAGU (dados
+comuns para os dois sistemas), nao necessita do SAGU pre-instalado na maquina.
+
+
+
+
+---
+Equipe GNUTeca
+gnuteca@univates.br

@@ -1,0 +1,264 @@
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Setup Instructions<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last modified:
+    March 1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#Overview"><font face="Verdana, Helvetica"><small>Overview</small></font></a></li>
+  <li><a href="#Config"><small><font face="Verdana, Helvetica">Configuration required</font></small></a></li>
+  <li><a href="#1"><font face="Verdana, Helvetica"><small>Stage 1 : Extract the downloaded
+    file</small></font></a></li>
+  <li><a href="#2"><small><font face="Verdana, Helvetica">Stage 2 : jspSmartUpload
+    Installation</font></small></a></li>
+  <li><a href="#3"><small><font face="Verdana, Helvetica">Stage 3 : View samples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+
+<p><a name="Overview"></a><big><big><strong><font face="Verdana, Helvetica">Overview</font></strong></big></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The installation of jspSmartUpload can be broken
+  down into 3 main stages :</font></small></p>
+  <p><font face="Verdana, Helvetica"><small>- extract the downloaded file</small><br>
+  <small>- install the jspSmartUpload files on the Web server</small><br>
+  <small>- view the samples</small></font></p>
+  <p><small><font face="Verdana, Helvetica">These three stages are fully described below.</font></small></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Config"></a><big><big><strong><font face="Verdana, Helvetica">Configuration
+required</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica" size="2"><strong>Server</strong><br>
+  - ~500Ko of free disk space<br>
+  <br>
+  - a WebServer<br>
+  <br>
+  - JDK 1.2.2 (Java 2 Platform)<br>
+  - Java<sup><font size="-2">TM</font></sup>Servlet API (2.2)<br>
+  - JavaServer Pages<sup><font size="-2">TM</font></sup> 1.1<br>
+  <strong><br>
+  Browser</strong><br>
+  Your browser must be RFC 1867-compliant to be able to upload files.<br>
+  Netscape 3+ and Microsoft IE 3.02+ accept the <a href="RFC1867.txt">RFC 1867.</a></font></p>
+  <table border="0" cellspacing="2" width="540">
+    <tr bgcolor="#C0C0C0">
+      <td colspan="2"><font face="Verdana, Helvetica" size="2"><strong>If you have no JSP Engine</strong></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="20%"><font face="Verdana, Helvetica" size="2">Tomcat</font></td>
+      <td width="80%"><font face="Verdana, Helvetica" size="2">Tomcat is the Reference
+      Implementation for the Java Servlet 2.2 and JavaServer Pages 1.1 Technologies. Tomcat is
+      the official reference implementation for these complementary technologies. <a
+      href="http://java.sun.com/products/jsp/tomcat/">Tomcat</a><br>
+      </font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="20%"><font face="Verdana, Helvetica" size="2">JavaServer<sup><font size="-2">TM</font></sup>
+      Web Development Kit (JSWDK)</font></td>
+      <td width="80%"><font face="Verdana, Helvetica" size="2">The JavaServer Web Development
+      Kit (JSWDK)1.0.1 combines the reference implementation for JavaServer Pages<sup><font
+      size="-2">TM</font></sup> 1.0.1 and the Java<sup><font size="-2">TM</font></sup>Servlet
+      API (2.1). For more information about JavaServer Pages : <a
+      href="http://java.sun.com/products/jsp/">http://java.sun.com/products/jsp/</a></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="20%"><font face="Verdana, Helvetica" size="2">Allaire JRun</font></td>
+      <td width="80%"><font face="Verdana, Helvetica" size="2">A complete J2EE application
+      server.<br>
+      The JSDK is Sun's servlet API. You need the JSDK classes to use Java servlets; JServ
+      requires JSDK v2.0. <a href="http://www.allaire.com/products/jrun/">JRun</a></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="20%"><font face="Verdana, Helvetica" size="2">IBM WebSphere Application Server</font></td>
+      <td width="80%"><font face="Verdana, Helvetica" size="2">The Standard Edition lets you use
+      Java servlets, JavaServer Pages. <a
+      href="http://www-4.ibm.com/software/webservers/appserv">WebSphere</a></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="1"></a><big><big><strong><font face="Verdana, Helvetica">Stage 1 : Extract the
+downloaded file</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>All the jspSmartUpload files are supplied in the
+  compressed file, jspSmartUpload.zip or jspSmartUpload.tar.gz.</small><br>
+  <small>Extract the compressed file to a temporary directory, making sure the</small> <small>directory
+  structure remains intact. If, for example, you extract the file to /Temp,</small> <small>you
+  should see the following :</small><br>
+  <br>
+  <img src="arbo.gif" width="184" height="141" alt="arbo.gif"></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="2"></a><big><big><strong><font face="Verdana, Helvetica">Stage 2 :
+jspSmartUpload Installation</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica" size="2">The jspSmartUpload installation can be
+  different according to the web server and JSP Engine used. The following table list most
+  of frequently configurations used.<br>
+  Click on the JSP Engine you use according to your web server, to obtain the setup
+  instructions:</p>
+  <table BORDER="0" width="601" CELLSPACING="0" CELLPADDING="0" BGCOLOR="#0033CC">
+    <tr>
+      <td><table Border="0" width="100%" CELLSPACING="1" CELLPADDING="3">
+        <tr bgcolor="#FFCC66">
+          <td align="left" height="18" width="100"><strong><font face="Verdana, Helvetica" size="2">Plateforms</font></strong></td>
+          <td align="left" height="18" width="214"><strong><font face="Verdana, Helvetica" size="2">Web
+          Servers</font></strong></td>
+          <td align="left" height="18" width="275"><strong><font face="Verdana, Helvetica" size="2">JSP
+          Engines</font></strong></td>
+          <td align="center" height="18" width="275"><strong><font face="Verdana, Helvetica"
+          size="2">Support for Servlets - JSP</font></strong></td>
+          <td align="center" height="18" width="275"><strong><font face="Verdana, Helvetica"
+          size="2">jspSmartUpload</font></strong></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="100" rowspan="7" height="61"><font face="Verdana, Helvetica" size="2">Windows</font></td>
+          <td width="214" height="17"><font face="Verdana, Helvetica" size="2">Apache</font></td>
+          <td width="275" height="9"><font face="Verdana, Helvetica" size="2"><a
+          href="http://jakarta.apache.org/">Tomcat</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-Jakarta-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="214" rowspan="3" height="40"><font face="Verdana, Helvetica" size="2">Internet
+          Information Server</font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.allaire.com/">JRun 2.3.3</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.1 - 1.0</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-JRun-IIS-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.caucho.com/">Resin 1.1</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" align="center" width="275" height="18"><font face="Verdana, Helvetica"
+          size="2"><a href="jspSmartUpload-Resin-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.servletexec.com/">ServletExec 3.0 </a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" width="275" height="18"><a href="jspSmartUpload-ServletExec-En.htm"><font
+          face="Verdana, Helvetica" size="2">Setup instructions</font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="214" height="17" colspan="2"></a><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.inprise.com/">Inprise Application Server</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.1 - 1.0</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-InpriseAS-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="214" height="17" colspan="2"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.iplanet.com/">iPlanet Web Server</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-iPlanet-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="214" height="17" colspan="2"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.orionserver.com/">Orion Web Server</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-Orion-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="100" rowspan="2" height="56"><font face="Arial" size="2">Unix - Linux</font></td>
+          <td width="214" rowspan="2" height="18"><font face="Verdana, Helvetica" size="2">Apache</font></td>
+          <td width="275" height="9"><font face="Verdana, Helvetica" size="2"><a
+          href="http://jakarta.apache.org/">Tomcat</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.2 - 1.1</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-Jakarta-En.htm">Setup instructions</a></font></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td width="275" height="9"><font face="Verdana, Helvetica" size="2"><a
+          href="http://www.allaire.com/">JRun 2.3.3</a></font></td>
+          <td width="275" height="18"><font face="Verdana, Helvetica" size="2">2.1 - 1.0</font></td>
+          <td align="center" width="275" height="18"><font face="Verdana, Helvetica" size="2"><a
+          href="jspSmartUpload-jRun-linux-En.htm">Setup instructions</a></font></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  <p>If your configuration is not in the above list :<br>
+  - Make sure you have Sun's Java Compiler 1.2 installed.<br>
+  - Make sure your classpath is set up correctly as specified in the SDK instructions.<br>
+  - You need to have a JSP Engine. (see <a href="#Config">Configuration Required</a>)<br>
+  <br>
+  1. Stop your webserver<br>
+  <br>
+  2. Copy files from /Temp/jspsmartupload/*.htm into a virtual path of your web site.<br>
+  <br>
+  3. Create the directory /upload declared as a virtual path of your web site.<br>
+  <br>
+  4. Copy all jsp files of the /Temp/jspsmartupload/jsp directory into your usually JSPs'
+  folder.<br>
+  <br>
+  5. The package is in the /Temp/jspsmartupload/Web-inf/classes folder.<br>
+  Copy this directory into your usually servlets folder.<br>
+  <br>
+  6. Start your web server.<br>
+  <br>
+  N.B.:<br>
+  To use sample4 and sample7 you need an available database (<a href="mySQL.sql">mySQL.sql</a>),
+  if necessary defined a JDBC or JDBC-ODBC bridget.</font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="3"></a><big><big><strong><font face="Verdana, Helvetica">Stage 3 : Viewing
+samples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><strong>Test</strong><br>
+  <small>Using your browser, enter the following addresses :</small><br>
+  <small>http://your_web_server:8080/examples/jspsmartupload/default.htm</small></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. All rights
+    reserved.</font></td>
+  </tr>
+</table>
+</body>
+</html>

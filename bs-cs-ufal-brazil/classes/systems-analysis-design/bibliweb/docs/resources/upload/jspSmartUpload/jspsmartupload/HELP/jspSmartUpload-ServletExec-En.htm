@@ -1,0 +1,183 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Installation with ServletExec<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last update:
+    05/29/2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#JDK"><small><font face="Verdana, Helvetica">Stage 1 : Install JDK 1.2.2</font></small></a></li>
+  <li><a href="#ServletExec"><small><font face="Verdana, Helvetica">Stage 2 : Install
+    ServletExec</font></small></a></li>
+  <li><a href="#Composant"><small><font face="Verdana, Helvetica">Stage 3 : Install
+    jspSmartUpload</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">Use of examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+<b>
+
+<p><a name="JDK"></a><big><big><strong><font face="Verdana, Helvetica">Stage 1: Install
+JDK 1.2.2</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">jspSmartUpload requires JDK 1.2.2. <br>
+  JDK 1.2.2 is available for downloaded from Sun : <a
+  href="http://java.sun.com/products/jdk/1.2/download-windows.html">JDK 1.2.2 for Windows</a>
+  </font></p>
+  <p><font face="Verdana" SIZE="2"><strong>Note:</strong> You can install it in any
+  directory (default is <font color="#000080">C:\jdk1.2.2</font>). </font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="ServletExec"></a><big><big><strong><font face="Verdana, Helvetica">Stage 2:
+Install ServletExec</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">ServletExec is available for download from Unify
+  Corporation : <a href="http://www.newatlanta.com/downloads.html">ServletExec 3.0</a><br>
+  <br>
+  Launch the installation program and follow the stages. You will only have to specify in
+  which directory you want ServletExec to be installed (by default C:\Program Files\New
+  Atlanta\ServletExec ISAPI).&nbsp;<br>
+  <br>
+  At the end of the installation, you will be warned that you will have to stop the IIS
+  administration service. Don't forget to do that to be able to configure your web site with
+  ServletExec (cf. Etape 3). <br>
+  You can issue the command <strong>net stop iisadmin</strong> to do that.</font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Composant"></a><big><big><strong><font face="Verdana, Helvetica">Stage 3 :
+Install jspSmartUpload</font></strong></big></big></p>
+
+<blockquote>
+  <font face="Verdana, Helvetica" SIZE="2"><p></font></b><font face="Verdana" SIZE="2">If
+  the install directory is </font><font face="Verdana, Helvetica" SIZE="2"><a
+  href="file:///C:/InetPub/Your_site">C:\InetPub\Your_Site</a></p>
+  <table width="682">
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site</font></td>
+      <td width="266"><font face="Verdana, Helvetica" SIZE="2">Site root</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload</font></td>
+      <td width="266"><font face="Verdana, Helvetica" SIZE="2">Static pages (html)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana" SIZE="2">C:\InetPub\</font><font
+      face="Verdana, Helvetica" SIZE="2">Your_Site</font><font face="Verdana" SIZE="2">\jspsmartupload\jsp</font></td>
+      <td width="266"><font face="Verdana, Helvetica" SIZE="2">Dynamic pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Votre_Site\jspsmartupload\upload</font></td>
+      <td width="266"><font face="Verdana, Helvetica" SIZE="2">Uploaded files</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\scripts
+      </font></td>
+      <td width="266"><font face="Verdana, Helvetica" SIZE="2">Directory where is the
+      ServletExec DLL</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+  </table>
+  <p></font><font face="Verdana" SIZE="2">1. </font><font face="Verdana, Helvetica"><small>Copy
+  the files </small></font><font face="Verdana" SIZE="2"><strong>*.html</strong> into <a
+  href="file:///C:/InetPub/Votre_Site/wwwroot/jspsmartFile"><font face="Verdana" SIZE="2"
+  color="#000080">C:\InetPub\Votre_Site\</font><font color="#000080">jspsmartupload</font></a></p>
+  <p>2. </font><font face="Verdana, Helvetica"><small>Copy the files located in<strong> </small></font><font
+  face="Verdana" size="2">jspsmartupload</font><font face="Verdana, Helvetica"><small>\jsp\*.jsp</strong>
+  into </small></font><a href="file:///C:/InetPub/Votre_Site/jspsmartFile/jsp"><font
+  face="Verdana" SIZE="2" color="#000080">C:\InetPub\Votre_Site\scripts\jspsmar</font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080">upload\jsp</font></a><font
+  face="Verdana" size="2"><font face="Verdana" size="2"><font face="Verdana, Helvetica"
+  SIZE="2"> </font></font></p>
+  <p>3. </font><font face="Verdana, Helvetica"><small>Copy the files located in</small></font><font
+  face="Verdana" size="2"> <strong>jspsmartupload\Web-inf\classes</strong> into the
+  directory </font><font face="Verdana" SIZE="2" color="#000080">Installation_directory\classes
+  </font><font face="Verdana" size="2">(by default : C:\Program Files\New
+  Atlanta\ServletExec ISAPI\classes)</p>
+  <p>4. Copy the file <strong>ServletExec_ISAPI.dll</strong> into <font face="Verdana"
+  SIZE="2" color="#000080"><a href="file:///C:/InetPub/Votre_Site/jspsmartFile/jsp">C:\InetPub\Votre_Site\scripts</a></font>.
+  In the default IIS installation, the <strong>scripts</strong> virtual directory is
+  configured and mapped to the <a href="file:///C:/InetPub/scripts">C:\InetPub\scripts</a>
+  physical directory. If the ServletExec/ISAPI installer found this default configuration,
+  it copied <strong>ServletExec_ISAPI.dll </strong>to this directory and did not prompt you
+  for a location for this file.</p>
+  <p>5. In IIS management console, </font><font face="Verdana, Helvetica" SIZE="2">create a
+  web site which physical path is </font><font face="Verdana, Helvetica" SIZE="2"
+  color="#000080"><a href="file:///C:/InetPub/VotreSite">C:\InetPub\VotreSite</a></font><font
+  face="Verdana, Helvetica" SIZE="2"> and allow the<strong> Execute </strong>access on this
+  site. Next, create a virtual directory which path is </font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080"><a
+  href="file:///C:/InetPub/VotreSite/scripts">C:\InetPub\VotreSite\scripts</a> </font><font
+  face="Verdana, Helvetica" SIZE="2">and allow<font color="#000080"> also </font>the<strong>
+  Execute </strong>access on this virtaul directory. </font><font face="Verdana, Helvetica"
+  SIZE="2" color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </font><font face="Verdana, Helvetica" SIZE="2"></p>
+  <p></font><font face="Verdana" SIZE="2"><font face="Verdana, Helvetica"><font size="2">6</font></font>.
+  </font><font SIZE="2" face="Verdana, Helvetica">Before doing next stage, be sure you have
+  stopped your IIS administration service from the Control Panel or from the command <strong>net
+  stop iisadmin</strong>.</p>
+  <p>7. </font><font face="Verdana" SIZE="2">Add</font><font SIZE="2"
+  face="Verdana, Helvetica"> ServletExec as an ISAPI filter for the web site : in the IIS
+  management console, right-click the web site icon and select Properties from the pop-up
+  menu. Select the ISAPI Filters tab and add the ServletExec filter with the physical path </font><font
+  face="Verdana" SIZE="2"><font color="#000080">C</font><font face="Verdana" size="2"
+  color="#000080">:\InetPub\Votre_Site\scripts\ServletExec_ISAPI.dll</font></p>
+  <p>Now you can restart IIS with the command<strong> net start w3svc</strong> and start
+  your web server from the IIS management console. </p>
+  </font>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Use of examples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>Type the following URL in your browser:</small><br>
+  <small>http://IP_address_of_your_web_server/jspsmartupload/default.htm</small></font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font><font
+    color="#000000" size="1" face="Verdana,Helvetica">All rights reserved</font><font
+    color="#000000" size="1" face="Verdana,Arial">.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

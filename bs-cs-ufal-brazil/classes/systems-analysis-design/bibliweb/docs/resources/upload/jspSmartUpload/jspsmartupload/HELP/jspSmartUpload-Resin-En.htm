@@ -1,0 +1,194 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Installation with Resin<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last update:
+    05/24/2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#JDK"><small><font face="Verdana, Helvetica">Step 1 : Install JDK 1.2.2</font></small></a></li>
+  <li><a href="#RESIN"><small><font face="Verdana, Helvetica">Step 2 : Install Resin</font></small></a></li>
+  <li><a href="#Composant"><small><font face="Verdana, Helvetica">Step 3 : Install
+    jspSmartUpload</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">Use of examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+<b>
+
+<p><a name="JDK"></a><big><strong><font face="Verdana, Helvetica"><big>Step 1: Install JDK
+1.2.2</big></font></strong></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">JspSmartUpload requires JDK 1.2.2. <br>
+  JDK 1.2.2 is available for free download from Sun. <a
+  href="http://java.sun.com/products/jdk/1.2/download-windows.html">JDK 1.2.2 for Windows</a>
+  </font></p>
+  <p><font face="Verdana" SIZE="2"><strong>Note:</strong> You can install it in any
+  directory (default is <font color="#000080">C:\jdk1.2.2</font>). </font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="RESIN"></a><big><big><strong><font face="Verdana, Helvetica">Step 2: Install
+Resin</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">Resin is available for download from Caucho. <a
+  href="http://www.caucho.com/download/index.html">Resin 1.1 for Windows</a><br>
+  <u><strong><br>
+  </strong></u>You can extract the downloaded zip file in any directory (default is <font
+  color="#000080">C:\Resin1.1</font>). You will run Resin from this directory.<br>
+  </font><b></p>
+  </b><p><font face="Verdana" SIZE="2">1. Run setup.exe located in the directory <font
+  color="#000080">C:\resin1.1\bin</font><br>
+  <strong>&nbsp;&nbsp;&nbsp; <u>Note:</u></strong> You must stop IIS service before running
+  setup.exe. To do so, type the command: <strong>net stop iisadmin<br>
+  </strong><br>
+  Enter the path to Resin (<font color="#000080">C:\resin1.1</font>) and the path to IIS
+  scripts directory (typically <font color="#000080">C:\InetPub\scripts</font>)<br>
+  </font></p>
+  <p><font face="Verdana" SIZE="2">2. Create a <font color="#000080">C:\resin1.1\conf\resin.conf</font>&nbsp;
+  file (rename the existing one) containing:</font></p>
+  <p><font face="Verdana"><small>&lt;caucho.com&gt;<br>
+  &nbsp;&nbsp;&nbsp; &lt;http-server&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;host id='<font color="#000000"><em>web_server_IP_address</em></font>'&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;app-dir&gt;</small></font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000000"><em>C:\InetPub\Your_Site</em></font><font
+  face="Verdana"><small>&lt;/app-dir&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;error-log id='</small></font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000000"><em>C:\InetPub\Your_Site</em></font><font
+  face="Verdana"><small>\error.log'/&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;servlet-mapping
+  url-pattern='*.jsp' servlet-name='com.caucho.jsp.JspServlet'/&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;path-mapping
+  url-pattern='/upload/*' real-path='</small></font><font face="Verdana, Helvetica" SIZE="2"
+  color="#000000"><em>C:\InetPub\Your_Site</em></font><font face="Verdana"><small>\jspsmartupload\upload'/&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/host&gt;<br>
+  &nbsp;&nbsp;&nbsp; &lt;classpath id='WEB-INF/classes' source='WEB-INF/classes'/&gt;<br>
+  &nbsp;&nbsp;&nbsp; &lt;/http-server&gt;<br>
+  &lt;/caucho.com&gt;</small></font></p>
+  <p><font face="Verdana" SIZE="2">All paths are given assuming you web site is located in </font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080">C:\InetPub\Your_Site, </font><font
+  face="Verdana" SIZE="2">change them if needed.<br>
+  <br>
+  </font></p>
+  <p><font face="Verdana" SIZE="2">3. You may need to change you CLASSPATH in order to have </font><font
+  face="Verdana" size="2" color="#000080">C:\jdk1.2.2\lib\tools.jar </font><font
+  color="#000000" face="Verdana" size="2">in it</font><font face="Verdana" size="2"
+  color="#000080"><br>
+  <br>
+  </font></p>
+  <p><font face="Verdana" SIZE="2">4. In IIS management console, create a virtual directory
+  named <strong>scripts </strong>which physical path is the directory where Resin put the <strong>iis_srun.dll</strong>
+  file (typically <font color="#000080">C:\InetPub\scripts</font>) and allow Execute on this
+  virtual directory.<br>
+  In the properties of your site, in the <em>Home directory</em> tab, click on the
+  Configuration button, then on the <em>Add</em> button.<br>
+  Choose <strong>iis_srun.dll</strong> as the Executable (typically in <font color="#000080">C:\InetPub\scripts</font>),
+  and enter <strong>.jsp</strong> in the Extention field.<br>
+  </font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Composant"></a><big><big><strong><font face="Verdana, Helvetica">Step 3 :
+Install jspSmartUpload</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">Assuming your web site is located in </font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080">C:\InetPub\Your_Site</font><font
+  face="Verdana, Helvetica" SIZE="2"></p>
+  <table width="626">
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site</font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Site root</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\</font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Static pages (html)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\jsp\
+      </font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Dynamic pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\upload
+      </font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Uploaded files</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\WEB-INF\classes
+      </font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">jspSmartUpload classes</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+  </table>
+  <p></font><font face="Verdana, Helvetica"><small>1. Copy the files located in </small></font><strong><font
+  face="Verdana" SIZE="2">jspsmartupload\*.html</font></strong><font face="Verdana"><small>
+  in <font color="#000080">C:\InetPub\Your_Site\jspsmartupload</font></small><font SIZE="2"><br>
+  </font></font><font face="Verdana, Helvetica" SIZE="2"><br>
+  2. Copy the files located in <strong>jspsmartupload\jsp\*.jsp</strong> in <font
+  color="#000080">C:\InetPub\Your_Site\jspsmartupload\jsp</font><br>
+  <br>
+  3. Copy the files located in <strong>jspsmartupload\Web-inf\classes</strong> in </font><font
+  color="#000080" face="Verdana, Helvetica" size="2">C:\InetPub\</font><font color="#000080"><font
+  SIZE="2"><font face="Verdana, Helvetica">Your</font></font><font face="Verdana, Helvetica"
+  size="2">_Site\WEB-INF\classes</font></font></p>
+  <p><font face="Verdana" SIZE="2">4. In the IIS management console, create a virtual
+  directory named <strong>jspsmartupload </strong>which physical path is</font><font
+  face="Verdana"> <font color="#000080"><small>C:\InetPub\Your_Site\jspsmartupload</small></font>
+  </font></p>
+  <p>&nbsp;</p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Use of examples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana" SIZE="2">Start your web server from the IIS management console<br>
+  Start resin by running srun.exe located in <font color="#000080">C:\resin1.1\bin</font> </font></p>
+  <p><font face="Verdana, Helvetica"><small>Type the following URL in your browser:</small><br>
+  <small>http://IP_address_of_your_web_server/jspsmartupload/default.htm</small></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font><font
+    color="#000000" size="1" face="Verdana,Helvetica">All rights reserved.</font></td>
+  </tr>
+</table>
+</body>
+</html>

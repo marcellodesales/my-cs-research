@@ -1,0 +1,131 @@
+INSTALAÇÃO DO GNUTECA
+=====================
+
+- instalar o Apache de www.apache.org
+
+- instalar o Postgres de www.postgres.org
+
+- instalar o PHP de www.php.net
+  - certificar-se de que o PHP foi instalado corretamente com suporte ao Banco de Dados PostGreSQL.
+
+- instalar o PHP-GTK de gtk.php.net
+  - certificar-se de que o PHP-GTK está funcionando corretamente através dos arquivos de teste que o acompanham.
+
+  PS: Sugerimos que voce instale ambos PHP ou PHP-GTK do CVS (versao em
+desenvolvimento);
+
+  PS2: Voce tambem podera utilizar o PHP 4.0.6 juntamente com o PHP-GTK que
+acompanha o Gnuteca (php-gtk.tgz);
+
+- estar como usuário root
+# su
+
+
+- Agora mude as permissões dos dumps das Bases de Dados para o usuário postgres:
+# chown postgres.postgres *.sql.gz
+
+- descompactar o arquivo bis.tar.gz dentro do diretório /usr/local
+# cd /usr/local
+# tar -xzvf bis.tar.gz
+
+- estar como usuário postgres
+# su postgres
+
+- inicializar o PostgreSQL
+
+- criar base de dados gnuteca
+# createdb gnuteca
+
+- criar base de dados common
+# createdb sagu
+
+- criar base de dados bis
+# createdb bis
+
+- realizar o dump da base gnuteca
+# gunzip gnuteca.sql.gz
+# psql gnuteca
+gnuteca=> \i gnuteca.sql
+gnuteca=> \q
+
+- realizar o dump da base common
+# gunzip sagu.sql.gz
+# psql sagu
+sagu=> \i sagu.sql.gz
+sagu=> \q
+
+- realizar o dump da base bis
+# gunzip bis.sql.gz
+# psql bis
+bis=> \i bis.sql
+bis=> \q
+
+	PS: O GNUTeca tem muitas dependencias de dados, algumas dificeis de serem
+entendidas num primeiro momento. Para isso, preparamos alguns arquivos prontos
+para "popular" o banco de dados.
+
+	- Para instalar as tabelas para a base GNUTeca, importe todos os
+	  arquivos <gnuteca_gtc....> para a base gnuteca da seguinte forma:
+	# unzip gnuteca_bases.zip
+	# psql gnuteca
+	gnuteca=> \i gnuteca_gtc_areageografica.sql
+
+	- E repetir a linha acima para os outros arquivos <gnuteca_gtc....>
+
+	- Para instalar as tabelas para a base SAGU, importe o arquivo
+	  sagu_cmn_grupo.sql da seguinte forma:
+	# unzip sagu_bases.zip
+	# psql sagu
+	sagu=> \i sagu_cmn_grupo.sql
+
+
+        Edite o arquivo /usr/local/bis/html/miolo/miolo.conf e altere os IP's
+da sessão DB Access Settings. Os IP's devem ser os das máquinas
+que armazenem os bancos de dados. Cada base pode estar em uma máquina distinta
+ou em uma mesma máquina. Se você seguiu as instruções você tem
+todas as bases e o próprio gnuteca na máquina local, e os IP's todos devem ser
+alterados para 127.0.0.1.
+
+- Mudar no httpd.conf
+
+<IfModule mod_alias.c>
+  Alias /bis/ "/usr/local/bis/"
+
+    <Directory "/usr/local/bis">
+        Options Indexes MultiViews
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+
+
+<VirtualHost *>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/local/bis/html
+    #DocumentRoot /usr/local/bis/html/pres/slides/univates/programa
+    ServerName www.gnuteca.damain.br
+    ErrorLog logs/sagu2_error_log
+    CustomLog logs/sagu2_access_log common
+
+    <Directory "/usr/local/bis/html">
+      Options Indexes FollowSymLinks MultiViews
+      AllowOverride FileInfo
+      Order allow,deny
+      Allow from all
+    </Directory>
+</VirtualHost>
+
+---
+
+Etapa Final
+
+        Talvez seja necessário comentar a linha 66 do arquivo miolo.php. Se
+você tiver compilado o php com suporte ao gettext deve comentar essa linha.
+
+	Passe para o arquivo introducao_ao_uso.txt
+        
+---
+Equipe Gnuteca
+gnuteca@univates.br
+

@@ -1,0 +1,95 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellPadding="0" cellSpacing="0">
+<TBODY>
+  <tr>
+    <td bgColor="#ffffff"><font class="ExtraTitle" color="#0033cc" face="Verdana,Arial"
+    size="2"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgColor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,arial" size="6"><strong>Files
+    Object<br>
+    </strong></font><font color="#000000" face="Verdana,Arial" size="1">Last modified: March
+    1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</TBODY>
+</table>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana"><a name="getCount">getCount</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana">The getCount property returns the number of elements in the
+  collection. </font></small></p>
+  <p><font face="Verdana"><strong><small>Syntax</small></strong><br>
+  <small>.getCount</small></font></p>
+  <p><font face="Verdana"><strong><small>Return Value</small></strong><br>
+  <small>Returns a int value which is the number of elements in the collection.</small></font></p>
+  <p><strong><font face="Verdana"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;NbFiles=&quot; + myUpLoad.getFiles().<strong>Count()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="getFile"><big><strong><font face="Verdana">getFile</font></strong></big></a></p>
+
+<blockquote>
+  <p><font face="Verdana"><small>The getFile method access to an item in the collection.</small></font></p>
+  <p><font face="Verdana"><strong><small>Syntax</small></strong><br>
+  <small>.getFile(key)</small></font></p>
+  <p><font face="Verdana"><strong><small>Return Value</small></strong><br>
+  <small>Returns a file object of the collection corresponding to the key.</small></font></p>
+  <p><strong><font face="Verdana"><small>Examples</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      for (int i=0;i&lt;myUpLoad.getFiles().count();i++){<br>
+      &nbsp; out.println(&quot;File=&quot; + myUpLoad.getFiles().<strong>getFile(</strong>i<strong>)</strong>.getFileName());<br>
+      }<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="getSize"><big><strong><font face="Verdana">getSize</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana">The getSize property returns the size of the collection. </font></small></p>
+  <p><font face="Verdana"><strong><small>Syntax</small></strong><br>
+  <small>.getSize</small></font></p>
+  <p><font face="Verdana"><strong><small>Return Value</small></strong><br>
+  <small>Returns a Long value which is the size of the collection.</small></font></p>
+  <p><strong><font face="Verdana"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;File's size uploaded : &quot; + myUpLoad.getFiles().<strong>getSize()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font color="#000000" face="Verdana,Arial" size="1">©&nbsp;2000 Advantys. All rights
+reserved.</font> </p>
+</body>
+</html>

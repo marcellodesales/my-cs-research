@@ -1,0 +1,154 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Installation with Inprise Application Server <br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last Update:
+    05/24/2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#JDK"><small><font face="Verdana, Helvetica">Step 1 : Install JDK 1.2.2</font></small></a></li>
+  <li><a href="#IAS"><small><font face="Verdana, Helvetica">Step 2 : Install Inprise
+    Application Server (IAS)</font></small></a></li>
+  <li><a href="#Composant"><small><font face="Verdana, Helvetica">Step 3 : Install
+    jspSmartUpload</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">Use of examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+<b>
+
+<p><a name="JDK"></a><big><strong><font face="Verdana, Helvetica"><big>Step 1: Install JDK
+1.2.2</big></font></strong></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">JspSmartUpload requires JDK 1.2.2. <br>
+  JDK 1.2.2 is available for free download from Sun. <a
+  href="http://java.sun.com/products/jdk/1.2/download-windows.html">JDK 1.2.2 for Windows</a>
+  </font></p>
+  <p><font face="Verdana" SIZE="2"><strong>Note:</strong> You can install it in any
+  directory (default is <font color="#000080">C:\jdk1.2.2</font>). </font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="IAS"></a><big><big><strong><font face="Verdana, Helvetica">Step 2: Install
+Inprise Application Server (IAS)</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">IAS can be downloaded from Inprise. <a
+  href="http://www.inprise.com/appserver/download/index.html">IAS 4.0 for Windows</a><br>
+  <u><strong><br>
+  </strong></u>1. Once downloaded, run ias40.exe<br>
+  IAS default installation directory is <a href="file:///C:/Inprise/AppServer"><font
+  color="#000080">C:\Inprise\AppServer</font></a> <br>
+  <br>
+  2. Start IAS Server&nbsp; (Start menu &gt; Programs &gt; Inprise Application Server 4.0
+  &gt; Inprise Application Server)</font><b></p>
+</blockquote>
+</b><font face="Verdana, Helvetica">
+
+<hr noshade size="1">
+
+<p><a name="Composant"></a><big><big><strong><font face="Verdana, Helvetica">Step 3 :
+Install jspSmartUpload</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana" SIZE="2">Assuming your web site is located in </font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080">C:\InetPub\Your_Site</font><font
+  face="Verdana, Helvetica" SIZE="2"></p>
+  <table width="626">
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site</font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Site root</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\</font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Static pages (html)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\jsp\
+      </font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Dynamic pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\upload
+      </font></td>
+      <td width="210"><font face="Verdana, Helvetica" SIZE="2">Uploaded files</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+  </table>
+  <p></font><font face="Verdana, Helvetica"><small>1. Copy the files located in </small></font><font
+  face="Verdana" SIZE="2">jspsmartupload\*.html</font><font face="Verdana"><small> in <font
+  color="#000080">C:\InetPub\Your_Site\jspsmartupload</font></small><font SIZE="2"><br>
+  </font></font><font face="Verdana, Helvetica" SIZE="2"><br>
+  2. Copy the files located in jspsmartupload\jsp\*.jsp in <a
+  href="file:///C:/InetPub/Your_Site/jspsmartupload/jsp"><font color="#000080">C:\InetPub\Your_Site\jspsmartupload\jsp</font></a><br>
+  </font><font face="Verdana" SIZE="2"><br>
+  3. Use any web bowser to connect to&nbsp; <strong>http://IP_address_of_your_server:9090</strong><br>
+  &nbsp;&nbsp;&nbsp; Type the user name: admin<br>
+  &nbsp;&nbsp;&nbsp; Type the password: admin<br>
+  <br>
+  4. Clic on <em>HTTP WEB ENGINE</em>, then on the <em>Manage</em> button<br>
+  &nbsp;&nbsp;&nbsp; Choose <em>Files Aliases</em> and clic on <em>Add</em><br>
+  &nbsp;&nbsp; &nbsp;&nbsp; Enter the alias name <strong>/jspsmartupload </strong>and the
+  corresponding real path <strong>C:/InetPub/Your_Site/jspsmartupload<br>
+  </strong>Clic on <em>Save </em>then clic again on <em>Add</em><br>
+  &nbsp;&nbsp;&nbsp; &nbsp; Enter the alias name <strong>/upload </strong>and the
+  corresponding real path <strong>C:/InetPub/Your_Site/jspsmartupload/upload<br>
+  </strong><br>
+  5. </font><font face="Verdana, Helvetica" SIZE="2">Copy the files located in <strong>jspsmartupload\Web-inf\classes</strong>
+  in <font color="#000080">C</font></font><font face="Verdana, Helvetica" SIZE="2"
+  color="#000080">:\Inprise\AppServer\classes</font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Use of examples</font></strong></big></big></p>
+
+<blockquote>
+  <p></font><font face="Verdana, Helvetica" SIZE="2">If IAS is not already running, start it
+  </font><font face="Verdana" SIZE="2">(Start menu &gt; Programs &gt; Inprise Application
+  Server 4.0 &gt; Inprise Application Server)</font><font face="Verdana, Helvetica"></p>
+  <p><small>Type the following URL in your browser:</small><br>
+  <small>http://IP_address_of_your_web_server:8080/jspsmartupload/default.htm</small></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font></font><font
+    face="Verdana,Helvetica" color="#000000" size="1">All right reserved</font><font
+    color="#000000" size="1" face="Verdana, Helvetica">.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

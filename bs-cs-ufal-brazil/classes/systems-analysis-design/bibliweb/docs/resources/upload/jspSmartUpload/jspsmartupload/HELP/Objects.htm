@@ -1,0 +1,368 @@
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellPadding="0" cellSpacing="0">
+<TBODY>
+  <tr>
+    <td bgColor="#ffffff"><font class="ExtraTitle" color="#0033cc" face="Verdana, Helvetica"
+    size="2"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgColor="#ffffff"><font class="Title" color="#0033cc" face="Verdana, Helvetica"
+    size="6"><strong>SmartUpload Object<br>
+    </strong></font><font color="#000000" face="Verdana, Helvetica" size="1">Last modified:
+    March 1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</TBODY>
+</table>
+
+<ul>
+  <li><a href="#SmartUpload"><small><font face="Verdana, Helvetica">SmartUpload</font></small></a>
+    <ul>
+      <li><small><font face="Verdana, Helvetica"><a href="#Files">Files</a></font></small> <ul>
+          <li><a href="#File"><small><font face="Verdana, Helvetica">File</font></small></a></li>
+        </ul>
+      </li>
+      <li><small><font face="Verdana, Helvetica"><a href="#Request">Request</a></font></small></li>
+    </ul>
+  </li>
+</ul>
+
+<hr noShade SIZE="1">
+
+<p><font class="ParaTitle" color="#000000" face="Verdana, Helvetica" size="4"><strong>The
+SmartUpload Object</strong></font></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The SmartUpload object can be created in a JSP
+  program.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>&lt;%@ page language=&quot;java&quot;
+  import=&quot;java.sql.*,com.jspsmart.upload.*&quot;%&gt;<br>
+  &lt;jsp:useBean id=&quot;mySmartUpload&quot; scope=&quot;page&quot;
+  class=&quot;com.jspsmart.upload.SmartUpload&quot; /&gt;</small><br>
+  <small><br>
+  <strong>Collections</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td width="164"><a href="FilesObject.htm#Files"><font face="Verdana, Helvetica"><small>Files</small></font></a></td>
+      <td width="354"><small><font face="Verdana, Helvetica">Files collection of File objects.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="164"><a href="RequestObject.htm#Request"><font face="Verdana, Helvetica"><small>Request</small></font></a></td>
+      <td width="354"><small><font face="Verdana, Helvetica">Request collection of Item objects.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div><p><font face="Verdana, Helvetica"><small><strong>Properties</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#getBinaryData">getBinaryData</a></font></small></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Byte corresponding to
+      the table index containing the transmitted data.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#getFiles">getFiles</a></font></small></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Returns the collection
+      of the uploaded files .</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#getRequest">getRequest</a></font></small></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Returns the request
+      object..</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#getSize"><small><font
+      face="Verdana, Helvetica">getSize</font></small></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Size in bytes of the
+      POST form.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#setAllowedFilesList"><small><font
+      face="Verdana, Helvetica">setAllowedFilesList</font></small></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Contains the upload
+      authorized file extensions list.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#setContentDisposition">setContentDisposition</a></font></small></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Sets the
+      content-disposition headers of the MIME Type.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#setDeniedFilesList"><small><font
+      face="Verdana, Helvetica">setDeniedFilesList</font></small></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Contains the upload
+      denied file extensions list.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#setDenyPhysicalPath"><small><font
+      face="Verdana, Helvetica">setDenyPhysicalPath</font></small></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Prevents file saving in
+      directories other than virtual directories.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#setMaxFileSize"><small><font
+      face="Verdana, Helvetica">setMaxFileSize</font></small></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Maximum allowed size of
+      one file to be uploaded.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="165"><a href="SmartUploadObject.htm#setTotalMaxFileSize"><font
+      face="Verdana, Helvetica"><small>setTotalMaxFileSize</small></font></a></td>
+      <td height="18" width="353"><small><font face="Verdana, Helvetica">Maximum allowed size of
+      all files to be uploaded.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div><p><font face="Verdana, Helvetica"><strong><small>Methods</small></strong></font></p>
+  <div align="left"><table border="0" height="24" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#downloadField">downloadField</a></font></small></td>
+      <td height="20" width="353"><font face="Verdana, Helvetica"><small>Download a file from a
+      DataBase.</small></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="SmartUploadObject.htm#downloadFile"><small><font
+      face="Verdana, Helvetica">downloadFile</font></small></a></td>
+      <td height="20" width="353"><font face="Verdana, Helvetica"><small>Download a file.</small></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><small><font face="Verdana, Helvetica"><a
+      href="SmartUploadObject.htm#fieldToFile">fieldToFile</a></font></small></td>
+      <td height="20" width="353"><font face="Verdana, Helvetica"><small>Create a file with a
+      DataBase field.</small></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="SmartUploadObject.htm#save"><small><font
+      face="Verdana, Helvetica">save</font></small></a></td>
+      <td height="20" width="353"><font face="Verdana, Helvetica"><small>Save all files.</small></font></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="SmartUploadObject.htm#upLoad"><small><font
+      face="Verdana, Helvetica">upLoad</font></small></a></td>
+      <td height="20" width="353"><small><font face="Verdana, Helvetica">UpLoad the POST form.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="SmartUploadObject.htm#uploadInFile"><small><font
+      face="Verdana, Helvetica">uploadInFile</font></small></a></td>
+      <td height="20" width="353"><small><font face="Verdana, Helvetica">Save the POST form in a
+      file.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="SmartUploadObject.htm#SmartUpload"><small><font
+      face="Verdana, Helvetica">SmartUpload</font></small></a></td>
+      <td height="20" width="353"><small><font face="Verdana, Helvetica">Creates an new
+      SmartUpload instance .</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font class="ParaTitle" color="#000000" face="Verdana, Helvetica" size="4"><strong><a
+name="Files">The files object</a></strong></font></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small><strong>Syntax</strong></small><br>
+  <small>myFiles.Collection | Properties | Method</small></font></p>
+  <p><font face="Verdana, Helvetica"><small><strong>Collection</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td width="165"><a href="FileObject.htm#File"><font face="Verdana, Helvetica"><small>File</small></font></a></td>
+      <td width="353"><small><font face="Verdana, Helvetica">File objects.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div><p><font face="Verdana, Helvetica"><small><strong>Properties</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td width="212"><a href="FilesObject.htm#getCount"><small><font face="Verdana, Helvetica">getCount</font></small></a></td>
+      <td width="494"><small><font face="Verdana, Helvetica">Number of File's objects.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="212"><a href="FilesObject.htm#getSize"><small><font face="Verdana, Helvetica">getSize</font></small></a></td>
+      <td width="494"><small><font face="Verdana, Helvetica">Size in bytes of the files
+      collection.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div><p><font face="Verdana, Helvetica"><strong><small>Method</small></strong></font></p>
+  <div align="left"><table border="0" height="24" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><font face="Verdana, Helvetica"><small><a
+      href="FilesObject.htm#getFile">getFile</a>(ID)</small></font></td>
+      <td height="20" width="353"><font face="Verdana, Helvetica"><small>(Default method)
+      Returns the File object with the specified ID.</small></font></td>
+    </tr>
+</TBODY>
+  </table>
+  </div>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font class="ParaTitle" color="#000000" face="Verdana, Helvetica" size="4"><strong><a
+name="File">The File object</a></strong></font></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small><strong>Syntax</strong></small><br>
+  <small>myFile.Proprerties | Methods</small></font></p>
+  <p><font face="Verdana, Helvetica"><small><strong>Properties</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getBinaryData"><font
+      face="Verdana, Helvetica"><small>getBinaryData</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Byte corresponding to
+      the table index containing the transmitted data.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getContentDisp"><small><font
+      face="Verdana, Helvetica">getContentDisp</font></small></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Content-disposition of
+      the POST form.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="13" width="207"><a href="FileObject.htm#getContentString"><font
+      face="Verdana, Helvetica"><small>getContentString</small></font></a></td>
+      <td height="13" width="499"><small><font face="Verdana, Helvetica">Returns the content of
+      file in one string.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getContentType"><font
+      face="Verdana, Helvetica"><small>getContentType</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">File's content-type
+      entered by the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getFieldName"><font
+      face="Verdana, Helvetica"><small>getFieldName</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Name of this item of
+      the POST form.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getFileExt"><font
+      face="Verdana, Helvetica"><small>getFileExt</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">File's extension
+      entered by the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getFileName"><font
+      face="Verdana, Helvetica"><small>getFileName</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">File's name entered by
+      the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getFilePathName"><font
+      face="Verdana, Helvetica"><small>getFilePathName</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">File's path entered by
+      the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getSize"><font
+      face="Verdana, Helvetica"><small>getSize</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">File's size.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getSubTypeMIME"><font
+      face="Verdana, Helvetica"><small>getSubTypeMIME</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Return the MIME
+      sub-type entered by the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><a href="FileObject.htm#getTypeMIME"><font
+      face="Verdana, Helvetica"><small>getTypeMIME</small></font></a></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Return the MIME type
+      entered by the user.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="18" width="207"><small><font face="Verdana, Helvetica"><a
+      href="FileObject.htm#isMissing">isMissing</a></font></small></td>
+      <td height="18" width="499"><small><font face="Verdana, Helvetica">Return true if the user
+      has not specified a file.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div><p><font face="Verdana, Helvetica"><strong><small>Methods</small></strong></font></p>
+  <div align="left"><table border="0" height="24" width="526">
+<TBODY>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="FileObject.htm#fileToField"><small><font
+      face="Verdana, Helvetica">fileToField</font></small></a></td>
+      <td height="20" width="353"><small><font face="Verdana, Helvetica">Save a file in a field
+      of a DataBase.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td height="20" width="165"><a href="FileObject.htm#saveAs"><small><font
+      face="Verdana, Helvetica">saveAs</font></small></a></td>
+      <td height="20" width="353"><small><font face="Verdana, Helvetica">Save the file on the
+      disk. Always overwrites existing files.</font></small></td>
+    </tr>
+</TBODY>
+  </table>
+  </div>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font class="ParaTitle" color="#000000" face="Verdana, Helvetica" size="4"><strong>The <a
+name="Request">Request</a> object</strong></font></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small><strong>Syntax</strong></small><br>
+  <small>myRequest.Properties</small></font></p>
+  <p><font face="Verdana, Helvetica"><small><strong>Properties</strong></small></font></p>
+  <div align="left"><table border="0" width="526">
+    <tr bgcolor="#EEEEEE">
+      <td width="219"><a href="RequestObject.htm#getParameter"><small><font
+      face="Verdana, Helvetica">getParameter</font></small></a></td>
+      <td width="487"><small><font face="Verdana, Helvetica">Returns the value of a request
+      parameter.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="219"><a href="RequestObject.htm#getParameterName"><small><font
+      face="Verdana, Helvetica">getParameterName</font></small></a></td>
+      <td width="487"><small><font face="Verdana, Helvetica">Returns an Enumeration of objects
+      containing in the Request object.</font></small></td>
+    </tr>
+    <tr bgcolor="#EEEEEE">
+      <td width="219"><a href="RequestObject.htm#getParameterValues"><small><font
+      face="Verdana, Helvetica">getParameterValues</font></small></a></td>
+      <td width="487"><small><font face="Verdana, Helvetica">Return values of a request
+      parameter.</font></small></td>
+    </tr>
+  </table>
+  </div>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font color="#000000" face="Verdana,Arial" size="1">© 2000 Advantys. All rights
+reserved.</font></p>
+</body>
+</html>

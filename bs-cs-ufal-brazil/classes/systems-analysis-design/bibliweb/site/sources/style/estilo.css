@@ -1,0 +1,81 @@
+body { color: #000000; background: #C0C0C0; }
+
+P	{ text-align: justify; font-family: Arial, helvetica, sans-serif ; font-size: 10pt}
+H1	{ text-align: justify; font-family: Arial, helvetica;font-weight:bold; font-size: 11pt}
+UL	{ text-align: justify; font-family: Arial, helvetica; font-size: 10pt}
+
+tr.claro {background-color: #D6E1EA}
+
+tr.escuro {background-color: #80A2BD; color: #FFFFFF}
+
+td.titulo {text-align: left; font-family: Arial, sans-serif ; font-size: 10pt; color: #000000; font-weight: bold}
+
+td {text-align: justify; font-family: Arial, sans-serif ; font-size: 10pt; color: #000000}
+
+td.centro {text-align: center; font-family: Arial, sans-serif ; font-size: 10pt; color: #000000}
+
+td.claro {text-align: left; font-family: Arial, sans-serif; font-size: 10pt; color: #000000; background-color: #CCFFFF}
+
+td.escuro {text-align: left; font-family: Arial, sans-serif; font-size: 10pt; color: #FFFFFF; background-color: #99CCFF; font-weight: bold}
+
+td.texto_cabecalho { text-align: left; font-family: verdana, Arial, sans-serif ; font-size: 10pt; color: #000000; font-weight: bold}
+
+Ax:link    	{text-decoration: none;} 
+Ax:hover    	{text-decoration: underline;}
+
+td.titulo_red 	{text-align: left; font-family: Verdana, Arial, sans-serif ; font-size: 10pt; color: #990000; font-weight:bold;}
+
+button.preto	{background-color:#000000;width:60pt;margin-right:0pt;font-size: 8pt; color: #FFFFFF; font-weight:bold; border-style:15pt}
+
+.bagenda	{background-color:#5F8AAD;width:60pt;margin-right:0pt;font-size: 8pt; color: #FFFFFF; font-weight:bold; border-top: 0px solid #CCCCCC; border-left: 0px solid #CCCCCC; border-right: 1px solid #FFFFFF;border-bottom: 1px solid #FFFFFF;}
+
+.botao		{background-color:#000000;width:60pt;margin-right:0pt;font-size: 8pt; color: #FFFFFF; font-weight:bold; border-top: 0px solid #CCCCCC; border-left: 0px solid #CCCCCC; border-right: 1px solid #FFFFFF;border-bottom: 1px solid #FFFFFF;}
+
+td.botao 	{text-align: center; font-family: Arial, sans-serif ; font-size: 8pt; color: #000000; font-weight:bold; font-color:#000000;}
+
+
+a		{text-decoration:none; color: #0000FF}
+a:hover		{text-decoration:underline; color: #0000FF}
+a.comcomp	{text-decoration:none; color: #FFFFFF; background-color: #000000}
+a.comcomp:hover	{text-decoration:none; color: #000000}
+a.semcomp	{text-decoration:none; color: #000000}
+a.semcomp:hover	{text-decoration:none; color: #FFFFFF}
+a.navmes	{text-decoration:none; color: #FFFFFF}	
+a.navmes:hover	{text-decoration:underline; color: #FFFFFF}	
+a.hoje		{text-decoration:none; color: #FFFFFF;}
+a.hoje:hover	{text-decoration:none; color: #000000}
+
+.titulo1	{background-color:#000000; font-family:arial,sans-serif; color:#FFFFFF; font-size:10pt; font-weight:bold;}
+.titulo2	{background-color:#5F8AAD; font-family:arial,sans-serif; color:#FFFFFF; font-size:10pt; font-weight:bold;}
+.linha		{background-color:#D6E1EA; font-family:arial,sans-serif; color:#000000; font-size:10pt; }
+.diaatual	{background-color:#5F8AAD; font-family:arial,sans-serif; font-size:10pt; text-align:center; font-weight:bold;}
+.semcomp	{background-color:#D6E1EA; font-family:arial,sans-serif; font-size:10pt; text-align:center;}
+.comcomp	{background-color:#000000; font-family:arial, sans-serif; font-size:10pt; text-align:center;}
+
+.titulo_red2	{text-align: left; font-family: Arial, sans-serif ; font-size: 12pt; color: #B00000; font-weight:bold;}
+
+.tabela		{BORDER-BOTTOM: #80A2BD 2px solid;}
+
+.tabelaMaior {	background-color: #FFFFFF;
+			BORDER-BOTTOM: #000000 3px solid;
+			border-top: 1px solid #000000;
+			border-left: 1px solid #000000;
+			border-right: 3px solid #000000;
+			border: 1px solid #000000;
+			border-style:outset;}
+
+a.servicos		{text-decoration:none; color: #FFCFCE}
+a.servicos:hover	{text-decoration:underline; color: #FFFFFF}
+a.disciplinas		{text-decoration:none; color: #8CBABD}
+a.disciplinas:hover	{text-decoration:underline; color: #FFFFFF}
+a.grupos		{text-decoration:none; color: #FF0000}	
+a.grupos:hover		{text-decoration:underline; color: #FFFFFF}	
+a.ferramentas		{text-decoration:none; color: #FFF5DF;}
+a.ferramentas:hover	{text-decoration:underline; color: #FFFFFF}
+.tituloExplicacoes {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-style: bold}
+
+
+
+
+
+.butaodireita { background-color:#5F8AAD;width:60pt;margin-right:0pt;font-size: 8pt; color: #FFFFFF; font-weight:bold; border-top: 0px solid #CCCCCC; border-left: 0px solid #CCCCCC; border-right: 1px solid #FFFFFF;border-bottom: 1px solid #FFFFFF; ; clip:  rect(   )}

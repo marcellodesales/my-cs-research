@@ -1,0 +1,165 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Installation with iPlanet Application Server<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last update:
+    05/31/2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#JDK"><small><font face="Verdana, Helvetica">Stage 1 : Install JDK 1.2.2</font></small></a></li>
+  <li><small><a href="#iPlanet"><font face="Verdana, Helvetica">Stage 2 : Install iPlanet
+    Application Server</font></a></small></li>
+  <li><a href="#Composant"><small><font face="Verdana, Helvetica">Stage 3 : Install
+    jspSmartUpload</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">Use of examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+<b>
+
+<p><a name="JDK"></a><big><big><strong><font face="Verdana, Helvetica">Stage 1: Install
+JDK 1.2.2</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">jspSmartUpload requires JDK 1.2.2. <br>
+  JDK 1.2.2 is available for downloaded from Sun : <a
+  href="http://java.sun.com/products/jdk/1.2/download-windows.html">JDK 1.2.2 for Windows</a>
+  </font></p>
+  <p><font face="Verdana" SIZE="2"><strong>Note:</strong> You can install it in any
+  directory (default is <font color="#000080">C:\jdk1.2.2</font>). </font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="iPlanet"></a><big><big><strong><font face="Verdana, Helvetica">Stage 2:
+Install iPlanet Application Server</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">Launch the installation program <strong>e41diu.exe</strong>.<br>
+  <br>
+  The installation is very easy ; you have only to follow the stages : </font><b></p>
+  </b><p><font face="Verdana" SIZE="2">1. Choose the type of installation : typical by
+  default. </font></p>
+  <p><font face="Verdana" SIZE="2">2. Choose the install directory : <a
+  href="file:///C:/Netscape/Server4">C:\Netscape\Server4</a> by default.</font></p>
+  <p><font face="Verdana" SIZE="2">3. Specify a user ID and a password.</font></p>
+  <p><font face="Verdana" SIZE="2">4. Select the IWS administration port : 8888 by default.</font></p>
+  <p><font face="Verdana" SIZE="2">5. Select the default web server port and its root
+  directory (<a href="file:///C:/Netscape/Server4/docs">C:\Netscape\Server4\docs</a> by
+  default).</font></p>
+  <p><font face="Verdana" SIZE="2">6. Check &quot;Use LDAP&quot; if you want to use the LDAP
+  service.</font></p>
+  <p><font face="Verdana" SIZE="2">7. Check &quot;Use JDK&quot; and specify the path to the
+  jdk (it is not necessary to fill the two last fields &quot;Library path&quot; and
+  &quot;class path&quot;).</font></p>
+  <p><font face="Verdana" SIZE="2">8. Restart.&nbsp;</font></p>
+  <p><font face="Verdana" SIZE="2">After installation, the administration server and the
+  default web server are started. You can access to these servers by typing the following
+  URLs :&nbsp; http://default_IP_address:&lt;admin-port&gt; and&nbsp;
+  http://default_IP_address:&lt;default-server-port&gt; where the ports are those selected
+  in stages 4 and 5.</font></p>
+  <p><font face="Verdana" SIZE="2">To restart or stop a server, launch the <strong>start-srv.bat</strong>
+  and <strong>stop-srv.bat</strong> files of the
+  C:\Netscape\Server4\https-&lt;server-name&gt; directory or choose the <strong>Preferences&gt;On/Off</strong>
+  menu of the administration page (http://default_IP_address:&lt;admin-port&gt;) and click
+  on &quot;Server On&quot; or &quot;Server Off&quot;.&nbsp;&nbsp; </font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Composant"></a><big><big><strong><font face="Verdana, Helvetica">Stage 3 :
+Install jspSmartUpload.</font></strong></big></big></p>
+
+<blockquote>
+  <font face="Verdana, Helvetica" SIZE="2"><p></font></b><font face="Verdana" SIZE="2">1.
+  Copy the <strong>/jspsmartupload</strong> directory in your default web server root. If
+  this root is </font><font face="Verdana, Helvetica" SIZE="2"><a
+  href="file:///C:/Netscape/Server4/docs">C:\Netscape\Server4\docs</a>, your site will be as
+  follows : </p>
+  <table width="652">
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs</font></td>
+      <td width="236"><font face="Verdana, Helvetica" SIZE="2">Default web server root</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs\jspsmartupload</font></td>
+      <td width="236"><font face="Verdana, Helvetica" SIZE="2">Static pages (html)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs\jspsmartupload\jsp</font></td>
+      <td width="236"><font face="Verdana, Helvetica" SIZE="2">Dynamic pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs\jspsmartupload\upload</font></td>
+      <td width="236"><font face="Verdana, Helvetica" SIZE="2">Uploaded files</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs\jspsmartupload\Web-inf\classes</font></td>
+      <td width="236"><font face="Verdana, Helvetica" SIZE="2">JavaBeans (class)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+  </table>
+  </font><p><font face="Verdana, Helvetica"><small>2. </small></font><font face="Verdana"
+  SIZE="2">Add the path to the jspSmartUpload beans in the classpath : </font></p>
+  <p><font face="Verdana" SIZE="2">- Browse the administration page :
+  http://adresse_ip_par_défaut:&lt;port-admin&gt;</font></p>
+  <p><font face="Verdana" SIZE="2">- Select the server (in our case, the default web server)
+  : <strong>Servers&gt;Manage Servers</strong>, select the server in the list and click on
+  &quot;Manage&quot;.</font></p>
+  <p><font face="Verdana" SIZE="2">- You access now to the administration interface of the
+  chosen server. In <strong>Servlets</strong> tab, choose <strong>Configure JVM Attributes</strong>.
+  Add in the classpath the following path :
+  C:/Netscape/Server4/docs/jspsmartupload/Web-inf/classes; (in the case where the root is </font><a
+  href="file:///C:/Netscape/Server4/docs"><font face="Verdana, Helvetica" SIZE="2">C:\Netscape\Server4\docs</font></a><font
+  face="Verdana" SIZE="2">). </font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Use of examples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>Type the following URL in your browser:</small><br>
+  <small>http://default_IP_address:&lt;default-server-port&gt;/jspsmartupload/default.htm</small></font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font><font
+    color="#000000" size="1" face="Verdana,Helvetica">All rights reserved</font><font
+    color="#000000" size="1" face="Verdana,Arial">.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+<TITLE>Samples</TITLE>
+<STYLE>
+BODY {font-family:Arial,Helvetica,font-size:10pt;}
+.ExtraTitle {font-family:Verdana,Arial, Helvetica;font-size:9pt;}
+.Title {font-size:22pt;font-family:Verdana,Arial, Helvetica;}
+.SubTitle {font-size:13pt;font-family:Arial, Helvetica;}
+.ParaTitle {font-size:11pt;font-family:Arial, Helvetica;color:#F76108;}
+.ParaText {font-size:9pt;font-family:Arial, Helvetica;}
+.ParaTitleSmall {font-size:9pt;font-family:Arial, Helvetica;}
+.ParaTextSmall {font-size:9pt;font-family:Arial, Helvetica;}
+.Caption {font-family:Arial,Helvetica;font-size:10pt;}
+.Label {font-family:Arial,Helvetica;font-size:10pt;}
+.LinkText {font-family:Arial,Helvetica;font-size:10pt;color:blue;font-weight:normal}
+.LinkTextSmall {font-family:Arial,Helvetica;font-size:9pt;color:blue;}
+.PubTitle1 {font-size:14pt;font-family:Arial,Helvetica;}
+.PubLinkText1 {font-family:Arial,Helvetica;font-size:10pt;}
+.Footer {font-size:8pt;font-family:Arial, Helvetica;color:#cococo}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor=#ffffff vlink=#0000FF>
+<table border='0' cellpadding='0' cellspacing='0' width=570>
+<tr>
+<td>
+<font class='ExtraTitle' color='#0033CC' size='2' face='Arial'><strong>
+JSPSMARTUPLOAD</strong></font>
+</td>
+</tr>
+<tr>
+<td>
+<font class='Title' color='#0033CC' face='arial' size='6'><strong>
+Samples</strong></font></td>
+</td>
+</tr>
+<td>
+<img src='/lib/images/underline.jpg'></td></tr>
+</table><br>
+
+<font class='ParaText' color='#000000' size='2' face='Verdana,Arial'>
+<li><a href=#1>Sample 1 : multiple upload</a>
+<li><a href=#2>Sample 2 : multiple upload using the «files» collection</a>
+<li><a href=#3>Sample 3 : upload with restrictions</a>
+<li><a href=#4>Sample 4 : multiple upload to a database</a>
+<li><a href=#5>Sample 5 : mixed upload : files + form fields</a>
+<li><a href=#6>Sample 6 : download from a file</a>
+<li><a href=#7>Sample 7 : download from a database</a>
+<li><a href=#8>Called from a Servlet</a>
+</font><br><br>
+<a name='1'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 1 : multiple upload</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Upload one or more files to the server.<br>
+The html form allows the user to select the file(s). The JSP file uses jspSmartUpload to save the files to the server’s disk.<br>
+<br>
+In this sample, the files are saved directly with their original name to a virtual directory on the web server.<br>
+jspSmartUpload also allows you to save files to any directory on the server.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample1.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample1.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source for html form</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample1.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample1.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='2'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 2 : multiple upload using the «files» collection</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Upload one or more files to the server and recover and display details of files sent.<br>
+The html form allows the user to select the file(s). The JSP file uses jspSmartUpload to save the files to the server’s disk and to display the details of each file (name, extension, size, type, etc.).<br>
+<br>
+In this sample, we examine the «Files» collection. For each file on the form which is actually sent, the corresponding properties are displayed and the file is saved to a virtual directory on the Web server.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample2.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample2.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source for html form</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample2.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample2.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='3'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 3 : upload with restrictions</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Upload one or more files to the server with restrictions on the file properties (extension, size, physical directory, etc.). The html form allows the user to select the file(s). The JSP file uses jspSmartUpload to set the restrictions and save the files to the server’s disk.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample3.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample3.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source for html form</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample3.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample3.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='4'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 4 : multiple upload to a database</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Upload one or more files to a database on the server. The html form allows the user to select the file(s). The JSP file uses jspSmartUpload to save the files in a database (Access in this sample).<br>
+<br>
+This sample use a mySQL Database define by this scripts :<br>
+<br>
+CREATE TABLE TFILES (ID INT(4) NOT NULL, FILENAME VARCHAR(255), FILE LONGBLOB, PRIMARY KEY (ID));<br>
+<br>
+INSERT TABLE TFILES (ID,FILENAME,FILE) VALUES (1,"test",null);<br>
+<br>
+<br>
+The files are saved in the «FILE» field of the «TFILES» table and a new recording is generated for each file sent.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample4.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample4.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source for html form</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample4.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample4.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr><tr><td><a href="http://www.mysql.com" target="Newwin"><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="http://www.mysql.com" target="Newwin"> <font color='#008080' class='LinkText' size='2' face='Arial'>mySQL Web Site</font></a></td></tr><tr><td><a href="/scripts/pub/show.asp?P=276&L=EN" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/pub/show.asp?P=276&L=EN" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>Connect to a Database</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='5'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 5 : mixed upload : files + form fields</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Upload form fields plus one or more files to the server. The html file contains the various fields possible and allows the user to select the desired file(s). The JSP file uses jspSmartUpload to save the files to the server’s disk and to recover the values of the completed form fields.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample5.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample5.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source for html form</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample5.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample5.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='6'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 6 : download from a file</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Download a file from the server.<br>
+The JSP file uses jspSmartUpload to download a file held in a virtual or physical directory on the server.<br>
+<br>
+jspSmartUpload also allows you to specify a default download file name and a file type.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample6.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample6.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='7'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Sample 7 : download from a database</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+Download a file held in a database.<br>
+The JSP file uses jspSmartUpload to download a file located in a database field on the server.<br>
+<br>
+jspSmartUpload also allows you to specify a default download file name and a file type.<br>
+<br>
+In this sample, a mySQL database is used and the files are held in the «FILE» field of the «TFILES» table :<br>
+<br>
+CREATE TABLE TFILES (ID INT(4) NOT NULL, FILENAME VARCHAR(255), FILE LONGBLOB, PRIMARY KEY (ID));<br>
+<br>
+INSERT TABLE TFILES (ID,FILENAME,FILE) VALUES (1,"test",null);</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample7.jsp" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/sample7.jsp" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View source code for the JSP file</font></a></td></tr><tr><td><a href="http://www.mysql.com" target="Newwin"><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="http://www.mysql.com" target="Newwin"> <font color='#008080' class='LinkText' size='2' face='Arial'>mySQL Web Site</font></a></td></tr><tr><td><a href="/scripts/pub/show.asp?P=276&L=EN" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/pub/show.asp?P=276&L=EN" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>Connect to a Database</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<a name='8'>
+<table border='0' width=570>
+<tr>
+<td><font class='ParaTitle' color='#000000' size='4' face='Verdana,Arial'><strong>
+Called from a Servlet</strong></font></td></tr>
+<tr>
+<td><font class='ParaText' size='2' face='Verdana,Arial'>
+A HTML page runs a servlet which called the component.</font></td>
+</tr>
+<tr><td>
+<table border=0 cellspacing=1 cellpadding=1>
+<tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/servletexample.htm" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/servletexample.htm" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View HTML source</font></a></td></tr><tr><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/servletexample.java" target=""><img src='/lib/images/link_hand.gif' border='0'></a></td><td><a href="/scripts/showsource/showsource.asp?VPATH=/scripts/demo/jspSmartUpload/en/servletexample.java" target=""> <font color='#008080' class='LinkText' size='2' face='Arial'>View java source</font></a></td></tr></table>
+</td></tr>
+</tr>
+</table><br>
+<br><table>
+<tr><td><font class='Footer' color='#cococo' size='1' face='Arial'>
+&copy; 2002 Advantys. All rights reserved. <a class='Footer' href='/liblocal/docs/legal.htm'>Legal Notices</a></font>
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>

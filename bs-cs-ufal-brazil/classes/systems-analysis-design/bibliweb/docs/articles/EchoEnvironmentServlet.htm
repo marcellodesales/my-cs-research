@@ -1,0 +1,612 @@
+<HTML> 
+<HEAD> 
+<TITLE>Java Developer's Journal</TITLE> 
+</HEAD> 
+<BODY BGCOLOR="#ffffff" LINK="#990000" VLINK="#990000" ALINK="#990000"> 
+<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="600" BORDER="0"> 
+<TR HEIGHT="1"> 
+<TD VALIGN=top ROWSPAN="2" BGCOLOR="#000066" WIDTH="130"> 
+<CENTER>
+<IMG border=0 height=100 useMap=#left src="http://www.sys-con.com/java/logo1x.gif" width=130>
+<MAP NAME="left"> 
+<AREA SHAPE="RECT" COORDS="1,1,130,67" HREF="http://www.sys-con.com" >
+<AREA SHAPE="RECT" COORDS="1,68,130,100" HREF="http://www.sys-con.com/java/9903.pdf" >
+</map>
+<!-- ************* main sidebar buttons ************* --> 
+<center><IMG border=0 src="http://www.sys-con.com/java/leftrob.gif" useMap=#sidebarrob width=125 height=140> 
+<MAP NAME="sidebarrob"> 
+
+<AREA SHAPE="RECT" COORDS="1,1,124,14" 
+HREF="http://www.jdjstore.com" >
+<AREA SHAPE="RECT" COORDS="1,15,124,28" 
+HREF="http://www1.sys-con.com/amazon" >
+<AREA SHAPE="RECT" COORDS="1,29,124,40" 
+HREF="http://www.sys-con.com/inetbg/index.html" target="bg">
+<AREA SHAPE="RECT" COORDS="1,41,124,54" 
+HREF="http://www.sys-con.com/java/readers.cfm" >
+<AREA SHAPE="RECT" COORDS="1,55,124,68" 
+HREF="http://www.sys-con.com/java/feature" >
+<AREA SHAPE="RECT" COORDS="1,69,124,83" 
+HREF="http://www.sys-con.com/java/editorials" >
+<AREA SHAPE="RECT" COORDS="1,84,124,96" HREF="http://javadev.tech-engine.com/" target="new"> 
+<AREA SHAPE="RECT" COORDS="1,97,124,111" HREF="http://www.sys-con.com/java/guide.htm"> 
+<AREA SHAPE="RECT" COORDS="1,112,124,125" HREF="http://www.sys-con.com/java/editadv.htm"> 
+<AREA SHAPE="RECT" COORDS="1,125,124,140" HREF="https://www.icnfull.com/syscon/javaadrc.htm"> 
+
+</MAP> 
+</center>
+<form ACTION="http://www.sys-con.com/search2/fastqjdj.idq" METHOD="get">
+<input NAME="CiRestriction" SIZE="14" MAXLENGTH="100" >
+<p>
+<input TYPE="submit" VALUE="Search JDJ">
+<p>
+<input TYPE="hidden" NAME="CiScope" VALUE="/">
+<input TYPE="hidden" NAME="FastDir" VALUE="/search2">
+<input TYPE="hidden" NAME="HTMLQueryForm" VALUE="http://www1.sys-con.com/search2/fastq.htm">
+</form>
+
+<!-- HTML Code for Cover of Current Issue - Take cover from the Java/Cover Directory -->
+<CENTER>&nbsp;
+<a href="http://www.sys-con.com/java/currentcover.html">
+<img src="http://www.sys-con.com/java/covers/currentcoversmall.jpg" width=108 height=139 border=0 alt="JDJ Current Issue">
+<img src="http://www.sys-con.com/java/viewcover.gif" border=0></A>
+</CENTER>
+<!-- End of HTML Code for Cover of Current Issue -->
+
+<hr>
+
+<!-- ************* END Side Bar ************* --> 
+
+</CENTER></P> 
+</TD> 
+
+ 
+<TD VALIGN="top"> 
+<!-- ************* Top Navigation ************* --> 
+<IMG align=top border=0 height=120 src="http://www.sys-con.com/java/nav_bar.gif" useMap=#topmap width=466> 
+<MAP NAME="topmap"> 
+<AREA SHAPE=RECT COORDS="45,74,110,93" HREF="https://www.icnfull.com/syscon/javadevlpr.htm"> 
+<AREA SHAPE=RECT COORDS="130,80,210,93" HREF="http://www.sys-con.com/java/board.htm"> 
+<AREA SHAPE=RECT COORDS="225,80,323,93" HREF="http://www.sys-con.com/java/pdf"> 
+<AREA SHAPE=RECT COORDS="340,80,435,93" HREF="http://www.sys-con.com/java/source"> 
+<AREA SHAPE=RECT COORDS="95,95,175,105" HREF="http://www.sys-con.com/java/adnews.htm"> 
+<AREA SHAPE=RECT COORDS="190,95,305,105" HREF="http://www.sys-con.com/java/reviews"> 
+<area SHAPE="RECT" COORDS="315,95,378,105" HREF="http://www.sys-con.com/search2/fastqjdj.htm"> 
+</map> 
+</td> 
+
+
+ <TR> 
+
+<TD>
+<TABLE WIDTH="466" CELLSPACING=5>
+<TR>
+<TD width="500" VALIGN=top>
+
+<p><div align="center">
+<font face="Arial,Helvetica" color="#000000" size=+2>
+<b>Source Code</b>
+</font></div>
+
+<P><!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="kemal guler">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (WinNT; I) [Netscape]">
+   <title>8</title>
+</head>
+<body>
+<table align="right" width="150" border="0">
+<tr>
+<td rowspan="2" valign="top">
+<a href="http://mojofarm.mediaplex.com/ad/ck/1164-3852-2689-2"> 
+<img src="http://mojofarm.mediaplex.com/ad/bn/1164-3852-2689-2" 
+alt="www.sun.com"> 
+</a>
+</td>
+</tr>
+</table>
+
+<tt><b><font face="Arial" color="black">Source Code for:
+ <br>"Migrating CGI Scripts," Vol.
+3, Issue 1, p. 8</font></b></tt>
+<br><tt><font color="#3333FF">&nbsp;</font></tt>
+<br><tt><font color="#3333FF">Listing 1.</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.*;</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.http.*;</font></tt>
+<br><tt><font color="#3333FF">import java.io.*;</font></tt>
+<br><tt><font color="#3333FF">public class TestWebServlet extends HttpServlet</font></tt>
+<br><tt><font color="#3333FF">{</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; public void service(HttpServletRequest
+request,</font></tt>
+<br><tt><font color="#3333FF">HttpServletResponse response)</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+throws ServletException, IOException</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">//&nbsp; get input from the client using
+the HttpServletRequest parameter</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;//&nbsp; process the data</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;//&nbsp; return output to the client
+using the HttpServletResponse parameter</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></tt>
+<br><tt><font color="#3333FF">&nbsp;</font></tt>
+<br><tt><font color="#3333FF">}</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">Listing 2.</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.*;</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.http.*;</font></tt>
+<br><tt><font color="#3333FF">import java.io.*;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">//&nbsp; File:&nbsp; TestWebServlet.java</font></tt>
+<br><tt><font color="#3333FF">//&nbsp; Listing 1</font></tt>
+<br><tt><font color="#3333FF">//</font></tt>
+<br><tt><font color="#3333FF">/**</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; This servlet responds with
+a simple thank-you note displaying &lt;p></font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; the client's IP address.</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; @author Chad (shod) Darby,&nbsp;
+darby@j-nine.com</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; @version 1.369, 13 Nov 97</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*/</font></tt>
+<br><tt><font color="#3333FF">public class TestWebServlet extends HttpServlet</font></tt>
+<br><tt><font color="#3333FF">{</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; protected void service(HttpServletRequest
+request,</font></tt>
+<br><tt><font color="#3333FF">HttpServletResponse response)</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+throws ServletException, IOException</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String clientIPAddress = request.getRemoteAddr();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String replyPage = null;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Build HTML page</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage = "&lt;HTML>&lt;HEAD>&lt;TITLE>Test Web Servlet&lt;/TITLE>&lt;/HEAD>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;BODY>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;P>Thanks for calling the servlet from " + clientIPAddress;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;/BODY>&lt;/HTML>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Set the content type of response</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+response.setContentType("text/html");</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Get the output stream to the client response and send the page.</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Note:&nbsp; The PrintWriter class is a new addition to Java 1.1</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PrintWriter out = new</font></tt>
+<br><tt><font color="#3333FF">PrintWriter(response.getOutputStream());</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.println(replyPage);</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.flush();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.close();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; }</font></tt>
+<br><tt><font color="#3333FF">}</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">Listing 3.</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.*;</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.http.*;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">import java.io.*;</font></tt>
+<br><tt><font color="#3333FF">import java.util.*;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">//&nbsp; File:&nbsp; EchoEnvironmentServlet.java</font></tt>
+<br><tt><font color="#3333FF">//&nbsp; Listing 2</font></tt>
+<br><tt><font color="#3333FF">//</font></tt>
+<br><tt><font color="#3333FF">/**</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; This servlet displays the CGI
+environment variables in a web page.</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; @author Chad (shod) Darby,&nbsp;
+darby@j-nine.com</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; @version 3.41, 2 Nov 1997</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*/</font></tt>
+<br><tt><font color="#3333FF">public class EchoEnvironmentServlet extends
+HttpServlet</font></tt>
+<br><tt><font color="#3333FF">{</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; public void service(HttpServletRequest
+request,</font></tt>
+<br><tt><font color="#3333FF">HttpServletResponse response)</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp; throws IOException</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String replyPage = null;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Build the header for HTML page</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage = "&lt;HTML>&lt;HEAD>&lt;TITLE>Echo Environment</font></tt>
+<br><tt><font color="#3333FF">Variables&lt;/TITLE>&lt;/HEAD>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;BODY>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Echo the environment variables</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;H2>&nbsp; Environment Variables &lt;/H2>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Server Name: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getServerName();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Server Port: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getServerPort();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Server Protocol: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getProtocol();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Servlet Name: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getServletPath();</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Method: &lt;/b>" + request.getMethod();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Path Info: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getPathInfo();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Path Translated: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getPathTranslated();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Query String: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getQueryString();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Request URI: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getRequestURI();</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Remote Host: &lt;/b>" + request.getRemoteHost();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Remote Addr: &lt;/b>" + request.getRemoteAddr();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Remote User: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getRemoteUser();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Authorization Type: &lt;/b>" + request.getAuthType();</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Content Type: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getContentType();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b> Content Length: &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getContentLength();</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;hr>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Just for kicks, let's loop thru and get the header info using an enumeration</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;H2>&nbsp; Request Header Information &lt;/H2>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Enumeration e = request.getHeaderNames();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String name;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while (e.hasMoreElements())</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+name = (String) e.nextElement();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;p>&lt;b>" + name + ": &lt;/b>" +</font></tt>
+<br><tt><font color="#3333FF">request.getHeader(name);</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;hr>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Build bottom of HTML page</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+replyPage += "&lt;/BODY> &lt;/HTML>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; Set the content-type for the response header</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; note: no need for extra carriage returns!</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+response.setContentType("text/html");</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp; finally, send this formatted HTML page back to the client</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PrintStream out = new PrintStream(response.getOutputStream());</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.println(replyPage);</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+out.close();</font></tt>
+<br><tt><font color="#3333FF">&nbsp; }</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp; public String getServletInfo()</font></tt>
+<br><tt><font color="#3333FF">&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; return "Echo Form Servlet,&nbsp;
+Chad (shod) Darby, 2 Nov 1997, www.j-nine.com";</font></tt>
+<br><tt><font color="#3333FF">&nbsp; }</font></tt>
+<br><tt><font color="#3333FF">}</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">Listing 4.</font></tt>
+<br><tt><font color="#3333FF">&lt;!-- FILE:&nbsp; MagazineForm.html --></font></tt>
+<br><tt><font color="#3333FF">&lt;!-- LISTING 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+--></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;HTML></font></tt>
+<br><tt><font color="#3333FF">&lt;HEAD></font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp; &lt;TITLE>Magazine Subscriptions&lt;/TITLE></font></tt>
+<br><tt><font color="#3333FF">&lt;/HEAD></font></tt>
+<br><tt><font color="#3333FF">&lt;BODY></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;CENTER></font></tt>
+<br><tt><font color="#3333FF">&lt;H1></font></tt>
+<br><tt><font color="#3333FF">Magazine Subscription Form&lt;/H1>&lt;/CENTER></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;HR>&lt;FORM method="GET" action="http://127.0.0.1:8080/servlet/EchoMagazineForm"></font></tt>
+<br><tt><font color="#3333FF">&lt;H3></font></tt>
+<br><tt><font color="#3333FF">Name and Address&lt;/H3></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TABLE></font></tt>
+<br><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>Name&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=text size=20 name="Name">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>Address&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=text size=20 name="Address">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>City&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=text size=20 name="City">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>State&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=text size=20 name="State">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>Zip Code&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=text size=20 name="Zip
+Code">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt>
+<br><tt><font color="#3333FF">&lt;/TABLE></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;H3></font></tt>
+<br><tt><font color="#3333FF">Payment Method&lt;/H3></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;OL></font></tt>
+<br><tt><font color="#3333FF">&lt;LI></font></tt>
+<br><tt><font color="#3333FF">Bill Me In Full&nbsp; &lt;INPUT type="radio"
+name="Payment Method" value="Bill Me In Full">&lt;/LI></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;LI></font></tt>
+<br><tt><font color="#3333FF">Bill Me In 3 Installments&nbsp; &lt;INPUT
+type="radio" name="Payment Method" value="Bill Me In 3 Installments">&lt;/LI></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;LI></font></tt>
+<br><tt><font color="#3333FF">Payment Enclosed&nbsp; &lt;INPUT type="radio"
+name="Payment Method" checked value="Payment Enclosed">&lt;/LI></font></tt>
+<br><tt><font color="#3333FF">&lt;/OL></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TABLE></font></tt>
+<br><tt><font color="#3333FF">&lt;TR></font></tt>
+<br><tt><font color="#3333FF">&lt;TD>&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=submit value="Subscribe">&lt;/TD></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&lt;TD>&lt;INPUT type=reset value="Reset">&lt;/TD></font></tt>
+<br><tt><font color="#3333FF">&lt;/TR></font></tt>
+<br><tt><font color="#3333FF">&lt;/TABLE></font></tt>
+<br><tt><font color="#3333FF">&lt;/FORM></font></tt>
+<br><tt><font color="#3333FF">&lt;HR></font></tt>
+<br><tt><font color="#3333FF">&lt;/BODY></font></tt>
+<br><tt><font color="#3333FF">&lt;/HTML></font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">Listing 5.</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.*;</font></tt>
+<br><tt><font color="#3333FF">import javax.servlet.http.*;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">import java.io.*;</font></tt>
+<br><tt><font color="#3333FF">import java.util.*;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">//&nbsp; File:&nbsp; EchoMagazineServlet.java</font></tt>
+<br><tt><font color="#3333FF">//&nbsp; Listing 4</font></tt>
+<br><tt><font color="#3333FF">//</font></tt>
+<br><tt><font color="#3333FF">/**</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*&nbsp; This servlet displays the fields
+of a magazine subscription form in a web page.</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*</font></tt>
+<br><tt><font color="#3333FF">&nbsp;*/</font></tt>
+<br><tt><font color="#3333FF">public class EchoMagazineServlet extends
+HttpServlet</font></tt>
+<br><tt><font color="#3333FF">{</font></tt>
+<br><tt><font color="#3333FF">&nbsp; private int counter;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp; public void init(ServletConfig config)
+throws ServletException</font></tt>
+<br><tt><font color="#3333FF">&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; super.init(config);</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; counter = 0;</font></tt>
+<br><tt><font color="#3333FF">&nbsp; }</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp; public void service(HttpServletRequest
+request,</font></tt>
+<br><tt><font color="#3333FF">HttpServletResponse response)</font></tt>
+<br><tt><font color="#3333FF">&nbsp;throws ServletException, IOException</font></tt>
+<br><tt><font color="#3333FF">&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; String replyPage = null;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; // our servlet is being
+called, increment the counter</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; counter++;</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Build HTML page’s
+header information</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage = "&lt;HTML>&lt;HEAD>&lt;TITLE>Subscription
+Confirmation";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;/TITLE>&lt;/HEAD>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;BODY>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;H1>Subscription
+Confirmation&lt;/H1>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;HR>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Thank user for
+subscribing and show value of "counter"</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "Thank you
+for subscribing.";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "You are
+subscriber &lt;b># " + counter + "&lt;/b>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;P>We
+will send the magazine to the mailing address below.";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Print out the
+values for form variables.</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Notice we use
+HTML formatting to "spiff-up" the data</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;UL>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>Name:&lt;/B>&nbsp;
+" + request.getParameter("Name");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>Address:&lt;/B>&nbsp;
+" + request.getParameter("Address");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>City:&lt;/B>&nbsp;
+" + request.getParameter("City");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>State:&lt;/B>&nbsp;
+" + request.getParameter("State");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>Zip
+Code:&lt;/B>&nbsp; " + request.getParameter("Zip Code");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;LI>&lt;B>Payment
+Method:&lt;/B> " +</font></tt>
+<br><tt><font color="#3333FF">request.getParameter("Payment Method");</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;/UL>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;HR>";</font></tt>
+<br><tt><font color="#3333FF">&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;P>"
++ this.getServletInfo();</font></tt>
+<br><tt><font color="#3333FF">&nbsp;</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Build bottom
+of HTML page</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; replyPage += "&lt;/BODY>&lt;/HTML>";</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; Set the content-type
+for the response header</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; response.setContentType("text/html");</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //&nbsp; finally, send
+this formatted HTML page back to the client</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; //</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; PrintWriter out = new
+PrintWriter(response.getOutputStream());</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; out.println(replyPage);</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; out.close();</font></tt>
+<br><tt><font color="#3333FF">&nbsp; }</font></tt><tt><font color="#3333FF"></font></tt>
+<p><tt><font color="#3333FF">&nbsp; public String getServletInfo()</font></tt>
+<br><tt><font color="#3333FF">&nbsp; {</font></tt>
+<br><tt><font color="#3333FF">&nbsp;&nbsp;&nbsp; return "Echo Magazine
+Form Servlet v5.49, 2 Nov 1997";</font></tt>
+<br><tt><font color="#3333FF">&nbsp; }</font></tt>
+<br><tt><font color="#3333FF">}</font></tt>
+<br><tt><font color="#3333FF"></font></tt>&nbsp;
+</body>
+</html>
+
+
+<P>
+<font face="Arial,Helvetica" size=-2>To view source code, click
+on the button adjacent to the listing.</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=8">
+<img src="http://www.sys-con.com/java/bullet1.gif" width=15 height=15 border=0></a>
+Migrating CGI Scripts
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=24">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+Components, Containers and Events
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=28">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+Servlets and Friends
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=36">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+A Simple Model-View-Controller Pattern
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=40">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+To Serve or not to Serve
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=44">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+URL ClassLoader
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=52">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+Developing Collaborative Games Using Active Objects
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=60">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+Java and Corba
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=64">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+News Today, Gone Tomorrow
+</font>
+
+<br>
+<font face="Arial,Helvetica,Verdana,sans-serif" size="-1">
+<a href="http://www.sys-con.com/java/source/3-1/code.cfm?Page=72">
+<img src="http://www.sys-con.com/java/bullet1.gif" BORDER=0 height=15 width=15></a>
+Multi-Threading in Java
+</font>
+
+
+<p>
+<font face="Arial,Helvetica" size=-1>
+<b>
+<a href="http://www.sys-con.com/java/source/3-1/3-1.zip">Download</a> the Source Code in a 
+<a href="http://www.sys-con.com/java/source/3-1/3-1.zip">ZIP file</a> (~14 KB)
+</b>
+</font>
+
+<p>
+<div align=right>
+<font face="Arial,Helvetica" size=-1>
+<b>Source Code for previous issues of JDJ&nbsp;</b>
+<a href="http://www.sys-con.com/java/source/index.html">
+<img src="http://www.sys-con.com/java/next.gif" BORDER=0 height=7 width=46></a>
+</font>
+</div>
+
+</td>
+</tr>
+</table>
+
+</center>
+
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+
+

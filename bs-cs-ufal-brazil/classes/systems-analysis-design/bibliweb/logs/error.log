@@ -1,0 +1,281 @@
+--------------------------------------
+Sat Apr 13 20:46:30 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "group"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:85)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 20:47:46 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "group"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:84)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 20:48:31 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "'"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:84)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 20:49:45 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "group"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:84)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 20:50:29 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "group"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:84)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 20:50:38 BRT 2002
+java.sql.SQLException: ERROR:  parser: parse error at or near "'"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:74)
+	at br.ufal.bibliweb.Status.main(Status.java:84)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 21:09:51 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 22:05:04 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index academic_course_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicCourse.createNewAcademicCourse(AcademicCourse.java:84)
+	at br.ufal.bibliweb.AcademicCourse.main(AcademicCourse.java:94)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 23:16:21 BRT 2002
+java.sql.SQLException: ERROR:  Unterminated quoted string
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:73)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:67)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:89)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 23:16:58 BRT 2002
+java.sql.SQLException: ERROR:  ExecAppend: Fail to add null value in not null attribute academic_course_id
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:73)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:67)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:89)
+--------------------------------------
+--------------------------------------
+Sat Apr 13 23:19:07 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index academic_user_registration_key
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:73)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:67)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:89)
+--------------------------------------
+--------------------------------------
+Mon Apr 15 16:44:57 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Mon Apr 15 16:45:53 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Mon Apr 15 16:49:52 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Mon Apr 15 16:50:16 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 16:48:18 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 17:32:25 BRT 2002
+java.sql.SQLException: ERROR:  Relation 'category' does not have attribute 'academic_course'
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Category.createNewCategory(Category.java:60)
+	at br.ufal.bibliweb.Category.main(Category.java:78)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 17:32:53 BRT 2002
+java.sql.SQLException: ERROR:  <unnamed> referential integrity violation - key referenced from category not found in academic_course
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Category.createNewCategory(Category.java:60)
+	at br.ufal.bibliweb.Category.main(Category.java:78)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 17:33:30 BRT 2002
+java.sql.SQLException: ERROR:  <unnamed> referential integrity violation - key referenced from category not found in academic_course
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Category.createNewCategory(Category.java:60)
+	at br.ufal.bibliweb.Category.main(Category.java:79)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 17:35:04 BRT 2002
+java.sql.SQLException: ERROR:  <unnamed> referential integrity violation - key referenced from category not found in academic_course
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Category.createNewCategory(Category.java:60)
+	at br.ufal.bibliweb.Category.main(Category.java:79)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 22:09:02 BRT 2002
+java.sql.SQLException: ERROR:  pg_atoi: error in "UO": can't parse "UO"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:95)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:86)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:113)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 22:16:33 BRT 2002
+java.sql.SQLException: ERROR:  pg_atoi: error in "UO": can't parse "UO"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:95)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:86)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:113)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 22:17:19 BRT 2002
+java.sql.SQLException: ERROR:  pg_atoi: error in "UO": can't parse "UO"
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.AcademicUser.createInDatabase(AcademicUser.java:95)
+	at br.ufal.bibliweb.AcademicUser.createNewAcademicUser(AcademicUser.java:86)
+	at br.ufal.bibliweb.AcademicUser.main(AcademicUser.java:113)
+--------------------------------------
+--------------------------------------
+Tue Apr 16 22:19:22 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index status_pkey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.Status.createNewStatus(Status.java:77)
+	at br.ufal.bibliweb.Status.main(Status.java:87)
+--------------------------------------
+--------------------------------------
+Sun Apr 21 21:29:47 BRT 2002
+java.sql.SQLException: ERROR:  Cannot insert a duplicate key into unique index code_exemplar_type_ukey
+
+	at org.postgresql.Connection.ExecSQL(Connection.java:533)
+	at org.postgresql.jdbc2.Statement.execute(Statement.java:294)
+	at org.postgresql.jdbc2.Statement.executeUpdate(Statement.java:78)
+	at br.ufal.bibliweb.DatabaseLayer.update(DatabaseLayer.java:105)
+	at br.ufal.bibliweb.ExemplarType.createNewExemplarType(ExemplarType.java:85)
+	at br.ufal.bibliweb.ExemplarType.main(ExemplarType.java:96)
+--------------------------------------

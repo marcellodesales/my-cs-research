@@ -1,0 +1,567 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style>
+A {text-decoration: none;}
+A:link {color: White;}
+A:visited {color: White;}
+A:hover {color: Yellow;}
+</style>
+<script LANGUAGE="JavaScript">
+<!-- Original: Martijn Sinnema (sinnemavleiger@wanadoo.nl) -->
+<!-- Web Site: http://home.wanadoo.nl/sinnemavlieger/martin -->
+
+<!-- Este script e muitos outros estão disponíveis no -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+function expandingWindow(website) {
+var heightspeed = 2; // velocidade vertical (valor maior = mais lento)
+var widthspeed = 7; // velocidade horizontal (valor maior = mais lento)
+var leftdist = 0; // distância do canto esquerdo da janela
+var topdist = 0; // distância do canto superior da janela
+if (document.all) {
+var winwidth = window.screen.availWidth - leftdist;
+var winheight = window.screen.availHeight - topdist;
+var sizer = window.open("","","left=" + leftdist + ",top=" + topdist + ",width=1,height=1,scrollbars=yes");
+for (sizeheight = 1; sizeheight < winheight; sizeheight += heightspeed) {
+sizer.resizeTo("1", sizeheight);
+}
+for (sizewidth = 1; sizewidth < winwidth; sizewidth += widthspeed) {
+sizer.resizeTo(sizewidth, sizeheight);
+}
+sizer.location = website;
+}
+else
+window.location = website;
+}
+// End -->
+</script>
+
+<title>Javascript - Validação de CPF</title>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+
+<table BORDER="0" style="margin-left: 0px; margin-right: 0px" width="761">
+  <tr>
+    <td VALIGN="top" width="147"><a href="../../default.asp"><img src="../../images/cons1.gif"
+    alt="Clique aqui para voltar à página inicial" border="0" width="170" height="39"></a></td>
+    <td VALIGN="top" bgcolor="#800000" width="549"><p id="fundo"><font color="#FFFFFF"
+    face="Verdana"><small>JavaScript - Scripts</small><br>
+    <big>Validação de CPF</big></font></td>
+  </tr>
+  <tr>
+    <td VALIGN="top" width="147"><p align="left"><html>
+
+<head>
+<title>Menu do Construindo seu Site</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style>
+<!--
+A.menu_conssite {color: yellow;text-decoration: none}
+A.menu_conssite:visited {color: yellow; text-decoration: none}
+A.menu_conssite:hover {color: Red; font-weight: bold}
+A.menu_conssite2 {color: navy;text-decoration: none}
+A.menu_conssite2:visited {color: navy; text-decoration: none}
+A.menu_conssite2:hover {color: Red; font-weight: bold}
+A.menu_conssite3:link {color: White;text-decoration: none}
+A.menu_conssite3:visited {color: White;text-decoration:none}
+A.menu_conssite3:hover {color: Yellow;text-decoration: underline}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
+
+<table border="0" cellspacing="0" width="169" cellpadding="0">
+  <tr>
+    <td width="150" colspan="2"><img src="../../images/conssite_menu_sup.gif"></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><font face="Verdana"
+    color="#000080"><strong><small><small>Criando seu Site</small></small></strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><font face="Verdana"><small><small>&nbsp; <font
+    color="#FFFF00">»</font> <a class="menu_conssite"
+    href="../../criandoseusite/criandoseusite.shtm">Artigos</a></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana"
+    color="#FFFF00">&nbsp; »</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../ferr_uteis/ferramentas_Uteis.shtm">Ferramentas e<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; Serviços Úteis</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../cliparts.shtm">ClipArts</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../links/links.shtm">Links</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><small><font face="Verdana"
+    color="#000080"><small><strong>Ferramentas de&nbsp; Desenvolvimento</strong></small></font></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../fp98/frontpage98.shtm">FrontPage 98</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><font face="Verdana"
+    color="#000080"><small><small><strong>Servidores Web</strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../iis/iis.shtm">IIS</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../pws/pws.shtm">Personal Web Server</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><small><font face="Verdana"
+    color="#000080"><small><strong>Programação na&nbsp;Web</strong></small></font></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../asp/asp.shtm">ASP</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../css/css.shtm">CSS</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana" color="#FFFF00">&nbsp;
+    »</font><font face="Verdana"> <a class="menu_conssite" href="../../cgi.shtm">CGI</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../flash/flash.shtm">Flash</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a
+    href="../../html/html.shtm" class="menu_conssite">HTML</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a href="../../java/java.shtm" class="menu_conssite">Java</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../javascript/javascript.shtm">Javascript</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../php/php.shtm">PHP</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana"
+    color="#FFFF00">&nbsp; »</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../vbscript/VBscript.shtm">VBScript</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../ferr_uteis/ferramentas_Uteis2.shtm">Ferramentas Úteis</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../links/links2.shtm">Links</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><font face="Verdana"><small><small><strong><font
+    color="#000080">»</font> <a class="menu_conssite2" href="../../vitrine/vitrine.shtm">Vitrine</a></strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><font face="Verdana"><small><small><strong><font
+    color="#000080">»</font> <a class="menu_conssite2" href="../../comercio/comercio.shtm">Comércio
+    na Internet</a></strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../divulgacao/divulgacao.shtm">Divulgando seu site</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../entrevistas/entrevistas.shtm">Entrevistas</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../colunas/colunas.shtm">Colunistas</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/eventos/eventos.asp">Eventos</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/forum/foruns_discussao.shtm">Fórum de
+    discussão</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/site_semana/site_semana.shtm">Sites dos
+    usuários</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../chat_multichat.shtm">Bate-papo</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../search_page.htm">Procurar no Site</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td width="150" colspan="2"><img src="../../images/conssite_menu_inf.gif"></td>
+  </tr>
+</table>
+
+<table border="0" cellspacing="3" width="170">
+  <tr>
+    <td width="100%" align="center"><font face="Verdana"><strong><small><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </small></small></strong></font></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#00006C"><table border="0" cellpadding="0"
+    cellspacing="0" width="100%">
+      <tr>
+        <td width="77%"><p align="center"><a class="menu_conssite3" href="../../search_page.htm"><font
+        face="Verdana"><strong><small><small>Clique aqui para realizar uma busca no site</small></small></strong></font></a></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#0000D5"><a class="menu_conssite3"
+    href="../../contato.shtm"><font face="Verdana"><strong><small><small>Entre em contato
+    conosco. Clique Aqui!</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#0000CE"><a class="menu_conssite3"
+    href="../../anuncio.shtm"><font face="Verdana"><strong><small><small>Saiba como anunciar
+    neste site e divulgar seu produto</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#3E3EFF"><a class="menu_conssite3"
+    href="../../premios.shtm"><font face="Verdana"><strong><small><small>Veja aqui os prêmios
+    e menções recebidos por &quot;Construindo seu Site&quot;</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#7979FF"><a class="menu_conssite3"
+    href="../../atualizacao_email.htm"><font face="Verdana"><strong><small><small>Quer receber
+    nosso boletim via e-mail com as novidades deste site e dicas exclusivas? Clique aqui!</small></small></strong></font></a></td>
+  </tr>
+</table>
+</body>
+</html>
+</td>
+    <td VALIGN="top" width="549"><p align="center"><a
+    href="http://www.mercadolivre.com.br/brasil/ml/pms?site=53561&amp;id=4993&amp;go=HO"
+    target="_blank" style="color: rgb(0,0,255); text-decoration: underline"><img border="1"
+    src="http://pms.mercadolibre.com/cgi/pms/ban?site=53561&amp;id=4993" width="468"
+    height="60"></a><br>
+    <a href="../../anuncio.shtm" style="color: rgb(0,0,255); text-decoration: underline"><small><small><small><font
+    face="Arial">PUBLICIDADE - Anuncie aqui!</font></small></small></small></a></p>
+    <div align="left"><table border="0" cellpadding="3" cellspacing="0" width="354">
+      <tr>
+        <td width="257"><font face="Verdana"><em><small><small>Por Anderson Luciano Santos da
+        Silva</small></small><br>
+        <small><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marçal de Lima Hokama</small></small></em></font></td>
+        <td bgcolor="#000080" align="center" width="85"><p align="center"><a target="_blank"
+        href="js_validacao_cpf_imp.htm"><font face="Verdana"><small>Imprima este artigo</small></font></a></td>
+      </tr>
+    </table>
+    </div><p align="center"><font face="Verdana"><small><small>Página 1/2</small></small><br>
+    <a style="color: rgb(0,0,255); text-decoration: underline" href="js_validacao_cpf_2.shtm"><small><small>Próxima
+    página&gt;&gt;</small></small></a></font></p>
+    <p align="justify"><font face="Verdana"><small>Fazendo operações como a validação de
+    CPF na página do formulário, antes de enviar para um banco de dados, por exemplo, pode
+    ser de muita utilidade, pois economiza processamento por parte do servidor, e diminui a
+    possibilidade de erros de entrada de dados.</small></font></p>
+    <p align="justify"><font face="Verdana"><small>Antes de começarmos a trabalhar neste
+    código de validação, é necessário entender como funciona o número do CPF.</small></font></p>
+    <p align="justify"><small><font face="Verdana">O CPF é composto de nove números e dois
+    dígitos verificadores. São estes últimos que fazem com que os demais números sejam
+    validados. Utilizamos neste procedimento o módulo de divisão por 11 (onze).</font></small></p>
+    <p align="justify"><small><font face="Verdana">Para mostrarmos como funciona este módulo
+    de divisão, utilizaremos o CPF fictício 123.456.789-09. Este número é composto por 9
+    (nove) números que são colocados antes do traço e 2 (dois) que são colocados depois.</font></small></p>
+    <p align="justify"><small><font face="Verdana">Vamos começar a validação pelo primeiro
+    dígito verificador, colocando o primeiro segmento de números e distribuindo-os da
+    seguinte forma:</font></small></p>
+    <table border="1" width="100%">
+<TBODY>
+      <tr>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>1</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>2</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>3</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>4</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>5</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>6</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>7</strong></font></small></td>
+        <td align="center" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>8</strong></font></small></td>
+        <td align="center" width="12%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>9</strong></font></small></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Logo abaixo, da esquerda para a direita,
+    vamos colocar os números decrescentes de 10 à 2, conforme mostrado a seguir:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">1</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="12%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>10</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>9</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>8</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>7</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>6</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>5</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>4</strong></font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>3</strong></font></small></td>
+        <td align="middle" width="12%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>2</strong></font></small></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Agora vamos multiplicar as colunas,
+    colocando o resutado de cada uma, em uma terceira linha:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">1</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="12%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">10</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="12%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>10</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>18</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>24</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>28</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>30</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>30</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>28</strong></small></font></td>
+        <td align="middle" width="11%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>24</strong></small></font></td>
+        <td align="middle" width="12%" bgColor="#c0c0c0"><font face="Verdana" color="#FF0000"><small><strong>18</strong></small></font></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Tendo obtido os resultados, devemos somar
+    cada resultado das colunas, desta forma teremos:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>10</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>18</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>24</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>28</strong></font></small></td>
+        <td align="center" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>30</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>30</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>28</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>24</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="center" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>18</strong></font></small></td>
+        <td align="center" width="3%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>=</strong></font></small></td>
+        <td align="center" width="3%" bgColor="#c0c0c0"><small><font face="Verdana"
+        color="#ff0000"><strong>210</strong></font></small></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Pegamos o valor encontrado (210) e
+    dividimos por 11. Vamos considerar para o quociente desta divisão apenas o valor inteiro.
+    O resto da divisão será responsável pelo cálculo do primeiro dígito verificador:</font></small></p>
+    <p align="center"><small><font face="Verdana"><strong>210/11 = 19&nbsp; e resto = 1</strong></font></small></p>
+    <p align="justify"><small><font face="Verdana">Se o valor do resto da divisão for menor
+    que 2, este valor será considerado automaticamente como <strong><font color="#000080">0
+    (zero)</font></strong>, como é o caso de nosso exemplo. Caso contrário, teremos que
+    subtrair o valor obtido por 11 (pois 11 é nosso valor constante do módulo de divisão
+    para o cálculo do CPF).</font></small></p>
+    <p align="justify"><small><font face="Verdana">Após obtermos o primeiro dígito
+    verificador, vamos repetir a nossa primeira linha da tabela, desta vez, anexando o
+    resultado já obtido:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">1</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"
+        color="#ff0000"><strong>0</strong></font></small></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><font face="Verdana"><small>Logo abaixo de cada valor, colocamos da
+    esquerda para a direita, os valores decrescentes de 11 à 2, de acordo com a tabela a
+    seguir:</small></font></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">1</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">0</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">11</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">10</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">9</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">8</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">7</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">6</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">5</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">4</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">3</font></small></strong></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><strong><small><font face="Verdana">2</font></small></strong></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">De maneira semelhante ao que já havíamos
+    feito anteriormente, multiplicamos os valores das colunas:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">1</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">0</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">11</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">10</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">9</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">8</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">7</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">6</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">5</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">4</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">3</font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana">2</font></small></td>
+      </tr>
+      <tr>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>11</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>20</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>27</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>32</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>35</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>36</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>35</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>32</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>27</strong></font></small></td>
+        <td align="middle" width="10%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>0</strong></font></small></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Agora somamos os resultados obtidos:</font></small></p>
+    <table width="100%" border="1">
+<TBODY>
+      <tr>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>11</strong></font></small></td>
+        <td align="middle" width="4%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>20</strong></font></small></td>
+        <td align="middle" width="4%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>27</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>32</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>35</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="7%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>36</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>35</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>32</strong></font></small></td>
+        <td align="middle" width="5%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="6%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>27</strong></font></small></td>
+        <td align="middle" width="4%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>+</strong></font></small></td>
+        <td align="middle" width="1%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>0</strong></font></small></td>
+        <td align="middle" width="1%" bgColor="#c0c0c0"><small><font face="Verdana"><strong>=</strong></font></small></td>
+        <td align="middle" width="3%" bgColor="#c0c0c0"><font face="Verdana" color="#ff0000"><small><strong>255</strong></small></font></td>
+      </tr>
+</TBODY>
+    </table>
+    <p align="justify"><small><font face="Verdana">Pegamos o valor encontrado (255) e
+    dividimos por 11. Vamos considerar novamente para o quociente desta divisão apenas o
+    valor inteiro, pois o resto da divisão será responsável pelo cálculo do segundo
+    dígito verificador:</font></small></p>
+    <p align="center"><small><font face="Verdana"><strong>255/11 = 23&nbsp; e resto = 2</strong></font></small></p>
+    <p align="justify"><small><font face="Verdana">Se o valor do resto da divisão for menor
+    que 2, este valor será considerado automaticamente como 0 (zero).Neste caso, temos que
+    subtrair o valor obtido por 11 (pois 11 é nosso valor constante do módulo de divisão
+    para o cálculo do CPF).</font></small></p>
+    <p align="center"><strong><small><font face="Verdana">11 - 2 = 9</font></small></strong></p>
+    <p align="justify"><small><font face="Verdana">Anexamos o valor encontrado aos demais
+    números já existentes. Temos então como nosso CPF o seguinte número: 123.456.789 - <strong>09.</strong></font></small></p>
+    <p align="justify"><small><font face="Verdana">Agora basta comparar os dois últimos
+    valores do CPF a ser informado com os dois últimos números calculados. Se forem iguais,
+    o CPF é válido.</font></small></p>
+    <p align="justify"><font face="Verdana"><small>A seguir, vamos criar a função que irá
+    verificar a validade de um número de CPF que será fornecido.</small></font></p>
+    <p align="center"><a style="color: rgb(0,0,255); text-decoration: underline"
+    href="js_validacao_cpf_2.shtm"><small><font face="Verdana"><small>Próxima página&gt;&gt;</small></font></small></a></td>
+  </tr>
+</table>
+</body>
+</html>

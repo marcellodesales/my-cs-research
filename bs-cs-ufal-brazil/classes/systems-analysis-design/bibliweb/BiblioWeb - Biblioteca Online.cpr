@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <SourceDirectories>
+        <Directory relativePath="resources/upload" absolutePath="C:\desenv\BibliWeb\resources\upload\"/>
+        <Directory relativePath="resources/JFreeChart/jfreechart-0.7.2/source" absolutePath="C:\desenv\BibliWeb\resources\JFreeChart\jfreechart-0.7.2\source\"/>
+        <Directory relativePath="resources/porta serial" absolutePath="C:\desenv\BibliWeb\resources\porta serial\"/>
+        <Directory relativePath="isbn15" absolutePath="C:\desenv\BibliWeb\isbn15\"/>
+        <Directory relativePath="src" absolutePath="C:\desenv\BibliWeb\src\"/>
+    </SourceDirectories>
+    <ProjectDirectories>
+        <Directory relativePath="src" absolutePath="C:\desenv\BibliWeb\src\"/>
+    </ProjectDirectories>
+    <LibrarySourceDirectories/>
+    <LibraryClassDirectories>
+        <Directory relativePath="lib/cos.jar" absolutePath="C:\desenv\BibliWeb\lib\cos.jar"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\servlet.jar"/>
+        <Directory relativePath="lib/jdbc7.1-1.2.jar" absolutePath="C:\desenv\BibliWeb\lib\jdbc7.1-1.2.jar"/>
+        <Directory relativePath="lib/jdom.jar" absolutePath="C:\desenv\BibliWeb\lib\jdom.jar"/>
+    </LibraryClassDirectories>
+    <DestinationDirectory relativePath="site/WEB-INF/classes" absolutePath="C:\desenv\BibliWeb\site\WEB-INF\classes\"/>
+    <Target relativePath="src/br/ufal/bibliweb/Book.java" absolutePath="C:\desenv\BibliWeb\src\br\ufal\bibliweb\Book.java" java2DebugVmType="classic"/>
+    <CompilerOptions targetVM="1.3" generateDebugInfo="true" showCompilerWarnings="false" showDeprecationWarnings="false" jdk14Assertions="false" gj="false" maximumHeapSize="128" otherOptions=""/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <ResourceFilePattern>*.jpg</ResourceFilePattern>
+    <ResourceFilePattern>*.xml</ResourceFilePattern>
+    <ResourceFilePattern>*.properties</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+    <Ant useAnt="false" additionalVmArguments="" buildTargets="" rebuildTargets="" additionalArguments="">
+        <AdditionalClasspaths/>
+        <BuildFile absolutePath=""/>
+        <WorkingDirectory absolutePath=""/>
+    </Ant>
+</Project>

@@ -1,0 +1,537 @@
+<html>
+<head>
+<title>PHP.iMasters</title>
+<META NAME="keywords" CONTENT="php, net, xml, mysql, paginacao, programadores, desenvolvedores, tecnologia, codigos, tutoriais, artigos">
+<META NAME="description" CONTENT="O principal conteúdo de PHP em língua portuguesa reunidos de uma maneira direta, rápida e simples">
+<style>
+<!--
+A:link {text-decoration:none;}
+A:visited {text-decoration:none;}
+A:hover {text-decoration:underline;}
+-->
+</style>
+<script language="javascript">
+hoje = new Date()
+dia = hoje.getDate()
+dias = hoje.getDay()
+mes = hoje.getMonth()
+ano = hoje.getYear()
+
+if (dia < 10)
+  dia = "0" + dia
+
+if (ano < 2000)
+  ano = 1900 + ano
+
+function NArray (n) 
+{
+  this.length = n
+}
+
+NomeDia = new NArray(7)
+
+NomeDia[0] = "Domingo"
+NomeDia[1] = "Segunda"
+NomeDia[2] = "Ter&ccedil;a"
+NomeDia[3] = "Quarta"
+NomeDia[4] = "Quinta"
+NomeDia[5] = "Sexta"
+NomeDia[6] = "S&aacute;bado"
+
+NomeMes = new NArray(12)
+
+NomeMes[0] = "janeiro"
+NomeMes[1] = "fevereiro"
+NomeMes[2] = "mar&ccedil;o"
+NomeMes[3] = "abril"
+NomeMes[4] = "maio"
+NomeMes[5] = "junho"
+NomeMes[6] = "julho"
+NomeMes[7] = "agosto"
+NomeMes[8] = "setembro"
+NomeMes[9] = "outubro"
+NomeMes[10] = "novembro"
+NomeMes[11] = "dezembro"
+
+function WriteDate()
+{
+  document.write (NomeDia[dias] + ", " + dia + " de " + NomeMes[mes] + " de " + ano)
+}
+</script>
+</head>
+<body bgcolor="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" link="#666666" vlink="#666666" alink="#666666">
+<table width="770" border="0" cellspacing="0" cellpadding="0" background="/imagens/fundo_conteudo.gif">
+  <tr> 
+    <td width="769"> 
+      <table width="769" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="159" height="18" background="/imagens/fundo_esquerda.gif" valign="top"> 
+            <table width="159" border="0" cellspacing="0" cellpadding="0">
+              <tr valign="top"> 
+                
+    <td height="85" width="159"><img src="/imagens/logo.gif" width="159" height="85" usemap="#marca" border="0"><map name="marca"><area shape="rect" coords="18,22,149,97" href="/"></map></td>
+              </tr>
+              <tr valign="top"> 
+                
+    <td height="89" width="159"><img src="/imagens/menu.gif" width="159" usemap="#link_coluna_sql" border="0"><map name="link_coluna_sql"><area shape="rect" coords="14,65,118,81" href="/"><area shape="rect" coords="12,45,100,63" href="/faleconosco/"><area shape="rect" coords="15,24,115,39" href="http://www.imasters.com.br/web/colunistas/php/"><area shape="rect" coords="14,3,79,18" href="http://www.imasters.com.br/forum"><area shape="rect" coords="15,86,87,100" href="http://www.imasters.com.br/hospedagem/"></map></td>
+              </tr>
+              <tr> 
+                <td> 
+                  <table width="159" border="0" cellspacing="0" cellpadding="0" background="/imagens/fundo_esquerda.gif">
+                    <tr> 
+                      <td><img src="/imagens/foto.gif" width="159" height="218"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table> </td>
+          <td width="610" height="18" valign="top">  
+<table width="610" border="0" cellspacing="0" cellpadding="15" background="/imagens/fundo_banner.gif">
+              <tr> 
+                <td> 
+                  
+      <div align="center"><a href="http://www.clichost.com.br" target="_blank"><img src="http://www.imasters.com.br/imagens/bannerclichost.gif" width="468" height="60" border="0"></a><a href="http://www.clicregistro.com" target="_blank"><img src="http://a0.imasters.isee1.net/" width="1" height="1" border="0"></a></div>
+                </td>
+              </tr>
+            </table>
+            <table width="610" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                
+    <td width="438" valign="top" height="76">
+      <table width="438" border="0" cellspacing="0" cellpadding="0" height="30" background="/imagens/fundo_endereco.gif">
+        <tr valign="top"> 
+          <td height="18">
+            <div align="center"><img src="/imagens/endereco.gif" width="438" height="46"><br>
+              <font color="#000000" face="Verdana, Arial, Helvetica, sans-serif"><font size="1"><font size="1"> 
+              <script JavaScript>WriteDate();</script>
+              , coordenado por Carlos </font><font color="#000000" face="Verdana, Arial, Helvetica, sans-serif"><font size="1"><font size="1">Silva 
+              Jr., iMasters<b></b></font></font></font><font size="1"><b><br>
+              <br>
+              </b></font></font></font></div>
+          </td>
+        </tr>
+      </table>
+      <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr background="imagens/fundo_destaque.gif"> 
+                      <td height="0"> 
+                        <table width="438" border="0" cellspacing="0" cellpadding="0" background="/imagens/fundo_destaque.gif">
+                          <tr> 
+                            <td height="8"><img src="/imagens/1pixel.gif" width="1" height="8"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr bgcolor="#FFFFFF"> 
+                      <td height="0"><img src="/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                    
+        <tr valign="top"> 
+          <td height="38" bgcolor="5090E4"> 
+            <table width="400" border="0" cellspacing="0" cellpadding="7" align="right">
+              <tr> 
+                <td colspan="2"> 
+                  <table width="404" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td width="183" valign="middle"><img src="/imagens/busca.gif" height="20"></td>
+                      <td> 
+                        <table width="194">
+                          <tr> 
+                            <form action="/resultado.asp" method="post">
+                              <td colspan="2" height="29"> <font face="arial" size="2"> 
+                                <input type="text" name="wordkey" size="10" style="FONT-FAMILY: arial; FONT-SIZE: 10px; HEIGHT: 18px; WIDTH: 75px; background-color: #C9D1E7"">
+                                </font> 
+                                <input type="image" border="0" name="Sub1" value="Ok" src="/imagens/bot_procurar.gif" width="65" height="19" align="middle">
+                              </td>
+                            </form>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+                    </tr>
+                    <tr bgcolor="#FFFFFF"> 
+                      <td height="0"><img src="/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                </td>
+                
+    <td width="172" valign="top" height="76" bgcolor="#FFFFFF"><img src="/imagens/imasters.gif" width="172" height="111"><br>
+      <table width="172" border="0" cellspacing="0" cellpadding="0" height="100%">
+        <tr>
+          <td bgcolor="#999999" width="1"><img src="../imagens/1pixel.gif" width="1" height="1"></td>
+          <td width="171"></td>
+        </tr>
+      </table>
+    </td>
+              </tr>
+            </table>
+ 
+            <table width="610" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="438" height="67" valign="top"> 
+                  <p><table width="438" border="0" cellspacing="0" cellpadding="0" background="/imagens/fundo_destaque.gif">
+  <tr> 
+    <td height="94"><img src="/imagens/titulo_artigos.gif" width="438" height="94"></td>
+  </tr>
+</table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0" bgcolor="#CCCCCC">
+                    <tr> 
+                      <td bgcolor="#000000"><img src="/imagens/imagens_index/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr> 
+                      <td> 
+                        <table width="438" border="0" cellspacing="0" cellpadding="10">
+                          <tr> 
+                            <td><font size="3" face="Arial, Helvetica, sans-serif, Arial Black" color="#1115B3"><b>Valida&ccedil;&atilde;o 
+                              de CPF em javascript</b></font></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td bgcolor="#000000"><img src="/imagens/imagens_index/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td height="0"><img src="/imagens/imagens_index/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                    <tr bgcolor="#EBEBEB"> 
+                      <td> 
+                        <table width="438" border="0" cellspacing="0" cellpadding="5">
+                          <tr> 
+                            <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b>Artigo 
+                              publicado</b> </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif">em 
+                              12/11/2001, por </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Almir 
+                              F. Riva Jr.</font></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr> 
+                      <td bgcolor="#000000"><img src="/imagens/imagens_index/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="415" border="0" cellspacing="0" cellpadding="20" background="/imagens/fundo_conteudo.gif" height="100">
+                    <tr valign="top"> 
+                      <td> 
+                        <p><br>
+                          <font size="2" face="Arial, Helvetica, sans-serif, Arial Black">Segue 
+                          abaixo o c&oacute;digo para valida&ccedil;&atilde;o 
+                          de CPF, em javascript, todo comentado. Aproveite!</font></p>
+                        <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC"><b>//Verifica 
+                          se string é numérica</b><br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">function 
+                          isNum(str)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">{<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          var VBlnIsNum;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          VIntTam = str.length;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          VBlnIsNum = true;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          if (VIntTam == 0)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                                      return false;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">        }<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          else<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                                for (i=0; i &lt; VIntTam; i++)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                                {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">                        
+                                   if (str.substring(i,i+1) &lt; '0' || str.substring(i,i+1) 
+                          &gt;<br>
+                          '9')<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">                        
+                                   {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">                        
+                                               VBlnIsNum = false;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">                        
+                                   }<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                                 }<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">         
+                                      return VBlnIsNum;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">      
+                          }<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}</font></p>
+                        <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC"><b>//Função 
+                          de validação de CPF<br>
+                          </b></font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">function 
+                          isCPF(st) {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          (st == &quot;&quot;)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          return (false);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">l 
+                          = st.length;</font></p>
+                        <p><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC"><b>//aleterado 
+                          para se usuário não digitar os zeros na frente do CPF, 
+                          completar sozinho<br>
+                          </b></font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          ((l == 9) || (l == 8))<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">{<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                          for (i = l ; i &lt; 10; i++)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                          {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                                      st = '0' + st<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">            
+                          }<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">l 
+                          = st.length;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">st2 
+                          = &quot;&quot;;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">for 
+                          (i = 0; i &lt; l; i++) {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          caracter = st.substring(i,i+1);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          if ((caracter &gt;= '0') &amp;&amp; (caracter &lt;= 
+                          '9'));<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">     
+                          st2 = st2 + caracter;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          ((st2.length &gt; 11) || (st2.length &lt; 10))<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">   
+                          return (false);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          (st2.length==10)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">   
+                          st2 = '0' + st2;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">digito1 
+                          = st2.substring(9,10);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">digito2 
+                          = st2.substring(10,11);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">digito1 
+                          = parseInt(digito1,10);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">digito2 
+                          = parseInt(digito2,10);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">sum 
+                          = 0; mul = 10;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">for 
+                          (i = 0; i &lt; 9 ; i++) {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          digit = st2.substring(i,i+1);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          tproduct = parseInt(digit ,10) * mul;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          sum += tproduct;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          mul--;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">dig1 
+                          = ( sum % 11 );<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          ( dig1==0 || dig1==1 )<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">   
+                          dig1=0;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">else<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          dig1 = 11 - dig1;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          (dig1!=digito1)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          return (false);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">sum 
+                          = 0;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">mul 
+                          = 11;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">for 
+                          (i = 0; i &lt; 10 ; i++) {<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          digit = st2.substring(i,i+1);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          tproduct = parseInt(digit ,10)*mul;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          sum += tproduct;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">    
+                          mul--;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">dig2 
+                          = (sum % 11);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          ( dig2==0 || dig2==1 )<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          dig2=0;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">else<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          dig2 = 11 - dig2;<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">if 
+                          (dig2 != digito2)<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">  
+                          return (false);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">return 
+                          (true);<br>
+                          </font><font size="1" face="Verdana, Arial, Helvetica, sans-serif" color="#0066CC">}</font></p>
+                        <div><p>
+<p><font face="Arial, Helvetica, sans-serif, Arial Black" size="2" color="#666666"><br>
+  <br>
+  <font color="#006699">Todos os direitos deste artigo pertencem ao seu autor.</font></font></p>
+<p><font face="Arial, Helvetica, sans-serif, Arial Black" size="2">O PHP.iMasters 
+  est&aacute; na fase final do Pr&ecirc;mio iBest 2002, <br>
+  e desta vez <b><font color="#000000">somos n&oacute;s que estamos precisando<br>
+  de sua ajuda</font></b>, e muito! Principalmente de quem j&aacute; votou.<br>
+  </font><font face="Arial, Helvetica, sans-serif, Arial Black" size="2"><a href="http://www.imasters.com.br/ibest.htm"><font color="#0066CC">Clique 
+  aqui e d&ecirc; seu voto ao iMasters</font></a>. &Eacute; r&aacute;pido, simples 
+  <br>
+  e muito importante para n&oacute;s... Voc&ecirc; ainda concorre a um<br>
+  </font><font face="Arial, Helvetica, sans-serif, Arial Black" size="2">carro 
+  0km, sorteado pelo iBest!<br>
+  </font><font face="Arial, Helvetica, sans-serif, Arial Black" size="2">Contamos 
+  com voc&ecirc;! Obrigado...</font><font face="Arial, Helvetica, sans-serif, Arial Black" size="2" color="#666666"></font></p>
+ 
+                          </p>
+                        </div>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                  
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td height="1"><img src="/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <table width="438" border="0" cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC"> 
+                      <td height="1"><img src="/asp/imagens/1pixel.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                  <br>
+                  <p>&nbsp;</p>
+                </td>
+                <td width="172" height="67" valign="top" bgcolor="#EEEEEE"> 
+                  <table width="172" border="0" cellspacing="0" cellpadding="0" height="100%">
+                    <tr> 
+                      <td bgcolor="#999999" width="1"><img src="/imagens/1pixel.gif" width="1" height="1"></td>
+                      <td valign="top"><img src="/imagens/novidades.gif" width="171" height="62"><br>
+<table width="171" border="0" cellspacing="0" cellpadding="10">
+  <tr bgcolor="#3399CC"> 
+    <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Digite seu 
+      e-mail no campo abaixo e receba todas as novidades sobre <b>PHP</b>, semanalmente.<br>
+      </font> 
+      <form method="POST" action="/includes/adicionar.asp" target="janela1">
+        <input type="text" name="email" size="10">
+        <input onClick="window.open('','janela1','toolbar=no, location=no, directories=no, status=no, menubar=no, width=250, height=150, resizeable=no');" target=janela1 align=textTop name=ok type="image" border="0" src="/imagens/ok_busca.gif" width="22" height="14">
+      </form>
+      <font size="1" face="Verdana, Arial, Helvetica, sans-serif"> </font></td>
+  </tr>
+</table>
+<img src="/imagens/direita_linux.gif" width="171" height="62"><br>
+<table width="171" border="0" cellspacing="0" cellpadding="10">
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.revistadolinux.com.br" target="_blank"><font color="#000000">Revista 
+      do Linux</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#EEEEEE"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.olinux.com.br" target="_blank"><font color="#666666">O 
+      Linux</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.linuxall.org" target="_blank"><font color="#000000">LinuxAll.ORG</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#EEEEEE"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.gazetadolinux.com" target="_blank"><font color="#666666">Gazeta 
+      do Linux</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.linuxplace.com.br/" target="_blank"><font color="#000000">Linux 
+      Place</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#EEEEEE"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.linuxsecurity.com.br/" target="_blank"><font color="#666666">Linux 
+      Security</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.linuxbrasil.com" target="_blank"><font color="#000000">Linux 
+      Brasil</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#EEEEEE"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.buscalinux.com" target="_blank"><font color="#666666">Busca 
+      Linux</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.sitedolinux.com.br" target="_blank"><font color="#000000">Site 
+      do Linux</font></a></font></td>
+  </tr>
+</table>
+<table width="171" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+  <tr> 
+    <td> <img src="/imagens/direita_diverso.gif" width="171" height="62"></td>
+  </tr>
+</table>
+<table width="171" border="0" cellspacing="0" cellpadding="10">
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.php.net/do_download.php?download_file=php-4.0.6-Win32.zip&amp;source_site=www.php.net" target="_blank"><font color="#FF3300">PHP4</font></a></font></td>
+  </tr>
+  <tr bgcolor="#EEEEEE"> 
+    <td><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.mysql.com/downloads/" target="_blank"><font color="#FF6600">MySQL</font></a></font></td>
+  </tr>
+  <tr> 
+    <td bgcolor="#E2E2E2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://pgsql.dbexperts.com.br/" target="_blank"><font color="#FF3300">PostgreSQL</font></a></font></td>
+  </tr>
+</table>
+</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

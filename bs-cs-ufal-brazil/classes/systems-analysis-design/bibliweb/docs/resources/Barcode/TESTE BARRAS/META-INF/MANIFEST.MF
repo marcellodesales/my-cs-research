@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Name: com/idautomation/linear/BarCode.class
+java-Bean: True
+Implementation-Version: 2.1
+Specification-Title: Java Barcode Package
+Specification-Version: 2.1
+Implementation-Title: Java Barcode Package
+Created-By: 1.3.0 (Sun Microsystems Inc.)
+Implementation-Vendor: IDAutomation.com, Inc.
+Specification-Vendor: IDAutomation.com, Inc. 
+

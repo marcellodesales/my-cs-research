@@ -1,0 +1,44 @@
+
+The ISBN 1.5 Amanuensis will help you proofread, validate
+and tidy ISBN (International Standard Book Number)
+references in your HTML or other documentation.
+
+Here are some sample ISBNs correctly formatted:
+
+
+ 0-200-00000-4    1-55000-000-4    2-00000000-2    80-0000000-8
+ 0-7000-0000-3    1-869800-00-1    2-95000000-2    93-9999999-8
+ 0-85000-000-9    1-9990000-0-5    3-00000000-3    94-1900000-1
+ 0-900000-00-7                     3-99999999-3    94-0000000-6
+ 0-9500000-0-0                     4-00000000-4    94-9999999-X
+ 0-9999999-9-0                     4-95000000-4    950-000000-8
+                                   5-00000000-5    950-999999-7
+                                   5-95000000-5    995-999999-8
+                                   6-00000000-6    9960-00000-1
+                                   6-95000000-6    9989-99999-6
+                                   7-00000000-7    99901-9601-X
+                                   7-20000000-0    99999-0000-3
+                                   7-95000000-7    99999-9999-9
+
+Unfortunately the program cannot correctly place the dash
+between publisher and title for groups other than 0 and 1.
+
+The lead 0 is significant. ISBNs always contain 10 digits.
+
+It takes the raw ISBN (which may contain dashes, lead, trail
+or embedded spaces or other miscellaneous junk), validates
+the check digit and insert the dashes in the proper places
+using a set of rules described at
+http://www.bowker.com/standards/home/isbn/international/hyphenation-instructions.html.
+
+Just paste the raw ISBN into the left window, click Tidy
+then copy the tidied ISBN from the right window.
+
+When you run the ISBN Amanuensis as an application, it is
+even more automatic. You don't need to do any manual pasting
+and copying. Just click Tidy to tidy the current contents of
+the clipboard. The tidied ISBN replaces the old the raw text
+clipboard contents. This automatic feature is not available
+in the Applet version because the Applet sandbox considers
+it a security risk. Version 1.5 now also verifies the group number.
+

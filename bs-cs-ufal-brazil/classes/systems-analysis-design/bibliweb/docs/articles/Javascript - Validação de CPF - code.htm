@@ -1,0 +1,572 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style>
+A {text-decoration: none;}
+A:link {color: White;}
+A:visited {color: White;}
+A:hover {color: Yellow;}
+</style>
+<title>Javascript - Validação de CPF</title>
+</head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<script LANGUAGE="JavaScript"> 
+<!--
+function Verifica_CPF(formulario) {
+var CPF = formulario.CPF.value; // Recebe o valor digitado no campo
+
+// Verifica se o campo é nulo
+if (CPF == '') {
+  alert('Este campo é de preenchimento obrigatório!');
+  return false;
+   }
+
+// Aqui começa a checagem do CPF
+var POSICAO, I, SOMA, DV, DV_INFORMADO;
+var DIGITO = new Array(10);
+DV_INFORMADO = CPF.substr(9, 2); // Retira os dois últimos dígitos do número informado
+
+// Desemembra o número do CPF na array DIGITO
+for (I=0; I<=8; I++) {
+  DIGITO[I] = CPF.substr( I, 1);
+}
+
+// Calcula o valor do 10º dígito da verificação
+POSICAO = 10;
+SOMA = 0;
+   for (I=0; I<=8; I++) {
+      SOMA = SOMA + DIGITO[I] * POSICAO;
+      POSICAO = POSICAO - 1;
+   }
+DIGITO[9] = SOMA % 11;
+   if (DIGITO[9] < 2) {
+        DIGITO[9] = 0;
+}
+   else{
+       DIGITO[9] = 11 - DIGITO[9];
+}
+
+// Calcula o valor do 11º dígito da verificação
+POSICAO = 11;
+SOMA = 0;
+   for (I=0; I<=9; I++) {
+      SOMA = SOMA + DIGITO[I] * POSICAO;
+      POSICAO = POSICAO - 1;
+   }
+DIGITO[10] = SOMA % 11;
+   if (DIGITO[10] < 2) {
+        DIGITO[10] = 0;
+   }
+   else {
+        DIGITO[10] = 11 - DIGITO[10];
+   }
+
+// Verifica se os valores dos dígitos verificadores conferem
+DV = DIGITO[9] * 10 + DIGITO[10];
+   if (DV != DV_INFORMADO) {
+      alert('CPF inválido');
+      formulario.CPF.value = '';
+      formulario.CPF.focus();
+      return false;
+   } 
+}
+//-->
+</script>
+
+
+<table BORDER="0" style="margin-left: 0px; margin-right: 0px" width="761">
+  <tr>
+    <td VALIGN="top" width="147"><a href="../../default.asp"><img src="../../images/cons1.gif"
+    alt="Clique aqui para voltar à página inicial" border="0" width="170" height="39"></a></td>
+    <td VALIGN="top" bgcolor="#800000" width="549"><p id="fundo"><font color="#FFFFFF"
+    face="Verdana"><small>JavaScript - Scripts</small><br>
+    <big>Validação de CPF </big></font></td>
+  </tr>
+  <tr>
+    <td VALIGN="top" width="147"><p align="left"><html>
+
+<head>
+<title>Menu do Construindo seu Site</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style>
+<!--
+A.menu_conssite {color: yellow;text-decoration: none}
+A.menu_conssite:visited {color: yellow; text-decoration: none}
+A.menu_conssite:hover {color: Red; font-weight: bold}
+A.menu_conssite2 {color: navy;text-decoration: none}
+A.menu_conssite2:visited {color: navy; text-decoration: none}
+A.menu_conssite2:hover {color: Red; font-weight: bold}
+A.menu_conssite3:link {color: White;text-decoration: none}
+A.menu_conssite3:visited {color: White;text-decoration:none}
+A.menu_conssite3:hover {color: Yellow;text-decoration: underline}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0">
+
+<table border="0" cellspacing="0" width="169" cellpadding="0">
+  <tr>
+    <td width="150" colspan="2"><img src="../../images/conssite_menu_sup.gif"></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><font face="Verdana"
+    color="#000080"><strong><small><small>Criando seu Site</small></small></strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><font face="Verdana"><small><small>&nbsp; <font
+    color="#FFFF00">»</font> <a class="menu_conssite"
+    href="../../criandoseusite/criandoseusite.shtm">Artigos</a></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana"
+    color="#FFFF00">&nbsp; »</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../ferr_uteis/ferramentas_Uteis.shtm">Ferramentas e<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; Serviços Úteis</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../cliparts.shtm">ClipArts</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../links/links.shtm">Links</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><small><font face="Verdana"
+    color="#000080"><small><strong>Ferramentas de&nbsp; Desenvolvimento</strong></small></font></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../fp98/frontpage98.shtm">FrontPage 98</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><font face="Verdana"
+    color="#000080"><small><small><strong>Servidores Web</strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../iis/iis.shtm">IIS</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../pws/pws.shtm">Personal Web Server</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><p align="left"><small><font face="Verdana"
+    color="#000080"><small><strong>Programação na&nbsp;Web</strong></small></font></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../asp/asp.shtm">ASP</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../css/css.shtm">CSS</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana" color="#FFFF00">&nbsp;
+    »</font><font face="Verdana"> <a class="menu_conssite" href="../../cgi.shtm">CGI</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../flash/flash.shtm">Flash</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a
+    href="../../html/html.shtm" class="menu_conssite">HTML</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a href="../../java/java.shtm" class="menu_conssite">Java</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="83"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../javascript/javascript.shtm">Javascript</a></font></small></small></td>
+    <td bgcolor="#495778" width="85"><small><small><font face="Verdana" color="#FFFF00">»</font><font
+    face="Verdana"> <a class="menu_conssite" href="../../php/php.shtm">PHP</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana"
+    color="#FFFF00">&nbsp; »</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../vbscript/VBscript.shtm">VBScript</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../ferr_uteis/ferramentas_Uteis2.shtm">Ferramentas Úteis</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#495778" width="170" colspan="2"><small><small><font face="Verdana">&nbsp; </font><font
+    face="Verdana" color="#FFFF00">»</font><font face="Verdana"> <a class="menu_conssite"
+    href="../../links/links2.shtm">Links</a></font></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><font face="Verdana"><small><small><strong><font
+    color="#000080">»</font> <a class="menu_conssite2" href="../../vitrine/vitrine.shtm">Vitrine</a></strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><font face="Verdana"><small><small><strong><font
+    color="#000080">»</font> <a class="menu_conssite2" href="../../comercio/comercio.shtm">Comércio
+    na Internet</a></strong></small></small></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../divulgacao/divulgacao.shtm">Divulgando seu site</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../entrevistas/entrevistas.shtm">Entrevistas</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../colunas/colunas.shtm">Colunistas</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/eventos/eventos.asp">Eventos</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/forum/foruns_discussao.shtm">Fórum de
+    discussão</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="http://www.liemar.com.br/construindoseusite/site_semana/site_semana.shtm">Sites dos
+    usuários</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../chat_multichat.shtm">Bate-papo</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td bgcolor="#A0ABC5" width="170" colspan="2"><small><small><strong><font face="Verdana"
+    color="#000080">»</font><font face="Verdana"> <a class="menu_conssite2"
+    href="../../search_page.htm">Procurar no Site</a></font></strong></small></small></td>
+  </tr>
+  <tr>
+    <td width="150" colspan="2"><img src="../../images/conssite_menu_inf.gif"></td>
+  </tr>
+</table>
+
+<table border="0" cellspacing="3" width="170">
+  <tr>
+    <td width="100%" align="center"><font face="Verdana"><strong><small><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </small></small></strong></font></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#00006C"><table border="0" cellpadding="0"
+    cellspacing="0" width="100%">
+      <tr>
+        <td width="77%"><p align="center"><a class="menu_conssite3" href="../../search_page.htm"><font
+        face="Verdana"><strong><small><small>Clique aqui para realizar uma busca no site</small></small></strong></font></a></td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#0000D5"><a class="menu_conssite3"
+    href="../../contato.shtm"><font face="Verdana"><strong><small><small>Entre em contato
+    conosco. Clique Aqui!</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#0000CE"><a class="menu_conssite3"
+    href="../../anuncio.shtm"><font face="Verdana"><strong><small><small>Saiba como anunciar
+    neste site e divulgar seu produto</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#3E3EFF"><a class="menu_conssite3"
+    href="../../premios.shtm"><font face="Verdana"><strong><small><small>Veja aqui os prêmios
+    e menções recebidos por &quot;Construindo seu Site&quot;</small></small></strong></font></a></td>
+  </tr>
+  <tr>
+    <td width="100%" align="center" bgcolor="#7979FF"><a class="menu_conssite3"
+    href="../../atualizacao_email.htm"><font face="Verdana"><strong><small><small>Quer receber
+    nosso boletim via e-mail com as novidades deste site e dicas exclusivas? Clique aqui!</small></small></strong></font></a></td>
+  </tr>
+</table>
+</body>
+</html>
+</td>
+    <td VALIGN="top" width="549"><p align="center"><a
+    href="http://www.mercadolivre.com.br/brasil/ml/pms?site=53561&amp;id=4993&amp;go=HO"
+    target="_blank" style="color: rgb(0,0,255); text-decoration: underline"><img border="1"
+    src="http://pms.mercadolibre.com/cgi/pms/ban?site=53561&amp;id=4993" width="468"
+    height="60"></a><br>
+    <a href="../../anuncio.shtm" style="color: rgb(0,0,255); text-decoration: underline"><small><small><small><font
+    face="Arial">PUBLICIDADE - Anuncie aqui!</font></small></small></small></a></p>
+    <div align="left"><table border="0" cellpadding="3" cellspacing="0" width="354">
+      <tr>
+        <td width="257"><font face="Verdana"><em><small><small>Por Anderson Luciano Santos da
+        Silva</small></small><br>
+        <small><small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Marçal de Lima Hokama</small></small></em></font></td>
+        <td bgcolor="#000080" align="center" width="85"><p align="center"><a target="_blank"
+        href="js_validacao_cpf_imp.htm"><font face="Verdana"><small>Imprima este artigo</small></font></a></td>
+      </tr>
+    </table>
+    </div><p align="center"><font face="Verdana"><small><small>Página 2/2</small></small><br>
+    <a style="color: rgb(0,0,255); text-decoration: underline" href="js_validacao_cpf.shtm"><small><small>&lt;&lt;Página
+    anterior</small></small></a></font></p>
+    <p align="justify"><small><font face="Verdana">Agora que já entendemos como funciona os
+    dígitos verificadores do CPF, vamos criar uma função em javascript para fazer esta
+    validação, chamada Verifica_CPF():</font></small></p>
+    <font size="1"><p>&lt;</font><font color="#800080" size="1">script </font><font
+    color="#ff0000" size="1">LANGUAGE=&quot;</font><font color="#0000ff" size="1">JavaScript</font><font
+    color="#ff0000" size="1">&quot;</font><font size="1">&gt; <br>
+    &lt;!--<br>
+    function Verifica_CPF(formulario) {<br>
+    var CPF = formulario.CPF.value; // Recebe o valor digitado no campo<br>
+    <br>
+    // Verifica se o campo é nulo<br>
+    if (CPF == '') {<br>
+    &nbsp; alert('Este campo é de preenchimento obrigatório!');<br>
+    &nbsp; return false;<br>
+    &nbsp;&nbsp; }<br>
+    <br>
+    // Aqui começa a checagem do CPF<br>
+    var POSICAO, I, SOMA, DV, DV_INFORMADO;<br>
+    var DIGITO = new Array(10);<br>
+    DV_INFORMADO = CPF.substr(9, 2); // Retira os dois últimos dígitos do número informado<br>
+    <br>
+    // Desemembra o número do CPF na array DIGITO<br>
+    for (I=0; I&lt;=8; I++) {<br>
+    &nbsp; DIGITO[I] = CPF.substr( I, 1);<br>
+    }<br>
+    <br>
+    // Calcula o valor do 10º dígito da verificação<br>
+    POSICAO = 10;<br>
+    SOMA = 0;<br>
+    &nbsp;&nbsp; for (I=0; I&lt;=8; I++) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOMA = SOMA + DIGITO[I] * POSICAO;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POSICAO = POSICAO - 1;<br>
+    &nbsp;&nbsp; }<br>
+    DIGITO[9] = SOMA % 11;<br>
+    &nbsp;&nbsp; if (DIGITO[9] &lt; 2) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[9] = 0;<br>
+    }<br>
+    &nbsp;&nbsp; else{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[9] = 11 - DIGITO[9];<br>
+    }<br>
+    <br>
+    // Calcula o valor do 11º dígito da verificação<br>
+    POSICAO = 11;<br>
+    SOMA = 0;<br>
+    &nbsp;&nbsp; for (I=0; I&lt;=9; I++) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOMA = SOMA + DIGITO[I] * POSICAO;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POSICAO = POSICAO - 1;<br>
+    &nbsp;&nbsp; }<br>
+    DIGITO[10] = SOMA % 11;<br>
+    &nbsp;&nbsp; if (DIGITO[10] &lt; 2) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[10] = 0;<br>
+    &nbsp;&nbsp; }<br>
+    &nbsp;&nbsp; else {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[10] = 11 - DIGITO[10];<br>
+    &nbsp;&nbsp; }<br>
+    <br>
+    // Verifica se os valores dos dígitos verificadores conferem<br>
+    DV = DIGITO[9] * 10 + DIGITO[10];<br>
+    &nbsp;&nbsp; if (DV != DV_INFORMADO) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert('CPF inválido');<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formulario.CPF.value = '';<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formulario.CPF.focus();<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<br>
+    &nbsp;&nbsp; } <br>
+    }<br>
+    //--&gt;<br>
+    &lt;<font color="#800080" size="1">/script</font>&gt;</p>
+    <p></font><small><font face="Verdana">Esta função deverá estar na seção &lt;HEAD&gt;
+    ou &lt;BODY&gt; da página.</font></small></p>
+    <p><small><font face="Verdana">Para utilizar esta função, é só criar um campo de nome
+    &quot;CPF&quot; no seu formulário, e quando for enviar os dados do formulário, chamar a
+    função, como no exemplo abaixo:</font></small></p>
+    <p><font size="1">&lt;<font color="#800080" size="1">form </font><font color="#ff0000"
+    size="1">NAME=&quot;</font><font color="#0000ff" size="1">Formulario</font><font
+    color="#ff0000" size="1">&quot; onSubmit=&quot;</font></font><font color="#0000ff"
+    size="1">return Verifica_CPF(this)</font><font size="1"><font color="#ff0000" size="1">&quot;</font>&gt;<br>
+    &lt;<font color="#800080" size="1">tt</font>&gt;&lt;<font color="#800080" size="1">p</font>&gt;<br>
+    &lt;<font color="#800080" size="1">small</font>&gt;&lt;<font color="#800080" size="1">font
+    </font><font color="#ff0000" size="1">face=&quot;</font><font color="#0000ff" size="1">Verdana</font><font
+    color="#ff0000" size="1">&quot;</font>&gt;CPF: &lt;<font color="#800080" size="1">input </font><font
+    color="#ff0000" size="1">TYPE=&quot;</font><font color="#0000ff" size="1">text</font><font
+    color="#ff0000" size="1">&quot; NAME=&quot;</font><font color="#0000ff" size="1">CPF</font><font
+    color="#ff0000" size="1">&quot; SIZE=&quot;</font><font color="#0000ff" size="1">15</font><font
+    color="#ff0000" size="1">&quot;</font>&gt; <br>
+    &lt;<font color="#800080" size="1">br</font>&gt;&lt;<font color="#800080" size="1">br</font>&gt;<br>
+    &lt;<font color="#800080" size="1">input </font><font color="#ff0000" size="1">TYPE=&quot;</font><font
+    color="#0000ff" size="1">submit</font><font color="#ff0000" size="1">&quot; VALUE=&quot;</font><font
+    color="#0000ff" size="1">Testar CPF</font><font color="#ff0000" size="1">&quot;</font>&gt;
+    &lt;<font color="#800080" size="1">/font</font>&gt;&lt;<font color="#800080" size="1">/small</font>&gt;&lt;<font
+    color="#800080" size="1">/tt</font>&gt;&lt;<font color="#800080" size="1">/p</font>&gt;<br>
+    &lt;<font color="#800080" size="1">/form</font>&gt;</font></p>
+    <p><font face="Verdana" size="2">Veja este exemplo funcionando logo abaixo (digitar apenas
+    números):</font></p>
+    <form NAME="Formulario" onSubmit="return Verifica_CPF(this)">
+      <tt><p><small><font face="Verdana">CPF: <input TYPE="text" NAME="CPF" SIZE="15"> <br>
+      <br>
+      <input TYPE="submit" VALUE="Testar CPF"> </font></small></tt></p>
+    </form>
+    <p><small><font face="Verdana">Outra variação que podemos fazer é assim que o usuário
+    acaba de sair do campo de CPF e passar para o próximo campo, chamar a função
+    Verifica_campo_CPF, através do evento <strong>onBlur</strong>. Aqui não checamos se o
+    campo é vazio (o que deve ser feito por uma função a nível de formulário quando
+    submeter os dados) Neste caso temos que fazer uma pequena alteração na nossa função,
+    pois o parâmetro passado agora não é a identificação do formulário, mas de um campo.
+    Vamos ver o exemplo:</font></small></p>
+    <font size="1"><p>&lt;</font><font color="#800080" size="1">script </font><font
+    color="#ff0000" size="1">LANGUAGE=&quot;</font><font color="#0000ff" size="1">JavaScript</font><font
+    color="#ff0000" size="1">&quot;</font><font size="1">&gt; <br>
+    &lt;!--<br>
+    function Verifica_campo_CPF(campo) {<br>
+    var CPF = campo.value; // Recebe o valor digitado no campo<br>
+    <br>
+    // Aqui começa a checagem do CPF<br>
+    var POSICAO, I, SOMA, DV, DV_INFORMADO;<br>
+    var DIGITO = new Array(10);<br>
+    DV_INFORMADO = CPF.substr(9, 2); // Retira os dois últimos dígitos do número informado<br>
+    <br>
+    // Desemembra o número do CPF na array DIGITO<br>
+    for (I=0; I&lt;=8; I++) {<br>
+    &nbsp; DIGITO[I] = CPF.substr( I, 1);<br>
+    }<br>
+    <br>
+    // Calcula o valor do 10º dígito da verificação<br>
+    POSICAO = 10;<br>
+    SOMA = 0;<br>
+    &nbsp;&nbsp; for (I=0; I&lt;=8; I++) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOMA = SOMA + DIGITO[I] * POSICAO;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POSICAO = POSICAO - 1;<br>
+    &nbsp;&nbsp; }<br>
+    DIGITO[9] = SOMA % 11;<br>
+    &nbsp;&nbsp; if (DIGITO[9] &lt; 2) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[9] = 0;<br>
+    }<br>
+    &nbsp;&nbsp; else{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[9] = 11 - DIGITO[9];<br>
+    }<br>
+    <br>
+    // Calcula o valor do 11º dígito da verificação<br>
+    POSICAO = 11;<br>
+    SOMA = 0;<br>
+    &nbsp;&nbsp; for (I=0; I&lt;=9; I++) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SOMA = SOMA + DIGITO[I] * POSICAO;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POSICAO = POSICAO - 1;<br>
+    &nbsp;&nbsp; }<br>
+    DIGITO[10] = SOMA % 11;<br>
+    &nbsp;&nbsp; if (DIGITO[10] &lt; 2) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[10] = 0;<br>
+    &nbsp;&nbsp; }<br>
+    &nbsp;&nbsp; else {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIGITO[10] = 11 - DIGITO[10];<br>
+    &nbsp;&nbsp; }<br>
+    <br>
+    // Verifica se os valores dos dígitos verificadores conferem<br>
+    DV = DIGITO[9] * 10 + DIGITO[10];<br>
+    &nbsp;&nbsp; if (DV != DV_INFORMADO) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert('CPF inválido');<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; campo.value = '';<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; campo.focus();<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<br>
+    &nbsp;&nbsp; } <br>
+    }<br>
+    //--&gt;<br>
+    &lt;<font color="#800080" size="1">/script</font>&gt;</font></p>
+    <p><font size="1">&lt;<font color="#800080" size="1">form </font><font color="#ff0000"
+    size="1">NAME=&quot;</font><font color="#0000ff" size="1">Formulario</font><font
+    color="#000080">2</font></font><font color="#ff0000" size="1">&quot; </font><font size="1">&gt;<br>
+    &lt;<font color="#800080" size="1">tt</font>&gt;&lt;<font color="#800080" size="1">p</font>&gt;<br>
+    &lt;<font color="#800080" size="1">small</font>&gt;&lt;<font color="#800080" size="1">font
+    </font><font color="#ff0000" size="1">face=&quot;</font><font color="#0000ff" size="1">Verdana</font><font
+    color="#ff0000" size="1">&quot;</font>&gt;CPF : &lt;<font color="#800080" size="1">input </font><font
+    color="#ff0000" size="1">TYPE=&quot;</font><font color="#0000ff" size="1">text</font><font
+    color="#ff0000" size="1">&quot; NAME=&quot;</font><font color="#0000ff" size="1">CPF</font><font
+    color="#ff0000" size="1">&quot; SIZE=&quot;</font><font color="#0000ff" size="1">15</font><font
+    color="#ff0000" size="1">&quot;<br>
+    onBlur=&quot;</font></font><font color="#0000ff" size="1">Verifica_campo_CPF(this)</font><font
+    size="1"><font color="#ff0000" size="1">&quot;</font>&gt; <br>
+    &lt;<font color="#800080" size="1">br</font>&gt;&lt;<font color="#800080" size="1">br</font>&gt;<br>
+    &lt;<font color="#800080" size="1">input </font><font color="#ff0000" size="1">TYPE=&quot;</font><font
+    color="#0000ff" size="1">submit</font><font color="#ff0000" size="1">&quot; VALUE=&quot;</font><font
+    color="#0000ff" size="1">Testar CPF</font><font color="#ff0000" size="1">&quot;</font>&gt;
+    &lt;<font color="#800080" size="1">/font</font>&gt;&lt;<font color="#800080" size="1">/small</font>&gt;&lt;<font
+    color="#800080" size="1">/tt</font>&gt;&lt;<font color="#800080" size="1">/p</font>&gt;<br>
+    &lt;<font color="#800080" size="1">/form</font>&gt;</font></p>
+    <p><script LANGUAGE="JavaScript"><!--
+function Verifica_campo_CPF(campo) {
+var CPF = campo.value; // Recebe o valor digitado no campo
+
+// Aqui começa a checagem do CPF
+var POSICAO, I, SOMA, DV, DV_INFORMADO;
+var DIGITO = new Array(10);
+DV_INFORMADO = CPF.substr(9, 2); // Retira os dois últimos dígitos do número informado
+
+// Desemembra o número do CPF na array DIGITO
+for (I=0; I<=8; I++) {
+  DIGITO[I] = CPF.substr( I, 1);
+}
+
+// Calcula o valor do 10º dígito da verificação
+POSICAO = 10;
+SOMA = 0;
+   for (I=0; I<=8; I++) {
+      SOMA = SOMA + DIGITO[I] * POSICAO;
+      POSICAO = POSICAO - 1;
+   }
+DIGITO[9] = SOMA % 11;
+   if (DIGITO[9] < 2) {
+        DIGITO[9] = 0;
+}
+   else{
+       DIGITO[9] = 11 - DIGITO[9];
+}
+
+// Calcula o valor do 11º dígito da verificação
+POSICAO = 11;
+SOMA = 0;
+   for (I=0; I<=9; I++) {
+      SOMA = SOMA + DIGITO[I] * POSICAO;
+      POSICAO = POSICAO - 1;
+   }
+DIGITO[10] = SOMA % 11;
+   if (DIGITO[10] < 2) {
+        DIGITO[10] = 0;
+   }
+   else {
+        DIGITO[10] = 11 - DIGITO[10];
+   }
+
+// Verifica se os valores dos dígitos verificadores conferem
+DV = DIGITO[9] * 10 + DIGITO[10];
+   if (DV != DV_INFORMADO) {
+      alert('CPF inválido');
+      campo.value = '';
+      campo.focus();
+      return false;
+   } 
+}
+// --></script> </p>
+    <form NAME="Formulario2">
+      <tt><p><font face="Verdana"><small>CPF : <input TYPE="text" NAME="CPF" SIZE="15"
+      onBlur="Verifica_campo_CPF(this)">&nbsp; Campo 2: </small><input type="text" name="T1"
+      size="20"><small><br>
+      <br>
+      <input TYPE="submit" VALUE="Testar CPF"> </small></font></tt></p>
+    </form>
+    <p align="center"><font face="Verdana"><a
+    style="color: rgb(0,0,255); text-decoration: underline" href="js_validacao_cpf.shtm"><small><small>&lt;&lt;Página
+    anterior</small></small></a></font></td>
+  </tr>
+</table>
+</body>
+</html>

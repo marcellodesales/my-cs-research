@@ -1,0 +1,173 @@
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Requirements<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last modified:
+    June 1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#1"><font face="Verdana, Helvetica"><small>Initialization</small></font></a> </li>
+  <li><a href="#2"><font face="Verdana, Helvetica"><small>Form</small></font></a> </li>
+  <li><a href="#3"><small><font face="Verdana, Helvetica">upload method</font></small></a> </li>
+  <li><a href="#4"><small><font face="Verdana, Helvetica">upload and uploadInFile methods</font></small></a>
+  </li>
+  <li><a href="#5"><small><font face="Verdana, Helvetica">DownloadFile and DownloadField
+    methods</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+
+<p><big><big><strong><font face="Verdana, Helvetica"><a name="1">Initialization</a></font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The jspSmartUpload need information about
+  environment of your JavaServer Pages which called it. You need to pass the configuration
+  information about the server. The init() and service() method are deprecated.</small><br>
+  <br>
+  <font face="Verdana, Helvetica" size="2"><strong>ATTENTION</strong> : </font><font
+  size="2">W</font><font face="Verdana, Helvetica" size="2">hen the component is called from
+  a servlet you must use the initialize(config,request,response) method</font><font size="2">.</font><font
+  face="Verdana, Helvetica" size="2"> </font><br>
+  <br>
+  <strong><small>Example :</small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><small>&lt;%@ page language=&quot;java&quot;
+      import=&quot;com.jspsmart.upload.*&quot;%&gt;</small><br>
+      <small>&lt;jsp:useBean id=&quot;mySmartUpload&quot; scope=&quot;page&quot;
+      class=&quot;com.jspsmart.upload.SmartUpload&quot; /&gt;</small><br>
+      <small>&lt;%</small><br>
+      <small>&nbsp;&nbsp; // Variables</small><br>
+      <small>&nbsp;&nbsp; int count=0;</small><br>
+      <br>
+      <small>&nbsp;&nbsp; // Initialization with jspSmartUpload v2.1</small><br>
+      <small>&nbsp;&nbsp; mySmartUpload.initialize(pageContext);</small><br>
+      <br>
+      <br>
+      <small>&nbsp;&nbsp; // Initialization with jspSmartUpload v2.0 (deprecated)</small><br>
+      <small>&nbsp;&nbsp; mySmartUpload.init(config);</small><br>
+      <small>&nbsp;&nbsp; mySmartUpload.service(request,response);</small><br>
+      <small>%&gt;</small></td>
+    </tr>
+  </table>
+  </font>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><big><big><strong><font face="Verdana, Helvetica"><a name="2">Form</a></font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The ENCTYPE=&quot;multipart/form-data&quot;
+  attribute in the FORM tag is required.</small><br>
+  <br>
+  <strong><small>Example :</small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><small>&lt;FORM ENCTYPE=&quot;multipart/form-data&quot;
+      ACTION=&quot;/jspSmartUpload/upload.jsp&quot;&gt;<br>
+      &lt;INPUT TYPE=&quot;FILE&quot; NAME=&quot;MYFILE&quot;&gt;<br>
+      &lt;INPUT TYPE=&quot;SUBMIT&quot;&gt;<br>
+      &lt;/FORM&gt;</small></td>
+    </tr>
+  </table>
+  </font>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="2"></a><strong><font face="Verdana, Helvetica"><big><big><a name="3">upload</a>
+method</big></big></font></strong></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The upload method must be called before any
+  other methods of the jspSmartUpload object.<br>
+  <br>
+  <strong>Example :</strong></small></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><small>&lt;%<br>
+      <br>
+      ' not possible<br>
+      ' ********<br>
+      ' out.println(myUpload.getRequest().<strong>getParameter(</strong>&quot;myParameter&quot;<strong>)</strong>
+      + &quot;&lt;br&gt;&quot;); <br>
+      ' myUpload.upload(); <br>
+      <br>
+      ' Possible<br>
+      ' ******<br>
+      myUpload.upload();<br>
+      out.println(myUpload.getRequest().<strong>getParameter(</strong>&quot;myParameter&quot;<strong>)</strong>
+      + &quot;&lt;br&gt;&quot;);<br>
+      %&gt;</small></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><big><strong><font face="Verdana, Helvetica"><a name="4">upload and uploadInFile</a>
+<a name="4">method</a>s</font></strong></big></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The upload and uploadInFile methods cannot be
+  used in the same JSP.</font></small></p>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><big><strong><font face="Verdana, Helvetica">d<a name="5">ownloadFile</a> and
+downloadField methods</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The JSP script which execute a download should
+  not have HTML tags (Carefull with carrier return).<br>
+  <br>
+  <strong>Example :</strong></small></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><strong><small>DownloadFile</small></strong><br>
+      <small>&lt;%@ page language=&quot;java&quot;
+      import=&quot;com.jspsmart.upload.*&quot;%&gt;&lt;jsp:useBean id=&quot;mySmartUpload&quot;
+      scope=&quot;page&quot; class=&quot;com.jspsmart.upload.SmartUpload&quot; /&gt;&lt;%</small><br>
+      <br>
+      <small>&nbsp;&nbsp; // Initialization with jspSmartUpload v2.1</small><br>
+      <small>&nbsp;&nbsp; mySmartUpload.initialize(pageContext);</small></font><p><font
+      face="Verdana, Helvetica"><small>&nbsp; // Download</small><br>
+      <small>&nbsp; mySmartUpload.downloadFile(&quot;/upload/sample.zip&quot;);</small><br>
+      <small>%&gt;</small></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">©&nbsp;2000 Advantys. All rights
+    reserved.</font></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Installation with JRun<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last update:
+    05/17/2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#JDK"><small><font face="Verdana, Helvetica">Stage 1 : Install JDK 1.2.2</font></small></a></li>
+  <li><a href="#JRUN"><small><font face="Verdana, Helvetica">Stage 2 : Install JRun</font></small></a></li>
+  <li><a href="#Composant"><small><font face="Verdana, Helvetica">Stage 3 : Install
+    jspSmartUpload</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">Use of examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+<b>
+
+<p><a name="JDK"></a><big><big><strong><font face="Verdana, Helvetica">Stage 1: Install
+JDK 1.2.2</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">JspSmartUpload requires JDK 1.2.2. <br>
+  JDK 1.2.2 is available for downloaded from Sun. <a
+  href="http://java.sun.com/products/jdk/1.2/download-windows.html">JDK 1.2.2 for Windows</a>
+  </font></p>
+  <p><font face="Verdana" SIZE="2"><strong>Note:</strong> You can install it in any
+  directory (default is <font color="#000080">C:\jdk1.2.2</font>). </font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="JRUN"></a><big><big><strong><font face="Verdana, Helvetica">Stage 2: Install
+JRun</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">JRun is available for download from Allaire. <a
+  href="http://commerce.allaire.com/download/">JRun 2.3.3 for Windows</a><br>
+  <u><strong><br>
+  Note:</strong></u> You must stop IIS service before installing JRun. To do so, type the
+  command: <strong>net stop iisadmin</strong><br>
+  <br>
+  You can install JRun in any directory (default is C:\JRun).&nbsp;<br>
+  <br>
+  During the installation process, JRun asks for the path to the JDK. <br>
+  You <strong>must</strong> use the path to the JDK1.2.2 installed in Stage 1.<br>
+  You should not use the JDK bundled with JRun (<font color="#000080">C:\JRun\jre</font>)<br>
+  <br>
+  JRun then launch the &quot;Jrun setup wizard&quot;. <br>
+  Use <font color="#000080">C:\Jrun </font>as root directory<br>
+  Fields &quot;<em>older root directory</em>&quot;, &quot;<em>licence key</em>&quot; and
+  &quot;<em>CF Anywhere</em>&quot; do not need to be filled<br>
+  About &quot;JSP Version Mapping&quot; step, you <strong>must</strong> choose &quot;Map
+  *.jsp to v1.0&quot;<br>
+  <br>
+  During the set up of the connector, select <strong>IIS/PWS 3.0/4.0</strong> and type in
+  the IP address of your server.<br>
+  <br>
+  JRun then asks for the path to IIS 'scripts' directory. <br>
+  <br>
+  You must type </font><font face="Verdana" SIZE="2" color="#000080">C:\InetPub\Your_Site\scripts</font><font
+  face="Verdana" SIZE="2"><br>
+  <strong>Caution:</strong> the box &quot;Add JRun as a global filter to IIS&quot; must be
+  checked.</font><b></p>
+  </b><p><font face="Verdana" SIZE="2">After completing JRun installation, it is recommended
+  that you upgrade JRun to the latest available version.&nbsp; <a
+  href="http://www.allaire.com/products/jrun/MoreInformation/ProductUpdates.cfm">JRun
+  updates</a></font><b></p>
+  <p></b><font face="Verdana" SIZE="2">You can now restart IIS by typing the command <strong>net
+  start iisadmin</strong> and start Jrun from the Start menu&gt;Programs&gt;JRun&gt;Start
+  JRun<br>
+  You also have to start you web site from the IIS management console.</font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Composant"></a><big><big><strong><font face="Verdana, Helvetica">Stage 3 :
+Install jspSmartUpload.</font></strong></big></big></p>
+
+<blockquote>
+  <p></b><font face="Verdana" SIZE="2">Supposing your web site location is </font><font
+  face="Verdana, Helvetica" SIZE="2" color="#000080">C:\InetPub\Your_Site</font><font
+  face="Verdana, Helvetica" SIZE="2"></p>
+  <table width="575">
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site</font></td>
+      <td width="159"><font face="Verdana, Helvetica" SIZE="2">site root</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\</font></td>
+      <td width="159"><font face="Verdana, Helvetica" SIZE="2">Static pages (html)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\jsp\
+      </font></td>
+      <td width="159"><font face="Verdana, Helvetica" SIZE="2">Dynamic pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+    <tr>
+      </font><td width="408"><font face="Verdana, Helvetica" SIZE="2">C:\InetPub\Your_Site\jspsmartupload\upload
+      </font></td>
+      <td width="159"><font face="Verdana, Helvetica" SIZE="2">Uploaded files</font></td>
+      <font face="Verdana, Helvetica" SIZE="2">
+    </tr>
+  </table>
+  <p></font><font face="Verdana, Helvetica"><small>1. Copy the files located in </small></font><strong><font
+  face="Verdana" SIZE="2">jspsmartupload\*.html</font></strong><font face="Verdana"><small>
+  into <font color="#000080">C:\InetPub\Your_Site\jspsmartupload</font></small><font
+  SIZE="2"><br>
+  </font></font><font face="Verdana, Helvetica"><br>
+  <small>2. Copy the files located in<strong> </small></font><font face="Verdana" SIZE="2">jspsmartupload</font><font
+  face="Verdana, Helvetica"><small>\jsp\*.jsp</strong> into <font color="#000080">C:\InetPub\Your_Site\jspsmartupload\jsp</font></small><br>
+  </font><font face="Verdana" SIZE="2"><br>
+  3. Copy the files located in <strong>jspsmartupload\Web-inf\classes</strong> into </font><font
+  color="#000080" face="Verdana" size="2">C:\JRun\jsm-default\classes.</font></p>
+  <p><font face="Verdana" SIZE="2">4. In IIS management console, create a virtual directory
+  named <strong>jspsmartupload </strong>which physical path is</font><font face="Verdana"> <font
+  color="#000080"><small>C:\InetPub\Your_Site\jspsmartupload</small></font> <font SIZE="2">and
+  allow the<strong> Execute </strong>access on this virtual dir (your site must also have
+  the Execute access).<br>
+  </font><br>
+  <font SIZE="2">5</font></font><font face="Verdana" SIZE="2">. You need a virtual directort
+  named <strong>upload</strong> to save uploaded files. Its physical path is <font
+  color="#000080">C:\InetPub\Your_Site\jspsmartupload\upload</font></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Use of examples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>Type the following URL in your browser:</small><br>
+  <small>http://IP_address_of_your_web_server/jspsmartupload/default.htm</small></font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font><font
+    color="#000000" size="1" face="Verdana,Helvetica">All rights reserved</font><font
+    color="#000000" size="1" face="Verdana,Arial">.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

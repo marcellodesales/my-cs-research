@@ -1,0 +1,228 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font face="Verdana,Helvetica"><font class="Title" color="#0033cc"
+    size="6"><strong>Installation with JRun and Apache<br>
+    </strong></font><font color="#000000" size="1">Last update: 05/13/2000<br>
+    © 2000 Advantys. All right reserved.</font></font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><font face="Verdana,Helvetica"><a href="#JDK"><small>Step 1 : Install JDK1.2.2</small></a></font></li>
+  <li><font face="Verdana,Helvetica"><a href="#APACHE"><small>Step 2 : Install Apache</small></a></font></li>
+  <li><font face="Verdana,Helvetica"><a href="#JRUN"><small>Step 3 : Install JRun</small></a></font></li>
+  <li><font face="Verdana,Helvetica"><a href="#Composant"><small>Step 4 : Install jspSmartUpload</small></a></font></li>
+  <li><font face="Verdana,Helvetica"><a href="#Utilisation"><small>Use of examples</small></a></font></li>
+</ul>
+
+<hr noshade size="1">
+
+<p><font face="Verdana,Helvetica"><a name="JDK"></a></font></p>
+
+<p><font face="Verdana,Helvetica"><big><big><strong>Step 1: Install JDK 1.2.2</strong></big></big></font></p>
+
+<blockquote>
+  <p><font face="Verdana,Helvetica"><small>JDK1.2.2 is available for download from Sun. <a
+  href="http://java.sun.com/products/jdk/1.2/download-linux.html">JDK1.2.2 for linux</a></small><br>
+  <br>
+  <small>Uncompress the downloaded file by typing <strong>tar -xzvf
+  jdk1.2.2-linux-i286.tar.gz</strong></small><br>
+  <small>This will create a jdk1.2.2 directory</small>.<br>
+  <small>Move this directory to /usr/local/ by typing <strong>mv jdk1.2.2 /usr/local/</strong>
+  </small></font></p>
+  <p><font face="Verdana,Helvetica"><small>Set your $PATH variable and add
+  /usr/local/jdk1.2.2/bin</small></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><font face="Verdana,Helvetica"><a name="Apache"></a><big><big><strong>Step 2: Install
+Apache</strong></big></big></font></p>
+
+<blockquote>
+  <p><font face="Verdana,Helvetica"><font SIZE="2">Apache Web Server is available for
+  download from Apache. <a href="http://www.apache.org/dist/apache_1.3.12.tar.gz">Apache
+  1.3.12 for linux</a><br>
+  <br>
+  </font><small>Uncompress the downloded file by typing</small><font SIZE="2"> </font><font
+  size="2" color="#000000"><b>tar -xzvf apache_1.3.12.tar.gz</b> <br>
+  </font><small>This will create an </small><font size="2" color="#000000">apache_1.3.12</font><small>
+  directory</small><font size="2" color="#000000">.<br>
+  </font><small>Move this directory to</small><font size="2" color="#000000">
+  /usr/local/apache </font><small>by typing</small><font size="2" color="#000000">:&nbsp; <b>mv
+  apache_1.3.12 /usr/local/apache<br>
+  <br>
+  </b>Finally, to compile Apache, from the directory /usr/local/apache/ type:<b><br>
+  &nbsp;&nbsp;&nbsp; ./configure --prefix=/usr/local/apache --enabled-rule=SHARED_CORE
+  --enable-module=so<br>
+  &nbsp;&nbsp;&nbsp; make<br>
+  &nbsp;&nbsp;&nbsp; make install</b></font></font></p>
+  <p><b>&nbsp;</p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><font face="Verdana,Helvetica"><a name="JRUN"></a><big><big><strong>Step 3: Install
+JRun</strong></big></big></font></p>
+
+<blockquote>
+  <p></b><font face="Verdana,Helvetica"><font SIZE="2">JRun&nbsp; is available for download
+  from Allaire. <a href="http://commerce.allaire.com/download/">JRun 2.3.3 for unix</a><br>
+  <br>
+  </font><small>Uncompress the downloaded file by typing</small><font SIZE="2"> <strong>tar
+  -xzvf jr233u.tar.Z<br>
+  </strong></font><small>This will create a</small></font><font size="2"
+  face="Verdana,Helvetica"> jrun/ directory.</font><font SIZE="2"><b></p>
+  </b><p><font face="Verdana,Helvetica">You should then install the lasest JRun update. <a
+  href="http://www.allaire.com/products/jrun/MoreInformation/ProductUpdates.cfm">JRun update
+  </a><br>
+  Copy the downloaded file (jp233157u.tar.Z) to the jrun directory.<br>
+  From this directory type <strong>tar -xzvf jp233157u.tar.Z</strong><br>
+  This will update JRun and remplace the old version.</font></p>
+  <p><font face="Verdana,Helvetica">The jrun/ directory now contains the latest version of
+  JRun. Move it to /usr/local/jrun by typing <strong>mv jrun/ /usr/local/jrun</strong> </font></font></p>
+  <table CELLSPACING="0" BORDER="0" CELLPADDING="2">
+    <tr>
+      <td WIDTH="100%" HEIGHT="16" colspan="2"><font COLOR="#000000" size="1"><p ALIGN="LEFT"></font><font
+      face="Verdana,Helvetica"><small>from /usr/local/jrun type <b>./install.sh</b></small></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="100%" HEIGHT="16" colspan="2"><font face="Verdana,Helvetica"><small>The
+      diffrents parameters are :</small><br>
+      </font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">jrun root directory </font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>/usr/local/jrun</strong></font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">older jrun root directory</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><i><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>none</strong></font></i></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">JSM Licence key</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><i><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>none</strong></font></i></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">CF_Anywhere</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><i><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>not active</strong></font></i></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">Mapping</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>Map *.jsp to JSP 1.0</strong></font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">Connecteur</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>Apache 1.2/1.3</strong></font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">proxy host</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font size="2" color="#000000"><p ALIGN="LEFT"></font><font
+      COLOR="#000000" size="2" face="Verdana,Helvetica"><strong>123.123.123.123 (IP address of
+      your server)</strong></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">proxy port</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>8081</strong></font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">apache conf directory</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>/usr/local/apache/conf</strong></font></font></td>
+    </tr>
+    <tr>
+      <td WIDTH="52%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica">DSO</font></font></td>
+      <td WIDTH="48%" HEIGHT="16"><font COLOR="#000000" size="2"><p ALIGN="LEFT"><font
+      face="Verdana,Helvetica"><strong>Do not use DSO</strong></font></font></td>
+    </tr>
+  </table>
+  <p><font face="Verdana,Helvetica"><font size="2"><strong><u><br>
+  </u></strong>Create a <b><font color="#000000">/usr/local/apache/src/modules/</font></font><font
+  COLOR="#000000" size="2">jrun </b>dirctory and copy the
+  /usr/local/jrun/connectors/apache/src directory in it. To do so, type: <br>
+  <strong>cp /usr/local/jrun/connectors/apache/src/* /usr/local/apache/src/modules/jrun</strong></font></font></p>
+  <p><font face="Verdana,Helvetica" size="2" color="#000000">From the /usr/local/apache
+  directory, type:<br>
+  <b>./configure --prefix=/usr/local/apache --activate-module=src/modules/jrun/libjrun.a<br>
+  make</b></font></p>
+  <b>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><font face="Verdana,Helvetica"><a name="Composant"></a><big><big><strong>Step4 :
+Install jspSmartUpload.</strong></big></big></font></p>
+
+<blockquote>
+  </b><p><font face="Verdana,Helvetica"><small>Coopy the files from jspSmartUpload/Web-inf/classes
+  into /usr/local/jrun/jsm-default/classes.</small><br>
+  <br>
+  <small>Create a directory <strong>jspsmartupload</strong> in /usr/local/apache/htdocs and
+  copy all the files from the jspsmartupload package (except the Web-inf directory)</small></font></p>
+  <p><font face="Verdana,Helvetica"><small>At the end of the apache configuration file
+  (/usr/local/apache/conf/httpd.conf) in the <em>&lt;IfModule mod_jrun.c&gt;</em> section,
+  after the <em>JrunConfig</em> lines, add the following lines:</small><br>
+  <strong><small>Alias /jspsmartupload &quot;/usr/local/apache/htdocs/jspsmartupload&quot;</small><br>
+  <small>Alias /upload &quot;/usr/local/apache/htdocs/jspsmartupload/upload&quot;</small></strong></font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><font face="Verdana,Helvetica"><a name="Utilisation"></a><a name="3"></a><big><big><strong>Use
+of examples</strong></big></big></font></p>
+
+<blockquote>
+  <p><font face="Verdana,Helvetica"><small>Start JRun by typing <strong>/usr/local/jrun/jsm-default/startjsm.sh</strong></small><br>
+  <small>Start Apache by typing <strong>/usr/local/apache/bin/apachectl start</strong></small><br>
+  <br>
+  <small>In your browser, enter the following URL :</small><br>
+  <small>http://IP_address_of_your_server/jspsmartupload/default.htm</small></font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font face="Verdana,Helvetica" color="#000000" size="1">© 2000 Advantys. All rights
+    reserved.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

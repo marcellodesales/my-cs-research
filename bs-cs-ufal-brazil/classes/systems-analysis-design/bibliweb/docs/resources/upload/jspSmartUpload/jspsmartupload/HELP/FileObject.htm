@@ -1,0 +1,350 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellPadding="0" cellSpacing="0">
+<TBODY>
+  <tr>
+    <td bgColor="#ffffff"><font class="ExtraTitle" color="#0033cc" face="Verdana,Helvetica"
+    size="2"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgColor="#ffffff"><font class="Title" color="#0033cc" face="Verdana, Helvetica"
+    size="6"><strong>File Object<br>
+    </strong></font><font color="#000000" face="Verdana,Arial" size="1">Last modified: March
+    1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</TBODY>
+</table>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getBinaryData">getBinaryData</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getBinaryData property contains the byte
+  corresponding to the table index containing the transmitted data.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getBinaryData (index)</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a byte value.</small><br>
+  <strong><br>
+  <small>Parameter</small></strong><br>
+  <small>index is an index of the byte's array.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      for (i=0;i&lt;myUpload.getFiles().getFile(0).getSize();i++) {<br>
+      &nbsp;&nbsp;&nbsp; out.println(myUpLoad.getFiles().getFile(0).<strong>getBinaryData(</strong>i<strong>)</strong>);<br>
+      }<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="fileToField"><big><strong><font face="Verdana, Helvetica">fileToField</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The fileToField method saves file in a field of
+  a specified DataBase. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.fileToField(rs,ColumnName)</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Parameters</small></strong><br>
+  <small>rs is the RecordSet.</small><br>
+  <small>ColumnName is the field's name of the RecordSet which will contain the file.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      myUpload.getFiles().getFile(0).<strong>fileToField</strong>(myRS,&quot;FILE&quot;); <br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getContentDisp">getContentDisp</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getContentDisp property contains the
+  content-disposition of field Data.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getContentDisp</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;</code></font><small><font face="Verdana, Helvetica">Content-disposition</font></small><font
+      face="Courier New"><code>=&quot; + myUpLoad.getFiles().getFile(0).<strong>getContentDisp()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getContentString">getContentString</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getContentString property contains contents
+  of the file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getContentString</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;Contents=&quot; + myUpLoad.getFiles().getFile(0).<strong>getContentString()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getContentType">getContentType</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getContentType property contains the
+  Content-Type of field Data.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getContentType</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;</code></font><font face="Verdana, Helvetica"><small>Content-Type</small></font><font
+      face="Courier New"><code>=&quot; + myUpLoad.getFiles().getFile(0).<strong>getContentType()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getFieldName">getFieldName</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getFieldName property contains the value of
+  the attribute NAME of the&nbsp; &lt;INPUT TYPE='file'&gt; Tag.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getFieldName</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;Name=&quot; + myUpLoad.getFiles().getFile(0).<strong>getFieldName()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getFileExt">getFileExt</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getFileExt property contains the extension
+  of the file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getFileExt</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;Extension=&quot; + myUpLoad.getFiles().getFile(0).<strong>getFileExt()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getFileName">getFileName</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getFileName property contains the name of
+  the file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getFileName</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;FileName=&quot; + myUpLoad.getFiles().getFile(0).<strong>getFileName()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getFilePathName">getFilePathName</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getFilePathName property contains the full
+  path of the file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getFilePathName</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;Path=&quot; + myUpLoad.getFiles().getFile(0).<strong>getFilePathName()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getSize">getSize</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getSize property contains the file's size.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getSize</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a int value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;</code></font><font face="Verdana, Helvetica"><small>Size</small></font><font
+      face="Courier New"><code>=&quot; + myUpLoad.getFiles().getFile(0).<strong>getSize()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getSubTypeMIME">getSubTypeMIME</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getSubTypeMIME property contains the
+  sub-Type of the file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getSubTypeMIME</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;MIME Sub-Type=&quot; + myUpLoad.getFiles().getFile(0).<strong>getSubTypeMIME()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getTypeMIME">getTypeMIME</a></font></strong></big></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The getTypeMIME property contains the Type of
+  the file (application, audio, image,multipart, text, video, ... ).</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getTypeMIME</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a String value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      out.println(&quot;</code></font><small><font face="Verdana, Helvetica">MIME</font></small><font
+      face="Courier New"><code> Type=&quot; + myUpLoad.getFiles().getFile(0).<strong>getTypeMIME()</strong>);<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="isMissing"><big><strong><font face="Verdana, Helvetica">isMissing</font></strong></big></a></p>
+
+<blockquote>
+  <small><font face="Verdana, Helvetica"><p>The isMissing property returns a boolean which
+  indicates if user has not specified a file.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.isMissing</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a Boolean value.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      if (myUpLoad.getFiles().getFile(0).<strong>isMissing()</strong>) {<br>
+      &nbsp;&nbsp;&nbsp; out.println(&quot;There is no specified file.&quot;);<br>
+      }<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="saveAs"><big><strong><font face="Verdana, Helvetica">saveAs</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The saveAs method saves file in the specified
+  directory. This method always overwrites existing files.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.saveAs (FilePathName [, Option])</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Parameter</small></strong><br>
+  <small>FilePathName is the destination directory with the file's name. It could be a
+  physical or a virtual path. If there is only the file's name then this one will be saved
+  on the root directory of the web server.</small><br>
+  <small>Option is optional. This parameter allow you to force the type of the path.</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_AUTO : If the path is not a virtual path, the Save method
+  consider this path as a physical path (by default).</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_VIRTUAL : If the path is not a virtual path, the Save
+  method return an error.</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_PHYSICAL : If the path is not a physical path, the Save
+  method return an error.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Examples</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New"><code>&lt;%<br>
+      myUpload.getFiles().getFile(0).<strong>saveas</strong>
+      &quot;c:\\&quot;+myUpload.getFiles().getFile(0).getFilename();<br>
+      myUpload.getFiles().getFile(1).<strong>saveas</strong>
+      &quot;/docs/&quot;+myUpload.getFiles.getFile(1).getFilename();<br>
+      myUpload.getFiles().getFile(2).<strong>saveas</strong> &quot;myFile.txt&quot;;<br>
+      %&gt;</code></font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font color="#000000" face="Verdana, Helvetica" size="1">© 2000 Advantys. All rights
+reserved.</font></p>
+</body>
+</html>

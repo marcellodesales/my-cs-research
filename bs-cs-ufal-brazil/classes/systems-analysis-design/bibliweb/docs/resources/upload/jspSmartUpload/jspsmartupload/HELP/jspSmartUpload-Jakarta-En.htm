@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<style>
+<!-- A:link {color : "#003399"; text-decoration : none} -->
+<!-- A:visited {color : "#003399"; text-decoration : none} -->
+<!-- A:hover {color : "#003399"; text-decoration : underline} -->
+<!-- A:active {color : "#003399"; text-decoration : underline} -->
+</style>
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0000ff">
+
+<table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#ffffff"><font class="ExtraTitle" color="#0033cc" size="2"
+    face="Verdana,Helvetica"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>Setup Apache/Tomcat<br>
+    </strong></font><font color="#000000" size="1" face="Verdana,Helvetica">Last modification:
+    May 1st 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</table>
+
+<ul>
+  <li><a href="#Organistaion"><font face="Verdana, Helvetica"><small>Directories structure</small></font></a></li>
+  <li><a href="#Requirements"><small><font face="Verdana, Helvetica">Required configuration</font></small></a></li>
+  <li><a href="#Configuration"><small><font face="Verdana, Helvetica">Stage 1: Apache and
+    Tomcat Configuration</font></small></a></li>
+  <li><a href="#Installation"><small><font face="Verdana, Helvetica">Stage 2: jspSmartUpload
+    Installation</font></small></a></li>
+  <li><a href="#Utilisation"><small><font face="Verdana, Helvetica">View Examples</font></small></a></li>
+</ul>
+
+<hr noshade size="1">
+
+<p><a name="Organistaion"></a><big><big><strong><font face="Verdana, Helvetica">Directories
+structure</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica" size="2"><u>Apache</u> :<br>
+  <br>
+  Root : /usr/local/apache<br>
+  Modules : /libexec (sous Unix), /modules (sous Windows)<br>
+  Configuration : /conf<br>
+  <br>
+  <u>Tomcat</u> :<br>
+  <br>
+  Root : /usr/local/tomcat<br>
+  <br>
+  <u>Our example web site</u>:<br>
+  <br>
+  Static Pages (served by apache) : /usr/local/apache/jspsmartupload<br>
+  Dynamic Pages dynamiques (served by Tomcat) : /usr/local/apache/jspsmartupload/jsp<br>
+  Upload directory : /usr/local/apache/jspsmartupload/upload<br>
+  Classes : /usr/local/apache/jspsmartupload/Web-inf </p>
+  </font>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Requirements"></a><big><big><strong><font face="Verdana, Helvetica">Required
+configuration</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica" size="2">- Apache 1.3 installed on port 80 <br>
+  <br>
+  - Tomcat 3.0 installed on port 8080 for the web server and on port 8007 for the JSP.<br>
+  </font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Configuration"></a><big><big><strong><font face="Verdana, Helvetica">Stage 1:
+Apache and Tomcat Configuration</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica" size="2"><b>1 - Apache Configuration:</b><br>
+  <br>
+  Copy mod_jserv.so in the modules directory of Apache<br>
+  Create a configuration file for Apache :<br>
+  </p>
+  <blockquote>
+    <p># Load the jserv module that serves as Tomcat's apache adapter.<br>
+    LoadModule jserv_module libexec/mod_jserv.so<br>
+    <br>
+    # Module configuration<br>
+    &lt;IfModule mod_jserv.c&gt;<br>
+    <br>
+    # Prevents Apache from starting Tomcat (feature not yet implemented in Apache)<br>
+    ApJServManual on<br>
+    <br>
+    # Secure communication is off (feature not yet implemented in Apache)<br>
+    ApJServSecretKey DISABLED<br>
+    <br>
+    # when virtual hosts are used, copy the mount points from the base server<br>
+    ApJServMountCopy on<br>
+    <br>
+    # Log level<br>
+    ApJServLogLevel notice<br>
+    <br>
+    # Default communication protocol is ajpv12<br>
+    ApJServDefaultProtocol ajpv12<br>
+    <br>
+    # Default location for the Tomcat connectors.<br>
+    ApJServDefaultHost 123.123.123.145<br>
+    ApJServDefaultPort 8007<br>
+    <br>
+    # Context declaration for JspSmartUpload files<br>
+    # /jspsmartupload : static files<br>
+    Alias /jspsmartupload /usr/local/apache/jspsmartupload<br>
+    <br>
+    # /jspsmartupload/jsp : Dynamic files <br>
+    ApJServMount /jspsmartupload /usr/local/apache/jspsmartupload<br>
+    <br>
+    &lt;/IfModule&gt; </p>
+  </blockquote>
+  <p><br>
+  This file (tomcat-apache.conf) must be imported in Apache configuration. To do so, just
+  add the following line at the end of the Apache configuration files (httpd.conf): <br>
+  <br>
+  Include /usr/local/apache/conf/tomcat-apache.conf<br>
+  <br>
+  <b>2 - Tomcat Configuration:</b><br>
+  <br>
+  Add in the server.xml file, a context to locate jsp pages:</p>
+  <blockquote>
+    <p>&lt;Context path=&quot;/jspsmartupload&quot;
+    docBase=&quot;/usr/local/apache/jspsmartupload&quot; defaultSessionTimeOut=&quot;30&quot;
+    isWARExpanded=&quot;true&quot; isWARValidated=&quot;false&quot;
+    isInvokerEnabled=&quot;true&quot; isWorkDirPersistent=&quot;false&quot;/&gt;</p>
+  </blockquote>
+  <p>Caution: the name of the virtual directory, must be the same than the name used in the
+  Apache configuration file with the ApJServMount command.</font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Installation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">Stage 2: jspSmartUpload Installation</font></strong></big></big></p>
+
+<blockquote>
+  <font face="Verdana, Helvetica" size="2"><table width="545">
+    <tr>
+      </font><td width="366"><font face="Verdana, Helvetica" size="2">/usr/local/apache/jspsmartupload
+      </font></td>
+      <td width="171"><font face="Verdana, Helvetica" size="2">Static Pages (html)</font></td>
+      <font face="Verdana, Helvetica" size="2">
+    </tr>
+    <tr>
+      </font><td width="366"><font face="Verdana, Helvetica" size="2">/usr/local/apache/jspsmartupload/upload</font></td>
+      <td width="171"><font face="Verdana, Helvetica" size="2">Upload/Download</font></td>
+      <font face="Verdana, Helvetica" size="2">
+    </tr>
+    <tr>
+      </font><td width="366"><font face="Verdana, Helvetica" size="2">/usr/local/apache/jspsmartupload/jsp</font></td>
+      <td width="171"><font face="Verdana, Helvetica" size="2">Dynamic Pages (jsp)</font></td>
+      <font face="Verdana, Helvetica" size="2">
+    </tr>
+    <tr>
+      </font><td width="366"><font face="Verdana, Helvetica" size="2">/usr/local/apache/jspsmartupload/WEB-INF/classes</font></td>
+      <td width="171"><font face="Verdana, Helvetica" size="2">Component</font></td>
+      <font face="Verdana, Helvetica" size="2">
+    </tr>
+  </table>
+  <p>1. Copy files from <strong>jspsmartupload/*.html</strong> in the directory<br>
+  /usr/local/apache/jspsmartupload.<br>
+  <br>
+  2. Copy files from <strong>jspsmartupload/jsp/*.jsp</strong> in the directory<br>
+  /usr/local/apache/jspsmartupload/jsp.<br>
+  <br>
+  3. Copy files from <strong>jspsmartupload/Web-inf/classes</strong> in the directory<br>
+  /usr/local/apache/jspsmartupload/WEB-INF/classes.<br>
+  <br>
+  4. In order to save uploaded files, create a virtual path <strong>upload</strong> mapped
+  the physical path : /usr/local/apache/jspsmartupload/upload.</font></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<p><a name="Utilisation"></a><a name="3"></a><big><big><strong><font
+face="Verdana, Helvetica">View examples</font></strong></big></big></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>Type the following URL in your browser: :</small><br>
+  <small>http://your_web_server/jspsmartupload/default.htm</small></font><b></p>
+</blockquote>
+
+<hr noshade size="1">
+
+<table>
+  <tr>
+    <td><font color="#000000" size="1" face="Verdana,Arial">© 2000 Advantys. </font><font
+    color="#000000" size="1" face="Verdana,Helvetica">All rights reserved</font><font
+    color="#000000" size="1" face="Verdana,Arial">.</font></td>
+  </tr>
+</table>
+</b>
+</body>
+</html>

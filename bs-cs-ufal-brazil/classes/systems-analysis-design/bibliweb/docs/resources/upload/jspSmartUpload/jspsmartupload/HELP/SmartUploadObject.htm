@@ -1,0 +1,409 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<title>jspSmartUpload</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<table border="0" cellPadding="0" cellSpacing="0">
+<TBODY>
+  <tr>
+    <td bgColor="#ffffff"><font class="ExtraTitle" color="#0033cc" face="Verdana,Helvetica"
+    size="2"><strong>JSPSMARTUPLOAD : DOCUMENTATION</strong></font></td>
+  </tr>
+  <tr>
+    <td bgColor="#ffffff"><font class="Title" color="#0033cc" face="Verdana,Helvetica"
+    size="6"><strong>SmartUpload Object<br>
+    </strong></font><font color="#000000" face="Verdana,Helvetica" size="1">Last modified:
+    March 1st, 2000<br>
+    © 2000 Advantys. All rights reserved.</font></td>
+  </tr>
+</TBODY>
+</table>
+
+<hr noShade SIZE="1">
+
+<p><a name="downloadField"><big><strong><font face="Verdana, Helvetica">downloadField</font></strong></big></a></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The downloadField method.</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.downloadField(SourceField, ColumnName [, ContentType, NewFileName])</small><br>
+  <strong><br>
+  <small>Parameter</small></strong><br>
+  <small>SourceField is the record of a DataBase.</small><br>
+  <small>ColumnName is the name of the field containing the file.</small><br>
+  <small>ContentType is the content type of the file. </small><br>
+  <small>NewFileName indicates a new name in the &quot;Save As&quot; dialog box.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpload.<strong>downLoadField(myRecordSet, &quot;FILE&quot;,
+      &quot;application/x-zip-compressed&quot;, &quot;NewFileName.txt&quot;</strong>);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="downloadFile"><big><strong><font face="Verdana, Helvetica">downloadFile</font></strong></big></a></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The downloadFile method.</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.downloadFile(SourceFile[, ContentType, NewFileName, blockSize])</small><br>
+  <strong><br>
+  <small>Parameter</small></strong><br>
+  <small>SourceFile is the source file. The path can be a virtual or a physical path. If
+  there is only a file name, then this one have to be placed in the root directory of the
+  web server.</small><br>
+  <small>ContentType. </small><br>
+  <small>NewFileName indicates a new name in the &quot;Save As&quot; dialog box.</small><br>
+  <small>blockSize set the size of a bloc loaded in memory.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpload.<strong>downloadFile &quot;/temp/myFile.txt&quot;,
+      &quot;application/x-zip-compressed&quot;, &quot;NewFileName.txt&quot;, 65536</strong><br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="fieldToFile"><big><strong><font face="Verdana, Helvetica">fieldToFile</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The fieldToFile method writes file from a
+  DataBase to a specified directory. This method creates a new file. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.fieldToFile FieldName(SourceField, ColumnName, DestinationFile)</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Parameters</small></strong><br>
+  <small>SourceField is the resultset obtain from a DataBase.</small><br>
+  <small>ColumnName is the name of the field containing the file.</small><br>
+  <small>DestinationFile is the file destination.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpload.<strong>fieldToFile</strong>(myRecordSet, &quot;FILE&quot;,
+      &quot;/temp/myFile.txt&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getBinaryData">getBinaryData</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getBinaryData property returns the Byte
+  corresponding to the table index containing the transmitted data.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getBinaryData(index)</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small><br>
+  </strong><small>Returns a byte value.</small><br>
+  <br>
+  <strong><small>Parameter</small><br>
+  </strong><small>index is an index of the byte's Array.</small></font></p>
+  <p><strong><font face="Verdana, Helvetica"><small>Example</small></font></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      for (int i=0;i&lt;MyUpLoad.TotalBytes;i++){<br>
+      &nbsp; out.println( myUpload.<strong>getBinaryData(</strong>i<strong>)</strong> );<br>
+      }<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="getFiles"><big><strong><font face="Verdana, Helvetica">getFiles</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getFiles method returns a Files object. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getFiles</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>A Files object.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      com.jspsmart.upload.Files myFiles = myUpload.<strong>getFiles();</strong><br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="getRequest"><big><strong><font face="Verdana, Helvetica">getRequest</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getRequest method returns a request object. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getRequest</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>A Request object.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      com.jspsmart.upload.Request myRequest = myUpload.<strong>getRequest();</strong><br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="getSize">getSize</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The getSize property contains the size in bytes
+  of the POST form.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.getSize</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Return Value</small></strong><br>
+  <small>Returns a int value.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      out.println(&quot;Bytes=&quot; + myUpLoad.<strong>getSize()</strong> +
+      &quot;&lt;br&gt;&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setAllowedFilesList">setAllowedFilesList</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setAllowedFilesList property contains the
+  list of file's extensions which are allowed to be uploaded. If this list is empty then all
+  files are allowed. If the list is not empty then only the files with a specified extension
+  are allowed. In order to allow the files without extension list must contain two commas
+  &quot;,,&quot;. By defect this property is empty.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setAllowedFilesList</small><br>
+  <strong><br>
+  <small>Example</small></strong></font></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setAllowedFilesList</strong>(&quot;txt,doc,xls&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setContentDisposition">setContentDisposition</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setContentDisposition property contains the
+  string of the Content Disposition Hearders for the MIME Type.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setContentDiposition</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Values</small></strong><br>
+  <small>- &quot;attachment;&quot;</small><br>
+  <small>- &quot;inline;&quot; for MSIE 5 users</small><br>
+  <small>- &quot;&quot;</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setContentDisposition</strong>(&quot;inline;&quot;);<br>
+      %&gt; </font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setDeniedFilesList">setDeniedFilesList</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setDeniedFilesList property contains the
+  list of file's extensions which are denied to be uploaded. If this list is empty then no
+  files are denied. All the files with an extension in the DeniedFileslist are denied even
+  if they are in the AllowedFilesList. In order to deny the files without an extension the
+  list must contain two commas &quot;,,&quot;. By defect this property is empty. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setDeniedFilesList</small><br>
+  <strong><br>
+  <small>Example</small></strong></font></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setDeniedFilesList</strong>(&quot;bat,exe,com,jsp&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setDenyPhysicalPath">setDenyPhysicalPath</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setDenyPhysicalPath property prevents to
+  access a path other that a virtual path of the Web Server. By defect this property is
+  false.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setDenyPhysicalPath</small><br>
+  <strong><br>
+  <small>Example</small></strong></font></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setDenyPhysicalPath</strong>(true);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setMaxFileSize">setMaxFileSize</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setMaxFileSize property contains the maximum
+  allowed size of one file to be uploaded. If this property is null then there is no limit
+  for the file's size uploaded. By defect this property is null. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setMaxFileSize</small><br>
+  <strong><br>
+  <small>Example</small></strong></font></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setMaxFileSize</strong>(100000);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><big><strong><font face="Verdana, Helvetica"><a name="setTotalMaxFileSize">setTotalMaxFileSize</a></font></strong></big></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The setTotalMaxFileSize property contains the
+  maximum allowed size of all files to be uploaded. If this property is null then there is
+  no limit for the total file's size uploaded. By defect this property is null.</font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.setTotalMaxFileSize</small><br>
+  <br>
+  <strong><small>Example</small></strong></font></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpLoad.<strong>setTotalMaxFileSize</strong>(100000);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="save"><big><strong><font face="Verdana, Helvetica">save</font></strong></big></a></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The save method saves all files in the disk.</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.save( [DestinationPath], [Option])</small><br>
+  <strong><br>
+  <small>Return value</small></strong><br>
+  <small>Returns a int value which indicates how many files have been saved.</small><br>
+  <strong><br>
+  <small>Parameter</small></strong><br>
+  <small>DestinationPath is optional. If this parameter is not specified then all files will
+  be saved in the root directory of the web server.</small><br>
+  <small>Option is optional. This parameter allow you to force the type of the path.</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_AUTO : If the path is not a virtual path, the Save method
+  consider this path as a physical path (by default).</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_VIRTUAL : If the path is not a virtual path, the Save
+  method return an error.</small><br>
+  <small>&nbsp;&nbsp;&nbsp; SAVE_PHYSICAL : If the path is not a physical path, the Save
+  method return an error.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      int nbFile = 0;<br>
+      <br>
+      myUpload.upload();<br>
+      // save the file in the root of the web site<br>
+      nbFile = myUpload.<strong>save(&quot;/&quot;);</strong><br>
+      nbFile = myUpload.<strong>save(&quot;/&quot;, myUpload.SAVE_AUTO);</strong><br>
+      nbFile = myUpload.<strong>save(&quot;/&quot;, myUpload.SAVE_VIRTUAL);</strong><br>
+      <br>
+      // save the file in the root of the disk (Unix)<br>
+      nbFile = myUpload.<strong>save(&quot;/&quot;, myUpload.SAVE_PHYSICAL);</strong><br>
+      out.println(nbFile + &quot; files saved.&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="upload"><big><strong><font face="Verdana, Helvetica">upload</font></strong></big></a></p>
+
+<blockquote>
+  <p><font face="Verdana, Helvetica"><small>The upload method.</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.upload</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpload.<strong>upload()</strong>;<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><a name="uploadInFile"><big><strong><font face="Verdana, Helvetica">uploadInFile</font></strong></big></a></p>
+
+<blockquote>
+  <p><small><font face="Verdana, Helvetica">The uploadInFile method creates a new file with
+  all data of the POST form. </font></small></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Syntax</small></strong><br>
+  <small>.uploadInFile (DestinationFile)</small></font></p>
+  <p><font face="Verdana, Helvetica"><strong><small>Parameter</small></strong><br>
+  <small>DestinationFile is the file destination.</small></font></p>
+  <p><strong><small><font face="Verdana, Helvetica">Example</font></small></strong></p>
+  <table bgcolor="#EEEEEE">
+    <tr>
+      <td><font face="Courier New" size="2">&lt;%<br>
+      myUpload.<strong>uploadInFile</strong>(&quot;/myData.txt&quot;);<br>
+      %&gt;</font></td>
+    </tr>
+  </table>
+</blockquote>
+
+<hr noShade SIZE="1">
+
+<p><font color="#000000" face="Verdana,Arial" size="1">©&nbsp;2000 Advantys. All rights
+reserved.</font></p>
+</body>
+</html>

@@ -1,0 +1,1 @@
+d:\jdk118\bin\java.exe -classpath ".;d:\jdk118\lib\classes.zip;msbChart" CharApp

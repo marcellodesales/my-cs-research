@@ -1,0 +1,2 @@
+* Resolver problema das Cópias; + 1 tabela;
+* Resolver problema de empréstimos: colocar pra buscar o livro;
