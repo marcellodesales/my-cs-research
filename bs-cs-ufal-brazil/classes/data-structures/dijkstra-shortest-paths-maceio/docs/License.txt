@@ -1,0 +1,81 @@
+TMulti1Button 
+
+Copyright (C) 1999 by Thomas Dingeldein
+th_dingeldein@hotmail.com
+
+All Rights Reserved
+
+
+License Agreement
+=================
+
+You should carefully read the following terms and conditions before using this
+software. Your use of this software indicates your acceptance of this license
+agreement and warranty.
+
+
+Shareware 
+=========
+
+You must not defeat, or try to defeat, messages in the Software which 
+encourage users to register; modify or prepare derivative works of the 
+Software; or reverse engineer, decompile or disassemble the Software.
+
+This software is copyrighted by the author
+This software and accompanying documentation are protected  
+by International treaty provisions.
+
+The author  grants you a limited license to use this software
+for evaluation purposes. If you continue using this software after 
+the evaluation period, you MUST make a registration payment to 
+the author.
+
+Distribution
+============
+
+You are hereby granted the right
+
+- to make as many copies of this software and its documentation as you wish;
+- give exact copies (including all files) of the original version to anyone;
+- and distribute the software and documentation in its unmodified form via
+  electronic means.
+
+There is no charge for any of the above.
+
+You are specifically prohibited from charging, or requesting donations, for
+any such copies.
+
+The following may distribute this software, 
+completely unaltered, without further permission:
+- Internet Shareware sites
+- CD ROM Manufactures
+
+for other cases or to distribute in modified form, you must 
+contact Practical Soft. Any distribution satisfying all the
+distribution requirements expressed in that data record is hereby
+authorized.
+
+Permission to distribute this software is not 
+transferable, assignable, saleable, or franchisable. Each vendor 
+wishing to distribute the package must independently satisfy the 
+terms of this limited distribution license.
+
+Legal Disclaimer
+================
+
+THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER 
+EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES 
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS 
+TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH YOU. SHOULD THE
+SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, 
+REPAIR OR CORRECTION. 
+
+IN NO EVENT WILL THE AUTHOR OR ANY OTHER PARTY WHO MAY HAVE DISTRIBUTED THE
+SOFTWARE AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY 
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR
+INABILITY TO USE THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR 
+DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER PROGRAMS), EVEN IF SUCH 
+HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+The author Thomas Dingeldein

@@ -1,0 +1,55 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Marcelo Alves de Sales">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win98; I) [Netscape]">
+   <title>Algoritmo Caminho mais Curto - Algoritmo,verifica&ccedil;&atilde;o fim da prova.</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#FF0000" alink="#FF0000" background="bg3.jpg" bgproperties="fixed">
+
+<div align=right><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=+1>&nbsp;
+Algoritmo Caminhos mais Curtos - Algoritmo, verifica&ccedil;&atilde;o,
+fim da prova.</font></b></div>
+&nbsp;
+<div ALIGN=right><table COLS=1 WIDTH="83%" >
+<tr>
+<td><img SRC="teoria.gif" BORDER=0 height=251 width=229 align=RIGHT><b>Para
+determinar qual o v&eacute;rtice adicionamos a cada passo, aplicamos o
+crit&eacute;rio de <font color="#FF0000">escolher o v&eacute;rtice v com
+a menor dist&acirc;ncia gravada na tabela</font> <font color="#FF0000">D</font>,
+tal que <font color="#FF0000">v</font> j&aacute; n&atilde;o esteja em <font color="#FF0000">S</font>.&nbsp;</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Devemos provar que, para este v&eacute;rtice <font color="#FF0000">v</font>,
+a dist&acirc;ncia gravada em <font color="#FF0000">D</font> &eacute; realmente
+o comprimento do menor caminho do v&eacute;rtice 1 ao v&eacute;rtice<font color="#FF0000">
+v</font>. Supomos que havia um caminho mais curto do v&eacute;rtice 1 ao<font color="#FF0000">
+v</font>, tal como mostra ao lado. Este caminho deixa primeiro <font color="#FF0000">S</font>
+para ir para qualquer v&eacute;rtice <font color="#FF0000">x</font>, e
+ent&atilde;o vai a <font color="#FF0000">v</font>. Mas se este caminho
+&eacute; menor que o caminho colorido a <font color="#FF0000">v</font>,
+portanto seu seguimento inicial do v&eacute;rtice 1 a <font color="#FF0000">x</font>
+&eacute; tamb&eacute;m menor, ent&atilde;o o crit&eacute;rio teria escolhido
+o v&eacute;rtice <font color="#FF0000">x </font>no lugar de <font color="#FF0000">v</font>
+como sendo o <font color="#FF0000">pr&oacute;ximo v&eacute;rtice a adicionar
+ao conjunto S</font>, desde que ter&iacute;amos tido <font color="#FF0000">D[x]
+&lt; D[v]</font>.&nbsp;</b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Quando
+adicionamos <font color="#FF0000">v </font>a <font color="#FF0000">S</font>
+imaginamos <font color="#FF0000">v</font> agora colorido e tamb&eacute;m
+colorimos o menor caminho do v&eacute;rtice 1 ao <font color="#FF0000">v</font>
+(toda a resta exceto a &uacute;ltima que j&aacute; foi colorida). A seguir,
+devemos atualizar as entradas de <font color="#FF0000">D</font> verificando
+cada v&eacute;rtice <font color="#FF0000">w </font>n&atilde;o pertencente
+a <font color="#FF0000">S</font>, se um caminho atrav&eacute;s de <font color="#FF0000">v</font>
+e ent&atilde;o diretamente a <font color="#FF0000">w</font> &eacute; menor
+do que a dist&acirc;ncia gravada anteriormente a <font color="#FF0000">w</font>.
+Isto &eacute;, trocamos <font color="#FF0000">D[w]</font> por <font color="#FF0000">D[v]
+</font>mais o valor da aresta de<font color="#FF0000"> v</font> a <font color="#FF0000">w</font>
+se for menor.</b>
+<br>&nbsp;</td>
+</tr>
+</table></div>
+
+</body>
+</html>

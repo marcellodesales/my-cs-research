@@ -1,0 +1,125 @@
+Armazendo BMP's em arquivos RES
+ 
+1. Criem um arquivo texto, por exemplo: RECURSOS.RC com um conteudo igual a este: 
+BITMAP_1 BITMAP "C:\Imagens\Grafico.bmp" 
+para todos os bitmap's que vc deseja; 
+2. Compilem este arquivo usando o BRCC32.EXE que esta no diretorio BIN do Delphi sera 
+gerado o arquivo RECURSOS.RES; e 
+3. Coloquem dentro do fonte do projeto: 
+{$R RECURSOS.RES} 
+Para usar o bitmap faca o seguinte: 
+VarTipoTBitmap:= LoadBitmap(HInstance,'BITMAP_1'); 
+
+
+Web pages use tiled bitmaps to create backgrounds. Is it possible to do this in Delphi?
+
+  Before I learned how to do this, to create a background on a form, I'd drop a TImage on my
+  form, then set its Align property to alClient. For low-resolution bitmaps, the pixelation that
+  would occur at times was absolutely terrible! But with the method that I'll show you here
+  (Note: this is merely ONE way of doing it), you can easily tile bitmaps on the surface of your
+  form. The trick is in trapping the WM_ERASEBKGND message in a handler, creating a
+  bitmap at runtime, then writing a quick bit of code in the OnPaint event handler.  Let's go
+  through the steps. 
+
+    1.In the private section of your code place the following:
+
+         private
+           { Private declarations }
+           MyBitmap: TBitmap;
+           procedure WMEraseBkgnd(var m: TWMEraseBkgnd); 
+                                  message WM_ERASEBKGND;
+
+       Notice the declaration of MyBitmap. We'll be creating an instance for it below. The
+       message handler for WM_ERASEBKGND looks like this:
+
+       procedure TBmpform.WMEraseBkgnd(var m : TWMEraseBkgnd);
+       begin
+         m.Result := LRESULT(False);
+       end;
+    2.Then, create the following code for the OnPaint event handler:
+
+       Note: In the original article, the "x := x + MyBitmap.Width" is a bit
+
+       inefficient in that continuously accessing the Bitmap.Width or .Height
+
+       properties can slow things down - especially when you've got code in the
+
+       OnPaint method. So what I did here was to simply set a couple of variables
+
+       to store the Width and Height property values of the bitmap.
+
+
+
+       procedure TBmpForm.FormPaint(Sender: TObject);
+
+       var
+
+         x, y: Integer;
+
+         iBMWid, iBMHeight : Integer;
+
+       begin
+
+         iBMWid := MyBitmap.Width;
+
+         iBMHeight := MyBitmap.Height;
+
+         y := 0;
+
+         while y < Height do
+
+         begin
+
+           x := 0;
+
+           while x < Width do
+
+           begin
+
+             Canvas.Draw(x, y, MyBitmap);
+
+             x := x + iBMWid;
+
+           end;
+
+           y := y + iBMHeight;
+
+         end;
+
+       end;
+
+    3.Finally, create an instance of the bitmap you want to tile in 
+
+       the background in the OnCreate event of your form:
+
+
+
+       procedure TForm1.FormCreate(Sender: TObject);
+
+       begin
+
+         Application.OnHint := ShowHint;
+
+         MyBitmap := TBitmap.Create;
+
+         MyBitmap.LoadFromFile('Brick4.bmp');
+
+       end;
+
+    4.Whoops, almost forgot! You need to destroy the 
+
+       bitmap when you exit!
+
+
+
+       procedure TForm1.FormClose(Sender: TObject; 
+
+                         var Action: TCloseAction);
+
+       begin
+
+         Action := caFree;
+
+         bmpBackground.Free;
+
+       end;

@@ -1,0 +1,36 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Marcelo Alves de Sales">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (Win98; I) [Netscape]">
+   <title>Algoritmo Caminhos mais Curtos - Tabela de Dist&acirc;ncia</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#FF0000" vlink="#FF0000" alink="#FF0000" background="bg3.jpg" bgproperties="fixed">
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=+1>&nbsp;
+Algoritmo Caminhos mais Curtos - Tabela de Dist&acirc;ncia</font></b>&nbsp;
+<div ALIGN=right><table COLS=1 WIDTH="83%" >
+<tr>
+<td><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Devemos manter uma tabela <font color="#FF0000">D</font> que d&aacute;,
+para cada v&eacute;rtice <font color="#FF0000">v</font>, a dist&acirc;ncia
+do do v&eacute;rtice 1 a <font color="#FF0000">v</font> ao longo a um caminho
+pelo qual as arestas s&atilde;o coloridas, exceto possivelmente o &uacute;ltimo.
+Isto &eacute;, se <font color="#FF0000">v</font> est&aacute; em <font color="#FF0000">S</font>,
+ent&atilde;o <font color="#FF0000">D[v] </font>d&aacute; a menor dist&acirc;ncia
+a <font color="#FF0000">v</font> e a todas as arestas ao longo a um caminho
+correspondente s&atilde;o coloridos. Se <font color="#FF0000">v</font>
+n&atilde;o est&aacute; em <font color="#FF0000">S</font>, ent&atilde;o
+<font color="#FF0000">D[v]</font> d&aacute; o comprimento de um caminho
+do v&eacute;rtice 1 a qualquer v&eacute;rtice <font color="#FF0000">w</font>
+em <font color="#FF0000">S</font> mais o valor da aresta de <font color="#FF0000">w</font>
+a <font color="#FF0000">v</font>, e todas as arestas deste caminho exceto
+o &uacute;ltimo colorido. A tabela <font color="#FF0000">D</font> &eacute;
+inicializado configurando <font color="#FF0000">D[v] </font>ao valor da
+aresta 1 a <font color="#FF0000">v</font> se existe e&nbsp;<img SRC="infinito.gif" height=11 width=16>
+se n&atilde;o existe.&nbsp;</b></td>
+</tr>
+</table></div>
+
+</body>
+</html>

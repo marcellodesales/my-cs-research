@@ -1,0 +1,52 @@
+const 
+	Max = { número total de vértice } 
+	Infinito = maxint;
+Type
+	valor = integer;
+	cont = 0..Max 
+	vertice = 1..Max;
+	TabelaAdjacencia = array[vertice,vertice] of valor;
+	TabelaDistancia = array[vertice] of valor;
+Var
+	n : cont;     // num de vértices no grafo
+	custo : TabelaAdjacencia; //descreve o grafo
+	D: TabelaDistancia;   //menores distâncias do vértice 1
+
+Procedure Distancia(n : cont; var custo : TabelaAdjacencia; var TabelaDistancia);
+{PréCondição: Um grafo orientado com n vértices é dado com os valores na tabela custo.
+PósCondição: O procedimento calcula o custo do menor caminho de vértice 1 a todos os outros vértices                
+                       do grafo e retorna o resultado no array D}
+
+Var
+	Final : array[vertice] of Boolean;   // final[v] é true sss v está no conjunto S
+	//I, w, v, min : valor;  w é um vértice ainda ñ adcionado a S; v vértice com menores tentativas   //em D[ ] ; mim distancia de v. Igual a D[v]
+Begin
+	Final[1] := true;  //inicializa com o vetor 1 sozinho no conjunto S.
+	D[1] := 0;
+	For v := 2 to n do
+	Begin
+		Final[v] := false;
+		D[v] := custo[1,v]
+	End;
+	For I := 2 to n do //começa o loop principal; adiciona um vértice v a S em cada passo.
+	Begin
+		Min := infinito;       //acha o vértice v mais próximo ao vértice 1
+		For w := 2  to n do
+			If not final[w] then
+				If D[w] < min then		
+				Begin
+					V := w;
+					Min := D[w];
+				End;
+		Final[v] := true;     //Adiciona o vértice v ao conjunto S;
+		For w := 2 to n do  //Atualiza as distancias érmanecentes em D
+			If not final[w] then
+				If (min + cost[v,w]) < D[w] then
+					D[w] : = min + custo[v,w];
+	End;	
+End;
+
+Performance
+			
+	Para estimar o tempo de execução deste procedimento, notamos que o loop principal é executado n-1 vezes, e dentro existe mais dois loops, cada um executando n-1 vezes, então estes loops contribuem a um múltiplo de (n-1)^2 operações. Declarações feitas fora do loop contribuem somente O(n), então o tempo de execução do algoritmo é O(n^2).
+
