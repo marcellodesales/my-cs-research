@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <pomVersion>3</pomVersion>
+  <artifactId>1.0</artifactId>
+  <name>PTF Add-on</name>
+  <groupId>ptf add-on</groupId>
+  <currentVersion>3.0.1</currentVersion>
+  <organization>
+    <name>Mototola Inc.</name>
+    <url>http://www.motorola.com</url>
+    <logo>C:/Documents and Settings/Marcello/Meus documentos/Minhas imagens/motorola_logo.jpg</logo>
+  </organization>
+  <inceptionYear>2004</inceptionYear>
+  <logo>/images/logo.gif</logo>
+  <shortDescription>This is an automated test execution user interface</shortDescription>
+  <repository />
+  <mailingLists>
+    <mailingList>
+      <name>${pom.name} Dev List</name>
+    </mailingList>
+    <mailingList>
+      <name>${pom.name} User List</name>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <name>Marcello Sales Jr.</name>
+      <id>0</id>
+      <email>masj2@cin.ufpe.br</email>
+      <organization>Center of Informatics (CIn)-UFPE Inc.</organization>
+      <url>http://www.marcellojunior.shows.it</url>
+      <timezone>-3</timezone>
+    </developer>
+    <developer>
+      <name>José Elias</name>
+      <id>1</id>
+      <email>jeqca@cin.ufpe.br</email>
+      <organization>Center of Informatics (CIn)-UFPE</organization>
+      <timezone>-3</timezone>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Luiz Kawakami</name>
+      <email>kawakami.luiz@motorola.com</email>
+      <organization>Center of Informatics (CIn)-UFPE Jaguariúna Inc.</organization>
+      <timezone>-3</timezone>
+    </contributor>
+    <contributor>
+      <name>Andre Kinaben</name>
+      <email>andre.kinaben@motorola.com</email>
+      <organization>Center of Informatics (CIn)-UFPE Jaguariúna</organization>
+    </contributor>
+  </contributors>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <unitTestSourceDirectory>src/test</unitTestSourceDirectory>
+    <unitTest>
+      <includes>
+        <include>**/*Test.java</include>
+      </includes>
+    </unitTest>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+  </build>
+  <reports>
+    <report>maven-ashkelon-plugin</report>
+    <report>maven-checkstyle-plugin</report>
+    <report>maven-clover-plugin</report>
+    <report>maven-jdepend-plugin</report>
+    <report>maven-faq-plugin</report>
+    <report>maven-jira-plugin</report>
+    <report>maven-license-plugin</report>
+    <report>maven-junit-report-plugin</report>
+    <report>maven-pmd-plugin</report>
+    <report>maven-jxr-plugin</report>
+    <report>maven-multiproject-plugin</report>
+    <report>maven-simian-plugin</report>
+    <report>maven-tasklist-plugin</report>
+    <report>maven-multichanges-plugin</report>
+    <report>maven-jellydoc-plugin</report>
+    <report>maven-linkcheck-plugin</report>
+    <report>maven-cruisecontrol-plugin</report>
+    <report>maven-dashboard-plugin</report>
+    <report>maven-jcoverage-plugin</report>
+  </reports>
+</project>
+

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     29/07/2004 10:00:17                                                        
+
+     PTF Add-on    
+     PTF Add-on Will Automate the use of PTF framework.
+                   
+     Marcello                                                                
+     ====================================================================== -->
+<project name="PTF Add-on" default="zipall" basedir=".">
+    <description>
+    	PTF Add-on Will Automate the use of PTF framework.
+    </description>
+	
+	<property name="project.name" value="PTF Add-on Beta"/>
+	<property name="project.version" value="3.0"/>
+	
+	<property name="src" value="src" />
+	<property name="classes" value="bin" />
+	<property name="deploy" value="deploy" />
+	<property name="deploytemp" value="deploytemp" />
+	<property name="lib" value="lib" />
+	<property name="docs" value="docs" />
+	<property name="api" value="${docs}/api" />
+	
+	<property name="manifest.class.path" value="${lib}\castor-0.9.5.3-xml.jar ${lib}\jakarta-oro-2.0.8.jar ${lib}\jakarta-regexp.jar ${lib}\kunststoff.jar ${lib}\poi-2.5-final-20040302.jar ${lib}\xalan.jar ${lib}\xerces.jar ${lib}\msbase.jar ${lib}\mssqlserver.jar ${lib}\msutil.jar"/>
+	<property name="manifest.main.class" value="br.ufpe.cin.stp.ptfaddon.view.PtfAddonSwing"/>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="init"  description="Creates needed directories.">
+    	<echo message="Creating needed files..." />
+    	<tstamp/>
+    	<mkdir dir="${classes}"/>
+    </target>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: compile->init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="compile" depends="init" description="Compiles the sources and put them into the classes dir."> 
+    	<echo message="Compiling sources files... excluding test ones..." />	
+		<javac srcdir="${src}" destdir="${classes}">
+			<exclude name="tests/**"/>
+			<classpath>
+				<pathelement location="${lib}\castor-0.9.5.3-xml.jar"/>
+				<pathelement location="${lib}\jakarta-oro-2.0.8.jar"/>				
+				<pathelement location="${lib}\jakarta-regexp.jar"/>
+				<pathelement location="${lib}\kunststoff.jar"/>
+				<pathelement location="${lib}\poi-2.5-final-20040302.jar"/>
+				<pathelement location="${lib}\xalan.jar"/>
+				<pathelement location="${lib}\xerces.jar"/>
+			</classpath>
+		</javac>
+	</target>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: dist->compile                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="dist" depends="compile" description="Generates the JAR file.">
+    	<echo message="Creating deployment directory..." />
+		<mkdir dir="${deploy}"/>
+		<mkdir dir="${deploytemp}"/>
+		
+    	<echo message="Creating the JAR file of the application..." />
+		<jar jarfile="${deploytemp}/ptfaddon.jar" basedir="${classes}">
+		 	<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+		     	<attribute name="Specification-Title" value="${project.name}"/>
+			    <attribute name="Specification-Vendor" value="Center of Informatics (CIn)-UFPE Inc."/>
+		      	<attribute name="Implementation-Version" value="${project.version} - ${TODAY}"/> 
+		     	<attribute name="Implementation-Vendor" value="CIn-STP - UFPE/BRAZIL"/>
+		 		<attribute name="Main-Class" value="${manifest.main.class}"/>
+		 		<attribute name="Class-Path" value="${manifest.class.path}"/>
+		  	</manifest>			
+		</jar>
+		<echo file="${deploytemp}/run.bat" append="false">
+			java -jar ptfaddon.jar
+		</echo>
+
+		<copy todir="${deploytemp}/config">
+			<fileset file="config/ptfaddon.properties"/>
+		</copy>
+		
+		<mkdir dir="${deploytemp}/executions"/>
+		
+    	<echo message="Copying libraries into deployment directory..." />
+		<copy todir="${deploytemp}/lib">
+			<fileset dir="${lib}" />
+		</copy>
+	</target>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: javadoc                    
+         - - - - - - - - - - - - - - - - - -->	
+	<target name="javadoc" description="Creates the API of the application">
+		  <javadoc
+		           destdir="${api}"
+		           author="true"
+		           version="true"
+		           use="true"
+		           windowtitle="${project.name} - ${project.version}">
+
+		    <fileset dir="${src}" defaultexcludes="yes">
+		      	<exclude name="tests/**"/>
+		    	<exclude name="**/*.png"/>
+		    	<exclude name="**/*.properties"/>
+	    		<exclude name="**/*.jbx"/>
+		    </fileset>
+
+		    <doctitle><![CDATA[<h1>PTF Add-on</h1>]]></doctitle>
+		    <bottom><![CDATA[<i>Copyright &#169; 2004 CIn-STP / Center of Informatics (CIn)-UFPE Project</i>]]></bottom>
+		    <tag name="todo" scope="all" description="To do:" />
+		    <link href="http://developer.java.sun.com/developer/products/xml/docs/api/"/>
+		  </javadoc>	
+	</target>
+	
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: zipall->dist                     
+         - - - - - - - - - - - - - - - - - -->		
+	<target name="zipall" depends="dist" description="Creates a zip file contaning the build and the sources.">
+		
+		<echo message="Compacting build, source and API documentations..."/>
+		<zip destfile="${deploy}/ptfaddon-${DSTAMP}.zip">
+		    <zipfileset dir="${deploytemp}" prefix="build/"/>
+		  	<zipfileset dir="${src}" prefix="src"/>
+		  	<zipfileset dir="${api}" prefix="${api}"/>
+		</zip>
+		<echo message="Creating final Private System Build"/>
+		<move file="${deploy}/ptfaddon-${DSTAMP}.zip" tofile="${deploy}/ptfaddon-${DSTAMP}.rar" />
+		<delete dir="${deploytemp}"/>
+	</target>
+
+</project>

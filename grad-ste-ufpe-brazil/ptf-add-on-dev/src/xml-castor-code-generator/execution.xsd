@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="testCaseInfoType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([a-z])*(.([a-z]|[A-Z]|[0-9])*)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="coreIdType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]([A-Z]|[0-9]){5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="platformType">
+		<xs:sequence>
+			<xs:element name="hardware" type="xs:string"/>
+			<xs:element name="build" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="testCentralInfoType">
+		<xs:sequence>
+			<xs:element name="coreId" type="coreIdType"/>
+			<xs:element name="cycle" type="xs:string"/>
+			<xs:element name="plan" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="neededFilesType">
+		<xs:sequence>
+			<xs:element name="config" type="xs:string"/>
+			<xs:element name="testList" type="xs:string"/>
+			<xs:element name="jarTestCases" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+<!--	<xs:complexType name="testListType">
+		<xs:sequence>
+			<xs:element name="testCaseId" type="testCaseInfoType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+-->
+	<xs:complexType name="executionType">
+		<xs:sequence>
+			<xs:element name="platform" type="platformType"/>
+			<xs:element name="testCentralInfo" type="testCentralInfoType"/>
+			<xs:element name="neededFiles" type="neededFilesType"/>
+     		<!--xs:element name="testList" type="testListType"/ -->
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="date" type="xs:date"/>
+		<xs:attribute name="time" type="xs:time"/>
+	</xs:complexType>
+	<xs:element name="executionWizard" type="executionType"/>
+</xs:schema>

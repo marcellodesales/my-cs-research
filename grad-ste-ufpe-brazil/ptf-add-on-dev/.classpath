@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/poi-2.5-final-20040302.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/desenv/libs/kunststoff.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/castor-0.9.5.3-xml.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/jakarta-oro-2.0.8.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/jakarta-regexp.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/xalan.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/xerces.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/msbase.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/msutil.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/projects/ptfaddon_repository/dav/lib/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="C:/desenv/javaIDES/eclipse3.0/plugins/org.junit_3.8.1/junit.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

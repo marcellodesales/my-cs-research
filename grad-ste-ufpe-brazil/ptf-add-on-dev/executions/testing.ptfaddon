@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<executionWizard id="1095303826131" date="2004-09-16" time="00:03:46">
+    <platform type="P2K">
+        <hardware>hardwareerere</hardware>
+        <build>sdsd</build>
+    </platform>
+    <testCentralInfo>
+        <coreId>WMJ011</coreId>
+        <cycle>we</cycle>
+        <plan>wewe</plan>
+    </testCentralInfo>
+    <neededFiles>
+        <config>C:\TAF_PTF_Config.cfg</config>
+        <testList>C:\Testcase_Exec_List.txt</testList>
+        <jarTestCases>C:\test_auto\lib\testcase.jar</jarTestCases>
+    </neededFiles>
+</executionWizard>

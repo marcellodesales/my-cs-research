@@ -1,0 +1,19 @@
+<configuration>
+   <section name="ptf">
+      <entry key="PHONETEST_HOME" value="c:/PhoneTest" />
+      <entry key="TEST_HOME" value="C:/TEST_AUTO" />
+   </section>
+
+   <section name="authentication">
+      <entry key="userid" value="admin" />
+      <entry key="pword" value="x98oln1wq" />
+      <entry key="role" value="administration" />
+      <entry key="rights" value="all" />
+   </section>
+
+   <section name="notification">
+      <entry key="notificationType" value="general" />
+      <entry key="receiverAddress" value="admin@mycomp.com" />
+      <entry key="senderAddress" value="webproj_dev@mycomp.com" />
+   </section>
+</configuration>

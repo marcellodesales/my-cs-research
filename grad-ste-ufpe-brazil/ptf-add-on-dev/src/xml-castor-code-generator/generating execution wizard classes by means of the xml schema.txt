@@ -1,0 +1,18 @@
+Bindings-automatic generation of classes
+
+1. update the xml schema definition for the model;
+2. run the CastorGenerator script and assure that the schema file is correctly defined;
+3. update the constructors of each class
+
+    public Platform(String type,String hardware, String build){
+        this.setType(type);
+        this.setHardware(hardware);
+        this.setBuild(build);
+    }
+
+    public TestCentralInfo(String coreId, String cycle, String plan) {
+        super();
+        this.setCoreId(coreId);
+        this.setCycle(cycle);
+        this.setPlan(plan);
+    }

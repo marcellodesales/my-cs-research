@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<executionWizard id="1094141951119" date="2004-09-02" time="13:19:11">
+    <hardware>
+        <platform>V80</platform>
+        <build>wewe</build>
+    </hardware>
+    <testCentralInfo>
+        <coreId>WEWEWE</coreId>
+        <cycle>we</cycle>
+        <plan>wewe</plan>
+    </testCentralInfo>
+    <neededFiles>
+        <config>C:\TAF_PTF_Config.cfg</config>
+        <testList>C:\rwtests</testList>
+    </neededFiles>
+    <testList>
+        <testCaseId>com.motorola.testcase.utility.phonebook.TC_DELETE_ENTRY_PASS</testCaseId>
+        <testCaseId>com.motorola.testcase.utility.phone.TC_WAIT_FOR_TRANSIENT_NOTICE_PASS</testCaseId>
+        <testCaseId>com.motorola.testcase.utility.phone.TC_VERIFY_DIALOG_PASS</testCaseId>
+    </testList>
+</executionWizard>
