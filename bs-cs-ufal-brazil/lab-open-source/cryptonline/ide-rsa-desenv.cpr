@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+    <SourceDirectories>
+        <Directory relativePath="src" absolutePath="C:\desenv\criptography\src\"/>
+        <Directory absolutePath="C:\desenv\persistencelayer\src\"/>
+    </SourceDirectories>
+    <ProjectDirectories>
+        <Directory relativePath="src" absolutePath="C:\desenv\criptography\src\"/>
+        <Directory absolutePath="C:\desenv\persistencelayer\src\"/>
+    </ProjectDirectories>
+    <LibrarySourceDirectories>
+        <Directory absolutePath="C:\desenv\persistencelayer\src\"/>
+        <Directory relativePath="lib/crimson.jar" absolutePath="C:\desenv\criptography\lib\crimson.jar"/>
+        <Directory relativePath="lib/jaxp.jar" absolutePath="C:\desenv\criptography\lib\jaxp.jar"/>
+    </LibrarySourceDirectories>
+    <LibraryClassDirectories>
+        <Directory relativePath="lib/jdbc7.1-1.2.jar" absolutePath="C:\desenv\criptography\lib\jdbc7.1-1.2.jar"/>
+        <Directory relativePath="lib/jta-spec1_0_1.jar" absolutePath="C:\desenv\criptography\lib\jta-spec1_0_1.jar"/>
+        <Directory relativePath="lib/activation.jar" absolutePath="C:\desenv\criptography\lib\activation.jar"/>
+        <Directory relativePath="lib/mail.jar" absolutePath="C:\desenv\criptography\lib\mail.jar"/>
+        <Directory absolutePath="C:\Arquivos de programas\Apache Tomcat 4.0\common\lib\servlet.jar"/>
+    </LibraryClassDirectories>
+    <DestinationDirectory relativePath="site/WEB-INF/classes" absolutePath="C:\desenv\criptography\site\WEB-INF\classes\"/>
+    <WorkingDirectory relativePath="src" absolutePath="C:\desenv\criptography\src\"/>
+    <Target relativePath="src/br/ufal/rsacripto/TestesWeb.java" absolutePath="C:\desenv\criptography\src\br\ufal\rsacripto\TestesWeb.java" java2DebugVmType="classic"/>
+    <CompilerOptions targetVM="1.3" generateDebugInfo="true" showCompilerWarnings="true" showDeprecationWarnings="true" jdk14Assertions="false" gj="false" maximumHeapSize="128" otherOptions=""/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <ResourceFilePattern>*.jpg</ResourceFilePattern>
+    <ResourceFilePattern>*.xml</ResourceFilePattern>
+    <ResourceFilePattern>*.properties</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+    <Ant useAnt="false" additionalVmArguments="" buildTargets="" rebuildTargets="" additionalArguments="">
+        <AdditionalClasspaths/>
+        <BuildFile absolutePath=""/>
+        <WorkingDirectory absolutePath=""/>
+    </Ant>
+</Project>

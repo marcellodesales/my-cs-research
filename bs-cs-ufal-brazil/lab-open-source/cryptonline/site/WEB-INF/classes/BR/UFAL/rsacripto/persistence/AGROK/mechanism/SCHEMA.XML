@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- <!DOCTYPE map SYSTEM "persistence_layer_config.dtd"> -->
+
+<map>
+
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.ufal.rsacripto.User</class-name>
+		<table-name>"user"</table-name>
+		<database-name>rsa_encription</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>user_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>firstName</attribute-name>
+			<column-name>first_name</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>lastName</attribute-name>
+			<column-name>last_name</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>email</attribute-name>
+			<column-name>email</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>password</attribute-name>
+			<column-name>password</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>publicKeyN</attribute-name>
+			<column-name>public_key_n</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>publicKeyE</attribute-name>
+			<column-name>public_key_e</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>privateKeyD</attribute-name>
+			<column-name>private_key_d</column-name>
+		</attribute>
+	</class>
+<!--
+	<association>
+		<from-class>br.com.aulaweb.course.Discipline</from-class>
+		<to-class>br.com.aulaweb.util.tree.ContentTree</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>contentTree</target>
+		<retrieve-automatic>false</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<entry>
+			<from-attribute>contentTreeId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	-->
+	
+</map>

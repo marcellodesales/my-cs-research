@@ -1,0 +1,828 @@
+<?xml version="1.0"?>
+
+<!-- <!DOCTYPE map SYSTEM "persistence_layer_config.dtd"> -->
+
+<map>
+
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.User</class-name>
+		<table-name>"aw_user"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>user_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>name</attribute-name>
+			<column-name>name</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>login</attribute-name>
+			<column-name>login</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>email</attribute-name>
+			<column-name>e_mail</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>password</attribute-name>
+			<column-name>password</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>role</attribute-name>
+			<column-name>role</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>status</attribute-name>
+			<column-name>status</column-name>
+		</attribute>
+	</class>
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.Student</class-name>
+		<table-name>"student"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>student_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>registration</attribute-name>
+			<column-name>registration</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>userId</attribute-name>
+			<column-name>user_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>user</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- Composicao de usuario  -->
+	
+	<association>
+		<from-class>br.com.aulaweb.user.Student</from-class>
+		<to-class>br.com.aulaweb.user.User</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>user</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>userId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.Teacher</class-name>
+		<table-name>"teacher"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>teacher_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>userId</attribute-name>
+			<column-name>user_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>user</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- Composicao de usuario  -->
+	
+	<association>
+		<from-class>br.com.aulaweb.user.Teacher</from-class>
+		<to-class>br.com.aulaweb.user.User</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>user</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>userId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.ManyToManyParentStudent</class-name>
+		<table-name>"student_parent"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>student_parent_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>parentId</attribute-name>
+			<column-name>parent_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>studentId</attribute-name>
+			<column-name>student_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>parent</attribute-name>
+		</attribute>
+		<attribute>
+			<attribute-name>student</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- One-To-One -->
+	
+	<association>
+		<from-class>br.com.aulaweb.user.ManyToManyParentStudent</from-class>
+		<to-class>br.com.aulaweb.user.Parent</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>parent</target>
+		<retrieve-automatic>false</retrieve-automatic>
+		<save-automatic>false</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>parentId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	
+	<!-- One-To-One -->
+	
+	<association>
+		<from-class>br.com.aulaweb.user.ManyToManyParentStudent</from-class>
+		<to-class>br.com.aulaweb.user.Student</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>student</target>
+		<retrieve-automatic>false</retrieve-automatic>
+		<save-automatic>false</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>studentId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.Parent</class-name>
+		<table-name>"parent"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>parent_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>userId</attribute-name>
+			<column-name>user_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>user</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- Composicao de usuario  -->
+	<association>
+		<from-class>br.com.aulaweb.user.Parent</from-class>
+		<to-class>br.com.aulaweb.user.User</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>user</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>userId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.user.Administrator</class-name>
+		<table-name>"administrator"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>administrator_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>userId</attribute-name>
+			<column-name>user_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>user</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- Composicao de usuario  -->
+	<association>
+		<from-class>br.com.aulaweb.user.Administrator</from-class>
+		<to-class>br.com.aulaweb.user.User</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>user</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>userId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	
+	<!-- One-to-Many. -->
+
+<!--<association>
+		<from-class>br.com.aulaweb.persistence.agrok.user.PersistentParentAgrok</from-class>
+		<to-class>br.com.aulaweb.persistence.agrok.user.ManyToManyParentStudent</to-class>
+		<cardinality>oneToMany</cardinality>
+		<target>manyToManyParentStudent</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<inverse>true</inverse>
+		<entry>
+			<from-attribute>parentId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>-->
+	
+	<!-- Begin : br.com.aulaweb.persistence.agrok.resource.PersistentTopicAgrok -->
+
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.resource.Topic</class-name>
+		<table-name>"topic"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>topic_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>description</attribute-name>
+			<column-name>description</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>source</attribute-name>
+			<column-name>source</column-name>
+		</attribute>
+	</class>
+	
+
+
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.util.tree.ContentTreeNode</class-name>
+		<table-name>"topic_tree_node"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>topic_tree_node_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>parentId</attribute-name>
+			<column-name>parent_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>status</attribute-name>
+			<column-name>status</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>topicId</attribute-name>
+			<column-name>topic_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>topic</attribute-name>
+		</attribute>
+		<attribute>
+			<attribute-name>parent</attribute-name>
+		</attribute>
+		<attribute>
+			<attribute-name>kids</attribute-name>
+		</attribute>
+	</class>
+	
+	<!-- Associacao entre um no e um topico -->
+	<association>
+		<from-class>br.com.aulaweb.util.tree.ContentTreeNode</from-class>
+		<to-class>br.com.aulaweb.resource.Topic</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>topic</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>topicId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	<!-- Associacao entre um no e o seu no pai -->
+	<association>
+		<from-class>br.com.aulaweb.util.tree.ContentTreeNode</from-class>
+		<to-class>br.com.aulaweb.util.tree.ContentTreeNode</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>parent</target>
+		<retrieve-automatic>false</retrieve-automatic>
+		<save-automatic>false</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>parentId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	<!-- Associacao entre um no e os seus filhos -->
+	<association>
+		<from-class>br.com.aulaweb.util.tree.ContentTreeNode</from-class>
+		<to-class>br.com.aulaweb.util.tree.ContentTreeNode</to-class>
+		<cardinality>oneToMany</cardinality>
+		<target>kids</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<inverse>true</inverse>
+		<entry>
+			<from-attribute>parentId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.util.tree.ContentTree</class-name>
+		<table-name>"topic_tree"</table-name>
+		<database-name>aulaweb</database-name>
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>topic_tree_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>name</attribute-name>
+			<column-name>name</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>rootNodeId</attribute-name>
+			<column-name>topic_tree_node_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>rootNode</attribute-name>
+		</attribute>
+	</class>
+
+	<!-- Associacao One-To-One entre uma arvore e seu no raiz -->
+	<association>
+		<from-class>br.com.aulaweb.util.tree.ContentTree</from-class>
+		<to-class>br.com.aulaweb.util.tree.ContentTreeNode</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>rootNode</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>false</delete-automatic>
+		<entry>
+			<from-attribute>rootNodeId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+<!-- **********************************************************************  -->
+	<class>
+		<class-name>br.com.aulaweb.resource.DidacticResource</class-name>
+		<table-name>"didactic_resource"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>didactic_resource_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+
+		<attribute>
+			<attribute-name>type</attribute-name>
+			<column-name>type</column-name>
+		</attribute>
+	</class>
+
+	<class>
+		<class-name>br.com.aulaweb.resource.AbstractProblem</class-name>
+		<table-name>"abstract_problem"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>didactic_resource_id</column-name>
+			<key>foreign</key>
+			<reference>id</reference>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>enunciationId</attribute-name>
+			<column-name>enunciation_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>enunciation</attribute-name>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.resource.ObjectiveProblem</class-name>
+		<table-name>"objective_problem"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>didactic_resource_id</column-name>
+			<key>foreign</key>
+			<reference>id</reference>
+		</attribute>
+		<attribute>
+			<attribute-name>answerId</attribute-name>
+			<column-name>answer_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>answer</attribute-name>
+		</attribute>
+		<attribute>
+			<attribute-name>options</attribute-name>
+		</attribute>
+	</class>
+
+	<class>
+		<class-name>br.com.aulaweb.resource.Option</class-name>
+		<table-name>"option"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>option_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>enunciationId</attribute-name>
+			<column-name>enunciation_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>didacticResourceId</attribute-name>
+			<column-name>didactic_resource_id</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>enunciation</attribute-name>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.resource.RichText</class-name>
+		<table-name>"rich_text"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>rich_text_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>text</attribute-name>
+			<column-name>text</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>images</attribute-name>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.resource.Image</class-name>
+		<table-name>"image"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>image_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>description</attribute-name>
+			<column-name>description</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>fileName</attribute-name>
+			<column-name>file_name</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>width</attribute-name>
+			<column-name>width</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>height</attribute-name>
+			<column-name>height</column-name>
+		</attribute>
+		<attribute>
+			<attribute-name>ownerId</attribute-name>
+			<column-name>owner_id</column-name>
+		</attribute>
+	</class>
+	
+	<!-- Associacao One-To-One entre um problema e seu enunciado -->
+	<association>
+		<from-class>br.com.aulaweb.resource.AbstractProblem</from-class>
+		<to-class>br.com.aulaweb.resource.RichText</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>enunciation</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<entry>
+			<from-attribute>enunciationId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	<!-- Associacao entre um problema objetivo e suas opcoes -->
+	<association>
+		<from-class>br.com.aulaweb.resource.ObjectiveProblem</from-class>
+		<to-class>br.com.aulaweb.resource.Option</to-class>
+		<cardinality>oneToMany</cardinality>
+		<target>options</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<inverse>true</inverse>
+		<entry>
+			<from-attribute>didacticResourceId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	<!-- Associacao One-To-One entre uma opcao e seu enunciado -->
+	<association>
+		<from-class>br.com.aulaweb.resource.Option</from-class>
+		<to-class>br.com.aulaweb.resource.RichText</to-class>
+		<cardinality>oneToOne</cardinality>
+		<target>enunciation</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<entry>
+			<from-attribute>enunciationId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+	<!-- Associacao entre um richText e suas imagens -->
+	<association>
+		<from-class>br.com.aulaweb.resource.RichText</from-class>
+		<to-class>br.com.aulaweb.resource.Image</to-class>
+		<cardinality>oneToMany</cardinality>
+		<target>images</target>
+		<retrieve-automatic>true</retrieve-automatic>
+		<save-automatic>true</save-automatic>
+		<delete-automatic>true</delete-automatic>
+		<inverse>true</inverse>
+		<entry>
+			<from-attribute>ownerId</from-attribute>
+			<to-attribute>id</to-attribute>
+		</entry>
+	</association>
+	
+		
+    <!-- ##########################    F O R U M    ############################## -->
+	<class>
+		<class-name>br.com.aulaweb.tool.forum.Forum</class-name>
+		<table-name>"tool_forum_forum"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>forum_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>description</attribute-name>
+			<column-name>description</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>creationDate</attribute-name>
+			<column-name>creation_date</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>group</attribute-name>
+			<column-name>group_id</column-name>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.tool.forum.Theme</class-name>
+		<table-name>"tool_forum_theme"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>theme_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>description</attribute-name>
+			<column-name>description</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>creationDate</attribute-name>
+			<column-name>creation_date</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>forum</attribute-name>
+			<column-name>forum_id</column-name>
+		</attribute>
+	</class>
+		
+	<class>
+		<class-name>br.com.aulaweb.tool.forum.AbstractTopic</class-name>
+		<table-name>"tool_forum_topic"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>topic_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>title</attribute-name>
+			<column-name>title</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>content</attribute-name>
+			<column-name>content</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>postDate</attribute-name>
+			<column-name>post_date</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>open</attribute-name>
+			<column-name>open</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>memberId</attribute-name>
+			<column-name>member_id</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>themeId</attribute-name>
+			<column-name>theme_id</column-name>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.tool.forum.Question</class-name>
+		<table-name>"tool_forum_question"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>topic_id</column-name>
+			<key>foreign</key>
+			<reference>id</reference>
+		</attribute>
+	</class>
+	
+	<class>
+		<class-name>br.com.aulaweb.tool.forum.Reply</class-name>
+		<table-name>"tool_forum_reply"</table-name>
+		<database-name>aulaweb</database-name>
+
+		<attribute>
+			<attribute-name>id</attribute-name>
+			<column-name>reply_id</column-name>
+			<key>primary</key>
+			<attribute-id-generator>
+				<id-generator-name>idGenerator</id-generator-name>
+			</attribute-id-generator>
+		</attribute>
+				
+		<attribute>
+			<attribute-name>content</attribute-name>
+			<column-name>content</column-name>
+		</attribute>
+		
+		<attribute>
+			<attribute-name>postDate</attribute-name>
+			<column-name>post_date</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>member</attribute-name>
+			<column-name>member_id</column-name>
+		</attribute>
+
+		<attribute>
+			<attribute-name>topic</attribute-name>
+			<column-name>topic_id</column-name>
+		</attribute>
+	</class>
+</map>
