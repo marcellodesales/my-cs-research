@@ -1,0 +1,317 @@
+function isNumeric(a)
+{
+	var inputVal = a;
+	if(inputVal == null || inputVal == "")
+	{
+		inputVal = "notSpecified";
+	}
+	for(i=0; i < inputVal.length; i++)
+	{
+		var charPos = inputVal.charAt(i);
+		if(charPos < "0" || charPos > "9")
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+function isAlpha(a)
+{
+	var inputVal = a.toLowerCase();
+	for(i=0; i < inputVal.length; i++)
+	{
+		var charPos = inputVal.charAt(i);
+		if(charPos < "a" || charPos > "z")
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+if (document.layers) {
+document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=showStatys;
+
+function isAlphaNumeric(a)
+{
+	var inputVal = new String(a);
+	inputVal = inputVal.toLowerCase();
+	for(i=0; i < inputVal.length; i++)
+	{
+		var charPos = inputVal.charAt(i);
+		if (!((charPos >= "a" && charPos <= "z") || (charPos >= "0" && charPos <= "9") || (charPos == " ")))
+			return false;
+	}
+  return true;
+}
+
+
+function verifyEmail(a)
+{
+	str = new String(a);
+	if(str == null || str == "")
+	{
+		str = "notSpecified";
+	}
+	// @ symbol stuff
+	var atSymbolIndex = str.indexOf("@",0);
+	var preAtSymbolIndex = atSymbolIndex - 1;
+	var postAtSymbolIndex = atSymbolIndex + 1;
+	var preAtSymbolStr = str.charAt(preAtSymbolIndex);
+	var postAtSymbolStr = str.charAt(postAtSymbolIndex);
+
+	// dot stuff
+	var dotIndex = str.indexOf(".",0);
+	var postDotIndex = dotIndex + 1;
+	var preDotIndex = dotIndex - 1;
+	var postDotStr = str.charAt(postDotIndex);
+	var preDotStr = str.charAt(preDotIndex);
+	if(postDotStr == null || postDotStr == "")
+	{
+		postDotStr = "*";
+	}
+
+	//spaces stuff
+	var spaces = str.indexOf(" ",0);
+	var noSpaces = false;
+	if(spaces < 0)
+	{
+		noSpaces = true;
+	}
+
+	if(noSpaces)
+	{
+		if((atSymbolIndex > 0) && (dotIndex > 0))
+		{
+			if(isAlphaNumeric(postDotStr) && isAlphaNumeric(preDotStr) && isAlphaNumeric(preAtSymbolStr) && isAlphaNumeric(postAtSymbolStr))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function verifyPhone(phone){
+        re =  /^[0-9]{2}\-([0-9]{3}|[0-9]{4})\-[0-9]{4}/;
+        return re.test(phone);
+}
+
+
+function validatePhone(){
+        if ((document.forms[0].phone.value != "") && (document.forms[0].cellphone.value == "")){
+		if (!verifyPhone(document.forms[0].phone.value)){
+                   alert("O número do telefone é inválido!");
+                   document.forms[0].phone.focus();
+                   return false;
+		} else return true;
+        } else return true;
+}
+
+function validateCellphone(){
+        if ((document.forms[0].cellphone.value != "") && (document.forms[0].phone.value == "")){
+		if (!verifyPhone(document.forms[0].cellphone.value)){
+                   alert("O número do telefone celular é inválido!");
+                   document.forms[0].cellphone.focus();
+                   return false;
+		} else return true;
+        } else return true;
+}
+
+function validatePhones(){
+        if ((document.forms[0].phone.value != "") && (document.forms[0].cellphone.value != "")){
+		if (validatePhone()){
+			return validateCellphone();			
+		} else return true;
+        } else return true;
+}
+
+function validateEmailUser(){
+        if (document.forms[0].userEmail.value == ''){
+                alert("O campo do email está vazio!\nFavor digitar um email válido.");
+                document.forms[0].userEmail.focus();
+                return false;
+        } else
+        if (!verifyEmail(document.forms[0].userEmail.value)){
+               alert("O email digitado é inválido!");
+               document.forms[0].userEmail.focus();
+               return false;
+        } else giveFormValues();
+}
+
+function giveFormValues(){
+
+            document.forms[0].descBirthRange.value    = document.forms[0].birthRange.options[document.forms[0].birthRange.selectedIndex].text;
+            document.forms[0].descProfession.value    = document.forms[0].profession.options[document.forms[0].profession.selectedIndex].text;
+            document.forms[0].descKindOfAddress.value = document.forms[0].addressKindOfAddress.options[document.forms[0].addressKindOfAddress.selectedIndex].text;
+            document.forms[0].descNeighborhood.value  = document.forms[0].addressNeighborhoodCh.options[document.forms[0].addressNeighborhoodCh.selectedIndex].text;
+            document.forms[0].descState.value         = document.forms[0].states.options[document.forms[0].states.selectedIndex].text;
+            document.forms[0].descCountry.value       = document.forms[0].country.options[document.forms[0].country.selectedIndex].text;
+            document.forms[0].descHowCame.value       = document.forms[0].howcame.options[document.forms[0].howcame.selectedIndex].text;
+}
+
+function validadeSignUser(){
+        if (document.forms[0].announcerName.value == ""){
+                alert("O campo do nome está vazio!\nFavor digitar seu nome.")
+                document.forms[0].announcerName.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].announcerSobrname.value == ""){
+                alert("O campo do sobrenome está vazio!\nFavor digitar seu sobrenome.")
+                document.forms[0].announcerSobrname.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].username.value == ''){
+                alert("O campo do nome de login está vazio!\nFavor digitar um nome.");
+                document.forms[0].username.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].username.value.length < 4){
+                alert("O campo do nome de login deve conter no mínimo 4 caracteres!");
+                document.forms[0].username.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].password.value == ''){
+                alert("O campo da senha está vazio!\nFavor digitar uma senha.");
+                document.forms[0].password.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].password.value.length < 4){
+                alert("O campo da senha deve conter no mínimo 4 caracteres!");
+                document.forms[0].password.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].repassword.value == ''){
+                alert("O campo de confirmação da senha está vazio!\nFavor digitar a confirmação ao da senha igual a senha.");
+                document.forms[0].repassword.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].repassword.value.length < 4){
+                alert("O campo de confirmação da senha deve conter no mínimo 4 caracteres!");
+                document.forms[0].repassword.focus();
+                return false;
+        }
+        else
+        if (document.forms[0].password.value != document.forms[0].repassword.value){
+                alert("O campo de confirmação da senha está errada!\nFavor digitar a confirmação da senha igual a senha.");
+                document.forms[0].repassword.focus();
+                return false;
+        }
+        else
+        if ((document.forms[0].phone.value != "") && (document.forms[0].cellphone.value == "")){
+		if (!verifyPhone(document.forms[0].phone.value)){
+                   alert("O número do telefone é inválido!");
+                   document.forms[0].phone.focus();
+                   return false;
+		} else {
+			return validateEmailUser();
+		}
+	} else 
+        if ((document.forms[0].phone.value == "") && (document.forms[0].cellphone.value != "")){
+		if (!verifyPhone(document.forms[0].cellphone.value)){
+                   alert("O número do telefone celular é inválido!");
+                   document.forms[0].cellphone.focus();
+                   return false;
+		}  else {
+                      return validateEmailUser();
+		}
+
+        } else
+        if ((document.forms[0].phone.value != "") && (document.forms[0].cellphone.value != "")){
+                if (!verifyPhone(document.forms[0].phone.value)){
+                   alert("O número do telefone é inválido!");
+                   document.forms[0].phone.focus();
+                   return false;
+                }  else 
+                if (!verifyPhone(document.forms[0].cellphone.value)){
+                   alert("O número do telefone celular é inválido!");
+                   document.forms[0].cellphone.focus();
+                   return false;
+                }  else
+		if (document.forms[0].phone.value == document.forms[0].cellphone.value){
+                   alert("Os números dos telefones não podem ser iguais!");
+                   document.forms[0].cellphone.focus();
+                   return false;
+
+		} else {
+                        return validateEmailUser();
+                }
+        } else {
+		return validateEmailUser();
+	}
+}
+
+function setStatePhoneCode(id){
+ switch (id){
+   case "1" :  return "68-";
+        break;
+   case "2" :  return "82-";
+        break;
+   case "3" :  return "96-";
+        break;
+   case "4" :  return "92-";
+        break;
+   case "5" :  return "71-";
+        break;
+   case "6" :  return "85-";
+        break;
+   case "7" :  return "61-";
+        break;
+   case "8" :  return "27-";
+        break;
+   case "9" :  return "62-";
+        break;
+   case "10" : return "98-";
+        break;
+   case "11" : return "65-";
+        break;
+   case "12" : return "67-";
+        break;
+   case "13" : return "31-";
+        break;
+   case "14" : return "41-";
+        break;
+   case "15" : return "83-";
+        break;
+   case "16" : return "91-";
+        break;
+   case "17" : return "81-";
+        break;
+   case "18" : return "86-";
+        break;
+   case "19" : return "21-";
+        break;
+   case "20" : return "84-";
+        break;
+   case "21" : return "51-";
+        break;
+   case "22" : return "69-";
+        break;
+   case "23" : return "95-";
+        break;
+   case "24" : return "48-";
+        break;
+   case "25" : return "11-";
+        break;
+   case "26" : return "79-";
+        break;
+   case "27" : return "63-";
+        break;
+  }
+}
+var message="  Classi-A / O Classificado que tem tudo. Tudo!\nDesenvolvido por LX4 Web Group Development\n               Maceió-Alagoas-Brasil";
+
+if (document.layers) {
+document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=showStatys;

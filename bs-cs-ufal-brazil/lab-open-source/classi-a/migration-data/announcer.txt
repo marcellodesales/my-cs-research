@@ -1,0 +1,61 @@
+/*
+ $anunciante = new Announcer('1');
+ $n = $anunciante->name;
+ $a = ($anunciante->verifyAnnouncerAnnounce('1')) ? "true":"false";
+ if ($a){
+      $anunciante->openAnnounce('1');
+      $title = $anunciante->announce->title;
+      $id    = $anunciante->announce->id;
+      $desc = $anunciante->announce->description;
+      echo "ID Anuncio: $id - Título Anuncio: $title<BR>Descrição: $desc";
+ }
+ else "<BR>Anuncio inexistente!<BR>";
+*/
+
+//create an existing announcer
+/*  $eu   = new Announcer('1');
+  $nome = $eu->name;
+  $id   = $eu->id;
+  echo "<BR>ID: $id<BR>Nome: $nome<BR>";
+  echo "Código de anuncios pertencentes a $nome";
+  $size = sizeof($eu->announces);
+  for ($i = 0; $i < $size; $i++){
+        $cod = $eu->getAnnounce($i);
+        echo "<BR>$cod";
+  }
+  $quant = $eu->getQuantAnnounces();
+  echo "<BR>Quantidade de Anuncios: $quant";
+
+*/
+//create an existing announcer
+/*  $newAnnouncer = new Announcer(0);
+  $id = $newAnnouncer->id;
+
+  $newAnnouncer->setStr("nome_anunciante","Leandro Melo de Sales");
+  $newAnnouncer->setStr("data_nasc_anunciante","2000-08-03");
+  $newAnnouncer->setStr("sexo_anunciante","M");
+  $newAnnouncer->setStr("endereco_anunciante","Rua Gonçalves Dias, 58 Farol");
+  $newAnnouncer->setStr("cod_estado","2");
+  $newAnnouncer->setStr("fone_anunciante","82-326-2884");
+  $newAnnouncer->setStr("celular_anunciante","82-971-1818");
+  $newAnnouncer->setStr("email_anunciante","lx4@dialnet.com.br");
+  $newAnnouncer->setStr("login_anunciante","leandro");
+  $newAnnouncer->setStr("passwd_anunciante","51527981");
+  $newAnnouncer->setStr("tipo_anunciante","n");
+  $newAnnouncer->setInt("cos_profissao",2);
+  $newAnnouncer->setInt("cod_chegada",4);
+
+
+  $newAnnouncer = new Announcer($id);
+  $id = $newAnnouncer->id;
+  $nome = $newAnnouncer->name;
+  echo "<BR>$id - $nome<BR>";
+  echo "Código de anuncios pertencentes a $nome";
+  $size = sizeof($newAnnouncer->announces);
+  for ($i = 0; $i < $size; $i++){
+        $cod = $eu->getAnnounce($i);
+        echo "<BR>$cod";
+  }
+  $quant = $newAnnouncer->getQuantAnnounces();
+  echo "<BR>Quantidade de Anuncios: $quant pertencentes a $nome";
+*/

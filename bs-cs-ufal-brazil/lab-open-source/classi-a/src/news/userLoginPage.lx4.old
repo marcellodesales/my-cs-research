@@ -1,0 +1,99 @@
+<?
+  $secure    = new Security();
+  
+  $secure->updateUserIP($announcer->id,getenv("REMOTE_ADDR"));
+  $secure->updateUserAccess($announcer->id,time());
+
+  $get = "SELECT cod_anuncio,cod_anunciante,titulo_anuncio,preco_anuncio FROM t_anuncio where cod_anunciante='$idAnnouncer' order by quando_anuncio desc";
+
+  $secure->connection->query($get);
+  $quantAnnouncesPerAnnounce = 20; // quantity of announces per announcer....
+  $quantAnnouncesNow = $secure->connection->affected_rows();
+?>
+<HTML><HEAD><TITLE>Classi-A</TITLE>
+<base target="_self">
+<script language="JavaScript1.2" src="../js/announcerUtility.js"></script>
+
+</HEAD>
+<BODY aLink=#c0c0c0 bgcolor="white" link=#000000 text=#000000 vLink=#000000 leftMargin="0" rightmargin="0" bottomMargin="0" topMargin="0" marginwidth="0" marginheight="0">
+
+<TABLE background=images/bg1.gif border=0 cellPadding=0 cellSpacing=0 width="100%">
+  <TR>
+    <TD vAlign=middle height="2" width="771">
+      <p align="right">&nbsp;
+    </TD>
+    <TD align=right class=menu2 width="1" height="20">
+      <p align="right">&nbsp;</p>
+    </TD></TR>
+</TABLE>
+
+<?     include("ownedUserLoginPageMenu.php");   ?>
+  
+<div align="left">
+  
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="5%">
+    <tr>
+      <td width="100%" bgColor=#FFCC00 align="center">&nbsp;
+<?  if (isset($perfilUpdated)){  ?>      
+      	<font size="1" face="Verdana" color="red">
+      	<b>"Seus dados pessoais foram atualizados com sucesso!"</b></font>
+<?  }   ?>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="780" height="572">
+  <TR>
+    <TD  vAlign=top width=16 bgcolor="#FFCC00" rowspan="4" height="572">
+      <CENTER>&nbsp;&nbsp;&nbsp;
+        </CENTER></TD>
+
+    <TD align=middle bgColor=#ffffff rowSpan=5 vAlign=top width="619" height="572">
+
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TR>
+          <TD align=left width="22"><img border="0" src="images/curva_td_left.gif" width="8" height="8"></TD>
+          <TD width="614"></TD>
+          <TD align=right width="56"><img border="0" src="images/curva_td.gif" width="8" height="8"></TD>
+        </TR></TABLE>
+
+      <div align="center">
+      <center><BR>
+
+<?   include("ownedUserLoginPageUserInfor.php");    ?>
+
+      </center>
+      </div>
+
+      <br>
+
+<?    include("ownedUserLoginPageTableAnnounces.php");   ?>
+                
+      <TABLE border=0 cellPadding=10 cellSpacing=0 width="100%">
+        <TR>
+          <TD align=left bgColor=#ffffff valign="top">
+           <CENTER><FONT color=#808080 face=verdana,arial size=1>
+	    Copyright © 2000 Classi-A. Todos os Direitos Reservados<BR>LX4 Web Group Development</FONT></CENTER>
+
+   </TD>^M
+    <TD bgColor=#ffffff vAlign=top width=147>^M
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width=100% height="1">
+      <tr>      ^
+          <TD bgColor=#FFCC00 height="1" align="center"><BR>^M
+
+                <? require("banners.php"); ?>
+
+          </TD>
+      </TR>
+      <TR>
+         <TD bgColor=#FFCC00 height="240" align="center">
+
+           <p align="center">
+           <img border="0" src="images/botton.gif" width="146" height="9" valign=bottom></p>
+          </TD>
+        </TR>
+      </TABLE>
+</BODY>
+</html>
+     

@@ -1,0 +1,465 @@
+<HTML><HEAD><TITLE>Classi-A - Contrato de uso</TITLE>
+
+</HEAD>
+<BODY aLink=#003399 bgColor=#ffffff link=#003399 vLink=#003399>
+
+<div align="center">
+  <center>
+
+<TABLE border=0 cellPadding=0 cellSpacing=1 width=65%>
+  <TBODY>
+  <TR>
+    <TD bgcolor="#003399" width="432">
+      <p align="left"><font face="Verdana" color="#FFFFFF" size="5"><b>&nbsp;Contrato de uso</b></font></p>
+    </TD>
+  </TR>
+  <TR>
+    <TD valign="top"><A href="/"
+      target=_top><IMG alt=Classi-A border=0 src="/news/images/logoClassiAAnnounces.gif"
+      width=130 align="left"></A>
+      <P align="justify">Atenção: Leia cuidadosamente este contrato antes de se tornar um
+      usuário dos serviços oferecidos pelo <b>CLASSI-A</B>.<BR>Ao clicar no botão <B>Aceito os termos de compromisso</B>,
+      você estará concordando automaticamente com os termos descritos abaixo.
+      </P>
+      <CENTER>
+      <FORM action="/news/signNewUser.php" method="post">
+         <p align="center">
+         <INPUT name="Ido" type=submit value="Aceito">
+         <INPUT type="hidden" name="confirmed" value="true">
+         <INPUT name=Idont type=submit value="Não aceito" onClick="javascript:history.back()">
+      </FORM>
+
+      </CENTER>
+      <BR></TD></TR>
+</TBODY></TABLE>
+
+  </center>
+</div>
+<div align="center">
+  <center>
+
+<TABLE border=0 cellPadding=0 cellSpacing=1 width=65%>
+  <TBODY>
+  <TR>
+    <TD><FONT face=verdana,arial size=2><B>1. INTEGRA DO
+CONTRATO</B>
+      <BR>
+      <P align="justify">1.1. Os termos abaixo se aplicam aos serviços oferecidos pelo
+      <b>CLASSI</b><b>-A. a maiores de 18 anos ou menores com
+      permissão dos pais ou responsáveis para abrir e manter uma conta junto ao
+      CLASSI-A.</b>
+      <BR>
+      <BR><B>2. DESCRIÇÃO DOS SERVIÇOS</B>
+      <BR>
+      <BR><U>ANUNCIO - CADASTRO, ALTERAÇÃO, EXCLUSÃO (CLASSI-A)</U>
+      <BR>
+      <BR>Durante o prazo desse contrato, o <b>CLASSI</b><B>-A</B> fornecerá
+      ao usuário (apenas conforme e quando o serviço estiver disponível) acesso
+      aos serviços de anuncio eletrônico que opera através da
+      Internet.
+      <BR>
+      <BR>O <b>CLASSI</b><B>-A</B> envidará os melhores esforços para
+      assegurar que anucios cadastrados através
+      do serviço por ele prestado sejam de boa fé, sem
+      interferências de qualquer natureza. No entanto, considerando a própria
+      natureza do serviço, as garantias fornecidas pelo <b>CLASSI</b><B>-A</B> são limitadas, conforme descritas na cláusula 7 abaixo.
+
+      <BR>O usuário aceita ser sua responsabilidade providenciar o seu acesso a
+      Internet podendo assim utilizar dos serviços de cadastro, alteração,
+      exclusão de anúncios prestados pelo <b>CLASSI</b><B>-A</B>. Para tanto o usuário declara que arcará
+      com todas as taxas de serviço eventualmente cobradas pela prestação do
+      serviço de acesso à Internet.
+      <BR>
+      <BR>O espaço em disco reservado para cada usuário para o cadastro,
+      alteração e exclusão de anúncios é atualmente limitado a 300 KB e eventualmente
+      alguns anúncios podem não ser processadas conforme a utilização do
+      espaço e o tamanho do mesmo, bem como a imagem (foto) pertencente ao
+      mesmo. Este espaço será mantido enquanto sua
+      conta junto ao <b>CLASSI</b><B>-A</B> estiver válida e ativa. No entanto, fica
+      estabelecido que tal diretório constitui apenas mais uma facilidade do
+      serviço e que o <b>CLASSI</b><b>-A</b> não assume qualquer
+      responsabilidade, nem será responsabilizado pela exclusão ou falha no
+      armazenamento dos anuncios. O usuário deverá armazenar e manter cópias de
+      "back-up" de todos os anuncios cadastrados, alterados que deseje manter em
+      arquivo.
+      <BR>
+      <BR>O <b>CLASSI</b><b>-A</b> poderá diminuir ou aumentar o espaço
+      reservado em disco para os anuncios, bem como a quantidade de anuncios a
+      anunciar de cada usuário, a qualquer momento e a
+      seu exclusivo critério, independentemente de motivo ou aviso prévio.
+      <BR>
+      <BR>Ainda que atualmente nenhuma taxa seja cobrada pelo <b>CLASSI</b><b>-A</b> em razão da prestação dos serviços
+      anuncios, as
+      partes reconhecem que a qualquer momento a prestação de tais serviços
+      poderão vir a ser cobrados pelo <b>CLASSI-A</b>, cabendo, neste
+      caso, ao <b>CLASSI-A</b> notificar o usuário acerca do valor e
+      da forma de pagamento da referida taxa de utilização dos serviço,
+      conferindo-lhe o prazo de 60 (sessenta) dias para manifestação de sua
+      concordância com a contratação dos serviços. A não manifestação do usuário
+      acerca de sua concordância com a cobrança dos serviços de anuncio aqui
+      descritos serão interpretados como sua aceitação de tal pagamento.
+      <BR>
+      <BR></FONT></P></TD></TR>
+</TBODY></TABLE>
+
+  </center>
+</div>
+<div align="center">
+  <center>
+
+<TABLE border=0 cellPadding=0 cellSpacing=1 width=65%>
+  <TBODY>
+  <TR>
+    <TD><FONT face=verdana,arial size=2><B>3. CONTA DO USUÁRIO,
+      SENHA E SEGURANÇA</B>
+      <P align="justify">
+      <BR>3.1. Todo usuário que deseje utilizar os serviços personalizados do <b>CLASSI</b><b>-A</b>
+      cadastrará uma conta com uma senha no ato do processo de cadastro. O usuário é inteiramente responsável pela
+      confidencialidade da sua conta e senha, bem como de qualquer atividade que
+      ocorra no âmbito da sua conta.
+      <BR>
+      <BR>3.2. Na hipótese do usuário se cadastrar para utilizar mais de um
+      serviço previsto neste instrumento, será conferido ao mesmo tão somente
+      uma conta e uma senha aplicável a todos os serviços por ele cadastrados.
+      <BR>
+      <BR>3.3. O usuário poderá alterar sua senha a qualquer momento, assim como
+      criar uma nova conta em substituição a uma conta já existente. A alteração
+      da senha cadastrada pelo usuário implicará na utilização da nova senha
+      para todos os serviços aos quais o usuários tenha se registrado.
+      <BR>
+      <BR>3.4. O usuário concorda em notificar imediatamente o <b>CLASSI</b><b>-A</b> sobre qualquer uso não autorizado de sua conta ou qualquer
+      quebra de segurança de seu conhecimento. Concorda também em não deixar
+      sua conta aberta em seu computador ao final de cada sessão.
+      <BR>
+      <BR><B>4. POLÍTICA DE PRIVACIDADE</B>
+      <BR>
+      <BR>4.1. Faz parte da política do <b>CLASSI</b><b>-A</b> respeitar a
+      privacidade de seus usuários. O <b>CLASSI</b><b>-A</b> não irá,
+      portanto, divulgar as informações relativas a um usuário a terceiros,
+      exceto nos casos expressamente previstos nos termos do presente (cláusula
+      9 abaixo) ou a menos que seja obrigada a fazê-lo por lei.
+      <BR>
+      <BR>4.2. No tocante aos anuncios o <b>CLASSI</b><b>-A</b> os considera
+      anuncio de moderação.
+      Assim sendo, o <b>CLASSI</b><b>-A</b> rá monitorar a fim de apagar aquele
+      que não estejam cobertos por este contrato. Portanto, o usuário expressamente concorda
+      que o CLASSI-A poderá fazê-lo se acreditar que tal atitude é
+      necessária e for obrigado:
+      <BR>
+      <BR>a. para cumprir disposição legal; <BR>b. para cumprir algum
+      procedimento legal, inclusive para cumprir qualquer ordem judicial ou de
+      qualquer órgão regulatório competente; <BR>c. para fazer cumprir os termos
+      do serviço; <BR>d. para responder reclamações de que tal conteúdo viole
+      direitos de terceiros; ou<BR>e. para proteger o interesse do <b>CLASSI</b><b>-A</b>
+      ou de terceiros.<BR>
+      <BR>4.3. O usuário reconhece e aceita as cláusulas acima e autoriza o
+      acesso ao diretório e conteúdo dos anuncios cadastrados por ele
+      através do <b>CLASSI</b><b>-A</b>, conforme o caso e desde que utilize tais serviços, por parte
+      do <b>CLASSI</b><b>-A</b>, se houver necessidade de identificar e
+      resolver problemas técnicos.
+      <BR>
+      <BR>4.4. O usuário reconhece e concorda que o <b>CLASSI</b><b>-A</b> não endossa o conteúdo de quaisquer comunicações de usuários e do conteúdo
+      divulgado pelos mesmos de qualquer
+      outro conteúdo de usuários no <b>CLASSI</b><b>-A</b> e, conforme disposto
+      acima. Portanto, o usuário <b>é</b>
+      responsável por qualquer material ilegal, difamatório, que viole direitos
+      de privacidade, ou que seja abusivo, ameaçador, obsceno, injurioso ou
+      censurável de qualquer forma ou que infrinja ou possa infringir direitos
+      de propriedade intelectual ou outros direitos de terceiros.
+      <BR>
+      <BR>4.5. NÃO OBSTANTE O DISPOSTO ACIMA, AO UTILIZAR O <b>CLASSI</b><b>-A</b> OU
+      QUALQUER UM DOS SERVIÇOS DO CLASSI-A, O USUÁRIO AUTORIZA O <b>CLASSI</b><b>-A</b>
+      A MONITORAR SEU ACESSO E SUA NAVEGAÇÃO NA REDE
+      MUNDIAL INTERNET PARA OS FINS EXCLUSIVOS DE:
+      <BR>a. FAZER CUMPRIR OS TERMOS DO SERVIÇO;<BR>b. RESPONDER RECLAMAÇÕES DE
+      QUE TAL CONTEÚDO VIOLE DIREITOS DE TERCEIROS;<BR>c. PROTEGER O INTERESSE
+      DO <b>CLASSI</b><b>-A</b> OU DE TERCEIROS;<BR>d. IDENTIFICAR E
+      RESOLVER PROBLEMAS TÉCNICOS;<BR>e. IDENTIFICAR GRUPOS DE PERFIL DE
+      USUÁRIOS PARA ORIENTAÇÃO PUBLICITÁRIA;<BR>f. OFERECER SERVIÇO
+      PERSONALIZADO AO CONTRATANTE.<BR>
+      <BR><B>5. CONDUTA E OBRIGAÇÕES DO USUÁRIO</B>
+      <BR>
+      <BR>5.1. Como condição para se registrar e usufruir dos serviços acima
+      mencionados, o usuário concorda em:
+      <BR>
+      <BR>a. ser maior de 18 anos, ou menor devidamente autorizado pelos pais ou
+      responsáveis;<BR>b. que não utilizará tais serviços para fins
+      ilegais;<BR>c. não utilizar tais serviços para transmitir/divulgar
+      material ilegal, difamatório, que viole a privacidade de terceiros, ou que
+      seja abusivo, ameaçador, obsceno, prejudicial, vulgar obsceno, injurioso,
+      ou de qualquer outra forma censurável;<BR>d. não transmitir e/ou divulgar
+      qualquer material que viole direitos de terceiro, incluindo, mas sem
+      limitação, direitos de propriedade intelectual de terceiros;<BR>e. não utilizar tais
+      serviços para enviar/divulgar quaisquer tipos de vírus ou arquivos
+      contendo quaisquer tipos de vírus ("Cavalos de Tróia") ou que possam
+      causar danos ao seu destinatário ou a terceiros;<BR>f. não praticar
+      quaisquer atos que violem qualquer lei ou regulamento local, estadual,
+      nacional ou internacional aplicável;<BR>g. cumprir todas as leis
+      aplicáveis com relação à transmissão de dados a partir do Brasil ou do
+      território onde o usuário resida;<BR>h. não obter ou tentar obter acesso
+      não-autorizado a outros sistemas ou redes de computadores conectados ao
+      serviço;<BR>i. ser o único responsável pelo conteúdo dos anuncios que vier
+      a transmitir ou retransmitir bem como pelo conteúdo e informações que vier
+      a disponibilizar no anuncio em serviços do <b>CLASSI</b><b>-A</b>;<BR>j. não interferir ou interromper os
+      serviços ou os servidores ou redes conectados ao serviço;<BR>l. cumprir
+      todos os requerimentos, procedimentos, políticas, e regulamentos de redes
+      conectadas ao serviço;<BR>m. ser sua responsabilidade providenciar todo o
+      equipamento necessário para efetuar sua conexão à Internet, incluindo mas
+      não se limitando a energia elétrica, linha telefônica, computador e
+      modem;<BR>n. ter o acesso cancelado caso o <b>CLASSI</b><b>-A</b> tome
+      o conhecimento, por si ou por terceiros que o usuário violou qualquer
+      termo do presente Contrato, por qualquer modo.<BR>
+      <BR>5.2. Se a qualquer momento durante a vigência do presente Contrato o <b>CLASSI</b><b>-A</b>
+      identificar que os dados cadastrais fornecidos
+      pelo usuário não são corretos, o Contrato será rescindido automaticamente.
+      <BR>
+      <BR>5.3. O uso de quaisquer dos serviços e das licenças de software aqui
+      descritos em condições contrárias ao aqui disposto implicará no direito do
+      <b>CLASSI</b><b>-A</b> cancelar não só o serviço e/ou a licença de
+      software que foi utilizada indevidamente, como também (i) cancelar
+      quaisquer outros serviços que sejam utilizados pelo usuário através do <b>CLASSI</b><b>-A</b>
+      e ou (ii) cancelar automaticamente a conta e a senha do
+      usuário para utilização dos serviços e da licença de software oferecidos
+      pelo <b>CLASSI</b><b>-A</b>, ressalvado ainda o direito do CLASSI-A em pleitear indenização do usuário, conforme previsto na
+      cláusula 8 abaixo.
+      <BR>
+      <BR><B>6. DIREITOS DE PROPRIEDADE</B>
+      <BR>
+      <BR>6.1. O usuário reconhece e concorda que o conteúdo, incluindo, sem
+      limitação, textos, programas de software, músicas, sons, fotografias,
+      gráficos, vídeos ou outros materiais contidos em propagandas disponíveis
+      no serviço, bem como as informações divulgadas ao usuário através do
+      serviço ou de anunciantes, podem estar protegidos por direitos autorais,
+      marcas, patentes ou outros direitos de propriedade intelectual e
+      legislação aplicável. O usuário reconhece e concorda que somente poderá
+      utilizar tais materiais e informações conforme expressamente autorizado
+      pelo <b>CLASSI</b><b>-A</b> ou pelos anunciantes, e não poderá copiar,
+      reproduzir, transmitir, distribuir ou criar obras derivadas a partir de
+      tais materiais ou informações sem a autorização expressa do respectivo
+      proprietário.
+      <BR>
+      <BR><B>7. GARANTIA LIMITADA</B>
+      <BR>
+      <BR>A. A UTILIZAÇÃO DOS SERVIÇOS É FEITA SOB INTEIRA RESPONSABILIDADE DO
+      USUÁRIO. OS SERVIÇOS SÃO FORNECIDOS GRATUITAMENTE E DEPENDEM DA
+      FUNCIONALIDADE DE VÁRIOS FATORES, COMO A INTERAÇÃO DE SERVIDORES E
+      SERVIÇOS DE TELECOMUNICAÇÕES DE TERCEIROS, A ADEQUAÇÃO DOS EQUIPAMENTOS DO
+      USUÁRIO E DO DESTINATÁRIO DA MENSAGEM, ETC. TENDO ISSO EM CONSIDERAÇÃO, O
+      <b>CLASSI</b><b>-A</b> EMPREGARÁ SEUS MELHORES ESFORÇOS PARA ASSEGURAR
+      QUE TODOS OS SERVIÇOS FUNCIONEM DA MELHOR FORMA POSSÍVEL. NO ENTANTO,
+      TENDO EM VISTA A NATUREZA DO SERVIÇO E O ATUAL ESTADO DA TÉCNICA REFERENTE
+      ÀS COMUNICAÇÕES E TRANSMISSÕES ELETRÔNICAS DE DADOS VIA INTERNET, O <b>CLASSI</b><b>-A</b>
+      NÃO PODE GARANTIR QUE OS SERVIÇOS FUNCIONARAM
+      CORRETAMENTE, PODENDO INCLUSIVE OCORRER EXTRAVIO, DIVULGAÇÃO OU VIOLAÇÃO
+      POR PARTE DE TERCEIROS NÃO AUTORIZADOS, COMO POR EXEMPLO "HACKERS", DE
+      INFORMAÇÕES PESSOAIS ARMAZENADAS NO <b>CLASSI</b><b>-A</b> O USUÁRIO É
+      ACONSELHADO A NÃO CONFIAR EXCLUSIVAMENTE NOS SERVIÇOS PARA ENVIAR
+      INFORMAÇÕES IMPORTANTES OU CONFIDENCIAIS E O <b>CLASSI</b><b>-A</b> NÃO SERÁ RESPONSABILIZADA POR QUALQUER FALHA RESULTANTE DE SEUS SERVIÇOS.
+      <BR>B. O <b>CLASSI</b><b>-A</b> NÃO OFERECE GARANTIAS DE QUALQUER
+      NATUREZA COM RELAÇÃO AOS SEUS SERVIÇOS, SEJAM EXPRESSAS OU IMPLÍCITAS.
+      <BR>C. O <b>CLASSI</b><b>-A</b> NÃO GARANTE QUE OS SERVIÇOS SERÃO
+      ADEQUADOS ÀS NECESSIDADES DO USUÁRIO OU QUE OS SERVIÇOS SERÃO PRESTADOS DE
+      MANEIRA ININTERRUPTA, SEGURA, OU LIVRE DE ERROS.
+      <BR>D. O USUÁRIO RECONHECE E CONCORDA QUE QUALQUER MATERIAL E/OU INFORMAÇÃO
+      OBTIDO ATRAVÉS DOS SERVIÇOS OU DE SUA UTILIZAÇÃO SERÁ DE SUA EXCLUSIVA
+      RESPONSABILIDADE, ESPECIALMENTE NO TOCANTE A QUAISQUER DANOS QUE VENHAM A
+      SER CAUSADOS AO SISTEMA DE SEU COMPUTADOR.
+      <BR>E. O <b>CLASSI</b><b>-A</b> NÃO SE RESPONSABILIZA POR EVENTUAIS
+      FALHAS NO SISTEMA, AINDA QUE POR MOTIVO QUE LHE SEJA ATRIBUÍVEL, FICANDO
+      ESTABELECIDO QUE OS SERVIÇOS DO CLASSI-A Ltda SERÃO FORNECIDOS TAL
+      COMO ESTIVEREM DISPONÍVEIS.
+      <BR>F. O <b>CLASSI</b><b>-A</b> NÃO É E NEM SERÁ RESPONSÁVEL (I) PELA
+      QUALIDADE DA CONEXÃO DO COMPUTADOR DO USUÁRIO À INTERNET EM QUALQUER
+      CIRCUNSTÂNCIA, (II) PELA DISPONIBILIDADE OU NÃO DOS SERVIÇOS DE ACESSO À
+      INTERNET PRESTADOS POR TERCEIROS, (III) PELA IMPOSSIBILIDADE DE UTILIZAÇÃO
+      DE QUAISQUER DOS SERVIÇOS OU LICENÇAS DE SOFTWARE ACIMA MENCIONADOS EM
+      RAZÃO DA INCOMPATIBILIDADE DOS SERVIÇOS E/OU DAS LICENÇAS COM A
+      CONFIGURAÇÃO TÉCNICA DO COMPUTADOR DO USUÁRIO, (IV) PELA DESOBEDIÊNCIA,
+      POR PARTE DO USUÁRIO, DAS REGRAS E CONDIÇÕES DE USO ESTABELECIDAS POR CADA
+      UM DOS PROVEDORES DE ACESSO AOS QUAIS O USUÁRIO TENTE SE CONECTAR, (V) POR
+      QUAISQUER DANOS SOFRIDOS PELO USUÁRIO EM RAZÃO DA INCORRETA UTILIZAÇÃO DOS
+      SERVIÇOS OU INCORRETA INSTALAÇÃO DE SOFTWARE FORNECIDO PELO <b>CLASSI</b><b>-A</b>, (VI) PELA FUNCIONALIDADE OU POR QUALQUER VÍCIO OU
+      DEFEITO DE SOFTWARE FORNECIDO PELO <b>CLASSI</b><b>-A</b>, (VII) PELA
+      REPARAÇÃO DE DANOS DE QUALQUER NATUREZA CAUSADOS PELA QUEBRA DE
+      PRIVACIDADE OU SEGURANÇA DE DADOS DO USUÁRIO DURANTE A CONEXÃO DE SEU
+      COMPUTADOR A INTERNET ATRAVÉS DE TERCEIROS, INDEPENDENTEMENTE, INCLUSIVE,
+      DA CONEXÃO TER SIDO REALIZADA ATRAVÉS DE SOFTWARE FORNECIDO PELO <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      <BR>
+      <BR><B>8. INDENIZAÇÃ</B>O
+      <BR>
+      <BR>8.1. O usuário concorda em indenizar e isentar o <b>CLASSI</b><b>-A Ltda</b><B>.</B>, seus diretores e empregados, de quaisquer perdas, despesas,
+      danos, reclamações ou reivindicações, incorridos por quaisquer terceiros
+      ou incorridos ou sofridos pelo <b>CLASSI</b><b>-A Ltda</b><B>.</B>  com relação ou
+      em decorrência de qualquer uso ou transmissão através dos serviços que
+      ocorram sob a senha ou conta do usuário e que violem os termos deste
+      instrumento ou as condições de uso de qualquer serviço aqui previsto,
+      quaisquer leis ou regulamentos locais, nacionais ou internacionais
+      aplicáveis, ou quaisquer direitos de terceiros.
+      <BR>
+      <BR><B>9. USO DE INFORMAÇÕES DO REGISTRO</B>
+      <BR>
+      <BR>9.1. Exceto pelas informações obtidas pelo <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      através do monitoramento mencionado na claúsula 4 acima, que somente
+      poderão ser utilizadas ou divulgadas nos termos mencionados em referido
+      dispositivo, o usuário expressamente autoriza o <b>CLASSI</b><b>-A Ltda</b><B>.</B>, ou alguém por ela indicado, a revelar as informações de
+      registro e as informações sobre utilização dos serviços do <b>CLASSI</b><b>-A Ltda</b><B>.</B>, para fins comerciais, inclusive de marketing.
+      <BR>
+      <BR>9.2. O usuário concorda expressamente que o <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      não terá qualquer responsabilidade sobre a utilização das informações por
+      ela reveladas conforme expressamente autorizado, pelo que o usuário
+      expressamente isenta o <b>CLASSI</b><b>-A Ltda</b><B>.</B>  de toda e qualquer
+      responsabilidade, incluindo mas não se limitando à transmissão ao usuário
+      de mensagens que contenha material (i) ilegal, vexatório, difamatório,
+      invasivo à privacidade, abusivo, ameaçador, prejudicial, vulgar, obsceno,
+      injurioso, ou de qualquer forma censurável; (ii) que viole direitos de
+      terceiro, incluindo, mas sem limitação, direitos de propriedade
+      intelectual de terceiros; (iii) que viole qualquer lei ou regulamento
+      local, estadual, nacional ou internacional aplicável; (iv) que contenha
+      vírus, arquivos do tipo "Cavalo de Tróia", ou outro programa prejudicial;
+      ou (v) não-solicitado ("spam" ou "junk mail"), correntes ("chain
+letters").
+      <BR>
+      <BR><B>10. MODIFICAÇÃO DOS SERVIÇOS E DOS TERMOS DOS SERVIÇOS</B>
+      <BR>
+      <BR>10.1. O <b>CLASSI</b><b>-A Ltda</b><B>.</B>  poderá eventualmente modificar os
+      termos dos serviços aqui especificados a seu exclusivo critério e sem
+      necessidade de notificação prévia. O usuário deverá verificar
+      permanentemente os termos dos serviços disponíveis em <A
+      href="/">http://www.classi-a.com.br/</A>e poderá a
+      qualquer momento rescindir o presente contrato conforme disposto na
+      claúsula 13.
+      <BR>
+      <BR>10.2. O <b>CLASSI</b><b>-A Ltda</b><B>.</B>  reserva-se o direito de modificar ou
+      descontinuar quaisquer um de seus serviços a seu exclusivo critério e sem
+      notificação prévia.
+      <BR>
+      <BR><B>11. DISPOSIÇÕES GERAIS</B>
+      <BR>
+      <BR>11.1. Os termos dos serviços e o relacionamento entre as partes serão
+      regidos pelas leis da República Federativa do Brasil, sem consideração a
+      qualquer disposição sobre conflito de leis. Usuário e <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      concordam em submeter-se à competência única e exclusiva dos
+      tribunais localizados no Brasil.
+      <BR>
+      <BR>11.2. Os títulos das cláusulas nos termos do serviço foram inseridos
+      apenas por conveniência. Do mesmo modo, as expressões "serviços" e "conta
+      de usuários" são utilizadas apenas para facilitar o entendimento uma vez
+      que não existe qualquer remuneração por parte do usuário. Tais títulos e
+      expressões não alteram a natureza do contrato e não possuem quaisquer
+      efeitos legais ou contratuais.
+      <BR>
+      <BR><B>12. RESCISÃO</B>
+      <BR>
+      <BR>12.1. No caso dos serviços do <b>CLASSI</b><b>-A Ltda</b><B>.</B>  que não
+      necessitam qualquer tipo de senha do usuário, para rescindir esse Contrato
+      a qualquer tempo, basta que o usuário deixe de utilizar o <b>CLASSI</b><b>-A</b>
+      e
+      seus serviços.
+      <BR>
+      <BR>12.2. No caso dos serviços personalizados oferecidos pelo <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      e que necessitam de um usuário e uma senha, para
+      rescindir esse Contrato a qualquer tempo, basta que o usuário deixe de
+      utilizar tais serviços por um período de 60 dias consecutivos e
+      ininterruptos.
+      <BR>
+      <BR>12.2.1. O <b>CLASSI</b><b>-A Ltda</b><B>.</B>  irá considerar como usuário
+      inativo qualquer usuário que fique 60 dias consecutivos e ininterruptos
+      sem utilizar quaisquer um dos serviços personalizados do CLASSI-A Ltda. O
+      <b>CLASSI</b><b>-A Ltda</b><B>.</B>  reserva-se o direito de, a qualquer
+      tempo e ao seu exclusivo critério, cancelar a conta de usuários inativos.
+      <BR>
+      <BR>12.2.1.1. O usuário fica ciente e aceita que o simples acesso ao site
+      do <b>CLASSI</b><b>-A Ltda</b><B>.</B>  não implica necessariamente o uso de um dos
+      serviços personalizados oferecido pelo <b>CLASSI</b><b>-A Ltda</b><B>.</B>  Para que
+      um serviço personalizado seja utilizado é necessário o fornecimento do
+      nome do usuário e de sua respectiva senha. Portanto, uma conta será
+      considerada inativa se ficar 60 dias consecutivos e ininterruptos sem que
+      o usuário forneça seu nome de usuário e sua senha no site do CLASSI-A Ltda.
+      <BR>
+      <BR>12.2.2. O usuário fica ciente e aceita que ao cancelar uma conta de
+      usuário, o <b>CLASSI-A Ltda.</B>  não será responsável por quaisquer
+      informação da referida conta que esteja armazenada no <b>CLASSI-A Ltda.</B>  O
+      cancelamento implica também na impossibilidade de uso da conta.
+      <BR>
+      <BR><B>13. IDIOMA</B>
+      <BR>
+      <BR>13.1. É vontade expressa das partes que o presente instrumento, assim
+      como todos os documentos relacionados ao mesmo sejam redigidos em
+      português.
+      <BR>
+      <BR><B>14. NOTIFICAÇÃO</B>
+      <BR>
+      <BR>14.1. Todas as notificações a qualquer das partes devem ser feitas por
+      escrito, via e-mail ou correio convencional. Quando realizadas através de
+      correio convencional deverão ser encaminhadas (i) se para o <b>CLASSI-A Ltda.</B>
+      ao endereço ENDEREÇO, e (ii) se para o usuário, ao
+      endereço por ele especificado quando de seu registro junto ao <b>CLASSI-A.</b>
+      Quando realizadas através de e-mail deverão ser encaminhadas (i) se para o
+      <b>CLASSI-A Ltda.</B>  ao endereço: informacoes@classia.com.br. Não obstante a
+      claúsula 11, o <b>CLASSI-A Ltda.</B>  poderá divulgar notificações ou
+      mensagens através de seus serviços para informar o usuário de mudanças nos
+      serviços ou em seus termos, além de outros assuntos relevantes.
+      <BR>
+      <BR><B>15. CONEXÕES ("LINKS")</B>
+      <BR>
+      <BR>15.1. Os serviços oferecidos pelo <b>CLASSI</b><b>-A Ltda</b><B>.</B>  poderão
+      fornecer, ou os usuários poderão incluir "links" para outros endereços ou
+      recursos na Internet. O <b>CLASSI</b><b>-A Ltda</b><B>.</B>  não é responsável pela
+      disponibilidade de tais endereços ou recursos externos e não endossa ou se
+      responsabiliza por qualquer conteúdo, propaganda, produtos, serviços ou
+      outros materiais contidos ou disponibilizados através de tais sites ou
+      recursos. Você concorda que <b>CLASSI</b><b>-A Ltda</b><B>.</B>  não será
+      responsável, direta ou indiretamente, por quaisquer custos, danos ou
+      perdas que sejam efetivamente ou alegadamente causados por quaisquer
+      conteúdos, produtos ou serviços disponíveis em referidos sites ou recursos
+      externos ou pela utilização ou confiança depositada pelo usuário em tais
+      conteúdos, produtos ou serviços.
+      <BR>
+      <BR><B>16. NEGOCIAÇÕES COM ANUNCIANTES</B>
+      <BR>
+      <BR>16.1. O usuário fica ciente e aceita, de forma expressa, que o <b>CLASSI</b><b>-A Ltda</b><B>.</B>
+      não se responsabiliza (i) pela reparação de
+      quaisquer danos, de qualquer natureza, causados ao usuário pela aquisição
+      de produtos ou pela utilização de serviços, respectivamente adquiridos ou
+      prestados por terceiros, acessado através do <b>CLASSI</b><b>-A Ltda</b><B>.</B>;
+      (ii) pelos eventuais defeitos decorrentes de projeto, fabricação,
+      construção, montagem, fórmulas, manipulação, apresentação ou
+      acondicionamento desses produtos e/ou serviços ou ainda; (iii) pelas
+      informações insuficientes ou inadequadas sobre a utilização, fruição e
+      riscos relativos aos produtos e/ou serviços adquiridos de, ou prestados
+      por, terceiros acessados; (iv) pela participação em promoções e sorteios;
+      e pela segurança e confidencialidade das informações e dados do usuário
+      que vierem a ser transmitidos via Internet.
+      <BR>
+      <BR>16.2. A mensagem enviada pelo usuário a anunciantes, vendedores ou
+      quaisquer terceiros, bem como o pagamento e a promessa de entrega de
+      quaisquer bens ou serviços, termos, condições, garantias ou declarações
+      associadas a tais negociações, comprometem apenas o usuário e o respectivo
+      anunciante, vendedor ou terceiro. O <b>CLASSI</b><b>-A Ltda</b><B>.</B>  se exime,
+      portanto, de qualquer responsabilidade em relação aos mesmos, seja
+      contratual ou extracontratual, não respondendo por perdas ou danos de
+      qualquer espécie que resultem de uma dessas negociações com terceiros ou
+      decorrentes da presença de tais anunciantes no serviço.
+      </FONT></P></TD></TR>
+</TBODY></TABLE>
+  </center>
+</div>
+<div align="center">
+  <center>
+<TABLE border=0 cellPadding=0 cellSpacing=1 width=65% height="84">
+  <TBODY>
+  <TR>
+    <TD align=center>
+<center>
+      <FORM action="/news/signNewUser.php" method="post">
+         <INPUT name="Ido" type=submit value="Aceito">
+         <INPUT type="hidden" name="confirmed" value="true">
+         <INPUT name=Idont type=submit value="Não aceito" onClick="javascript:history.back()">
+      </FORM>
+</center> </TD></TR></TBODY></TABLE>
+  </center>
+</div>
+
+<?     require("../news/commonCopyright.php");    ?>
+
+</BODY></HTML>

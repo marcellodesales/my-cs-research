@@ -1,0 +1,181 @@
+<?
+  if (($idCategory == null) and ($descCategory == null)){ 
+        header("Location: /");
+  } else {  ?> 
+
+<HTML><HEAD><TITLE>Classi-A on-Line</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<link rel="stylesheet" href="classia.css">
+<base target="_self">
+<script language=JavaScript1.2 src="../js/announceUtility.js"></script>
+<script language=JavaScript1.2 src="../js/announceChoices.js"></script>
+<script language=JavaScript1.2 src="../js/status.js"></script>
+</HEAD>
+
+<BODY aLink=#c0c0c0 bgcolor="white" link=#000000 text=#000000 vLink=#000000 leftMargin="0" rightmargin="0" bottommargin="0" topMargin="0" marginwidth="0" marginheight="0">
+
+<?
+	include("ownedGetCategoryDir.php");// gets the directory information...
+	require("commonMainTitle.php"); //return the main title with the options...
+ ?>
+
+<div align="left">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" height="5%">
+    <tr>
+      <td width="100%" bgcolor="#FFCC00">&nbsp;&nbsp;&nbsp;</td></tr>
+  </table>
+</div>
+
+<TABLE border=0 cellPadding=0 cellSpacing=0 height=19 width="100%">
+  
+  <TR>
+    <TD bgColor="white" vAlign=top width=124 align="center">
+<center>
+
+<? include("ownedGetCategoryKindOfAnnounces.php"); // gets the kinds of announce for each idCategory...
+
+   include("bannersPerCategory.php"); 
+
+?>  </center>
+      <p><img border="0" src="images/botton_left.gif" width="134" height="9"></P>
+   </TD>
+  </TR>
+</TABLE>
+      				
+  </TD>
+
+    <TD align=middle bgColor=#ffffff rowSpan=3 vAlign=top width="506">
+
+      <TABLE border=0 cellPadding=0 cellSpacing=0 height=8>
+        <TBODY>
+        <TR>
+          <TD align=left><img border="0" src="images/curva_td_left.gif" width="8" height="8"></TD>
+          <TD align=right width="100%"><IMG border=0 height=1 src="images/espaco.gif" width=1></TD>
+          <TD align=right><IMG border=0 height=8 src="images/curva_td.gif" width=8></TD></TR>
+      </TBODY></TABLE>
+
+      <div align="center"><CENTER>
+
+<? include("ownedGetCategorySubcategories.php"); //returns the subcategories of this category....
+?>    
+        </center>
+      </div>
+<?
+  $descKOA = ($descKindOfAnnounce == null) ? "Todos os tipos de anuncio" : $descKindOfAnnounce;
+  $descKOA = ($descKindOfAnnounce == "Todos") ? "Todos os tipos de anuncio" : $descKOA;
+  if ($totalrows != 0){
+        $onlyOne = ($totalrows == 1);
+        $quant   = $onlyOne ? "<b>Anúncio</b> relacionado" : "<b>Anúncios</b> relacionados";
+?>
+        <table width="95%">
+        <tr>
+		<td width="50%"><font face="verdana" size="2">
+                       <? echo $quant.": ".$totalrows; ?><Br>
+                       Mostrando anúncios de <b><? echo $begin ?></b> a <b><? echo $end ?><b/>
+		</td>
+
+                <td width="50%"><font face="verdana" size="1">
+		       <p align="justify"><img src="images/info.gif" align="right">Você pode refinar sua pesquisa escolhendo o tipo de anúncio no quadro ao lado. <? if ($kindOfAnnouncesForThisCategory != 'N')
+		   echo "Também pode escolher uma subcategoria acima.";
+           ?>
+		    </font></p></td>
+        </tr>
+        </table>
+<?
+  } else {
+	
+          switch($PHP_SELF) { 
+                 
+		    case "getCategory.php":
+                           $dirAnnounces = "$descKOA $DIR_SEPARATOR $descCategory"; 
+                           break; 
+                    case "getSubcategory.php": 
+                           $dirAnnounces = "$descKOA $DIR_SEPARATOR $descCategory $DIR_SEPARATOR $descSubcategory"; 
+                           break;
+                    case "getEspecification.php": 
+                           $dirAnnounces = "$descKOA $DIR_SEPARATOR $descCategory $DIR_SEPARATOR $descSubcatego
+ry $DIR_SEPARATOR $descEspecification"; 
+                           break; 
+         } 
+?><BR>
+        <table width="80%">
+        <tr>
+                <td><font face="verdana" size="2"><p align="justify">Não existe anúncios pertencentes a <b><? echo $dirAnnounces ?></b>. Caso queira anúnciar, cadastre-se e coloque até 20 anúncios inteiramente de graça.<BR><BR>
+                <b>Quer falar conosco?</b><BR>
+                Se você tiver alguma dúvida, sugestão ou reclamação sobre o Classi-A, mande um e-mail para
+                <a href="mailto: admin@classi-a.com.br" class="subcategory">admin@classi-a.com.br</a>.<BR><BR>
+                O Classi-A agradece.</font></p></td>
+        </tr>
+        </table>
+<?
+  }
+?>
+      </font><BR>
+
+      <div align="center"><center>
+<?
+  if (($idKindOfAnnounce == null) or ($idKindOfAnnounce == 0)){ //cause user should already have choosen the Todos choice....
+      $query2 = "SELECT $fields FROM t_anuncio WHERE cod_categoria_anuncio=$idCategory LIMIT $offset, $limit";
+  } else {
+      $query2 = "SELECT $fields FROM t_anuncio WHERE cod_tipo_anuncio=$idKindOfAnnounce AND cod_categoria_anuncio=$idCategory LIMIT $offset, $limit";
+  }
+
+  $result = mysql_query($query2,$db);
+  $lines  = mysql_num_rows($result);
+
+  if ($lines != 0){
+
+	include("commonGetAnnounce.php");
+
+  }
+
+?><font face='verdana' size=2>
+
+<? if ($totalrows != 0){
+     for ($i=0; $i < 9-$totalrows; $i++)
+        echo "<BR>";
+   } else {
+                echo "<BR><BR>";
+   }
+?>
+
+   <a href="javascript:history.back()" class='subcategory'>
+   <b>Voltar</b></font></a>
+
+<?     require("commonCopyright.php");    ?>
+
+   </TD>
+    <TD bgColor=#ffffff vAlign=top width=147>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width=100% height="1">
+      <tr>	
+          <TD bgColor=#FFCC00 height="1" align="center"><BR>
+          
+		<? require("commonHowLogin.php"); ?>
+		
+	  </TD>
+      </TR>
+      <TR>
+         <TD bgColor=white align="center">
+	   
+           <p align="center">
+           <img border="0" src="images/botton.gif" width="146" height="9" valign=bottom></p>
+      		<form method="post" action="getSubcategory.php">
+        		<input type="hidden" name="idCategory" value="">
+        		<input type="hidden" name="descCategory" value="">
+        		<input type="hidden" name="idSubcategory" value="">
+        		<input type="hidden" name="descSubcategory" value="">
+        		<input type="hidden" name="idKindOfAnnounce" value="<? echo $idKindOfAnnounce; ?>">
+        		<input type="hidden" name="descKindOfAnnounce" value="">
+      		</form>
+          </TD>
+        </TR>
+      </TABLE>
+     
+<?      include("commonEmailRefer.php");        ?>     
+     
+</TD></TR>
+</TBODY>
+</TABLE>
+</BODY>
+</html>
+<?  }  ?>

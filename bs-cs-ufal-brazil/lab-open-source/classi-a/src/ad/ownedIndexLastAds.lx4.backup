@@ -1,0 +1,46 @@
+      <table border="0" cellpadding="0" cellspacing="0" width="96%">
+<?
+  $get = "SELECT t_anuncio.cod_anuncio,titulo_anuncio,imagem_anuncio,quando_anuncio,desc_categoria_anuncio FROM t_anuncio,t_categoria_anuncio WHERE t_anuncio.cod_categoria_anuncio=t_categoria_anuncio.cod_categoria_anuncio ORDER BY quando_anuncio DESC LIMIT 0,5 ";
+  $secure->connection->query($get);
+  $quant = ($secure->connection->affected_rows() < 5) ? $secure->connection->affected_rows() : 5;
+?>
+	<tr>
+		<td width="100%" colspan="4" bgcolor="#FFFFFF" height="20%" align="left">
+                	<b><font color="#000066" face="verdana,arial" size="2">
+                	<IMG src="/common/images/novos.gif"> 5  Últimos anúncios</b><BR></td>
+	</tr>
+<?   if ($secure->connection->affected_rows() != 0){
+$util = new Utility();
+       for ($i = 0; $i < $quant; $i++){
+           $color = ($i % 2 == 0) ? "#EAEAEA" : "White";
+           $secure->connection->next_record();
+           $adID    = $secure->connection->Record['cod_anuncio'];
+           $adTitle = $secure->connection->Record['titulo_anuncio'];
+           $adImage = $secure->connection->Record['imagem_anuncio'];
+           $adCategory  = $secure->connection->Record['desc_categoria_anuncio'];
+           $adWhen      = $util->getPrintableTimeStamp($secure->connection->Record['quando_anuncio']);
+	   $titleWHifen = $util->getClearedHifen($adTitle);
+?>
+       <tr bgcolor="<? echo $color ?>">
+          <td width="20" valign="middle" height="0" align="center">
+             <img border="0" src="/common/images/seta1_laranja.gif"></td>
+          <td width="30" valign="middle" height="0">&nbsp;
+          <? if ($adImage != ""){ ?>
+              <a href="javascript:openAnnounceImage('<? echo $adID.'.'.$adImage ?>','<? echo $titleWHifen ?>')" onMouseOver="return showStatus('Imagem do anúncio -> <? echo $titleWHifen ?>')" onMouseOut="clearStatus()"><img border="0" src="/common/images/foto.gif"></a>
+          <? }  ?></td>
+          <td width="480" valign="middle" height="0">&nbsp;
+              <font face="Verdana" size="2"><a class="subcategory" href="getAd.php?adID=<? echo $adID ?>" onMouseOver="return showStatus('Visualiza o anuncio -> <? echo $titleWHifen ?>')" onMouseOut="clearStatus()"><? echo $adTitle ?></font></a></td>
+          <td width="250" valign="middle" height="0" align="right" rowSpan="2">
+              <font face="Verdana" size="2"><? echo $adCategory ?></font>&nbsp;&nbsp;&nbsp;</td>
+       </tr>
+       <tr bgcolor="<? echo $color ?>">
+          <td width="20" valign="middle" align="center">
+             &nbsp;</td>
+          <td width="20" valign="middle" align="center">
+             &nbsp;</td>
+          <td width="100%" valign="top"><font face="Verdana" size="1">&nbsp;<? echo $adWhen ?></font></td>
+       </tr>
+<?    }
+   }
+?>
+    </table>

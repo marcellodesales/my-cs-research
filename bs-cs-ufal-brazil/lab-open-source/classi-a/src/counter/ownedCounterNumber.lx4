@@ -1,0 +1,29 @@
+
+
+<?
+
+$count = fopen ("counter.dat","r+");
+$conteudo = fread ($count, filesize("counter.dat"));
+
+$conteudo = $conteudo + 1;
+$len = strlen($conteudo);
+
+
+for ($i=0; $i<=1; $i++) $conteudo = "0" . $conteudo; 
+
+
+for ($i=0; $i<strlen($conteudo); $i++){
+    $myposition = substr($conteudo,$i,1);
+//    echo "<img src=/counter/getImg.php?myposition=$myposition>";
+}
+
+
+fclose ($count);
+
+$count = fopen ("counter.dat","w+");
+
+fwrite ($count,$conteudo);
+
+fclose ($count);
+
+?>

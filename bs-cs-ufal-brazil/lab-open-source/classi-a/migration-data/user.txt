@@ -1,0 +1,86 @@
+//to create a new user, we have to pass 0 as paramether...
+//When we create a new user an call set methods, WE MUST create the same person later
+//IT'S a BIG BUG;...............
+//    $newuser = new user(0);
+//    echo "<BR>senha new user 1: $newuser->id<BR><BR>";
+
+/*  $newuser = new User(0);
+    $id = $newuser->id;
+
+    $newuser->setStr("nome_anunciante","Thiago");
+    $newuser->setStr("sobrenome_anunciante","Bruno Melo de Sales");
+    $newuser->setStr("sexo_anunciante",'M');
+    $newuser->setStr("fone_anunciante",'08-326-4477');
+    $newuser->setStr("celular_anunciante",'08-997-1413');
+    $newuser->setStr("email_anunciante",'thiago@dialnet.com.br');
+    $newuser->setStr("icq_anunciante",'658789843');
+    $newuser->setInt("cod_profissao",4);
+    $newuser->setInt("cod_faixa_etaria",2);
+
+    $newuser->setStrUser("login","thiago");
+    $newuser->setStrUser("password","51527981");
+    $newuser->setStrUser("cod_tipo_usuario",'W');
+    $newuser->setStrUser("ultimo_ip",'127.0.0.1');
+    $newuser->setIntUser("ultimo_acesso",time());
+    $newuser->setIntUser("cod_chegada",1);
+
+    $newuser->address->setStr("logradouro","Gonçalves Dias");
+    $newuser->address->setStr("numero","5878");
+    $newuser->address->setStr("localidade","Maceió");
+    $newuser->address->setStr("cep","57051-330");
+    $newuser->address->setInt("cod_tipo_endereco",1);
+    $newuser->address->setInt("cod_bairro",4);
+    $newuser->address->setInt("cod_estado",2);
+    $newuser->address->setInt("cod_pais",1);
+
+    $newuserA = new User($id);
+    $name  = $newuserA->name;
+    $name  .= " ".$newuserA->subName;
+    $age   = $newuserA->birthRange;
+    $work  = $newuserA->work;
+
+    $arriv = $newuserA->howArrived;
+    $user  = $newuserA->username;
+    $pw    = $newuserA->password;
+    $kind  = $newuserA->kindOfUser;
+    $lastAc= $newuserA->lastAccess;
+    $lastIp= $newuserA->lastIp;
+    $whenAr= $newuserA->whenArrived;
+
+    $addr  = $newuserA->address->kindOfAddress;
+    $addr  .= " ".$newuserA->address->logradure;
+    $addr  .= ", ".$newuserA->address->number;
+    $addr  .= ", ".$newuserA->address->neighborhood;
+    $addr  .= ", ".$newuserA->address->location;
+    $addr  .= ", ".$newuserA->address->state;
+    $addr  .= ", ".$newuserA->address->country;
+    $addr  .= ", ".$newuserA->address->zipCode;
+
+    echo "<BR><BR><BR>ID: $id<BR>Nome: $name<BR>Idade: $age<BR>Trabalha em: $work<BR><BR>";
+    echo "Username: $user<BR>Senha: $pw<BR>Tipo de susário: $kind<BR>Conheci em $arriv<BR>Ultimo Acesso: $lastAc<BR>Ultimo IP: $lastIp<BR>Quando se Cadastrou: $whenAr <BR><BR>";
+    echo "<BR>Endereço: $addr<BR>";
+*/
+//An existing user
+/*      $eu = new user('AEU26aejnrvzDHL');
+      $chegei       = $eu->howArrived;
+      $login        = $eu->username;
+      $nome         = $eu->name;
+      $senha        = $eu->password;
+      $tipo         = $eu->kindOfUser;
+      $id           = $eu->id;
+
+      echo "<BR><BR>ID: $id<BR>Nome: $nome<BR>Conheceu por: $chegei<BR>Login: $login<BR>Senha:$senha<BR>Tipo de Usuário $tipo";
+*/
+
+/*Updating information of the object
+        $eu = new User(1);
+        $nome = $eu->name;
+        $oldPW = $eu->password;
+        $eu->setStr("passwd_anunciante","515279");
+        //In non oriented-object databases, we can have the following BUG!!!!:
+        //we have to create other object with the same id when using the set methods.
+        //We can't pass the value to the object we're using....
+        $eu = new User(1);
+        $newPW = $eu->password;
+        echo "Senha atualizada com sucesso!!!<BR><BR>Senha antiga:$oldPW<BR>Senha nova:$newPW";
+*/

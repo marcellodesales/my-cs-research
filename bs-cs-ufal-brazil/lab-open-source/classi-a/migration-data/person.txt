@@ -1,0 +1,25 @@
+//person already exists
+/*        $eu      = new Person('AEY6aeimquyHMQU');
+        $address = $eu->address->logradure;
+        $city    = $eu->address->location;
+        $state   = $eu->address->state;
+
+        echo "Nome: $eu->name<BR> Sexo: $eu->sex<BR> Telefones: $eu->phone, $eu->cellPhone<BR>";
+        echo "Email: $eu->email<BR><BR>Endereço: $address<BR>";
+        echo "Cidade: $city<BR>Estado: $state<BR><BR>";
+        echo "Trabalha como: $eu->work<BR>";
+*/
+//person doesn't exist yet
+/*        $eu = new Person(0);
+        $id = $eu->id;
+        echo "Novo usuário ID: $id";
+*/
+//Updating information of the object
+/*        $eu = new Person('1');
+        $addresses = new Address('1'); //'1' is the cod of Person...
+        echo "Estado anterior: $eu->state<BR>";
+        $addresses->setInt("cod_estado",2);
+        $eu = new Person('1');
+        echo "Estado novor: $eu->state<BR>";
+        echo "Veja com administrador se foi mudado o cod do estado de $eu->name para 2";
+*/

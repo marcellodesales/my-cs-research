@@ -1,0 +1,12 @@
+// PRINTS THE SYSTEM TIME
+/* $a = new Utility();
+ $date = $a->getDate();
+ $pr = $a->getUsPrice("34,98");
+ $pr = $pr/2;
+ echo $date, $pr;
+*/
+// PRINTS THE SYSTEM TIME BASED ON integer mensured in seconds since 1970..
+/*a = new Utility();
+ $date = $a->getPrintableTimeStamp(966134453);
+ echo $date;
+*/

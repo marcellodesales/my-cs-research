@@ -1,0 +1,17 @@
+Important Note: As of PHP 4.2, php no longer automatically creates the variables for you. If you want posted variables to be automatically created. You have to edit your php.ini file and set the register_globals variable to on. The line should read:
+
+register_globals = on  
+
+
+If that is not possible, you have to initialize the variables in your code everytime. The method is, if you are posting a form with the field "name" you have to write the following code in the page where you are posting:
+
+
+
+<?PHP
+$name=$_POST[name];        //for post method
+$name=$_GET[name];        //for get method
+?>  
+
+<?PHP
+$variablename=$_POST[the_field_posted_by_form];
+?>  

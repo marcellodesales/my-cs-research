@@ -1,0 +1,20 @@
+/*
+ $eu = new security("classA");
+  if ($eu->personExist("AEMV048cgkoswAE"))
+   echo "existe";
+  else echo "ñ existe";
+*/
+
+/*  $ss = new Security("classA");
+  $a = $ss->userExist("marcello","5152");
+  if ($a == 0)
+       echo "não esite";
+  else echo "existe!";
+*/
+//  echo "AE$a";
+//  echo "AO$a";
+/* $secure = new Security("classA");
+ $pw = $secure->randomPass();
+ $senha = "AO$pw";
+ echo "$senha";
+*/

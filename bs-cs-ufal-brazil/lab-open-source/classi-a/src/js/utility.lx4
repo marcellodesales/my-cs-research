@@ -1,0 +1,90 @@
+function isNumeric(a){
+        var inputVal = a;
+        if(inputVal == null || inputVal == "")
+        {
+                inputVal = "notSpecified";
+        }
+        for(i=0; i < inputVal.length; i++)
+        {
+                var charPos = inputVal.charAt(i);
+                if(charPos < "0" || charPos > "9")
+                {
+                        return false;
+                }
+        }
+        return true;
+}
+
+function isAlpha(a){
+        var inputVal = a.toLowerCase();
+        for(i=0; i < inputVal.length; i++)
+        {
+                var charPos = inputVal.charAt(i);
+                if(charPos < "a" || charPos > "z")
+                {
+                        return false;
+                }
+        }
+        return true;
+}
+
+function isAlphaNumeric(a)
+{
+        var inputVal = new String(a);
+        inputVal = inputVal.toLowerCase();
+        for(i=0; i < inputVal.length; i++)
+        {
+                var charPos = inputVal.charAt(i);
+                if (!((charPos >= "a" && charPos <= "z") || (charPos >= "0" && charPos <= "9") || (charPos == ")))
+                        return false;
+        }
+  return true;
+}
+
+
+function verifyEmail(a)
+{
+        str = new String(a);
+        if(str == null || str == "")
+        {
+                str = "notSpecified";
+        }
+        // @ symbol stuff
+        var atSymbolIndex = str.indexOf("@",0);
+        var preAtSymbolIndex = atSymbolIndex - 1;
+        var postAtSymbolIndex = atSymbolIndex + 1;
+        var preAtSymbolStr = str.charAt(preAtSymbolIndex);
+        var postAtSymbolStr = str.charAt(postAtSymbolIndex);
+
+        // dot stuff
+        var dotIndex = str.indexOf(".",0);
+        var postDotIndex = dotIndex + 1;
+        var preDotIndex = dotIndex - 1;
+        var postDotStr = str.charAt(postDotIndex);
+        var preDotStr = str.charAt(preDotIndex);
+        if(postDotStr == null || postDotStr == "")
+        {
+                postDotStr = "*";
+        }
+
+        //spaces stuff
+        var spaces = str.indexOf(" ",0);
+        var noSpaces = false;
+        if(spaces < 0)
+        {
+                noSpaces = true;
+        }
+
+        if(noSpaces)
+        {
+                if((atSymbolIndex > 0) && (dotIndex > 0))
+                {
+                        if(isAlphaNumeric(postDotStr) && isAlphaNumeric(preDotStr) && isAlphaNumeric(preAtSymbo
+lStr) && isAlphaNumeric(postAtSymbolStr))
+                        {
+                                return true;
+                        }
+                }
+        }
+        return false;
+}

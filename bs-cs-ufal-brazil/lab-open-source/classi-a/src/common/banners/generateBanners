@@ -1,0 +1,56 @@
+#! /usr/bin/perl -w
+
+#@string = ("domingo","segunda","terça","quarta","quinta","sexta","sábado");
+
+#$weekDir      = $week[$time[6]];
+
+print "Digite o título do banner: ";
+$bannerTitulo  = <STDIN>;
+chomp ($bannerTitulo);
+
+print "\n Digite o nome do arquivo do banner: ";
+$bannerFileName = <STDIN>;
+chomp ($bannerFileName);
+
+
+print "\n Existe link para o banner em questão? (S/N) \n";
+	do {
+		$existLink = <STDIN>;
+		chomp ($existLink);
+
+	} while ($existLink ne 'n' && $existLink ne 's' && $existLink ne 'S' && $existLink ne 'N');
+
+	$bannerURL = '';
+	if ($existLink ne 'N' && $existLink ne 'n'){
+		print "\n Então, digite a URL: ";
+		$bannerURL = <STDIN>;
+		chomp ($bannerURL);
+	}
+	do {
+		print "\n Digite o(s) número(s) da(s) categoria(s) separadas por vírgula. Ex: 1, 3, 5 , N \n";
+		$bannerCodCategorias = <STDIN>;
+		chomp ($bannerCodCategorias);
+		print "\n O(s) código(s) da(s) categoria(s) esta(ão) correto(s)? (S/N) \n";
+		$isCorrect = <STDIN>;
+		chomp ($isCorrect);
+		$flag = ($isCorrect eq 'n' || $isCorrect eq 'N');
+	} while ($flag);
+
+@CodCategorias = split (',' , $bannerCodCategorias);
+$line = $bannerTitulo .'|'. $bannerFileName.'|';
+
+$url = "";
+	if ($bannerURL ne ''){ 
+		$url = $bannerURL; 
+	} else { 
+		$url = "/"; 
+	} 
+$line .= $url;
+
+print "\n" . $line;
+foreach $CodCat (@CodCategorias){
+	print "\n Categoria: " . $CodCat . "\n";
+	system("echo \"" . $line . "\" >> " . $CodCat . ".banners");
+}
+
+exit

@@ -1,0 +1,68 @@
+/*
+ $an =  new Announce('0','1');
+ $idAn = $an->id;
+ $idAner = $an->id_announcer;
+
+ $an->setStr("periodo_anuncio","5");
+ $an->setStr("imagem_anuncio","carrod.gif");
+ $an->setStr("ip_anunciante_anuncio","204.172.228.45");
+ $an->setStr("titulo_anuncio","Suzuki Kavasaki Ninja 2001!!!");
+ $an->setStr("desc_anuncio","A mais nova moto da série feita especialmente para fazer a propaganda do Classi-A. Apenas alugo para um dia, somente em grandes eventos. Preta, e acompanha capacete... potencia de 1000 cavalos e pode chegar a 300km/h!");
+ $an->setStr("data_ini_anuncio","2000-08-15");
+ $an->setStr("data_end_anuncio","2000-09-20");
+
+ $an->setInt("preco_anuncio",14900.00);
+ $an->setInt("cod_tipo_anuncio",2);
+ $an->setInt("cod_categoria_anuncio",1);
+ $an->setInt("cod_subcategoria_anuncio",4);
+
+ $espec = new EspecificationOfAnnounce($idAn,1);
+ $espec->set(6);
+*/
+//get the information of anunnounce cod 1, of
+
+
+ $an = new Announce('AOnHMQUZ37bfkos','AEY6aeimquyHMQU');
+
+ $anunciante = new Person('AEY6aeimquyHMQU');
+ $nome_anun =  $anunciante->name;
+
+ $id_anuncio    = $an->id;
+ $id_anunciante = $an->id_announcer;
+ $id_tipo_anun  = $an->id_kindOfAnnounce;
+ $id_catego     = $an->id_category;
+ $id_subcate    = $an->id_subcategory;
+
+ $tipoAnuncio  = $an->kindOfAnnounce;
+ $categoria    = $an->category;
+ $subcategoria = $an->subcategory;
+
+ $periodo       = $an->period;
+ $preco         = $an->price;
+
+ $util = new Utility();
+
+ $dataini       = $util->getPrintableDate($an->startDate);
+ $dataend       = $util->getPrintableDate($an->endDate);
+ $desc          = $an->description;
+ $imagem        = $an->image;
+ $titulo        = $an->title;
+ $ip_anunciante = $an->ipAnnoucer;
+ $quandoExatame = $an->whenAnnounced;
+
+ $especificacao = $an->especification->especification;
+ $cod_especificacao = $an->especification->id_especification;
+
+ echo "<BR>Cod. do anuncio: $id_anuncio<BR><BR>";
+ echo "Cod. anunciante: $id_anunciante<BR>Nome Anunciante: $nome_anun<BR><BR>";
+ echo "cod Tipo: $id_tipo_anun: Tipo de anuncio: $tipoAnuncio<BR>";
+ echo "cod Cate: $id_catego: Categoria: $categoria<BR>";
+ echo "cod SubC: $id_subcate: Subcategoria: $subcategoria<BR>";
+ echo "cod Especif: $cod_especificacao: Especificação: $especificacao<BR><BR>";
+
+ echo "Titulo do anuncio: $titulo<BR>";
+ echo "Descrição do anuncio: $desc<BR>";
+ echo "Preço: $preco<BR>";
+ echo "Data: $quandoExatame<BR>";
+ echo "IP anunciante quando anunciou na data acima: $ip_anunciante";
+*/
