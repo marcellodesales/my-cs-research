@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Project>
+    <SourceDirectories>
+        <Directory absolutePath="C:\desenv\algoritmos geneticos\genoma\" relativePath=""/>
+    </SourceDirectories>
+    <LibrarySourceDirectories/>
+    <LibraryClassDirectories/>
+    <DestinationDirectory
+        absolutePath="C:\desenv\algoritmos geneticos\genoma\src\" relativePath="src"/>
+    <WorkingDirectory
+        absolutePath="C:\desenv\algoritmos geneticos\genoma\br\ufal\revida\" relativePath="br/ufal/revida"/>
+    <Target
+        absolutePath="C:\desenv\algoritmos geneticos\genoma\br\ufal\revida\ChromosomePopulation.java"
+        java2DebugVmType="classic" relativePath="br/ufal/revida/ChromosomePopulation.java"/>
+    <CompilerOptions showCompilerWarnings="false" showDeprecationWarnings="false"/>
+    <ResourceFilePattern>*.gif</ResourceFilePattern>
+    <BuildExclusionPattern>CVS</BuildExclusionPattern>
+</Project>
