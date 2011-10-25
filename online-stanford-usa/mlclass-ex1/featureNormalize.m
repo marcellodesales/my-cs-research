@@ -43,12 +43,12 @@ n = size(X, 2);
 mu = zeros(1, n);
 sigma = zeros(1, n);
 
-for index = 1:n
-    mu(1, index) = mean(X(:, index));
-    X(:, index) = X(:, index) .- mu(1, index);
+for featureColumn = 1:n
+    mu(1, featureColumn) = mean(X(:, featureColumn));
+    X(:, featureColumn) = X(:, featureColumn) .- mu(1, featureColumn);
 
-    sigma(1, index) = std(X(:, index));
-    X(:, index) = X(:, index) ./ sigma(1, index);
+    sigma(1, featureColumn) = std(X(:, featureColumn));
+    X(:, featureColumn) = X(:, featureColumn) ./ sigma(1, featureColumn);
 end;
 
 % updating the value of the return X_norm
