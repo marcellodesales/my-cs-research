@@ -7,15 +7,23 @@ function J = computeCostMulti(X, y, theta)
 m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
-J = 0;
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+% You need to return the following variables correctly 
 
+% Theta now has the values of all the features of X. X(:, 1) is all 1's. That mean
+% X has n+1 features as the class notes.
+% predictions of hypothesis on all m should just be the multiplication of thetas.
+predictions = theta * X;
 
+% the squared errors should be as usual
+sqrErrors = (predictions - y) .^ 2;
 
+% the result of the function is as it is defined regularly.
+J = (1/(2*m)) * sum(sqrErrors);
 
 % =========================================================================
 
