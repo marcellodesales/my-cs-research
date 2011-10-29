@@ -26,6 +26,10 @@ clear ; close all; clc
 data = load('ex2data1.txt');
 X = data(:, [1, 2]); y = data(:, 3);
 
+data(1:5,:)
+fprintf('Showing the first 5 examples... Program paused. Press enter to continue.\n');
+pause;
+
 %% ==================== Part 1: Plotting ====================
 %  We start the exercise by first plotting the data to understand the 
 %  the problem we are working with.
@@ -33,7 +37,20 @@ X = data(:, [1, 2]); y = data(:, 3);
 fprintf(['Plotting data with + indicating (y = 1) examples and o ' ...
          'indicating (y = 0) examples.\n']);
 
-plotData(X, y);
+% The positive and negative classes.
+positiveClasses = find(y == 1); %returns the position where y == 1
+positive1XScores = X(positiveClasses, 1);
+positive2XScores = X(positiveClasses, 2);
+green = [0 1 0]; %RGB colors
+plot(positive1XScores, positive2XScores, 'k+', 'LineWidth', 2, 'MarkerSize', 7, 'color', green);
+
+hold on; % keep previous plot visible
+
+negativeClasses = find(y == 0);
+negative1XScores = X(negativeClasses, 1);
+negative2XScores = X(negativeClasses, 2);
+red = [1 0 0];
+plot(negative1XScores, negative2XScores, 'k*', 'LineWidth', 2, 'MarkerFaceColor', 'y','MarkerSize', 5, 'color', red);
 
 % Put some labels 
 hold on;

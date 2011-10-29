@@ -9,9 +9,13 @@ g = zeros(size(z));
 % Instructions: Compute the sigmoid of each value of z (z can be a matrix,
 %               vector or scalar).
 
+% To define for any matrix, vector or scalar.
 
-
-
+% The sigmod formula is 1 / (1 + e ^ -z)
+negativeZ = -z;
+exponent = e .^ negativeZ;
+ones = ones(size(z));
+g = ones ./ (ones .+ (exponent));
 
 % =============================================================
 
