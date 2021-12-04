@@ -4,6 +4,8 @@ my-cs-research
 All the undegrad and grad research projects compiled into a project. All the Computer Science projects developed 
 during undergraduate, specialization and graduate programs.
 
+* Masters Dissertation at San Francisco State University: https://github.com/marcellodesales/sfsu-cs-masters-thesis-netbeams
+
 Context
 ============
 
@@ -32,7 +34,7 @@ not a priority until one year later when I joined the Master of Science in Compu
 State University in Feb-2008. I worked in a vast variety of projects during the 2 years of the program, including 
 NetBeams and the initial development of CollabNet Subversion Edge during an internship. I was awarded the degree of 
 Master of Science in Computer Science in December 2009 after defending A Key-Value-based Persistence Model for Sensor 
-Networks. The PDF can be downloaded from http://research.marcellodesales.info/sfsu/netbeams/docs/ms-cs-degree-thesis.pdf.
+Networks. Project is located at http://research.marcellodesales.info/sfsu/netbeams/docs/ms-cs-degree-thesis.pdf
 
 This is going to be maintained as a repository of contributions to what I had done, as well as for references to other 
 students.
